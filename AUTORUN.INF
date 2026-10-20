@@ -1,0 +1,5 @@
+[autorun]
+open=autorun.exe
+icon=autorun.ico
+shell\gamos\command=notepad readme.txt
+shell\gamos=About &Pilots Bros

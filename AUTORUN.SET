@@ -1,0 +1,21 @@
+[main]
+group=1C - Gamos
+items=3
+autorun=1
+tmpfiles=2
+
+[item1]
+name=Pilots Bros.
+command=%s\pilots.exe
+
+[item2]
+name=About the game - README
+command=notepad.exe %s\readme.txt
+
+[item3]
+name=Uninstall Pilots Bros.
+command=%s\autorun.exe uninstall
+
+[uninstall]
+file1=pilots0.230
+file2=pilots1.sav
