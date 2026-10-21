@@ -25,4 +25,3 @@ public final class Hotspot {
         return n >= this.x && n2 >= this.y && n - this.x < this.width && n2 - this.y < this.height;
     }
 }
-

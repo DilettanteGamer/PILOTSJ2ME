@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.152.
- * 
+ *
  * Could not load the following classes:
  *  javax.microedition.lcdui.Graphics
  */
@@ -53,4 +53,3 @@ public final class AnimatedActor {
         this.clip.close();
     }
 }
-
