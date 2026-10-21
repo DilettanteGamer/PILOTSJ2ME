@@ -239,24 +239,28 @@
   "removed_animation_ids": [
     106
   ],
-  "updated_anchor_ids": [],
-  "pending_placement_menu_numbers": [
-    2,
-    5,
-    6,
-    9,
-    11,
-    12,
-    13,
-    16,
-    17,
-    18,
-    19,
-    20,
-    23,
-    24,
-    25
+  "updated_anchor_ids": [
+    56,
+    64,
+    66,
+    69,
+    75,
+    76,
+    83,
+    86,
+    87,
+    88,
+    89,
+    90,
+    94,
+    95,
+    97
   ],
+  "updated_scene_actor_ids": [
+    64,
+    95
+  ],
+  "pending_placement_menu_numbers": [],
   "pending_character_relative_menu_numbers": [
     14,
     15,
@@ -266,11 +270,12 @@
     28,
     30
   ],
-  "jar_sha256": "bf5b48cd357b30d36705d27db2bf151b7ee52f598cc908abd4c6846e187fa42c",
-  "jar_size": 1228429,
+  "jar_sha256": "00b502107aa51a83c889548a893637d3df55504a89c4f1028dc33b54fb58fb5d",
+  "jar_size": 1228425,
   "bytecode_preserved": true,
   "modified_entries": [
     "META-INF/MANIFEST.MF",
+    "scenes/02.act",
     "scenes/02.animations"
   ],
   "removed_entries": [

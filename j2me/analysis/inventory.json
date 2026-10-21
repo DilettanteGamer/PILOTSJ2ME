@@ -2836,15 +2836,15 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.3.3",
+        "MIDlet-Version": "0.3.4",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "128x128"
       },
-      "sha256": "bf5b48cd357b30d36705d27db2bf151b7ee52f598cc908abd4c6846e187fa42c",
-      "jar_bytes": 1228429,
+      "sha256": "00b502107aa51a83c889548a893637d3df55504a89c4f1028dc33b54fb58fb5d",
+      "jar_bytes": 1228425,
       "entry_count": 135,
       "uncompressed_bytes": 9514633,
       "extension_counts": {
@@ -3146,13 +3146,13 @@
           },
           {
             "id": 64,
-            "x": 64,
-            "y": 230
+            "x": 512,
+            "y": 336
           },
           {
             "id": 95,
-            "x": 192,
-            "y": 292
+            "x": 448,
+            "y": 336
           }
         ]
       },
@@ -3474,12 +3474,12 @@
         {
           "resource_id": 56,
           "anchor": [
-            16,
-            230
+            448,
+            336
           ],
           "focus": [
-            50,
-            190
+            482,
+            296
           ],
           "label": "02 Шеф"
         },
@@ -3510,24 +3510,24 @@
         {
           "resource_id": 64,
           "anchor": [
-            64,
-            230
+            512,
+            336
           ],
           "focus": [
-            129,
-            165
+            577,
+            271
           ],
           "label": "05 Коллега"
         },
         {
           "resource_id": 66,
           "anchor": [
-            320,
-            112
+            277,
+            164
           ],
           "focus": [
-            225,
-            121
+            182,
+            173
           ],
           "label": "06 Ворона"
         },
@@ -3559,11 +3559,11 @@
           "resource_id": 69,
           "anchor": [
             192,
-            292
+            320
           ],
           "focus": [
             233,
-            218
+            246
           ],
           "label": "09 Шеф"
         },
@@ -3582,36 +3582,36 @@
         {
           "resource_id": 75,
           "anchor": [
-            480,
-            156
+            448,
+            336
           ],
           "focus": [
-            520,
-            133
+            488,
+            313
           ],
           "label": "11 Шеф"
         },
         {
           "resource_id": 76,
           "anchor": [
-            480,
-            156
+            512,
+            336
           ],
           "focus": [
-            512,
-            133
+            544,
+            313
           ],
           "label": "12 Коллега"
         },
         {
           "resource_id": 83,
           "anchor": [
-            144,
-            190
+            192,
+            320
           ],
           "focus": [
-            162,
-            155
+            210,
+            285
           ],
           "label": "13 Коллега"
         },
@@ -3642,60 +3642,60 @@
         {
           "resource_id": 86,
           "anchor": [
-            144,
-            190
+            448,
+            336
           ],
           "focus": [
-            168,
-            162
+            472,
+            308
           ],
           "label": "16 Шеф"
         },
         {
           "resource_id": 87,
           "anchor": [
-            256,
-            134
+            512,
+            336
           ],
           "focus": [
-            288,
-            110
+            544,
+            312
           ],
           "label": "17 Коллега"
         },
         {
           "resource_id": 88,
           "anchor": [
-            320,
-            112
+            277,
+            164
           ],
           "focus": [
-            214,
-            57
+            171,
+            109
           ],
           "label": "18 Ворона"
         },
         {
           "resource_id": 89,
           "anchor": [
-            64,
-            230
+            192,
+            176
           ],
           "focus": [
-            101,
-            181
+            229,
+            127
           ],
           "label": "19 Кот"
         },
         {
           "resource_id": 90,
           "anchor": [
-            256,
-            272
+            448,
+            336
           ],
           "focus": [
-            290,
-            216
+            482,
+            280
           ],
           "label": "20 Предмет"
         },
@@ -3726,36 +3726,36 @@
         {
           "resource_id": 94,
           "anchor": [
-            144,
-            190
+            448,
+            336
           ],
           "focus": [
-            206,
-            131
+            510,
+            277
           ],
           "label": "23 Шеф"
         },
         {
           "resource_id": 95,
           "anchor": [
-            192,
-            292
+            448,
+            336
           ],
           "focus": [
-            214,
-            244
+            470,
+            288
           ],
           "label": "24 Шеф"
         },
         {
           "resource_id": 97,
           "anchor": [
-            136,
-            98
+            256,
+            128
           ],
           "focus": [
-            181,
-            178
+            301,
+            208
           ],
           "label": "25 Охранник"
         },
@@ -4115,15 +4115,15 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.3.3",
+        "MIDlet-Version": "0.3.4",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "240x320"
       },
-      "sha256": "d09427a832c640f91d0829762c3ab7de3ac285268f0d8e5b7ff34e46fc69a5ca",
-      "jar_bytes": 2597839,
+      "sha256": "1031d20cad485de5274f9ec4c9f7580f3248b0c9b3ec5bcb6e7f5df7a47f0c45",
+      "jar_bytes": 2597834,
       "entry_count": 135,
       "uncompressed_bytes": 13410953,
       "extension_counts": {
@@ -4425,13 +4425,13 @@
           },
           {
             "id": 64,
-            "x": 64,
-            "y": 230
+            "x": 512,
+            "y": 336
           },
           {
             "id": 95,
-            "x": 192,
-            "y": 292
+            "x": 448,
+            "y": 336
           }
         ]
       },
@@ -4753,12 +4753,12 @@
         {
           "resource_id": 56,
           "anchor": [
-            16,
-            230
+            448,
+            336
           ],
           "focus": [
-            50,
-            190
+            482,
+            296
           ],
           "label": "02 Шеф"
         },
@@ -4789,24 +4789,24 @@
         {
           "resource_id": 64,
           "anchor": [
-            64,
-            230
+            512,
+            336
           ],
           "focus": [
-            129,
-            165
+            577,
+            271
           ],
           "label": "05 Коллега"
         },
         {
           "resource_id": 66,
           "anchor": [
-            320,
-            112
+            277,
+            164
           ],
           "focus": [
-            225,
-            121
+            182,
+            173
           ],
           "label": "06 Ворона"
         },
@@ -4838,11 +4838,11 @@
           "resource_id": 69,
           "anchor": [
             192,
-            292
+            320
           ],
           "focus": [
             233,
-            218
+            246
           ],
           "label": "09 Шеф"
         },
@@ -4861,36 +4861,36 @@
         {
           "resource_id": 75,
           "anchor": [
-            480,
-            156
+            448,
+            336
           ],
           "focus": [
-            520,
-            133
+            488,
+            313
           ],
           "label": "11 Шеф"
         },
         {
           "resource_id": 76,
           "anchor": [
-            480,
-            156
+            512,
+            336
           ],
           "focus": [
-            512,
-            133
+            544,
+            313
           ],
           "label": "12 Коллега"
         },
         {
           "resource_id": 83,
           "anchor": [
-            144,
-            190
+            192,
+            320
           ],
           "focus": [
-            162,
-            155
+            210,
+            285
           ],
           "label": "13 Коллега"
         },
@@ -4921,60 +4921,60 @@
         {
           "resource_id": 86,
           "anchor": [
-            144,
-            190
+            448,
+            336
           ],
           "focus": [
-            168,
-            162
+            472,
+            308
           ],
           "label": "16 Шеф"
         },
         {
           "resource_id": 87,
           "anchor": [
-            256,
-            134
+            512,
+            336
           ],
           "focus": [
-            288,
-            110
+            544,
+            312
           ],
           "label": "17 Коллега"
         },
         {
           "resource_id": 88,
           "anchor": [
-            320,
-            112
+            277,
+            164
           ],
           "focus": [
-            214,
-            57
+            171,
+            109
           ],
           "label": "18 Ворона"
         },
         {
           "resource_id": 89,
           "anchor": [
-            64,
-            230
+            192,
+            176
           ],
           "focus": [
-            101,
-            181
+            229,
+            127
           ],
           "label": "19 Кот"
         },
         {
           "resource_id": 90,
           "anchor": [
-            256,
-            272
+            448,
+            336
           ],
           "focus": [
-            290,
-            216
+            482,
+            280
           ],
           "label": "20 Предмет"
         },
@@ -5005,36 +5005,36 @@
         {
           "resource_id": 94,
           "anchor": [
-            144,
-            190
+            448,
+            336
           ],
           "focus": [
-            206,
-            131
+            510,
+            277
           ],
           "label": "23 Шеф"
         },
         {
           "resource_id": 95,
           "anchor": [
-            192,
-            292
+            448,
+            336
           ],
           "focus": [
-            214,
-            244
+            470,
+            288
           ],
           "label": "24 Шеф"
         },
         {
           "resource_id": 97,
           "anchor": [
-            136,
-            98
+            256,
+            128
           ],
           "focus": [
-            181,
-            178
+            301,
+            208
           ],
           "label": "25 Охранник"
         },

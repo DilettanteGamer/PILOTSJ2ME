@@ -1,0 +1,313 @@
+{
+  "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
+  "original_section": 4,
+  "start": 1001260,
+  "end": 2783407,
+  "record_count": 2398,
+  "cell_size": [
+    64,
+    16
+  ],
+  "background_pixels_and_palette_identical": true,
+  "animation_ids": [
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106
+  ],
+  "frame_record_count": 781,
+  "placement_evidence": [
+    {
+      "entity": 14,
+      "cell": [
+        4,
+        8
+      ],
+      "world": [
+        256,
+        128
+      ],
+      "rule_id": 1,
+      "record_offset": 1040991
+    },
+    {
+      "entity": 15,
+      "cell": [
+        5,
+        7
+      ],
+      "world": [
+        320,
+        112
+      ],
+      "rule_id": 7,
+      "record_offset": 1041091
+    },
+    {
+      "entity": 16,
+      "cell": [
+        3,
+        11
+      ],
+      "world": [
+        192,
+        176
+      ],
+      "rule_id": 13,
+      "record_offset": 1041187
+    },
+    {
+      "entity": 17,
+      "cell": [
+        7,
+        21
+      ],
+      "world": [
+        448,
+        336
+      ],
+      "rule_id": 14,
+      "record_offset": 1041203
+    },
+    {
+      "entity": 18,
+      "cell": [
+        8,
+        21
+      ],
+      "world": [
+        512,
+        336
+      ],
+      "rule_id": 14,
+      "record_offset": 1041203
+    },
+    {
+      "entity": 30,
+      "cell": [
+        4,
+        17
+      ],
+      "world": [
+        256,
+        272
+      ],
+      "rule_id": 43,
+      "record_offset": 1041783
+    },
+    {
+      "entity": 7,
+      "cell": [
+        4,
+        22
+      ],
+      "world": [
+        256,
+        352
+      ],
+      "rule_id": 47,
+      "record_offset": 1041851
+    },
+    {
+      "entity": 7,
+      "cell": [
+        5,
+        22
+      ],
+      "world": [
+        320,
+        352
+      ],
+      "rule_id": 49,
+      "record_offset": 1041883
+    },
+    {
+      "entity": 6,
+      "cell": [
+        1,
+        20
+      ],
+      "world": [
+        64,
+        320
+      ],
+      "rule_id": 53,
+      "record_offset": 1041947
+    },
+    {
+      "entity": 6,
+      "cell": [
+        1,
+        20
+      ],
+      "world": [
+        64,
+        320
+      ],
+      "rule_id": 57,
+      "record_offset": 1042011
+    },
+    {
+      "entity": 6,
+      "cell": [
+        3,
+        20
+      ],
+      "world": [
+        192,
+        320
+      ],
+      "rule_id": 61,
+      "record_offset": 1042075
+    },
+    {
+      "entity": 6,
+      "cell": [
+        3,
+        19
+      ],
+      "world": [
+        192,
+        304
+      ],
+      "rule_id": 65,
+      "record_offset": 1042139
+    },
+    {
+      "entity": 6,
+      "cell": [
+        6,
+        19
+      ],
+      "world": [
+        384,
+        304
+      ],
+      "rule_id": 69,
+      "record_offset": 1042203
+    },
+    {
+      "entity": 6,
+      "cell": [
+        6,
+        19
+      ],
+      "world": [
+        384,
+        304
+      ],
+      "rule_id": 73,
+      "record_offset": 1042267
+    },
+    {
+      "entity": 6,
+      "cell": [
+        6,
+        19
+      ],
+      "world": [
+        384,
+        304
+      ],
+      "rule_id": 77,
+      "record_offset": 1042331
+    },
+    {
+      "entity": 6,
+      "cell": [
+        5,
+        19
+      ],
+      "world": [
+        320,
+        304
+      ],
+      "rule_id": 81,
+      "record_offset": 1042395
+    },
+    {
+      "entity": 6,
+      "cell": [
+        7,
+        15
+      ],
+      "world": [
+        448,
+        240
+      ],
+      "rule_id": 83,
+      "record_offset": 1042427
+    },
+    {
+      "entity": 7,
+      "cell": [
+        7,
+        16
+      ],
+      "world": [
+        448,
+        256
+      ],
+      "rule_id": 83,
+      "record_offset": 1042427
+    }
+  ],
+  "scope": "Absolute placement rules only; not executed gameplay or a complete interpreter"
+}

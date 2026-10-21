@@ -73,7 +73,28 @@ def adjust_animations(entries, adjustments):
     mf = manifest(entries['META-INF/MANIFEST.MF'])
     mf['MIDlet-Version'] = adjustments['version']
     entries['META-INF/MANIFEST.MF'] = ('\r\n'.join(k + ': ' + v for k, v in mf.items()) + '\r\n\r\n').encode('utf-8')
+    actor_updates = adjustments.get('actor_anchors', {})
+    actor_catalog = 'scenes/02.act'
+    r = Reader(entries[actor_catalog])
+    require(r.take(4) == b'ACT1', 'Invalid actor catalog')
+    count, = r.unpack('>B')
+    actors, changed_actors = [], []
+    actor_ids = set()
+    for _ in range(count):
+        actor, x, y = r.unpack('>Hhh')
+        actor_ids.add(actor)
+        if str(actor) in actor_updates:
+            value = actor_updates[str(actor)]
+            require(len(value) == 2 and all(type(v) is int for v in value), 'Actor anchor must contain two integers')
+            x, y = value
+            changed_actors.append(actor)
+        actors.append(struct.pack('>Hhh', actor, x, y))
+    r.end()
+    require(set(map(int, actor_updates)) <= actor_ids, 'Unknown actor anchor ID')
+    if changed_actors:
+        entries[actor_catalog] = b'ACT1' + struct.pack('>B', count) + b''.join(actors)
     return entries, dict(removed_animation_ids=removed, updated_anchor_ids=updated,
+                         updated_scene_actor_ids=changed_actors,
                          pending_placement_menu_numbers=adjustments['pending_placement_menu_numbers'],
                          pending_character_relative_menu_numbers=adjustments['character_relative_menu_numbers'])
 

@@ -1,8 +1,136 @@
 {
-  "version": "0.3.3",
-  "remove_preview_ids": [106],
-  "anchors": {},
-  "pending_placement_menu_numbers": [2, 5, 6, 9, 11, 12, 13, 16, 17, 18, 19, 20, 23, 24, 25],
-  "character_relative_menu_numbers": [14, 15, 21, 22, 27, 28, 30],
-  "note": "Menu numbers are original labels, not ANM resource IDs. Pending lists are recorded requirements, not implemented corrections. Character-relative placement and action triggers require engine changes."
+  "version": "0.3.4",
+  "remove_preview_ids": [
+    106
+  ],
+  "anchors": {
+    "56": [
+      448,
+      336,
+      482,
+      296
+    ],
+    "64": [
+      512,
+      336,
+      577,
+      271
+    ],
+    "66": [
+      277,
+      164,
+      182,
+      173
+    ],
+    "69": [
+      192,
+      320,
+      233,
+      246
+    ],
+    "75": [
+      448,
+      336,
+      488,
+      313
+    ],
+    "76": [
+      512,
+      336,
+      544,
+      313
+    ],
+    "83": [
+      192,
+      320,
+      210,
+      285
+    ],
+    "86": [
+      448,
+      336,
+      472,
+      308
+    ],
+    "87": [
+      512,
+      336,
+      544,
+      312
+    ],
+    "88": [
+      277,
+      164,
+      171,
+      109
+    ],
+    "89": [
+      192,
+      176,
+      229,
+      127
+    ],
+    "90": [
+      448,
+      336,
+      482,
+      280
+    ],
+    "94": [
+      448,
+      336,
+      510,
+      277
+    ],
+    "95": [
+      448,
+      336,
+      470,
+      288
+    ],
+    "97": [
+      256,
+      128,
+      301,
+      208
+    ]
+  },
+  "pending_placement_menu_numbers": [],
+  "character_relative_menu_numbers": [
+    14,
+    15,
+    21,
+    22,
+    27,
+    28,
+    30
+  ],
+  "note": "0.3.4: fixed preview/background placements and matching default actor anchors. Character-relative reactions 14,15,21,22,27,28,30 are deferred to gameplay mechanics per user instruction; their catalog entries are unchanged. This is resource calibration, not restored original action conditions. Crow landing and butterfly flight are visual calibration choices; remaining hero preview defaults are not original per-action trajectories.",
+  "actor_anchors": {
+    "64": [
+      512,
+      336
+    ],
+    "95": [
+      448,
+      336
+    ]
+  },
+  "adjusted_placement_menu_numbers": [
+    2,
+    5,
+    6,
+    9,
+    11,
+    12,
+    13,
+    16,
+    17,
+    18,
+    19,
+    20,
+    23,
+    24,
+    25
+  ]
 }
