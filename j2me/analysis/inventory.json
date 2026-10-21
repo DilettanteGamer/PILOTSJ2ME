@@ -2596,7 +2596,7 @@
     },
     {
       "profile": "128x128",
-      "classes": 20,
+      "classes": 23,
       "scenes": [
         0,
         2,
@@ -2618,8 +2618,8 @@
         18,
         19
       ],
-      "animations": 66,
-      "frames": 915,
+      "animations": 99,
+      "frames": 1069,
       "backgrounds": {
         "scenes/00.p8": [
           320,
@@ -2836,27 +2836,28 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.4.2",
+        "MIDlet-Version": "0.5.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "128x128"
       },
-      "sha256": "9781e3ddd4b81366907c051607a0cfb1967df04e2938636b311692887e61c284",
-      "jar_bytes": 1287362,
-      "entry_count": 144,
-      "uncompressed_bytes": 10289716,
+      "sha256": "c52d93d4bcf6cea29db5e19e271ef360591d6546520e75d7226cce3ac8c83f4d",
+      "jar_bytes": 1417242,
+      "entry_count": 181,
+      "uncompressed_bytes": 11436843,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 66,
+        ".anm": 99,
         ".bar": 16,
         ".bin": 1,
-        ".class": 20,
+        ".class": 23,
         ".hot": 19,
-        ".p8": 19
+        ".p8": 19,
+        ".rules": 1
       },
       "classes_detail": {
         "pilots/AnimatedActor.class": {
@@ -2870,7 +2871,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "3e347f0d8be5f64ceece5c0bb1c84d2b20c6551ac505be856897f23ca1937f1c"
+          "sha256": "5ea37316bf1329a27cc30f618c797f57f0ac8c12c6b7bea09275d38a3edc5c4b"
         },
         "pilots/AnimationCatalog.class": {
           "minor": 3,
@@ -2975,7 +2976,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "701294586ab4a9819038c225ad852576f4ff19ba468fb566e9657c7c98aaa624"
+          "sha256": "2c6efc381ee6db67baceb12294a8526bd8caa7e97026e7d81ecb2a015024a04c"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -2987,6 +2988,24 @@
           ],
           "stackmap_utf8_present": true,
           "sha256": "8ef625558d5b2b8dd4285850e7a1584853b04310981fb00f17404020b943cf76"
+        },
+        "pilots/OriginalZooRules.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/DataInputStream",
+            "java/io/IOException",
+            "java/io/InputStream",
+            "java/lang/Class",
+            "java/lang/ClassNotFoundException",
+            "java/lang/IllegalStateException",
+            "java/lang/NoClassDefFoundError",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/Throwable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "647feae3eec4406ae733d740a534ed8c5a33a688f9c87f1e3dd0fbfc346e0c97"
         },
         "pilots/PilotsMidlet$1.class": {
           "minor": 3,
@@ -3024,7 +3043,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d79233bb27285d7038837f70f222cbfac8408b248c61efb84fcf6ebc0d7a40a3"
+          "sha256": "0224145fc11be63b3a9f0f6589859b9eda2aa51f0cfb3c4ae6307d69068a7ef8"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -3055,7 +3074,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "221e2a3e4cf6ea9626cf2beb5b9363c19dfe6274dca9057977253ce11e8eb09e"
+          "sha256": "287896a556432eb7ea7fb920a9e2721aac8e63996e1bcda9442ba90c043a99e9"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3076,7 +3095,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "231a480a4f46b6a7e1b6989aa6dc264b423ea27d07689404339c14395732339c"
+          "sha256": "b05f05256e13e10d7234194bb55c1b4ff1c617eb31d4ffd2720f89abcc71009e"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -3131,10 +3150,25 @@
           "minor": 3,
           "major": 45,
           "api_references": [
-            "java/lang/Object"
+            "java/lang/Object",
+            "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8835f80ccba5a7c3047a76afc78eddecd756785c16633dd1e810fc36c864d40e"
+          "sha256": "161aeed15adfcbf8ba6306aaa7371091c762ccebd9f1c814e917b1241357db38"
+        },
+        "pilots/ZooPanel.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/Math",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "f22d10d3650d51e5b6a09d75153eb925a9ff6032052dab72bab7677b9d8c007f"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -3148,7 +3182,17 @@
             "java/lang/System"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "790f1f597de978475181551251c0678dc7a8c6a26a04876d5e12a4323567129e"
+          "sha256": "7940198e20ee22e24d0c98858e1ba5593173a16de52e7caa4dfd947e1113698e"
+        },
+        "pilots/ZooWalk.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Math",
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "c16209f126e7d78b916268f245fa82a34d2ae8eaf4cc30457072c3a6f2c25a35"
         }
       },
       "hotspot_counts": {
@@ -3222,15 +3266,175 @@
           "duration_ms": 100,
           "max_indexed_frame_bytes": 11016
         },
+        "scenes/02-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/02-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/02-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/02-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/02-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/02-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/02-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/02-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/02-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/02-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/02-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/02-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
         "scenes/02-20012.anm": {
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4599
         },
+        "scenes/02-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/02-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/02-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
         "scenes/02-20016.anm": {
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4225
+        },
+        "scenes/02-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/02-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/02-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/02-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/02-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/02-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/02-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/02-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/02-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/02-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/02-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/02-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/02-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/02-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/02-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/02-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/02-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
         },
         "scenes/02-20034.anm": {
           "count": 36,
@@ -3251,6 +3455,11 @@
           "count": 23,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 5576
+        },
+        "scenes/02-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
         },
         "scenes/02-46.anm": {
           "count": 1,
@@ -3917,6 +4126,11 @@
           "compressed_bytes": 35853
         },
         {
+          "path": "scenes/02-20010.anm",
+          "bytes": 367726,
+          "compressed_bytes": 22826
+        },
+        {
           "path": "scenes/02-61.anm",
           "bytes": 365899,
           "compressed_bytes": 18574
@@ -3930,17 +4144,12 @@
           "path": "scenes/02-84.anm",
           "bytes": 353166,
           "compressed_bytes": 25842
-        },
-        {
-          "path": "scenes/02-20035.anm",
-          "bytes": 256428,
-          "compressed_bytes": 16037
         }
       ]
     },
     {
       "profile": "240x320",
-      "classes": 20,
+      "classes": 23,
       "scenes": [
         0,
         2,
@@ -3962,8 +4171,8 @@
         18,
         19
       ],
-      "animations": 66,
-      "frames": 915,
+      "animations": 99,
+      "frames": 1069,
       "backgrounds": {
         "scenes/00.p8": [
           640,
@@ -4180,27 +4389,28 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.4.2",
+        "MIDlet-Version": "0.5.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "240x320"
       },
-      "sha256": "da3524805231f218a465e4436e93562bb6856c429586cc5a5e08e74945113300",
-      "jar_bytes": 2656772,
-      "entry_count": 144,
-      "uncompressed_bytes": 14186036,
+      "sha256": "493197911fa7d944057dcfd50d27608a0e54df2657b20d9665fab9e063d02d2c",
+      "jar_bytes": 2786651,
+      "entry_count": 181,
+      "uncompressed_bytes": 15333163,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 66,
+        ".anm": 99,
         ".bar": 16,
         ".bin": 1,
-        ".class": 20,
+        ".class": 23,
         ".hot": 19,
-        ".p8": 19
+        ".p8": 19,
+        ".rules": 1
       },
       "classes_detail": {
         "pilots/AnimatedActor.class": {
@@ -4214,7 +4424,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "3e347f0d8be5f64ceece5c0bb1c84d2b20c6551ac505be856897f23ca1937f1c"
+          "sha256": "5ea37316bf1329a27cc30f618c797f57f0ac8c12c6b7bea09275d38a3edc5c4b"
         },
         "pilots/AnimationCatalog.class": {
           "minor": 3,
@@ -4319,7 +4529,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "701294586ab4a9819038c225ad852576f4ff19ba468fb566e9657c7c98aaa624"
+          "sha256": "2c6efc381ee6db67baceb12294a8526bd8caa7e97026e7d81ecb2a015024a04c"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -4331,6 +4541,24 @@
           ],
           "stackmap_utf8_present": true,
           "sha256": "8ef625558d5b2b8dd4285850e7a1584853b04310981fb00f17404020b943cf76"
+        },
+        "pilots/OriginalZooRules.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/DataInputStream",
+            "java/io/IOException",
+            "java/io/InputStream",
+            "java/lang/Class",
+            "java/lang/ClassNotFoundException",
+            "java/lang/IllegalStateException",
+            "java/lang/NoClassDefFoundError",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/Throwable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "647feae3eec4406ae733d740a534ed8c5a33a688f9c87f1e3dd0fbfc346e0c97"
         },
         "pilots/PilotsMidlet$1.class": {
           "minor": 3,
@@ -4368,7 +4596,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d79233bb27285d7038837f70f222cbfac8408b248c61efb84fcf6ebc0d7a40a3"
+          "sha256": "0224145fc11be63b3a9f0f6589859b9eda2aa51f0cfb3c4ae6307d69068a7ef8"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -4399,7 +4627,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "221e2a3e4cf6ea9626cf2beb5b9363c19dfe6274dca9057977253ce11e8eb09e"
+          "sha256": "287896a556432eb7ea7fb920a9e2721aac8e63996e1bcda9442ba90c043a99e9"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -4420,7 +4648,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "231a480a4f46b6a7e1b6989aa6dc264b423ea27d07689404339c14395732339c"
+          "sha256": "b05f05256e13e10d7234194bb55c1b4ff1c617eb31d4ffd2720f89abcc71009e"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -4475,10 +4703,25 @@
           "minor": 3,
           "major": 45,
           "api_references": [
-            "java/lang/Object"
+            "java/lang/Object",
+            "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8835f80ccba5a7c3047a76afc78eddecd756785c16633dd1e810fc36c864d40e"
+          "sha256": "161aeed15adfcbf8ba6306aaa7371091c762ccebd9f1c814e917b1241357db38"
+        },
+        "pilots/ZooPanel.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/Math",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "f22d10d3650d51e5b6a09d75153eb925a9ff6032052dab72bab7677b9d8c007f"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -4492,7 +4735,17 @@
             "java/lang/System"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "790f1f597de978475181551251c0678dc7a8c6a26a04876d5e12a4323567129e"
+          "sha256": "7940198e20ee22e24d0c98858e1ba5593173a16de52e7caa4dfd947e1113698e"
+        },
+        "pilots/ZooWalk.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Math",
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "c16209f126e7d78b916268f245fa82a34d2ae8eaf4cc30457072c3a6f2c25a35"
         }
       },
       "hotspot_counts": {
@@ -4566,15 +4819,175 @@
           "duration_ms": 100,
           "max_indexed_frame_bytes": 11016
         },
+        "scenes/02-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/02-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/02-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/02-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/02-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/02-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/02-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/02-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/02-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/02-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/02-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/02-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
         "scenes/02-20012.anm": {
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4599
         },
+        "scenes/02-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/02-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/02-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
         "scenes/02-20016.anm": {
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4225
+        },
+        "scenes/02-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/02-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/02-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/02-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/02-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/02-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/02-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/02-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/02-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/02-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/02-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/02-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/02-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/02-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/02-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/02-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/02-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
         },
         "scenes/02-20034.anm": {
           "count": 36,
@@ -4595,6 +5008,11 @@
           "count": 23,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 5576
+        },
+        "scenes/02-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
         },
         "scenes/02-46.anm": {
           "count": 1,
@@ -5261,6 +5679,11 @@
           "compressed_bytes": 35853
         },
         {
+          "path": "scenes/02-20010.anm",
+          "bytes": 367726,
+          "compressed_bytes": 22826
+        },
+        {
           "path": "scenes/02-61.anm",
           "bytes": 365899,
           "compressed_bytes": 18574
@@ -5274,11 +5697,6 @@
           "path": "scenes/02-84.anm",
           "bytes": 353166,
           "compressed_bytes": 25842
-        },
-        {
-          "path": "scenes/00.p8",
-          "bytes": 307980,
-          "compressed_bytes": 124461
         }
       ]
     }

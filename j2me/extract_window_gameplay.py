@@ -126,7 +126,7 @@ def extract(original, palette):
                   records=[dict(code=r['code'], object=r['id'], index=r['args'][0], offset=r['offset'], bytecode=r['data'].hex()) for r in evidence],
                   fixtures=fixtures)
     sprites = {}
-    for ident in (12, 16, 34, 35, 36, 37):
+    for ident in list(range(38)) + [44]:
         header = next(r['data'] for r in common if r['code'] == 0x40 and r['id'] == ident)
         table = next(r['data'] for r in common if r['code'] == 0x42 and r['id'] == ident)
         require(header[2] == 1 and len(table) == header[3] * 8, 'Expected single-direction source sprite')
