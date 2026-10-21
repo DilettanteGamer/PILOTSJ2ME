@@ -61,6 +61,7 @@ def main():
                 basis = 'barrel alignment and original ground reference'
             else:
                 basis = 'original actor default reference; not original per-action trajectory'
+            basis = adjustments.get('placement_basis', {}).get(str(aid), basis)
             report.append(dict(menu_number=row['menu_number'], resource_id=aid,
                                old_anchor=before, new_anchor=after,
                                new_focus=adjustments['anchors'][str(aid)][2:], basis=basis))
