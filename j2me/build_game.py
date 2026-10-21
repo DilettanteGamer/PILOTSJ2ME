@@ -15,9 +15,10 @@ import zipfile
 sys.dont_write_bytecode = True
 import build as resources
 from extract_window_gameplay import extract
+from extract_barrel_gameplay import extract as extract_barrel
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.4.1'
+VERSION = '0.4.2'
 
 
 def run(command):
@@ -38,7 +39,7 @@ def toolchain(cache):
     return result
 
 
-def compile_game(java, javac, tools, work, evidence):
+def compile_game(java, javac, tools, work, evidence, barrel):
     api = [tools['cldcapi11-2.0.4.jar'], tools['midpapi20-2.0.4.jar']]
     raw = work / 'raw'
     run([java, '-jar', tools['ecj-4.6.1.jar'], '-proc:none', '-encoding', 'UTF-8',
@@ -51,10 +52,15 @@ def compile_game(java, javac, tools, work, evidence):
     # Pure gameplay tests run on a desktop JVM; no device/playback claim.
     test_classes = work / 'tests'
     run([javac, '-encoding', 'UTF-8', '-d', test_classes,
-         ROOT / 'src/pilots/GameState.java', ROOT / 'src/pilots/ZooLogic.java', ROOT / 'tests/ZooLogicTest.java'])
+         ROOT / 'src/pilots/GameState.java', ROOT / 'src/pilots/ZooLogic.java', ROOT / 'tests/ZooLogicTest.java', ROOT / 'tests/BarrelLogicTest.java'])
     fixture = work / 'source-window-cases.csv'
     fixture.write_text('\n'.join(','.join(map(str, row)) for row in evidence['fixtures']) + '\n')
     run([java, '-cp', test_classes, 'pilots.ZooLogicTest', fixture])
+    barrel_fixture = work / 'barrel-cases.csv'
+    cat_fixture = work / 'cat-cases.csv'
+    for path, rows in [(barrel_fixture, barrel['fixtures']), (cat_fixture, barrel['cat_cases'])]:
+        path.write_text('\n'.join(','.join(map(str,row)) for row in rows) + '\n')
+    run([java, '-cp', test_classes, 'pilots.BarrelLogicTest', barrel_fixture, cat_fixture])
     with zipfile.ZipFile(preverified) as archive:
         return {n: archive.read(n) for n in archive.namelist() if n.endswith('.class')}
 
@@ -93,7 +99,7 @@ def package(profile, classes, sprites, output):
                   jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(), bytecode_preserved=False,
                   compilation='ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs',
                   preverification='ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation',
-                  original_window_rule_oracle_cases=8, existing_visual_payloads_preserved=True, added_original_sprite_ids=[12, 16, 34, 36], code_defined_hotspots={'scene_02_window': [150, 224, 68, 66]}, validation='Gameplay state tests, headless resource wiring tests and static packaging checks; no emulator or device test',
+                  original_window_rule_oracle_cases=8, existing_visual_payloads_preserved=True, original_barrel_rule_oracle_cases=26, original_cat_rule_oracle_cases=7, added_original_sprite_ids=[12, 16, 34, 35, 36, 37], code_defined_hotspots={'scene_02_window': [150, 224, 68, 66], 'scene_02_kettle': [80, 284, 38, 36], 'scene_02_barrel': [128, 282, 64, 68]}, validation='Gameplay state tests, headless resource wiring tests and static packaging checks; no emulator or device test',
                   **changes)
     target.with_suffix('.report.json').write_text(json.dumps(report, indent=2) + '\n')
     print(profile + ': built ' + str(target) + ' (' + str(report['classes']) + ' preverified classes)')
@@ -116,16 +122,19 @@ def main():
         palette = archive.read('scenes/02-64.anm')[9:777]
     sprites, evidence = extract((ROOT.parent / 'PILOTS.EXE').read_bytes(), palette)
     (ROOT / 'analysis/window-original-rules.json').write_text(json.dumps(evidence, indent=2) + '\n')
+    barrel = extract_barrel((ROOT.parent / 'PILOTS.EXE').read_bytes())
+    (ROOT / 'analysis/barrel-original-rules.json').write_text(json.dumps(barrel, indent=2) + '\n')
     with tempfile.TemporaryDirectory(prefix='pilots-build-') as temporary:
-        classes = compile_game(java, javac, tools, Path(temporary), evidence)
+        classes = compile_game(java, javac, tools, Path(temporary), evidence, barrel)
         for profile in ['128x128', '240x320'] if args.profile == 'all' else [args.profile]:
             package(profile, classes, sprites, output)
             test_classes = Path(temporary) / 'adapter-tests'
             target = output / ('Pilots-' + profile + '.jar')
             classpath = os.pathsep.join(map(str, [target, tools['midpapi20-2.0.4.jar']]))
             run([javac, '-encoding', 'UTF-8', '-cp', classpath, '-d', test_classes,
-                 ROOT / 'tests/ZooSceneTest.java'])
+                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.ZooSceneTest'])
+            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BarrelSceneTest'])
 
 
 if __name__ == '__main__':

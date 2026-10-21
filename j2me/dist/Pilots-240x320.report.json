@@ -1,6 +1,6 @@
 {
   "profile": "240x320",
-  "classes": 19,
+  "classes": 20,
   "scenes": [
     0,
     2,
@@ -22,8 +22,8 @@
     18,
     19
   ],
-  "animations": 64,
-  "frames": 839,
+  "animations": 66,
+  "frames": 915,
   "backgrounds": {
     "scenes/00.p8": [
       640,
@@ -236,19 +236,23 @@
       480
     ]
   },
-  "version": "0.4.1",
-  "jar_size": 2630641,
-  "jar_sha256": "472cb0452848e36a76001a376b54d154ea4314981995642cc43bcf31c0cfa7f2",
+  "version": "0.4.2",
+  "jar_size": 2656772,
+  "jar_sha256": "da3524805231f218a465e4436e93562bb6856c429586cc5a5e08e74945113300",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
   "original_window_rule_oracle_cases": 8,
   "existing_visual_payloads_preserved": true,
+  "original_barrel_rule_oracle_cases": 26,
+  "original_cat_rule_oracle_cases": 7,
   "added_original_sprite_ids": [
     12,
     16,
     34,
-    36
+    35,
+    36,
+    37
   ],
   "code_defined_hotspots": {
     "scene_02_window": [
@@ -256,6 +260,18 @@
       224,
       68,
       66
+    ],
+    "scene_02_kettle": [
+      80,
+      284,
+      38,
+      36
+    ],
+    "scene_02_barrel": [
+      128,
+      282,
+      64,
+      68
     ]
   },
   "validation": "Gameplay state tests, headless resource wiring tests and static packaging checks; no emulator or device test",

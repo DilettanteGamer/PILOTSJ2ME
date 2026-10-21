@@ -2596,7 +2596,7 @@
     },
     {
       "profile": "128x128",
-      "classes": 19,
+      "classes": 20,
       "scenes": [
         0,
         2,
@@ -2618,8 +2618,8 @@
         18,
         19
       ],
-      "animations": 64,
-      "frames": 839,
+      "animations": 66,
+      "frames": 915,
       "backgrounds": {
         "scenes/00.p8": [
           320,
@@ -2836,25 +2836,25 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.4.1",
+        "MIDlet-Version": "0.4.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "128x128"
       },
-      "sha256": "9e8cf18122a5a379d3641f2e1a9417227b1fbba29bf1ab4b113fb20cb6db6742",
-      "jar_bytes": 1261231,
-      "entry_count": 141,
-      "uncompressed_bytes": 9907231,
+      "sha256": "9781e3ddd4b81366907c051607a0cfb1967df04e2938636b311692887e61c284",
+      "jar_bytes": 1287362,
+      "entry_count": 144,
+      "uncompressed_bytes": 10289716,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 64,
+        ".anm": 66,
         ".bar": 16,
         ".bin": 1,
-        ".class": 19,
+        ".class": 20,
         ".hot": 19,
         ".p8": 19
       },
@@ -2975,7 +2975,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d933185dc41423101fac4e216c9d116c061ead8b4fd912a9a379313ada70e3b1"
+          "sha256": "701294586ab4a9819038c225ad852576f4ff19ba468fb566e9657c7c98aaa624"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -3013,7 +3013,18 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "35e7e4cdb7b7aeb3f709aed306b562c76bcba628ca87fc3e19822fa5b90547ee"
+          "sha256": "0ce6995e24ef1c2c595bd4ab0922b655de834816f63074fd54850907ef0c51ae"
+        },
+        "pilots/PilotsMidlet$3.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object",
+            "javax/microedition/lcdui/Display",
+            "javax/microedition/lcdui/Displayable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "d79233bb27285d7038837f70f222cbfac8408b248c61efb84fcf6ebc0d7a40a3"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -3044,7 +3055,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "695762d0c7c74b9173b82dcefdb60525e897b1fe2773a51f72f236a264c322ce"
+          "sha256": "221e2a3e4cf6ea9626cf2beb5b9363c19dfe6274dca9057977253ce11e8eb09e"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3065,7 +3076,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "cf862be4833be31915088d6b201d6db7bf5348a91be6fe4fcf860d24514eeb17"
+          "sha256": "231a480a4f46b6a7e1b6989aa6dc264b423ea27d07689404339c14395732339c"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -3123,7 +3134,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7a5758c33279ddeca8330cfcf2c26a93beaadb4ad97b8089dd1d6de98ae36c79"
+          "sha256": "8835f80ccba5a7c3047a76afc78eddecd756785c16633dd1e810fc36c864d40e"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -3137,7 +3148,7 @@
             "java/lang/System"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "955c5cfbde985e54e300bcb33cce12707a034aae1b42204ec9ed090361fb4fab"
+          "sha256": "790f1f597de978475181551251c0678dc7a8c6a26a04876d5e12a4323567129e"
         }
       },
       "hotspot_counts": {
@@ -3226,10 +3237,20 @@
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4662
         },
+        "scenes/02-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
         "scenes/02-20036.anm": {
           "count": 36,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 8585
+        },
+        "scenes/02-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
         },
         "scenes/02-46.anm": {
           "count": 1,
@@ -3911,15 +3932,15 @@
           "compressed_bytes": 25842
         },
         {
-          "path": "scenes/02-56.anm",
-          "bytes": 225560,
-          "compressed_bytes": 18707
+          "path": "scenes/02-20035.anm",
+          "bytes": 256428,
+          "compressed_bytes": 16037
         }
       ]
     },
     {
       "profile": "240x320",
-      "classes": 19,
+      "classes": 20,
       "scenes": [
         0,
         2,
@@ -3941,8 +3962,8 @@
         18,
         19
       ],
-      "animations": 64,
-      "frames": 839,
+      "animations": 66,
+      "frames": 915,
       "backgrounds": {
         "scenes/00.p8": [
           640,
@@ -4159,25 +4180,25 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.4.1",
+        "MIDlet-Version": "0.4.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "240x320"
       },
-      "sha256": "472cb0452848e36a76001a376b54d154ea4314981995642cc43bcf31c0cfa7f2",
-      "jar_bytes": 2630641,
-      "entry_count": 141,
-      "uncompressed_bytes": 13803551,
+      "sha256": "da3524805231f218a465e4436e93562bb6856c429586cc5a5e08e74945113300",
+      "jar_bytes": 2656772,
+      "entry_count": 144,
+      "uncompressed_bytes": 14186036,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 64,
+        ".anm": 66,
         ".bar": 16,
         ".bin": 1,
-        ".class": 19,
+        ".class": 20,
         ".hot": 19,
         ".p8": 19
       },
@@ -4298,7 +4319,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d933185dc41423101fac4e216c9d116c061ead8b4fd912a9a379313ada70e3b1"
+          "sha256": "701294586ab4a9819038c225ad852576f4ff19ba468fb566e9657c7c98aaa624"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -4336,7 +4357,18 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "35e7e4cdb7b7aeb3f709aed306b562c76bcba628ca87fc3e19822fa5b90547ee"
+          "sha256": "0ce6995e24ef1c2c595bd4ab0922b655de834816f63074fd54850907ef0c51ae"
+        },
+        "pilots/PilotsMidlet$3.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object",
+            "javax/microedition/lcdui/Display",
+            "javax/microedition/lcdui/Displayable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "d79233bb27285d7038837f70f222cbfac8408b248c61efb84fcf6ebc0d7a40a3"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -4367,7 +4399,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "695762d0c7c74b9173b82dcefdb60525e897b1fe2773a51f72f236a264c322ce"
+          "sha256": "221e2a3e4cf6ea9626cf2beb5b9363c19dfe6274dca9057977253ce11e8eb09e"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -4388,7 +4420,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "cf862be4833be31915088d6b201d6db7bf5348a91be6fe4fcf860d24514eeb17"
+          "sha256": "231a480a4f46b6a7e1b6989aa6dc264b423ea27d07689404339c14395732339c"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -4446,7 +4478,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7a5758c33279ddeca8330cfcf2c26a93beaadb4ad97b8089dd1d6de98ae36c79"
+          "sha256": "8835f80ccba5a7c3047a76afc78eddecd756785c16633dd1e810fc36c864d40e"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -4460,7 +4492,7 @@
             "java/lang/System"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "955c5cfbde985e54e300bcb33cce12707a034aae1b42204ec9ed090361fb4fab"
+          "sha256": "790f1f597de978475181551251c0678dc7a8c6a26a04876d5e12a4323567129e"
         }
       },
       "hotspot_counts": {
@@ -4549,10 +4581,20 @@
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4662
         },
+        "scenes/02-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
         "scenes/02-20036.anm": {
           "count": 36,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 8585
+        },
+        "scenes/02-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
         },
         "scenes/02-46.anm": {
           "count": 1,
