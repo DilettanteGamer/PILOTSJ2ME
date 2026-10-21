@@ -1,0 +1,58 @@
+{
+  "compiler_spec": "windows", 
+  "decompiled": 327, 
+  "failed": 0, 
+  "failures": [], 
+  "format": "Portable Executable (PE)", 
+  "functions": 341, 
+  "image_base": "00400000", 
+  "input": "PILOTS.EXE", 
+  "language": "x86:LE:32:default", 
+  "memory_blocks": [
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": "Headers", 
+      "size": 1024, 
+      "start": "00400000"
+    }, 
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": ".idata", 
+      "size": 3584, 
+      "start": "00401000"
+    }, 
+    {
+      "execute": true, 
+      "initialized": true, 
+      "name": "_TEXT", 
+      "size": 56320, 
+      "start": "00402000"
+    }, 
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": ".CRT$XIA", 
+      "size": 28672, 
+      "start": "00410000"
+    }, 
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": ".rsrc", 
+      "size": 1024, 
+      "start": "00417000"
+    }, 
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": ".reloc", 
+      "size": 6144, 
+      "start": "00418000"
+    }
+  ], 
+  "scope": "Automatically discovered functions; not proof of complete code coverage", 
+  "thunks": 14, 
+  "tool": "Ghidra 11.3.2 PUBLIC"
+}

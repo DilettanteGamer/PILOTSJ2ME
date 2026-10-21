@@ -1,0 +1,65 @@
+{
+  "compiler_spec": "windows", 
+  "decompiled": 66, 
+  "failed": 0, 
+  "failures": [], 
+  "format": "Portable Executable (PE)", 
+  "functions": 84, 
+  "image_base": "00400000", 
+  "input": "AUTORUN.EXE", 
+  "language": "x86:LE:32:default", 
+  "memory_blocks": [
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": "Headers", 
+      "size": 1024, 
+      "start": "00400000"
+    }, 
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": ".edata", 
+      "size": 512, 
+      "start": "00401000"
+    }, 
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": ".idata", 
+      "size": 1536, 
+      "start": "00402000"
+    }, 
+    {
+      "execute": true, 
+      "initialized": true, 
+      "name": "_TEXT", 
+      "size": 8192, 
+      "start": "00403000"
+    }, 
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": ".CRT$XIA", 
+      "size": 4096, 
+      "start": "00405000"
+    }, 
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": ".rsrc", 
+      "size": 1024, 
+      "start": "00406000"
+    }, 
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": ".reloc", 
+      "size": 1024, 
+      "start": "00407000"
+    }
+  ], 
+  "scope": "Automatically discovered functions; not proof of complete code coverage", 
+  "thunks": 18, 
+  "tool": "Ghidra 11.3.2 PUBLIC"
+}

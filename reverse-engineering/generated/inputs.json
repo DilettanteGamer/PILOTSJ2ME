@@ -1,0 +1,124 @@
+[
+  {
+    "file": "PILOTS.EXE",
+    "size": 48357155,
+    "sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
+    "header_offset": 448,
+    "format": "PE",
+    "machine": "0x14c",
+    "image_base": "0x400000",
+    "entry_rva": "0xd480",
+    "sections": [
+      {
+        "name": ".idata",
+        "virtual_size": 3584,
+        "rva": 4096,
+        "raw_size": 3584,
+        "raw_offset": 1024
+      },
+      {
+        "name": "_TEXT",
+        "virtual_size": 56320,
+        "rva": 8192,
+        "raw_size": 56320,
+        "raw_offset": 4608
+      },
+      {
+        "name": ".CRT$XIA",
+        "virtual_size": 28672,
+        "rva": 65536,
+        "raw_size": 4608,
+        "raw_offset": 60928
+      },
+      {
+        "name": ".rsrc",
+        "virtual_size": 1024,
+        "rva": 94208,
+        "raw_size": 1024,
+        "raw_offset": 65536
+      },
+      {
+        "name": ".reloc",
+        "virtual_size": 6144,
+        "rva": 98304,
+        "raw_size": 6144,
+        "raw_offset": 66560
+      }
+    ],
+    "section_data_end": 72704,
+    "appended_data_size": 48284451,
+    "appended_data_sha256": "b1cafeb9f291acfe8edf49ead54e7e39fdbbc03c348b62d768ff3abdcc875725",
+    "appended_data_note": "Bytes after the last section, not classified or decoded as game resources"
+  },
+  {
+    "file": "AUTORUN.EXE",
+    "size": 14848,
+    "sha256": "3232897c1d974e8e8ec48fdec6290c13995c86a3e616c349045f01f0f8ba2b0b",
+    "header_offset": 400,
+    "format": "PE",
+    "machine": "0x14c",
+    "image_base": "0x400000",
+    "entry_rva": "0x396c",
+    "sections": [
+      {
+        "name": ".edata",
+        "virtual_size": 512,
+        "rva": 4096,
+        "raw_size": 512,
+        "raw_offset": 1024
+      },
+      {
+        "name": ".idata",
+        "virtual_size": 1536,
+        "rva": 8192,
+        "raw_size": 1536,
+        "raw_offset": 1536
+      },
+      {
+        "name": "_TEXT",
+        "virtual_size": 8192,
+        "rva": 12288,
+        "raw_size": 8192,
+        "raw_offset": 3072
+      },
+      {
+        "name": ".CRT$XIA",
+        "virtual_size": 4096,
+        "rva": 20480,
+        "raw_size": 1536,
+        "raw_offset": 11264
+      },
+      {
+        "name": ".rsrc",
+        "virtual_size": 1024,
+        "rva": 24576,
+        "raw_size": 1024,
+        "raw_offset": 12800
+      },
+      {
+        "name": ".reloc",
+        "virtual_size": 1024,
+        "rva": 28672,
+        "raw_size": 1024,
+        "raw_offset": 13824
+      }
+    ],
+    "section_data_end": 14848,
+    "appended_data_size": 0,
+    "appended_data_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "appended_data_note": "Bytes after the last section, not classified or decoded as game resources"
+  },
+  {
+    "file": "GMW.DLL",
+    "size": 3904,
+    "sha256": "0e7a808f5ea230ec9bbd30ce37c8ebfd3ba5e849908c1bab1574356e89cdb550",
+    "header_offset": 448,
+    "format": "NE",
+    "note": "16-bit Windows New Executable"
+  },
+  {
+    "file": "PILOTS0.230",
+    "size": 80,
+    "sha256": "c859600dbe0455fb189dfe52889b8a60b37933dc1a5f8e586aea36bec1951494"
+  }
+]

@@ -1,0 +1,73 @@
+address	ghidra_value	cp1251_interpretation
+00401032	autorun.exe	autorun.exe
+0040103e	_WinMain@16	_WinMain@16
+004020e2	VirtualAlloc	VirtualAlloc
+004020f2	VirtualFree	VirtualFree
+00402100	RtlUnwind	RtlUnwind
+0040210c	GetStdHandle	GetStdHandle
+0040211c	WriteFile	WriteFile
+00402128	GetSystemDirectoryA	GetSystemDirectoryA
+0040213e	ExitProcess	ExitProcess
+0040214c	UnhandledExceptionFilter	UnhandledExceptionFilter
+00402168	GetCurrentThreadId	GetCurrentThreadId
+0040217e	FreeEnvironmentStringsA	FreeEnvironmentStringsA
+00402198	GetEnvironmentStrings	GetEnvironmentStrings
+004021b0	GetTickCount	GetTickCount
+004021c0	WaitForSingleObject	WaitForSingleObject
+004021d6	CreateSemaphoreA	CreateSemaphoreA
+004021ea	ReleaseSemaphore	ReleaseSemaphore
+004021fe	GetCommandLineA	GetCommandLineA
+00402210	GetModuleHandleA	GetModuleHandleA
+00402224	GetModuleFileNameA	GetModuleFileNameA
+0040223a	DeleteFileA	DeleteFileA
+00402248	GetTempPathA	GetTempPathA
+00402258	RemoveDirectoryA	RemoveDirectoryA
+0040226c	GetWindowsDirectoryA	GetWindowsDirectoryA
+00402284	GetVersion	GetVersion
+00402292	WinExec	WinExec
+0040229c	GetPrivateProfileIntA	GetPrivateProfileIntA
+004022b4	lstrlenA	lstrlenA
+004022c0	GetPrivateProfileStringA	GetPrivateProfileStringA
+004022dc	MessageBoxA	MessageBoxA
+004022ea	wsprintfA	wsprintfA
+004022f6	DdeUnaccessData	DdeUnaccessData
+00402308	DdeAccessData	DdeAccessData
+00402318	DdeFreeStringHandle	DdeFreeStringHandle
+0040232e	DdeClientTransaction	DdeClientTransaction
+00402346	DdeConnect	DdeConnect
+00402354	DdeCreateStringHandleA	DdeCreateStringHandleA
+0040236e	DdeDisconnect	DdeDisconnect
+0040237e	DdeFreeDataHandle	DdeFreeDataHandle
+00402392	DdeUninitialize	DdeUninitialize
+004023a4	DdeInitializeA	DdeInitializeA
+004023b4	KERNEL32.DLL	KERNEL32.DLL
+004023c1	USER32.DLL	USER32.DLL
+00405075	PROGMAN	PROGMAN
+0040507d	Groups	Groups
+00405089	group	group
+0040508f	items	items
+00405095	[CreateGroup(%s)]	[CreateGroup(%s)]
+004050a7	[AddItem(%s,%s)]	[AddItem(%s,%s)]
+004050bd	command	command
+004050c5	item%d	item%d
+004050cc	autorun	autorun
+004050d4	[DeleteGroup(%s)]	[DeleteGroup(%s)]
+004050e6	\Start Menu\Programs\	\Start Menu\Programs\
+004050fc	tmpfiles	tmpfiles
+00405105	[Reload()]	[Reload()]
+00405110	[Reload(%s)]	[Reload(%s)]
+0040511d	uninstall	uninstall
+00405127	file%d	file%d
+0040512e	%s\%s	%s\%s
+00405134	UNINSTALL	UNINSTALL
+0040516b	\r\nSemaphore error\r\n	\r\nSemaphore error\r\n
+0040517f	\r\nNot enough memory\r\n	\r\nNot enough memory\r\n
+0040524c	\win32s.ini	\win32s.ini
+0040525a	Win32s	Win32s
+00405261	Version	Version
+00405269	1.0.0	1.0.0
+0040526f	win32s.ini	win32s.ini
+0040527b	Wrong Win32s version, or damaged installation. This application requires Win32s version 1.15 to be loaded on your system.	Wrong Win32s version, or damaged installation. This application requires Win32s version 1.15 to be loaded on your system.
+004052f5	Startup Error	Startup Error
+00405310	\r\nThread error\r\n	\r\nThread error\r\n
+00405324	Out of memory	Out of memory

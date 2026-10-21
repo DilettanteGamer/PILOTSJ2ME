@@ -1,0 +1,152 @@
+address	ghidra_value	cp1251_interpretation
+0040124e	VirtualAlloc	VirtualAlloc
+0040125e	VirtualFree	VirtualFree
+0040126c	GetTimeZoneInformation	GetTimeZoneInformation
+00401286	GetLastError	GetLastError
+00401296	GetFileType	GetFileType
+004012a4	GetPrivateProfileStringA	GetPrivateProfileStringA
+004012c0	GetSystemDirectoryA	GetSystemDirectoryA
+004012d6	GetTickCount	GetTickCount
+004012e6	CreateSemaphoreA	CreateSemaphoreA
+004012fa	ReleaseSemaphore	ReleaseSemaphore
+0040130e	ExitProcess	ExitProcess
+0040131c	UnhandledExceptionFilter	UnhandledExceptionFilter
+00401338	GetCurrentThreadId	GetCurrentThreadId
+0040134e	FreeEnvironmentStringsA	FreeEnvironmentStringsA
+00401368	GetEnvironmentStrings	GetEnvironmentStrings
+00401380	RtlUnwind	RtlUnwind
+0040138c	ReadFile	ReadFile
+00401398	WriteFile	WriteFile
+004013a4	SetEndOfFile	SetEndOfFile
+004013b4	CloseHandle	CloseHandle
+004013c2	DeleteFileA	DeleteFileA
+004013d0	SetFilePointer	SetFilePointer
+004013e2	CreateFileA	CreateFileA
+004013f0	GetStdHandle	GetStdHandle
+00401400	GetCommandLineA	GetCommandLineA
+00401412	GetModuleFileNameA	GetModuleFileNameA
+00401428	GetLocalTime	GetLocalTime
+00401438	GetModuleHandleA	GetModuleHandleA
+0040144c	GlobalLock	GlobalLock
+0040145a	CreateProcessA	CreateProcessA
+0040146c	WaitForSingleObject	WaitForSingleObject
+00401482	GetTempPathA	GetTempPathA
+00401492	GetFileAttributesA	GetFileAttributesA
+004014a8	GetDriveTypeA	GetDriveTypeA
+004014b8	GetLogicalDrives	GetLogicalDrives
+004014cc	GetVersion	GetVersion
+004014da	GlobalFree	GlobalFree
+004014e8	FreeLibrary	FreeLibrary
+004014f6	GlobalAlloc	GlobalAlloc
+00401504	GetProcAddress	GetProcAddress
+00401516	LoadLibraryA	LoadLibraryA
+00401526	DeleteDC	DeleteDC
+00401532	GetDeviceCaps	GetDeviceCaps
+00401542	CreateCompatibleDC	CreateCompatibleDC
+00401558	CreatePen	CreatePen
+00401564	MoveToEx	MoveToEx
+00401570	LineTo	LineTo
+0040157a	SelectObject	SelectObject
+0040158a	GetStockObject	GetStockObject
+0040159c	GetSystemPaletteEntries	GetSystemPaletteEntries
+004015b6	DeleteObject	DeleteObject
+004015c6	CreatePalette	CreatePalette
+004015d6	SetDIBColorTable	SetDIBColorTable
+004015ea	GdiFlush	GdiFlush
+004015f6	StretchDIBits	StretchDIBits
+00401606	BitBlt	BitBlt
+00401610	RealizePalette	RealizePalette
+00401622	SelectPalette	SelectPalette
+00401632	ScreenToClient	ScreenToClient
+00401644	IsIconic	IsIconic
+00401650	UpdateWindow	UpdateWindow
+00401660	InvalidateRect	InvalidateRect
+00401672	GetMessageA	GetMessageA
+00401680	DestroyWindow	DestroyWindow
+00401690	PostMessageA	PostMessageA
+004016a0	ShowWindow	ShowWindow
+004016ae	SetCursorPos	SetCursorPos
+004016be	FillRect	FillRect
+004016ca	SendMessageA	SendMessageA
+004016da	WinHelpA	WinHelpA
+004016e6	PeekMessageA	PeekMessageA
+004016f6	TranslateMessage	TranslateMessage
+0040170a	DispatchMessageA	DispatchMessageA
+0040171e	GetCursorPos	GetCursorPos
+0040172e	wsprintfA	wsprintfA
+0040173a	PostQuitMessage	PostQuitMessage
+0040174c	GetAsyncKeyState	GetAsyncKeyState
+00401760	GetUpdateRect	GetUpdateRect
+00401770	SetCursor	SetCursor
+0040177c	EndPaint	EndPaint
+00401788	BeginPaint	BeginPaint
+00401796	DefWindowProcA	DefWindowProcA
+004017a8	LoadCursorA	LoadCursorA
+004017b6	GetDC	GetDC
+004017be	CreateWindowExA	CreateWindowExA
+004017d0	RegisterClassA	RegisterClassA
+004017e2	LoadIconA	LoadIconA
+004017ee	GetSystemMetrics	GetSystemMetrics
+00401802	MoveWindow	MoveWindow
+00401810	MessageBoxA	MessageBoxA
+0040181e	MessageBeep	MessageBeep
+0040182c	mciGetErrorStringA	mciGetErrorStringA
+00401842	mciSendCommandA	mciSendCommandA
+00401854	waveOutPause	waveOutPause
+00401864	waveOutRestart	waveOutRestart
+00401876	midiOutShortMsg	midiOutShortMsg
+00401888	timeGetTime	timeGetTime
+00401896	timeSetEvent	timeSetEvent
+004018a6	midiOutGetVolume	midiOutGetVolume
+004018ba	midiOutSetVolume	midiOutSetVolume
+004018ce	waveOutClose	waveOutClose
+004018de	waveOutUnprepareHeader	waveOutUnprepareHeader
+004018f8	waveOutPrepareHeader	waveOutPrepareHeader
+00401910	waveOutGetID	waveOutGetID
+00401920	sndPlaySoundA	sndPlaySoundA
+00401930	waveOutOpen	waveOutOpen
+0040193e	midiOutReset	midiOutReset
+0040194e	timeKillEvent	timeKillEvent
+0040195e	midiOutClose	midiOutClose
+0040196e	timeEndPeriod	timeEndPeriod
+0040197e	timeBeginPeriod	timeBeginPeriod
+00401990	timeGetDevCaps	timeGetDevCaps
+004019a2	midiOutGetID	midiOutGetID
+004019b2	midiOutOpen	midiOutOpen
+004019c0	waveOutWrite	waveOutWrite
+004019d0	waveOutGetVolume	waveOutGetVolume
+004019e4	waveOutReset	waveOutReset
+004019f4	waveOutSetVolume	waveOutSetVolume
+00401a06	KERNEL32.DLL	KERNEL32.DLL
+00401a13	GDI32.DLL	GDI32.DLL
+00401a1d	USER32.DLL	USER32.DLL
+00401a28	WINMM.DLL	WINMM.DLL
+004101cc	Insufficient memory.	Insufficient memory.
+004101e4	Invalid game data file.	Invalid game data file.
+004102c4	Movie playback error.	Movie playback error.
+004104e4	%s %d %d %d %d	%s %d %d %d %d
+00410614	GMW.DLL	GMW.DLL
+0041061c	UTUnRegister	UTUnRegister
+00410629	UTRegister	UTRegister
+00410634	KERNEL32.DLL	KERNEL32.DLL
+0041086c	Game Maker Player	Game Maker Player
+00410894	Invalid movie background bitmap.	Invalid movie background bitmap.
+004108b5	intro	intro
+004108bb	Game REQUIRES larger screen.	Game REQUIRES larger screen.
+004108d8	GMW_PLAYER	GMW_PLAYER
+004108e3	GDI32.DLL	GDI32.DLL
+004108ed	CreateDIBSection	CreateDIBSection
+004109e4	%s%d.%s	%s%d.%s
+004109f1	%s\%s	%s\%s
+00410afc	Floating point not loaded	Floating point not loaded
+00410c8f	\r\nSemaphore error\r\n	\r\nSemaphore error\r\n
+00410ca3	\r\nNot enough memory\r\n	\r\nNot enough memory\r\n
+00410d70	\win32s.ini	\win32s.ini
+00410d7e	Win32s	Win32s
+00410d85	Version	Version
+00410d8d	1.0.0	1.0.0
+00410d93	win32s.ini	win32s.ini
+00410d9f	Wrong Win32s version, or damaged installation. This application requires Win32s version 1.15 to be loaded on your system.	Wrong Win32s version, or damaged installation. This application requires Win32s version 1.15 to be loaded on your system.
+00410e19	Startup Error	Startup Error
+00410e34	\r\nThread error\r\n	\r\nThread error\r\n
+00410e48	Out of memory	Out of memory

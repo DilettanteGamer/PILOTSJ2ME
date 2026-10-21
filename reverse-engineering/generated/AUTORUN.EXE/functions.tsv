@@ -1,0 +1,85 @@
+address	name	status	signature	diagnostic
+00403010	FUN_00403010	decompiled	undefined __stdcall FUN_00403010(LPCSTR param_1, LPCSTR param_2)	
+0040303c	FUN_0040303c	decompiled	undefined __stdcall FUN_0040303c(LPCSTR param_1, LPCSTR param_2, INT param_3)	
+00403064	FUN_00403064	decompiled	undefined __stdcall FUN_00403064(void)	
+00403078	FUN_00403078	decompiled	undefined __stdcall FUN_00403078(void)	
+00403084	FUN_00403084	decompiled	bool __stdcall FUN_00403084(LPBYTE param_1)	
+004030fc	FUN_004030fc	decompiled	undefined4 * __stdcall FUN_004030fc(LPCSTR param_1)	
+004031e0	FUN_004031e0	decompiled	bool __stdcall FUN_004031e0(void)	
+00403228	FUN_00403228	decompiled	undefined __stdcall FUN_00403228(void)	
+00403310	FUN_00403310	decompiled	undefined __stdcall FUN_00403310(void)	
+0040337c	FUN_0040337c	decompiled	undefined __stdcall FUN_0040337c(void)	
+0040354c	_WinMain@16	decompiled	undefined4 __stdcall _WinMain@16(HMODULE param_1, undefined4 param_2, char * param_3)	
+004035e4	FUN_004035e4	decompiled	uint * __cdecl FUN_004035e4(uint * param_1, uint * param_2)	
+004036ec	FUN_004036ec	decompiled	undefined __cdecl FUN_004036ec(undefined4 * param_1)	
+00403738	FUN_00403738	decompiled	undefined __cdecl FUN_00403738(uint param_1)	
+004037a0	FUN_004037a0	decompiled	undefined4 * __cdecl FUN_004037a0(undefined4 * param_1, undefined4 * param_2, uint param_3)	
+00403930	FUN_00403930	decompiled	char * __cdecl FUN_00403930(char * param_1, char * param_2)	
+0040396c	entry	decompiled	undefined __stdcall entry(void)	
+00403a24	FUN_00403a24	decompiled	uint __cdecl FUN_00403a24(byte * param_1, byte * param_2)	
+00403a74	FUN_00403a74	decompiled	uint * __cdecl FUN_00403a74(uint * param_1, uint * param_2)	
+00403ad8	FUN_00403ad8	decompiled	char * __cdecl FUN_00403ad8(uint * param_1)	
+00403b38	FUN_00403b38	decompiled	char * __cdecl FUN_00403b38(char * param_1, char param_2)	
+00403b8c	FUN_00403b8c	decompiled	char * __cdecl FUN_00403b8c(char * param_1)	
+00403bb4	FUN_00403bb4	decompiled	char * __cdecl FUN_00403bb4(uint * param_1, char param_2)	
+00403bf0	FUN_00403bf0	decompiled	undefined4 __cdecl FUN_00403bf0(undefined4 param_1, undefined4 param_2, uint param_3)	
+00403c0c	FUN_00403c0c	decompiled	undefined __stdcall FUN_00403c0c(void)	
+00403c68	FUN_00403c68	decompiled	undefined __cdecl FUN_00403c68(uint param_1)	
+00403ce4	FUN_00403ce4	decompiled	undefined __cdecl FUN_00403ce4(uint param_1)	
+00403d60	FUN_00403d60	decompiled	undefined4 * __cdecl FUN_00403d60(uint param_1)	
+00403dc0	FUN_00403dc0	decompiled	undefined __stdcall FUN_00403dc0(void)	
+00403e0c	FUN_00403e0c	decompiled	undefined __stdcall FUN_00403e0c(void)	
+00403e87	FUN_00403e87	decompiled	undefined __stdcall FUN_00403e87(void)	
+00403ec4	FUN_00403ec4	decompiled	undefined __cdecl FUN_00403ec4(UINT param_1)	
+00403f5c	FUN_00403f5c	decompiled	LONG __cdecl FUN_00403f5c(_EXCEPTION_POINTERS * param_1)	
+00404050	FUN_00404050	decompiled	undefined __stdcall FUN_00404050(UINT param_1)	
+0040405c	FUN_0040405c	decompiled	undefined4 __cdecl FUN_0040405c(int param_1, int param_2, undefined4 param_3)	
+00404150	FUN_00404150	decompiled	undefined __stdcall FUN_00404150(void)	
+00404184	FUN_00404184	decompiled	int __stdcall FUN_00404184(void)	
+004042bc	FUN_004042bc	decompiled	undefined4 __stdcall FUN_004042bc(void)	
+00404300	FUN_00404300	decompiled	undefined4 * __stdcall FUN_00404300(void)	
+0040432e	FUN_0040432e	decompiled	undefined8 __fastcall FUN_0040432e(undefined4 param_1, undefined4 param_2)	
+004043e0	FUN_004043e0	decompiled	undefined __stdcall FUN_004043e0(void)	
+004043f0	FUN_004043f0	decompiled	undefined __stdcall FUN_004043f0(void)	
+0040459c	FUN_0040459c	decompiled	uint * __cdecl FUN_0040459c(uint * param_1)	
+00404658	FUN_00404658	decompiled	char * __cdecl FUN_00404658(char * param_1)	
+004046b4	FUN_004046b4	decompiled	int __cdecl FUN_004046b4(int param_1)	
+004046cc	FUN_004046cc	decompiled	undefined __fastcall FUN_004046cc(uint param_1)	
+00404700	FUN_00404700	decompiled	undefined1 * __cdecl FUN_00404700(undefined1 * param_1, undefined1 param_2, uint param_3)	
+00404760	FUN_00404760	decompiled	char * __cdecl FUN_00404760(uint param_1, char * param_2, uint param_3)	
+004047bc	FUN_004047bc	decompiled	undefined __stdcall FUN_004047bc(void)	
+00404800	FUN_00404800	decompiled	undefined4 * __cdecl FUN_00404800(uint param_1)	
+004049a8	FUN_004049a8	decompiled	undefined __stdcall FUN_004049a8(void)	
+004049c0	FUN_004049c0	decompiled	undefined __stdcall FUN_004049c0(void)	
+004049e0	FUN_004049e0	decompiled	undefined __stdcall FUN_004049e0(char * param_1)	
+00404a14	FUN_00404a14	decompiled	undefined __stdcall FUN_00404a14(void)	
+00404a24	FUN_00404a24	decompiled	undefined __cdecl FUN_00404a24(undefined * param_1)	
+00404a60	FUN_00404a60	decompiled	undefined __cdecl FUN_00404a60(undefined4 param_1, PEXCEPTION_RECORD param_2)	
+00404a74	FUN_00404a74	decompiled	undefined __cdecl FUN_00404a74(PEXCEPTION_RECORD param_1, PVOID param_2)	
+00404a88	FUN_00404a88	decompiled	undefined __cdecl FUN_00404a88(int param_1, int param_2)	
+00404b04	FUN_00404b04	decompiled	undefined4 * __cdecl FUN_00404b04(undefined4 * param_1, uint param_2)	
+00404b90	FUN_00404b90	decompiled	int __fastcall FUN_00404b90(undefined4 param_1, int param_2, char * param_3, undefined4 * param_4, int param_5)	
+00404d1c	FUN_00404d1c	decompiled	undefined __cdecl FUN_00404d1c(undefined4 * param_1)	
+00404d5c	FUN_00404d5c	decompiled	undefined __cdecl FUN_00404d5c(undefined4 * param_1)	
+00404d70	FUN_00404d70	decompiled	undefined4 * __cdecl FUN_00404d70(int param_1, int param_2)	
+00404dac	FUN_00404dac	decompiled	LPVOID __cdecl FUN_00404dac(int param_1)	
+00404e54	FUN_00404e54	decompiled	int __cdecl FUN_00404e54(int param_1)	
+00404e64	FUN_00404e64	decompiled	undefined __fastcall FUN_00404e64(undefined4 param_1, undefined4 param_2, undefined4 param_3)	
+00404e98	RtlUnwind	thunk	void __stdcall RtlUnwind(PVOID TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue)	Thunk to KERNEL32.DLL::RtlUnwind
+00404e9e	GetStdHandle	thunk	HANDLE __stdcall GetStdHandle(DWORD nStdHandle)	Thunk to KERNEL32.DLL::GetStdHandle
+00404ea4	WriteFile	thunk	BOOL __stdcall WriteFile(HANDLE hFile, LPCVOID lpBuffer, DWORD nNumberOfBytesToWrite, LPDWORD lpNumberOfBytesWritten, LPOVERLAPPED lpOverlapped)	Thunk to KERNEL32.DLL::WriteFile
+00404eb0	ExitProcess	thunk	noreturn void __stdcall ExitProcess(UINT uExitCode)	Thunk to KERNEL32.DLL::ExitProcess
+00404ebc	GetCurrentThreadId	thunk	DWORD __stdcall GetCurrentThreadId(void)	Thunk to KERNEL32.DLL::GetCurrentThreadId
+00404ec2	FreeEnvironmentStringsA	thunk	BOOL __stdcall FreeEnvironmentStringsA(LPCH param_1)	Thunk to KERNEL32.DLL::FreeEnvironmentStringsA
+00404ec8	GetEnvironmentStrings	thunk	LPCH __stdcall GetEnvironmentStrings(void)	Thunk to KERNEL32.DLL::GetEnvironmentStrings
+00404f10	GetVersion	thunk	DWORD __stdcall GetVersion(void)	Thunk to KERNEL32.DLL::GetVersion
+00404f3a	DdeUnaccessData	thunk	BOOL __stdcall DdeUnaccessData(HDDEDATA hData)	Thunk to USER32.DLL::DdeUnaccessData
+00404f40	DdeAccessData	thunk	LPBYTE __stdcall DdeAccessData(HDDEDATA hData, LPDWORD pcbDataSize)	Thunk to USER32.DLL::DdeAccessData
+00404f46	DdeFreeStringHandle	thunk	BOOL __stdcall DdeFreeStringHandle(DWORD idInst, HSZ hsz)	Thunk to USER32.DLL::DdeFreeStringHandle
+00404f4c	DdeClientTransaction	thunk	HDDEDATA __stdcall DdeClientTransaction(LPBYTE pData, DWORD cbData, HCONV hConv, HSZ hszItem, UINT wFmt, UINT wType, DWORD dwTimeout, LPDWORD pdwResult)	Thunk to USER32.DLL::DdeClientTransaction
+00404f52	DdeConnect	thunk	HCONV __stdcall DdeConnect(DWORD idInst, HSZ hszService, HSZ hszTopic, PCONVCONTEXT pCC)	Thunk to USER32.DLL::DdeConnect
+00404f58	DdeCreateStringHandleA	thunk	HSZ __stdcall DdeCreateStringHandleA(DWORD idInst, LPCSTR psz, int iCodePage)	Thunk to USER32.DLL::DdeCreateStringHandleA
+00404f5e	DdeDisconnect	thunk	BOOL __stdcall DdeDisconnect(HCONV hConv)	Thunk to USER32.DLL::DdeDisconnect
+00404f64	DdeFreeDataHandle	thunk	BOOL __stdcall DdeFreeDataHandle(HDDEDATA hData)	Thunk to USER32.DLL::DdeFreeDataHandle
+00404f6a	DdeUninitialize	thunk	BOOL __stdcall DdeUninitialize(DWORD idInst)	Thunk to USER32.DLL::DdeUninitialize
+00404f70	DdeInitializeA	thunk	UINT __stdcall DdeInitializeA(LPDWORD pidInst, PFNCALLBACK pfnCallback, DWORD afCmd, DWORD ulRes)	Thunk to USER32.DLL::DdeInitializeA
