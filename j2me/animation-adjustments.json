@@ -1,20 +1,20 @@
 {
-  "version": "0.3.4",
+  "version": "0.3.5",
   "remove_preview_ids": [
     106
   ],
   "anchors": {
     "56": [
-      448,
-      336,
-      482,
-      296
+      320,
+      304,
+      354,
+      264
     ],
     "64": [
-      512,
-      336,
-      577,
-      271
+      200,
+      328,
+      265,
+      263
     ],
     "66": [
       277,
@@ -47,16 +47,16 @@
       285
     ],
     "86": [
-      448,
-      336,
-      472,
-      308
+      144,
+      320,
+      168,
+      292
     ],
     "87": [
-      512,
-      336,
-      544,
-      312
+      144,
+      320,
+      176,
+      296
     ],
     "88": [
       277,
@@ -93,6 +93,18 @@
       128,
       301,
       208
+    ],
+    "102": [
+      320,
+      304,
+      351,
+      279
+    ],
+    "103": [
+      256,
+      128,
+      292,
+      213
     ]
   },
   "pending_placement_menu_numbers": [],
@@ -105,11 +117,11 @@
     28,
     30
   ],
-  "note": "0.3.4: fixed preview/background placements and matching default actor anchors. Character-relative reactions 14,15,21,22,27,28,30 are deferred to gameplay mechanics per user instruction; their catalog entries are unchanged. This is resource calibration, not restored original action conditions. Crow landing and butterfly flight are visual calibration choices; remaining hero preview defaults are not original per-action trajectories.",
+  "note": "0.3.5: 05/16/17 positioned at the narrow window above the barrel, identified from the user screenshot. 02/27 placed at the gate foreground; 28 at the guard gate anchor. These are preview placements only, not gameplay triggers. Reactions 14/15/21/22/30 and all animation frames remain unchanged; gameplay conditions for all seven reactions remain deferred.",
   "actor_anchors": {
     "64": [
-      512,
-      336
+      200,
+      328
     ],
     "95": [
       448,
@@ -131,6 +143,30 @@
     20,
     23,
     24,
-    25
-  ]
+    25,
+    27,
+    28
+  ],
+  "reference_points": {
+    "window_above_barrel": [
+      180,
+      260
+    ],
+    "gate_foreground": [
+      320,
+      304
+    ],
+    "guard_at_gate": [
+      256,
+      128
+    ]
+  },
+  "placement_basis": {
+    "64": "user screenshot: narrow window above barrel",
+    "86": "user screenshot: narrow window above barrel",
+    "87": "user screenshot: narrow window above barrel",
+    "56": "user instruction: by zoo gate",
+    "102": "user instruction: by zoo gate",
+    "103": "user instruction: by zoo gate"
+  }
 }

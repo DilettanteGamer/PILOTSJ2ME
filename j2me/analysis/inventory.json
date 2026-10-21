@@ -2836,15 +2836,15 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.3.4",
+        "MIDlet-Version": "0.3.5",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "128x128"
       },
-      "sha256": "00b502107aa51a83c889548a893637d3df55504a89c4f1028dc33b54fb58fb5d",
-      "jar_bytes": 1228425,
+      "sha256": "0aba4908553ead6f0be6c1cfbc0bddb7e08b4f68b586521fd569799ecfb630ed",
+      "jar_bytes": 1228436,
       "entry_count": 135,
       "uncompressed_bytes": 9514633,
       "extension_counts": {
@@ -3146,8 +3146,8 @@
           },
           {
             "id": 64,
-            "x": 512,
-            "y": 336
+            "x": 200,
+            "y": 328
           },
           {
             "id": 95,
@@ -3474,12 +3474,12 @@
         {
           "resource_id": 56,
           "anchor": [
-            448,
-            336
+            320,
+            304
           ],
           "focus": [
-            482,
-            296
+            354,
+            264
           ],
           "label": "02 Шеф"
         },
@@ -3510,12 +3510,12 @@
         {
           "resource_id": 64,
           "anchor": [
-            512,
-            336
+            200,
+            328
           ],
           "focus": [
-            577,
-            271
+            265,
+            263
           ],
           "label": "05 Коллега"
         },
@@ -3642,24 +3642,24 @@
         {
           "resource_id": 86,
           "anchor": [
-            448,
-            336
+            144,
+            320
           ],
           "focus": [
-            472,
-            308
+            168,
+            292
           ],
           "label": "16 Шеф"
         },
         {
           "resource_id": 87,
           "anchor": [
-            512,
-            336
+            144,
+            320
           ],
           "focus": [
-            544,
-            312
+            176,
+            296
           ],
           "label": "17 Коллега"
         },
@@ -3774,24 +3774,24 @@
         {
           "resource_id": 102,
           "anchor": [
-            136,
-            98
+            320,
+            304
           ],
           "focus": [
-            167,
-            73
+            351,
+            279
           ],
           "label": "27 Шеф"
         },
         {
           "resource_id": 103,
           "anchor": [
-            136,
-            98
+            256,
+            128
           ],
           "focus": [
-            172,
-            183
+            292,
+            213
           ],
           "label": "28 Охранник"
         },
@@ -4115,15 +4115,15 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.3.4",
+        "MIDlet-Version": "0.3.5",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "240x320"
       },
-      "sha256": "1031d20cad485de5274f9ec4c9f7580f3248b0c9b3ec5bcb6e7f5df7a47f0c45",
-      "jar_bytes": 2597834,
+      "sha256": "064e2cc9d95e72f0c05212dfa04c0771ac9b887f1ee505a547463c757ad7068c",
+      "jar_bytes": 2597846,
       "entry_count": 135,
       "uncompressed_bytes": 13410953,
       "extension_counts": {
@@ -4425,8 +4425,8 @@
           },
           {
             "id": 64,
-            "x": 512,
-            "y": 336
+            "x": 200,
+            "y": 328
           },
           {
             "id": 95,
@@ -4753,12 +4753,12 @@
         {
           "resource_id": 56,
           "anchor": [
-            448,
-            336
+            320,
+            304
           ],
           "focus": [
-            482,
-            296
+            354,
+            264
           ],
           "label": "02 Шеф"
         },
@@ -4789,12 +4789,12 @@
         {
           "resource_id": 64,
           "anchor": [
-            512,
-            336
+            200,
+            328
           ],
           "focus": [
-            577,
-            271
+            265,
+            263
           ],
           "label": "05 Коллега"
         },
@@ -4921,24 +4921,24 @@
         {
           "resource_id": 86,
           "anchor": [
-            448,
-            336
+            144,
+            320
           ],
           "focus": [
-            472,
-            308
+            168,
+            292
           ],
           "label": "16 Шеф"
         },
         {
           "resource_id": 87,
           "anchor": [
-            512,
-            336
+            144,
+            320
           ],
           "focus": [
-            544,
-            312
+            176,
+            296
           ],
           "label": "17 Коллега"
         },
@@ -5053,24 +5053,24 @@
         {
           "resource_id": 102,
           "anchor": [
-            136,
-            98
+            320,
+            304
           ],
           "focus": [
-            167,
-            73
+            351,
+            279
           ],
           "label": "27 Шеф"
         },
         {
           "resource_id": 103,
           "anchor": [
-            136,
-            98
+            256,
+            128
           ],
           "focus": [
-            172,
-            183
+            292,
+            213
           ],
           "label": "28 Охранник"
         },

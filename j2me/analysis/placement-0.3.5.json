@@ -1,0 +1,291 @@
+[
+  {
+    "menu_number": 2,
+    "resource_id": 56,
+    "old_anchor": [
+      16,
+      230
+    ],
+    "new_anchor": [
+      320,
+      304
+    ],
+    "new_focus": [
+      354,
+      264
+    ],
+    "basis": "user instruction: by zoo gate"
+  },
+  {
+    "menu_number": 5,
+    "resource_id": 64,
+    "old_anchor": [
+      64,
+      230
+    ],
+    "new_anchor": [
+      200,
+      328
+    ],
+    "new_focus": [
+      265,
+      263
+    ],
+    "basis": "user screenshot: narrow window above barrel"
+  },
+  {
+    "menu_number": 6,
+    "resource_id": 66,
+    "old_anchor": [
+      320,
+      112
+    ],
+    "new_anchor": [
+      277,
+      164
+    ],
+    "new_focus": [
+      182,
+      173
+    ],
+    "basis": "background calibration; not original event position"
+  },
+  {
+    "menu_number": 9,
+    "resource_id": 69,
+    "old_anchor": [
+      192,
+      292
+    ],
+    "new_anchor": [
+      192,
+      320
+    ],
+    "new_focus": [
+      233,
+      246
+    ],
+    "basis": "barrel alignment and original ground reference"
+  },
+  {
+    "menu_number": 11,
+    "resource_id": 75,
+    "old_anchor": [
+      480,
+      156
+    ],
+    "new_anchor": [
+      448,
+      336
+    ],
+    "new_focus": [
+      488,
+      313
+    ],
+    "basis": "original actor default reference; not original per-action trajectory"
+  },
+  {
+    "menu_number": 12,
+    "resource_id": 76,
+    "old_anchor": [
+      480,
+      156
+    ],
+    "new_anchor": [
+      512,
+      336
+    ],
+    "new_focus": [
+      544,
+      313
+    ],
+    "basis": "original actor default reference; not original per-action trajectory"
+  },
+  {
+    "menu_number": 13,
+    "resource_id": 83,
+    "old_anchor": [
+      144,
+      190
+    ],
+    "new_anchor": [
+      192,
+      320
+    ],
+    "new_focus": [
+      210,
+      285
+    ],
+    "basis": "barrel alignment and original ground reference"
+  },
+  {
+    "menu_number": 16,
+    "resource_id": 86,
+    "old_anchor": [
+      144,
+      190
+    ],
+    "new_anchor": [
+      144,
+      320
+    ],
+    "new_focus": [
+      168,
+      292
+    ],
+    "basis": "user screenshot: narrow window above barrel"
+  },
+  {
+    "menu_number": 17,
+    "resource_id": 87,
+    "old_anchor": [
+      256,
+      134
+    ],
+    "new_anchor": [
+      144,
+      320
+    ],
+    "new_focus": [
+      176,
+      296
+    ],
+    "basis": "user screenshot: narrow window above barrel"
+  },
+  {
+    "menu_number": 18,
+    "resource_id": 88,
+    "old_anchor": [
+      320,
+      112
+    ],
+    "new_anchor": [
+      277,
+      164
+    ],
+    "new_focus": [
+      171,
+      109
+    ],
+    "basis": "background calibration; not original event position"
+  },
+  {
+    "menu_number": 19,
+    "resource_id": 89,
+    "old_anchor": [
+      64,
+      230
+    ],
+    "new_anchor": [
+      192,
+      176
+    ],
+    "new_focus": [
+      229,
+      127
+    ],
+    "basis": "original actor default reference; not original per-action trajectory"
+  },
+  {
+    "menu_number": 20,
+    "resource_id": 90,
+    "old_anchor": [
+      256,
+      272
+    ],
+    "new_anchor": [
+      448,
+      336
+    ],
+    "new_focus": [
+      482,
+      280
+    ],
+    "basis": "background calibration; not original event position"
+  },
+  {
+    "menu_number": 23,
+    "resource_id": 94,
+    "old_anchor": [
+      144,
+      190
+    ],
+    "new_anchor": [
+      448,
+      336
+    ],
+    "new_focus": [
+      510,
+      277
+    ],
+    "basis": "original actor default reference; not original per-action trajectory"
+  },
+  {
+    "menu_number": 24,
+    "resource_id": 95,
+    "old_anchor": [
+      192,
+      292
+    ],
+    "new_anchor": [
+      448,
+      336
+    ],
+    "new_focus": [
+      470,
+      288
+    ],
+    "basis": "original actor default reference; not original per-action trajectory"
+  },
+  {
+    "menu_number": 25,
+    "resource_id": 97,
+    "old_anchor": [
+      136,
+      98
+    ],
+    "new_anchor": [
+      256,
+      128
+    ],
+    "new_focus": [
+      301,
+      208
+    ],
+    "basis": "original actor default reference; not original per-action trajectory"
+  },
+  {
+    "menu_number": 27,
+    "resource_id": 102,
+    "old_anchor": [
+      136,
+      98
+    ],
+    "new_anchor": [
+      320,
+      304
+    ],
+    "new_focus": [
+      351,
+      279
+    ],
+    "basis": "user instruction: by zoo gate"
+  },
+  {
+    "menu_number": 28,
+    "resource_id": 103,
+    "old_anchor": [
+      136,
+      98
+    ],
+    "new_anchor": [
+      256,
+      128
+    ],
+    "new_focus": [
+      292,
+      213
+    ],
+    "basis": "user instruction: by zoo gate"
+  }
+]

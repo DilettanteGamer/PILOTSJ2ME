@@ -254,7 +254,9 @@
     90,
     94,
     95,
-    97
+    97,
+    102,
+    103
   ],
   "updated_scene_actor_ids": [
     64,
@@ -270,8 +272,8 @@
     28,
     30
   ],
-  "jar_sha256": "00b502107aa51a83c889548a893637d3df55504a89c4f1028dc33b54fb58fb5d",
-  "jar_size": 1228425,
+  "jar_sha256": "0aba4908553ead6f0be6c1cfbc0bddb7e08b4f68b586521fd569799ecfb630ed",
+  "jar_size": 1228436,
   "bytecode_preserved": true,
   "modified_entries": [
     "META-INF/MANIFEST.MF",
