@@ -1,6 +1,7 @@
 package pilots;
 
 import java.io.IOException;
+import javax.microedition.lcdui.Graphics;
 
 /** Fixed-step adapter for original zoo sequences; drawing never commits game state. */
 public final class ZooScene {
@@ -84,7 +85,7 @@ public final class ZooScene {
         scene.actors[slot].close(); scene.actors[slot] = next;
     }
     private void rebuild() throws IOException {
-        AnimatedActor[] next = new AnimatedActor[14];
+        AnimatedActor[] next = new AnimatedActor[16];
         try {
             next[0] = actor(logic.windowOpen() ? 63 : 62, 128, 224, false, 0);
             next[0].visible = logic.shuttersVisible();
@@ -96,6 +97,10 @@ public final class ZooScene {
             next[6] = actor(55, 128, 320, false, 0);
             next[7] = cat();
             next[8] = butterfly();
+            // Original initial map 0x19: entity 11 (clip 52) and 37 (clip 99).
+            // The left column (entity 38 / clip 100) is already baked into the background.
+            next[14]=actor(52,576,48,false,0);
+            next[15]=actor(99,384,96,false,0);
             next[9]=pickaxe();next[10]=bell();next[11]=gate();next[12]=wall();next[13]=rock();
         } catch (IOException failure) {
             for (int i = 0; i < next.length; i++) if (next[i] != null) next[i].close();
@@ -103,6 +108,53 @@ public final class ZooScene {
         }
         scene.close();
         scene.actors = next;
+    }
+
+    /** A nearby free standing cell, rather than either hero's initial position. */
+    private int[] aside(int hero) {
+        int x=logic.heroX(hero),y=logic.heroY(hero),other=1-hero;
+        int[] dx={64,-64,0,0},dy={0,0,32,-32};
+        int[] best=null;int bestScore=2147483647;
+        for(int i=0;i<dx.length;i++) {
+            int tx=x+dx[i],ty=y+dy[i];
+            if(!ZooWalk.allowed(tx,ty,logic.gateState()==2)) continue;
+            int distance=Math.abs(tx-logic.heroX(other))+Math.abs(ty-logic.heroY(other));
+            if(distance<48) continue;
+            int[] route=ZooWalk.plan(x,y,tx,ty,logic.gateState()==2);
+            if(route.length==0) continue;
+            int score=route.length*16-distance;
+            if(score<bestScore) { bestScore=score;best=new int[]{tx,ty}; }
+        }
+        return best;
+    }
+
+    // Original descriptor layers; FUN_004034fc paints larger layer numbers first.
+    private static final int[] LAYERS={16,20,0,0,15,45,12,16,16,40,16,16,17,16,18,18};
+    public int layer(int slot) {
+        if(slot==7 && logic.catClip()==101) return 11;
+        if(slot!=2 && slot!=3) return LAYERS[slot];
+        int hero=slot-2;
+        // Source v40/v44 start at 10 on row 21 and change by 2 per vertical cell.
+        int layer=10+(336-logic.heroY(hero))/8;
+        if(logic.pendingClip()!=0 && logic.hero()==hero) {
+            int clip=logic.pendingClip();
+            if(clip==69 || clip==83) return 11;
+            if(clip==56) return 15;
+            if(logic.pendingAction()!=30 || logic.step()<=12) layer++;
+        }
+        return layer;
+    }
+    private final int[] paintOrder=new int[16];
+    public void paint(Graphics graphics,Viewport view) {
+        for(int i=0;i<scene.actors.length;i++) {
+            int j=i;
+            // Stable insertion sort: keep actor slots unchanged for sequence updates.
+            while(j>0 && layer(paintOrder[j-1])<layer(i)) {
+                paintOrder[j]=paintOrder[j-1];j--;
+            }
+            paintOrder[j]=i;
+        }
+        for(int i=0;i<scene.actors.length;i++) scene.actors[paintOrder[i]].paint(graphics,view);
     }
 
     public static int approachX(int target) {
@@ -134,7 +186,9 @@ public final class ZooScene {
         if(logic.heroX(other)==px && logic.heroY(other)==py) {
             state.variables[26]=logic.hero();state.variables[25]=target;
             state.variables[24]=px;state.variables[23]=py;
-            logic.select(other);startWalk(target+200,other==0?448:512,336);
+            int[] aside=aside(other);
+            if(aside==null) return false;
+            logic.select(other);startWalk(target+200,aside[0],aside[1]);
         } else startWalk(target,px,py);
         return true;
     }
@@ -180,7 +234,11 @@ public final class ZooScene {
                 int px=approachX(target),py=approachY(target);
                 int other = 1 - logic.hero();
                 if (logic.heroX(other) == px && logic.heroY(other) == py)
-                    logic.placeHero(other, other == 0 ? 448 : 512, 336);
+                    {
+                    int[] aside=aside(other);
+                    if(aside==null) { System.arraycopy(previous,0,state.variables,0,previous.length);return false; }
+                    logic.placeHero(other,aside[0],aside[1]);
+                }
                 logic.placeHero(logic.hero(), px, py);
             }
             rebuild();

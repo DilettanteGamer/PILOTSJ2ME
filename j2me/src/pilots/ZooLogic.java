@@ -59,7 +59,10 @@ public final class ZooLogic {
         if (!hasKettle() && x>=80 && x<118 && y>=284 && y<320) return KETTLE;
         if (!hasItem(2) && x>=80 && x<118 && y>=248 && y<284) return PICKAXE;
         if (x>=128 && x<192 && y>=282 && y<350) return BARREL;
-        if (butterflyState()!=0 && x>=250 && x<320 && y>=265 && y<310) return COIN;
+        // Clip 91 and the last frame of 90 share offset (51,41), size 12x7,
+        // at source root (256,272): coin bounds [307,319) x [313,320).
+        // Eight world pixels of padding keep the tiny coin selectable on 128x128.
+        if (butterflyState()==2 && x>=299 && x<327 && y>=305 && y<328) return COIN;
         if (x>=440 && x<480 && y>=205 && y<270) return BELL;
         if (x>=248 && x<435 && y>=155 && y<280) return GATE;
         if (x>=470 && x<640 && y>=180 && y<290) return WALL;

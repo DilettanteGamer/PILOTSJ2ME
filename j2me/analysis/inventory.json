@@ -2836,17 +2836,17 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.5.0",
+        "MIDlet-Version": "0.5.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "128x128"
       },
-      "sha256": "c52d93d4bcf6cea29db5e19e271ef360591d6546520e75d7226cce3ac8c83f4d",
-      "jar_bytes": 1417242,
+      "sha256": "e0bffc1442caa3bbac3a7c0c3872c789d66953cb6f4105d5a6e782f93f1e007e",
+      "jar_bytes": 1418134,
       "entry_count": 181,
-      "uncompressed_bytes": 11436843,
+      "uncompressed_bytes": 11438585,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -3074,7 +3074,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "287896a556432eb7ea7fb920a9e2721aac8e63996e1bcda9442ba90c043a99e9"
+          "sha256": "71b6c04de5bf378f55fed28f352aeaf0796e2e6d0af7660db7d0ef5c558b6b27"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3154,7 +3154,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "161aeed15adfcbf8ba6306aaa7371091c762ccebd9f1c814e917b1241357db38"
+          "sha256": "8d185c1118c69631a93cad8ac3679e6295ae46e8fb46f9210c022f4bc8c7b4a2"
         },
         "pilots/ZooPanel.class": {
           "minor": 3,
@@ -3179,10 +3179,11 @@
             "java/lang/Object",
             "java/lang/String",
             "java/lang/StringBuffer",
-            "java/lang/System"
+            "java/lang/System",
+            "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7940198e20ee22e24d0c98858e1ba5593173a16de52e7caa4dfd947e1113698e"
+          "sha256": "4b4fd07d3f18306d4478d444b3ed58322c7642b412de418e1580e23f8ac1fd37"
         },
         "pilots/ZooWalk.class": {
           "minor": 3,
@@ -4389,17 +4390,17 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.5.0",
+        "MIDlet-Version": "0.5.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "240x320"
       },
-      "sha256": "493197911fa7d944057dcfd50d27608a0e54df2657b20d9665fab9e063d02d2c",
-      "jar_bytes": 2786651,
+      "sha256": "24245fbb65b6b51e84556bbf8131795ec82e5f662250931b98f58d5888f79910",
+      "jar_bytes": 2787545,
       "entry_count": 181,
-      "uncompressed_bytes": 15333163,
+      "uncompressed_bytes": 15334905,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -4627,7 +4628,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "287896a556432eb7ea7fb920a9e2721aac8e63996e1bcda9442ba90c043a99e9"
+          "sha256": "71b6c04de5bf378f55fed28f352aeaf0796e2e6d0af7660db7d0ef5c558b6b27"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -4707,7 +4708,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "161aeed15adfcbf8ba6306aaa7371091c762ccebd9f1c814e917b1241357db38"
+          "sha256": "8d185c1118c69631a93cad8ac3679e6295ae46e8fb46f9210c022f4bc8c7b4a2"
         },
         "pilots/ZooPanel.class": {
           "minor": 3,
@@ -4732,10 +4733,11 @@
             "java/lang/Object",
             "java/lang/String",
             "java/lang/StringBuffer",
-            "java/lang/System"
+            "java/lang/System",
+            "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7940198e20ee22e24d0c98858e1ba5593173a16de52e7caa4dfd947e1113698e"
+          "sha256": "4b4fd07d3f18306d4478d444b3ed58322c7642b412de418e1580e23f8ac1fd37"
         },
         "pilots/ZooWalk.class": {
           "minor": 3,

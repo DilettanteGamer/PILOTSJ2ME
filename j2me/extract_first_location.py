@@ -85,12 +85,19 @@ def extract(original):
             if r not in evidence:evidence.append(r)
         if r['code']==0x60 and r['id'] in [0,1,2,3,4,14,41,42,44,45,82,83,84,85,86]:
             if r not in evidence:evidence.append(r)
+    placements=absolute_cells(next(r for r in source if r['code']==0x19),64,16)
+    static_roots={c['entity']:c['world'] for c in placements if c['entity'] in [11,37,38]}
+    require(static_roots=={11:[576,48],37:[384,96],38:[192,288]},'Gate column/sign roots changed')
+    layers={r['id']:r['data'][2] for r in source if r['code']==0x20}
+    require({i:layers[i] for i in [11,22,26,28,37]}=={11:18,22:12,26:16,28:17,37:18},'Source layers changed')
+    for r in source:
+        if r['code'] in [0x19,0x20] and r not in evidence:evidence.append(r)
     # Gate can only be paid while the guard exists; scene completion is native 0e(3).
     require(binary[4+(((7-1)*2+0)*4+3)*16+4]==30,'Coin/guard gate routing changed')
     require(binary[4+(((7-1)*2+0)*4+3)*16+0]==26,'Absent guard routing changed')
     return bytes(binary),dict(source_sha256=EXPECTED,routing_order=['target','hero','item','flags'],
         flags={'window_open':1,'cat_present':2,'guard_present':4,'wall_broken':8},
-        fixtures=fixtures,actions=actions,
+        fixtures=fixtures,actions=actions,static_gate_roots=static_roots,descriptor_layers=layers,
         records=[dict(code=r['code'],object=r['id'],index=r['args'][0],offset=r['offset'],bytecode=r['data'].hex()) for r in evidence])
 
 

@@ -7338,6 +7338,52 @@
       70
     ]
   ],
+  "static_gate_roots": {
+    "11": [
+      576,
+      48
+    ],
+    "37": [
+      384,
+      96
+    ],
+    "38": [
+      192,
+      288
+    ]
+  },
+  "descriptor_layers": {
+    "11": 18,
+    "12": 1,
+    "13": 1,
+    "14": 20,
+    "15": 15,
+    "16": 16,
+    "17": 0,
+    "18": 0,
+    "19": 0,
+    "20": 45,
+    "21": 40,
+    "22": 12,
+    "23": 16,
+    "24": 16,
+    "25": 16,
+    "26": 16,
+    "27": 16,
+    "28": 17,
+    "29": 17,
+    "30": 16,
+    "31": 0,
+    "32": 0,
+    "33": 1,
+    "34": 1,
+    "35": 1,
+    "36": 18,
+    "37": 18,
+    "38": 18,
+    "39": 16,
+    "40": 98
+  },
   "records": [
     {
       "code": 43,
@@ -12917,6 +12963,223 @@
       "index": 0,
       "offset": 1042495,
       "bytecode": "1001000001000100fefc080f"
+    },
+    {
+      "code": 32,
+      "object": 11,
+      "index": 0,
+      "offset": 1001276,
+      "bytecode": "00001200"
+    },
+    {
+      "code": 32,
+      "object": 12,
+      "index": 0,
+      "offset": 1001300,
+      "bytecode": "00000100"
+    },
+    {
+      "code": 32,
+      "object": 13,
+      "index": 0,
+      "offset": 1001324,
+      "bytecode": "00000100"
+    },
+    {
+      "code": 32,
+      "object": 14,
+      "index": 0,
+      "offset": 1001384,
+      "bytecode": "01011400"
+    },
+    {
+      "code": 32,
+      "object": 15,
+      "index": 0,
+      "offset": 1002750,
+      "bytecode": "01010f00"
+    },
+    {
+      "code": 32,
+      "object": 16,
+      "index": 0,
+      "offset": 1002857,
+      "bytecode": "01011000"
+    },
+    {
+      "code": 32,
+      "object": 17,
+      "index": 0,
+      "offset": 1004094,
+      "bytecode": "02010000"
+    },
+    {
+      "code": 32,
+      "object": 18,
+      "index": 0,
+      "offset": 1012138,
+      "bytecode": "02010000"
+    },
+    {
+      "code": 32,
+      "object": 19,
+      "index": 0,
+      "offset": 1019412,
+      "bytecode": "01010000"
+    },
+    {
+      "code": 32,
+      "object": 20,
+      "index": 0,
+      "offset": 1019564,
+      "bytecode": "02012d00"
+    },
+    {
+      "code": 32,
+      "object": 21,
+      "index": 0,
+      "offset": 1020565,
+      "bytecode": "02012800"
+    },
+    {
+      "code": 32,
+      "object": 22,
+      "index": 0,
+      "offset": 1021728,
+      "bytecode": "02010c00"
+    },
+    {
+      "code": 32,
+      "object": 23,
+      "index": 0,
+      "offset": 1023285,
+      "bytecode": "02011000"
+    },
+    {
+      "code": 32,
+      "object": 24,
+      "index": 0,
+      "offset": 1024454,
+      "bytecode": "02011000"
+    },
+    {
+      "code": 32,
+      "object": 25,
+      "index": 0,
+      "offset": 1025788,
+      "bytecode": "02011000"
+    },
+    {
+      "code": 32,
+      "object": 26,
+      "index": 0,
+      "offset": 1025887,
+      "bytecode": "02011000"
+    },
+    {
+      "code": 32,
+      "object": 27,
+      "index": 0,
+      "offset": 1027328,
+      "bytecode": "02011000"
+    },
+    {
+      "code": 32,
+      "object": 28,
+      "index": 0,
+      "offset": 1028770,
+      "bytecode": "02011100"
+    },
+    {
+      "code": 32,
+      "object": 29,
+      "index": 0,
+      "offset": 1030205,
+      "bytecode": "02011100"
+    },
+    {
+      "code": 32,
+      "object": 30,
+      "index": 0,
+      "offset": 1031586,
+      "bytecode": "02011000"
+    },
+    {
+      "code": 32,
+      "object": 31,
+      "index": 0,
+      "offset": 1032783,
+      "bytecode": "01010000"
+    },
+    {
+      "code": 32,
+      "object": 32,
+      "index": 0,
+      "offset": 1033287,
+      "bytecode": "01010000"
+    },
+    {
+      "code": 32,
+      "object": 33,
+      "index": 0,
+      "offset": 1040306,
+      "bytecode": "02010100"
+    },
+    {
+      "code": 32,
+      "object": 34,
+      "index": 0,
+      "offset": 1040466,
+      "bytecode": "02010100"
+    },
+    {
+      "code": 32,
+      "object": 35,
+      "index": 0,
+      "offset": 1040626,
+      "bytecode": "02010100"
+    },
+    {
+      "code": 32,
+      "object": 36,
+      "index": 0,
+      "offset": 1040786,
+      "bytecode": "00001200"
+    },
+    {
+      "code": 32,
+      "object": 37,
+      "index": 0,
+      "offset": 1040810,
+      "bytecode": "00001200"
+    },
+    {
+      "code": 32,
+      "object": 38,
+      "index": 0,
+      "offset": 1040834,
+      "bytecode": "00001200"
+    },
+    {
+      "code": 32,
+      "object": 39,
+      "index": 0,
+      "offset": 1040858,
+      "bytecode": "00001000"
+    },
+    {
+      "code": 32,
+      "object": 40,
+      "index": 0,
+      "offset": 1040882,
+      "bytecode": "02016200"
+    },
+    {
+      "code": 25,
+      "object": 0,
+      "index": 0,
+      "offset": 2783222,
+      "bytecode": "100100002b0001001310000020100100081002001f100300051004000bfc0903251006061a10050a1c10090a1b10070d1710020e2410090e15100111141001122610031200100412001005120010061200100712001008120010091200100013001001132810021316100214001009180cfc00190dfc09190010001a0010011a0010021a0010031a0010041a0010051a0010061a0010071a0010081a0010091a0310001c0210011c0410031c0a10091c0110011d"
     }
   ]
 }

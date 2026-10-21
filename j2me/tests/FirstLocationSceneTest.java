@@ -27,7 +27,7 @@ public final class FirstLocationSceneTest {
             zoo.logic.select(0);zoo.logic.selectItem(1);zoo.request(150,315);settle(zoo);
             for(int i=0;i<100 && zoo.logic.catPresent();i++) zoo.update(100);
             check(zoo.logic.butterflyState()!=0,"source cat chain produces coin");
-            zoo.logic.selectItem(0);zoo.request(280,285);settle(zoo);
+            zoo.logic.selectItem(0);zoo.request(313,316);settle(zoo);
             check(zoo.logic.hasItem(3) && zoo.logic.butterflyState()==0,"coin goes into third inventory slot");
             zoo.logic.selectItem(2);zoo.request(580,230);settle(zoo);
             check(zoo.logic.wallBroken() && zoo.logic.gateState()==0,"pickaxe changes wall, not gate");
