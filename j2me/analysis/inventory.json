@@ -2618,8 +2618,8 @@
         18,
         19
       ],
-      "animations": 60,
-      "frames": 765,
+      "animations": 64,
+      "frames": 839,
       "backgrounds": {
         "scenes/00.p8": [
           320,
@@ -2836,22 +2836,22 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.4.0",
+        "MIDlet-Version": "0.4.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "128x128"
       },
-      "sha256": "b6f20e93ef36f9eb4a839f418599f249acbf6f1923f46a3b1d445aca079c13a9",
-      "jar_bytes": 1232780,
-      "entry_count": 137,
-      "uncompressed_bytes": 9521614,
+      "sha256": "9e8cf18122a5a379d3641f2e1a9417227b1fbba29bf1ab4b113fb20cb6db6742",
+      "jar_bytes": 1261231,
+      "entry_count": 141,
+      "uncompressed_bytes": 9907231,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 60,
+        ".anm": 64,
         ".bar": 16,
         ".bin": 1,
         ".class": 19,
@@ -3044,7 +3044,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8c052726a60613f32f996ed01110af90ede3553f41ca9a3d385bcd51d967e326"
+          "sha256": "695762d0c7c74b9173b82dcefdb60525e897b1fe2773a51f72f236a264c322ce"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3065,7 +3065,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "21c52013d9a6ccc992339ce6d5773359e0f395d3cbbabb2ad31dc937c19ce62b"
+          "sha256": "cf862be4833be31915088d6b201d6db7bf5348a91be6fe4fcf860d24514eeb17"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -3123,19 +3123,21 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7b2ed991f446db45bc3f38911c4d16ec10961453dff01a13225ec4b5c62d419e"
+          "sha256": "7a5758c33279ddeca8330cfcf2c26a93beaadb4ad97b8089dd1d6de98ae36c79"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
           "major": 45,
           "api_references": [
             "java/io/IOException",
+            "java/lang/Math",
             "java/lang/Object",
             "java/lang/String",
-            "java/lang/StringBuffer"
+            "java/lang/StringBuffer",
+            "java/lang/System"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "dfafbfe8d27d90eaa4d2aa7314eff4964bb89ea808c086d3be4e43cc4c6c3277"
+          "sha256": "955c5cfbde985e54e300bcb33cce12707a034aae1b42204ec9ed090361fb4fab"
         }
       },
       "hotspot_counts": {
@@ -3208,6 +3210,26 @@
           "count": 14,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 11016
+        },
+        "scenes/02-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/02-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/02-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/02-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
         },
         "scenes/02-46.anm": {
           "count": 1,
@@ -3919,8 +3941,8 @@
         18,
         19
       ],
-      "animations": 60,
-      "frames": 765,
+      "animations": 64,
+      "frames": 839,
       "backgrounds": {
         "scenes/00.p8": [
           640,
@@ -4137,22 +4159,22 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.4.0",
+        "MIDlet-Version": "0.4.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "240x320"
       },
-      "sha256": "43c63a52955378a7e228f0b240d67f1ca5becf4c7b016736efce66c6de9c5035",
-      "jar_bytes": 2602188,
-      "entry_count": 137,
-      "uncompressed_bytes": 13417934,
+      "sha256": "472cb0452848e36a76001a376b54d154ea4314981995642cc43bcf31c0cfa7f2",
+      "jar_bytes": 2630641,
+      "entry_count": 141,
+      "uncompressed_bytes": 13803551,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 60,
+        ".anm": 64,
         ".bar": 16,
         ".bin": 1,
         ".class": 19,
@@ -4345,7 +4367,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8c052726a60613f32f996ed01110af90ede3553f41ca9a3d385bcd51d967e326"
+          "sha256": "695762d0c7c74b9173b82dcefdb60525e897b1fe2773a51f72f236a264c322ce"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -4366,7 +4388,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "21c52013d9a6ccc992339ce6d5773359e0f395d3cbbabb2ad31dc937c19ce62b"
+          "sha256": "cf862be4833be31915088d6b201d6db7bf5348a91be6fe4fcf860d24514eeb17"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -4424,19 +4446,21 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7b2ed991f446db45bc3f38911c4d16ec10961453dff01a13225ec4b5c62d419e"
+          "sha256": "7a5758c33279ddeca8330cfcf2c26a93beaadb4ad97b8089dd1d6de98ae36c79"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
           "major": 45,
           "api_references": [
             "java/io/IOException",
+            "java/lang/Math",
             "java/lang/Object",
             "java/lang/String",
-            "java/lang/StringBuffer"
+            "java/lang/StringBuffer",
+            "java/lang/System"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "dfafbfe8d27d90eaa4d2aa7314eff4964bb89ea808c086d3be4e43cc4c6c3277"
+          "sha256": "955c5cfbde985e54e300bcb33cce12707a034aae1b42204ec9ed090361fb4fab"
         }
       },
       "hotspot_counts": {
@@ -4509,6 +4533,26 @@
           "count": 14,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 11016
+        },
+        "scenes/02-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/02-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/02-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/02-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
         },
         "scenes/02-46.anm": {
           "count": 1,

@@ -22,8 +22,8 @@
     18,
     19
   ],
-  "animations": 60,
-  "frames": 765,
+  "animations": 64,
+  "frames": 839,
   "backgrounds": {
     "scenes/00.p8": [
       640,
@@ -236,13 +236,20 @@
       480
     ]
   },
-  "version": "0.4.0",
-  "jar_size": 2602188,
-  "jar_sha256": "43c63a52955378a7e228f0b240d67f1ca5becf4c7b016736efce66c6de9c5035",
+  "version": "0.4.1",
+  "jar_size": 2630641,
+  "jar_sha256": "472cb0452848e36a76001a376b54d154ea4314981995642cc43bcf31c0cfa7f2",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
+  "original_window_rule_oracle_cases": 8,
   "existing_visual_payloads_preserved": true,
+  "added_original_sprite_ids": [
+    12,
+    16,
+    34,
+    36
+  ],
   "code_defined_hotspots": {
     "scene_02_window": [
       150,

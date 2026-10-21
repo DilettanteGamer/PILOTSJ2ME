@@ -181,7 +181,7 @@ MenuCanvas.Host {
     }
 
     private void help() {
-        this.notice("Управление", "2/4/6/8: курсор. 5 или касание: действие по окну (жёлтый курсор). 1: Шеф — стучит. 3: Коллега — открывает окно, затем заглядывает. *: масштаб. 0: меню, сохранение и загрузка. 7/9: просмотр сцен. В списке анимаций 1/3: выбор, 5: повтор. Это первый игровой фрагмент: ходьба, предметы и головоломка ворот пока не перенесены.");
+        this.notice("Управление", "2/4/6/8: курсор. 5 или касание: действие по окну (жёлтый курсор). 1: Шеф — стучит в закрытое окно, на открытое отвечает иначе. 3: Коллега — открывает окно, затем заглядывает. *: масштаб. 0: меню, сохранение и загрузка. 7/9: просмотр сцен. В списке анимаций 1/3: выбор, 5: повтор. Это первый игровой фрагмент: ходьба, предметы и головоломка ворот пока не перенесены.");
     }
 
     final class GameCanvas
@@ -338,7 +338,7 @@ MenuCanvas.Host {
             }
         }
 
-        // Display/menu pause preserves the action; scene replacement cancels it.
+        // Display/menu pause preserves the action; scene replacement resumes saved script steps.
         public void run() {
             while (true) {
                 GameCanvas gameCanvas;
@@ -386,12 +386,12 @@ MenuCanvas.Host {
                 return;
             }
             boolean bl = false;
-            int n = 0;
-            while (n < this.scene.actors.length) {
-                bl = this.scene.actors[n].update(l) || bl;
-                ++n;
+            if (this.zoo != null) {
+                bl = this.zoo.update(l);
+            } else {
+                for (int n = 0; n < this.scene.actors.length; n++)
+                    bl = this.scene.actors[n].update(l) || bl;
             }
-            if (this.zoo != null) bl = this.zoo.finishIfReady() || bl;
             if (bl) {
                 this.repaint();
             }

@@ -14,9 +14,10 @@ import zipfile
 
 sys.dont_write_bytecode = True
 import build as resources
+from extract_window_gameplay import extract
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.4.0'
+VERSION = '0.4.1'
 
 
 def run(command):
@@ -37,7 +38,7 @@ def toolchain(cache):
     return result
 
 
-def compile_game(java, javac, tools, work):
+def compile_game(java, javac, tools, work, evidence):
     api = [tools['cldcapi11-2.0.4.jar'], tools['midpapi20-2.0.4.jar']]
     raw = work / 'raw'
     run([java, '-jar', tools['ecj-4.6.1.jar'], '-proc:none', '-encoding', 'UTF-8',
@@ -51,12 +52,14 @@ def compile_game(java, javac, tools, work):
     test_classes = work / 'tests'
     run([javac, '-encoding', 'UTF-8', '-d', test_classes,
          ROOT / 'src/pilots/GameState.java', ROOT / 'src/pilots/ZooLogic.java', ROOT / 'tests/ZooLogicTest.java'])
-    run([java, '-cp', test_classes, 'pilots.ZooLogicTest'])
+    fixture = work / 'source-window-cases.csv'
+    fixture.write_text('\n'.join(','.join(map(str, row)) for row in evidence['fixtures']) + '\n')
+    run([java, '-cp', test_classes, 'pilots.ZooLogicTest', fixture])
     with zipfile.ZipFile(preverified) as archive:
         return {n: archive.read(n) for n in archive.namelist() if n.endswith('.class')}
 
 
-def package(profile, classes, output):
+def package(profile, classes, sprites, output):
     source = ROOT / 'input' / ('Pilots-' + profile + '.jar')
     locked = json.loads((ROOT / 'baselines.json').read_text())
     resources.require(hashlib.sha256(source.read_bytes()).hexdigest() == locked[profile], 'Baseline hash mismatch')
@@ -65,12 +68,13 @@ def package(profile, classes, output):
     entries, changes = resources.adjust_animations(baseline, json.loads((ROOT / 'animation-adjustments.json').read_text()))
     entries = {n: d for n, d in entries.items() if not n.endswith('.class')}
     entries.update(classes)
+    entries.update(sprites)
     manifest = resources.manifest(entries['META-INF/MANIFEST.MF'])
     manifest['MIDlet-Version'] = VERSION
     entries['META-INF/MANIFEST.MF'] = ('\r\n'.join(k + ': ' + v for k, v in manifest.items()) + '\r\n\r\n').encode()
     report = resources.validate(entries, profile)
     # Existing animation payloads and source profile rasters must remain byte-identical.
-    resources.require(all(d == baseline[n] for n, d in entries.items() if n.endswith(('.anm', '.p8', '.bar'))), 'Existing visual resource changed')
+    resources.require(all(d == baseline[n] for n, d in entries.items() if n in baseline and n.endswith(('.anm', '.p8', '.bar'))), 'Existing visual resource changed')
     output.mkdir(parents=True, exist_ok=True)
     target = output / source.name
     with zipfile.ZipFile(target, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
@@ -89,7 +93,7 @@ def package(profile, classes, output):
                   jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(), bytecode_preserved=False,
                   compilation='ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs',
                   preverification='ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation',
-                  existing_visual_payloads_preserved=True, code_defined_hotspots={'scene_02_window': [150, 224, 68, 66]}, validation='Gameplay state tests, headless resource wiring tests and static packaging checks; no emulator or device test',
+                  original_window_rule_oracle_cases=8, existing_visual_payloads_preserved=True, added_original_sprite_ids=[12, 16, 34, 36], code_defined_hotspots={'scene_02_window': [150, 224, 68, 66]}, validation='Gameplay state tests, headless resource wiring tests and static packaging checks; no emulator or device test',
                   **changes)
     target.with_suffix('.report.json').write_text(json.dumps(report, indent=2) + '\n')
     print(profile + ': built ' + str(target) + ' (' + str(report['classes']) + ' preverified classes)')
@@ -108,10 +112,14 @@ def main():
     output = args.out.resolve()
     resources.require(output != ROOT / 'input' and ROOT / 'input' not in output.parents, 'Do not overwrite input/')
     tools = toolchain(args.tool_cache.resolve())
+    with zipfile.ZipFile(ROOT / 'input/Pilots-240x320.jar') as archive:
+        palette = archive.read('scenes/02-64.anm')[9:777]
+    sprites, evidence = extract((ROOT.parent / 'PILOTS.EXE').read_bytes(), palette)
+    (ROOT / 'analysis/window-original-rules.json').write_text(json.dumps(evidence, indent=2) + '\n')
     with tempfile.TemporaryDirectory(prefix='pilots-build-') as temporary:
-        classes = compile_game(java, javac, tools, Path(temporary))
+        classes = compile_game(java, javac, tools, Path(temporary), evidence)
         for profile in ['128x128', '240x320'] if args.profile == 'all' else [args.profile]:
-            package(profile, classes, output)
+            package(profile, classes, sprites, output)
             test_classes = Path(temporary) / 'adapter-tests'
             target = output / ('Pilots-' + profile + '.jar')
             classpath = os.pathsep.join(map(str, [target, tools['midpapi20-2.0.4.jar']]))
