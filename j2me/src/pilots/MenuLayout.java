@@ -61,4 +61,3 @@ public final class MenuLayout {
         return this.first + (n - this.header) / this.rowHeight;
     }
 }
-

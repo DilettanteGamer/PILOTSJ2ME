@@ -117,4 +117,3 @@ public final class ScriptVM {
         public void message(int var1);
     }
 }
-

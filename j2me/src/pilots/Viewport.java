@@ -79,4 +79,3 @@ public final class Viewport {
         return Math.max(n2, Math.min(n, n3));
     }
 }
-

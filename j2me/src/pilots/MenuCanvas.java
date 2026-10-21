@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0.152.
- * 
+ *
  * Could not load the following classes:
  *  javax.microedition.lcdui.Canvas
  *  javax.microedition.lcdui.Command
@@ -212,4 +212,3 @@ implements CommandListener {
         public void choose(int var1);
     }
 }
-
