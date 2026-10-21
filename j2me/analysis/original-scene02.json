@@ -88,6 +88,19 @@
       "record_offset": 1040991
     },
     {
+      "entity": 24,
+      "cell": [
+        2,
+        14
+      ],
+      "world": [
+        128,
+        224
+      ],
+      "rule_id": 6,
+      "record_offset": 1041075
+    },
+    {
       "entity": 15,
       "cell": [
         5,
@@ -307,6 +320,19 @@
       ],
       "rule_id": 83,
       "record_offset": 1042427
+    },
+    {
+      "entity": 23,
+      "cell": [
+        2,
+        14
+      ],
+      "world": [
+        128,
+        224
+      ],
+      "rule_id": 0,
+      "record_offset": 2783222
     }
   ],
   "scope": "Absolute placement rules only; not executed gameplay or a complete interpreter"

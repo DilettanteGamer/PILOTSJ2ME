@@ -272,8 +272,8 @@
     28,
     30
   ],
-  "jar_sha256": "0aba4908553ead6f0be6c1cfbc0bddb7e08b4f68b586521fd569799ecfb630ed",
-  "jar_size": 1228436,
+  "jar_sha256": "957ee7e5cc57544d86ae1e95c41948114e4bf66babc94accba52c4c10fbfde36",
+  "jar_size": 1228432,
   "bytecode_preserved": true,
   "modified_entries": [
     "META-INF/MANIFEST.MF",

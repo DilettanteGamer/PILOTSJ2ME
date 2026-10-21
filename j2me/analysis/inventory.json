@@ -2836,15 +2836,15 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.3.5",
+        "MIDlet-Version": "0.3.6",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "128x128"
       },
-      "sha256": "0aba4908553ead6f0be6c1cfbc0bddb7e08b4f68b586521fd569799ecfb630ed",
-      "jar_bytes": 1228436,
+      "sha256": "957ee7e5cc57544d86ae1e95c41948114e4bf66babc94accba52c4c10fbfde36",
+      "jar_bytes": 1228432,
       "entry_count": 135,
       "uncompressed_bytes": 9514633,
       "extension_counts": {
@@ -3146,8 +3146,8 @@
           },
           {
             "id": 64,
-            "x": 200,
-            "y": 328
+            "x": 192,
+            "y": 304
           },
           {
             "id": 95,
@@ -3510,12 +3510,12 @@
         {
           "resource_id": 64,
           "anchor": [
-            200,
-            328
+            192,
+            304
           ],
           "focus": [
-            265,
-            263
+            257,
+            239
           ],
           "label": "05 Коллега"
         },
@@ -3642,24 +3642,24 @@
         {
           "resource_id": 86,
           "anchor": [
-            144,
-            320
+            192,
+            304
           ],
           "focus": [
-            168,
-            292
+            216,
+            276
           ],
           "label": "16 Шеф"
         },
         {
           "resource_id": 87,
           "anchor": [
-            144,
-            320
+            192,
+            304
           ],
           "focus": [
-            176,
-            296
+            224,
+            280
           ],
           "label": "17 Коллега"
         },
@@ -4115,15 +4115,15 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.3.5",
+        "MIDlet-Version": "0.3.6",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "240x320"
       },
-      "sha256": "064e2cc9d95e72f0c05212dfa04c0771ac9b887f1ee505a547463c757ad7068c",
-      "jar_bytes": 2597846,
+      "sha256": "d7a41f8c7ac472b6e25e714d463715f4e6118f6a655a8200bbb4e24abf8f5e97",
+      "jar_bytes": 2597842,
       "entry_count": 135,
       "uncompressed_bytes": 13410953,
       "extension_counts": {
@@ -4425,8 +4425,8 @@
           },
           {
             "id": 64,
-            "x": 200,
-            "y": 328
+            "x": 192,
+            "y": 304
           },
           {
             "id": 95,
@@ -4789,12 +4789,12 @@
         {
           "resource_id": 64,
           "anchor": [
-            200,
-            328
+            192,
+            304
           ],
           "focus": [
-            265,
-            263
+            257,
+            239
           ],
           "label": "05 Коллега"
         },
@@ -4921,24 +4921,24 @@
         {
           "resource_id": 86,
           "anchor": [
-            144,
-            320
+            192,
+            304
           ],
           "focus": [
-            168,
-            292
+            216,
+            276
           ],
           "label": "16 Шеф"
         },
         {
           "resource_id": 87,
           "anchor": [
-            144,
-            320
+            192,
+            304
           ],
           "focus": [
-            176,
-            296
+            224,
+            280
           ],
           "label": "17 Коллега"
         },
