@@ -480,7 +480,8 @@ MenuCanvas.Host {
             graphics.setClip(0, 0, this.getWidth(), this.view.height);
             this.scene.background.paint(graphics, this.view);
             int n = 0;
-            while (n < this.scene.actors.length) {
+            if(this.zoo!=null) this.zoo.paint(graphics,this.view);
+            else while (n < this.scene.actors.length) {
                 this.scene.actors[n].paint(graphics, this.view);
                 ++n;
             }
