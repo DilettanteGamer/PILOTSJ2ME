@@ -157,7 +157,7 @@ def main():
                   background_pixels_and_palette_identical=True,
                   animation_ids=sorted(r['id'] for r in source if r['code'] == 0x40),
                   frame_record_count=sum(r['code'] == 0x43 for r in source),
-                  placement_evidence=[c for c in cells if c['entity'] in [6, 7, 14, 15, 16, 17, 18, 30]],
+                  placement_evidence=[c for c in cells if c['entity'] in [6, 7, 14, 15, 16, 17, 18, 23, 24, 30]],
                   scope='Absolute placement rules only; not executed gameplay or a complete interpreter')
     (ROOT / 'analysis/original-scene02.json').write_text(json.dumps(report, indent=2) + '\n')
     print('Original section 4:', len(source), 'records; zoo background and palette match JAR exactly')

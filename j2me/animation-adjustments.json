@@ -1,5 +1,5 @@
 {
-  "version": "0.3.5",
+  "version": "0.3.6",
   "remove_preview_ids": [
     106
   ],
@@ -11,10 +11,10 @@
       264
     ],
     "64": [
-      200,
-      328,
-      265,
-      263
+      192,
+      304,
+      257,
+      239
     ],
     "66": [
       277,
@@ -47,16 +47,16 @@
       285
     ],
     "86": [
-      144,
-      320,
-      168,
-      292
+      192,
+      304,
+      216,
+      276
     ],
     "87": [
-      144,
-      320,
-      176,
-      296
+      192,
+      304,
+      224,
+      280
     ],
     "88": [
       277,
@@ -117,11 +117,11 @@
     28,
     30
   ],
-  "note": "0.3.5: 05/16/17 positioned at the narrow window above the barrel, identified from the user screenshot. 02/27 placed at the gate foreground; 28 at the guard gate anchor. These are preview placements only, not gameplay triggers. Reactions 14/15/21/22/30 and all animation frames remain unchanged; gameplay conditions for all seven reactions remain deferred.",
+  "note": "0.3.6: correct window placement by registering closed-window resource 62 at original entity 23/24 root (128,224) with the pane inside animation 64; resulting actor anchor (192,304) is used for 05/16/17. Gate placements from 0.3.5 and other resources are unchanged. No gameplay triggers or animation frames changed.",
   "actor_anchors": {
     "64": [
-      200,
-      328
+      192,
+      304
     ],
     "95": [
       448,
@@ -159,12 +159,20 @@
     "guard_at_gate": [
       256,
       128
+    ],
+    "window_sprite_root": [
+      128,
+      224
+    ],
+    "window_actor_root": [
+      192,
+      304
     ]
   },
   "placement_basis": {
-    "64": "user screenshot: narrow window above barrel",
-    "86": "user screenshot: narrow window above barrel",
-    "87": "user screenshot: narrow window above barrel",
+    "64": "original window entity 23/24 root 128,224; closed-pane pixel registration yields actor root 192,304",
+    "86": "original window entity 23/24 root 128,224; closed-pane pixel registration yields actor root 192,304",
+    "87": "original window entity 23/24 root 128,224; closed-pane pixel registration yields actor root 192,304",
     "56": "user instruction: by zoo gate",
     "102": "user instruction: by zoo gate",
     "103": "user instruction: by zoo gate"
