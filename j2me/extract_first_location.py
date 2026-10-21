@@ -79,6 +79,19 @@ def extract(original):
     require(get(0x60,84,0)[-8:]==bytes.fromhex('121407101114070f'),'Exit formation changed')
     binary.extend(struct.pack('>H',len(actions)))
     for action,hero,branch,clip,end in actions: binary.extend(struct.pack('>BBBHH',action,hero,branch,clip,end))
+    walking=[]
+    for hero,indices in [(0,[79,77,75,73]),(1,[69,67,63,65])]:
+        for direction,index in enumerate(indices,1):
+            native_direction={1:6,2:2,3:0,4:4}[direction]
+            for half in [0,1]:
+                g={8:half,12:half,0x40:10,0x44:10};calls=[]
+                require(execute(get(0x2b,17+hero,index+half),g,[],walk_direction=native_direction),'Walking predicate changed')
+                execute(get(0x2c,17+hero,index+half),g,calls)
+                clip=next(arg for api,arg in calls if api==0x13)
+                walking.append([hero,direction,half,clip,g[0x10 if hero==0 else 0x14],g[8 if hero==0 else 12],g[0x40 if hero==0 else 0x44]-10])
+    common,_,_=records(original,1)
+    require(all(next(r['data'] for r in common if r['code']==0x40 and r['id']==n)[3]==5 for n in range(20,34)),
+            'Original gait frame counts changed')
     # Record every action/event body used by this location, including metadata and map mutations.
     for r in source:
         if r['id'] in [14,17,18,25,29,30,31,33,34,35] and r['code'] in [0x21,0x22,0x2a,0x2b,0x2c]:
@@ -97,7 +110,7 @@ def extract(original):
     require(binary[4+(((7-1)*2+0)*4+3)*16+0]==26,'Absent guard routing changed')
     return bytes(binary),dict(source_sha256=EXPECTED,routing_order=['target','hero','item','flags'],
         flags={'window_open':1,'cat_present':2,'guard_present':4,'wall_broken':8},
-        fixtures=fixtures,actions=actions,static_gate_roots=static_roots,descriptor_layers=layers,
+        fixtures=fixtures,actions=actions,walking_fields=['hero','direction','half','clip','idle_pose','next_branch','layer_delta'],walking_cases=walking,static_gate_roots=static_roots,descriptor_layers=layers,
         records=[dict(code=r['code'],object=r['id'],index=r['args'][0],offset=r['offset'],bytecode=r['data'].hex()) for r in evidence])
 
 

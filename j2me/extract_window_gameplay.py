@@ -13,7 +13,7 @@ from build import require
 ROOT = Path(__file__).resolve().parent
 
 
-def execute(code, globals_, calls, map_queries=None):
+def execute(code, globals_, calls, map_queries=None, walk_direction=None):
     """Bounded oracle for the straight-line VM subset used by the selected rules.
 
     Opcodes are transcribed from 00408e84..00409068, not from the port's logic.
@@ -38,10 +38,10 @@ def execute(code, globals_, calls, map_queries=None):
             elif op == 0x10:
                 globals_[value] = a
             else:
-                require(value in (0, 9, 0x11, 0x13, 0x14, 0x19), 'Unsupported oracle native API')
+                require(value in (0, 9, 0x11, 0x13, 0x14, 0x19) or value==0x26 and walk_direction is not None, 'Unsupported oracle native API')
                 arg = stack.pop() if value != 0 else None
                 calls.append([value, arg])
-                a = int(arg in map_queries) if value == 9 else 1
+                a = int(arg in map_queries) if value == 9 else int(arg==walk_direction) if value==0x26 else 1
         elif op == 0x21:
             stack.append(a)
         elif op == 0x22:
@@ -52,6 +52,8 @@ def execute(code, globals_, calls, map_queries=None):
             a = int(d < a)
         elif op == 5:
             a = int(d > a)
+        elif op == 0x2d:
+            a = d - a  # 00408fe8: NEG EAX; ADD EAX, EDX.
         elif op == 0x17:
             a |= d
         elif op == 0x15:

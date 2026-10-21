@@ -32,11 +32,25 @@ public final class ZooScene {
 
     private AnimatedActor hero(int hero) throws IOException {
         boolean active=logic.pendingClip()!=0 && logic.hero()==hero;
-        int id=active?logic.pendingClip():hero==0?ZooLogic.GLOBAL_CHIEF_IDLE:ZooLogic.GLOBAL_COLLEAGUE_IDLE;
-        int frame=active?logic.step()-1:0;
+        int id=heroClip(hero);
+        int frame=active?logic.step()-1:logic.walking() && logic.hero()==hero?logic.walkFrame(hero):0;
         if(hero==0 && logic.pendingAction()==30 && logic.step()>12) { id=20014;frame=0;active=false; }
         if(hero==0 && logic.guardPhase()==2) { id=102;frame=0;active=false; }
         return actor(id,logic.heroX(hero),logic.heroY(hero),active,frame);
+    }
+
+    private int heroClip(int hero) {
+        if(hero==0 && logic.pendingAction()==30 && logic.step()>12) return 20014;
+        if(hero==0 && logic.guardPhase()==2) return 102;
+        return logic.pendingClip()!=0 && logic.hero()==hero?logic.pendingClip():logic.heroClip(hero);
+    }
+    private void syncHero(int hero) throws IOException {
+        AnimatedActor current=scene.actors[2+hero];
+        int id=heroClip(hero);
+        boolean walking=logic.walking() && logic.hero()==hero;
+        int frame=logic.walkFrame(hero);
+        if(current.id!=id || walking && current.clip.index>frame) replace(2+hero,hero(hero));
+        else if(walking) while(current.clip.index<frame) current.clip.advance();
     }
 
     private AnimatedActor crow() throws IOException {
@@ -202,7 +216,9 @@ public final class ZooScene {
         if(pathIndex<path.length) {
             int x=logic.heroX(logic.hero()),y=logic.heroY(logic.hero());
             int dx=Math.max(-8,Math.min(8,path[pathIndex]-x)),dy=Math.max(-8,Math.min(8,path[pathIndex+1]-y));
+            if(dx!=0 || dy!=0) logic.walkStep(dx,dy);
             logic.placeHero(logic.hero(),x+dx,y+dy);
+            syncHero(logic.hero());
             scene.actors[2+logic.hero()].x=x+dx;scene.actors[2+logic.hero()].y=y+dy;
             if(x+dx==path[pathIndex] && y+dy==path[pathIndex+1]) pathIndex+=2;
             return true;
@@ -256,6 +272,7 @@ public final class ZooScene {
         boolean changed = false;
         while (elapsed >= 100L) {
             elapsed -= 100L;
+            changed=logic.tickSubtitle() || changed;
             changed=walkTick() || changed;
             for (int i = 0; i < scene.actors.length; i++) changed = scene.actors[i].update(100L) || changed;
             if (logic.crowState() == 1) {
@@ -287,12 +304,7 @@ public final class ZooScene {
                     replace(0, actor(logic.windowOpen() ? 63 : 62, 128, 224, false, 0));
                 scene.actors[0].visible = logic.shuttersVisible();
                 if(scene.actors[1].id!=logic.guardClip() || scene.actors[1].visible!=(logic.guardPhase()!=0)) replace(1,guard());
-                for(int h=0;h<2;h++) {
-                    int desired=logic.pendingClip()!=0 && logic.hero()==h?logic.pendingClip():h==0?20012:20016;
-                    if(h==0 && logic.pendingAction()==30 && logic.step()>12) desired=20014;
-                    if(h==0 && logic.guardPhase()==2) desired=102;
-                    if(scene.actors[2+h].id!=desired) replace(2+h,hero(h));
-                }
+                for(int h=0;h<2;h++) syncHero(h);
                 scene.actors[9].visible=!logic.hasItem(2);
                 scene.actors[10].visible=logic.pendingAction()!=20;
                 if(scene.actors[11].id!=(logic.gateState()==0?51:logic.gateState()==1?49:50)) replace(11,gate());

@@ -82,8 +82,19 @@ public final class ZooLogic {
         state.variables[10]=action; state.variables[63]=target;
         state.variables[52]=variant>>>16; state.variables[53]=1;
         if (action==30) { state.variables[0]=3; state.variables[1]=1; state.variables[3]=97; state.variables[4]=0; }
-        if (action==28) { state.variables[14]=0; state.variables[15]=0; }
+        if (action==23 || action==28) { state.variables[14]=0; state.variables[15]=0; }
+        state.variables[18]=state.variables[19]=0;
+        subtitleForStep();
         return pendingClip();
+    }
+    private void subtitleForStep() {
+        int cue=ZooSubtitles.at(pendingAction(),hero(),state.variables[hero()==0?51:46],step());
+        if(cue!=0) { state.variables[18]=cue;state.variables[19]=35; }
+    }
+    public boolean tickSubtitle() {
+        if(state.variables[19]<=0) return false;
+        if(--state.variables[19]==0) { state.variables[18]=0;return true; }
+        return false;
     }
     public int endStep() {
         if (pendingAction()!=0) {
@@ -97,6 +108,7 @@ public final class ZooLogic {
     public void advance() {
         if (pendingClip()==0) return;
         state.variables[53]++;
+        subtitleForStep();
         if (pendingClip() == 64) {
             if (step() >= 13) state.variables[61] = 1;
             if (step() >= 38 && crowState() == 0) state.variables[62] = 1;
@@ -107,7 +119,7 @@ public final class ZooLogic {
             state.inventory[2]=true; state.variables[42]=state.variables[43]=0;
         }
         if (pendingAction()==23 && step()==8) { state.variables[7]=1; state.variables[8]=0; }
-        if (pendingAction()==28 && step()==9) { state.variables[14]=1; state.variables[15]=0; }
+        if (pendingAction()==28 && step()==9) { state.variables[14]=state.variables[7]==2?1:2; state.variables[15]=0; }
         if (pendingAction()==30) {
             state.variables[1]=step();
             if (step()==51) { state.variables[5]=1; state.variables[6]=0; }
@@ -135,8 +147,8 @@ public final class ZooLogic {
     }
     public String message() {
         if (completed()) return "Первая локация пройдена";
-        if (guardPhase()==2) return state.variables[1]==0 ? "Шеф: Откройте!  [5]" : "Сторож: Доступ ограничен.  [5]";
-        return null;
+        if (guardPhase()==2) return ZooSubtitles.text(state.variables[1]==0?34:35)+"  [5]";
+        return state.variables[19]>0?ZooSubtitles.text(state.variables[18]):null;
     }
     public boolean continueTalk() {
         if (guardPhase()!=2) return false;
@@ -157,10 +169,14 @@ public final class ZooLogic {
     public boolean wallBroken() { return state.variables[7]!=0; }
     public int wallFrame() { return state.variables[8]; }
     public void wallFrame(int f) { state.variables[8]=f; }
-    public void finishWall() { state.variables[7]=2; state.variables[8]=0; }
+    public void finishWall() {
+        state.variables[7]=2; state.variables[8]=0;
+        // User sequence: clip 104 (catalog 29) starts after clip 73 (catalog 10).
+        state.variables[14]=1;state.variables[15]=0;
+    }
     public int rockFrame() { return state.variables[15]; }
     public void rockFrame(int f) { state.variables[15]=f; }
-    public boolean rockActive() { return state.variables[14]!=0; }
+    public boolean rockActive() { return state.variables[14]==1; }
     public void finishRock() { state.variables[14]=state.variables[15]=0; }
     public boolean completed() { return state.variables[11]==1; }
     public void completeLocation() { state.variables[11]=1; state.scene=2; }
@@ -169,7 +185,27 @@ public final class ZooLogic {
     public int walkX() { return state.variables[28]; }
     public int walkY() { return state.variables[29]; }
     public void queueWalk(int target,int x,int y) {
+        state.variables[16+hero()]=-1;
         state.variables[30]=1; state.variables[31]=target; state.variables[28]=x; state.variables[29]=y;
+    }
+    // Original common sprites 20..33: two five-frame halves of each gait.
+    public int walkFrame(int hero) { return Math.max(0,state.variables[16+hero])%5; }
+    public int heroClip(int hero) {
+        int direction=state.variables[12+hero],half=Math.max(0,state.variables[16+hero])/5;
+        if(walking() && hero()==hero && state.variables[16+hero]>=0) {
+            if(hero==0) return 20000+(direction==1?20:direction==2?21:direction==3?24+half:22+half);
+            return 20000+(direction==1?32+half:direction==2?28+half:direction==3?30+half:26+half);
+        }
+        if(direction==0) return hero==0?GLOBAL_CHIEF_IDLE:GLOBAL_COLLEAGUE_IDLE;
+        int pose=direction==1?(half==0?2:0):direction==2?(half==0?3:1):direction==3?(half==0?2:3):(half==0?0:1);
+        return 20000+(hero==0?12:16)+pose;
+    }
+    public void walkStep(int dx,int dy) {
+        int hero=hero(),direction=dx<0?1:dx>0?2:dy<0?3:4;
+        if(state.variables[12+hero]!=direction || state.variables[16+hero]<0) state.variables[16+hero]=0;
+        else state.variables[16+hero]=(state.variables[16+hero]+1)%10;
+        state.variables[12+hero]=direction;
+        state.variables[hero==0?51:46]=1-state.variables[16+hero]/5;
     }
     public void finishWalk() { state.variables[30]=state.variables[31]=0; }
 
