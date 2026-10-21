@@ -13,13 +13,15 @@ from build import require
 ROOT = Path(__file__).resolve().parent
 
 
-def execute(code, globals_, calls):
+def execute(code, globals_, calls, map_queries=None):
     """Bounded oracle for the straight-line VM subset used by the selected rules.
 
     Opcodes are transcribed from 00408e84..00409068, not from the port's logic.
     Native API 09 is evaluated with both heroes already at the interaction mark.
     """
     pos, a, d, stack = 0, 0, 0, []
+    if map_queries is None:
+        map_queries = {62, 63}
     while pos < len(code):
         op = code[pos]
         pos += 1
@@ -39,13 +41,19 @@ def execute(code, globals_, calls):
                 require(value in (0, 9, 0x11, 0x13, 0x14, 0x19), 'Unsupported oracle native API')
                 arg = stack.pop() if value != 0 else None
                 calls.append([value, arg])
-                a = int(arg in (62, 63)) if value == 9 else 1
+                a = int(arg in map_queries) if value == 9 else 1
         elif op == 0x21:
             stack.append(a)
         elif op == 0x22:
             d = stack.pop()
         elif op == 1:
             a = int(d == a)
+        elif op == 3:
+            a = int(d < a)
+        elif op == 5:
+            a = int(d > a)
+        elif op == 0x17:
+            a |= d
         elif op == 0x15:
             a += d
         elif op == 0x19:
@@ -118,7 +126,7 @@ def extract(original, palette):
                   records=[dict(code=r['code'], object=r['id'], index=r['args'][0], offset=r['offset'], bytecode=r['data'].hex()) for r in evidence],
                   fixtures=fixtures)
     sprites = {}
-    for ident in (12, 16, 34, 36):
+    for ident in (12, 16, 34, 35, 36, 37):
         header = next(r['data'] for r in common if r['code'] == 0x40 and r['id'] == ident)
         table = next(r['data'] for r in common if r['code'] == 0x42 and r['id'] == ident)
         require(header[2] == 1 and len(table) == header[3] * 8, 'Expected single-direction source sprite')

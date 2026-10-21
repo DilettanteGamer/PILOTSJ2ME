@@ -151,7 +151,26 @@ MenuCanvas.Host {
         }
     }
 
+    private void showInventory() {
+        if (this.canvas.zoo == null) {
+            this.notice("Инвентарь", "Предметы доступны на игровой сцене у зоопарка.");
+            return;
+        }
+        final String[] items = this.canvas.zoo.logic.hasKettle()
+            ? new String[]{"Назад", "Без предмета", "Чайник"}
+            : new String[]{"Назад", "Без предмета"};
+        MenuCanvas inventory = new MenuCanvas(new MenuCanvas.Host() {
+            public void choose(int choice) {
+                if (choice != 0) PilotsMidlet.this.canvas.selectKettle(choice == 2);
+                PilotsMidlet.this.display.setCurrent((Displayable)PilotsMidlet.this.canvas);
+            }
+        }, "Инвентарь", items);
+        inventory.select(this.canvas.zoo.logic.kettleSelected() ? 2 : 1);
+        this.display.setCurrent((Displayable)inventory);
+    }
+
     public void choose(int n) {
+        if (n == 8) { this.showInventory(); return; }
         if (n == 6) {
             this.showAnimationMenu();
             return;
@@ -181,7 +200,7 @@ MenuCanvas.Host {
     }
 
     private void help() {
-        this.notice("Управление", "2/4/6/8: курсор. 5 или касание: действие по окну (жёлтый курсор). 1: Шеф — стучит в закрытое окно, на открытое отвечает иначе. 3: Коллега — открывает окно, затем заглядывает. *: масштаб. 0: меню, сохранение и загрузка. 7/9: просмотр сцен. В списке анимаций 1/3: выбор, 5: повтор. Это первый игровой фрагмент: ходьба, предметы и головоломка ворот пока не перенесены.");
+        this.notice("Управление", "2/4/6/8: курсор. 5 или касание: действие. 1: Шеф, 3: Коллега. #: инвентарь; выберите чайник, затем укажите объект. Без предмета — обычное действие. Меню инвентаря открывается и касанием нижней панели. *: масштаб. 0: меню, сохранение и загрузка. 7/9: просмотр сцен. В списке анимаций 1/3: выбор, 5: повтор. Доступны окно, чайник и бочка. Ходьба и головоломка ворот ещё переносятся.");
     }
 
     final class GameCanvas
@@ -470,7 +489,7 @@ MenuCanvas.Host {
             graphics.setColor(0);
             graphics.drawLine(n - 4, n2 + 1, n + 4, n2 + 1);
             graphics.drawLine(n + 1, n2 - 4, n + 1, n2 + 4);
-            graphics.setColor((this.zoo != null ? ZooLogic.atWindow(this.view.cursorX, this.view.cursorY) : this.scene.at(this.view.cursorX, this.view.cursorY) != null) ? 0xFFFF00 : 0xFFFFFF);
+            graphics.setColor((this.zoo != null ? this.zoo.logic.targetAt(this.view.cursorX, this.view.cursorY) != 0 : this.scene.at(this.view.cursorX, this.view.cursorY) != null) ? 0xFFFF00 : 0xFFFFFF);
             graphics.drawLine(n - 4, n2, n + 4, n2);
             graphics.drawLine(n, n2 - 4, n, n2 + 4);
             graphics.setClip(0, 0, this.getWidth(), this.getHeight());
@@ -482,7 +501,7 @@ MenuCanvas.Host {
                 graphics.setColor(0);
                 String label = this.zoo.logic.hero() == ZooLogic.CHIEF ? "1: Шеф" : "3: Коллега";
                 if (this.zoo.logic.busy()) label += " ...";
-                else if (ZooLogic.atWindow(this.view.cursorX, this.view.cursorY)) label += " 5: окно";
+                else label += this.zoo.logic.kettleSelected() ? " + чайник" : " # вещи";
                 graphics.drawString(label, 2, this.view.height, 20);
             }
         }
@@ -533,7 +552,8 @@ MenuCanvas.Host {
                     this.view.update();
                 } else {
                     if (!bl && n == 35) {
-                        PilotsMidlet.this.help();
+                        if (this.zoo != null) PilotsMidlet.this.showInventory();
+                        else PilotsMidlet.this.help();
                         return;
                     }
                     if (!bl && n == 48) {
@@ -566,6 +586,10 @@ MenuCanvas.Host {
         }
 
         protected synchronized void pointerPressed(int n, int n2) {
+            if (this.zoo != null && n2 >= this.view.height && n2 < this.getHeight()) {
+                PilotsMidlet.this.showInventory();
+                return;
+            }
             if (this.view == null || this.scene == null || n < this.view.left || n >= this.view.left + this.view.drawWidth || n2 < this.view.top || n2 >= Math.min(this.view.height, this.view.top + this.view.drawHeight)) {
                 return;
             }
@@ -578,6 +602,11 @@ MenuCanvas.Host {
             catch (IOException iOException) {
                 PilotsMidlet.this.notice("Error", iOException.toString());
             }
+            this.repaint();
+        }
+
+        synchronized void selectKettle(boolean selected) {
+            if (this.zoo != null) this.zoo.logic.selectKettle(selected);
             this.repaint();
         }
 
