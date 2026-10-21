@@ -1,0 +1,8 @@
+{
+  "version": "0.3.3",
+  "remove_preview_ids": [106],
+  "anchors": {},
+  "pending_placement_menu_numbers": [2, 5, 6, 9, 11, 12, 13, 16, 17, 18, 19, 20, 23, 24, 25],
+  "character_relative_menu_numbers": [14, 15, 21, 22, 27, 28, 30],
+  "note": "Menu numbers are original labels, not ANM resource IDs. Pending lists are recorded requirements, not implemented corrections. Character-relative placement and action triggers require engine changes."
+}
