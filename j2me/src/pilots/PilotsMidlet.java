@@ -152,25 +152,23 @@ MenuCanvas.Host {
     }
 
     private void showInventory() {
-        if (this.canvas.zoo == null) {
-            this.notice("Инвентарь", "Предметы доступны на игровой сцене у зоопарка.");
-            return;
-        }
-        final String[] items = this.canvas.zoo.logic.hasKettle()
-            ? new String[]{"Назад", "Без предмета", "Чайник"}
-            : new String[]{"Назад", "Без предмета"};
-        MenuCanvas inventory = new MenuCanvas(new MenuCanvas.Host() {
+        if(this.canvas.zoo==null) return;
+        final int[] values=new int[5];
+        int count=2;values[0]=-1;values[1]=0;
+        for(int item=1;item<=3;item++) if(this.canvas.zoo.logic.hasItem(item)) values[count++]=item;
+        String[] labels=new String[count];labels[0]="Назад";labels[1]="Без предмета";
+        for(int i=2;i<count;i++) labels[i]=values[i]==1?"Чайник":values[i]==2?"Кирка":"Монета";
+        MenuCanvas inventory=new MenuCanvas(new MenuCanvas.Host() {
             public void choose(int choice) {
-                if (choice != 0) PilotsMidlet.this.canvas.selectKettle(choice == 2);
+                if(choice>0) PilotsMidlet.this.canvas.selectItem(values[choice]);
                 PilotsMidlet.this.display.setCurrent((Displayable)PilotsMidlet.this.canvas);
             }
-        }, "Инвентарь", items);
-        inventory.select(this.canvas.zoo.logic.kettleSelected() ? 2 : 1);
+        },"Инвентарь",labels);
         this.display.setCurrent((Displayable)inventory);
     }
 
     public void choose(int n) {
-        if (n == 8) { this.showInventory(); return; }
+        if (n == 2) { this.showInventory(); return; }
         if (n == 6) {
             this.showAnimationMenu();
             return;
@@ -178,9 +176,8 @@ MenuCanvas.Host {
         this.display.setCurrent((Displayable)this.canvas);
         try {
             if (n == 1) {
-                this.canvas.changeScene(-1);
-            } else if (n == 2) {
-                this.canvas.changeScene(1);
+                this.canvas.newGame();
+
             } else if (n == 3) {
                 this.canvas.save();
                 this.notice("\u0421\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0435", "\u041f\u043e\u0437\u0438\u0446\u0438\u044f \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0430");
@@ -200,7 +197,7 @@ MenuCanvas.Host {
     }
 
     private void help() {
-        this.notice("Управление", "2/4/6/8: курсор. 5 или касание: действие. 1: Шеф, 3: Коллега. #: инвентарь; выберите чайник, затем укажите объект. Без предмета — обычное действие. Меню инвентаря открывается и касанием нижней панели. *: масштаб. 0: меню, сохранение и загрузка. 7/9: просмотр сцен. В списке анимаций 1/3: выбор, 5: повтор. Доступны окно, чайник и бочка. Ходьба и головоломка ворот ещё переносятся.");
+        this.notice("Управление","Нижние квадраты: Коллега, Шеф, рука, чайник, кирка, монета, меню. Выберите героя и предмет, затем объект на сцене. 2/4/6/8: курсор; 5: действие и продолжение диалога; 1/3: герои; 7: предмет; 9: герой; #: инвентарь; *: масштаб; 0: меню. После открытия ворот укажите проход: оба героя подойдут к выходу. Вторая локация не загружается.");
     }
 
     final class GameCanvas
@@ -209,6 +206,7 @@ MenuCanvas.Host {
     ScriptVM.Host {
         private Scene scene;
         private ZooScene zoo;
+        private ZooPanel zooPanel;
         private GameState state = new GameState();
         private Viewport view;
         private final int sceneCount;
@@ -260,6 +258,8 @@ MenuCanvas.Host {
         }
 
         public synchronized void goToScene(int n) throws IOException {
+            if (n!=2) throw new IOException("This build stays in the first location");
+            if (this.zooPanel!=null) { this.zooPanel.close();this.zooPanel=null; }
             if (this.sceneIndex(n) < 0) {
                 throw new IOException("Invalid scene ID");
             }
@@ -274,7 +274,8 @@ MenuCanvas.Host {
                 throw new IOException("Scene exceeds available heap");
             }
             this.state.scene = n;
-            this.zoo = n == 2 ? new ZooScene(this.scene, this.state) : null;
+            this.zoo = new ZooScene(this.scene,this.state);
+            this.zooPanel = new ZooPanel();
             this.view = new Viewport(Math.max(1, this.getWidth()), this.sceneHeight(this.getWidth(), this.getHeight()), this.scene.background.worldWidth, this.scene.background.worldHeight);
             this.view.cursorX = this.state.x;
             this.view.cursorY = this.state.y;
@@ -302,6 +303,7 @@ MenuCanvas.Host {
                 this.previewReturnState = gameState;
             }
             this.zoo = null;
+            if(this.zooPanel!=null) { this.zooPanel.close();this.zooPanel=null; }
             this.scene.close();
             this.scene.actors = new AnimatedActor[0];
             int n2 = ((PilotsMidlet)PilotsMidlet.this).animationCatalog.ids[n];
@@ -349,9 +351,8 @@ MenuCanvas.Host {
         synchronized void shutdown() {
             this.stopped = true;
             this.notifyAll();
-            if (this.scene != null) {
-                this.scene.close();
-            }
+            if (this.scene != null) this.scene.close();
+            if (this.zooPanel != null) this.zooPanel.close();
             if (this.animationThread != null) {
                 this.animationThread.interrupt();
             }
@@ -443,8 +444,7 @@ MenuCanvas.Host {
                 this.preview((this.previewIndex + n + ((PilotsMidlet)PilotsMidlet.this).animationCatalog.ids.length) % ((PilotsMidlet)PilotsMidlet.this).animationCatalog.ids.length);
                 return;
             }
-            this.syncState();
-            this.goToScene(this.sceneIds[(this.sceneIndex(this.state.scene) + n + this.sceneCount) % this.sceneCount]);
+            // Only animation previews can be cycled; gameplay is confined to scene 02.
         }
 
         public void message(int n) {
@@ -496,13 +496,22 @@ MenuCanvas.Host {
             if (this.scene.panel != null) {
                 this.scene.panel.paintPanel(graphics, this.getWidth(), this.getHeight(), this.panelHeight(this.getWidth(), this.getHeight()));
             }
-            if (this.zoo != null) {
-                graphics.setFont(javax.microedition.lcdui.Font.getFont(0, 0, 8));
-                graphics.setColor(0);
-                String label = this.zoo.logic.hero() == ZooLogic.CHIEF ? "1: Шеф" : "3: Коллега";
-                if (this.zoo.logic.busy()) label += " ...";
-                else label += this.zoo.logic.kettleSelected() ? " + чайник" : " # вещи";
-                graphics.drawString(label, 2, this.view.height, 20);
+            if(this.zooPanel!=null && this.zoo!=null)
+                this.zooPanel.paint(graphics,this.zoo.logic,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()));
+            if(this.zoo!=null && this.zoo.logic.message()!=null) {
+                javax.microedition.lcdui.Font font=javax.microedition.lcdui.Font.getFont(0,0,8);
+                graphics.setFont(font);
+                String remaining=this.zoo.logic.message();String[] lines=new String[6];int count=0;
+                while(remaining.length()>0 && count<lines.length) {
+                    int length=remaining.length();
+                    while(length>1 && font.stringWidth(remaining.substring(0,length))>this.getWidth()-4) length--;
+                    int space=remaining.substring(0,length).lastIndexOf(' ');
+                    if(length<remaining.length() && space>0) length=space;
+                    lines[count++]=remaining.substring(0,length);remaining=remaining.substring(length).trim();
+                }
+                graphics.setColor(0);graphics.fillRect(0,0,this.getWidth(),count*font.getHeight()+4);
+                graphics.setColor(0xffffff);
+                for(int i=0;i<count;i++) graphics.drawString(lines[i],2,2+i*font.getHeight(),20);
             }
         }
 
@@ -564,13 +573,13 @@ MenuCanvas.Host {
                         }
                         return;
                     }
-                    if (!bl && n == 55) {
-                        this.changeScene(-1);
-                        return;
+                    if (!bl && n == 55 && this.zoo!=null) {
+                        int item=this.zoo.logic.selectedItem();
+                        for(int i=0;i<4;i++) { item=(item+1)%4;if(this.zoo.logic.hasItem(item)) break; }
+                        this.zoo.logic.selectItem(item);this.repaint();return;
                     }
-                    if (!bl && n == 57) {
-                        this.changeScene(1);
-                        return;
+                    if (!bl && n == 57 && this.zoo!=null) {
+                        this.zoo.logic.select(1-this.zoo.logic.hero());this.repaint();return;
                     }
                     if (!(bl || n != 53 && n2 != 8)) {
                         this.activate();
@@ -586,9 +595,13 @@ MenuCanvas.Host {
         }
 
         protected synchronized void pointerPressed(int n, int n2) {
-            if (this.zoo != null && n2 >= this.view.height && n2 < this.getHeight()) {
-                PilotsMidlet.this.showInventory();
-                return;
+            if(this.zoo!=null && n2>=this.view.height && n2<this.getHeight()) {
+                int slot=ZooPanel.slotAt(n,n2,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()));
+                if(slot==0 || slot==1) this.zoo.logic.select(slot==0?1:0);
+                else if(slot==3) this.zoo.logic.selectItem(0);
+                else if(slot>=4 && slot<=6) this.zoo.logic.selectItem(slot-3);
+                else if(slot==9) PilotsMidlet.this.showMenu();
+                this.repaint();return;
             }
             if (this.view == null || this.scene == null || n < this.view.left || n >= this.view.left + this.view.drawWidth || n2 < this.view.top || n2 >= Math.min(this.view.height, this.view.top + this.view.drawHeight)) {
                 return;
@@ -605,9 +618,14 @@ MenuCanvas.Host {
             this.repaint();
         }
 
-        synchronized void selectKettle(boolean selected) {
-            if (this.zoo != null) this.zoo.logic.selectKettle(selected);
+        synchronized void selectItem(int item) {
+            if(this.zoo!=null) this.zoo.logic.selectItem(item);
             this.repaint();
+        }
+        synchronized void newGame() throws IOException {
+            this.previewReturnState=null;this.previewIndex=-1;
+            this.state=new GameState();this.state.x=320;this.state.y=304;
+            this.goToScene(2);
         }
 
         private void activate() throws IOException {
@@ -621,7 +639,7 @@ MenuCanvas.Host {
             }
             this.syncState();
             if (this.zoo != null) {
-                this.zoo.activate(this.view.cursorX, this.view.cursorY);
+                this.zoo.request(this.view.cursorX,this.view.cursorY);
                 this.lastTick = 0L;
                 this.repaint();
                 return;
@@ -669,9 +687,7 @@ MenuCanvas.Host {
             finally {
                 recordStore.closeRecordStore();
             }
-            if (gameState.scene == 1) {
-                gameState.scene = this.sceneIds[0];
-            }
+            gameState.scene=2;
             GameState gameState2 = this.state;
             this.state = gameState;
             try {

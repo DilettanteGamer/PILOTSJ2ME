@@ -14,8 +14,8 @@ import pilots.Viewport;
 public final class AnimatedActor {
     public final AnimationClip clip;
     public final int id;
-    public final int x;
-    public final int y;
+    public int x;
+    public int y;
     private long elapsed;
     public boolean playing = true;
     public boolean visible = true;
