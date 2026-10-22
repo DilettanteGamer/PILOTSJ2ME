@@ -43,6 +43,7 @@ public final class CourtyardLogic extends ZooLogic {
             if(hero()==1) { state.variables[18]=12;state.variables[19]=35; }
         } else if(target==FENCE && !arrowTurned()) { state.variables[10]=54;state.variables[53]=2; }
         else if(target==EXIT && arrowTurned()) completeLocation();
+        actionSound();
         return pendingClip();
     }
     public int endStep() { return pendingAction()==54?50:hero()==0?65:25; }
@@ -53,6 +54,7 @@ public final class CourtyardLogic extends ZooLogic {
     public void advance() {
         if(pendingAction()==0) return;
         state.variables[53]++;
+        actionSound();
         int action=pendingAction();
         if(action>=56 && action<=58 && step()==9) state.variables[0]=(sheet()+1)%3;
         if(action>=51 && action<=53 && step()==10) {
@@ -60,7 +62,7 @@ public final class CourtyardLogic extends ZooLogic {
         }
         // Original map query 22: Colleague on (5,18) or (5,19), arrow entity 27 still present.
         if(action==52 && step()==13 && !arrowTurned() && heroX(1)==320 && (heroY(1)==288 || heroY(1)==304)) {
-            state.variables[1]=1;state.variables[2]=0;
+            state.variables[1]=1;state.variables[2]=0;sound(19);
         }
         if(step()>=endStep()) {
             if(action==54) { placeHero(0,576,96);placeHero(1,576,80); }
@@ -70,11 +72,15 @@ public final class CourtyardLogic extends ZooLogic {
         }
     }
     public void ambientTick() {
-        if(++state.variables[6]>=130) { state.variables[6]=0;state.variables[9]=0; }
+        // Original controller 33 starts at 800, then repeats every 800 ticks.
+        if(state.variables[22]==0) state.variables[22]=800;
+        if(state.variables[22]<800) state.variables[22]++;
+        if(state.variables[22]>=800) { sound(23);state.variables[22]=1; }
+        if(++state.variables[6]>=130) { state.variables[6]=0;state.variables[9]=0;sound(17); }
         if(animalPhase()==0) {
-            if(++state.variables[5]>=100) { state.variables[3]=1;state.variables[4]=0; }
+            if(++state.variables[5]>=100) { state.variables[3]=1;state.variables[4]=0;sound(15); }
         } else if(animalPhase()==2 && heroApproachesAnimal()) {
-            state.variables[3]=3;state.variables[4]=0;
+            state.variables[3]=3;state.variables[4]=0;sound(16);
         }
     }
     private boolean heroApproachesAnimal() {

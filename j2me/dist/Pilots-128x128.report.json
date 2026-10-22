@@ -1,6 +1,6 @@
 {
   "profile": "128x128",
-  "classes": 27,
+  "classes": 30,
   "scenes": [
     0,
     2,
@@ -236,14 +236,18 @@
       480
     ]
   },
+  "audio_wav_count": 63,
+  "audio_midi_count": 2,
+  "audio_event_tables": "Original bytecode predicates; audio-original-cues.json",
+  "audio_device_tested": false,
   "playable_scene_ids": [
     2,
     3
   ],
   "active_preview_scene": 3,
-  "version": "0.6.0",
-  "jar_size": 1927981,
-  "jar_sha256": "038eea62a2ffd31ea88e6b543fc274cd788450b7068a60f0deb8cd6bc0028fa0",
+  "version": "0.7.0",
+  "jar_size": 2601319,
+  "jar_sha256": "549c0091cec6ec074c5416a1f47c69089b96295b0234dd9e182d9abca05cb632",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -366,7 +370,7 @@
       110
     ]
   },
-  "validation": "Gameplay state tests, production panel/scene rendering, geometry regressions and static packaging checks; no emulator or device test",
+  "validation": "Gameplay state tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test",
   "removed_animation_ids": [
     106
   ],

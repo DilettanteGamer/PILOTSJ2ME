@@ -2598,7 +2598,7 @@
     },
     {
       "profile": "128x128",
-      "classes": 27,
+      "classes": 30,
       "scenes": [
         0,
         2,
@@ -2838,17 +2838,17 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.6.0",
+        "MIDlet-Version": "0.7.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "128x128"
       },
-      "sha256": "038eea62a2ffd31ea88e6b543fc274cd788450b7068a60f0deb8cd6bc0028fa0",
-      "jar_bytes": 1927981,
-      "entry_count": 256,
-      "uncompressed_bytes": 16051194,
+      "sha256": "549c0091cec6ec074c5416a1f47c69089b96295b0234dd9e182d9abca05cb632",
+      "jar_bytes": 2601319,
+      "entry_count": 326,
+      "uncompressed_bytes": 17341010,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -2856,12 +2856,15 @@
         ".anm": 168,
         ".bar": 16,
         ".bin": 1,
-        ".class": 27,
+        ".class": 30,
+        ".events": 2,
         ".hot": 19,
+        ".mid": 2,
         ".p8": 19,
         ".rules": 1,
         ".subtitles": 1,
-        ".walk": 1
+        ".walk": 1,
+        ".wav": 63
       },
       "classes_detail": {
         "pilots/AnimatedActor.class": {
@@ -2910,6 +2913,22 @@
           "stackmap_utf8_present": true,
           "sha256": "47d94359550121ee1bb4ba8c6227722acde0c9da7d3367816a36b345a3961d8b"
         },
+        "pilots/AudioCues.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/DataInputStream",
+            "java/io/IOException",
+            "java/io/InputStream",
+            "java/lang/Class",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "java/lang/Throwable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "45db12a1e7fd83c831f2d46be0b58457520a26fb83fc632f8fbcb5c0db1f1ce1"
+        },
         "pilots/CourtyardLogic.class": {
           "minor": 3,
           "major": 45,
@@ -2917,7 +2936,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "5d8cbe561b02e6bc17e29d69aeedf53465cf218e479615a834ca1edadaa095f8"
+          "sha256": "80a2a879f34ebd9ba12ce7a8cd27c3dbe27e05dc5a71ee18f5522a6a7235a2b3"
         },
         "pilots/CourtyardScene.class": {
           "minor": 3,
@@ -2949,6 +2968,30 @@
           ],
           "stackmap_utf8_present": true,
           "sha256": "abf9de1dff7fadba86402d421d16ed40bfa155d4d9f70314720aba69b7574139"
+        },
+        "pilots/GameAudio.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/InputStream",
+            "java/lang/Class",
+            "java/lang/Exception",
+            "java/lang/InterruptedException",
+            "java/lang/Object",
+            "java/lang/OutOfMemoryError",
+            "java/lang/Runnable",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "java/lang/Thread",
+            "java/lang/Throwable",
+            "javax/microedition/media/Control",
+            "javax/microedition/media/Controllable",
+            "javax/microedition/media/Manager",
+            "javax/microedition/media/Player",
+            "javax/microedition/media/control/VolumeControl"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "b5cec981d26b17ff77179edad4009309d092e9b84700d6bf476a2424148f8eba"
         },
         "pilots/GameState.class": {
           "minor": 3,
@@ -3020,7 +3063,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8a1db196eb0d6013567f0ecdab65177cc509135d376ec2becefa3d3f4d6bdafd"
+          "sha256": "04c4c492dbcf85c1356d9dbf02f09dbb6a872cce232f30120bb33235ca668363"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -3118,7 +3161,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "eb2d4f479a508f0bb3f8976f333c548008972244ab087682aa9cadb507c5f614"
+          "sha256": "192c9eb0b8eeed69bcca4e8f76ce580b42bb03200c461aadd829a802449503a7"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3141,7 +3184,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7eead2679c3c8b277ce56774974954db3ab321f5421b9de9b5a44f5d6e30e0ad"
+          "sha256": "200af26788802605fb77e106368a18f6773fc2344fb4bb2c8ce66a252017b21c"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -3181,6 +3224,15 @@
           "stackmap_utf8_present": true,
           "sha256": "2a1fb5f264dcea6d5c5a5b243bfd6fa367baff58b32024a5ba5a4229f5327ecd"
         },
+        "pilots/SoundSink.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": false,
+          "sha256": "47955829065e9c1018f0677968dfb69bd136d4ceaaaa05acbb5fce5dbde829de"
+        },
         "pilots/Viewport.class": {
           "minor": 3,
           "major": 45,
@@ -3196,13 +3248,14 @@
           "minor": 3,
           "major": 45,
           "api_references": [
+            "java/io/IOException",
             "java/lang/Math",
             "java/lang/Object",
             "java/lang/String",
             "java/lang/StringBuffer"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e8332bf3978a1021ddd4c6aa2517314f1c1aadb0566f68fddef2aad95c7a98ab"
+          "sha256": "afc73613f71a7fab6cb5c96dd7fa3e766e5c658bc7d07f1fb7fd3b4387982400"
         },
         "pilots/ZooPanel.class": {
           "minor": 3,
@@ -4339,6 +4392,11 @@
           "compressed_bytes": 38987
         },
         {
+          "path": "audio/03-23.wav",
+          "bytes": 566623,
+          "compressed_bytes": 280723
+        },
+        {
           "path": "scenes/02-69.anm",
           "bytes": 456440,
           "compressed_bytes": 40504
@@ -4372,17 +4430,12 @@
           "path": "scenes/03-20010.anm",
           "bytes": 367726,
           "compressed_bytes": 22914
-        },
-        {
-          "path": "scenes/02-61.anm",
-          "bytes": 365899,
-          "compressed_bytes": 18574
         }
       ]
     },
     {
       "profile": "240x320",
-      "classes": 27,
+      "classes": 30,
       "scenes": [
         0,
         2,
@@ -4622,17 +4675,17 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.6.0",
+        "MIDlet-Version": "0.7.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "240x320"
       },
-      "sha256": "2914b19b5f34a5b9d8cd8e90ab68077a618f8fc4f64b13f4f50b063c49401a50",
-      "jar_bytes": 3297390,
-      "entry_count": 256,
-      "uncompressed_bytes": 19947514,
+      "sha256": "8dd77ffdf00d013379e0640d60a7846514b810ea79029c1f9dc0816aa6d5fe05",
+      "jar_bytes": 3970729,
+      "entry_count": 326,
+      "uncompressed_bytes": 21237330,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -4640,12 +4693,15 @@
         ".anm": 168,
         ".bar": 16,
         ".bin": 1,
-        ".class": 27,
+        ".class": 30,
+        ".events": 2,
         ".hot": 19,
+        ".mid": 2,
         ".p8": 19,
         ".rules": 1,
         ".subtitles": 1,
-        ".walk": 1
+        ".walk": 1,
+        ".wav": 63
       },
       "classes_detail": {
         "pilots/AnimatedActor.class": {
@@ -4694,6 +4750,22 @@
           "stackmap_utf8_present": true,
           "sha256": "47d94359550121ee1bb4ba8c6227722acde0c9da7d3367816a36b345a3961d8b"
         },
+        "pilots/AudioCues.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/DataInputStream",
+            "java/io/IOException",
+            "java/io/InputStream",
+            "java/lang/Class",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "java/lang/Throwable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "45db12a1e7fd83c831f2d46be0b58457520a26fb83fc632f8fbcb5c0db1f1ce1"
+        },
         "pilots/CourtyardLogic.class": {
           "minor": 3,
           "major": 45,
@@ -4701,7 +4773,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "5d8cbe561b02e6bc17e29d69aeedf53465cf218e479615a834ca1edadaa095f8"
+          "sha256": "80a2a879f34ebd9ba12ce7a8cd27c3dbe27e05dc5a71ee18f5522a6a7235a2b3"
         },
         "pilots/CourtyardScene.class": {
           "minor": 3,
@@ -4733,6 +4805,30 @@
           ],
           "stackmap_utf8_present": true,
           "sha256": "abf9de1dff7fadba86402d421d16ed40bfa155d4d9f70314720aba69b7574139"
+        },
+        "pilots/GameAudio.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/InputStream",
+            "java/lang/Class",
+            "java/lang/Exception",
+            "java/lang/InterruptedException",
+            "java/lang/Object",
+            "java/lang/OutOfMemoryError",
+            "java/lang/Runnable",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "java/lang/Thread",
+            "java/lang/Throwable",
+            "javax/microedition/media/Control",
+            "javax/microedition/media/Controllable",
+            "javax/microedition/media/Manager",
+            "javax/microedition/media/Player",
+            "javax/microedition/media/control/VolumeControl"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "b5cec981d26b17ff77179edad4009309d092e9b84700d6bf476a2424148f8eba"
         },
         "pilots/GameState.class": {
           "minor": 3,
@@ -4804,7 +4900,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8a1db196eb0d6013567f0ecdab65177cc509135d376ec2becefa3d3f4d6bdafd"
+          "sha256": "04c4c492dbcf85c1356d9dbf02f09dbb6a872cce232f30120bb33235ca668363"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -4902,7 +4998,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "eb2d4f479a508f0bb3f8976f333c548008972244ab087682aa9cadb507c5f614"
+          "sha256": "192c9eb0b8eeed69bcca4e8f76ce580b42bb03200c461aadd829a802449503a7"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -4925,7 +5021,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7eead2679c3c8b277ce56774974954db3ab321f5421b9de9b5a44f5d6e30e0ad"
+          "sha256": "200af26788802605fb77e106368a18f6773fc2344fb4bb2c8ce66a252017b21c"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -4965,6 +5061,15 @@
           "stackmap_utf8_present": true,
           "sha256": "2a1fb5f264dcea6d5c5a5b243bfd6fa367baff58b32024a5ba5a4229f5327ecd"
         },
+        "pilots/SoundSink.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": false,
+          "sha256": "47955829065e9c1018f0677968dfb69bd136d4ceaaaa05acbb5fce5dbde829de"
+        },
         "pilots/Viewport.class": {
           "minor": 3,
           "major": 45,
@@ -4980,13 +5085,14 @@
           "minor": 3,
           "major": 45,
           "api_references": [
+            "java/io/IOException",
             "java/lang/Math",
             "java/lang/Object",
             "java/lang/String",
             "java/lang/StringBuffer"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e8332bf3978a1021ddd4c6aa2517314f1c1aadb0566f68fddef2aad95c7a98ab"
+          "sha256": "afc73613f71a7fab6cb5c96dd7fa3e766e5c658bc7d07f1fb7fd3b4387982400"
         },
         "pilots/ZooPanel.class": {
           "minor": 3,
@@ -6123,6 +6229,11 @@
           "compressed_bytes": 38987
         },
         {
+          "path": "audio/03-23.wav",
+          "bytes": 566623,
+          "compressed_bytes": 280723
+        },
+        {
           "path": "scenes/02-69.anm",
           "bytes": 456440,
           "compressed_bytes": 40504
@@ -6156,11 +6267,6 @@
           "path": "scenes/03-20010.anm",
           "bytes": 367726,
           "compressed_bytes": 22914
-        },
-        {
-          "path": "scenes/02-61.anm",
-          "bytes": 365899,
-          "compressed_bytes": 18574
         }
       ]
     }

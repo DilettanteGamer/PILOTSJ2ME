@@ -22,7 +22,7 @@ import pilots.MenuLayout;
 public final class MenuCanvas
 extends Canvas
 implements CommandListener {
-    private static final String[] DEFAULT_ITEMS={"Продолжить","Новая игра","Инвентарь","Сохранить","Загрузить","Справка","Анимации","Вторая локация","Выход"};
+    private static final String[] DEFAULT_ITEMS={"Продолжить","Новая игра","Инвентарь","Сохранить","Загрузить","Справка","Анимации","Вторая локация","Звук: вкл/выкл","Выход"};
     private final Host host;
     private final MenuLayout layout;
     private final String[] items;

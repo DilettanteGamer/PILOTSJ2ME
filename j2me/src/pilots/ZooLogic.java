@@ -6,6 +6,15 @@ public class ZooLogic {
     public static final int GLOBAL_CHIEF_IDLE = 20012, GLOBAL_COLLEAGUE_IDLE = 20016;
     public static final int GLOBAL_CHIEF_REFUSAL = 20036, GLOBAL_CHIEF_REPLY = 20034;
     protected final GameState state;
+    private SoundSink sound;
+    private AudioCues audioCues;
+    public void setSound(SoundSink sink) throws java.io.IOException {
+        audioCues=new AudioCues(state.scene);sound=sink;
+    }
+    protected void sound(int cue) { if(sound!=null) sound.play(cue); }
+    protected void actionSound() {
+        if(sound!=null) audioCues.at(sound,hero(),pendingAction(),state.variables[hero()==0?51:46],step());
+    }
 
     public ZooLogic(GameState state) {
         this.state = state;
@@ -90,6 +99,7 @@ public class ZooLogic {
         if (action==23 || action==28) { state.variables[14]=0; state.variables[15]=0; }
         state.variables[18]=state.variables[19]=0;
         subtitleForStep();
+        actionSound();
         return pendingClip();
     }
     private void subtitleForStep() {
@@ -114,6 +124,7 @@ public class ZooLogic {
         if (pendingClip()==0) return;
         state.variables[53]++;
         subtitleForStep();
+        actionSound();
         if (pendingClip() == 64) {
             if (step() >= 13) state.variables[61] = 1;
             if (step() >= 38 && crowState() == 0) state.variables[62] = 1;
@@ -157,12 +168,12 @@ public class ZooLogic {
     }
     public boolean continueTalk() {
         if (guardPhase()!=2) return false;
-        if (state.variables[1]==0) { state.variables[1]=1; state.variables[3]=103; state.variables[4]=0; }
+        if (state.variables[1]==0) { sound(35); state.variables[1]=1; state.variables[3]=103; state.variables[4]=0; }
         else { state.variables[0]=4; state.variables[2]=100; state.variables[3]=59; state.variables[4]=0; }
         return true;
     }
     public void advanceGuard() {
-        if (guardPhase()==1 && ++state.variables[1]>=25) { state.variables[0]=2; state.variables[1]=0; }
+        if (guardPhase()==1 && ++state.variables[1]>=25) { state.variables[0]=2; state.variables[1]=0; sound(34); }
         if (guardPhase()==4 && ++state.variables[2]>=250) {
             state.variables[0]=5; state.variables[3]=61; state.variables[4]=0;
         }
@@ -210,6 +221,7 @@ public class ZooLogic {
         if(state.variables[12+hero]!=direction || state.variables[16+hero]<0) state.variables[16+hero]=0;
         else state.variables[16+hero]=(state.variables[16+hero]+1)%10;
         state.variables[12+hero]=direction;
+        if(state.variables[16+hero]%5==0) sound(state.scene==3?0:31);
         state.variables[hero==0?51:46]=1-state.variables[16+hero]/5;
     }
     public void finishWalk() { state.variables[30]=state.variables[31]=0; }
@@ -230,6 +242,9 @@ public class ZooLogic {
         if (!catPresent()) return;
         if (catStep() == 0 && crowState() != 0) state.variables[40] = 2;
         state.variables[41]++;
+        if(catMode()==2 && catStep()==36) sound(17);
+        if(catMode()==2 && catStep()==42) sound(19);
+        if(catMode()==3 && catStep()==16) sound(30);
         if (catMode() == 3) {
             // Rule 16.13 has map effects in metadata 0x199 as well as its sound call.
             if (catStep() >= 16) {
