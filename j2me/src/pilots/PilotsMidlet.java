@@ -189,6 +189,8 @@ MenuCanvas.Host {
             } else if (n == 7) {
                 this.canvas.startCourtyard();
             } else if (n == 8) {
+                this.notice("Звук и музыка",this.canvas.audio.toggle()?"Включены":"Выключены");
+            } else if (n == 9) {
                 this.destroyApp(true);
                 this.notifyDestroyed();
             }
@@ -210,6 +212,7 @@ MenuCanvas.Host {
     implements Runnable,
     ScriptVM.Host {
         private Scene scene;
+        private GameAudio audio;
         private ZooScene zoo;
         private ZooPanel zooPanel;
         private GameState state = new GameState();
@@ -259,11 +262,15 @@ MenuCanvas.Host {
             }
             this.state.x = 180;
             this.state.y = 260;
-            this.goToScene(2);
+            this.audio=new GameAudio();
+            try { this.goToScene(2); }
+            catch(IOException failure) { this.audio.close();throw failure; }
+            catch(OutOfMemoryError failure) { this.audio.close();throw failure; }
         }
 
         public synchronized void goToScene(int n) throws IOException {
             if (n!=2 && n!=3) throw new IOException("This build includes locations 1 and 2");
+            this.audio.active(false);
             if (this.zooPanel!=null) { this.zooPanel.close();this.zooPanel=null; }
             if (this.sceneIndex(n) < 0) {
                 throw new IOException("Invalid scene ID");
@@ -281,6 +288,8 @@ MenuCanvas.Host {
             this.state.scene = n;
             this.zoo = n==3?new CourtyardScene(this.scene,this.state):new ZooScene(this.scene,this.state);
             this.zooPanel = new ZooPanel();
+            this.audio.scene(n);this.zoo.logic.setSound(this.audio);
+            this.audio.active(this.shown && !this.appPaused && !this.isPreview());
             this.view = new Viewport(Math.max(1, this.getWidth()), this.sceneHeight(this.getWidth(), this.getHeight()), this.scene.background.worldWidth, this.scene.background.worldHeight);
             this.view.cursorX = this.state.x;
             this.view.cursorY = this.state.y;
@@ -306,9 +315,10 @@ MenuCanvas.Host {
                 GameState gameState = GameState.decode(this.state.encode(), this.sceneIds[this.sceneCount - 1] + 1);
                 this.state=GameState.decode(gameState.encode(),this.sceneIds[this.sceneCount-1]+1);
                 this.state.scene=3;
-                this.goToScene(3);
                 this.previewReturnState = gameState;
+                this.goToScene(3);
             }
+            this.audio.active(false);
             this.zoo = null;
             if(this.zooPanel!=null) { this.zooPanel.close();this.zooPanel=null; }
             this.scene.close();
@@ -336,6 +346,7 @@ MenuCanvas.Host {
 
         protected synchronized void showNotify() {
             this.shown = true;
+            this.audio.active(!this.appPaused && !this.isPreview());
             this.lastTick = 0L;
             if (this.animationThread == null && !this.stopped) {
                 this.animationThread = new Thread(this);
@@ -346,17 +357,20 @@ MenuCanvas.Host {
 
         protected synchronized void hideNotify() {
             this.shown = false;
+            this.audio.active(false);
             this.lastTick = 0L;
         }
 
         synchronized void pauseAnimation(boolean bl) {
             this.appPaused = bl;
+            this.audio.active(this.shown && !bl && !this.isPreview());
             this.lastTick = 0L;
             this.notifyAll();
         }
 
         synchronized void shutdown() {
             this.stopped = true;
+            this.audio.close();
             this.notifyAll();
             if (this.scene != null) this.scene.close();
             if (this.zooPanel != null) this.zooPanel.close();
@@ -401,6 +415,7 @@ MenuCanvas.Host {
                     GameCanvas gameCanvas2 = this;
                     synchronized (gameCanvas2) {
                         this.appPaused = true;
+                        this.audio.active(false);
                     }
                     PilotsMidlet.this.notice("\u0410\u043d\u0438\u043c\u0430\u0446\u0438\u044f", iOException.toString());
                     continue;
