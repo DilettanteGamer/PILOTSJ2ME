@@ -8,7 +8,7 @@ public final class AnimalWorld {
         int type,layer;byte[] init,exit;byte[][][] rules;
     }
     public static final class Thing {
-        public int id,x,y,clip=-1,frame,layer,under=254,serial;
+        public int id,x,y,clip=-1,frame,layer,under=254,serial,fallback=-1;
         boolean active=true;
         boolean finished;
         int[] local=new int[8];
@@ -86,6 +86,9 @@ public final class AnimalWorld {
     private void remove(int x,int y) {
         if(x<0 || x>=10 || y<0 || y>=30) return;
         for(int h=0;h<2;h++) if(heroes[h]!=null && heroes[h].active && heroes[h].x==x*64 && heroes[h].y==y*16) { heroes[h].active=false;heroes[h].clip=-1;return; }
+        removeCell(x,y);
+    }
+    private void removeCell(int x,int y) {
         Thing t=cells[y*10+x];if(t==null) return;
         cells[y*10+x]=null;
         Definition d=definitions[t.id];if(d!=null) exit(d,t);
@@ -206,19 +209,22 @@ public final class AnimalWorld {
     }
     private int nativeCall(int api,int arg) {
         switch(api) {
-        case 0:continuing=1;return 1;
+        case 0:continuing=1;if(context.clip>=0 && frames[context.clip]==1) context.fallback=context.clip;return 1;
         case 1:return context.clip<0 || context.finished?1:0;
         case 3:return 0; // Hover captions are rendered independently, without executing string bytecode.
         case 4:return clicked==context.id?1:0;
         case 5:return 0;
         case 9:return apply(maps[arg],context,true,true)?1:0;
-        case 0x0e:if(arg==5) { completed=true;g(0x20,0);g(0x30,0);g(0x88,0); }return 1;
+        case 0x0e:if(arg==5) {
+            // The source end predicate only watches Chief; finish the companion walk too.
+            if(!heroes[1].active || heroes[1].x!=576 || heroes[1].y!=368 || walkHero>=0) return 0;
+            completed=true;g(0x20,0);g(0x30,0);g(0x88,0); }return 1;
         case 0x10:return 1; // MIDI lifecycle belongs to GameAudio.
         case 0x11:cue(arg);return 1;
-        case 0x13:context.clip=arg;context.frame=0;context.finished=false;return 1;
+        case 0x13:context.clip=arg;context.frame=0;context.finished=false;if(frames[arg]==1) context.fallback=-1;return 1;
         case 0x14:apply(maps[arg],null,true,false);return 1;
         case 0x19:context.layer=arg;return 1;
-        case 0x1a:case 0x1e:context.clip=-1;context.finished=true;return 1;
+        case 0x1a:case 0x1e:context.clip=-1;context.fallback=-1;context.finished=true;return 1;
         case 0x1b:context.under=254;return 1;
         case 0x1c:context.under=arg;return 1;
         case 0x1f:return 1;
@@ -242,7 +248,9 @@ public final class AnimalWorld {
     private void animate(Thing t) {
         if(t==null || !t.active || t.clip<0 || t.finished) return;
         if(++t.frame>=frames[t.clip]) {
-            if((flags[t.clip]&1)!=0) { t.finished=true;t.frame=frames[t.clip]-1;if(t!=heroes[0] && t!=heroes[1]) t.clip=-1; }
+            if((flags[t.clip]&1)!=0) { t.finished=true;t.frame=frames[t.clip]-1;
+                if(t.fallback>=0) { t.clip=t.fallback;t.frame=0; }
+                else if(t!=heroes[0] && t!=heroes[1]) t.clip=-1; }
             else t.frame=0;
         }
     }
@@ -255,7 +263,7 @@ public final class AnimalWorld {
         for(int i=0;i<effects.length;i++) if(effects[i]!=null) { animate(effects[i]);if(effects[i].finished) effects[i]=null; }
         walkTick();
         if(walkHero<0) {
-            for(int i=0;i<cells.length;i++) if(cells[i]!=null && (cells[i].id==6 || cells[i].id==7)) remove(i%10,i/10);
+            for(int i=0;i<cells.length;i++) if(cells[i]!=null && (cells[i].id==6 || cells[i].id==7)) removeCell(i%10,i/10);
             g(0x8c,0);g(0x90,0);
         }
         // Native controller order follows allocation, not entity number or paint layer.
@@ -278,8 +286,18 @@ public final class AnimalWorld {
             walk(0,192,208,-1,-1);
         if(action()==76 && step()==0 && walkHero<0 && heroes[0].y==192 && (heroes[0].x==0 || heroes[0].x==64))
             walk(0,192,208,-1,-1);
-        if(action()==57 && step()==1 && g(4)>=44 && walkHero<0 && !completed && (heroes[0].x!=576 || heroes[0].y!=368))
-            walk(0,576,368,-1,-1);
+        if(action()==57 && step()==1 && !completed) {
+            // Clip 125 ends at tick 91. Its final standing pose matches hero 12 at (384,352).
+            if(g(4)>=91 && !heroes[1].active) {
+                Thing colleague=heroes[1];colleague.x=384;colleague.y=352;colleague.active=true;g(0x14,1);idle(colleague);
+                colleague.layer=3+(400-colleague.y)*3/16;g(0x44,colleague.layer);
+                Thing release=find(71);if(release!=null) { release.clip=-1;release.fallback=-1;release.finished=true; }
+            }
+            if(g(4)>=44 && walkHero<0) {
+                if(heroes[0].x!=576 || heroes[0].y!=368) walk(0,576,368,-1,-1);
+                else if(heroes[1].active && (heroes[1].x!=576 || heroes[1].y!=368)) walk(1,576,368,-1,-1);
+            }
+        }
         if(action()==0 && walkHero<0) g(0x88,0);
         syncSave();
     }
@@ -325,7 +343,7 @@ public final class AnimalWorld {
     private void idle(Thing hero) {
         int pose=g(hero.id==11?0x10:0x14);
         hero.clip=(hero.id==11?12:16)+(pose==3?1:pose==7?2:pose==9?3:0);
-        hero.frame=0;hero.finished=false;
+        hero.frame=0;hero.finished=false;hero.fallback=-1;
     }
     private void walkTick() {
         if(walkHero<0) return;
@@ -338,7 +356,7 @@ public final class AnimalWorld {
                 walkPhase=(walkPhase+1)%10;int half=walkPhase/5;
                 h.clip=walkHero==0?(dx<0?20:dx>0?21:dy<0?24+half:22+half):(dx<0?32+half:dx>0?28+half:dy<0?30+half:26+half);
                 h.frame=walkPhase%5;h.x+=dx;h.y+=dy;
-                h.finished=false;
+                h.finished=false;h.fallback=-1;
                 int depth=3+(400-h.y)*3/16;g(walkHero==0?0x40:0x44,depth);h.layer=depth+1;
                 int pose=dx<0?(half==0?7:1):dx>0?(half==0?9:3):dy<0?(half==0?7:9):(half==0?1:3);
                 g(walkHero==0?0x10:0x14,pose);g(walkHero==0?8:12,1-half);
@@ -362,6 +380,10 @@ public final class AnimalWorld {
     private boolean allowed(int x,int y,int sx,int sy) {
         if(x<0 || x>624 || y<16 || y>400) return false;
         if(x==sx && y==sy) return true;
+        // Foot positions: basin/tap separator and the kangaroo enclosure. The left
+        // interaction aisle (x=0) reaches the path around its front at y=400.
+        if(x>=176 && x<320 && y>=256 && y<304) return false;
+        if(x>=16 && x<144 && y>=304 && y<400) return false;
         Thing t=cells[y/16*10+x/64];
         return t==null || t.id!=0 && (definitions[t.id]==null || definitions[t.id].type!=0 || t.id==6||t.id==7);
     }
@@ -386,12 +408,12 @@ public final class AnimalWorld {
     public void syncSave() {
         try {
             ByteArrayOutputStream bytes=new ByteArrayOutputStream();DataOutputStream out=new DataOutputStream(bytes);
-            out.writeInt(0x41575333);out.writeInt(serial);out.writeBoolean(completed);
+            out.writeInt(0x41575334);out.writeInt(serial);out.writeBoolean(completed);
             out.writeInt(walkHero);out.writeInt(walkX);out.writeInt(walkY);out.writeInt(walkEntity);out.writeInt(walkRestore);out.writeInt(walkPhase);
             out.writeInt(captionTicks);out.writeUTF(caption==null?"":caption);
             for(int i=0;i<cells.length+2+effects.length;i++) {
                 Thing t=i<300?cells[i]:i<302?heroes[i-300]:effects[i-302];out.writeBoolean(t!=null);if(t==null) continue;
-                out.writeByte(t.id);out.writeBoolean(t.active);out.writeBoolean(t.finished);out.writeShort(t.x);out.writeShort(t.y);out.writeShort(t.clip);out.writeShort(t.frame);out.writeShort(t.layer);out.writeByte(t.under);out.writeInt(t.serial);
+                out.writeByte(t.id);out.writeBoolean(t.active);out.writeBoolean(t.finished);out.writeShort(t.x);out.writeShort(t.y);out.writeShort(t.clip);out.writeShort(t.frame);out.writeShort(t.fallback);out.writeShort(t.layer);out.writeByte(t.under);out.writeInt(t.serial);
                 for(int j=0;j<t.local.length;j++) out.writeInt(t.local[j]);
             }
             out.writeInt(path==null?0:path.length);
@@ -402,14 +424,14 @@ public final class AnimalWorld {
     }
     private void restore(byte[] bytes) throws IOException {
         DataInputStream in=new DataInputStream(new ByteArrayInputStream(bytes));
-        int version=in.readInt();boolean extended=version==0x41575332 || version==0x41575333;
+        int version=in.readInt();boolean extended=version==0x41575332 || version==0x41575333 || version==0x41575334;
         if(version!=0x41575331 && !extended) throw new IOException("Invalid animal save");
         serial=in.readInt();completed=in.readBoolean();
         walkHero=in.readInt();walkX=in.readInt();walkY=in.readInt();walkEntity=in.readInt();walkRestore=in.readInt();walkPhase=in.readInt();captionTicks=in.readInt();caption=in.readUTF();
         if(walkHero < -1 || walkHero>1) throw new IOException("Invalid walking hero");
-        for(int i=0;i<(version==0x41575333?302+effects.length:302);i++) if(in.readBoolean()) {
+        for(int i=0;i<(version>=0x41575333?302+effects.length:302);i++) if(in.readBoolean()) {
             int id=in.readUnsignedByte();boolean active=in.readBoolean(),finished=extended&&in.readBoolean();int x=in.readShort(),y=in.readShort();if(id>=76 || x<0 || x>=640 || y<0 || y>=480) throw new IOException("Invalid saved animal object");
-            Thing t=new Thing(id,x,y,0);t.active=active;t.finished=finished;t.clip=in.readShort();t.frame=in.readShort();t.layer=in.readShort();t.under=in.readUnsignedByte();t.serial=in.readInt();
+            Thing t=new Thing(id,x,y,0);t.active=active;t.finished=finished;t.clip=in.readShort();t.frame=in.readShort();if(version==0x41575334) t.fallback=in.readShort();t.layer=in.readShort();t.under=in.readUnsignedByte();t.serial=in.readInt();
             for(int j=0;j<t.local.length;j++) t.local[j]=in.readInt();
             if(i<300) cells[i]=t;else if(i<302) heroes[i-300]=t;else effects[i-302]=t;
         }
@@ -417,6 +439,16 @@ public final class AnimalWorld {
         if(length>0) { path=new int[length];for(int i=0;i<length;i++) path[i]=in.readInt(); }
         pathIndex=in.readInt();if(pathIndex<0 || pathIndex>length || pathIndex%2!=0) throw new IOException("Invalid path progress");
         if(in.read()!=-1 || heroes[0]==null || heroes[1]==null) throw new IOException("Incomplete animal save");
+        if(version!=0x41575334) for(int i=0;i<cells.length;i++) {
+            Thing t=cells[i];if(t==null) continue;
+            // Recover the original standing head in snapshots made before fallback sprites.
+            if(t.id==70 || t.id==68 || t.id==69) {
+                int pose=t.id==70?(t.clip==116?117:g(0x3c)==2?115:114):t.id==68?136:120;
+                if(t.clip==131 || t.clip==116 || t.clip==135 || t.clip==119) t.fallback=pose;
+                if(t.clip<0 || t.finished && t.fallback>=0) { t.clip=pose;t.frame=0;t.finished=false; }
+            }
+            if(t.id==71 && (t.clip==100 || t.clip==125)) t.fallback=122;
+        }
         if(version==0x41575332) for(int i=0;i<cells.length;i++) if(cells[i]!=null && cells[i].finished) cells[i].clip=-1;
         if(!extended && action()==0) for(int h=0;h<2;h++) if(heroes[h].active && heroes[h].clip<0) idle(heroes[h]);
     }
