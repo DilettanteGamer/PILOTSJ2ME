@@ -112,6 +112,8 @@ public final class Scene {
     }
 
     public void close() {
+        if(background!=null) background.clearCache();
+        if(panel!=null) panel.clearCache();
         int n = 0;
         while (n < this.actors.length) {
             if (this.actors[n] != null) {

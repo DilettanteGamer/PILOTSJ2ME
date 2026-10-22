@@ -8,6 +8,8 @@ import javax.microedition.lcdui.Graphics;
 /** All packaged frames through the production renderer and full-stride driver spy. */
 public final class RGBCompatibilityTest {
     public static void main(String[] args) throws Exception {
+        // Exercise the device-safe fallback even when image caches are available.
+        RasterCache.budget(0);
         int width=Integer.parseInt(args[1]),height=Integer.parseInt(args[2]);
         Graphics surface=new Graphics(width,height);
         Viewport view=new Viewport(width,height,640,417);

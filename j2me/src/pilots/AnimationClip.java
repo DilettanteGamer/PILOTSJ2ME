@@ -10,6 +10,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.microedition.lcdui.Graphics;
+import javax.microedition.lcdui.Image;
 import pilots.Viewport;
 
 public final class AnimationClip {
@@ -26,6 +27,10 @@ public final class AnimationClip {
     public int width;
     public int height;
     private int transparent;
+    private boolean packed;
+    private byte[] encoded;
+    private final RasterCache raster=new RasterCache();
+    private int cachedWidth,cachedHeight,cachedX,cachedY,cachedCropWidth,cachedCropHeight;
 
     public AnimationClip(String string) throws IOException {
         this.resource = string;
@@ -34,13 +39,15 @@ public final class AnimationClip {
 
     public void restart() throws IOException {
         this.close();
-        InputStream inputStream = this.getClass().getResourceAsStream(this.resource);
+        InputStream inputStream = WalkStreams.open(this.resource);
         if (inputStream == null) {
             throw new IOException("Missing animation " + this.resource);
         }
         this.input = new DataInputStream(inputStream);
         try {
-            if (this.input.readInt() != 1095650609) {
+            int magic=this.input.readInt();
+            packed=magic==0x414e4d33;
+            if (magic != 1095650609 && !packed) {
                 throw new IOException("Invalid animation magic");
             }
             this.count = this.input.readUnsignedShort();
@@ -50,8 +57,10 @@ public final class AnimationClip {
                 throw new IOException("Invalid animation header");
             }
             int n = 0;
+            byte[] colors=new byte[768];input.readFully(colors);
             while (n < 256) {
-                this.palette[n] = 0xFF000000 | this.input.readUnsignedByte() << 16 | this.input.readUnsignedByte() << 8 | this.input.readUnsignedByte();
+                int p=n*3;
+                this.palette[n] = 0xFF000000 | (colors[p]&255) << 16 | (colors[p+1]&255) << 8 | (colors[p+2]&255);
                 ++n;
             }
             this.palette[this.transparent] = 0;
@@ -72,6 +81,7 @@ public final class AnimationClip {
         if (this.input == null) {
             return false;
         }
+        raster.clear();
         try {
             short s = this.input.readShort();
             short s2 = this.input.readShort();
@@ -83,7 +93,29 @@ public final class AnimationClip {
             if (this.pixels == null || this.pixels.length < n * n2) {
                 this.pixels = new byte[n * n2];
             }
-            this.input.readFully(this.pixels, 0, n * n2);
+            int size=n*n2;
+            int stored=packed?input.readInt():0;
+            if(stored<0 || stored>=size && stored!=0) throw new IOException("Invalid packed frame size");
+            if(stored==0) this.input.readFully(this.pixels, 0, size);
+            else {
+                if(encoded==null || encoded.length<stored) encoded=new byte[stored];
+                input.readFully(encoded,0,stored);
+                int source=0,target=0;
+                while(source<stored) {
+                    int control=encoded[source++]&255;
+                    int length=control<128?control+1:(control&127)+3;
+                    if(target+length>size) throw new IOException("Packed frame overflow");
+                    if(control<128) {
+                        if(source+length>stored) throw new IOException("Truncated literal run");
+                        System.arraycopy(encoded,source,pixels,target,length);source+=length;target+=length;
+                    } else {
+                        if(source>=stored) throw new IOException("Truncated repeated run");
+                        byte value=encoded[source++];
+                        for(int end=target+length;target<end;target++) pixels[target]=value;
+                    }
+                }
+                if(target!=size) throw new IOException("Incomplete packed frame");
+            }
             this.width = n;
             this.height = n2;
             this.offsetX = s;
@@ -105,6 +137,8 @@ public final class AnimationClip {
     }
 
     public void close() {
+        raster.clear();
+        encoded=null;
         if (this.input != null) {
             try {
                 this.input.close();
@@ -129,6 +163,31 @@ public final class AnimationClip {
         int x1 = Math.max(0, left), x2 = Math.min(view.width, left + drawWidth);
         int y1 = Math.max(0, top), y2 = Math.min(view.height, top + drawHeight);
         if (x2 <= x1 || y2 <= y1) return;
+        int cropWidth=x2-x1,cropHeight=y2-y1;
+        Image cached=raster.get();
+        if(cached!=null && cachedWidth==drawWidth && cachedHeight==drawHeight &&
+           cachedX==x1-left && cachedY==y1-top && cachedCropWidth==cropWidth && cachedCropHeight==cropHeight) {
+            graphics.drawImage(cached,x1,y1,20);return;
+        }
+        raster.clear();
+        int area=cropWidth*cropHeight;
+        if(RasterCache.allows(area*2)) {
+            try {
+                raster.prepare(area*2);
+                int[] rgb=new int[area];
+                for(int yy=0;yy<cropHeight;yy++) {
+                    int sourceRow=(y1+yy-top)*height/drawHeight*width;
+                    for(int xx=0;xx<cropWidth;xx++)
+                        rgb[yy*cropWidth+xx]=palette[pixels[sourceRow+(x1+xx-left)*width/drawWidth]&255];
+                }
+                Image bitmap=Image.createRGBImage(rgb,cropWidth,cropHeight,true);
+                raster.store(bitmap);
+                cachedWidth=drawWidth;cachedHeight=drawHeight;cachedX=x1-left;cachedY=y1-top;
+                cachedCropWidth=cropWidth;cachedCropHeight=cropHeight;
+                graphics.drawImage(bitmap,x1,y1,20);return;
+            } catch(OutOfMemoryError exhausted) { RasterCache.failed(); }
+              catch(IllegalArgumentException unsupported) { RasterCache.failed(); }
+        }
         int size = x2 - x1;
         if (row == null || row.length < size) row = new int[size];
         for (int sy = y1; sy < y2; sy++) {

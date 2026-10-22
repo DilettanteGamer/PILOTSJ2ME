@@ -1,36 +1,14 @@
 {
   "profile": "240x320",
-  "classes": 36,
+  "classes": 38,
   "scenes": [
-    0,
     2,
     3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19
+    4
   ],
   "animations": 305,
   "frames": 3819,
   "backgrounds": {
-    "scenes/00.p8": [
-      640,
-      480,
-      640,
-      480
-    ],
     "scenes/02.bar": [
       640,
       63,
@@ -66,174 +44,6 @@
       417,
       640,
       417
-    ],
-    "scenes/05.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/05.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/06.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/06.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/07.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/07.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/08.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/08.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/09.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/09.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/10.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/10.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/11.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/11.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/12.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/12.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/13.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/13.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/14.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/14.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/15.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/15.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/16.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/16.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/17.bar": [
-      640,
-      63,
-      640,
-      63
-    ],
-    "scenes/17.p8": [
-      640,
-      417,
-      640,
-      417
-    ],
-    "scenes/18.p8": [
-      640,
-      480,
-      640,
-      480
-    ],
-    "scenes/19.p8": [
-      640,
-      480,
-      640,
-      480
     ]
   },
   "audio_wav_count": 125,
@@ -246,14 +56,14 @@
     4
   ],
   "active_preview_scene": 4,
-  "version": "0.8.1",
-  "jar_size": 6044736,
-  "jar_sha256": "21b0159d7d29ce193c72cd06dd24b492a2ccc7bdc568240c7c4315566be979ef",
+  "version": "0.9.0",
+  "jar_size": 4200811,
+  "jar_sha256": "aec55e948145b3f80f266e633dbc185147f4fbfa7f8ec03fe2f3d94a515bb17c",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
   "original_window_rule_oracle_cases": 8,
-  "existing_visual_payloads_preserved": true,
+  "existing_visual_payloads_preserved": false,
   "original_barrel_rule_oracle_cases": 26,
   "original_cat_rule_oracle_cases": 7,
   "original_full_location_route_cases": 1024,
@@ -423,5 +233,94 @@
         160
       ]
     ]
+  },
+  "removed_future_resources": [
+    "scenes/00.hot",
+    "scenes/00.p8",
+    "scenes/05.bar",
+    "scenes/05.hot",
+    "scenes/05.p8",
+    "scenes/06.bar",
+    "scenes/06.hot",
+    "scenes/06.p8",
+    "scenes/07.bar",
+    "scenes/07.hot",
+    "scenes/07.p8",
+    "scenes/08.bar",
+    "scenes/08.hot",
+    "scenes/08.p8",
+    "scenes/09.bar",
+    "scenes/09.hot",
+    "scenes/09.p8",
+    "scenes/10.bar",
+    "scenes/10.hot",
+    "scenes/10.p8",
+    "scenes/11.bar",
+    "scenes/11.hot",
+    "scenes/11.p8",
+    "scenes/12.bar",
+    "scenes/12.hot",
+    "scenes/12.p8",
+    "scenes/13.bar",
+    "scenes/13.hot",
+    "scenes/13.p8",
+    "scenes/14.bar",
+    "scenes/14.hot",
+    "scenes/14.p8",
+    "scenes/15.bar",
+    "scenes/15.hot",
+    "scenes/15.p8",
+    "scenes/16.bar",
+    "scenes/16.hot",
+    "scenes/16.p8",
+    "scenes/17.bar",
+    "scenes/17.hot",
+    "scenes/17.p8",
+    "scenes/18.hot",
+    "scenes/18.p8",
+    "scenes/19.hot",
+    "scenes/19.p8"
+  ],
+  "lossless_frame_storage": {
+    "packed_clips": [
+      "scenes/02-103.anm",
+      "scenes/02-56.anm",
+      "scenes/02-60.anm",
+      "scenes/02-75.anm",
+      "scenes/02-83.anm",
+      "scenes/02-87.anm",
+      "scenes/02-89.anm",
+      "scenes/02-94.anm",
+      "scenes/02-97.anm",
+      "scenes/02-20010.anm",
+      "scenes/02-20011.anm",
+      "scenes/03-20010.anm",
+      "scenes/03-20011.anm",
+      "scenes/04-20010.anm",
+      "scenes/04-20011.anm",
+      "scenes/04-20043.anm",
+      "scenes/04-68.anm",
+      "scenes/04-86.anm",
+      "scenes/04-94.anm",
+      "scenes/04-97.anm",
+      "scenes/04-100.anm",
+      "scenes/04-112.anm",
+      "scenes/04-113.anm",
+      "scenes/04-116.anm",
+      "scenes/04-124.anm",
+      "scenes/04-125.anm",
+      "scenes/04-129.anm",
+      "scenes/04-130.anm",
+      "scenes/04-131.anm"
+    ],
+    "inflated_bytes_saved": 14393237,
+    "decoded_visual_payloads_preserved": true
+  },
+  "render_cache": {
+    "small_profile_pixels": 65536,
+    "large_profile_pixels": 131072,
+    "walking_byte_cache_max": 65536,
+    "low_memory_fallback": true,
+    "device_fps_measured": false
   }
 }

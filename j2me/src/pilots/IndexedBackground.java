@@ -10,6 +10,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.microedition.lcdui.Graphics;
+import javax.microedition.lcdui.Image;
 import pilots.Viewport;
 
 public final class IndexedBackground {
@@ -20,6 +21,8 @@ public final class IndexedBackground {
     private final int[] palette = new int[256];
     private final byte[] pixels;
     private int[] row;
+    private final RasterCache raster=new RasterCache();
+    private int cachedWidth,cachedHeight,cachedLeft,cachedTop,cachedDrawWidth,cachedDrawHeight,cachedPanel;
 
     public IndexedBackground(InputStream inputStream) throws IOException {
         if (inputStream == null) {
@@ -38,8 +41,10 @@ public final class IndexedBackground {
                 throw new IOException("Invalid image dimensions");
             }
             int n = 0;
+            byte[] colors=new byte[768];dataInputStream.readFully(colors);
             while (n < 256) {
-                this.palette[n] = 0xFF000000 | dataInputStream.readUnsignedByte() << 16 | dataInputStream.readUnsignedByte() << 8 | dataInputStream.readUnsignedByte();
+                int p=n*3;
+                this.palette[n] = 0xFF000000 | (colors[p]&255) << 16 | (colors[p+1]&255) << 8 | (colors[p+2]&255);
                 ++n;
             }
             this.pixels = new byte[this.width * this.height];
@@ -54,6 +59,31 @@ public final class IndexedBackground {
     }
 
     public void paint(Graphics graphics, Viewport viewport) {
+        Image image=raster.get();
+        if(image!=null && cachedPanel==0 && cachedWidth==viewport.width && cachedHeight==viewport.height &&
+           cachedLeft==viewport.left && cachedTop==viewport.top && cachedDrawWidth==viewport.drawWidth && cachedDrawHeight==viewport.drawHeight) {
+            graphics.drawImage(image,0,0,20);return;
+        }
+        raster.clear();
+        int area=viewport.width*viewport.height;
+        if(RasterCache.allows(area)) {
+            try {
+                raster.prepare(area);
+                image=Image.createImage(viewport.width,viewport.height);
+                Graphics target=image.getGraphics();target.setColor(0);target.fillRect(0,0,viewport.width,viewport.height);
+                paintRows(target,viewport);raster.store(image);
+                cachedPanel=0;cachedWidth=viewport.width;cachedHeight=viewport.height;
+                cachedLeft=viewport.left;cachedTop=viewport.top;cachedDrawWidth=viewport.drawWidth;cachedDrawHeight=viewport.drawHeight;
+                graphics.drawImage(image,0,0,20);return;
+            } catch(OutOfMemoryError exhausted) { RasterCache.failed(); }
+              catch(IllegalArgumentException unsupported) { RasterCache.failed(); }
+        }
+        paintRows(graphics,viewport);
+    }
+
+    public void clearCache() { raster.clear(); }
+
+    private void paintRows(Graphics graphics, Viewport viewport) {
         int n = Math.max(0, viewport.left);
         int n2 = Math.min(viewport.width, viewport.left + viewport.drawWidth);
         int n3 = Math.max(0, viewport.top);
@@ -79,6 +109,25 @@ public final class IndexedBackground {
     }
 
     public void paintPanel(Graphics graphics, int n, int n2, int n3) {
+        if(n<1 || n3<1) return;
+        Image image=raster.get();
+        if(image!=null && cachedPanel==1 && cachedWidth==n && cachedHeight==n3) {
+            graphics.drawImage(image,0,n2-n3,20);return;
+        }
+        raster.clear();
+        if(RasterCache.allows(n*n3)) {
+            try {
+                raster.prepare(n*n3);image=Image.createImage(n,n3);
+                paintPanelRows(image.getGraphics(),n,n3,n3);raster.store(image);
+                cachedPanel=1;cachedWidth=n;cachedHeight=n3;
+                graphics.drawImage(image,0,n2-n3,20);return;
+            } catch(OutOfMemoryError exhausted) { RasterCache.failed(); }
+              catch(IllegalArgumentException unsupported) { RasterCache.failed(); }
+        }
+        paintPanelRows(graphics,n,n2,n3);
+    }
+
+    private void paintPanelRows(Graphics graphics, int n, int n2, int n3) {
         if (this.row == null || this.row.length != n) {
             this.row = new int[n];
         }

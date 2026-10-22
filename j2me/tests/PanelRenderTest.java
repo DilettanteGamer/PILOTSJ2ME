@@ -23,6 +23,14 @@ public final class PanelRenderTest {
                     check(empty.image.getRGB(x,y)==baseline.image.getRGB(x,y),"unowned item is not drawn");
             state.inventory[0]=state.inventory[1]=state.inventory[2]=true;logic.selectItem(3);
             panel.paint(painted,logic,width,height,panelHeight);
+            int[] selectedRoots={64,384};
+            for(int root:selectedRoots) {
+                int left=(root+2)*width/640,top=height-panelHeight+4*panelHeight/63;
+                int right=(root+61)*width/640-1,bottom=height-panelHeight+59*panelHeight/63-1;
+                check((painted.image.getRGB(left,top)&0xffffff)==0xE8D43F,"selection top-left follows sprite frame");
+                check((painted.image.getRGB(right,bottom)&0xffffff)==0xE8D43F,"selection bottom-right follows sprite frame");
+                if(top>height-panelHeight) check((painted.image.getRGB(left,height-panelHeight)&0xffffff)!=0xE8D43F,"selection must not touch panel edge");
+            }
             int[] slots={0,1,3,4,5,6,9};
             for(int index=0;index<slots.length;index++) {
                 int slot=slots[index],x=(slot*64+31)*width/640;
