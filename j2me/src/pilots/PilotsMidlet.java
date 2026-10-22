@@ -274,7 +274,15 @@ MenuCanvas.Host {
         public synchronized void goToScene(int n) throws IOException {
             if (n!=2 && n!=3 && n!=4) throw new IOException("This build includes locations 1, 2 and 3");
             this.audio.active(false);
-            RasterCache.budget(this.getWidth()<200?65536:131072);
+            int cachePixels=this.getWidth()<200?65536:131072;
+            try {
+                String configured=PilotsMidlet.this.getAppProperty("Pilots-Raster-Cache-Pixels");
+                if(configured!=null) {
+                    int value=Integer.parseInt(configured);
+                    if(value>=0 && value<=131072) cachePixels=value;
+                }
+            } catch(NumberFormatException ignored) {}
+            RasterCache.budget(cachePixels);
             WalkStreams.clear();
             if (this.zooPanel!=null) { this.zooPanel.close();this.zooPanel=null; }
             if (this.sceneIndex(n) < 0) {

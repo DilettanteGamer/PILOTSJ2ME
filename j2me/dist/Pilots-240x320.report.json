@@ -56,9 +56,9 @@
     4
   ],
   "active_preview_scene": 4,
-  "version": "0.9.0",
-  "jar_size": 4200811,
-  "jar_sha256": "aec55e948145b3f80f266e633dbc185147f4fbfa7f8ec03fe2f3d94a515bb17c",
+  "version": "0.9.1",
+  "jar_size": 4201022,
+  "jar_sha256": "690f3c5a344bc3e14facd0b441db8300601e55e48687240d5f141b4e58cc40bb",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -322,5 +322,16 @@
     "walking_byte_cache_max": 65536,
     "low_memory_fallback": true,
     "device_fps_measured": false
+  },
+  "build_profile": {
+    "baseline": "240x320",
+    "screen": [
+      240,
+      320
+    ],
+    "midlet_name": "Pilots Engine 240x320",
+    "raster_cache_pixels": 131072,
+    "id": "240x320",
+    "original_input": "Pilots-240x320.jar"
   }
 }
