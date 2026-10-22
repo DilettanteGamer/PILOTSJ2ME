@@ -114,6 +114,11 @@ public final class AnimationClip {
         }
     }
 
+    public boolean contains(int x,int y) {
+        x-=offsetX;y-=offsetY;
+        return pixels!=null && x>=0 && y>=0 && x<width && y<height && (pixels[y*width+x]&255)!=transparent;
+    }
+
     // Nearest-neighbour indexed rendering, with transparent runs skipped.
     public void paint(Graphics graphics, Viewport view, int x, int y) {
         if (pixels == null) return;

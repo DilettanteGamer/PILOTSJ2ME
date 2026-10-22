@@ -4,19 +4,20 @@ import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 
 /** Fixed-step adapter for original zoo sequences; drawing never commits game state. */
-public final class ZooScene {
+public class ZooScene {
     public final ZooLogic logic;
-    private final Scene scene;
-    private final GameState state;
+    protected final Scene scene;
+    protected final GameState state;
     private long elapsed;
     private int[] path;
     private int pathIndex;
 
     public ZooScene(Scene scene, GameState state) throws IOException {
-        this.scene = scene;
-        this.state = state;
-        logic = new ZooLogic(state);
-        rebuild();
+        this(scene,state,new ZooLogic(state),true);
+    }
+    protected ZooScene(Scene scene,GameState state,ZooLogic logic,boolean initialize) throws IOException {
+        this.scene=scene;this.state=state;this.logic=logic;
+        if(initialize) rebuild();
     }
 
     private AnimatedActor actor(int id, int x, int y, boolean playing, int frame) throws IOException {
@@ -54,9 +55,9 @@ public final class ZooScene {
     }
 
     private AnimatedActor crow() throws IOException {
-        AnimatedActor result = actor(logic.crowState() == 1 ? 66 : 65, 320, 112,
-            logic.crowState() == 1, logic.crowFrame());
-        result.visible = logic.crowState() != 0;
+        AnimatedActor result = actor(logic.crowExiting()?88:logic.crowState() == 1 ? 66 : 65, 320, 112,
+            logic.crowExiting() || logic.crowState() == 1, logic.crowExiting()?logic.crowExitFrame():logic.crowFrame());
+        result.visible = logic.crowExiting() || logic.crowState() != 0;
         return result;
     }
 
@@ -171,6 +172,8 @@ public final class ZooScene {
         for(int i=0;i<scene.actors.length;i++) scene.actors[paintOrder[i]].paint(graphics,view);
     }
 
+    public String hoverText(int x,int y) { return null; }
+
     public static int approachX(int target) {
         return target==ZooLogic.KETTLE || target==ZooLogic.PICKAXE?64:target==ZooLogic.COIN?320:target>=ZooLogic.BELL?384:192;
     }
@@ -275,6 +278,10 @@ public final class ZooScene {
             changed=logic.tickSubtitle() || changed;
             changed=walkTick() || changed;
             for (int i = 0; i < scene.actors.length; i++) changed = scene.actors[i].update(100L) || changed;
+            if(logic.crowExiting() && scene.actors[4].id==88) {
+                logic.crowExitFrame(scene.actors[4].clip.index);
+                if(scene.actors[4].clip.index==scene.actors[4].clip.count-1) logic.finishCrowExit();
+            }
             if (logic.crowState() == 1) {
                 logic.crowFrame(scene.actors[4].clip.index);
                 if (scene.actors[4].clip.index == scene.actors[4].clip.count - 1) logic.perchCrow();
@@ -310,8 +317,8 @@ public final class ZooScene {
                 if(scene.actors[11].id!=(logic.gateState()==0?51:logic.gateState()==1?49:50)) replace(11,gate());
                 if(scene.actors[12].id!=(!logic.wallBroken()?72:state.variables[7]==1?73:74)) replace(12,wall());
                 if(scene.actors[13].visible!=logic.rockActive()) replace(13,rock());
-                if (scene.actors[4].id != (logic.crowState() == 1 ? 66 : 65)
-                    || scene.actors[4].visible != (logic.crowState() != 0)) replace(4, crow());
+                if (scene.actors[4].id != (logic.crowExiting()?88:logic.crowState() == 1 ? 66 : 65)
+                    || scene.actors[4].visible != (logic.crowExiting() || logic.crowState() != 0)) replace(4, crow());
                 scene.actors[5].visible = !logic.hasKettle();
                 if (scene.actors[7].id != logic.catClip() || scene.actors[7].visible != logic.catPresent()) replace(7, cat());
                 if (scene.actors[8].id != (logic.butterflyState() == 1 ? 90 : 91)

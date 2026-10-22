@@ -1,14 +1,15 @@
 package pilots;
 
 /** Original zoo rules; evidence is recorded in window/barrel-original-rules.json. */
-public final class ZooLogic {
+public class ZooLogic {
     public static final int CHIEF = 0, COLLEAGUE = 1;
     public static final int GLOBAL_CHIEF_IDLE = 20012, GLOBAL_COLLEAGUE_IDLE = 20016;
     public static final int GLOBAL_CHIEF_REFUSAL = 20036, GLOBAL_CHIEF_REPLY = 20034;
-    private final GameState state;
+    protected final GameState state;
 
     public ZooLogic(GameState state) {
         this.state = state;
+        if(state.scene==3) return;
         if (state.variables[60] != COLLEAGUE) state.variables[60] = CHIEF;
         state.variables[61] = state.variables[61] == 1 ? 1 : 0;
         if (state.variables[58] != 2) {
@@ -27,6 +28,10 @@ public final class ZooLogic {
     public int step() { return state.variables[53]; }
     public boolean busy() { return pendingClip() != 0 || walking() || guardPhase()==1 || guardPhase()==2; }
     public int crowState() { return state.variables[62]; }
+    public boolean crowExiting() { return state.variables[20]==1; }
+    public int crowExitFrame() { return state.variables[21]; }
+    public void crowExitFrame(int frame) { state.variables[21]=frame; }
+    public void finishCrowExit() { state.variables[20]=state.variables[21]=0; }
     public int crowFrame() { return state.variables[59]; }
     public void crowFrame(int frame) { state.variables[59] = frame; }
     public void perchCrow() { state.variables[62] = 2; state.variables[59] = 0; }
@@ -234,7 +239,8 @@ public final class ZooLogic {
         }
         if (catStep() == 15) catClip(67);
         if (catStep() == 32 && catMode() == 2) {
-            state.variables[62] = state.variables[59] = 0; // map 10 removes the crow
+            state.variables[62] = state.variables[59] = 0; // map 10 removes the logical crow
+            state.variables[20]=1;state.variables[21]=0; // exit clip 88 remains visible independently
             catClip(89);
         }
         if (catStep() == 45 && catMode() == 2) {

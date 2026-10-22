@@ -39,17 +39,19 @@ public final class BarrelSceneTest {
             ticks(zoo,30); zoo.logic.select(0); zoo.activate(150,315);
             ticks(zoo,24); check(zoo.logic.catPresent(),"retry spawns cat");
             ticks(zoo,32);
-            check(zoo.logic.crowState()==0 && !scene.actors[4].visible && scene.actors[7].id==89,
+            check(zoo.logic.crowState()==0 && scene.actors[4].visible && scene.actors[4].id==88 && scene.actors[7].id==89,
                   "cat chases crow only when present");
             state=GameState.decode(state.encode(),20);
             int catFrame=scene.actors[7].clip.index;
+            int crowExitFrame=scene.actors[4].clip.index;
             zoo=new ZooScene(scene,state);
-            check(scene.actors[7].clip.index==catFrame && !scene.actors[4].visible,"resume chase after crow removal");
+            check(scene.actors[7].clip.index==catFrame && scene.actors[4].visible && scene.actors[4].id==88 && scene.actors[4].clip.index==crowExitFrame,"resume chase after crow removal");
             ticks(zoo,13);
             check(zoo.logic.butterflyState()==1 && scene.actors[8].visible && scene.actors[8].id==90,"source butterfly spawn");
             ticks(zoo,28);
             check(!zoo.logic.catPresent() && scene.actors[8].id==91 && scene.actors[8].visible,"cat cleanup and persistent butterfly");
             check(scene.actors[0].visible && zoo.logic.hasKettle(),"window and inventory preserved across chain");
+            check(!zoo.logic.crowExiting() && !scene.actors[4].visible,"catalog animation 18 completes and releases its exit actor");
         } finally { scene.close(); }
         System.out.println("BarrelScene: pickup, inventory use, wrong-order retry, cat/crow/butterfly and resumption passed");
     }
