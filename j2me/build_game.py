@@ -18,9 +18,10 @@ from extract_window_gameplay import extract
 from extract_barrel_gameplay import extract as extract_barrel
 from extract_first_location import extract as extract_first_location
 from extract_subtitles import extract as extract_subtitles
+from extract_courtyard import extract as extract_courtyard
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.5.2'
+VERSION = '0.6.0'
 
 
 def run(command):
@@ -86,6 +87,9 @@ def package(profile, classes, sprites, output):
     entries = {n: d for n, d in entries.items() if not n.endswith('.class')}
     entries.update(classes)
     entries.update(sprites)
+    entries.pop('scenes/02.animations',None)
+    changes['pending_placement_menu_numbers']=[]
+    changes['pending_character_relative_menu_numbers']=[]
     manifest = resources.manifest(entries['META-INF/MANIFEST.MF'])
     manifest['MIDlet-Version'] = VERSION
     entries['META-INF/MANIFEST.MF'] = ('\r\n'.join(k + ': ' + v for k, v in manifest.items()) + '\r\n\r\n').encode()
@@ -106,7 +110,7 @@ def package(profile, classes, sprites, output):
     jad = {k: v for k, v in manifest.items() if k != 'Manifest-Version'}
     jad.update({'MIDlet-Jar-URL': target.name, 'MIDlet-Jar-Size': str(target.stat().st_size)})
     target.with_suffix('.jad').write_bytes(('\r\n'.join(k + ': ' + v for k, v in jad.items()) + '\r\n').encode())
-    report.update(version=VERSION, jar_size=target.stat().st_size,
+    report.update(playable_scene_ids=[2,3],active_preview_scene=3,version=VERSION, jar_size=target.stat().st_size,
                   jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(), bytecode_preserved=False,
                   compilation='ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs',
                   preverification='ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation',
@@ -139,6 +143,9 @@ def main():
     subtitle_binary,subtitle_report=extract_subtitles((ROOT.parent / 'PILOTS.EXE').read_bytes())
     sprites['scenes/02.subtitles']=subtitle_binary
     (ROOT / 'analysis/subtitle-original-cues.json').write_text(json.dumps(subtitle_report,ensure_ascii=False,indent=2)+'\n')
+    courtyard_sprites,courtyard_report=extract_courtyard((ROOT.parent / 'PILOTS.EXE').read_bytes())
+    sprites.update(courtyard_sprites)
+    (ROOT / 'analysis/courtyard-original-rules.json').write_text(json.dumps(courtyard_report,ensure_ascii=False,indent=2)+'\n')
     sprites['scenes/02.rules'] = full_binary
     (ROOT / 'analysis/first-location-original-rules.json').write_text(json.dumps(full_report, indent=2) + '\n')
     with tempfile.TemporaryDirectory(prefix='pilots-build-') as temporary:
@@ -149,19 +156,25 @@ def main():
             target = output / ('Pilots-' + profile + '.jar')
             classpath = os.pathsep.join(map(str, [target, tools['midpapi20-2.0.4.jar']]))
             run([javac, '-encoding', 'UTF-8', '-cp', classpath, '-d', test_classes,
-                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java'])
+                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java',ROOT / 'tests/CourtyardSceneTest.java',ROOT / 'tests/CourtyardRulesTest.java'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.ZooSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BarrelSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.FirstLocationSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.ZooPresentationTest'])
+            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.CourtyardSceneTest'])
+            courtyard_fixture=Path(temporary) / 'courtyard-source-actions.csv'
+            courtyard_fixture.write_text('\n'.join(','.join(map(str,row)) for row in courtyard_report['actions'])+'\n')
+            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.CourtyardRulesTest',courtyard_fixture])
             panel_classes=Path(temporary) / 'panel-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',panel_classes,
-                 ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java'])
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java'])
             width,height=profile.split('x')
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
                  'pilots.PanelRenderTest',width,height,ROOT / ('analysis/panel-'+profile+'-'+VERSION+'.png')])
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
                  'pilots.ZooGeometryTest',width,height,ROOT / ('analysis/geometry-'+profile+'-'+VERSION+'.png')])
+            run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
+                 'pilots.CourtyardRenderTest',width,height,ROOT / ('analysis/courtyard-'+profile+'-'+VERSION)])
 
 
 if __name__ == '__main__':

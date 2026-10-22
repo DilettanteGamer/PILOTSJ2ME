@@ -1,6 +1,6 @@
 {
   "profile": "240x320",
-  "classes": 24,
+  "classes": 27,
   "scenes": [
     0,
     2,
@@ -22,8 +22,8 @@
     18,
     19
   ],
-  "animations": 99,
-  "frames": 1069,
+  "animations": 168,
+  "frames": 1945,
   "backgrounds": {
     "scenes/00.p8": [
       640,
@@ -236,9 +236,14 @@
       480
     ]
   },
-  "version": "0.5.2",
-  "jar_size": 2790291,
-  "jar_sha256": "cafca7a269b7f44ae1cc6fcae604171ce465d48615b62ac8f41249de4c9f08b2",
+  "playable_scene_ids": [
+    2,
+    3
+  ],
+  "active_preview_scene": 3,
+  "version": "0.6.0",
+  "jar_size": 3297390,
+  "jar_sha256": "2914b19b5f34a5b9d8cd8e90ab68077a618f8fc4f64b13f4f50b063c49401a50",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -389,13 +394,5 @@
     95
   ],
   "pending_placement_menu_numbers": [],
-  "pending_character_relative_menu_numbers": [
-    14,
-    15,
-    21,
-    22,
-    27,
-    28,
-    30
-  ]
+  "pending_character_relative_menu_numbers": []
 }
