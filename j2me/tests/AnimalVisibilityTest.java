@@ -71,12 +71,14 @@ public final class AnimalVisibilityTest {
             location=new AnimalScene(scene,state);visible();
             check(world().hasItem(1)==kettle,"legacy inventory changed");
             for(int h=0;h<2;h++) check(world().heroes[h].active && world().heroes[h].clip>=0 && scene.actors[300+h]!=null,"legacy idle hero was not restored");
+            for(int i=0;i<world().cells.length;i++) if(world().cells[i]!=null && world().cells[i].finished)
+                check(world().cells[i].clip<0 && scene.actors[i]==null,"legacy completed transient sprite still visible");
             save();check(world().hasItem(1)==kettle,"legacy-to-current save round trip");
         } finally { scene.close(); }
     }
     public static void main(String[] args) throws Exception {
         prepare();scene.close();
-        legacy(args[0],false);legacy(args[1],true);
-        System.out.println("AnimalVisibility: physical pickups, visible transitions, original banana cooperation, tree form and original AWS1 saves passed");
+        legacy(args[0],false);legacy(args[1],true);if(args.length>2) legacy(args[2],true);
+        System.out.println("AnimalVisibility: physical pickups, visible transitions, original banana cooperation, tree form and original AWS1/AWS2 saves passed");
     }
 }
