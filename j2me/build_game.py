@@ -24,7 +24,7 @@ from extract_audio import extract as extract_audio
 from extract_animals import extract as extract_animals
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.9.2'
+VERSION = '0.9.3'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -216,7 +216,7 @@ def main():
             run([java,'-cp',str(audio_classes)+os.pathsep+classpath,'pilots.AudioTest']+[audio_report['scenes'][str(n)]['music']['event_sha256'] for n in [2,3,4]])
             panel_classes=Path(temporary) / 'panel-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',panel_classes,
-                 ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Image.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java',ROOT / 'tests/AnimalRenderTest.java',ROOT / 'tests/RGBCompatibilityTest.java',ROOT / 'tests/RenderPerformanceTest.java',ROOT / 'tests/AnimationDecodeTest.java'])
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Image.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java',ROOT / 'tests/AnimalRenderTest.java',ROOT / 'tests/RGBCompatibilityTest.java',ROOT / 'tests/RenderPerformanceTest.java',ROOT / 'tests/AnimationDecodeTest.java',ROOT / 'tests/ScrollRenderTest.java'])
             frame_hashes=Path(temporary) / ('frame-hashes-'+profile+'.properties')
             with zipfile.ZipFile(target) as archive:
                 frame_hashes.write_text(''.join(name+'='+hashlib.sha256(decode_animation(archive.read(name))[777:]).hexdigest()+'\n' for name in archive.namelist() if name.endswith('.anm')))
@@ -227,6 +227,8 @@ def main():
                 (panel_classes / ('bad-rle-'+name+'.anm')).write_bytes(fixture)
             run([java,'-cp',str(panel_classes)+os.pathsep+classpath,'pilots.AnimationDecodeTest',frame_hashes])
             width,height=profile.split('x')
+            run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
+                 'pilots.ScrollRenderTest',width,height])
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
                  'pilots.RGBCompatibilityTest',target,width,height])
             # Also check Nokia C1-02 dimensions for the other install profiles.

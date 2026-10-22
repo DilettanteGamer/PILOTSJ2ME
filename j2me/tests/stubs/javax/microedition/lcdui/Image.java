@@ -4,8 +4,10 @@ package javax.microedition.lcdui;
 public final class Image {
     final java.awt.image.BufferedImage bitmap;
     public static boolean failAllocations;
+    public static int allocations;
     private Image(int width,int height) {
         if(failAllocations) throw new OutOfMemoryError("simulated image heap exhaustion");
+        allocations++;
         bitmap=new java.awt.image.BufferedImage(width,height,java.awt.image.BufferedImage.TYPE_INT_ARGB);
     }
     public static Image createImage(int width,int height) { return new Image(width,height); }

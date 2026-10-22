@@ -23,6 +23,7 @@ public final class IndexedBackground {
     private int[] row;
     private final RasterCache raster=new RasterCache();
     private int cachedWidth,cachedHeight,cachedLeft,cachedTop,cachedDrawWidth,cachedDrawHeight,cachedPanel;
+    private boolean copySupported=true;
 
     public IndexedBackground(InputStream inputStream) throws IOException {
         if (inputStream == null) {
@@ -61,7 +62,27 @@ public final class IndexedBackground {
     public void paint(Graphics graphics, Viewport viewport) {
         Image image=raster.get();
         if(image!=null && cachedPanel==0 && cachedWidth==viewport.width && cachedHeight==viewport.height &&
-           cachedLeft==viewport.left && cachedTop==viewport.top && cachedDrawWidth==viewport.drawWidth && cachedDrawHeight==viewport.drawHeight) {
+           cachedDrawWidth==viewport.drawWidth && cachedDrawHeight==viewport.drawHeight) {
+            int dx=viewport.left-cachedLeft,dy=viewport.top-cachedTop;
+            if(dx!=0 || dy!=0) {
+                Graphics target=image.getGraphics();
+                target.setClip(0,0,viewport.width,viewport.height);
+                boolean shifted=false;
+                if(copySupported && Math.abs(dx)<viewport.width && Math.abs(dy)<viewport.height) {
+                    try {
+                        target.copyArea(Math.max(0,-dx),Math.max(0,-dy),viewport.width-Math.abs(dx),viewport.height-Math.abs(dy),Math.max(0,dx),Math.max(0,dy),20);
+                        shifted=true;
+                    } catch(RuntimeException unsupported) { copySupported=false; }
+                      catch(OutOfMemoryError exhausted) { copySupported=false; }
+                }
+                if(shifted) {
+                    if(dx>0) paintStrip(target,viewport,0,0,dx,viewport.height);
+                    if(dx<0) paintStrip(target,viewport,viewport.width+dx,0,-dx,viewport.height);
+                    if(dy>0) paintStrip(target,viewport,0,0,viewport.width,dy);
+                    if(dy<0) paintStrip(target,viewport,0,viewport.height+dy,viewport.width,-dy);
+                } else paintStrip(target,viewport,0,0,viewport.width,viewport.height);
+                cachedLeft=viewport.left;cachedTop=viewport.top;
+            }
             graphics.drawImage(image,0,0,20);return;
         }
         raster.clear();
@@ -78,21 +99,43 @@ public final class IndexedBackground {
             } catch(OutOfMemoryError exhausted) { RasterCache.failed(); }
               catch(IllegalArgumentException unsupported) { RasterCache.failed(); }
         }
-        paintRows(graphics,viewport);
+        paintRows(graphics,viewport,viewport.paintLeft,viewport.paintTop,viewport.paintRight,viewport.paintBottom);
     }
 
     public void clearCache() { raster.clear(); }
 
+    private void paintStrip(Graphics target,Viewport view,int x,int y,int width,int height) {
+        target.setColor(0);target.fillRect(x,y,width,height);
+        paintRows(target,view,x,y,x+width,y+height);
+    }
+
     private void paintRows(Graphics graphics, Viewport viewport) {
-        int n = Math.max(0, viewport.left);
-        int n2 = Math.min(viewport.width, viewport.left + viewport.drawWidth);
-        int n3 = Math.max(0, viewport.top);
-        int n4 = Math.min(viewport.height, viewport.top + viewport.drawHeight);
+        paintRows(graphics,viewport,0,0,viewport.width,viewport.height);
+    }
+
+    private void paintRows(Graphics graphics, Viewport viewport,int clipLeft,int clipTop,int clipRight,int clipBottom) {
+        int n = Math.max(clipLeft, Math.max(0, viewport.left));
+        int n2 = Math.min(clipRight, Math.min(viewport.width, viewport.left + viewport.drawWidth));
+        int n3 = Math.max(clipTop, Math.max(0, viewport.top));
+        int n4 = Math.min(clipBottom, Math.min(viewport.height, viewport.top + viewport.drawHeight));
         int n5 = n2 - n;
-        if (n5 <= 0) {
+        if (n5 <= 0 || n4<=n3) {
             return;
         }
-        if (this.row == null || this.row.length != n5) {
+        // A narrow exposed band is cheap to scale, but sending every row through
+        // drawRGB still costs hundreds of native calls during horizontal pans.
+        // Batch small bands; retain the row path for large/cold redraws.
+        int area=n5*(n4-n3);
+        if(area<=4096) {
+            if(row==null || row.length<area) row=new int[area];
+            int target=0;
+            for(int sy=n3;sy<n4;sy++) {
+                int source=(sy-viewport.top)*height/viewport.drawHeight*width;
+                for(int sx=n;sx<n2;sx++) row[target++]=palette[pixels[source+(sx-viewport.left)*width/viewport.drawWidth]&255];
+            }
+            graphics.drawRGB(row,0,n5,n,n3,n5,n4-n3,false);return;
+        }
+        if (this.row == null || this.row.length < n5) {
             this.row = new int[n5];
         }
         int n6 = n3;
