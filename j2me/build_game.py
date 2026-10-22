@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compile and CLDC-preverify the playable MIDlet, then package both profiles."""
+"""Compile and CLDC-preverify the playable MIDlet, then package selected profiles."""
 import argparse
 import hashlib
 import json
@@ -24,7 +24,8 @@ from extract_audio import extract as extract_audio
 from extract_animals import extract as extract_animals
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.9.0'
+VERSION = '0.9.1'
+PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
 def run(command):
@@ -81,9 +82,11 @@ def compile_game(java, javac, tools, work, evidence, barrel, full_binary, full_r
 
 
 def package(profile, classes, sprites, output):
-    source = ROOT / 'input' / ('Pilots-' + profile + '.jar')
+    config = PROFILES[profile]
+    baseline_profile = config['baseline']
+    source = ROOT / 'input' / ('Pilots-' + baseline_profile + '.jar')
     locked = json.loads((ROOT / 'baselines.json').read_text())
-    resources.require(hashlib.sha256(source.read_bytes()).hexdigest() == locked[profile], 'Baseline hash mismatch')
+    resources.require(hashlib.sha256(source.read_bytes()).hexdigest() == locked[baseline_profile], 'Baseline hash mismatch')
     with zipfile.ZipFile(source) as archive:
         baseline = {n: archive.read(n) for n in archive.namelist()}
     entries, changes = resources.adjust_animations(baseline, json.loads((ROOT / 'animation-adjustments.json').read_text()))
@@ -112,12 +115,17 @@ def package(profile, classes, sprites, output):
     changes['pending_character_relative_menu_numbers']=[]
     manifest = resources.manifest(entries['META-INF/MANIFEST.MF'])
     manifest['MIDlet-Version'] = VERSION
+    manifest['MIDlet-Name'] = config['midlet_name']
+    manifest['MIDlet-1'] = config['midlet_name'] + ',,pilots.PilotsMidlet'
+    manifest['Pilots-Screen'] = profile
+    manifest['Pilots-Profile'] = profile
+    manifest['Pilots-Raster-Cache-Pixels'] = str(config['raster_cache_pixels'])
     entries['META-INF/MANIFEST.MF'] = ('\r\n'.join(k + ': ' + v for k, v in manifest.items()) + '\r\n\r\n').encode()
     report = resources.validate(entries, profile)
     # Decoded animation content and retained profile rasters must remain byte-identical.
     resources.require(all((decode_animation(d) if n.endswith('.anm') else d) == baseline[n] for n, d in entries.items() if n in baseline and n.endswith(('.anm', '.p8', '.bar'))), 'Existing visual content changed')
     output.mkdir(parents=True, exist_ok=True)
-    target = output / source.name
+    target = output / ('Pilots-' + profile + '.jar')
     with zipfile.ZipFile(target, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for name in sorted(entries, key=lambda n: (n != 'META-INF/MANIFEST.MF', n)):
             info = zipfile.ZipInfo(name, date_time=(2000, 1, 1, 0, 0, 0))
@@ -144,13 +152,14 @@ def package(profile, classes, sprites, output):
     report['lossless_frame_storage']={'packed_clips':packed_clips,'inflated_bytes_saved':inflated_bytes_saved,'decoded_visual_payloads_preserved':True}
     report['existing_visual_payloads_preserved']=False
     report['render_cache']={'small_profile_pixels':65536,'large_profile_pixels':131072,'walking_byte_cache_max':65536,'low_memory_fallback':True,'device_fps_measured':False}
+    report['build_profile'] = dict(config, id=profile, original_input=source.name)
     target.with_suffix('.report.json').write_text(json.dumps(report, indent=2) + '\n')
     print(profile + ': built ' + str(target) + ' (' + str(report['classes']) + ' preverified classes)')
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--profile', choices=['all', '128x128', '240x320'], default='all')
+    parser.add_argument('--profile', choices=['all'] + list(PROFILES), default='all')
     parser.add_argument('--out', type=Path, default=ROOT / 'dist')
     parser.add_argument('--tool-cache', type=Path, default=Path(os.environ.get('PILOTS_TOOL_CACHE', '/tmp/pilots-j2me-tools')))
     args = parser.parse_args()
@@ -185,7 +194,7 @@ def main():
     (ROOT / 'analysis/first-location-original-rules.json').write_text(json.dumps(full_report, indent=2) + '\n')
     with tempfile.TemporaryDirectory(prefix='pilots-build-') as temporary:
         classes = compile_game(java, javac, tools, Path(temporary), evidence, barrel, full_binary, full_report, subtitle_binary)
-        for profile in ['128x128', '240x320'] if args.profile == 'all' else [args.profile]:
+        for profile in PROFILES if args.profile == 'all' else [args.profile]:
             package(profile, classes, sprites, output)
             test_classes = Path(temporary) / 'adapter-tests'
             target = output / ('Pilots-' + profile + '.jar')
@@ -220,7 +229,7 @@ def main():
             width,height=profile.split('x')
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
                  'pilots.RGBCompatibilityTest',target,width,height])
-            # Nokia C1-02 has a 128x160 screen, distinct from either asset profile.
+            # Also check Nokia C1-02 dimensions for the other install profiles.
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
                  'pilots.RGBCompatibilityTest',target,'128','160'])
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
@@ -237,6 +246,8 @@ def main():
                  'pilots.CourtyardRenderTest',width,height,ROOT / ('analysis/courtyard-'+profile+'-'+VERSION)])
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
                  'pilots.AnimalRenderTest',width,height,ROOT / ('analysis/animals-'+profile+'-'+VERSION)])
+        if args.profile == 'all':
+            run([sys.executable, ROOT / 'tests/BuildProfilesTest.py', output])
 
 
 if __name__ == '__main__':

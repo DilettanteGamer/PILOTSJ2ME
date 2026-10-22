@@ -97,7 +97,9 @@ def inspect(path):
 
 def main():
     reports = [inspect(p) for folder in ['input', 'dist'] for p in sorted((ROOT / folder).glob('*.jar'))]
-    require(len(reports) == 4, 'Expected two original and two adjusted JARs')
+    profiles = json.loads((ROOT / 'profiles.json').read_text())
+    require(len(reports) == 2 + len(profiles), 'Expected two original JARs and one JAR per build profile')
+    require({r['profile'] for r in reports if r['path'].startswith('dist/')} == set(profiles), 'Missing or unexpected build profile')
     original = [r for r in reports if r['path'].startswith('input/')]
     require(original[0]['classes_detail'] == original[1]['classes_detail'], 'Original bytecode differs across profiles')
     result = {'scope': 'Static inventory only; no emulator or device tests executed',

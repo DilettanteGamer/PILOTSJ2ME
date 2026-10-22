@@ -1,0 +1,20 @@
+{
+  "128x128": {
+    "baseline": "128x128",
+    "screen": [128, 128],
+    "midlet_name": "Pilots Engine 128x128",
+    "raster_cache_pixels": 65536
+  },
+  "128x160": {
+    "baseline": "128x128",
+    "screen": [128, 160],
+    "midlet_name": "Pilots Engine 128x160",
+    "raster_cache_pixels": 65536
+  },
+  "240x320": {
+    "baseline": "240x320",
+    "screen": [240, 320],
+    "midlet_name": "Pilots Engine 240x320",
+    "raster_cache_pixels": 131072
+  }
+}
