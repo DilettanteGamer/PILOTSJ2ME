@@ -2648,7 +2648,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.9.4",
+        "MIDlet-Version": "0.9.5",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2657,10 +2657,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "251d918979e43129bc4aa0d4745320f435b4923d4ca86496835d93317dbab37c",
-      "jar_bytes": 3986383,
+      "sha256": "c7f72973ecf75a971c345a17beee3b2a03cad7ffe40e9c5f98659048de82adbd",
+      "jar_bytes": 3986797,
       "entry_count": 491,
-      "uncompressed_bytes": 24810141,
+      "uncompressed_bytes": 24811039,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -2701,7 +2701,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "4eaa42fcb30c2aeb2a77f96f158f98f32527b139f7bfd9900686cca4617f82b2"
+          "sha256": "840770b9af75bf5b4c91062567b27bf43e2cd0282380699de370670b1dbcc155"
         },
         "pilots/AnimalWorld$Definition.class": {
           "minor": 3,
@@ -2741,7 +2741,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "402f63188a57415381cc635095a299ae4648610372ae8129824611eb0a7c7168"
+          "sha256": "3241d9d9f37cfcfd7b9cfdc91e0afd9176747933662be217aae6dc5bf41e7031"
         },
         "pilots/AnimatedActor.class": {
           "minor": 3,
@@ -5453,7 +5453,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.9.4",
+        "MIDlet-Version": "0.9.5",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -5462,10 +5462,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "21fdb6360f431fdb6e61ad483652f83749707237fc34b8a7c8c3cc317156dcbb",
-      "jar_bytes": 3986384,
+      "sha256": "8eed1a264b51c584efb7549563c923b3b13ea8033dcc6c98bc253dc4155d96ba",
+      "jar_bytes": 3986798,
       "entry_count": 491,
-      "uncompressed_bytes": 24810141,
+      "uncompressed_bytes": 24811039,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -5506,7 +5506,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "4eaa42fcb30c2aeb2a77f96f158f98f32527b139f7bfd9900686cca4617f82b2"
+          "sha256": "840770b9af75bf5b4c91062567b27bf43e2cd0282380699de370670b1dbcc155"
         },
         "pilots/AnimalWorld$Definition.class": {
           "minor": 3,
@@ -5546,7 +5546,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "402f63188a57415381cc635095a299ae4648610372ae8129824611eb0a7c7168"
+          "sha256": "3241d9d9f37cfcfd7b9cfdc91e0afd9176747933662be217aae6dc5bf41e7031"
         },
         "pilots/AnimatedActor.class": {
           "minor": 3,
@@ -8258,7 +8258,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.9.4",
+        "MIDlet-Version": "0.9.5",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -8267,10 +8267,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "fbc4103ed32f6f481a1276b0a286f73ddb89c3ddc8ae200d1c53a0004b1e10c9",
-      "jar_bytes": 4203334,
+      "sha256": "22fb2cc724314e80d9ea96e5174fe378288157e8d46e54bf7f2e7517a1c1507b",
+      "jar_bytes": 4203748,
       "entry_count": 491,
-      "uncompressed_bytes": 25411102,
+      "uncompressed_bytes": 25412000,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -8311,7 +8311,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "4eaa42fcb30c2aeb2a77f96f158f98f32527b139f7bfd9900686cca4617f82b2"
+          "sha256": "840770b9af75bf5b4c91062567b27bf43e2cd0282380699de370670b1dbcc155"
         },
         "pilots/AnimalWorld$Definition.class": {
           "minor": 3,
@@ -8351,7 +8351,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "402f63188a57415381cc635095a299ae4648610372ae8129824611eb0a7c7168"
+          "sha256": "3241d9d9f37cfcfd7b9cfdc91e0afd9176747933662be217aae6dc5bf41e7031"
         },
         "pilots/AnimatedActor.class": {
           "minor": 3,

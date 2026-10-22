@@ -20,6 +20,7 @@ public final class AnimalWorld {
     final int[] frames=new int[139],flags=new int[139];
     public final Thing[] cells=new Thing[300];
     public final Thing[] heroes=new Thing[2];
+    public final Thing[] effects=new Thing[8];
     private Thing context;
     private SoundSink sound;
     private final int[] initialCues=new int[16];private int initialCueCount;
@@ -87,8 +88,18 @@ public final class AnimalWorld {
         for(int h=0;h<2;h++) if(heroes[h]!=null && heroes[h].active && heroes[h].x==x*64 && heroes[h].y==y*16) { heroes[h].active=false;heroes[h].clip=-1;return; }
         Thing t=cells[y*10+x];if(t==null) return;
         cells[y*10+x]=null;
-        Definition d=definitions[t.id];if(d!=null) execute(d.exit,t);
+        Definition d=definitions[t.id];if(d!=null) exit(d,t);
         if(t.under!=254) place(t.under,x,y);
+    }
+    /** Original exit scripts may leave an unbound sprite after deleting their map object. */
+    private void exit(Definition definition,Thing owner) {
+        Thing sprite=new Thing(owner.id,owner.x,owner.y,0);sprite.layer=owner.layer;sprite.under=owner.under;
+        for(int i=0;i<owner.local.length;i++) sprite.local[i]=owner.local[i];
+        execute(definition.exit,sprite);
+        if(sprite.clip>=0) {
+            for(int i=0;i<effects.length;i++) if(effects[i]==null) { effects[i]=sprite;return; }
+            throw new IllegalStateException("Too many animal exit sprites");
+        }
     }
     private void place(int id,int x,int y) {
         if(x<0 || x>=10 || y<0 || y>=30) throw new IllegalStateException("Map cell outside scene");
@@ -99,7 +110,7 @@ public final class AnimalWorld {
         }
         if(id==254) { remove(x,y);return; }
         Thing old=cells[y*10+x];int under=old==null?254:definitions[old.id]!=null&&definitions[old.id].type!=0?old.under:old.id;
-        if(old!=null && definitions[old.id]!=null) execute(definitions[old.id].exit,old);
+        if(old!=null && definitions[old.id]!=null) exit(definitions[old.id],old);
         Thing t=new Thing(id,x*64,y*16,++serial);t.under=under;cells[y*10+x]=t;
         Definition d=definitions[id];
         if(d!=null) { t.layer=d.layer;execute(d.init,t); }
@@ -231,7 +242,7 @@ public final class AnimalWorld {
     private void animate(Thing t) {
         if(t==null || !t.active || t.clip<0 || t.finished) return;
         if(++t.frame>=frames[t.clip]) {
-            if((flags[t.clip]&1)!=0) { t.finished=true;t.frame=frames[t.clip]-1; }
+            if((flags[t.clip]&1)!=0) { t.finished=true;t.frame=frames[t.clip]-1;if(t!=heroes[0] && t!=heroes[1]) t.clip=-1; }
             else t.frame=0;
         }
     }
@@ -241,6 +252,7 @@ public final class AnimalWorld {
         g(4,g(4)+1);
         for(int i=0;i<cells.length;i++) animate(cells[i]);
         for(int h=0;h<2;h++) animate(heroes[h]);
+        for(int i=0;i<effects.length;i++) if(effects[i]!=null) { animate(effects[i]);if(effects[i].finished) effects[i]=null; }
         walkTick();
         if(walkHero<0) {
             for(int i=0;i<cells.length;i++) if(cells[i]!=null && (cells[i].id==6 || cells[i].id==7)) remove(i%10,i/10);
@@ -266,7 +278,7 @@ public final class AnimalWorld {
             walk(0,192,208,-1,-1);
         if(action()==76 && step()==0 && walkHero<0 && heroes[0].y==192 && (heroes[0].x==0 || heroes[0].x==64))
             walk(0,192,208,-1,-1);
-        if(action()==57 && g(4)>=44 && walkHero<0 && !completed && (heroes[0].x!=576 || heroes[0].y!=368))
+        if(action()==57 && step()==1 && g(4)>=44 && walkHero<0 && !completed && (heroes[0].x!=576 || heroes[0].y!=368))
             walk(0,576,368,-1,-1);
         if(action()==0 && walkHero<0) g(0x88,0);
         syncSave();
@@ -374,11 +386,11 @@ public final class AnimalWorld {
     public void syncSave() {
         try {
             ByteArrayOutputStream bytes=new ByteArrayOutputStream();DataOutputStream out=new DataOutputStream(bytes);
-            out.writeInt(0x41575332);out.writeInt(serial);out.writeBoolean(completed);
+            out.writeInt(0x41575333);out.writeInt(serial);out.writeBoolean(completed);
             out.writeInt(walkHero);out.writeInt(walkX);out.writeInt(walkY);out.writeInt(walkEntity);out.writeInt(walkRestore);out.writeInt(walkPhase);
             out.writeInt(captionTicks);out.writeUTF(caption==null?"":caption);
-            for(int i=0;i<cells.length+2;i++) {
-                Thing t=i<300?cells[i]:heroes[i-300];out.writeBoolean(t!=null);if(t==null) continue;
+            for(int i=0;i<cells.length+2+effects.length;i++) {
+                Thing t=i<300?cells[i]:i<302?heroes[i-300]:effects[i-302];out.writeBoolean(t!=null);if(t==null) continue;
                 out.writeByte(t.id);out.writeBoolean(t.active);out.writeBoolean(t.finished);out.writeShort(t.x);out.writeShort(t.y);out.writeShort(t.clip);out.writeShort(t.frame);out.writeShort(t.layer);out.writeByte(t.under);out.writeInt(t.serial);
                 for(int j=0;j<t.local.length;j++) out.writeInt(t.local[j]);
             }
@@ -390,21 +402,22 @@ public final class AnimalWorld {
     }
     private void restore(byte[] bytes) throws IOException {
         DataInputStream in=new DataInputStream(new ByteArrayInputStream(bytes));
-        int version=in.readInt();boolean extended=version==0x41575332;
+        int version=in.readInt();boolean extended=version==0x41575332 || version==0x41575333;
         if(version!=0x41575331 && !extended) throw new IOException("Invalid animal save");
         serial=in.readInt();completed=in.readBoolean();
         walkHero=in.readInt();walkX=in.readInt();walkY=in.readInt();walkEntity=in.readInt();walkRestore=in.readInt();walkPhase=in.readInt();captionTicks=in.readInt();caption=in.readUTF();
         if(walkHero < -1 || walkHero>1) throw new IOException("Invalid walking hero");
-        for(int i=0;i<302;i++) if(in.readBoolean()) {
+        for(int i=0;i<(version==0x41575333?302+effects.length:302);i++) if(in.readBoolean()) {
             int id=in.readUnsignedByte();boolean active=in.readBoolean(),finished=extended&&in.readBoolean();int x=in.readShort(),y=in.readShort();if(id>=76 || x<0 || x>=640 || y<0 || y>=480) throw new IOException("Invalid saved animal object");
             Thing t=new Thing(id,x,y,0);t.active=active;t.finished=finished;t.clip=in.readShort();t.frame=in.readShort();t.layer=in.readShort();t.under=in.readUnsignedByte();t.serial=in.readInt();
             for(int j=0;j<t.local.length;j++) t.local[j]=in.readInt();
-            if(i<300) cells[i]=t;else heroes[i-300]=t;
+            if(i<300) cells[i]=t;else if(i<302) heroes[i-300]=t;else effects[i-302]=t;
         }
         int length=in.readInt();if(length<0 || length>2080 || length%2!=0) throw new IOException("Invalid saved path");
         if(length>0) { path=new int[length];for(int i=0;i<length;i++) path[i]=in.readInt(); }
         pathIndex=in.readInt();if(pathIndex<0 || pathIndex>length || pathIndex%2!=0) throw new IOException("Invalid path progress");
         if(in.read()!=-1 || heroes[0]==null || heroes[1]==null) throw new IOException("Incomplete animal save");
+        if(version==0x41575332) for(int i=0;i<cells.length;i++) if(cells[i]!=null && cells[i].finished) cells[i].clip=-1;
         if(!extended && action()==0) for(int h=0;h<2;h++) if(heroes[h].active && heroes[h].clip<0) idle(heroes[h]);
     }
 }
