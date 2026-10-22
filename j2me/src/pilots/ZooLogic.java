@@ -29,6 +29,12 @@ public class ZooLogic {
             state.variables[56] = 512; state.variables[57] = 336;
             state.variables[58] = 2;
         }
+        // Repair old saves which retained the coin after a successful handover.
+        if(gateState()!=0 || guardPhase()==6 || completed() || pendingAction()==30 && step()>=12) consumeCoin();
+    }
+    private void consumeCoin() {
+        state.inventory[2]=false;
+        if(state.variables[50]==3) state.variables[50]=0;
     }
 
     public int hero() { return state.variables[60]; }
@@ -137,6 +143,8 @@ public class ZooLogic {
         if (pendingAction()==23 && step()==8) { state.variables[7]=1; state.variables[8]=0; }
         if (pendingAction()==28 && step()==9) { state.variables[14]=state.variables[7]==2?1:2; state.variables[15]=0; }
         if (pendingAction()==30) {
+            // Chief's handover clip finishes at source counter 12 (17.67).
+            if(step()>=12) consumeCoin();
             state.variables[1]=step();
             if (step()==51) { state.variables[5]=1; state.variables[6]=0; }
         }

@@ -108,7 +108,15 @@ def extract(original):
     # Gate can only be paid while the guard exists; scene completion is native 0e(3).
     require(binary[4+(((7-1)*2+0)*4+3)*16+4]==30,'Coin/guard gate routing changed')
     require(binary[4+(((7-1)*2+0)*4+3)*16+0]==26,'Absent guard routing changed')
+    exit_map=get(0x60,83,0)
+    require(bytes.fromhex('fefc0512') in exit_map,'Payment must clear gate cell (5,18)')
+    require(bytes.fromhex('00100611') in exit_map and bytes.fromhex('00100711') in exit_map,'Inner wall barrier changed')
+    require(all(any(c['entity']==0 and c['cell']==[x,18] for c in placements) for x in [5,6,7,8,9]),'Initial gate/wall barrier changed')
+    require(execute(get(0x2b,17,67),{0x18:0,0x20:30,0x30:12},[]) and
+            not execute(get(0x2b,17,67),{0x18:0,0x20:30,0x30:11},[]),'Chief handover end counter changed')
     return bytes(binary),dict(source_sha256=EXPECTED,routing_order=['target','hero','item','flags'],
+        exit_walk_topology={'source_map':83,'opened_gate_cell':[320,288],'wall_row_y':288,'wall_columns_x':[384,448,512,576],
+                            'inner_barrier_cells':[[384,272],[448,272]],'exit_formation':[[448,240],[448,256]],'chief_handover_end_counter':12},
         flags={'window_open':1,'cat_present':2,'guard_present':4,'wall_broken':8},
         fixtures=fixtures,actions=actions,walking_fields=['hero','direction','half','clip','idle_pose','next_branch','layer_delta'],walking_cases=walking,static_gate_roots=static_roots,descriptor_layers=layers,
         records=[dict(code=r['code'],object=r['id'],index=r['args'][0],offset=r['offset'],bytecode=r['data'].hex()) for r in evidence])
