@@ -73,12 +73,18 @@ public final class AudioTest {
             FakePlayer limitedPiano=latest();audio.play(0);Thread.sleep(150);
             check(limitedPiano.state==Player.STARTED,"Footsteps displaced piano on a one-player device");
             Manager.rejectAll=true;audio.play(0);Thread.sleep(150); // Unsupported MMAPI does not escape to gameplay.
+            Manager.rejectAll=false;Manager.rejectMidi=false;Manager.maxPCM=3;
+            audio.scene(4);waitFor(()->Manager.players.size()==8);audio.play(58);waitFor(()->Manager.players.size()==9);
+            check(latest().type.equals("audio/x-wav"),"Third-location speech missing");
+            audio.active(false);audio.scene(4);audio.play(41);Thread.sleep(150);
+            check(Manager.players.size()==9,"Initial scene sound escaped the hidden canvas");
+            audio.active(true);waitFor(()->Manager.players.size()==11);
         } finally { audio.close();Manager.rejectMidi=false;Manager.rejectAll=false;Manager.maxPCM=3; }
         waitFor(()->latest().state==Player.CLOSED);
         check(Manager.players.stream().allMatch(p->p.state==Player.CLOSED),"Leaked player");
     }
     static void resources(String[] hashes) throws Exception {
-        for(int scene=2;scene<=3;scene++) {
+        for(int scene=2;scene<=4;scene++) {
             javax.sound.midi.Sequence music=javax.sound.midi.MidiSystem.getSequence(AudioTest.class.getResourceAsStream("/audio/0"+scene+".mid"));
             java.security.MessageDigest digest=java.security.MessageDigest.getInstance("SHA-256");
             javax.sound.midi.Track track=music.getTracks()[0];
@@ -90,8 +96,8 @@ public final class AudioTest {
             }
             StringBuilder hex=new StringBuilder();for(byte b:digest.digest()) hex.append(String.format("%02x",b&255));
             check(hex.toString().equals(hashes[scene-2]),"MIDI notes/timestamps changed in conversion");
-            check(music.getMicrosecondLength()==(scene==2?54850000L:314020000L),"MIDI timing changed");
-            for(int cue=0;cue<(scene==2?39:24);cue++) {
+            check(music.getMicrosecondLength()==(scene==2?54850000L:scene==3?314020000L:109580000L),"MIDI timing changed");
+            for(int cue=0;cue<(scene==2?39:scene==3?24:62);cue++) {
                 String path="/audio/0"+scene+"-"+(cue<10?"0":"")+cue+".wav";
                 javax.sound.sampled.AudioInputStream wav=javax.sound.sampled.AudioSystem.getAudioInputStream(new BufferedInputStream(AudioTest.class.getResourceAsStream(path)));
                 check(wav.getFormat().getChannels()==1 && wav.getFormat().getSampleSizeInBits()==8 && wav.getFormat().getSampleRate()==11025,"PCM format changed");wav.close();
@@ -99,6 +105,6 @@ public final class AudioTest {
         }
     }
     public static void main(String[] args) throws Exception {
-        resources(args);logic();worker();System.out.println("Audio: 63 WAVs, 2 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
+        resources(args);logic();worker();System.out.println("Audio: 125 WAVs, 3 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
     }
 }

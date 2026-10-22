@@ -157,7 +157,7 @@ MenuCanvas.Host {
         int count=2;values[0]=-1;values[1]=0;
         for(int item=1;item<=3;item++) if(this.canvas.zoo.logic.hasItem(item)) values[count++]=item;
         String[] labels=new String[count];labels[0]="Назад";labels[1]="Без предмета";
-        for(int i=2;i<count;i++) labels[i]=values[i]==1?"Чайник":values[i]==2?"Кирка":"Монета";
+        for(int i=2;i<count;i++) labels[i]=this.canvas.state.scene==4?(values[i]==1?"Лейка":values[i]==2?"Грабли":"Секатор"):(values[i]==1?"Чайник":values[i]==2?"Кирка":"Монета");
         MenuCanvas inventory=new MenuCanvas(new MenuCanvas.Host() {
             public void choose(int choice) {
                 if(choice>0) PilotsMidlet.this.canvas.selectItem(values[choice]);
@@ -191,6 +191,8 @@ MenuCanvas.Host {
             } else if (n == 8) {
                 this.notice("Звук и музыка",this.canvas.audio.toggle()?"Включены":"Выключены");
             } else if (n == 9) {
+                this.canvas.startLocation(4);
+            } else if (n == 10) {
                 this.destroyApp(true);
                 this.notifyDestroyed();
             }
@@ -201,7 +203,8 @@ MenuCanvas.Host {
     }
 
     private void help() {
-        String location=this.canvas!=null && this.canvas.state.scene==3?
+        String location=this.canvas!=null && this.canvas.state.scene==4?
+            "Звериный двор: выбирайте предметы в нижней строке и проверяйте действия обоих героев. ":this.canvas!=null && this.canvas.state.scene==3?
             "Двор зоопарка: Шеф играет на рояле, Коллега меняет ноты. Проверяйте реакции героев на мелодии и расположение указателей. ":
             "У ворот: выбирайте героев и предметы в нижней строке. После открытия ворот укажите проход. ";
         this.notice("Управление",location+"2/4/6/8: курсор; 5: действие; 1/3: герои; 7: предмет; 9: герой; #: инвентарь; *: масштаб; 0: меню. Пункт «Вторая локация» открывает двор отдельно; сохранение на диске меняется только по команде «Сохранить».");
@@ -269,7 +272,7 @@ MenuCanvas.Host {
         }
 
         public synchronized void goToScene(int n) throws IOException {
-            if (n!=2 && n!=3) throw new IOException("This build includes locations 1 and 2");
+            if (n!=2 && n!=3 && n!=4) throw new IOException("This build includes locations 1, 2 and 3");
             this.audio.active(false);
             if (this.zooPanel!=null) { this.zooPanel.close();this.zooPanel=null; }
             if (this.sceneIndex(n) < 0) {
@@ -286,8 +289,8 @@ MenuCanvas.Host {
                 throw new IOException("Scene exceeds available heap");
             }
             this.state.scene = n;
-            this.zoo = n==3?new CourtyardScene(this.scene,this.state):new ZooScene(this.scene,this.state);
-            this.zooPanel = new ZooPanel();
+            this.zoo = n==4?new AnimalScene(this.scene,this.state):n==3?new CourtyardScene(this.scene,this.state):new ZooScene(this.scene,this.state);
+            this.zooPanel = new ZooPanel(n==4);
             this.audio.scene(n);this.zoo.logic.setSound(this.audio);
             this.audio.active(this.shown && !this.appPaused && !this.isPreview());
             this.view = new Viewport(Math.max(1, this.getWidth()), this.sceneHeight(this.getWidth(), this.getHeight()), this.scene.background.worldWidth, this.scene.background.worldHeight);
@@ -314,9 +317,9 @@ MenuCanvas.Host {
                 this.syncState();
                 GameState gameState = GameState.decode(this.state.encode(), this.sceneIds[this.sceneCount - 1] + 1);
                 this.state=GameState.decode(gameState.encode(),this.sceneIds[this.sceneCount-1]+1);
-                this.state.scene=3;
+                this.state.scene=4;
                 this.previewReturnState = gameState;
-                this.goToScene(3);
+                this.goToScene(4);
             }
             this.audio.active(false);
             this.zoo = null;
@@ -324,7 +327,7 @@ MenuCanvas.Host {
             this.scene.close();
             this.scene.actors = new AnimatedActor[0];
             int n2 = ((PilotsMidlet)PilotsMidlet.this).animationCatalog.ids[n];
-            this.scene.actors = new AnimatedActor[]{new AnimatedActor(n2, "/scenes/03-" + n2 + ".anm", ((PilotsMidlet)PilotsMidlet.this).animationCatalog.x[n], ((PilotsMidlet)PilotsMidlet.this).animationCatalog.y[n])};
+            this.scene.actors = new AnimatedActor[]{new AnimatedActor(n2, "/scenes/04-" + n2 + ".anm", ((PilotsMidlet)PilotsMidlet.this).animationCatalog.x[n], ((PilotsMidlet)PilotsMidlet.this).animationCatalog.y[n])};
             this.previewIndex = n;
             this.view.cursorX = ((PilotsMidlet)PilotsMidlet.this).animationCatalog.focusX[n];
             this.view.cursorY = ((PilotsMidlet)PilotsMidlet.this).animationCatalog.focusY[n];
@@ -430,9 +433,8 @@ MenuCanvas.Host {
             boolean bl = false;
             if (this.zoo != null) {
                 bl = this.zoo.update(l);
-                if(this.state.scene==2 && this.zoo.logic.completed()) {
-                    this.startCourtyard();return;
-                }
+                int next=SceneFlow.next(this.state.scene,this.zoo.logic.completed());
+                if(next!=this.state.scene) { this.startLocation(next);return; }
             } else {
                 for (int n = 0; n < this.scene.actors.length; n++)
                     bl = this.scene.actors[n].update(l) || bl;
@@ -650,10 +652,11 @@ MenuCanvas.Host {
             if(this.zoo!=null) this.zoo.logic.selectItem(item);
             this.repaint();
         }
-        synchronized void startCourtyard() throws IOException {
+        synchronized void startCourtyard() throws IOException { startLocation(3); }
+        synchronized void startLocation(int id) throws IOException {
             this.previewReturnState=null;this.previewIndex=-1;
-            this.state=new GameState();this.state.scene=3;this.state.x=128;this.state.y=272;
-            this.goToScene(3);
+            this.state=new GameState();this.state.scene=id;this.state.x=id==4?192:128;this.state.y=id==4?304:272;
+            this.goToScene(id);
         }
         synchronized void newGame() throws IOException {
             this.previewReturnState=null;this.previewIndex=-1;
@@ -720,7 +723,7 @@ MenuCanvas.Host {
             finally {
                 recordStore.closeRecordStore();
             }
-            if(gameState.scene!=2 && gameState.scene!=3) gameState.scene=2;
+            if(gameState.scene!=2 && gameState.scene!=3 && gameState.scene!=4) gameState.scene=2;
             GameState gameState2 = this.state;
             this.state = gameState;
             try {
