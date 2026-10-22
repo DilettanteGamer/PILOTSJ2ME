@@ -46,7 +46,7 @@ def midi(blob):
 def extract(original):
     require(hashlib.sha256(original).hexdigest()==EXPECTED,'Original SHA mismatch')
     common,_,_=records(original,1);resources={};report={'source_sha256':EXPECTED,'scenes':{}}
-    for scene,section,actors,actions in [(2,4,[17,18,14],range(13,34)),(3,5,[12,11],range(51,59))]:
+    for scene,section,actors,actions in [(2,4,[17,18,14],range(13,34)),(3,5,[12,11],range(51,59)),(4,6,[],[])]:
         local,_,_=records(original,section);table={(r['code'],r['id'],r['args'][0]):r for r in local}
         samples={r['id']:r for r in common+local if r['code']==0x51};sample_report=[]
         for cue,r in sorted(samples.items()):
@@ -77,7 +77,7 @@ def extract(original):
                                 for api,cue in calls:
                                     if api==0x11:events.add((hero,action,branch,max(1,step),cue))
         explicit=[]
-        transitions=([(14,4,35),(17,68,34),(16,3,17),(16,4,19),(16,13,30)]+[(17,i,31) for i in range(75,81)]+[(18,i,31) for i in [63,64,67,68,69,70]]) if scene==2 else [(25,0,19),(30,0,15),(30,-1,16),(33,1,23)]+[(11,i,0) for i in range(34,42)]+[(12,i,0) for i in range(25,33)]
+        transitions=([(14,4,35),(17,68,34),(16,3,17),(16,4,19),(16,13,30)]+[(17,i,31) for i in range(75,81)]+[(18,i,31) for i in [63,64,67,68,69,70]]) if scene==2 else [(25,0,19),(30,0,15),(30,-1,16),(33,1,23)]+[(11,i,0) for i in range(34,42)]+[(12,i,0) for i in range(25,33)] if scene==3 else []
         for obj,index,cue in transitions:
             record=table[(0x22 if index==-1 else 0x21 if obj in (25,30) else 0x2c),obj,max(0,index)]
             needle=b'\x1d'+struct.pack('<I',cue)+b'\x21\x36\x11\0\0\0'
@@ -88,9 +88,12 @@ def extract(original):
             bubble=[r for r in local if r['id']==32 and r['code']==0x2c and b'\x36\x11\0\0\0' in r['data']]
             require(len(bubble)==1 and b'\x1d\x11\0\0\0\x21\x36\x11\0\0\0' in bubble[0]['data'],'Bubble cue changed')
             explicit.append(dict(object=32,index=bubble[0]['args'][0],cue=17,offset=bubble[0]['offset']))
+        if scene==4:
+            sites=[dict(object=r['id'],kind=r['code'],index=r['args'][0],offset=r['offset'],body=r['data'].hex()) for r in local
+                   if r['code'] in [0x21,0x22,0x2c] and b'\x36\x11\0\0\0' in r['data']]
         events=sorted(events)
         resources['audio/%02d.events'%scene]=b'ZAU1'+struct.pack('>H',len(events))+b''.join(bytes(e) for e in events)
-        report['scenes'][str(scene)]=dict(section=section,samples=sample_report,music=music_report,events=events,source_rules=sites,explicit_transitions=explicit)
+        report['scenes'][str(scene)]=dict(section=section,binding='original section 6 VM' if scene==4 else 'compiled source predicates and explicit transitions',samples=sample_report,music=music_report,events=events,source_rules=sites,explicit_transitions=explicit)
     return resources,report
 
 if __name__=='__main__':

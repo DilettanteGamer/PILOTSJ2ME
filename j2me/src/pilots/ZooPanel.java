@@ -8,9 +8,13 @@ public final class ZooPanel {
     private static final int[] IDS={20004,20005,20006,20007,20008,20009,77,78,79,80,81,82,20044};
     private final AnimationClip[] icons=new AnimationClip[IDS.length];
     private Viewport view;
-    public ZooPanel() throws IOException {
+    public ZooPanel() throws IOException { this(false); }
+    public ZooPanel(boolean animals) throws IOException {
         try {
-            for(int i=0;i<IDS.length;i++) icons[i]=new AnimationClip("/scenes/02-"+IDS[i]+".anm");
+            for(int i=0;i<IDS.length;i++) {
+                int id=animals&&i>=6&&i<=11?(i<8?62:i<10?60:64)+(i%2==0?1:0):IDS[i];
+                icons[i]=new AnimationClip((animals?"/scenes/04-":"/scenes/02-")+id+".anm");
+            }
         } catch(IOException failure) { close();throw failure; }
     }
     public void close() { for(int i=0;i<icons.length;i++) if(icons[i]!=null) icons[i].close(); }

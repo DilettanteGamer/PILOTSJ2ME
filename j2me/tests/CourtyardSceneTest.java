@@ -25,8 +25,8 @@ public final class CourtyardSceneTest {
             check(!CourtyardWalk.animalSees(128,224) && !CourtyardWalk.animalSees(128,304),"query 29 excludes two rectangle corners");
             check(CourtyardWalk.plan(128,272,192,384).length==0,"pond interior is isolated by original blocked cells");
             AnimationCatalog catalog=new AnimationCatalog();
-            check(catalog.scene==3 && catalog.ids.length==15 && catalog.ids[0]==53 && catalog.ids[14]==75,"only second-location previews");
-            check(CourtyardSceneTest.class.getResourceAsStream("/scenes/02.animations")==null,"old preview list removed");
+            check(catalog.scene==4 && catalog.ids.length==46 && catalog.ids[0]==50 && catalog.ids[45]==138,"only third-location previews");
+            check(CourtyardSceneTest.class.getResourceAsStream("/scenes/03.animations")==null && CourtyardSceneTest.class.getResourceAsStream("/scenes/02.animations")==null,"old preview list removed");
             ticks(courtyard,100);check(courtyard.courtyard.animalPhase()==1 && scene.actors[12].id==74,"cat entry at source 100 ticks");
             ticks(courtyard,17);check(scene.actors[12].id==72 && courtyard.courtyard.animalPhase()==3,"cat retreats when a hero is in original watched cells");
             ticks(courtyard,13);check(scene.actors[14].visible && scene.actors[14].id==75,"original bubble event at tick 130");
@@ -56,7 +56,8 @@ public final class CourtyardSceneTest {
             check(courtyard.courtyard.arrowState()==2 && scene.actors[10].id==55,"rotated arrow holds final pose after resume");
             check(courtyard.logic.targetAt(580,390)==0,"original map 23 disables old fence interaction");
             check(courtyard.request(50,220),"original left exit is active");settle(courtyard);
-            check(courtyard.logic.completed() && state.scene==3,"second location completes at source boundary without loading third");
+            check(courtyard.logic.completed() && state.scene==3,"second location completes before the canvas transition");
+            check(SceneFlow.next(state.scene,courtyard.logic.completed())==4,"courtyard exit schedules animal yard");
             check(courtyard.logic.heroX(0)==0 && courtyard.logic.heroY(0)==288 && courtyard.logic.heroY(1)==272,"original exit formation");
             state=GameState.decode(state.encode(),20);courtyard=restore(scene,state);
             check(courtyard.logic.completed(),"second-location completion persists");

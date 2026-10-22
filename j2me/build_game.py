@@ -20,9 +20,10 @@ from extract_first_location import extract as extract_first_location
 from extract_subtitles import extract as extract_subtitles
 from extract_courtyard import extract as extract_courtyard
 from extract_audio import extract as extract_audio
+from extract_animals import extract as extract_animals
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.7.0'
+VERSION = '0.8.0'
 
 
 def run(command):
@@ -89,6 +90,7 @@ def package(profile, classes, sprites, output):
     entries.update(classes)
     entries.update(sprites)
     entries.pop('scenes/02.animations',None)
+    entries.pop('scenes/03.animations',None)
     changes['pending_placement_menu_numbers']=[]
     changes['pending_character_relative_menu_numbers']=[]
     manifest = resources.manifest(entries['META-INF/MANIFEST.MF'])
@@ -111,11 +113,11 @@ def package(profile, classes, sprites, output):
     jad = {k: v for k, v in manifest.items() if k != 'Manifest-Version'}
     jad.update({'MIDlet-Jar-URL': target.name, 'MIDlet-Jar-Size': str(target.stat().st_size)})
     target.with_suffix('.jad').write_bytes(('\r\n'.join(k + ': ' + v for k, v in jad.items()) + '\r\n').encode())
-    report.update(audio_wav_count=63,audio_midi_count=2,audio_event_tables='Original bytecode predicates; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3],active_preview_scene=3,version=VERSION, jar_size=target.stat().st_size,
+    report.update(audio_wav_count=125,audio_midi_count=3,audio_event_tables='Original bytecode predicates and animal yard VM; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3,4],active_preview_scene=4,version=VERSION, jar_size=target.stat().st_size,
                   jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(), bytecode_preserved=False,
                   compilation='ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs',
                   preverification='ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation',
-                  original_window_rule_oracle_cases=8, existing_visual_payloads_preserved=True, original_barrel_rule_oracle_cases=26, original_cat_rule_oracle_cases=7, original_full_location_route_cases=1024, subtitle_cues=[6,7,34,35,36], original_walking_sprite_ids=list(range(20,34)), added_original_sprite_ids=list(range(38))+[44], code_defined_hotspots={'scene_02_window': [150, 224, 68, 66], 'scene_02_kettle': [80, 284, 38, 36], 'scene_02_barrel': [128, 282, 64, 68], 'scene_02_pickaxe': [80, 248, 38, 36], 'scene_02_coin': [299, 305, 28, 23], 'scene_02_bell': [440, 205, 40, 65], 'scene_02_gate': [248, 155, 187, 125], 'scene_02_wall': [470, 180, 170, 110]}, validation='Gameplay state tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test',
+                  original_window_rule_oracle_cases=8, existing_visual_payloads_preserved=True, original_barrel_rule_oracle_cases=26, original_cat_rule_oracle_cases=7, original_full_location_route_cases=1024, subtitle_cues=[6,7,34,35,36], original_walking_sprite_ids=list(range(20,34)), added_original_sprite_ids=list(range(38))+[44], code_defined_hotspots={'scene_02_window': [150, 224, 68, 66], 'scene_02_kettle': [80, 284, 38, 36], 'scene_02_barrel': [128, 282, 64, 68], 'scene_02_pickaxe': [80, 248, 38, 36], 'scene_02_coin': [299, 305, 28, 23], 'scene_02_bell': [440, 205, 40, 65], 'scene_02_gate': [248, 155, 187, 125], 'scene_02_wall': [470, 180, 170, 110]}, original_animal_section=6,original_animal_local_clips=93,animal_preview_count=46,save_format='PSV1 for scenes 02/03; PSV2 scene 04 snapshot, backward compatible reader',validation='Three-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test',
                   **changes)
     target.with_suffix('.report.json').write_text(json.dumps(report, indent=2) + '\n')
     print(profile + ': built ' + str(target) + ' (' + str(report['classes']) + ' preverified classes)')
@@ -147,6 +149,9 @@ def main():
     (ROOT / 'analysis/subtitle-original-cues.json').write_text(json.dumps(subtitle_report,ensure_ascii=False,indent=2)+'\n')
     courtyard_sprites,courtyard_report=extract_courtyard((ROOT.parent / 'PILOTS.EXE').read_bytes())
     sprites.update(courtyard_sprites)
+    animal_resources,animal_report=extract_animals((ROOT.parent / 'PILOTS.EXE').read_bytes())
+    sprites.update(animal_resources)
+    (ROOT / 'analysis/animals-original-rules.json').write_text(json.dumps(animal_report,ensure_ascii=False,indent=2)+'\n')
     audio_resources,audio_report=extract_audio((ROOT.parent / 'PILOTS.EXE').read_bytes())
     sprites.update(audio_resources)
     (ROOT / 'analysis/audio-original-cues.json').write_text(json.dumps(audio_report,ensure_ascii=False,indent=2)+'\n')
@@ -161,22 +166,23 @@ def main():
             target = output / ('Pilots-' + profile + '.jar')
             classpath = os.pathsep.join(map(str, [target, tools['midpapi20-2.0.4.jar']]))
             run([javac, '-encoding', 'UTF-8', '-cp', classpath, '-d', test_classes,
-                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java',ROOT / 'tests/CourtyardSceneTest.java',ROOT / 'tests/CourtyardRulesTest.java'])
+                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java',ROOT / 'tests/CourtyardSceneTest.java',ROOT / 'tests/CourtyardRulesTest.java',ROOT / 'tests/AnimalWorldTest.java'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.ZooSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BarrelSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.FirstLocationSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.ZooPresentationTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.CourtyardSceneTest'])
+            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalWorldTest'])
             courtyard_fixture=Path(temporary) / 'courtyard-source-actions.csv'
             courtyard_fixture.write_text('\n'.join(','.join(map(str,row)) for row in courtyard_report['actions'])+'\n')
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.CourtyardRulesTest',courtyard_fixture])
             audio_classes=Path(temporary) / 'audio-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',audio_classes,
                  ROOT / 'tests/stubs/javax/microedition/media/MediaException.java',ROOT / 'tests/stubs/javax/microedition/media/Manager.java',ROOT / 'tests/AudioTest.java'])
-            run([java,'-cp',str(audio_classes)+os.pathsep+classpath,'pilots.AudioTest']+[audio_report['scenes'][str(n)]['music']['event_sha256'] for n in [2,3]])
+            run([java,'-cp',str(audio_classes)+os.pathsep+classpath,'pilots.AudioTest']+[audio_report['scenes'][str(n)]['music']['event_sha256'] for n in [2,3,4]])
             panel_classes=Path(temporary) / 'panel-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',panel_classes,
-                 ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java'])
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java',ROOT / 'tests/AnimalRenderTest.java'])
             width,height=profile.split('x')
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
                  'pilots.PanelRenderTest',width,height,ROOT / ('analysis/panel-'+profile+'-'+VERSION+'.png')])
@@ -184,6 +190,8 @@ def main():
                  'pilots.ZooGeometryTest',width,height,ROOT / ('analysis/geometry-'+profile+'-'+VERSION+'.png')])
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
                  'pilots.CourtyardRenderTest',width,height,ROOT / ('analysis/courtyard-'+profile+'-'+VERSION)])
+            run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
+                 'pilots.AnimalRenderTest',width,height,ROOT / ('analysis/animals-'+profile+'-'+VERSION)])
 
 
 if __name__ == '__main__':

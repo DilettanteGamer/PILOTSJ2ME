@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public final class GameState {
     public int scene;
+    public byte[] location;
     public int x = 320;
     public int y = 240;
     public boolean zoom;
@@ -20,7 +21,7 @@ public final class GameState {
     public byte[] encode() throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);
-        dataOutputStream.writeInt(1347635761);
+        dataOutputStream.writeInt(location==null?1347635761:1347635762);
         dataOutputStream.writeShort(this.scene);
         dataOutputStream.writeShort(this.x);
         dataOutputStream.writeShort(this.y);
@@ -35,16 +36,18 @@ public final class GameState {
             dataOutputStream.writeBoolean(this.inventory[n]);
             ++n;
         }
+        if(location!=null) { dataOutputStream.writeInt(location.length);dataOutputStream.write(location); }
         dataOutputStream.close();
         return byteArrayOutputStream.toByteArray();
     }
 
     public static GameState decode(byte[] byArray, int n) throws IOException {
-        if (byArray == null || byArray.length != 299) {
+        if (byArray == null || byArray.length < 299 || byArray.length>65536) {
             throw new IOException("Invalid save size");
         }
         DataInputStream dataInputStream = new DataInputStream(new ByteArrayInputStream(byArray));
-        if (dataInputStream.readInt() != 1347635761) {
+        int version=dataInputStream.readInt();
+        if (version != 1347635761 && version != 1347635762) {
             throw new IOException("Unsupported save version");
         }
         GameState gameState = new GameState();
@@ -65,6 +68,11 @@ public final class GameState {
             gameState.inventory[n2] = dataInputStream.readBoolean();
             ++n2;
         }
+        if(version==1347635762) {
+            int length=dataInputStream.readInt();
+            if(gameState.scene!=4 || length<0 || length!=byArray.length-303) throw new IOException("Invalid scene save extension");
+            gameState.location=new byte[length];dataInputStream.readFully(gameState.location);
+        } else if(byArray.length!=299) throw new IOException("Trailing save data");
         return gameState;
     }
 }

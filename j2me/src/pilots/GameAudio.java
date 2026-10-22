@@ -8,7 +8,7 @@ import javax.microedition.media.control.VolumeControl;
 /** One MIDI and at most three PCM players; only the worker touches MMAPI. */
 public final class GameAudio implements Runnable,SoundSink {
     private int scene=2,generation;
-    private boolean active,enabled=true,closed;
+    private boolean active,enabled=true,closed,activated;
     private final int[] queue=new int[16];
     private int count;
     private final Thread worker;
@@ -23,11 +23,11 @@ public final class GameAudio implements Runnable,SoundSink {
     private long serial;
 
     public GameAudio() { worker=new Thread(this);worker.start(); }
-    public synchronized void scene(int value) { scene=value;generation++;count=0;notifyAll(); }
-    public synchronized void active(boolean value) { active=value;if(!value) count=0;notifyAll(); }
+    public synchronized void scene(int value) { scene=value;generation++;count=0;activated=false;notifyAll(); }
+    public synchronized void active(boolean value) { active=value;if(value) activated=true;if(!value && activated) count=0;notifyAll(); }
     public synchronized boolean toggle() { enabled=!enabled;generation++;count=0;notifyAll();return enabled; }
     public synchronized void play(int cue) {
-        if(closed || !enabled || !active) return;
+        if(closed || !enabled || !active&&activated) return;
         if(count<queue.length) queue[count++]=cue;
         notifyAll();
     }
@@ -53,7 +53,7 @@ public final class GameAudio implements Runnable,SoundSink {
                 if(running && !musicAttempted) { musicAttempted=true;startMusic(current); }
                 if(running && cue>=0) startEffect(current,cue);
                 synchronized(this) {
-                    if(!closed && count==0 && applied==generation && wasActive==(active&&enabled))
+                    if(!closed && (!running || count==0) && applied==generation && wasActive==(active&&enabled))
                         try { wait(100); } catch(InterruptedException ignored) { }
                 }
             }
@@ -81,8 +81,8 @@ public final class GameAudio implements Runnable,SoundSink {
         catch(OutOfMemoryError ignored) { closeMusic(); }
     }
     private void startEffect(int location,int cue) {
-        int rank=location==3&&cue==23?0:cue==(location==2?31:0)?1:
-            cue==6||cue==7||location==2&&cue>=34&&cue<=36||location==3&&cue>=20&&cue<=22?3:2;
+        int rank=location==3&&cue==23?0:cue==(location==3?0:31)?1:
+            cue==6||cue==7||location==2&&cue>=34&&cue<=36||location==3&&cue>=20&&cue<=22||location==4&&cue==58?3:2;
         int slot=-1;
         for(int i=0;i<effects.length;i++) {
             if(effects[i]==null) { slot=i;break; }

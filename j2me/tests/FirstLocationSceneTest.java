@@ -46,7 +46,8 @@ public final class FirstLocationSceneTest {
             check(zoo.logic.gateState()==2 && zoo.logic.hasItem(3),"resume payment without invented coin consumption");
             check(!zoo.request(330,220) && !zoo.logic.busy(),"open gate does not accept duplicate payment");
             zoo.logic.selectItem(0);zoo.request(330,220);settle(zoo);
-            check(zoo.logic.completed() && state.scene==2,"first location completes without scene transition");
+            check(zoo.logic.completed() && state.scene==2,"first location completes before canvas transition");
+            check(SceneFlow.next(state.scene,zoo.logic.completed())==3,"first location exit schedules courtyard");
             check(zoo.logic.heroX(0)==448 && zoo.logic.heroY(0)==240 && zoo.logic.heroX(1)==448 && zoo.logic.heroY(1)==256,
                   "both heroes reach original exit formation");
             state=GameState.decode(state.encode(),20);zoo=new ZooScene(scene,state);

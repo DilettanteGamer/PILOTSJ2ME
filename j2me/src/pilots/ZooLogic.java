@@ -18,7 +18,7 @@ public class ZooLogic {
 
     public ZooLogic(GameState state) {
         this.state = state;
-        if(state.scene==3) return;
+        if(state.scene>=3) return;
         if (state.variables[60] != COLLEAGUE) state.variables[60] = CHIEF;
         state.variables[61] = state.variables[61] == 1 ? 1 : 0;
         if (state.variables[58] != 2) {
