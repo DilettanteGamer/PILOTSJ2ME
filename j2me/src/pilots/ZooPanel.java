@@ -35,7 +35,13 @@ public final class ZooPanel {
             icons[6+(item-1)*2+(logic.selectedItem()==item?0:1)].paint(graphics,view,(item+3)*64,31);
         icons[12].paint(graphics,view,576,31);
         graphics.setColor(0xE8D43F);
-        int[] selected={logic.hero()==1?0:1,logic.selectedItem()==0?3:logic.selectedItem()+3};
-        for(int i=0;i<selected.length;i++) graphics.drawRect(selected[i]*width/10+1,height-panelHeight,Math.max(1,width/10-3),Math.max(1,panelHeight-1));
+        outline(graphics,icons[logic.hero()==1?0:2],logic.hero()==1?0:64);
+        int item=logic.selectedItem();
+        outline(graphics,icons[item==0?4:6+(item-1)*2],item==0?192:(item+3)*64);
+    }
+    private void outline(Graphics graphics,AnimationClip icon,int x) {
+        int left=view.screenX(x+icon.offsetX),top=view.screenY(31+icon.offsetY);
+        int right=view.screenX(x+icon.offsetX+icon.width),bottom=view.screenY(31+icon.offsetY+icon.height);
+        graphics.drawRect(left,top,Math.max(0,right-left-1),Math.max(0,bottom-top-1));
     }
 }

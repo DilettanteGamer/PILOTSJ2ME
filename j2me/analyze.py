@@ -11,6 +11,7 @@ import zipfile
 
 sys.dont_write_bytecode = True
 from build import Reader, manifest, require, validate
+from animation_codec import decode_animation
 
 ROOT = Path(__file__).resolve().parent
 
@@ -59,6 +60,7 @@ def inspect(path):
     result['animation_frames'] = {}
     for n, v in sorted(entries.items()):
         if n.endswith('.anm'):
+            v = decode_animation(v)
             r = Reader(v)
             require(r.take(4) == b'ANM1', 'Invalid animation')
             count, duration, transparent = r.unpack('>HHB')

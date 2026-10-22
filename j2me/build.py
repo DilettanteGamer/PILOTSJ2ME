@@ -121,6 +121,8 @@ def validate(entries, screen):
             r.end()
             dimensions[name] = [w, h, ww, wh]
         elif name.endswith('.anm'):
+            from animation_codec import decode_animation
+            data = decode_animation(data)
             r = Reader(data)
             require(r.take(4) == b'ANM1', 'Invalid animation: ' + name)
             count, duration, transparent = r.unpack('>HHB')
