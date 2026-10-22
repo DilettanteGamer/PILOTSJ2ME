@@ -6,6 +6,41 @@
     "item",
     "flags"
   ],
+  "exit_walk_topology": {
+    "source_map": 83,
+    "opened_gate_cell": [
+      320,
+      288
+    ],
+    "wall_row_y": 288,
+    "wall_columns_x": [
+      384,
+      448,
+      512,
+      576
+    ],
+    "inner_barrier_cells": [
+      [
+        384,
+        272
+      ],
+      [
+        448,
+        272
+      ]
+    ],
+    "exit_formation": [
+      [
+        448,
+        240
+      ],
+      [
+        448,
+        256
+      ]
+    ],
+    "chief_handover_end_counter": 12
+  },
   "flags": {
     "window_open": 1,
     "cat_present": 2,

@@ -33,19 +33,45 @@ public final class FirstLocationSceneTest {
             check(zoo.logic.wallBroken() && zoo.logic.gateState()==0,"pickaxe changes wall, not gate");
             zoo.request(580,230);settle(zoo);check(!zoo.logic.completed(),"blocked wall is not an invented exit");
             zoo.logic.selectItem(3);zoo.request(330,220);settle(zoo);
-            check(zoo.logic.gateState()==0,"coin cannot open gate without guard");
+            check(zoo.logic.gateState()==0 && zoo.logic.hasItem(3),"failed payment without guard retains coin");
             zoo.logic.selectItem(0);zoo.request(455,230);settle(zoo);
             check(zoo.logic.guardPhase()==4 && zoo.logic.guardPresent(),"bell, arrival and original refusal dialogue");
             zoo.logic.selectItem(3);zoo.request(330,220);
             int budget=1000;
             while(zoo.logic.pendingAction()!=30 && budget-->0) zoo.update(100);
             check(budget>0,"payment begins after approach");
+            while(zoo.logic.step()<11) zoo.update(100);
+            check(zoo.logic.hasItem(3) && zoo.logic.selectedItem()==3,"coin stays until handover");
+            state=GameState.decode(state.encode(),20);zoo=new ZooScene(scene,state);
+            zoo.update(100);
+            check(!zoo.logic.hasItem(3) && zoo.logic.selectedItem()==0,"handover consumes coin and restores hand");
+            check(zoo.logic.hasItem(1) && zoo.logic.hasItem(2),"payment retains other items");
             while(zoo.logic.step()<52) zoo.update(100);
             check(zoo.logic.gateState()!=0,"gate opens at source payment event");
             state=GameState.decode(state.encode(),20);zoo=new ZooScene(scene,state);settle(zoo);
-            check(zoo.logic.gateState()==2 && zoo.logic.hasItem(3),"resume payment without invented coin consumption");
-            check(!zoo.request(330,220) && !zoo.logic.busy(),"open gate does not accept duplicate payment");
-            zoo.logic.selectItem(0);zoo.request(330,220);settle(zoo);
+            check(zoo.logic.gateState()==2 && !zoo.logic.hasItem(3),"resume payment without restoring spent coin");
+            state.inventory[2]=true;state.variables[50]=3;
+            state=GameState.decode(state.encode(),20);zoo=new ZooScene(scene,state);
+            check(!zoo.logic.hasItem(3) && zoo.logic.selectedItem()==0,"legacy paid save drops retained coin before exit");
+            check(!zoo.logic.selectItem(3) && zoo.logic.begin(ZooLogic.GATE)==0 && !zoo.logic.busy(),"spent coin cannot pay again");
+            zoo.logic.selectItem(0);zoo.request(330,220);
+            boolean[] passage=new boolean[2],turned=new boolean[2];
+            budget=1000;
+            while(zoo.logic.busy() && budget-->0) {
+                zoo.update(100);
+                for(int h=0;h<2;h++) {
+                    int x=zoo.logic.heroX(h),y=zoo.logic.heroY(h);
+                    if(x==320 && y==288) passage[h]=true;
+                    if(y<304 && y>256) check(x==320,"hero crosses wall instead of gate");
+                    if(y<=256 && x>320) {
+                        check(passage[h],"right turn must follow passage through gate");turned[h]=true;
+                        check(zoo.layer(2+h)>zoo.layer(12) && zoo.layer(2+h)>zoo.layer(14),"hero behind wall and right column after turn");
+                    }
+                }
+                // Rebuild from the persisted queue during both halves of the exit.
+                if(budget%13==0) { state=GameState.decode(state.encode(),20);zoo=new ZooScene(scene,state); }
+            }
+            check(budget>0 && passage[0] && passage[1] && turned[0] && turned[1],"both heroes pass through gate then turn behind wall");
             check(zoo.logic.completed() && state.scene==2,"first location completes before canvas transition");
             check(SceneFlow.next(state.scene,zoo.logic.completed())==3,"first location exit schedules courtyard");
             check(zoo.logic.heroX(0)==448 && zoo.logic.heroY(0)==240 && zoo.logic.heroX(1)==448 && zoo.logic.heroY(1)==256,

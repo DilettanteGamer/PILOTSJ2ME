@@ -24,7 +24,7 @@ from extract_audio import extract as extract_audio
 from extract_animals import extract as extract_animals
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.9.1'
+VERSION = '0.9.2'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 

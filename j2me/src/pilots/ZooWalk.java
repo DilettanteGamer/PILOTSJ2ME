@@ -5,7 +5,10 @@ public final class ZooWalk {
     private static final int WIDTH=40, ROWS=12, TOP=240;
     public static boolean allowed(int x,int y,boolean gateOpen) {
         if(x<16 || x>624 || y<TOP || y>416) return false;
-        if(y<304) return gateOpen && x>=384 && x<=448;
+        // Source map 83 removes the blocked gate cell (5,18), not wall cell (6,18).
+        // Actor roots are at the left of their 64px footprint: x=320 puts the
+        // feet in the opening to the right of the guard. Turn only behind it.
+        if(y<304) return gateOpen && (x==320 || y<=256 && x>=320 && x<=448);
         return !(x>=128 && x<192 && y<352);
     }
     public static int[] plan(int sx,int sy,int tx,int ty,boolean gateOpen) {
