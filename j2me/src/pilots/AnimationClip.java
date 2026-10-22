@@ -31,6 +31,7 @@ public final class AnimationClip {
     private byte[] encoded;
     private final RasterCache raster=new RasterCache();
     private int cachedWidth,cachedHeight,cachedX,cachedY,cachedCropWidth,cachedCropHeight;
+    private static boolean regionSupported=true;
 
     public AnimationClip(String string) throws IOException {
         this.resource = string;
@@ -163,31 +164,39 @@ public final class AnimationClip {
         int x1 = Math.max(0, left), x2 = Math.min(view.width, left + drawWidth);
         int y1 = Math.max(0, top), y2 = Math.min(view.height, top + drawHeight);
         if (x2 <= x1 || y2 <= y1) return;
+        if(x2<=view.paintLeft || x1>=view.paintRight || y2<=view.paintTop || y1>=view.paintBottom) return;
         int cropWidth=x2-x1,cropHeight=y2-y1;
+        // Cache the whole scaled sprite when it fits, so panning across an edge
+        // changes only the drawRegion source rectangle, not the cached image.
+        boolean whole=drawWidth*drawHeight<=cropWidth*cropHeight+256 && RasterCache.allows(drawWidth*drawHeight*2);
+        int rasterX=whole?0:x1-left,rasterY=whole?0:y1-top;
+        int rasterWidth=whole?drawWidth:cropWidth,rasterHeight=whole?drawHeight:cropHeight;
         Image cached=raster.get();
         if(cached!=null && cachedWidth==drawWidth && cachedHeight==drawHeight &&
-           cachedX==x1-left && cachedY==y1-top && cachedCropWidth==cropWidth && cachedCropHeight==cropHeight) {
-            graphics.drawImage(cached,x1,y1,20);return;
+           cachedX<=x1-left && cachedY<=y1-top && cachedX+cachedCropWidth>=x2-left && cachedY+cachedCropHeight>=y2-top) {
+            paintRaster(graphics,cached,x1,y1,x1-left-cachedX,y1-top-cachedY,cropWidth,cropHeight);return;
         }
         raster.clear();
-        int area=cropWidth*cropHeight;
+        int area=rasterWidth*rasterHeight;
         if(RasterCache.allows(area*2)) {
             try {
                 raster.prepare(area*2);
                 int[] rgb=new int[area];
-                for(int yy=0;yy<cropHeight;yy++) {
-                    int sourceRow=(y1+yy-top)*height/drawHeight*width;
-                    for(int xx=0;xx<cropWidth;xx++)
-                        rgb[yy*cropWidth+xx]=palette[pixels[sourceRow+(x1+xx-left)*width/drawWidth]&255];
+                for(int yy=0;yy<rasterHeight;yy++) {
+                    int sourceRow=(rasterY+yy)*height/drawHeight*width;
+                    for(int xx=0;xx<rasterWidth;xx++)
+                        rgb[yy*rasterWidth+xx]=palette[pixels[sourceRow+(rasterX+xx)*width/drawWidth]&255];
                 }
-                Image bitmap=Image.createRGBImage(rgb,cropWidth,cropHeight,true);
+                Image bitmap=Image.createRGBImage(rgb,rasterWidth,rasterHeight,true);
                 raster.store(bitmap);
-                cachedWidth=drawWidth;cachedHeight=drawHeight;cachedX=x1-left;cachedY=y1-top;
-                cachedCropWidth=cropWidth;cachedCropHeight=cropHeight;
-                graphics.drawImage(bitmap,x1,y1,20);return;
+                cachedWidth=drawWidth;cachedHeight=drawHeight;cachedX=rasterX;cachedY=rasterY;
+                cachedCropWidth=rasterWidth;cachedCropHeight=rasterHeight;
+                paintRaster(graphics,bitmap,x1,y1,x1-left-rasterX,y1-top-rasterY,cropWidth,cropHeight);return;
             } catch(OutOfMemoryError exhausted) { RasterCache.failed(); }
               catch(IllegalArgumentException unsupported) { RasterCache.failed(); }
         }
+        x1=Math.max(x1,view.paintLeft);x2=Math.min(x2,view.paintRight);
+        y1=Math.max(y1,view.paintTop);y2=Math.min(y2,view.paintBottom);
         int size = x2 - x1;
         if (row == null || row.length < size) row = new int[size];
         for (int sy = y1; sy < y2; sy++) {
@@ -209,6 +218,18 @@ public final class AnimationClip {
                     graphics.drawRGB(row, 0, length, x1 + run, sy, length, 1, false);
                 }
             }
+        }
+    }
+    private void paintRaster(Graphics graphics,Image image,int x,int y,int sx,int sy,int width,int height) {
+        if(sx==0 && sy==0 && width==image.getWidth() && height==image.getHeight()) graphics.drawImage(image,x,y,20);
+        else {
+            if(regionSupported) {
+                try { graphics.drawRegion(image,sx,sy,width,height,0,x,y,20);return; }
+                catch(RuntimeException unsupported) { regionSupported=false; }
+            }
+            int cx=graphics.getClipX(),cy=graphics.getClipY(),cw=graphics.getClipWidth(),ch=graphics.getClipHeight();
+            try { graphics.clipRect(x,y,width,height);graphics.drawImage(image,x-sx,y-sy,20); }
+            finally { graphics.setClip(cx,cy,cw,ch); }
         }
     }
 }

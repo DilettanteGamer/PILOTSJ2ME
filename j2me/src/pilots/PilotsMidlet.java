@@ -508,6 +508,7 @@ MenuCanvas.Host {
         }
 
         protected synchronized void paint(Graphics graphics) {
+            int clipX=graphics.getClipX(),clipY=graphics.getClipY(),clipWidth=graphics.getClipWidth(),clipHeight=graphics.getClipHeight();
             graphics.setColor(0);
             graphics.fillRect(0, 0, this.getWidth(), this.getHeight());
             if (this.scene == null || this.view == null) {
@@ -515,7 +516,8 @@ MenuCanvas.Host {
                 graphics.drawString("Use Menu to retry", 0, 0, 20);
                 return;
             }
-            graphics.setClip(0, 0, this.getWidth(), this.view.height);
+            graphics.clipRect(0, 0, this.getWidth(), this.view.height);
+            this.view.paintClip(clipX,clipY,clipWidth,clipHeight);
             this.scene.background.paint(graphics, this.view);
             int n = 0;
             if(this.zoo!=null) this.zoo.paint(graphics,this.view);
@@ -531,11 +533,11 @@ MenuCanvas.Host {
             graphics.setColor((this.zoo != null ? this.zoo.logic.targetAt(this.view.cursorX, this.view.cursorY) != 0 : this.scene.at(this.view.cursorX, this.view.cursorY) != null) ? 0xFFFF00 : 0xFFFFFF);
             graphics.drawLine(n - 4, n2, n + 4, n2);
             graphics.drawLine(n, n2 - 4, n, n2 + 4);
-            graphics.setClip(0, 0, this.getWidth(), this.getHeight());
-            if (this.scene.panel != null) {
+            graphics.setClip(clipX,clipY,clipWidth,clipHeight);
+            if (this.scene.panel != null && clipY+clipHeight>this.view.height) {
                 this.scene.panel.paintPanel(graphics, this.getWidth(), this.getHeight(), this.panelHeight(this.getWidth(), this.getHeight()));
             }
-            if(this.zooPanel!=null && this.zoo!=null)
+            if(this.zooPanel!=null && this.zoo!=null && clipY+clipHeight>this.view.height)
                 this.zooPanel.paint(graphics,this.zoo.logic,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()));
             String caption=this.zoo==null?null:this.zoo.logic.message();
             if(caption==null && this.zoo!=null) caption=this.zoo.hoverText(this.view.cursorX,this.view.cursorY);
@@ -564,6 +566,23 @@ MenuCanvas.Host {
             this.handleKey(n, true);
         }
 
+        private String cursorCaption() {
+            String text=this.zoo==null?null:this.zoo.logic.message();
+            return text==null && this.zoo!=null?this.zoo.hoverText(this.view.cursorX,this.view.cursorY):text;
+        }
+
+        private void moveCursor(int dx,int dy) {
+            int oldX=view.screenX(view.cursorX),oldY=view.screenY(view.cursorY),left=view.left,top=view.top;
+            String caption=cursorCaption();
+            view.move(dx,dy);syncState();
+            String next=cursorCaption();
+            if(left!=view.left || top!=view.top || !(caption==null?next==null:caption.equals(next))) repaint();
+            else {
+                int x=view.screenX(view.cursorX),y=view.screenY(view.cursorY);
+                repaint(Math.min(oldX,x)-6,Math.min(oldY,y)-6,Math.abs(x-oldX)+13,Math.abs(y-oldY)+13);
+            }
+        }
+
         private synchronized void handleKey(int n, boolean bl) {
             if (this.view == null || this.scene == null) {
                 return;
@@ -576,13 +595,13 @@ MenuCanvas.Host {
                 catch (IllegalArgumentException illegalArgumentException) {}
                 int n3 = Math.max(1, (this.view.worldWidth * (bl ? 4 : 2) + this.view.drawWidth - 1) / this.view.drawWidth);
                 if (n == 50 || n2 == 1) {
-                    this.view.move(0, -n3);
+                    this.moveCursor(0, -n3);return;
                 } else if (n == 56 || n2 == 6) {
-                    this.view.move(0, n3);
+                    this.moveCursor(0, n3);return;
                 } else if (n == 52 || n2 == 2) {
-                    this.view.move(-n3, 0);
+                    this.moveCursor(-n3, 0);return;
                 } else if (n == 54 || n2 == 5) {
-                    this.view.move(n3, 0);
+                    this.moveCursor(n3, 0);return;
                 } else if (!bl && n == 49) {
                     if (this.isPreview()) {
                         this.changeScene(-1);

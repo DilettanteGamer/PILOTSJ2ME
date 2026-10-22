@@ -17,6 +17,11 @@ public final class Viewport {
     public int left;
     public int top;
     public boolean zoom;
+    public int paintLeft,paintTop,paintRight,paintBottom;
+    public void paintClip(int x,int y,int width,int height) {
+        paintLeft=Math.max(0,x);paintTop=Math.max(0,y);
+        paintRight=Math.min(this.width,x+width);paintBottom=Math.min(this.height,y+height);
+    }
 
     public Viewport(int n, int n2, int n3, int n4) {
         this.resize(n, n2, n3, n4);
@@ -33,6 +38,7 @@ public final class Viewport {
         this.height = n2;
         this.worldWidth = n3;
         this.worldHeight = n4;
+        paintClip(0,0,n,n2);
         this.update();
     }
 

@@ -28,6 +28,7 @@ public final class ZooPanel {
         if(view==null) view=new Viewport(width,height,640,63);
         view.width=width;view.height=height;view.worldWidth=640;view.worldHeight=63;
         view.drawWidth=width;view.drawHeight=panelHeight;view.left=0;view.top=height-panelHeight;
+        view.paintClip(0,0,width,height);
         icons[logic.hero()==1?0:1].paint(graphics,view,0,31);
         icons[logic.hero()==0?2:3].paint(graphics,view,64,31);
         icons[logic.selectedItem()==0?4:5].paint(graphics,view,192,31);
