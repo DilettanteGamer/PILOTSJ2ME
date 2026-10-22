@@ -2838,17 +2838,17 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.8.0",
+        "MIDlet-Version": "0.8.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "128x128"
       },
-      "sha256": "073e7528741ec3b7e16c6398f451c939bcfda460d7c0eca3fbe168a0bd52ad4f",
-      "jar_bytes": 4675258,
+      "sha256": "10b0975020dea61ae1e9c036ec392d1bd192aa3b320d6a7938e0fb425f4a9294",
+      "jar_bytes": 4675324,
       "entry_count": 534,
-      "uncompressed_bytes": 40830914,
+      "uncompressed_bytes": 40831068,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -2972,10 +2972,11 @@
             "java/lang/OutOfMemoryError",
             "java/lang/String",
             "java/lang/StringBuffer",
+            "java/lang/System",
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "47d94359550121ee1bb4ba8c6227722acde0c9da7d3367816a36b345a3961d8b"
+          "sha256": "4c6ef016358720b7d533d34f917ac0573e8ce0f2c7e22d44619b10bd444ce779"
         },
         "pilots/AudioCues.class": {
           "minor": 3,
@@ -5805,17 +5806,17 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.8.0",
+        "MIDlet-Version": "0.8.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
         "MicroEdition-Configuration": "CLDC-1.1",
         "Pilots-Screen": "240x320"
       },
-      "sha256": "4ac517ccd61143daffa1c81e223aa896f10a822352b5cdb3c2bdcf2d88746c5c",
-      "jar_bytes": 6044668,
+      "sha256": "21b0159d7d29ce193c72cd06dd24b492a2ccc7bdc568240c7c4315566be979ef",
+      "jar_bytes": 6044736,
       "entry_count": 534,
-      "uncompressed_bytes": 44727234,
+      "uncompressed_bytes": 44727388,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -5939,10 +5940,11 @@
             "java/lang/OutOfMemoryError",
             "java/lang/String",
             "java/lang/StringBuffer",
+            "java/lang/System",
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "47d94359550121ee1bb4ba8c6227722acde0c9da7d3367816a36b345a3961d8b"
+          "sha256": "4c6ef016358720b7d533d34f917ac0573e8ce0f2c7e22d44619b10bd444ce779"
         },
         "pilots/AudioCues.class": {
           "minor": 3,

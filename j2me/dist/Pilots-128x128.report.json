@@ -246,9 +246,9 @@
     4
   ],
   "active_preview_scene": 4,
-  "version": "0.8.0",
-  "jar_size": 4675258,
-  "jar_sha256": "073e7528741ec3b7e16c6398f451c939bcfda460d7c0eca3fbe168a0bd52ad4f",
+  "version": "0.8.1",
+  "jar_size": 4675324,
+  "jar_sha256": "10b0975020dea61ae1e9c036ec392d1bd192aa3b320d6a7938e0fb425f4a9294",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -403,5 +403,25 @@
     95
   ],
   "pending_placement_menu_numbers": [],
-  "pending_character_relative_menu_numbers": []
+  "pending_character_relative_menu_numbers": [],
+  "rgb_compatibility": {
+    "model": "full-stride drawRGB bounds check; desktop spy, not a device test",
+    "animation_clips": 305,
+    "animation_frames": 3819,
+    "scales": [
+      "normal",
+      "zoomed"
+    ],
+    "edge_clipping": true,
+    "screen_sizes": [
+      [
+        128,
+        128
+      ],
+      [
+        128,
+        160
+      ]
+    ]
+  }
 }

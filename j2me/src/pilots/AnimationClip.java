@@ -141,7 +141,14 @@ public final class AnimationClip {
                 while (column < size && row[column] == 0) column++;
                 int run = column;
                 while (column < size && row[column] != 0) column++;
-                if (column > run) graphics.drawRGB(row, run, size, x1 + run, sy, column - run, 1, false);
+                if (column > run) {
+                    int length = column - run;
+                    // Some phone drivers validate offset + scanlength * height.
+                    // Compact this run so both the offset and unused stride vanish.
+                    // The destination ends before column: later runs stay intact.
+                    if (run != 0) System.arraycopy(row, run, row, 0, length);
+                    graphics.drawRGB(row, 0, length, x1 + run, sy, length, 1, false);
+                }
             }
         }
     }
