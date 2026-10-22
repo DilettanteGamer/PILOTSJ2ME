@@ -10,6 +10,7 @@ public final class AnimalWorld {
     public static final class Thing {
         public int id,x,y,clip=-1,frame,layer,under=254,serial;
         boolean active=true;
+        boolean finished;
         int[] local=new int[8];
         Thing(int id,int x,int y,int serial) { this.id=id;this.x=x;this.y=y;this.serial=serial; }
     }
@@ -93,7 +94,7 @@ public final class AnimalWorld {
         if(x<0 || x>=10 || y<0 || y>=30) throw new IllegalStateException("Map cell outside scene");
         if(id==11 || id==12) {
             Thing t=heroes[id-11];if(t==null) { t=new Thing(id,x*64,y*16,++serial);heroes[id-11]=t;t.layer=definitions[id].layer;execute(definitions[id].init,t); }
-            else { t.x=x*64;t.y=y*16;t.active=true; }
+            else { t.x=x*64;t.y=y*16;t.active=true;if(t.clip<0) idle(t); }
             return;
         }
         if(id==254) { remove(x,y);return; }
@@ -195,7 +196,7 @@ public final class AnimalWorld {
     private int nativeCall(int api,int arg) {
         switch(api) {
         case 0:continuing=1;return 1;
-        case 1:return context.clip<0?1:0;
+        case 1:return context.clip<0 || context.finished?1:0;
         case 3:return 0; // Hover captions are rendered independently, without executing string bytecode.
         case 4:return clicked==context.id?1:0;
         case 5:return 0;
@@ -203,10 +204,10 @@ public final class AnimalWorld {
         case 0x0e:if(arg==5) { completed=true;g(0x20,0);g(0x30,0);g(0x88,0); }return 1;
         case 0x10:return 1; // MIDI lifecycle belongs to GameAudio.
         case 0x11:cue(arg);return 1;
-        case 0x13:context.clip=arg;context.frame=0;return 1;
+        case 0x13:context.clip=arg;context.frame=0;context.finished=false;return 1;
         case 0x14:apply(maps[arg],null,true,false);return 1;
         case 0x19:context.layer=arg;return 1;
-        case 0x1a:case 0x1e:context.clip=-1;return 1;
+        case 0x1a:case 0x1e:context.clip=-1;context.finished=true;return 1;
         case 0x1b:context.under=254;return 1;
         case 0x1c:context.under=arg;return 1;
         case 0x1f:return 1;
@@ -228,9 +229,9 @@ public final class AnimalWorld {
         return false;
     }
     private void animate(Thing t) {
-        if(t==null || !t.active || t.clip<0) return;
+        if(t==null || !t.active || t.clip<0 || t.finished) return;
         if(++t.frame>=frames[t.clip]) {
-            if((flags[t.clip]&1)!=0) { t.clip=-1;t.frame=0; }
+            if((flags[t.clip]&1)!=0) { t.finished=true;t.frame=frames[t.clip]-1; }
             else t.frame=0;
         }
     }
@@ -309,6 +310,11 @@ public final class AnimalWorld {
         g(0x24,1);walkHero=h;walkX=x;walkY=y;walkEntity=entity;walkRestore=restore;path=route;pathIndex=0;walkPhase=-1;syncSave();return true;
     }
     public boolean move(int x,int y) { return !completed && g(0x18)!=3 && !busy() && walk(hero(),(x+8)/16*16,(y+8)/16*16,-1,-1); }
+    private void idle(Thing hero) {
+        int pose=g(hero.id==11?0x10:0x14);
+        hero.clip=(hero.id==11?12:16)+(pose==3?1:pose==7?2:pose==9?3:0);
+        hero.frame=0;hero.finished=false;
+    }
     private void walkTick() {
         if(walkHero<0) return;
         Thing h=heroes[walkHero];
@@ -320,6 +326,7 @@ public final class AnimalWorld {
                 walkPhase=(walkPhase+1)%10;int half=walkPhase/5;
                 h.clip=walkHero==0?(dx<0?20:dx>0?21:dy<0?24+half:22+half):(dx<0?32+half:dx>0?28+half:dy<0?30+half:26+half);
                 h.frame=walkPhase%5;h.x+=dx;h.y+=dy;
+                h.finished=false;
                 int depth=3+(400-h.y)*3/16;g(walkHero==0?0x40:0x44,depth);h.layer=depth+1;
                 int pose=dx<0?(half==0?7:1):dx>0?(half==0?9:3):dy<0?(half==0?7:9):(half==0?1:3);
                 g(walkHero==0?0x10:0x14,pose);g(walkHero==0?8:12,1-half);
@@ -330,7 +337,7 @@ public final class AnimalWorld {
         }
         int entity=walkEntity,restore=walkRestore;g(0x24,0);walkHero=-1;path=null;walkEntity=walkRestore=-1;
         if(restore>=0) { interactAfterAside(restore,entity);return; }
-        h.clip=h.id==11?13:17;h.frame=0;
+        idle(h);
         if(entity>=0) {
             Thing target=find(entity);if(target!=null) {
                 g(0x88,0);clicked=entity;rules(target);clicked=-1;g(0x88,1);
@@ -367,12 +374,12 @@ public final class AnimalWorld {
     public void syncSave() {
         try {
             ByteArrayOutputStream bytes=new ByteArrayOutputStream();DataOutputStream out=new DataOutputStream(bytes);
-            out.writeInt(0x41575331);out.writeInt(serial);out.writeBoolean(completed);
+            out.writeInt(0x41575332);out.writeInt(serial);out.writeBoolean(completed);
             out.writeInt(walkHero);out.writeInt(walkX);out.writeInt(walkY);out.writeInt(walkEntity);out.writeInt(walkRestore);out.writeInt(walkPhase);
             out.writeInt(captionTicks);out.writeUTF(caption==null?"":caption);
             for(int i=0;i<cells.length+2;i++) {
                 Thing t=i<300?cells[i]:heroes[i-300];out.writeBoolean(t!=null);if(t==null) continue;
-                out.writeByte(t.id);out.writeBoolean(t.active);out.writeShort(t.x);out.writeShort(t.y);out.writeShort(t.clip);out.writeShort(t.frame);out.writeShort(t.layer);out.writeByte(t.under);out.writeInt(t.serial);
+                out.writeByte(t.id);out.writeBoolean(t.active);out.writeBoolean(t.finished);out.writeShort(t.x);out.writeShort(t.y);out.writeShort(t.clip);out.writeShort(t.frame);out.writeShort(t.layer);out.writeByte(t.under);out.writeInt(t.serial);
                 for(int j=0;j<t.local.length;j++) out.writeInt(t.local[j]);
             }
             out.writeInt(path==null?0:path.length);
@@ -383,12 +390,14 @@ public final class AnimalWorld {
     }
     private void restore(byte[] bytes) throws IOException {
         DataInputStream in=new DataInputStream(new ByteArrayInputStream(bytes));
-        if(in.readInt()!=0x41575331) throw new IOException("Invalid animal save");
-        serial=in.readInt();completed=in.readBoolean();walkHero=in.readInt();walkX=in.readInt();walkY=in.readInt();walkEntity=in.readInt();walkRestore=in.readInt();walkPhase=in.readInt();captionTicks=in.readInt();caption=in.readUTF();
+        int version=in.readInt();boolean extended=version==0x41575332;
+        if(version!=0x41575331 && !extended) throw new IOException("Invalid animal save");
+        serial=in.readInt();completed=in.readBoolean();
+        walkHero=in.readInt();walkX=in.readInt();walkY=in.readInt();walkEntity=in.readInt();walkRestore=in.readInt();walkPhase=in.readInt();captionTicks=in.readInt();caption=in.readUTF();
         if(walkHero < -1 || walkHero>1) throw new IOException("Invalid walking hero");
         for(int i=0;i<302;i++) if(in.readBoolean()) {
-            int id=in.readUnsignedByte();boolean active=in.readBoolean();int x=in.readShort(),y=in.readShort();if(id>=76 || x<0 || x>=640 || y<0 || y>=480) throw new IOException("Invalid saved animal object");
-            Thing t=new Thing(id,x,y,0);t.active=active;t.clip=in.readShort();t.frame=in.readShort();t.layer=in.readShort();t.under=in.readUnsignedByte();t.serial=in.readInt();
+            int id=in.readUnsignedByte();boolean active=in.readBoolean(),finished=extended&&in.readBoolean();int x=in.readShort(),y=in.readShort();if(id>=76 || x<0 || x>=640 || y<0 || y>=480) throw new IOException("Invalid saved animal object");
+            Thing t=new Thing(id,x,y,0);t.active=active;t.finished=finished;t.clip=in.readShort();t.frame=in.readShort();t.layer=in.readShort();t.under=in.readUnsignedByte();t.serial=in.readInt();
             for(int j=0;j<t.local.length;j++) t.local[j]=in.readInt();
             if(i<300) cells[i]=t;else heroes[i-300]=t;
         }
@@ -396,5 +405,6 @@ public final class AnimalWorld {
         if(length>0) { path=new int[length];for(int i=0;i<length;i++) path[i]=in.readInt(); }
         pathIndex=in.readInt();if(pathIndex<0 || pathIndex>length || pathIndex%2!=0) throw new IOException("Invalid path progress");
         if(in.read()!=-1 || heroes[0]==null || heroes[1]==null) throw new IOException("Incomplete animal save");
+        if(!extended && action()==0) for(int h=0;h<2;h++) if(heroes[h].active && heroes[h].clip<0) idle(heroes[h]);
     }
 }
