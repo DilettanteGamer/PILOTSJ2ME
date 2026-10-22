@@ -24,7 +24,7 @@ from extract_audio import extract as extract_audio
 from extract_animals import extract as extract_animals
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.9.3'
+VERSION = '0.9.4'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -142,7 +142,7 @@ def package(profile, classes, sprites, output):
                   jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(), bytecode_preserved=False,
                   compilation='ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs',
                   preverification='ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation',
-                  original_window_rule_oracle_cases=8, existing_visual_payloads_preserved=True, original_barrel_rule_oracle_cases=26, original_cat_rule_oracle_cases=7, original_full_location_route_cases=1024, subtitle_cues=[6,7,34,35,36], original_walking_sprite_ids=list(range(20,34)), added_original_sprite_ids=list(range(38))+[44], code_defined_hotspots={'scene_02_window': [150, 224, 68, 66], 'scene_02_kettle': [80, 284, 38, 36], 'scene_02_barrel': [128, 282, 64, 68], 'scene_02_pickaxe': [80, 248, 38, 36], 'scene_02_coin': [299, 305, 28, 23], 'scene_02_bell': [440, 205, 40, 65], 'scene_02_gate': [248, 155, 187, 125], 'scene_02_wall': [470, 180, 170, 110]}, original_animal_section=6,original_animal_local_clips=93,animal_preview_count=46,save_format='PSV1 for scenes 02/03; PSV2 scene 04 snapshot, backward compatible reader',validation='Three-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test',
+                  original_window_rule_oracle_cases=8, existing_visual_payloads_preserved=True, original_barrel_rule_oracle_cases=26, original_cat_rule_oracle_cases=7, original_full_location_route_cases=1024, subtitle_cues=[6,7,34,35,36], original_walking_sprite_ids=list(range(20,34)), added_original_sprite_ids=list(range(38))+[44], code_defined_hotspots={'scene_02_window': [150, 224, 68, 66], 'scene_02_kettle': [80, 284, 38, 36], 'scene_02_barrel': [128, 282, 64, 68], 'scene_02_pickaxe': [80, 248, 38, 36], 'scene_02_coin': [299, 305, 28, 23], 'scene_02_bell': [440, 205, 40, 65], 'scene_02_gate': [248, 155, 187, 125], 'scene_02_wall': [470, 180, 170, 110]}, original_animal_section=6,original_animal_local_clips=93,animal_preview_count=46,save_format='PSV1 for scenes 02/03; PSV2 scene 04 AWS2 snapshot, AWS1 backward compatible reader',validation='Three-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test',
                   **changes)
     report['rgb_compatibility'] = {'model': 'full-stride drawRGB bounds check; desktop spy, not a device test',
                                  'animation_clips': 305, 'animation_frames': 3819,
@@ -200,13 +200,14 @@ def main():
             target = output / ('Pilots-' + profile + '.jar')
             classpath = os.pathsep.join(map(str, [target, tools['midpapi20-2.0.4.jar']]))
             run([javac, '-encoding', 'UTF-8', '-cp', classpath, '-d', test_classes,
-                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java',ROOT / 'tests/CourtyardSceneTest.java',ROOT / 'tests/CourtyardRulesTest.java',ROOT / 'tests/AnimalWorldTest.java'])
+                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java',ROOT / 'tests/CourtyardSceneTest.java',ROOT / 'tests/CourtyardRulesTest.java',ROOT / 'tests/AnimalWorldTest.java',ROOT / 'tests/AnimalVisibilityTest.java'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.ZooSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BarrelSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.FirstLocationSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.ZooPresentationTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.CourtyardSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalWorldTest'])
+            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalVisibilityTest', ROOT / 'tests/fixtures/animal-0.9.3-entry.psv', ROOT / 'tests/fixtures/animal-0.9.3-pickup.psv'])
             courtyard_fixture=Path(temporary) / 'courtyard-source-actions.csv'
             courtyard_fixture.write_text('\n'.join(','.join(map(str,row)) for row in courtyard_report['actions'])+'\n')
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.CourtyardRulesTest',courtyard_fixture])
