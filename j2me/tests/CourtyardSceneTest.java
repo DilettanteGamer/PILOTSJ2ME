@@ -25,8 +25,8 @@ public final class CourtyardSceneTest {
             check(!CourtyardWalk.animalSees(128,224) && !CourtyardWalk.animalSees(128,304),"query 29 excludes two rectangle corners");
             check(CourtyardWalk.plan(128,272,192,384).length==0,"pond interior is isolated by original blocked cells");
             AnimationCatalog catalog=new AnimationCatalog();
-            check(catalog.scene==9 && catalog.ids.length==72,"only third-location previews");
-            check(CourtyardSceneTest.class.getResourceAsStream("/scenes/03.animations")==null && CourtyardSceneTest.class.getResourceAsStream("/scenes/02.animations")==null,"old preview list removed");
+            check(catalog.scene==10 && catalog.ids.length==42,"only balcony previews");
+            check(CourtyardSceneTest.class.getResourceAsStream("/scenes/09.animations")==null && CourtyardSceneTest.class.getResourceAsStream("/scenes/03.animations")==null && CourtyardSceneTest.class.getResourceAsStream("/scenes/02.animations")==null,"old preview list removed");
             ticks(courtyard,100);check(courtyard.courtyard.animalPhase()==1 && scene.actors[12].id==74,"cat entry at source 100 ticks");
             ticks(courtyard,17);check(scene.actors[12].id==72 && courtyard.courtyard.animalPhase()==3,"cat retreats when a hero is in original watched cells");
             ticks(courtyard,13);check(scene.actors[14].visible && scene.actors[14].id==75,"original bubble event at tick 130");

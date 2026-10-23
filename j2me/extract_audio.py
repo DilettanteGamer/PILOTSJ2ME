@@ -46,7 +46,7 @@ def midi(blob):
 def extract(original):
     require(hashlib.sha256(original).hexdigest()==EXPECTED,'Original SHA mismatch')
     common,_,_=records(original,1);resources={};report={'source_sha256':EXPECTED,'scenes':{}}
-    for scene,section,actors,actions in [(2,4,[17,18,14],range(13,34)),(3,5,[12,11],range(51,59)),(4,6,[],[]),(5,7,[],[]),(6,8,[],[]),(8,10,[],[]),(9,11,[],[])]:
+    for scene,section,actors,actions in [(2,4,[17,18,14],range(13,34)),(3,5,[12,11],range(51,59)),(4,6,[],[]),(5,7,[],[]),(6,8,[],[]),(8,10,[],[]),(9,11,[],[]),(10,12,[],[])]:
         local,_,_=records(original,section);table={(r['code'],r['id'],r['args'][0]):r for r in local}
         samples={r['id']:r for r in common+local if r['code']==0x51};sample_report=[]
         for cue,r in sorted(samples.items()):

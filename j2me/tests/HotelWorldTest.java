@@ -24,7 +24,7 @@ public final class HotelWorldTest {
   while(!world.completed&&budget-->0){for(HotelWorld.Thing t:world.cells)if(t!=null&&t.clip==46)seen[t.frame]=true;first|="Похоже Мы у цели".equals(world.caption());second|="Попробуйте ключем".equals(world.caption());tick();}
   check(budget>0&&first&&second,"entrance dialogue/timeline");for(int i=0;i<217;i++)check(seen[i],"missing entrance frame "+i);
   check(cues.equals(Arrays.asList(12,14,14,14,5,13,15)),"entrance audio "+cues);
-  check(SceneFlow.next(6,true)==8 && SceneFlow.next(8,true)==9 && SceneFlow.next(9,true)==9 && SceneFlow.next(6,false)==6,"sewer exclusion/exit boundaries");
+  check(SceneFlow.next(6,true)==8 && SceneFlow.next(8,true)==9 && SceneFlow.next(9,true)==10 && SceneFlow.next(6,false)==6,"sewer exclusion/exit boundaries");
   state=new GameState();state.scene=9;world=new HotelWorld(state);replay=resume(world);settle();
   check(world.heroes[0].id==13&&world.heroes[1].id==12,"hotel hero roles");check(!world.hasItem(1)&&!world.hasItem(2)&&!world.hasItem(3),"phantom inventory");
   byte[] initial=state.encode();

@@ -18,19 +18,27 @@ public final class LocationEntryTest {
     static void street(PilotsMidlet.GameCanvas canvas,String route)throws Exception {
         check(((GameState)get(canvas,"state")).scene==6 && get(canvas,"zoo") instanceof StreetScene,route);
     }
+    static void location(PilotsMidlet app,int scene)throws Exception {
+        app.choose(7);
+        MenuCanvas menu=(MenuCanvas)Display.getDisplay(app).getCurrent();
+        check(((String[])get(menu,"items")).length==9,"location submenu entries");
+        int[] ids={-1,2,3,4,5,6,8,9,10};
+        for(int i=1;i<ids.length;i++)if(ids[i]==scene){((MenuCanvas.Host)get(menu,"host")).choose(i);return;}
+        throw new RuntimeException("missing menu scene "+scene);
+    }
     public static void main(String[] args)throws Exception {
         PilotsMidlet app=new PilotsMidlet();PilotsMidlet.GameCanvas canvas=app.new GameCanvas();
         try {
             set(app,"canvas",canvas);set(app,"display",Display.getDisplay(app));
             // Menu item 10 must actually enter scene 5 (errors normally become alerts).
             canvas.startLocation(5);
-            app.choose(10);garden(canvas,"fourth location menu entry");
+            location(app,5);garden(canvas,"fourth location menu entry");
             canvas.startLocation(4);
             ((AnimalScene)get(canvas,"zoo")).animals.world.completed=true;
             canvas.tick(100);garden(canvas,"third location completion transition");
             canvas.save();canvas.startLocation(2);canvas.load();garden(canvas,"RMS garden restore");
             // Enter the fifth location from its menu and from garden completion.
-            canvas.startLocation(6);app.choose(11);street(canvas,"fifth location menu entry");
+            canvas.startLocation(6);location(app,6);street(canvas,"fifth location menu entry");
             canvas.startLocation(5);((GardenScene)get(canvas,"zoo")).animals.world.completed=true;
             canvas.tick(100);street(canvas,"fourth-to-fifth transition");
             canvas.save();canvas.startLocation(2);canvas.load();street(canvas,"RMS street restore");
@@ -39,8 +47,8 @@ public final class LocationEntryTest {
             canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==8,"cinematic save");
             for(int i=0;i<230;i++)canvas.tick(100);
             check(((GameState)get(canvas,"state")).scene==9,"entrance-to-interior transition");
-            app.choose(12);check(((GameState)get(canvas,"state")).scene==8,"cinematic menu");
-            app.choose(13);check(((GameState)get(canvas,"state")).scene==9,"hotel interior menu");
+            location(app,8);check(((GameState)get(canvas,"state")).scene==8,"cinematic menu");
+            location(app,9);check(((GameState)get(canvas,"state")).scene==9,"hotel interior menu");
             canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==9,"interior save");
             HotelWorld hotel=((HotelScene)get(canvas,"zoo")).animals.world;
             for(int i=0;i<180;i++)canvas.tick(100);check(hotel.interact(101),"fridge approach");
@@ -64,6 +72,17 @@ public final class LocationEntryTest {
             }
             check(Display.getDisplay(app).getCurrent()==canvas,"solved puzzle did not return to room");
             check(!((HotelScene)get(canvas,"zoo")).animals.world.fridgeRequested(),"room stayed paused after solution");
+            ((HotelScene)get(canvas,"zoo")).animals.world.completed=true;
+            canvas.tick(100);check(((GameState)get(canvas,"state")).scene==10,"interior-to-balcony transition");
+            location(app,10);check(((HotelScene)get(canvas,"zoo")).animals.world.scene==10,"balcony submenu route");
+            canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==10,"balcony RMS restore");
+            for(int i=0;i<180;i++)canvas.tick(100);
+            check(!((HotelScene)get(canvas,"zoo")).logic.busy(),"balcony entry did not finish");
+            byte[] menuBefore=((GameState)get(canvas,"state")).encode();
+            app.choose(7);MenuCanvas locations=(MenuCanvas)Display.getDisplay(app).getCurrent();locations.keyPressed(48);
+            MenuCanvas main=(MenuCanvas)Display.getDisplay(app).getCurrent();
+            check(((String[])get(main,"items")).length==10,"main menu still contains individual locations");
+            check(java.util.Arrays.equals(menuBefore,((GameState)get(canvas,"state")).encode()),"submenu Back changed game");
             canvas.startLocation(6);
             // Re-enter, restore a street save, and verify its actual loader.
             GameState saved=GameState.decode(((GameState)get(canvas,"state")).encode(),7);
@@ -71,7 +90,7 @@ public final class LocationEntryTest {
             street(canvas,"restored fifth location entry");
             // Garden previews must load from another scene and return to it.
             canvas.startLocation(2);set(app,"animationCatalog",new AnimationCatalog());
-            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==9,"preview scene");
+            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==10,"preview scene");
             canvas.finishPreview();check(((GameState)get(canvas,"state")).scene==2,"preview return");
             Object original=get(canvas,"zoo");
             try { canvas.goToScene(7);throw new RuntimeException("unsupported scene accepted"); }
