@@ -29,6 +29,10 @@ public final class GardenScene extends ZooScene {
                 int count=animals.world.frames[t.clip],progress=t.frame+1;
                 actor.x=t.fromX+(t.x-t.fromX)*progress/count;actor.y=t.fromY+(t.y-t.fromY)*progress/count;
             }
+            if(i>=300 && i<302 && animals.world.walkHero==i-300 && t.clip>=20 && t.clip<=33) {
+                int progress=t.frame+1;
+                actor.x=t.fromX+(t.x-t.fromX)*progress/5;actor.y=t.fromY+(t.y-t.fromY)*progress/5;
+            }
             actor.playing=false;actor.visible=true;
         }
     }
