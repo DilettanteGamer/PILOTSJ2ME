@@ -1,14 +1,15 @@
 {
   "profile": "128x160",
-  "classes": 43,
+  "classes": 48,
   "scenes": [
     2,
     3,
     4,
-    5
+    5,
+    6
   ],
-  "animations": 389,
-  "frames": 4545,
+  "animations": 482,
+  "frames": 6020,
   "backgrounds": {
     "scenes/02.bar": [
       640,
@@ -57,22 +58,35 @@
       63,
       640,
       63
+    ],
+    "scenes/06.p8": [
+      320,
+      208,
+      640,
+      417
+    ],
+    "scenes/06.bar": [
+      640,
+      63,
+      640,
+      63
     ]
   },
-  "audio_wav_count": 150,
-  "audio_midi_count": 4,
+  "audio_wav_count": 182,
+  "audio_midi_count": 5,
   "audio_event_tables": "Original bytecode predicates and animal yard VM; audio-original-cues.json",
   "audio_device_tested": false,
   "playable_scene_ids": [
     2,
     3,
     4,
-    5
+    5,
+    6
   ],
-  "active_preview_scene": 5,
-  "version": "0.10.2",
-  "jar_size": 4603827,
-  "jar_sha256": "28a2f1a1a2fe24ff0fa21baaf682b7da408e34c43852bc0e3b1f6acd1e323314",
+  "active_preview_scene": 6,
+  "version": "0.11.0",
+  "jar_size": 6200035,
+  "jar_sha256": "e2df9e6ec3f4b0df2a3156608635df096c6b7cddd989bf0a9fbd070ffb489b19",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -195,13 +209,15 @@
       110
     ]
   },
+  "original_street_section": 8,
+  "street_preview_count": 25,
   "original_garden_section": 7,
   "garden_preview_count": 25,
   "original_animal_section": 6,
   "original_animal_local_clips": 93,
   "animal_preview_count": 46,
-  "save_format": "PSV2 scene 05 GWS2 with GWS1 migration; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader",
-  "validation": "Four-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test",
+  "save_format": "PSV2 scene 06 SWS1; PSV2 scene 05 GWS2 with GWS1 migration; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader",
+  "validation": "Five-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test",
   "removed_animation_ids": [
     106
   ],
@@ -232,7 +248,7 @@
   "pending_character_relative_menu_numbers": [],
   "rgb_compatibility": {
     "model": "full-stride drawRGB bounds check; desktop spy, not a device test",
-    "animation_clips": 389,
+    "animation_clips": 482,
     "scales": [
       "normal",
       "zoomed"
@@ -252,9 +268,6 @@
   "removed_future_resources": [
     "scenes/00.hot",
     "scenes/00.p8",
-    "scenes/06.bar",
-    "scenes/06.hot",
-    "scenes/06.p8",
     "scenes/07.bar",
     "scenes/07.hot",
     "scenes/07.p8",
@@ -327,9 +340,22 @@
       "scenes/05-20010.anm",
       "scenes/05-20011.anm",
       "scenes/05-20043.anm",
-      "scenes/05-80.anm"
+      "scenes/05-80.anm",
+      "scenes/06-20010.anm",
+      "scenes/06-20011.anm",
+      "scenes/06-20043.anm",
+      "scenes/06-52.anm",
+      "scenes/06-54.anm",
+      "scenes/06-55.anm",
+      "scenes/06-56.anm",
+      "scenes/06-59.anm",
+      "scenes/06-61.anm",
+      "scenes/06-66.anm",
+      "scenes/06-78.anm",
+      "scenes/06-81.anm",
+      "scenes/06-89.anm"
     ],
-    "inflated_bytes_saved": 15369534,
+    "inflated_bytes_saved": 19611118,
     "decoded_visual_payloads_preserved": true
   },
   "render_cache": {

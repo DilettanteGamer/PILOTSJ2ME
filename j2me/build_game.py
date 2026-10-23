@@ -23,9 +23,10 @@ from extract_courtyard import extract as extract_courtyard
 from extract_audio import extract as extract_audio
 from extract_animals import extract as extract_animals
 from extract_garden import extract as extract_garden
+from extract_street import extract as extract_street
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.10.2'
+VERSION = '0.11.0'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -91,19 +92,19 @@ def package(profile, classes, sprites, output):
     with zipfile.ZipFile(source) as archive:
         baseline = {n: archive.read(n) for n in archive.namelist()}
     entries, changes = resources.adjust_animations(baseline, json.loads((ROOT / 'animation-adjustments.json').read_text()))
-    entries = {n: d for n, d in entries.items() if not n.endswith('.class') and not n.startswith('scenes/05')}
+    entries = {n: d for n, d in entries.items() if not n.endswith('.class') and not n.startswith(('scenes/05','scenes/06'))}
     entries.update(classes)
     entries.update(sprites)
     # Reuse the verified, profile-scaled original garden background (320px on small phones).
-    for name in ['scenes/05.p8','scenes/05.bar']:
+    for name in ['scenes/05.p8','scenes/05.bar','scenes/06.p8','scenes/06.bar']:
         entries[name]=baseline[name]
-    # Only these four locations are playable; keep future assets in input/EXE.
+    # Only these five locations are playable; keep future assets in input/EXE.
     removed_future_resources=[]
     for name in list(entries):
-        if name.startswith('scenes/') and name[7:9].isdigit() and int(name[7:9]) not in (2,3,4,5):
+        if name.startswith('scenes/') and name[7:9].isdigit() and int(name[7:9]) not in (2,3,4,5,6):
             removed_future_resources.append(name)
             del entries[name]
-    entries['catalog.bin']=b'PLT2\x00\x04\x02\x03\x04\x05'
+    entries['catalog.bin']=b'PLT2\x00\x05\x02\x03\x04\x05\x06'
     packed_clips=[]
     inflated_bytes_saved=0
     for name,data in list(entries.items()):
@@ -116,6 +117,7 @@ def package(profile, classes, sprites, output):
     entries.pop('scenes/02.animations',None)
     entries.pop('scenes/03.animations',None)
     entries.pop('scenes/04.animations',None)
+    entries.pop('scenes/05.animations',None)
     changes['pending_placement_menu_numbers']=[]
     changes['pending_character_relative_menu_numbers']=[]
     manifest = resources.manifest(entries['META-INF/MANIFEST.MF'])
@@ -128,7 +130,7 @@ def package(profile, classes, sprites, output):
     entries['META-INF/MANIFEST.MF'] = ('\r\n'.join(k + ': ' + v for k, v in manifest.items()) + '\r\n\r\n').encode()
     report = resources.validate(entries, profile)
     # Decoded animation content and retained profile rasters must remain byte-identical.
-    resources.require(all((decode_animation(d) if n.endswith('.anm') else d) == baseline[n] for n, d in entries.items() if n in baseline and not n.startswith('scenes/05') and n.endswith(('.anm', '.p8', '.bar'))), 'Existing visual content changed')
+    resources.require(all((decode_animation(d) if n.endswith('.anm') else d) == baseline[n] for n, d in entries.items() if n in baseline and not n.startswith(('scenes/05','scenes/06')) and n.endswith(('.anm', '.p8', '.bar'))), 'Existing visual content changed')
     output.mkdir(parents=True, exist_ok=True)
     target = output / ('Pilots-' + profile + '.jar')
     with zipfile.ZipFile(target, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
@@ -143,11 +145,11 @@ def package(profile, classes, sprites, output):
     jad = {k: v for k, v in manifest.items() if k != 'Manifest-Version'}
     jad.update({'MIDlet-Jar-URL': target.name, 'MIDlet-Jar-Size': str(target.stat().st_size)})
     target.with_suffix('.jad').write_bytes(('\r\n'.join(k + ': ' + v for k, v in jad.items()) + '\r\n').encode())
-    report.update(audio_wav_count=150,audio_midi_count=4,audio_event_tables='Original bytecode predicates and animal yard VM; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3,4,5],active_preview_scene=5,version=VERSION, jar_size=target.stat().st_size,
+    report.update(audio_wav_count=182,audio_midi_count=5,audio_event_tables='Original bytecode predicates and animal yard VM; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3,4,5,6],active_preview_scene=6,version=VERSION, jar_size=target.stat().st_size,
                   jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(), bytecode_preserved=False,
                   compilation='ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs',
                   preverification='ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation',
-                  original_window_rule_oracle_cases=8, existing_visual_payloads_preserved=True, original_barrel_rule_oracle_cases=26, original_cat_rule_oracle_cases=7, original_full_location_route_cases=1024, subtitle_cues=[6,7,34,35,36], original_walking_sprite_ids=list(range(20,34)), added_original_sprite_ids=list(range(38))+[44], code_defined_hotspots={'scene_02_window': [150, 224, 68, 66], 'scene_02_kettle': [80, 284, 38, 36], 'scene_02_barrel': [128, 282, 64, 68], 'scene_02_pickaxe': [80, 248, 38, 36], 'scene_02_coin': [299, 305, 28, 23], 'scene_02_bell': [440, 205, 40, 65], 'scene_02_gate': [248, 155, 187, 125], 'scene_02_wall': [470, 180, 170, 110]}, original_garden_section=7,garden_preview_count=25,original_animal_section=6,original_animal_local_clips=93,animal_preview_count=46,save_format='PSV2 scene 05 GWS2 with GWS1 migration; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader',validation='Four-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test',
+                  original_window_rule_oracle_cases=8, existing_visual_payloads_preserved=True, original_barrel_rule_oracle_cases=26, original_cat_rule_oracle_cases=7, original_full_location_route_cases=1024, subtitle_cues=[6,7,34,35,36], original_walking_sprite_ids=list(range(20,34)), added_original_sprite_ids=list(range(38))+[44], code_defined_hotspots={'scene_02_window': [150, 224, 68, 66], 'scene_02_kettle': [80, 284, 38, 36], 'scene_02_barrel': [128, 282, 64, 68], 'scene_02_pickaxe': [80, 248, 38, 36], 'scene_02_coin': [299, 305, 28, 23], 'scene_02_bell': [440, 205, 40, 65], 'scene_02_gate': [248, 155, 187, 125], 'scene_02_wall': [470, 180, 170, 110]}, original_street_section=8,street_preview_count=25,original_garden_section=7,garden_preview_count=25,original_animal_section=6,original_animal_local_clips=93,animal_preview_count=46,save_format='PSV2 scene 06 SWS1; PSV2 scene 05 GWS2 with GWS1 migration; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader',validation='Five-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test',
                   **changes)
     report['rgb_compatibility'] = {'model': 'full-stride drawRGB bounds check; desktop spy, not a device test',
                                  'animation_clips': sum(n.endswith('.anm') for n in entries),
@@ -192,6 +194,9 @@ def main():
     sprites.update(animal_resources)
     garden_resources,garden_report=extract_garden((ROOT.parent / 'PILOTS.EXE').read_bytes())
     sprites.update(garden_resources)
+    street_resources,street_report=extract_street((ROOT.parent / 'PILOTS.EXE').read_bytes())
+    sprites.update(street_resources)
+    (ROOT / 'analysis/street-original-rules.json').write_text(json.dumps(street_report,ensure_ascii=False,indent=2)+'\n')
     (ROOT / 'analysis/garden-original-rules.json').write_text(json.dumps(garden_report,ensure_ascii=False,indent=2)+'\n')
     (ROOT / 'analysis/animals-original-rules.json').write_text(json.dumps(animal_report,ensure_ascii=False,indent=2)+'\n')
     audio_resources,audio_report=extract_audio((ROOT.parent / 'PILOTS.EXE').read_bytes())
@@ -208,7 +213,7 @@ def main():
             target = output / ('Pilots-' + profile + '.jar')
             classpath = os.pathsep.join(map(str, [target, tools['midpapi20-2.0.4.jar']]))
             run([javac, '-encoding', 'UTF-8', '-cp', classpath, '-d', test_classes,
-                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java',ROOT / 'tests/CourtyardSceneTest.java',ROOT / 'tests/CourtyardRulesTest.java',ROOT / 'tests/AnimalWorldTest.java',ROOT / 'tests/GardenWorldTest.java',ROOT / 'tests/AnimalVisibilityTest.java'])
+                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java',ROOT / 'tests/CourtyardSceneTest.java',ROOT / 'tests/CourtyardRulesTest.java',ROOT / 'tests/AnimalWorldTest.java',ROOT / 'tests/GardenWorldTest.java',ROOT / 'tests/StreetWorldTest.java',ROOT / 'tests/AnimalVisibilityTest.java'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.ZooSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BarrelSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.FirstLocationSceneTest'])
@@ -216,6 +221,7 @@ def main():
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.CourtyardSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalWorldTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.GardenWorldTest',ROOT / 'tests/fixtures/garden-0.10.1-walking.psv'])
+            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.StreetWorldTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalVisibilityTest', ROOT / 'tests/fixtures/animal-0.9.3-entry.psv', ROOT / 'tests/fixtures/animal-0.9.3-pickup.psv', ROOT / 'tests/fixtures/animal-0.9.4-rhino.psv', ROOT / 'tests/fixtures/animal-0.9.5-entry.psv'])
             courtyard_fixture=Path(temporary) / 'courtyard-source-actions.csv'
             courtyard_fixture.write_text('\n'.join(','.join(map(str,row)) for row in courtyard_report['actions'])+'\n')
@@ -223,6 +229,7 @@ def main():
             entry_classes=Path(temporary) / 'entry-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',entry_classes,
                  ROOT / 'tests/stubs/javax/microedition/midlet/MIDlet.java',
+                 ROOT / 'tests/stubs/javax/microedition/rms/RecordStore.java',
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Command.java',
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Displayable.java',
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Canvas.java',
@@ -233,10 +240,10 @@ def main():
             audio_classes=Path(temporary) / 'audio-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',audio_classes,
                  ROOT / 'tests/stubs/javax/microedition/media/MediaException.java',ROOT / 'tests/stubs/javax/microedition/media/Manager.java',ROOT / 'tests/AudioTest.java'])
-            run([java,'-cp',str(audio_classes)+os.pathsep+classpath,'pilots.AudioTest']+[audio_report['scenes'][str(n)]['music']['event_sha256'] for n in [2,3,4,5]])
+            run([java,'-cp',str(audio_classes)+os.pathsep+classpath,'pilots.AudioTest']+[audio_report['scenes'][str(n)]['music']['event_sha256'] for n in [2,3,4,5,6]])
             panel_classes=Path(temporary) / 'panel-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',panel_classes,
-                 ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Image.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java',ROOT / 'tests/AnimalRenderTest.java',ROOT / 'tests/GardenRenderTest.java',ROOT / 'tests/AnimalVisibilityTest.java',ROOT / 'tests/AnimalSequenceRenderTest.java',ROOT / 'tests/RGBCompatibilityTest.java',ROOT / 'tests/RenderPerformanceTest.java',ROOT / 'tests/AnimationDecodeTest.java',ROOT / 'tests/ScrollRenderTest.java'])
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Image.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java',ROOT / 'tests/AnimalRenderTest.java',ROOT / 'tests/GardenRenderTest.java',ROOT / 'tests/StreetRenderTest.java',ROOT / 'tests/AnimalVisibilityTest.java',ROOT / 'tests/AnimalSequenceRenderTest.java',ROOT / 'tests/RGBCompatibilityTest.java',ROOT / 'tests/RenderPerformanceTest.java',ROOT / 'tests/AnimationDecodeTest.java',ROOT / 'tests/ScrollRenderTest.java'])
             frame_hashes=Path(temporary) / ('frame-hashes-'+profile+'.properties')
             with zipfile.ZipFile(target) as archive:
                 frame_hashes.write_text(''.join(name+'='+hashlib.sha256(decode_animation(archive.read(name))[777:]).hexdigest()+'\n' for name in archive.namelist() if name.endswith('.anm')))
@@ -272,6 +279,8 @@ def main():
                  'pilots.AnimalSequenceRenderTest',width,height,ROOT / ('analysis/animal-sequences-'+profile+'-'+VERSION)])
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
                  'pilots.GardenRenderTest',width,height,ROOT / ('analysis/garden-'+profile+'-'+VERSION)])
+            run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
+                 'pilots.StreetRenderTest',width,height,ROOT / ('analysis/street-'+profile+'-'+VERSION)])
         if args.profile == 'all':
             run([sys.executable, ROOT / 'tests/BuildProfilesTest.py', output])
 

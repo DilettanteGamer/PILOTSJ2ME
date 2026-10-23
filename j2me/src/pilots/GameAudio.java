@@ -81,8 +81,8 @@ public final class GameAudio implements Runnable,SoundSink {
         catch(OutOfMemoryError ignored) { closeMusic(); }
     }
     private void startEffect(int location,int cue) {
-        int rank=location==3&&cue==23?0:cue==(location==3?0:31)?1:
-            cue==6||cue==7||location==2&&cue>=34&&cue<=36||location==3&&cue>=20&&cue<=22||location==4&&cue==58?3:2;
+        int rank=location==3&&cue==23?0:cue==(location==3 || location==6?0:31)?1:
+            cue==6||cue==7||location==2&&cue>=34&&cue<=36||location==3&&cue>=20&&cue<=22||location==4&&cue==58||location==6&&cue==31?3:2;
         int slot=-1;
         for(int i=0;i<effects.length;i++) {
             if(effects[i]==null) { slot=i;break; }

@@ -61,7 +61,7 @@ public final class GardenWorldTest {
         check(world.hasItem(1),"key missing from the inventory panel");
         check(world.completed && !exists(world,14) && waiting && caption && cues.contains(21),"capture, key line, sound or finish missing "+actions);
         check(world.heroes[0].x==320 && world.heroes[0].y==384 && world.heroes[1].x==256 && world.heroes[1].y==384,"original final regrouping positions");
-        check(SceneFlow.next(4,true)==5 && SceneFlow.next(5,true)==5,"garden transitions");
+        check(SceneFlow.next(4,true)==5 && SceneFlow.next(5,true)==6 && SceneFlow.next(6,true)==6,"garden transitions");
         // Exercise Colleague's wrong approaches, including source action 8 recovery.
         state=new GameState();state.scene=5;world=new GardenWorld(state);Random random=new Random(71);
         for(int i=0;i<60 && !world.completed;i++) {
