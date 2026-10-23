@@ -1,0 +1,180 @@
+{
+  "version": "0.3.6",
+  "remove_preview_ids": [
+    106
+  ],
+  "anchors": {
+    "56": [
+      320,
+      304,
+      354,
+      264
+    ],
+    "64": [
+      192,
+      304,
+      257,
+      239
+    ],
+    "66": [
+      277,
+      164,
+      182,
+      173
+    ],
+    "69": [
+      192,
+      320,
+      233,
+      246
+    ],
+    "75": [
+      448,
+      336,
+      488,
+      313
+    ],
+    "76": [
+      512,
+      336,
+      544,
+      313
+    ],
+    "83": [
+      192,
+      320,
+      210,
+      285
+    ],
+    "86": [
+      192,
+      304,
+      216,
+      276
+    ],
+    "87": [
+      192,
+      304,
+      224,
+      280
+    ],
+    "88": [
+      277,
+      164,
+      171,
+      109
+    ],
+    "89": [
+      192,
+      176,
+      229,
+      127
+    ],
+    "90": [
+      448,
+      336,
+      482,
+      280
+    ],
+    "94": [
+      448,
+      336,
+      510,
+      277
+    ],
+    "95": [
+      448,
+      336,
+      470,
+      288
+    ],
+    "97": [
+      256,
+      128,
+      301,
+      208
+    ],
+    "102": [
+      320,
+      304,
+      351,
+      279
+    ],
+    "103": [
+      256,
+      128,
+      292,
+      213
+    ]
+  },
+  "pending_placement_menu_numbers": [],
+  "character_relative_menu_numbers": [
+    14,
+    15,
+    21,
+    22,
+    27,
+    28,
+    30
+  ],
+  "note": "0.3.6: correct window placement by registering closed-window resource 62 at original entity 23/24 root (128,224) with the pane inside animation 64; resulting actor anchor (192,304) is used for 05/16/17. Gate placements from 0.3.5 and other resources are unchanged. No gameplay triggers or animation frames changed.",
+  "actor_anchors": {
+    "64": [
+      192,
+      304
+    ],
+    "95": [
+      448,
+      336
+    ]
+  },
+  "adjusted_placement_menu_numbers": [
+    2,
+    5,
+    6,
+    9,
+    11,
+    12,
+    13,
+    16,
+    17,
+    18,
+    19,
+    20,
+    23,
+    24,
+    25,
+    27,
+    28
+  ],
+  "reference_points": {
+    "window_above_barrel": [
+      180,
+      260
+    ],
+    "gate_foreground": [
+      320,
+      304
+    ],
+    "guard_at_gate": [
+      256,
+      128
+    ],
+    "window_sprite_root": [
+      128,
+      224
+    ],
+    "window_actor_root": [
+      192,
+      304
+    ]
+  },
+  "placement_basis": {
+    "64": "original window entity 23/24 root 128,224; closed-pane pixel registration yields actor root 192,304",
+    "86": "original window entity 23/24 root 128,224; closed-pane pixel registration yields actor root 192,304",
+    "87": "original window entity 23/24 root 128,224; closed-pane pixel registration yields actor root 192,304",
+    "56": "user instruction: by zoo gate",
+    "102": "user instruction: by zoo gate",
+    "103": "user instruction: by zoo gate"
+  }
+}
