@@ -1,4 +1,141 @@
 {
+  "fridge_door_adaptation": {
+    "clip": 184,
+    "matrix": [
+      3,
+      3
+    ],
+    "source_handle": 116,
+    "frames": [
+      {
+        "frame": 0,
+        "changed_pixels": 1644,
+        "edit_bounds": [
+          31,
+          21,
+          102,
+          88
+        ]
+      },
+      {
+        "frame": 1,
+        "changed_pixels": 1647,
+        "edit_bounds": [
+          34,
+          21,
+          105,
+          88
+        ]
+      },
+      {
+        "frame": 2,
+        "changed_pixels": 1644,
+        "edit_bounds": [
+          39,
+          21,
+          110,
+          88
+        ]
+      },
+      {
+        "frame": 3,
+        "changed_pixels": 2726,
+        "edit_bounds": [
+          29,
+          29,
+          101,
+          106
+        ]
+      },
+      {
+        "frame": 4,
+        "changed_pixels": 2300,
+        "edit_bounds": [
+          41,
+          35,
+          96,
+          115
+        ]
+      },
+      {
+        "frame": 5,
+        "changed_pixels": 1425,
+        "edit_bounds": [
+          42,
+          37,
+          74,
+          118
+        ]
+      },
+      {
+        "frame": 6,
+        "changed_pixels": 964,
+        "edit_bounds": [
+          43,
+          39,
+          61,
+          117
+        ]
+      },
+      {
+        "frame": 7,
+        "changed_pixels": 140,
+        "edit_bounds": [
+          43,
+          45,
+          50,
+          113
+        ]
+      },
+      {
+        "frame": 8,
+        "changed_pixels": 122,
+        "edit_bounds": [
+          40,
+          54,
+          48,
+          124
+        ]
+      },
+      {
+        "frame": 9,
+        "changed_pixels": 0,
+        "edit_bounds": null
+      },
+      {
+        "frame": 10,
+        "changed_pixels": 0,
+        "edit_bounds": null
+      },
+      {
+        "frame": 11,
+        "changed_pixels": 122,
+        "edit_bounds": [
+          40,
+          54,
+          48,
+          124
+        ]
+      },
+      {
+        "frame": 12,
+        "changed_pixels": 127,
+        "edit_bounds": [
+          40,
+          54,
+          48,
+          124
+        ]
+      },
+      {
+        "frame": 13,
+        "changed_pixels": 0,
+        "edit_bounds": null
+      }
+    ],
+    "source_sha256": "b0a0c9e5c98d8503d4fe36bde95c85ce34f821f12d1b63ff89daccb2de3f61ec",
+    "adapted_sha256": "d0e2560cc25ae04446776ea7324fcb6a109c4155a9358e263ab13a6dba3e6c36"
+  },
   "section": 11,
   "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
   "start": 14429328,

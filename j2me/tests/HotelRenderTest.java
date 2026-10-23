@@ -27,7 +27,27 @@ public final class HotelRenderTest {
   throw new RuntimeException("Missing hotel hotspot "+id);
  }
  static void settle(HotelScene h)throws Exception {int n=1500;while(h.logic.busy()&&n-->0)h.update(100);check(n>0,"hotel render hangs");}
+ static void occlusion()throws Exception {
+  Scene scene=new Scene(9);GameState state=new GameState();state.scene=9;
+  try { HotelScene h=new HotelScene(scene,state);settle(h);
+   HotelWorld.Thing hero=h.animals.world.heroes[1];
+   for(int offset=0;offset<=1;offset++)for(int[] point:new int[][]{{512,304},{576,320},{256,304},{384,272}}) {
+    hero.x=hero.fromX=point[0];hero.y=hero.fromY=point[1];hero.layer=58-hero.y/8+offset;h.animals.world.g(0x44,hero.layer);hero.clip=16;hero.frame=0;hero.finished=false;
+    h.update(100);check(hero.layer==58-hero.y/8+offset,"occlusion probe depth changed");AnimatedActor actor=scene.actors[301];int tested=0;
+    for(int y=actor.y+actor.clip.offsetY;y<actor.y+actor.clip.offsetY+18;y++)for(int x=actor.x+actor.clip.offsetX;x<actor.x+actor.clip.offsetX+actor.clip.width;x++) {
+     if(!actor.clip.contains(x-actor.x,y-actor.y))continue;
+     for(int i=0;i<300;i++) { HotelWorld.Thing t=h.animals.world.cells[i];AnimatedActor mask=scene.actors[i];
+      if(t!=null&&mask!=null&&(t.id==33||t.id==51||t.id==58||t.id==59||t.id==60)&&mask.clip.contains(x-mask.x,y-mask.y)) {
+       check(h.targetAt(x,y)==12,"hero head hidden by room mask "+t.id+" at "+point[0]+","+point[1]);tested++;
+      }
+     }
+    }
+    check(tested>0,"occlusion regression did not overlap a mask");
+   }
+  } finally {scene.close();}
+ }
  public static void main(String[] a)throws Exception {
+  occlusion();
   int width=Integer.parseInt(a[0]),height=Integer.parseInt(a[1]);
   for(int n=8;n<=9;n++){Scene scene=new Scene(n);GameState state=new GameState();state.scene=n;
    try{HotelScene hotel=new HotelScene(scene,state);if(n==8){for(int i=0;i<110;i++)hotel.update(100);capture(hotel,width,height,a[2]+"-entrance.png");settle(hotel);}
@@ -39,13 +59,30 @@ public final class HotelRenderTest {
     check(hotel.animals.world.fridgeRequested(),"detail request did not finish approach");
     System.setProperty("pilots.test.width",String.valueOf(width));System.setProperty("pilots.test.height",String.valueOf(height));
     final HotelWorld world=hotel.animals.world;
-    FridgeCanvas detail=new FridgeCanvas(world,new FridgeCanvas.Host(){public void back(){}public void active(boolean value){}});
+    final int[] returned={0};
+    FridgeCanvas detail=new FridgeCanvas(world,new FridgeCanvas.Host(){public void back(){returned[0]++;}public void active(boolean value){}});
     Graphics detailGraphics=new Graphics(width,height);detail.paint(detailGraphics);ImageIO.write(detailGraphics.image,"png",new File(a[2]+"-detail.png"));
     int mask=world.fridgeMask(),solution=-1;for(int c=0;c<512;c++){int value=mask;for(int i=0;i<9;i++)if((c&(1<<i))!=0)value=RefrigeratorPuzzle.turn(value,i);if(value==0){solution=c;break;}}
-    check(solution>=0,"render puzzle solution");for(int i=0;i<9;i++)if((solution&(1<<i))!=0)world.turnFridge(i);
-    detailGraphics=new Graphics(width,height);detail.paint(detailGraphics);ImageIO.write(detailGraphics.image,"png",new File(a[2]+"-detail-solved.png"));detail.input(48);
+    check(solution>=0,"render puzzle solution");int selected=0;
+    for(int i=0;i<9;i++)if((solution&(1<<i))!=0){
+     while(selected/3<i/3){detail.input(56);selected+=3;}
+     while(selected%3<i%3){detail.input(54);selected++;}
+     while(selected%3>i%3){detail.input(52);selected--;}
+     detail.input(53);
+    }
+    check(world.fridgeMask()==0&&returned[0]==1&&!world.fridgeRequested(),"solved detail must return automatically");
+    detail.input(53);detail.input(48);check(returned[0]==1,"closed detail received duplicate input");
+
+    // Touch completion uses the same guarded return path as keyboard Fire.
+    GameState touchState=new GameState();touchState.scene=9;HotelWorld touchWorld=new HotelWorld(touchState);
+    touchState.variables[59]=2;touchState.variables[61]=RefrigeratorPuzzle.turn(0,4);
+    final int[] touchReturn={0};
+    FridgeCanvas touch=new FridgeCanvas(touchWorld,new FridgeCanvas.Host(){public void back(){touchReturn[0]++;}public void active(boolean value){}});
+    int board=Math.max(3,Math.min(width-8,height-46)/3*3),top=17+Math.max(0,(height-46-board)/2);
+    touch.pointerPressed(width/2,top+board/2);
+    check(touchReturn[0]==1&&touchWorld.fridgeMask()==0&&!touchWorld.fridgeRequested(),"touch solution must return automatically");
     for(int i=0;i<200;i++)hotel.update(100);settle(hotel);
-    capture(hotel,640,480,a[2]+"-solved-world.png");act(hotel,35);for(int i=0;i<65;i++)hotel.update(100);capture(hotel,width,height,a[2]+"-finale.png");settle(hotel);check(hotel.logic.completed(),"physical hotel finale");}}
+    capture(hotel,640,480,a[2]+"-solved-world.png");act(hotel,101);for(int i=0;i<65;i++)hotel.update(100);capture(hotel,width,height,a[2]+"-finale.png");settle(hotel);check(hotel.logic.completed(),"physical hotel finale");}}
    finally{scene.close();}
   }
   System.out.println("HotelRender: entrance, room, source layers, opaque pickup hotspots and inventory painted");

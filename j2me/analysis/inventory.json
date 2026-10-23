@@ -2700,7 +2700,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.13.0",
+        "MIDlet-Version": "0.13.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2709,10 +2709,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "cf32e48e85099787f6e944931b421cf5f8e52f3b7764023f61ffd45c5a22b006",
-      "jar_bytes": 8022162,
+      "sha256": "c18a45a3099d2e98271a5fe6fbb68374cc77a845c01dec888b6effa96906c7d6",
+      "jar_bytes": 8023565,
       "entry_count": 1091,
-      "uncompressed_bytes": 52011245,
+      "uncompressed_bytes": 52012755,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -2914,6 +2914,7 @@
           "minor": 3,
           "major": 45,
           "api_references": [
+            "java/io/IOException",
             "java/lang/IllegalArgumentException",
             "java/lang/Math",
             "java/lang/String",
@@ -2925,7 +2926,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "06f411b5f1c4ec1d80f9e50954d378a10e5c38aa7a850677a137ed43138a977e"
+          "sha256": "5b38e9dd5437e4a9e5be563de30396a7e9eabafcddc4f6dd41c7356d353bcc4d"
         },
         "pilots/GameAudio.class": {
           "minor": 3,
@@ -3052,7 +3053,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "439b0bad5511091ddf0fc3bb7b4ef3f37e90891b0ec58f99c3330cec68cfc569"
+          "sha256": "7a3026339d2dc2876c0b91b6bb243d5644561541140dd78c5e0533ca3e4f8f6a"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -3296,7 +3297,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "1570bb2d38c0514078282eaf6c0aed2e9ff2237ba5ae4bb6e5fd260515c21f15"
+          "sha256": "38b4230595a8116e087da3858fddbf038a857e8b3b2b5ab7aee87c09f6a22fbf"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -3313,13 +3314,14 @@
           "minor": 3,
           "major": 45,
           "api_references": [
+            "java/io/IOException",
             "java/lang/IllegalArgumentException",
-            "java/lang/Math",
             "java/lang/Object",
+            "java/lang/String",
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "2a91246a0ec3820b22ce6e5d36b566e0b949ede72157781509ddb2c7c63888e3"
+          "sha256": "9ee89a39c1fa037d2573065f932bb4eb206948d107dfe42f92cfb782e0745048"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -8282,7 +8284,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.13.0",
+        "MIDlet-Version": "0.13.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -8291,10 +8293,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "a776b333296ef97059428055107b8d48ade9ac6850c6d6b3535f464d2908db74",
-      "jar_bytes": 8022160,
+      "sha256": "ee532ba23b36463a32cd3cc18581cdbdfa3eedeb38aa07f6a175632554335e70",
+      "jar_bytes": 8023567,
       "entry_count": 1091,
-      "uncompressed_bytes": 52011245,
+      "uncompressed_bytes": 52012755,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -8496,6 +8498,7 @@
           "minor": 3,
           "major": 45,
           "api_references": [
+            "java/io/IOException",
             "java/lang/IllegalArgumentException",
             "java/lang/Math",
             "java/lang/String",
@@ -8507,7 +8510,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "06f411b5f1c4ec1d80f9e50954d378a10e5c38aa7a850677a137ed43138a977e"
+          "sha256": "5b38e9dd5437e4a9e5be563de30396a7e9eabafcddc4f6dd41c7356d353bcc4d"
         },
         "pilots/GameAudio.class": {
           "minor": 3,
@@ -8634,7 +8637,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "439b0bad5511091ddf0fc3bb7b4ef3f37e90891b0ec58f99c3330cec68cfc569"
+          "sha256": "7a3026339d2dc2876c0b91b6bb243d5644561541140dd78c5e0533ca3e4f8f6a"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -8878,7 +8881,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "1570bb2d38c0514078282eaf6c0aed2e9ff2237ba5ae4bb6e5fd260515c21f15"
+          "sha256": "38b4230595a8116e087da3858fddbf038a857e8b3b2b5ab7aee87c09f6a22fbf"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -8895,13 +8898,14 @@
           "minor": 3,
           "major": 45,
           "api_references": [
+            "java/io/IOException",
             "java/lang/IllegalArgumentException",
-            "java/lang/Math",
             "java/lang/Object",
+            "java/lang/String",
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "2a91246a0ec3820b22ce6e5d36b566e0b949ede72157781509ddb2c7c63888e3"
+          "sha256": "9ee89a39c1fa037d2573065f932bb4eb206948d107dfe42f92cfb782e0745048"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -13864,7 +13868,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.13.0",
+        "MIDlet-Version": "0.13.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -13873,10 +13877,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "6ddbc9184a5d401d3b9e909d17b5da3e9e7c419d010974da44953b8921684ae6",
-      "jar_bytes": 8495957,
+      "sha256": "4cc349b0186cd74704cc652cf0a9cda13ebcca0ea547d3fd0412bc9c66c84a30",
+      "jar_bytes": 8497360,
       "entry_count": 1091,
-      "uncompressed_bytes": 53413486,
+      "uncompressed_bytes": 53414996,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -14078,6 +14082,7 @@
           "minor": 3,
           "major": 45,
           "api_references": [
+            "java/io/IOException",
             "java/lang/IllegalArgumentException",
             "java/lang/Math",
             "java/lang/String",
@@ -14089,7 +14094,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "06f411b5f1c4ec1d80f9e50954d378a10e5c38aa7a850677a137ed43138a977e"
+          "sha256": "5b38e9dd5437e4a9e5be563de30396a7e9eabafcddc4f6dd41c7356d353bcc4d"
         },
         "pilots/GameAudio.class": {
           "minor": 3,
@@ -14216,7 +14221,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "439b0bad5511091ddf0fc3bb7b4ef3f37e90891b0ec58f99c3330cec68cfc569"
+          "sha256": "7a3026339d2dc2876c0b91b6bb243d5644561541140dd78c5e0533ca3e4f8f6a"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -14460,7 +14465,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "1570bb2d38c0514078282eaf6c0aed2e9ff2237ba5ae4bb6e5fd260515c21f15"
+          "sha256": "38b4230595a8116e087da3858fddbf038a857e8b3b2b5ab7aee87c09f6a22fbf"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -14477,13 +14482,14 @@
           "minor": 3,
           "major": 45,
           "api_references": [
+            "java/io/IOException",
             "java/lang/IllegalArgumentException",
-            "java/lang/Math",
             "java/lang/Object",
+            "java/lang/String",
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "2a91246a0ec3820b22ce6e5d36b566e0b949ede72157781509ddb2c7c63888e3"
+          "sha256": "9ee89a39c1fa037d2573065f932bb4eb206948d107dfe42f92cfb782e0745048"
         },
         "pilots/Scene.class": {
           "minor": 3,

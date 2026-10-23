@@ -27,7 +27,7 @@ from extract_street import extract as extract_street
 from extract_hotel import extract as extract_hotel
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.13.0'
+VERSION = '0.13.1'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -148,7 +148,7 @@ def package(profile, classes, sprites, output):
     jad = {k: v for k, v in manifest.items() if k != 'Manifest-Version'}
     jad.update({'MIDlet-Jar-URL': target.name, 'MIDlet-Jar-Size': str(target.stat().st_size)})
     target.with_suffix('.jad').write_bytes(('\r\n'.join(k + ': ' + v for k, v in jad.items()) + '\r\n').encode())
-    report.update(audio_wav_count=251,audio_midi_count=8,audio_event_tables='Original bytecode predicates and animal yard VM; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3,4,5,6,8,9],active_preview_scene=9,skipped_source_scene=7,hotel_sections=[10,11],hotel_puzzle={'matrix':[3,3],'detail_screen':'FridgeCanvas','room_timer_paused':True,'save_cookie':'FR31'},hotel_key_gate='removed towel, crocodile withdrawn, original 100-tick window',version=VERSION, jar_size=target.stat().st_size,
+    report.update(audio_wav_count=251,audio_midi_count=8,audio_event_tables='Original bytecode predicates and animal yard VM; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3,4,5,6,8,9],active_preview_scene=9,skipped_source_scene=7,hotel_sections=[10,11],hotel_puzzle={'matrix':[3,3],'detail_screen':'FridgeCanvas','room_timer_paused':True,'save_cookie':'FR31','original_handle_sprites':[116,132],'automatic_return':True,'opening_door_matrix':[3,3]},hotel_key_gate='removed towel, crocodile withdrawn, original 100-tick window',version=VERSION, jar_size=target.stat().st_size,
                   jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(), bytecode_preserved=False,
                   compilation='ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs',
                   preverification='ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation',
@@ -181,6 +181,7 @@ def main():
     resources.require(output != ROOT / 'input' and ROOT / 'input' not in output.parents, 'Do not overwrite input/')
     tools = toolchain(args.tool_cache.resolve())
     run([sys.executable,ROOT / 'tests/AudioExtractionTest.py'])
+    run([sys.executable,ROOT / 'tests/FridgeAssetsTest.py'])
     with zipfile.ZipFile(ROOT / 'input/Pilots-240x320.jar') as archive:
         palette = archive.read('scenes/02-64.anm')[9:777]
     sprites, evidence = extract((ROOT.parent / 'PILOTS.EXE').read_bytes(), palette)

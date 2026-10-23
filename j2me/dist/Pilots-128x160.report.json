@@ -124,12 +124,21 @@
     ],
     "detail_screen": "FridgeCanvas",
     "room_timer_paused": true,
-    "save_cookie": "FR31"
+    "save_cookie": "FR31",
+    "original_handle_sprites": [
+      116,
+      132
+    ],
+    "automatic_return": true,
+    "opening_door_matrix": [
+      3,
+      3
+    ]
   },
   "hotel_key_gate": "removed towel, crocodile withdrawn, original 100-tick window",
-  "version": "0.13.0",
-  "jar_size": 8022160,
-  "jar_sha256": "a776b333296ef97059428055107b8d48ade9ac6850c6d6b3535f464d2908db74",
+  "version": "0.13.1",
+  "jar_size": 8023567,
+  "jar_sha256": "ee532ba23b36463a32cd3cc18581cdbdfa3eedeb38aa07f6a175632554335e70",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
