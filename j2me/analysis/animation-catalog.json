@@ -1,0 +1,436 @@
+[
+  {
+    "menu_number": 1,
+    "resource_id": 49,
+    "label": "01 Ворота",
+    "current_anchor": [
+      320,
+      160
+    ],
+    "current_focus": [
+      320,
+      232
+    ],
+    "status": "unchanged"
+  },
+  {
+    "menu_number": 2,
+    "resource_id": 56,
+    "label": "02 Шеф",
+    "current_anchor": [
+      16,
+      230
+    ],
+    "current_focus": [
+      50,
+      190
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 3,
+    "resource_id": 60,
+    "label": "03 Охранник",
+    "current_anchor": [
+      256,
+      128
+    ],
+    "current_focus": [
+      379,
+      211
+    ],
+    "status": "unchanged"
+  },
+  {
+    "menu_number": 4,
+    "resource_id": 61,
+    "label": "04 Охранник",
+    "current_anchor": [
+      256,
+      128
+    ],
+    "current_focus": [
+      365,
+      211
+    ],
+    "status": "unchanged"
+  },
+  {
+    "menu_number": 5,
+    "resource_id": 64,
+    "label": "05 Коллега",
+    "current_anchor": [
+      64,
+      230
+    ],
+    "current_focus": [
+      129,
+      165
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 6,
+    "resource_id": 66,
+    "label": "06 Ворона",
+    "current_anchor": [
+      320,
+      112
+    ],
+    "current_focus": [
+      225,
+      121
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 7,
+    "resource_id": 67,
+    "label": "07 Кот",
+    "current_anchor": [
+      192,
+      176
+    ],
+    "current_focus": [
+      210,
+      194
+    ],
+    "status": "unchanged"
+  },
+  {
+    "menu_number": 8,
+    "resource_id": 68,
+    "label": "08 Кот",
+    "current_anchor": [
+      192,
+      176
+    ],
+    "current_focus": [
+      204,
+      189
+    ],
+    "status": "unchanged"
+  },
+  {
+    "menu_number": 9,
+    "resource_id": 69,
+    "label": "09 Шеф",
+    "current_anchor": [
+      192,
+      292
+    ],
+    "current_focus": [
+      233,
+      218
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 10,
+    "resource_id": 73,
+    "label": "10 Стена",
+    "current_anchor": [
+      576,
+      160
+    ],
+    "current_focus": [
+      529,
+      241
+    ],
+    "status": "unchanged"
+  },
+  {
+    "menu_number": 11,
+    "resource_id": 75,
+    "label": "11 Шеф",
+    "current_anchor": [
+      480,
+      156
+    ],
+    "current_focus": [
+      520,
+      133
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 12,
+    "resource_id": 76,
+    "label": "12 Коллега",
+    "current_anchor": [
+      480,
+      156
+    ],
+    "current_focus": [
+      512,
+      133
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 13,
+    "resource_id": 83,
+    "label": "13 Коллега",
+    "current_anchor": [
+      144,
+      190
+    ],
+    "current_focus": [
+      162,
+      155
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 14,
+    "resource_id": 84,
+    "label": "14 Коллега",
+    "current_anchor": [
+      368,
+      176
+    ],
+    "current_focus": [
+      400,
+      42
+    ],
+    "status": "pending-character-relative"
+  },
+  {
+    "menu_number": 15,
+    "resource_id": 85,
+    "label": "15 Коллега",
+    "current_anchor": [
+      144,
+      190
+    ],
+    "current_focus": [
+      177,
+      141
+    ],
+    "status": "pending-character-relative"
+  },
+  {
+    "menu_number": 16,
+    "resource_id": 86,
+    "label": "16 Шеф",
+    "current_anchor": [
+      144,
+      190
+    ],
+    "current_focus": [
+      168,
+      162
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 17,
+    "resource_id": 87,
+    "label": "17 Коллега",
+    "current_anchor": [
+      256,
+      134
+    ],
+    "current_focus": [
+      288,
+      110
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 18,
+    "resource_id": 88,
+    "label": "18 Ворона",
+    "current_anchor": [
+      320,
+      112
+    ],
+    "current_focus": [
+      214,
+      57
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 19,
+    "resource_id": 89,
+    "label": "19 Кот",
+    "current_anchor": [
+      64,
+      230
+    ],
+    "current_focus": [
+      101,
+      181
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 20,
+    "resource_id": 90,
+    "label": "20 Предмет",
+    "current_anchor": [
+      256,
+      272
+    ],
+    "current_focus": [
+      290,
+      216
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 21,
+    "resource_id": 92,
+    "label": "21 Коллега",
+    "current_anchor": [
+      480,
+      156
+    ],
+    "current_focus": [
+      503,
+      126
+    ],
+    "status": "pending-character-relative"
+  },
+  {
+    "menu_number": 22,
+    "resource_id": 93,
+    "label": "22 Шеф",
+    "current_anchor": [
+      480,
+      156
+    ],
+    "current_focus": [
+      495,
+      121
+    ],
+    "status": "pending-character-relative"
+  },
+  {
+    "menu_number": 23,
+    "resource_id": 94,
+    "label": "23 Шеф",
+    "current_anchor": [
+      144,
+      190
+    ],
+    "current_focus": [
+      206,
+      131
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 24,
+    "resource_id": 95,
+    "label": "24 Шеф",
+    "current_anchor": [
+      192,
+      292
+    ],
+    "current_focus": [
+      214,
+      244
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 25,
+    "resource_id": 97,
+    "label": "25 Охранник",
+    "current_anchor": [
+      136,
+      98
+    ],
+    "current_focus": [
+      181,
+      178
+    ],
+    "status": "pending-placement"
+  },
+  {
+    "menu_number": 26,
+    "resource_id": 101,
+    "label": "26 Кот",
+    "current_anchor": [
+      192,
+      176
+    ],
+    "current_focus": [
+      192,
+      215
+    ],
+    "status": "unchanged"
+  },
+  {
+    "menu_number": 27,
+    "resource_id": 102,
+    "label": "27 Шеф",
+    "current_anchor": [
+      136,
+      98
+    ],
+    "current_focus": [
+      167,
+      73
+    ],
+    "status": "pending-character-relative"
+  },
+  {
+    "menu_number": 28,
+    "resource_id": 103,
+    "label": "28 Охранник",
+    "current_anchor": [
+      136,
+      98
+    ],
+    "current_focus": [
+      172,
+      183
+    ],
+    "status": "pending-character-relative"
+  },
+  {
+    "menu_number": 29,
+    "resource_id": 104,
+    "label": "29 Предмет",
+    "current_anchor": [
+      512,
+      240
+    ],
+    "current_focus": [
+      506,
+      276
+    ],
+    "status": "unchanged"
+  },
+  {
+    "menu_number": 30,
+    "resource_id": 105,
+    "label": "30 Шеф",
+    "current_anchor": [
+      248,
+      134
+    ],
+    "current_focus": [
+      260,
+      82
+    ],
+    "status": "pending-character-relative"
+  },
+  {
+    "menu_number": 31,
+    "resource_id": 106,
+    "label": "31 Деталь",
+    "current_anchor": [
+      128,
+      304
+    ],
+    "current_focus": [
+      116,
+      321
+    ],
+    "status": "removed"
+  }
+]

@@ -1,0 +1,9 @@
+Summary for /workspace/pilots-build/input/Pilots-240x320.jar
+Decompiled with CFR 0.152
+
+
+pilots.AnimationClip
+----------------------------
+
+paint(javax.microedition.lcdui.Graphics pilots.Viewport int int )
+  Unable to fully structure code

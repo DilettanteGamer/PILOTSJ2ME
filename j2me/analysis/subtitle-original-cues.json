@@ -1,0 +1,784 @@
+{
+  "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
+  "caption_origin": "Text adaptation of speech in the pinned EXE; the original has PCM voice cues, not embedded subtitle strings. Punctuation and speaker labels are added for J2ME.",
+  "captions": {
+    "6": "Шеф: Ничего не понимаю!",
+    "7": "Коллега: Ничего не понимаю!",
+    "34": "Шеф: Откройте!",
+    "35": "Сторож: Доступ ограничен.",
+    "36": "Сторож: В виде исключения."
+  },
+  "event_fields": [
+    "action",
+    "hero",
+    "branch",
+    "step",
+    "cue"
+  ],
+  "events": [
+    [
+      13,
+      0,
+      1,
+      1,
+      6
+    ],
+    [
+      13,
+      1,
+      1,
+      13,
+      7
+    ],
+    [
+      30,
+      0,
+      0,
+      30,
+      36
+    ]
+  ],
+  "dialogue_cues": [
+    34,
+    35
+  ],
+  "source_sound_calls": [
+    {
+      "section": 4,
+      "object": 14,
+      "code": 44,
+      "index": 4,
+      "offset": 1001753,
+      "cue": 35,
+      "caption": "Сторож: Доступ ограничен.",
+      "bytecode": "1d0300000010300000001d670000002136130000001d2300000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 14,
+      "code": 44,
+      "index": 9,
+      "offset": 1002203,
+      "cue": 36,
+      "caption": "Сторож: В виде исключения.",
+      "bytecode": "3130000000211d01000000221510300000001d2400000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 14,
+      "code": 44,
+      "index": 11,
+      "offset": 1002383,
+      "cue": 33,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d2100000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 16,
+      "code": 44,
+      "index": 3,
+      "offset": 1003195,
+      "cue": 17,
+      "caption": null,
+      "bytecode": "1d2500000010980000001d1100000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 16,
+      "code": 44,
+      "index": 4,
+      "offset": 1003277,
+      "cue": 19,
+      "caption": null,
+      "bytecode": "1d2b00000010980000001d1300000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 16,
+      "code": 44,
+      "index": 13,
+      "offset": 1004076,
+      "cue": 30,
+      "caption": null,
+      "bytecode": "1d1e00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 4,
+      "offset": 1004552,
+      "cue": 6,
+      "caption": "Шеф: Ничего не понимаю!",
+      "bytecode": "1d0100000010300000001d0100000010100000001d220000002136130000003140000000211d0100000022152136190000001d0600000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 5,
+      "offset": 1004671,
+      "cue": 5,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d0500000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 10,
+      "offset": 1005140,
+      "cue": 27,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d1b00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 11,
+      "offset": 1005232,
+      "cue": 28,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d1c00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 20,
+      "offset": 1006074,
+      "cue": 1,
+      "caption": null,
+      "bytecode": "1d290000002136140000003130000000211d01000000221510300000001d0100000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 25,
+      "offset": 1006553,
+      "cue": 1,
+      "caption": null,
+      "bytecode": "1d2a0000002136140000003130000000211d01000000221510300000001d0100000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 30,
+      "offset": 1007046,
+      "cue": 22,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d1600000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 35,
+      "offset": 1007540,
+      "cue": 15,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d0f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 41,
+      "offset": 1008126,
+      "cue": 24,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d1800000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 42,
+      "offset": 1008224,
+      "cue": 26,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d1a00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 43,
+      "offset": 1008322,
+      "cue": 16,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d1000000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 48,
+      "offset": 1008812,
+      "cue": 1,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d0100000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 55,
+      "offset": 1009498,
+      "cue": 21,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d1500000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 56,
+      "offset": 1009596,
+      "cue": 32,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d2000000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 61,
+      "offset": 1010092,
+      "cue": 23,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d560000002136140000001d1700000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 68,
+      "offset": 1010723,
+      "cue": 34,
+      "caption": "Шеф: Откройте!",
+      "bytecode": "1d0100000010300000001d660000002136130000001d2200000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 73,
+      "offset": 1011104,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d0100000010080000003140000000211d02000000222d10400000001d0100000010100000001d1600000021361300000031400000002136190000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 74,
+      "offset": 1011215,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d0000000010080000003140000000211d02000000222d10400000001d0300000010100000001d1700000021361300000031400000002136190000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 75,
+      "offset": 1011326,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d0100000010080000003140000000211d02000000221510400000001d0700000010100000001d1800000021361300000031400000002136190000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 76,
+      "offset": 1011439,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d0000000010080000003140000000211d02000000221510400000001d0900000010100000001d1900000021361300000031400000002136190000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 77,
+      "offset": 1011550,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d0100000010080000001d0900000010100000001d150000002136130000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 78,
+      "offset": 1011644,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d0000000010080000001d0300000010100000001d150000002136130000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 79,
+      "offset": 1011736,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d0100000010080000001d0700000010100000001d140000002136130000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 17,
+      "code": 44,
+      "index": 80,
+      "offset": 1011830,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d0000000010080000001d0100000010100000001d140000002136130000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 7,
+      "offset": 1012944,
+      "cue": 7,
+      "caption": "Коллега: Ничего не понимаю!",
+      "bytecode": "3130000000211d01000000221510300000001d0700000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 12,
+      "offset": 1013430,
+      "cue": 29,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d1d00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 17,
+      "offset": 1013921,
+      "cue": 20,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d060000002136140000001d1400000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 19,
+      "offset": 1014122,
+      "cue": 18,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d1200000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 20,
+      "offset": 1014219,
+      "cue": 37,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d2500000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 25,
+      "offset": 1014714,
+      "cue": 2,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d0200000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 31,
+      "offset": 1015306,
+      "cue": 38,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d2600000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 36,
+      "offset": 1015804,
+      "cue": 25,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d1900000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 41,
+      "offset": 1016301,
+      "cue": 14,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d0e00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 46,
+      "offset": 1016780,
+      "cue": 2,
+      "caption": null,
+      "bytecode": "1d290000002136140000003130000000211d01000000221510300000001d0200000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 51,
+      "offset": 1017264,
+      "cue": 2,
+      "caption": null,
+      "bytecode": "1d2a0000002136140000003130000000211d01000000221510300000001d0200000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 56,
+      "offset": 1017756,
+      "cue": 13,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d0d00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 57,
+      "offset": 1017852,
+      "cue": 12,
+      "caption": null,
+      "bytecode": "3130000000211d01000000221510300000001d0c00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 63,
+      "offset": 1018383,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d01000000100c0000003144000000211d02000000221510440000001d0700000010140000001d1e00000021361300000031440000002136190000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 64,
+      "offset": 1018496,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d00000000100c0000003144000000211d02000000221510440000001d0900000010140000001d1f00000021361300000031440000002136190000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 65,
+      "offset": 1018603,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d01000000100c0000003144000000211d02000000222d10440000001d0100000010140000001d1a00000021361300000031440000002136190000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 66,
+      "offset": 1018714,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d00000000100c0000003144000000211d02000000222d10440000001d0300000010140000001d1b00000021361300000031440000002136190000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 67,
+      "offset": 1018825,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d01000000100c0000001d0900000010140000001d1c0000002136130000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 68,
+      "offset": 1018919,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d00000000100c0000001d0300000010140000001d1d0000002136130000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 69,
+      "offset": 1019010,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d01000000100c0000001d0700000010140000001d200000002136130000001d1f00000021361100000000"
+    },
+    {
+      "section": 4,
+      "object": 18,
+      "code": 44,
+      "index": 70,
+      "offset": 1019104,
+      "cue": 31,
+      "caption": null,
+      "bytecode": "1d00000000100c0000001d0100000010140000001d210000002136130000001d1f00000021361100000000"
+    }
+  ],
+  "samples": [
+    {
+      "cue": 1,
+      "offset": 576388,
+      "pcm_sha256": "9be645d94b8fd2baac4b4701e28dd99d6d808dfb4c0676d2747d33d76de94eb4",
+      "sample_count": 3441,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 2,
+      "offset": 578514,
+      "pcm_sha256": "8cf6b1354200a734871b9c796ec988a0c2790bcf605df9c26863421d98cd8cb9",
+      "sample_count": 2559,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 5,
+      "offset": 582012,
+      "pcm_sha256": "002106495285bbc1c70c980930e0a1125c8dde9b0f77885a52d242189370e41c",
+      "sample_count": 1817,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 6,
+      "offset": 583832,
+      "pcm_sha256": "90bfd30ef6c3e560acaad26fb64f78f5a89aa44b0f30e628d07a81099cf6baf2",
+      "sample_count": 11839,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 7,
+      "offset": 592998,
+      "pcm_sha256": "300d458eb2c219a39d0c6f4725ef1f19a248dce5a0dd14e62afdd14cac29a0ce",
+      "sample_count": 11297,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 12,
+      "offset": 2484679,
+      "pcm_sha256": "fcd9f5b0c2e7112f7825e892fa176dc9c1e047abd7078985b8c6919e7f5a918d",
+      "sample_count": 17598,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 13,
+      "offset": 2495479,
+      "pcm_sha256": "a35e894706ad21f733a4c8039e178aec6a13467aff56e4ffd14624155b7df015",
+      "sample_count": 7881,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 14,
+      "offset": 2500146,
+      "pcm_sha256": "80fa5b8191a7eaa256215713fb08dffb8847c6929c7b9802ec42d54b6be0cce7",
+      "sample_count": 12738,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 15,
+      "offset": 2508389,
+      "pcm_sha256": "a18510a60ee7e60275aebf1f473d840fda578068e42c5049d288deac00d5ab63",
+      "sample_count": 6111,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 16,
+      "offset": 2513918,
+      "pcm_sha256": "c84c05e8b22fd54a30d55c2ebc5d01a11c41ace16d9c179f0cc7eb411aa181c4",
+      "sample_count": 9734,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 17,
+      "offset": 2523670,
+      "pcm_sha256": "ff8f188486a38fd9efb280ba6c23f185fe5ca2a0aefbba7fe3fd1ebd23af70f4",
+      "sample_count": 10494,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 18,
+      "offset": 2534182,
+      "pcm_sha256": "e71e6d635a2cc6a74fbb6b71a16a745284360acf32b7ef69eeda9677ea858d8d",
+      "sample_count": 3542,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 19,
+      "offset": 2537742,
+      "pcm_sha256": "b1f06cf9f329a3fd4bda4d717bbd00d5ee9fb29a8cc98df6964abd3c7a4dcc37",
+      "sample_count": 9718,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 20,
+      "offset": 2546089,
+      "pcm_sha256": "2b0ff17f9aef7719b009b2974d4577da863c7a4c756dd87d61bc80753c3f5fbe",
+      "sample_count": 5060,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 21,
+      "offset": 2550278,
+      "pcm_sha256": "b5a3660fbee66daa02d368f1570e62d61d8bde7b6bbe706603f5a31f437c3acd",
+      "sample_count": 22066,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 22,
+      "offset": 2572362,
+      "pcm_sha256": "aea7b929b9aaa82f9d364adf55b24f87580cfe2be43a6d954d66dd2454e45bad",
+      "sample_count": 1038,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 23,
+      "offset": 2573389,
+      "pcm_sha256": "f37070261a539734ca84a51e19449032213aa8b59fc0d94e7b71902344e14c6a",
+      "sample_count": 18089,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 24,
+      "offset": 2587637,
+      "pcm_sha256": "cf154c979c0d2509fed3145b9999a4f97ee60d0a6192d471e484c6bc2596f4a7",
+      "sample_count": 10026,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 25,
+      "offset": 2596467,
+      "pcm_sha256": "e4be9043f056af5b9b9a83b75ca756bc0c959eda1ed73973a029e41a6ce36648",
+      "sample_count": 15650,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 26,
+      "offset": 2604762,
+      "pcm_sha256": "e177b834e8752e466bd207dc6685b5a592807b95361d13025fdaff705d5bd233",
+      "sample_count": 4276,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 27,
+      "offset": 2607671,
+      "pcm_sha256": "7a4e8b6dc6b6aa680220a5ad7bdd92999010728986ad153cbeb04d12304be902",
+      "sample_count": 922,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 28,
+      "offset": 2608535,
+      "pcm_sha256": "e3260655f30c424126de9ce58bec7f3ad9c842d911aef2c1d4b680552e7d85d9",
+      "sample_count": 922,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 29,
+      "offset": 2609404,
+      "pcm_sha256": "94b28890b33965ea8ff49912a930cd1b265bc8f79bbc70ca74121f060acdcbe5",
+      "sample_count": 4554,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 30,
+      "offset": 2613976,
+      "pcm_sha256": "d128db96f542d9f99f19dc1dec34a8670fd703385f1a113c2ab5cb7fc9ea6fda",
+      "sample_count": 3696,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 31,
+      "offset": 2615649,
+      "pcm_sha256": "f57c1ba35a0d0d59ba57599c0b087f28765dd5334e08c25369c6a4e2c0a06efb",
+      "sample_count": 1120,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 32,
+      "offset": 2615964,
+      "pcm_sha256": "c5deab214cb433373d4f90128ea771e206e3d50e84eca357b050c95ecea2565f",
+      "sample_count": 8697,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 33,
+      "offset": 2622277,
+      "pcm_sha256": "3f0e817a5bd1922266da44d403ea85728f2268bfc6ee8c4e4ee1580c01981b4b",
+      "sample_count": 16867,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 34,
+      "offset": 2636675,
+      "pcm_sha256": "c264d231cad3c8e4f7e014d06f054aa6819df89bdcfc05976f093c197922909d",
+      "sample_count": 10080,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 35,
+      "offset": 2643423,
+      "pcm_sha256": "24502dcbc20a9d4f353c3379674a99c7d7a98db45b7f01b8f6a2691be4be7719",
+      "sample_count": 13935,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 36,
+      "offset": 2654512,
+      "pcm_sha256": "b70124c106672ca2b7da4710cdb9cafbe8de220d1caa3afacddacbd704c630aa",
+      "sample_count": 17602,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 37,
+      "offset": 2669137,
+      "pcm_sha256": "d0ee182ba0f751973c67876b2d6ce8dbffdd6412eb240fb37ab4e8622cbc802c",
+      "sample_count": 15547,
+      "sample_rate": 11025
+    },
+    {
+      "cue": 38,
+      "offset": 2683816,
+      "pcm_sha256": "4a45afb435e27fd036b6fa46c9b74822eac4509bc3e2ea821ff1b6575a9be46f",
+      "sample_count": 6212,
+      "sample_rate": 11025
+    }
+  ],
+  "scope": "All native 11 calls in common and zoo scripts; nonverbal sounds have no fabricated spoken text."
+}

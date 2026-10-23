@@ -1,0 +1,48 @@
+{
+  "compiler_spec": "default", 
+  "decompiled": 26, 
+  "failed": 2, 
+  "failures": [
+    {
+      "address": "1000:07c7", 
+      "error": "\nLow-level Error: Overlapping input varnodes", 
+      "name": "FUN_1000_07c7"
+    }, 
+    {
+      "address": "1000:07cd", 
+      "error": "\nLow-level Error: Overlapping input varnodes", 
+      "name": "FUN_1000_07cd"
+    }
+  ], 
+  "format": "New Executable (NE)", 
+  "functions": 59, 
+  "image_base": "0000:0000", 
+  "input": "GMW.DLL", 
+  "language": "x86:LE:16:Protected Mode", 
+  "memory_blocks": [
+    {
+      "execute": true, 
+      "initialized": true, 
+      "name": "Code1", 
+      "size": 2171, 
+      "start": "1000:0000"
+    }, 
+    {
+      "execute": false, 
+      "initialized": true, 
+      "name": "Data2", 
+      "size": 680, 
+      "start": "1008:0000"
+    }, 
+    {
+      "execute": false, 
+      "initialized": false, 
+      "name": "EXTERNAL", 
+      "size": 120, 
+      "start": "1010:0000"
+    }
+  ], 
+  "scope": "Automatically discovered functions; not proof of complete code coverage", 
+  "thunks": 31, 
+  "tool": "Ghidra 11.3.2 PUBLIC"
+}

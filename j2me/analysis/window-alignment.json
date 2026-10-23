@@ -1,0 +1,26 @@
+{
+  "version": "0.3.6",
+  "original_window_root": [
+    128,
+    224
+  ],
+  "closed_pane_top_left": [
+    167,
+    230
+  ],
+  "actor_anchor": [
+    192,
+    304
+  ],
+  "matched_opaque_pixels": 1276,
+  "opaque_pixels": 1277,
+  "differences": [
+    {
+      "x": 28,
+      "y": 29,
+      "closed_index": 136,
+      "animation_index": 19
+    }
+  ],
+  "scope": "Static resource geometry only; not a playback, emulator or gameplay test"
+}

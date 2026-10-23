@@ -1,0 +1,11 @@
+{
+  "language": "ru",
+  "origin": "Text adaptation of speech in the pinned EXE; the original has PCM voice cues, not embedded subtitle strings. Punctuation and speaker labels are added for J2ME.",
+  "captions": {
+    "6": "Шеф: Ничего не понимаю!",
+    "7": "Коллега: Ничего не понимаю!",
+    "34": "Шеф: Откройте!",
+    "35": "Сторож: Доступ ограничен.",
+    "36": "Сторож: В виде исключения."
+  }
+}

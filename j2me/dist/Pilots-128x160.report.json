@@ -1,0 +1,337 @@
+{
+  "profile": "128x160",
+  "classes": 38,
+  "scenes": [
+    2,
+    3,
+    4
+  ],
+  "animations": 305,
+  "frames": 3819,
+  "backgrounds": {
+    "scenes/02.bar": [
+      640,
+      63,
+      640,
+      63
+    ],
+    "scenes/02.p8": [
+      320,
+      208,
+      640,
+      417
+    ],
+    "scenes/03.bar": [
+      640,
+      63,
+      640,
+      63
+    ],
+    "scenes/03.p8": [
+      320,
+      208,
+      640,
+      417
+    ],
+    "scenes/04.bar": [
+      640,
+      63,
+      640,
+      63
+    ],
+    "scenes/04.p8": [
+      320,
+      208,
+      640,
+      417
+    ]
+  },
+  "audio_wav_count": 125,
+  "audio_midi_count": 3,
+  "audio_event_tables": "Original bytecode predicates and animal yard VM; audio-original-cues.json",
+  "audio_device_tested": false,
+  "playable_scene_ids": [
+    2,
+    3,
+    4
+  ],
+  "active_preview_scene": 4,
+  "version": "0.9.6",
+  "jar_size": 3987382,
+  "jar_sha256": "fd07573c878af8ece983a7957644ebca98290e5c62c9f1890ee9e87e61087d18",
+  "bytecode_preserved": false,
+  "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
+  "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
+  "original_window_rule_oracle_cases": 8,
+  "existing_visual_payloads_preserved": false,
+  "original_barrel_rule_oracle_cases": 26,
+  "original_cat_rule_oracle_cases": 7,
+  "original_full_location_route_cases": 1024,
+  "subtitle_cues": [
+    6,
+    7,
+    34,
+    35,
+    36
+  ],
+  "original_walking_sprite_ids": [
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33
+  ],
+  "added_original_sprite_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    44
+  ],
+  "code_defined_hotspots": {
+    "scene_02_window": [
+      150,
+      224,
+      68,
+      66
+    ],
+    "scene_02_kettle": [
+      80,
+      284,
+      38,
+      36
+    ],
+    "scene_02_barrel": [
+      128,
+      282,
+      64,
+      68
+    ],
+    "scene_02_pickaxe": [
+      80,
+      248,
+      38,
+      36
+    ],
+    "scene_02_coin": [
+      299,
+      305,
+      28,
+      23
+    ],
+    "scene_02_bell": [
+      440,
+      205,
+      40,
+      65
+    ],
+    "scene_02_gate": [
+      248,
+      155,
+      187,
+      125
+    ],
+    "scene_02_wall": [
+      470,
+      180,
+      170,
+      110
+    ]
+  },
+  "original_animal_section": 6,
+  "original_animal_local_clips": 93,
+  "animal_preview_count": 46,
+  "save_format": "PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader",
+  "validation": "Three-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test",
+  "removed_animation_ids": [
+    106
+  ],
+  "updated_anchor_ids": [
+    56,
+    64,
+    66,
+    69,
+    75,
+    76,
+    83,
+    86,
+    87,
+    88,
+    89,
+    90,
+    94,
+    95,
+    97,
+    102,
+    103
+  ],
+  "updated_scene_actor_ids": [
+    64,
+    95
+  ],
+  "pending_placement_menu_numbers": [],
+  "pending_character_relative_menu_numbers": [],
+  "rgb_compatibility": {
+    "model": "full-stride drawRGB bounds check; desktop spy, not a device test",
+    "animation_clips": 305,
+    "animation_frames": 3819,
+    "scales": [
+      "normal",
+      "zoomed"
+    ],
+    "edge_clipping": true,
+    "screen_sizes": [
+      [
+        128,
+        160
+      ],
+      [
+        128,
+        160
+      ]
+    ]
+  },
+  "removed_future_resources": [
+    "scenes/00.hot",
+    "scenes/00.p8",
+    "scenes/05.bar",
+    "scenes/05.hot",
+    "scenes/05.p8",
+    "scenes/06.bar",
+    "scenes/06.hot",
+    "scenes/06.p8",
+    "scenes/07.bar",
+    "scenes/07.hot",
+    "scenes/07.p8",
+    "scenes/08.bar",
+    "scenes/08.hot",
+    "scenes/08.p8",
+    "scenes/09.bar",
+    "scenes/09.hot",
+    "scenes/09.p8",
+    "scenes/10.bar",
+    "scenes/10.hot",
+    "scenes/10.p8",
+    "scenes/11.bar",
+    "scenes/11.hot",
+    "scenes/11.p8",
+    "scenes/12.bar",
+    "scenes/12.hot",
+    "scenes/12.p8",
+    "scenes/13.bar",
+    "scenes/13.hot",
+    "scenes/13.p8",
+    "scenes/14.bar",
+    "scenes/14.hot",
+    "scenes/14.p8",
+    "scenes/15.bar",
+    "scenes/15.hot",
+    "scenes/15.p8",
+    "scenes/16.bar",
+    "scenes/16.hot",
+    "scenes/16.p8",
+    "scenes/17.bar",
+    "scenes/17.hot",
+    "scenes/17.p8",
+    "scenes/18.hot",
+    "scenes/18.p8",
+    "scenes/19.hot",
+    "scenes/19.p8"
+  ],
+  "lossless_frame_storage": {
+    "packed_clips": [
+      "scenes/02-103.anm",
+      "scenes/02-56.anm",
+      "scenes/02-60.anm",
+      "scenes/02-75.anm",
+      "scenes/02-83.anm",
+      "scenes/02-87.anm",
+      "scenes/02-89.anm",
+      "scenes/02-94.anm",
+      "scenes/02-97.anm",
+      "scenes/02-20010.anm",
+      "scenes/02-20011.anm",
+      "scenes/03-20010.anm",
+      "scenes/03-20011.anm",
+      "scenes/04-20010.anm",
+      "scenes/04-20011.anm",
+      "scenes/04-20043.anm",
+      "scenes/04-68.anm",
+      "scenes/04-86.anm",
+      "scenes/04-94.anm",
+      "scenes/04-97.anm",
+      "scenes/04-100.anm",
+      "scenes/04-112.anm",
+      "scenes/04-113.anm",
+      "scenes/04-116.anm",
+      "scenes/04-124.anm",
+      "scenes/04-125.anm",
+      "scenes/04-129.anm",
+      "scenes/04-130.anm",
+      "scenes/04-131.anm"
+    ],
+    "inflated_bytes_saved": 14393237,
+    "decoded_visual_payloads_preserved": true
+  },
+  "render_cache": {
+    "small_profile_pixels": 65536,
+    "large_profile_pixels": 131072,
+    "walking_byte_cache_max": 65536,
+    "low_memory_fallback": true,
+    "device_fps_measured": false
+  },
+  "build_profile": {
+    "baseline": "128x128",
+    "screen": [
+      128,
+      160
+    ],
+    "midlet_name": "Pilots Engine 128x160",
+    "raster_cache_pixels": 65536,
+    "id": "128x160",
+    "original_input": "Pilots-128x128.jar"
+  }
+}

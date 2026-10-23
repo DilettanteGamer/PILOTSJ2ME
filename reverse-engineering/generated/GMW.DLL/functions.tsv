@@ -1,0 +1,60 @@
+address	name	status	signature	diagnostic
+1000:0000	FUN_1000_0000	decompiled	undefined __cdecl16near FUN_1000_0000(void)	
+1000:0026	FUN_1000_0026	decompiled	undefined __stdcall16near FUN_1000_0026(void)	
+1000:0136	FUN_1000_0136	decompiled	undefined __cdecl16near FUN_1000_0136(void)	
+1000:0160	FUN_1000_0160	decompiled	undefined __cdecl16near FUN_1000_0160(void)	
+1000:017e	FUN_1000_017e	decompiled	undefined __cdecl16near FUN_1000_017e(void)	
+1000:018e	FUN_1000_018e	decompiled	undefined __cdecl16near FUN_1000_018e(void)	
+1000:019e	FUN_1000_019e	decompiled	undefined __cdecl16near FUN_1000_019e(void)	
+1000:01ae	FUN_1000_01ae	decompiled	undefined __cdecl16near FUN_1000_01ae(void)	
+1000:01da	FUN_1000_01da	decompiled	undefined __stdcall16near FUN_1000_01da(void)	
+1000:0228	FUN_1000_0228	decompiled	undefined __cdecl16near FUN_1000_0228(void)	
+1000:0248	FUN_1000_0248	decompiled	undefined __cdecl16near FUN_1000_0248(void)	
+1000:03e0	FUN_1000_03e0	decompiled	undefined __cdecl16near FUN_1000_03e0(void)	
+1000:0410	FUN_1000_0410	decompiled	undefined __cdecl16near FUN_1000_0410(void)	
+1000:049a	FUN_1000_049a	decompiled	undefined __stdcall16near FUN_1000_049a(void)	
+1000:050a	FUN_1000_050a	decompiled	undefined __cdecl16near FUN_1000_050a(void)	
+1000:0510	FUN_1000_0510	decompiled	undefined __cdecl16near FUN_1000_0510(void)	
+1000:053c	FUN_1000_053c	decompiled	undefined __stdcall16near FUN_1000_053c(void)	
+1000:058c	FUN_1000_058c	decompiled	undefined __stdcall16far FUN_1000_058c(void)	
+1000:0596	WEP	decompiled	undefined __stdcall16far WEP(void)	
+1000:05ae	UTPROC	decompiled	undefined __stdcall16far UTPROC(void)	
+1000:0690	entry	thunk	undefined __cdecl16far entry(void)	Thunk to FUN_1000_06b0
+1000:06b0	FUN_1000_06b0	decompiled	undefined __cdecl16far FUN_1000_06b0(void)	
+1000:0700	FUN_1000_0700	decompiled	undefined __cdecl16far FUN_1000_0700(void)	
+1000:0746	FUN_1000_0746	decompiled	undefined FUN_1000_0746(void)	
+1000:0756	FUN_1000_0756	decompiled	undefined __cdecl16near FUN_1000_0756(void)	
+1000:07c7	FUN_1000_07c7	failed	undefined FUN_1000_07c7(void)	\nLow-level Error: Overlapping input varnodes
+1000:07cd	FUN_1000_07cd	failed	undefined __stdcall16far FUN_1000_07cd(void)	\nLow-level Error: Overlapping input varnodes
+1000:0820	FUN_1000_0820	decompiled	undefined __cdecl16far FUN_1000_0820(void)	
+1000:0840	FUN_1000_0840	decompiled	undefined __stdcall16far FUN_1000_0840(void)	
+1010:0000	SNDPLAYSOUND	thunk	undefined SNDPLAYSOUND(void)	Thunk to MMSYSTEM::SNDPLAYSOUND
+1010:0004	MIDIOUTOPEN	thunk	undefined MIDIOUTOPEN(void)	Thunk to MMSYSTEM::MIDIOUTOPEN
+1010:0008	MIDIOUTCLOSE	thunk	undefined MIDIOUTCLOSE(void)	Thunk to MMSYSTEM::MIDIOUTCLOSE
+1010:000c	MIDIOUTSHORTMSG	thunk	undefined MIDIOUTSHORTMSG(void)	Thunk to MMSYSTEM::MIDIOUTSHORTMSG
+1010:0010	MIDIOUTRESET	thunk	undefined MIDIOUTRESET(void)	Thunk to MMSYSTEM::MIDIOUTRESET
+1010:0014	MIDIOUTGETVOLUME	thunk	undefined MIDIOUTGETVOLUME(void)	Thunk to MMSYSTEM::MIDIOUTGETVOLUME
+1010:0018	MIDIOUTSETVOLUME	thunk	undefined MIDIOUTSETVOLUME(void)	Thunk to MMSYSTEM::MIDIOUTSETVOLUME
+1010:001c	MIDIOUTGETID	thunk	undefined MIDIOUTGETID(void)	Thunk to MMSYSTEM::MIDIOUTGETID
+1010:0020	WAVEOUTOPEN	thunk	undefined WAVEOUTOPEN(void)	Thunk to MMSYSTEM::WAVEOUTOPEN
+1010:0024	WAVEOUTCLOSE	thunk	undefined WAVEOUTCLOSE(void)	Thunk to MMSYSTEM::WAVEOUTCLOSE
+1010:0028	WAVEOUTPREPAREHEADER	thunk	undefined WAVEOUTPREPAREHEADER(void)	Thunk to MMSYSTEM::WAVEOUTPREPAREHEADER
+1010:002c	WAVEOUTUNPREPAREHEADER	thunk	undefined WAVEOUTUNPREPAREHEADER(void)	Thunk to MMSYSTEM::WAVEOUTUNPREPAREHEADER
+1010:0030	WAVEOUTWRITE	thunk	undefined WAVEOUTWRITE(void)	Thunk to MMSYSTEM::WAVEOUTWRITE
+1010:0034	WAVEOUTPAUSE	thunk	undefined WAVEOUTPAUSE(void)	Thunk to MMSYSTEM::WAVEOUTPAUSE
+1010:0038	WAVEOUTRESTART	thunk	undefined WAVEOUTRESTART(void)	Thunk to MMSYSTEM::WAVEOUTRESTART
+1010:003c	WAVEOUTRESET	thunk	undefined WAVEOUTRESET(void)	Thunk to MMSYSTEM::WAVEOUTRESET
+1010:0040	WAVEOUTGETVOLUME	thunk	undefined WAVEOUTGETVOLUME(void)	Thunk to MMSYSTEM::WAVEOUTGETVOLUME
+1010:0044	WAVEOUTSETVOLUME	thunk	undefined WAVEOUTSETVOLUME(void)	Thunk to MMSYSTEM::WAVEOUTSETVOLUME
+1010:0048	WAVEOUTGETID	thunk	undefined WAVEOUTGETID(void)	Thunk to MMSYSTEM::WAVEOUTGETID
+1010:004c	TIMESETEVENT	thunk	undefined TIMESETEVENT(void)	Thunk to MMSYSTEM::TIMESETEVENT
+1010:0050	TIMEKILLEVENT	thunk	undefined TIMEKILLEVENT(void)	Thunk to MMSYSTEM::TIMEKILLEVENT
+1010:0054	TIMEGETDEVCAPS	thunk	undefined TIMEGETDEVCAPS(void)	Thunk to MMSYSTEM::TIMEGETDEVCAPS
+1010:0058	TIMEBEGINPERIOD	thunk	undefined TIMEBEGINPERIOD(void)	Thunk to MMSYSTEM::TIMEBEGINPERIOD
+1010:005c	TIMEENDPERIOD	thunk	undefined TIMEENDPERIOD(void)	Thunk to MMSYSTEM::TIMEENDPERIOD
+1010:0060	TIMEGETTIME	thunk	undefined TIMEGETTIME(void)	Thunk to MMSYSTEM::TIMEGETTIME
+1010:0064	GETVERSION	thunk	undefined GETVERSION(void)	Thunk to KERNEL::GETVERSION
+1010:0068	LOCALINIT	thunk	undefined LOCALINIT(void)	Thunk to KERNEL::LOCALINIT
+1010:006c	DOS3CALL	thunk	undefined DOS3CALL(void)	Thunk to KERNEL::DOS3CALL
+1010:0070	FATALAPPEXIT	thunk	undefined FATALAPPEXIT(void)	Thunk to KERNEL::FATALAPPEXIT
+1010:0074	MESSAGEBEEP	thunk	undefined MESSAGEBEEP(void)	Thunk to USER::MESSAGEBEEP

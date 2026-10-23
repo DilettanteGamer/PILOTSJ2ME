@@ -1,0 +1,11 @@
+MIDlet-Name: Pilots Engine 240x320
+MIDlet-Version: 0.9.6
+MIDlet-Vendor: PILOTSJ2ME
+MIDlet-1: Pilots Engine 240x320,,pilots.PilotsMidlet
+MicroEdition-Profile: MIDP-2.0
+MicroEdition-Configuration: CLDC-1.1
+Pilots-Screen: 240x320
+Pilots-Profile: 240x320
+Pilots-Raster-Cache-Pixels: 131072
+MIDlet-Jar-URL: Pilots-240x320.jar
+MIDlet-Jar-Size: 4204333
