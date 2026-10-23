@@ -275,7 +275,7 @@ MenuCanvas.Host {
         }
 
         public synchronized void goToScene(int n) throws IOException {
-            if (n!=2 && n!=3 && n!=4) throw new IOException("This build includes locations 1, 2 and 3");
+            if (this.sceneIndex(n) < 0) throw new IOException("Invalid scene ID");
             this.audio.active(false);
             int cachePixels=this.getWidth()<200?65536:131072;
             try {
@@ -288,9 +288,6 @@ MenuCanvas.Host {
             RasterCache.budget(cachePixels);
             WalkStreams.clear();
             if (this.zooPanel!=null) { this.zooPanel.close();this.zooPanel=null; }
-            if (this.sceneIndex(n) < 0) {
-                throw new IOException("Invalid scene ID");
-            }
             if (this.scene != null) {
                 this.scene.close();
             }

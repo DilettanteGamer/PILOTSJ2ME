@@ -25,7 +25,7 @@ from extract_animals import extract as extract_animals
 from extract_garden import extract as extract_garden
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.10.0'
+VERSION = '0.10.1'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -220,6 +220,16 @@ def main():
             courtyard_fixture=Path(temporary) / 'courtyard-source-actions.csv'
             courtyard_fixture.write_text('\n'.join(','.join(map(str,row)) for row in courtyard_report['actions'])+'\n')
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.CourtyardRulesTest',courtyard_fixture])
+            entry_classes=Path(temporary) / 'entry-tests'
+            run([javac,'-encoding','UTF-8','-cp',classpath,'-d',entry_classes,
+                 ROOT / 'tests/stubs/javax/microedition/midlet/MIDlet.java',
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Command.java',
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Displayable.java',
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Canvas.java',
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Display.java',ROOT / 'tests/LocationEntryTest.java'])
+            entry_width,entry_height=profile.split('x')
+            run([java,'-Dpilots.test.width='+entry_width,'-Dpilots.test.height='+entry_height,
+                 '-cp',str(entry_classes)+os.pathsep+classpath,'pilots.LocationEntryTest'])
             audio_classes=Path(temporary) / 'audio-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',audio_classes,
                  ROOT / 'tests/stubs/javax/microedition/media/MediaException.java',ROOT / 'tests/stubs/javax/microedition/media/Manager.java',ROOT / 'tests/AudioTest.java'])

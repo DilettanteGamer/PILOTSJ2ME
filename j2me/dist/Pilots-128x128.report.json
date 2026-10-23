@@ -70,9 +70,9 @@
     5
   ],
   "active_preview_scene": 5,
-  "version": "0.10.0",
-  "jar_size": 4603123,
-  "jar_sha256": "33ca833167a0abb20f4dec0ed726316e0d0b57a8231b5976f184797b9067ca08",
+  "version": "0.10.1",
+  "jar_size": 4603053,
+  "jar_sha256": "10dba3f4b371fab94526d6c24ebe224efc6570729dbe902d4b0a627bc49d4a3e",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
