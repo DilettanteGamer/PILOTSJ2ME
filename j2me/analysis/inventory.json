@@ -2674,7 +2674,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.11.0",
+        "MIDlet-Version": "0.11.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2683,10 +2683,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "926fa4c54dea25d02f9c6be8f0664555cdeb64ffefbd616d12ba0d7f640e9f17",
-      "jar_bytes": 6200036,
+      "sha256": "eb041b66c794cd36db56043bc30dbe3eabda355bd266536c823470c37d656388",
+      "jar_bytes": 6200061,
       "entry_count": 745,
-      "uncompressed_bytes": 38695385,
+      "uncompressed_bytes": 38695435,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -3290,7 +3290,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "04111eaecd5cef6e7a1bcb4ca8c97670ea5d76cac26955284a6056f6b50be6f7"
+          "sha256": "db8a83a4cc05e6c5b249e1006a0e8d06026b47dce8bc0407a24f0f07cc4ff2f4"
         },
         "pilots/Viewport.class": {
           "minor": 3,
@@ -6264,7 +6264,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.11.0",
+        "MIDlet-Version": "0.11.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -6273,10 +6273,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "e2df9e6ec3f4b0df2a3156608635df096c6b7cddd989bf0a9fbd070ffb489b19",
-      "jar_bytes": 6200035,
+      "sha256": "151095cc75a52fd477db97d01e996329a9128615eeaec13f429c01a74e077782",
+      "jar_bytes": 6200062,
       "entry_count": 745,
-      "uncompressed_bytes": 38695385,
+      "uncompressed_bytes": 38695435,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -6880,7 +6880,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "04111eaecd5cef6e7a1bcb4ca8c97670ea5d76cac26955284a6056f6b50be6f7"
+          "sha256": "db8a83a4cc05e6c5b249e1006a0e8d06026b47dce8bc0407a24f0f07cc4ff2f4"
         },
         "pilots/Viewport.class": {
           "minor": 3,
@@ -9854,7 +9854,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.11.0",
+        "MIDlet-Version": "0.11.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -9863,10 +9863,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "5b3772b4b647c76e5e7492628368c8e862a84c431c808e90217acccdf8a02b9b",
-      "jar_bytes": 6573844,
+      "sha256": "72644e5055125c345ce9a3d1f8e2da5a576e989a7828e42a5747c84e1216000b",
+      "jar_bytes": 6573868,
       "entry_count": 745,
-      "uncompressed_bytes": 39696986,
+      "uncompressed_bytes": 39697036,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -10470,7 +10470,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "04111eaecd5cef6e7a1bcb4ca8c97670ea5d76cac26955284a6056f6b50be6f7"
+          "sha256": "db8a83a4cc05e6c5b249e1006a0e8d06026b47dce8bc0407a24f0f07cc4ff2f4"
         },
         "pilots/Viewport.class": {
           "minor": 3,

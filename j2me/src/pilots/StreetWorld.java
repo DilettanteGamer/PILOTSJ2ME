@@ -90,7 +90,12 @@ public final class StreetWorld {
     }
     private void remove(int x,int y) {
         if(x<0 || x>=10 || y<0 || y>=30) return;
-        for(int h=0;h<2;h++) if(heroes[h]!=null && heroes[h].active && heroes[h].x==x*64 && heroes[h].y==y*16) { heroes[h].active=false;heroes[h].clip=-1;return; }
+        for(int h=0;h<2;h++) if(heroes[h]!=null && heroes[h].active && heroes[h].x==x*64 && heroes[h].y==y*16) {
+            // Deleting an actor also executes its source exit script. Street
+            // object 11 leaves clip 79 playing independently at the sewer.
+            Thing hero=heroes[h];Definition d=definitions[hero.id];if(d!=null) exit(d,hero);
+            hero.active=false;hero.clip=-1;return;
+        }
         removeCell(x,y);
     }
     private void enter(Thing hero) {

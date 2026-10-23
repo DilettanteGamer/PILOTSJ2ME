@@ -38,7 +38,21 @@ public final class StreetRenderTest {
                 street.update(100);
                 if(!cover && street.animals.world.action()==60 && street.animals.world.step()==100){capture(640,480,a[2]+"-cover-world.png");cover=true;}
             }
-            check(cover && budget>0,"full crossing scene not rendered");act(20);settle();
+            check(cover && budget>0,"full crossing scene not rendered");act(20);
+            boolean[] jumpFrames=new boolean[17];budget=1600;
+            while(street.logic.busy() && budget-->0) {
+                street.update(100);
+                for(int i=0;i<street.animals.world.effects.length;i++) {
+                    StreetWorld.Thing t=street.animals.world.effects[i];
+                    if(t==null || t.id!=11 || t.clip!=79)continue;
+                    AnimatedActor actor=scene.actors[302+i];
+                    check(actor!=null && actor.visible && actor.id==79 && actor.clip.index==t.frame,"jump not drawn");
+                    jumpFrames[t.frame]=true;
+                    if(t.frame==8)capture(640,480,a[2]+"-jump-world.png");
+                }
+            }
+            check(budget>0,"sewer exit hangs");
+            for(int frame=0;frame<jumpFrames.length;frame++)check(jumpFrames[frame],"jump frame not rendered "+frame);
             check(street.logic.completed(),"physical street finale");capture(width,height,a[2]+"-end.png");
         }finally{scene.close();}
         System.out.println("StreetRender: actual opaque hotspots, autonomous waiting point, corkscrew panel, crossing/cover and sewer finale painted");

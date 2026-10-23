@@ -26,7 +26,7 @@ from extract_garden import extract as extract_garden
 from extract_street import extract as extract_street
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.11.0'
+VERSION = '0.11.1'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
