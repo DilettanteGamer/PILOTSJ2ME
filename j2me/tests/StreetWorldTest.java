@@ -50,7 +50,7 @@ public final class StreetWorldTest {
         for(int frame=0;frame<jumpFrames.length;frame++)check(jumpFrames[frame],"missing jump frame "+frame);
         check(hiddenColleague && !world.heroes[1].active && world.heroes[0].x==256 && world.heroes[0].y==352,"source sewer exit positions");
         check(cues.contains(31) && cues.contains(27) && cues.contains(25) && cues.contains(26),"finale or traffic sound missing "+cues);
-        check(SceneFlow.next(5,true)==6 && SceneFlow.next(6,true)==6,"fifth location transition boundary");
+        check(SceneFlow.next(5,true)==6 && SceneFlow.next(6,true)==8,"fifth location transition boundary");
         System.out.println("StreetWorld: autonomous Chief, bin/corkscrew, wrong item, cover, timed crossing, traffic, sewer finale/audio and every-tick SWS1 replay passed "+actions);
     }
 }

@@ -1,15 +1,17 @@
 {
   "profile": "128x160",
-  "classes": 48,
+  "classes": 54,
   "scenes": [
     2,
     3,
     4,
     5,
-    6
+    6,
+    8,
+    9
   ],
-  "animations": 482,
-  "frames": 6020,
+  "animations": 738,
+  "frames": 8540,
   "backgrounds": {
     "scenes/02.bar": [
       640,
@@ -70,10 +72,34 @@
       63,
       640,
       63
+    ],
+    "scenes/08.p8": [
+      320,
+      208,
+      640,
+      417
+    ],
+    "scenes/08.bar": [
+      640,
+      63,
+      640,
+      63
+    ],
+    "scenes/09.p8": [
+      320,
+      208,
+      640,
+      417
+    ],
+    "scenes/09.bar": [
+      640,
+      63,
+      640,
+      63
     ]
   },
-  "audio_wav_count": 182,
-  "audio_midi_count": 5,
+  "audio_wav_count": 251,
+  "audio_midi_count": 8,
   "audio_event_tables": "Original bytecode predicates and animal yard VM; audio-original-cues.json",
   "audio_device_tested": false,
   "playable_scene_ids": [
@@ -81,12 +107,19 @@
     3,
     4,
     5,
-    6
+    6,
+    8,
+    9
   ],
-  "active_preview_scene": 6,
-  "version": "0.11.1",
-  "jar_size": 6200062,
-  "jar_sha256": "151095cc75a52fd477db97d01e996329a9128615eeaec13f429c01a74e077782",
+  "active_preview_scene": 9,
+  "skipped_source_scene": 7,
+  "hotel_sections": [
+    10,
+    11
+  ],
+  "version": "0.12.0",
+  "jar_size": 8015854,
+  "jar_sha256": "7da4a15800720c6c4acac39adaf275fc3b001411fd12641a5eee6b2f2cff5efe",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -216,8 +249,8 @@
   "original_animal_section": 6,
   "original_animal_local_clips": 93,
   "animal_preview_count": 46,
-  "save_format": "PSV2 scene 06 SWS1; PSV2 scene 05 GWS2 with GWS1 migration; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader",
-  "validation": "Five-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test",
+  "save_format": "PSV2 scenes 08/09 HWS1; PSV2 scene 06 SWS1; PSV2 scene 05 GWS2 with GWS1 migration; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader",
+  "validation": "Five original locations and hotel entrance/interior gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test",
   "removed_animation_ids": [
     106
   ],
@@ -248,7 +281,7 @@
   "pending_character_relative_menu_numbers": [],
   "rgb_compatibility": {
     "model": "full-stride drawRGB bounds check; desktop spy, not a device test",
-    "animation_clips": 482,
+    "animation_clips": 738,
     "scales": [
       "normal",
       "zoomed"
@@ -271,12 +304,6 @@
     "scenes/07.bar",
     "scenes/07.hot",
     "scenes/07.p8",
-    "scenes/08.bar",
-    "scenes/08.hot",
-    "scenes/08.p8",
-    "scenes/09.bar",
-    "scenes/09.hot",
-    "scenes/09.p8",
     "scenes/10.bar",
     "scenes/10.hot",
     "scenes/10.p8",
@@ -353,9 +380,25 @@
       "scenes/06-66.anm",
       "scenes/06-78.anm",
       "scenes/06-81.anm",
-      "scenes/06-89.anm"
+      "scenes/06-89.anm",
+      "scenes/08-20010.anm",
+      "scenes/08-20011.anm",
+      "scenes/08-20043.anm",
+      "scenes/08-46.anm",
+      "scenes/09-20010.anm",
+      "scenes/09-20011.anm",
+      "scenes/09-20043.anm",
+      "scenes/09-58.anm",
+      "scenes/09-68.anm",
+      "scenes/09-94.anm",
+      "scenes/09-156.anm",
+      "scenes/09-159.anm",
+      "scenes/09-189.anm",
+      "scenes/09-193.anm",
+      "scenes/09-195.anm",
+      "scenes/09-209.anm"
     ],
-    "inflated_bytes_saved": 19611118,
+    "inflated_bytes_saved": 25192354,
     "decoded_visual_payloads_preserved": true
   },
   "render_cache": {

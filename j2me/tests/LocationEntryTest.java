@@ -34,13 +34,22 @@ public final class LocationEntryTest {
             canvas.startLocation(5);((GardenScene)get(canvas,"zoo")).animals.world.completed=true;
             canvas.tick(100);street(canvas,"fourth-to-fifth transition");
             canvas.save();canvas.startLocation(2);canvas.load();street(canvas,"RMS street restore");
+            ((StreetScene)get(canvas,"zoo")).animals.world.completed=true;
+            canvas.tick(100);check(((GameState)get(canvas,"state")).scene==8,"street must skip sewer");
+            canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==8,"cinematic save");
+            for(int i=0;i<230;i++)canvas.tick(100);
+            check(((GameState)get(canvas,"state")).scene==9,"entrance-to-interior transition");
+            app.choose(12);check(((GameState)get(canvas,"state")).scene==8,"cinematic menu");
+            app.choose(13);check(((GameState)get(canvas,"state")).scene==9,"hotel interior menu");
+            canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==9,"interior save");
+            canvas.startLocation(6);
             // Re-enter, restore a street save, and verify its actual loader.
             GameState saved=GameState.decode(((GameState)get(canvas,"state")).encode(),7);
             canvas.startLocation(2);set(canvas,"state",saved);canvas.goToScene(saved.scene);
             street(canvas,"restored fifth location entry");
             // Garden previews must load from another scene and return to it.
             canvas.startLocation(2);set(app,"animationCatalog",new AnimationCatalog());
-            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==6,"preview scene");
+            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==9,"preview scene");
             canvas.finishPreview();check(((GameState)get(canvas,"state")).scene==2,"preview return");
             Object original=get(canvas,"zoo");
             try { canvas.goToScene(7);throw new RuntimeException("unsupported scene accepted"); }
