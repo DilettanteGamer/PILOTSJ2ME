@@ -2700,7 +2700,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.13.1",
+        "MIDlet-Version": "0.13.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2709,10 +2709,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "c18a45a3099d2e98271a5fe6fbb68374cc77a845c01dec888b6effa96906c7d6",
-      "jar_bytes": 8023565,
+      "sha256": "a287e630d2875059edc5196685aaa99a39c8bd93d2cd379fb69642f1dab35743",
+      "jar_bytes": 8023654,
       "entry_count": 1091,
-      "uncompressed_bytes": 52012755,
+      "uncompressed_bytes": 52012934,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -3053,7 +3053,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7a3026339d2dc2876c0b91b6bb243d5644561541140dd78c5e0533ca3e4f8f6a"
+          "sha256": "16bb8b3ca78ddba8be03c5938f0f22a6cced7e5af5be8ef9671b49faa67fc845"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -8284,7 +8284,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.13.1",
+        "MIDlet-Version": "0.13.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -8293,10 +8293,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "ee532ba23b36463a32cd3cc18581cdbdfa3eedeb38aa07f6a175632554335e70",
-      "jar_bytes": 8023567,
+      "sha256": "61bfd33efc7a1c9a50642d2044e8c08cec55440f52b1bd55b47c2e0cbb23a3c1",
+      "jar_bytes": 8023655,
       "entry_count": 1091,
-      "uncompressed_bytes": 52012755,
+      "uncompressed_bytes": 52012934,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -8637,7 +8637,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7a3026339d2dc2876c0b91b6bb243d5644561541140dd78c5e0533ca3e4f8f6a"
+          "sha256": "16bb8b3ca78ddba8be03c5938f0f22a6cced7e5af5be8ef9671b49faa67fc845"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -13868,7 +13868,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.13.1",
+        "MIDlet-Version": "0.13.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -13877,10 +13877,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "4cc349b0186cd74704cc652cf0a9cda13ebcca0ea547d3fd0412bc9c66c84a30",
-      "jar_bytes": 8497360,
+      "sha256": "316b6bda985a9977b859e062e0fa8756981a9d2356cdd720c5487ad53e698132",
+      "jar_bytes": 8497448,
       "entry_count": 1091,
-      "uncompressed_bytes": 53414996,
+      "uncompressed_bytes": 53415175,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -14221,7 +14221,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7a3026339d2dc2876c0b91b6bb243d5644561541140dd78c5e0533ca3e4f8f6a"
+          "sha256": "16bb8b3ca78ddba8be03c5938f0f22a6cced7e5af5be8ef9671b49faa67fc845"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
