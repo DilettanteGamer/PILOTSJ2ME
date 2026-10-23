@@ -2,10 +2,13 @@ package pilots;
 import java.util.*;
 /** Source-driven hotel entrance, pickups, switch puzzle and finale, including save/replay. */
 public final class HotelWorldTest {
- static HotelWorld world,replay;static Set<Integer> actions=new TreeSet<Integer>();static List<Integer> cues=new ArrayList<Integer>();static int restoredMusic;
+ static HotelWorld world,replay;static Set<Integer> actions=new TreeSet<Integer>();static List<Integer> cues=new ArrayList<Integer>();static int restoredMusic;static int[] exitFrames=new int[2];
  static void check(boolean ok,String text){if(!ok)throw new RuntimeException(text);}
  static HotelWorld resume(HotelWorld w)throws Exception{w.syncSave();byte[] before=w.state.encode();GameState s=GameState.decode(before,10);HotelWorld copy=new HotelWorld(s);copy.syncSave();check(Arrays.equals(before,s.encode()),"hotel snapshot changed");return copy;}
  static void tick()throws Exception{
+  if(world.scene==9 && world.action()==87)for(int h=0;h<2;h++) {
+   HotelWorld.Thing t=world.heroes[h];if(t.active&&t.clip>=20&&t.clip<=33)exitFrames[h]|=1<<t.frame;
+  }
   if(world.scene==9 && (world.completed || world.action()==87 || world.action()==84 && world.step()>=10)) {
    HotelWorld saved=resume(world);restoredMusic=0;saved.sound(new MusicSink(){public void play(int n){}public void music(int n){restoredMusic=n;}});check(restoredMusic==2,"ending music not restored");
   }
@@ -43,6 +46,15 @@ public final class HotelWorldTest {
   int frozen=world.g(4);tick();check(world.g(4)==frozen,"room timer ran under detail screen");
   for(int i=0;i<9;i++)if((solution&(1<<i))!=0)turn(i);
   check(world.fridgeMask()==0,"three-by-three solution");closeFridge();settle();act(0,0,35);check(world.completed&&actions.contains(84)&&actions.contains(87),"hotel finale and both heroes' exit");
+  check(!world.heroes[0].active&&!world.heroes[1].active&&world.state.variables[63]==2,"hotel completed before both exits");
+  check(exitFrames[0]==31&&exitFrames[1]==31,"missing native exit gait frames");
+  for(HotelWorld.Thing t:world.cells)check(t==null||t.id!=97,"final hold pose left behind");
+  for(int fixture=1;fixture<4;fixture++) {
+   world=new HotelWorld(GameState.decode(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(args[fixture])),10));
+   if(fixture==3)check(!world.heroes[1].active,"legacy hold pose has a duplicate live actor");
+   check(!world.completed,"legacy final save was not resumed");replay=resume(world);settle();
+   check(world.completed&&!world.heroes[0].active&&!world.heroes[1].active,"legacy final save did not finish both exits");
+  }
   for(int seed=0;seed<65536;seed+=17)check(solve(RefrigeratorPuzzle.initial(seed))>=0,"unsolvable seeded puzzle");
   GameState legacy=GameState.decode(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(args[0])),10);
   world=new HotelWorld(legacy);for(int h=0;h<2;h++)check(world.g(h==0?0x40:0x44)==58-world.heroes[h].y/8,"legacy depth migration");check(world.hasItem(1)&&!world.hasItem(2)&&solve(world.fridgeMask())>=0,"0.12 save migration");replay=resume(world);

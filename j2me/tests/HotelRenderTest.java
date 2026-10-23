@@ -128,7 +128,33 @@ public final class HotelRenderTest {
     touch.pointerPressed(width/2,top+board/2);
     check(touchReturn[0]==1&&touchWorld.fridgeMask()==0&&!touchWorld.fridgeRequested(),"touch solution must return automatically");
     for(int i=0;i<200;i++)hotel.update(100);settle(hotel);
-    capture(hotel,640,480,a[2]+"-solved-world.png");act(hotel,101);for(int i=0;i<65;i++)hotel.update(100);capture(hotel,width,height,a[2]+"-finale.png");settle(hotel);check(hotel.logic.completed(),"physical hotel finale");}}
+    capture(hotel,640,480,a[2]+"-solved-world.png");
+    // Reach a real walkable cell beside the fridge before launching its movie.
+    // This forces the partner's approach to cross the open-door silhouette.
+    hotel.logic.select(1);hotel.logic.selectItem(0);check(world.move(576,320),"fridge approach staging");settle(hotel);
+    hotel.logic.select(0);act(hotel,101);
+    int budget=1000,doorPixels=0,exitFrames=0;boolean capturedDoor=false,capturedExit=false;
+    while(!world.completed&&budget-->0) {
+     int bodySlot=slot(hotel,61);AnimatedActor door=scene.actors[bodySlot],partner=scene.actors[301];HotelWorld.Thing t=world.heroes[1];
+     if(world.action()==84&&partner!=null&&t.clip>=26&&t.clip<=33&&hotel.layer(bodySlot)==15&&hotel.layer(301)<hotel.layer(bodySlot)) {
+      Graphics painted=worldPaint(hotel),expected=new Graphics(640,417);partner.paint(expected,new Viewport(640,417,640,417));
+      for(int y=Math.max(0,partner.y+partner.clip.offsetY);y<Math.min(417,partner.y+partner.clip.offsetY+partner.clip.height);y++)
+       for(int x=Math.max(448,partner.x+partner.clip.offsetX);x<Math.min(640,partner.x+partner.clip.offsetX+partner.clip.width);x++)
+        if(partner.clip.contains(x-partner.x,y-partner.y)&&door.clip.contains(x-door.x,y-door.y)) {
+         check(painted.image.getRGB(x,y)==expected.image.getRGB(x,y),"open fridge door cuts walking partner");doorPixels++;
+        }
+      if(doorPixels>0&&!capturedDoor){capture(hotel,640,480,a[2]+"-door-walk-world.png");capturedDoor=true;}
+     }
+     if(world.state.variables[63]==1&&t.active&&t.clip>=26&&t.clip<=33) {
+      exitFrames|=1<<t.frame;
+      if(!capturedExit){capture(hotel,640,480,a[2]+"-partner-exit-world.png");capturedExit=true;}
+     }
+     hotel.update(100);
+    }
+    check(budget>0&&world.completed&&doorPixels>0&&exitFrames==31,"movie/door/partner exit coverage");
+    check(scene.actors[300]==null&&scene.actors[301]==null,"visible hero left after finale");
+    for(HotelWorld.Thing t:world.cells)check(t==null||t.id!=97,"frozen final pose left in room");
+    capture(hotel,width,height,a[2]+"-finale.png");}}
    finally{scene.close();}
   }
   System.out.println("HotelRender: entrance, room, source layers, opaque pickup hotspots and inventory painted");

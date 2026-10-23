@@ -35,18 +35,22 @@ public final class HotelScene extends ZooScene {
         }
     }
     private boolean hiddenGrid(int id) { return animals.world.scene==9 && (id>=42 && id<=49 || id>=64 && id<=95); }
+    private boolean authoredFinale() { return animals.world.action()==84 || animals.world.action()==87; }
     public int layer(int slot) {
         HotelWorld.Thing t=thing(slot);if(t==null)return 0;
         if(animals.world.scene==9) {
+            // Normal room movement was normalized to 58-y/8. The final movie
+            // uses absolute layers authored for the original 54-y/8 baseline.
+            if(slot>=300 && slot<302 && authoredFinale())return t.layer-4;
             // These are wall/door cutouts, not foreground furniture. Their floor
             // plane is the bottom of the opaque mask; hero roots sit 16px above feet.
-            if(animals.world.action()!=83 && (t.id==51 || t.id==58 || t.id==59 || t.id==60)) {
+            if(animals.world.action()!=83 && !authoredFinale() && (t.id==51 || t.id==58 || t.id==59 || t.id==60)) {
                 AnimatedActor a=scene.actors[slot];
                 if(a!=null)return 58-(a.y+a.clip.offsetY+a.clip.height-16)/8;
             }
             // The lock and handle belong to the closed refrigerator's surface.
             if(t.id==33 || t.id==35)return 25;
-            if(animals.world.action()!=83 && (t.id==36 || t.id==37))return 22; // Switch mounted on wall mask 58.
+            if(animals.world.action()!=83 && !authoredFinale() && (t.id==36 || t.id==37))return 22; // Switch mounted on wall mask 58.
         }
         return t.layer;
     }

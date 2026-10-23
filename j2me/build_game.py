@@ -27,7 +27,7 @@ from extract_street import extract as extract_street
 from extract_hotel import extract as extract_hotel
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.13.2'
+VERSION = '0.13.3'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -230,7 +230,7 @@ def main():
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalWorldTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.GardenWorldTest',ROOT / 'tests/fixtures/garden-0.10.1-walking.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.StreetWorldTest'])
-            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.HotelWorldTest',ROOT / 'tests/fixtures/hotel-0.12.0-room.psv'])
+            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.HotelWorldTest',ROOT / 'tests/fixtures/hotel-0.12.0-room.psv',ROOT / 'tests/fixtures/hotel-0.13.2-final-start.psv',ROOT / 'tests/fixtures/hotel-0.13.2-final-done.psv',ROOT / 'tests/fixtures/hotel-0.13.2-final-hold.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalVisibilityTest', ROOT / 'tests/fixtures/animal-0.9.3-entry.psv', ROOT / 'tests/fixtures/animal-0.9.3-pickup.psv', ROOT / 'tests/fixtures/animal-0.9.4-rhino.psv', ROOT / 'tests/fixtures/animal-0.9.5-entry.psv'])
             courtyard_fixture=Path(temporary) / 'courtyard-source-actions.csv'
             courtyard_fixture.write_text('\n'.join(','.join(map(str,row)) for row in courtyard_report['actions'])+'\n')
