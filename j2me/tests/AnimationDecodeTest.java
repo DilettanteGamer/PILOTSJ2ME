@@ -27,11 +27,11 @@ public final class AnimationDecodeTest {
             if(!actual.equals(expected.getProperty(name))) throw new RuntimeException("Decoded pixels changed: "+name);
             clips++;
         }
-        if(clips!=305 || frames!=3819) throw new RuntimeException("Incomplete frame fingerprints");
+        if(clips!=389 || frames!=4545) throw new RuntimeException("Incomplete frame fingerprints");
         for(String name:new String[]{"overflow","literal","incomplete","size"}) {
             try { new AnimationClip("/bad-rle-"+name+".anm");throw new RuntimeException("Accepted malformed frame: "+name); }
             catch(IOException correct) {}
         }
-        System.out.println("AnimationDecode: all 305 clips / 3819 frames byte-identical to source; malformed RLE rejected");
+        System.out.println("AnimationDecode: all "+clips+" clips / "+frames+" frames byte-identical to source; malformed RLE rejected");
     }
 }

@@ -97,7 +97,7 @@ public final class AnimalSequenceRenderTest {
             check(bypassedCage && colleagueWalked && savedWalk,"missing cage bypass or companion walk");
             check(world().heroes[0].active && world().heroes[1].active && world().heroes[1].x==576 && world().heroes[1].y==368 && world().walkHero<0,"completion did not wait for both characters");
             all(tail,"Chief tail pull");all(kangaroo,"kangaroo");all(fall,"Colleague and key");all(monkey,"monkey steals key");
-            check(SceneFlow.next(4,true)==4,"fourth location opened unexpectedly");
+            check(SceneFlow.next(4,true)==5,"third location exit did not open garden");
         } finally { AnimalVisibilityTest.scene.close(); }
         System.out.println("AnimalSequences: banana hover, recovered rhino, all cutting/tail/kangaroo/fall/monkey frames painted, cinematic saves, giraffe fallback, basin/cage bypasses and both character exits passed");
     }

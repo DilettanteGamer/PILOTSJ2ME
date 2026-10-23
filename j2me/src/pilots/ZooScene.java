@@ -172,6 +172,7 @@ public class ZooScene {
         for(int i=0;i<scene.actors.length;i++) scene.actors[paintOrder[i]].paint(graphics,view);
     }
 
+    public int targetAt(int x,int y) { return logic.targetAt(x,y); }
     public String hoverText(int x,int y) { return null; }
 
     public static int approachX(int target) {

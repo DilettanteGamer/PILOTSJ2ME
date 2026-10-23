@@ -9,11 +9,13 @@ public final class ZooPanel {
     private final AnimationClip[] icons=new AnimationClip[IDS.length];
     private Viewport view;
     public ZooPanel() throws IOException { this(false); }
-    public ZooPanel(boolean animals) throws IOException {
+    public ZooPanel(boolean animals) throws IOException { this(animals?4:2); }
+    public ZooPanel(int scene) throws IOException {
+        boolean animals=scene==4;
         try {
             for(int i=0;i<IDS.length;i++) {
-                int id=animals&&i>=6&&i<=11?(i<8?62:i<10?60:64)+(i%2==0?1:0):IDS[i];
-                icons[i]=new AnimationClip((animals?"/scenes/04-":"/scenes/02-")+id+".anm");
+                int id=scene==5 && i>=6 && i<=11?81:animals&&i>=6&&i<=11?(i<8?62:i<10?60:64)+(i%2==0?1:0):IDS[i];
+                icons[i]=new AnimationClip((scene==5?"/scenes/05-":animals?"/scenes/04-":"/scenes/02-")+id+".anm");
             }
         } catch(IOException failure) { close();throw failure; }
     }
