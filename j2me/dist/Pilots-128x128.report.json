@@ -1,13 +1,14 @@
 {
   "profile": "128x128",
-  "classes": 38,
+  "classes": 43,
   "scenes": [
     2,
     3,
-    4
+    4,
+    5
   ],
-  "animations": 305,
-  "frames": 3819,
+  "animations": 389,
+  "frames": 4545,
   "backgrounds": {
     "scenes/02.bar": [
       640,
@@ -44,21 +45,34 @@
       208,
       640,
       417
+    ],
+    "scenes/05.p8": [
+      320,
+      208,
+      640,
+      417
+    ],
+    "scenes/05.bar": [
+      640,
+      63,
+      640,
+      63
     ]
   },
-  "audio_wav_count": 125,
-  "audio_midi_count": 3,
+  "audio_wav_count": 150,
+  "audio_midi_count": 4,
   "audio_event_tables": "Original bytecode predicates and animal yard VM; audio-original-cues.json",
   "audio_device_tested": false,
   "playable_scene_ids": [
     2,
     3,
-    4
+    4,
+    5
   ],
-  "active_preview_scene": 4,
-  "version": "0.9.6",
-  "jar_size": 3987381,
-  "jar_sha256": "b5776f140663137789d72471614df248ac63cc867d7abbccbac71b1e5d26cb42",
+  "active_preview_scene": 5,
+  "version": "0.10.0",
+  "jar_size": 4603123,
+  "jar_sha256": "33ca833167a0abb20f4dec0ed726316e0d0b57a8231b5976f184797b9067ca08",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -181,11 +195,13 @@
       110
     ]
   },
+  "original_garden_section": 7,
+  "garden_preview_count": 25,
   "original_animal_section": 6,
   "original_animal_local_clips": 93,
   "animal_preview_count": 46,
-  "save_format": "PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader",
-  "validation": "Three-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test",
+  "save_format": "PSV2 scene 05 GWS1; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader",
+  "validation": "Four-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test",
   "removed_animation_ids": [
     106
   ],
@@ -216,8 +232,7 @@
   "pending_character_relative_menu_numbers": [],
   "rgb_compatibility": {
     "model": "full-stride drawRGB bounds check; desktop spy, not a device test",
-    "animation_clips": 305,
-    "animation_frames": 3819,
+    "animation_clips": 389,
     "scales": [
       "normal",
       "zoomed"
@@ -237,9 +252,6 @@
   "removed_future_resources": [
     "scenes/00.hot",
     "scenes/00.p8",
-    "scenes/05.bar",
-    "scenes/05.hot",
-    "scenes/05.p8",
     "scenes/06.bar",
     "scenes/06.hot",
     "scenes/06.p8",
@@ -311,9 +323,13 @@
       "scenes/04-125.anm",
       "scenes/04-129.anm",
       "scenes/04-130.anm",
-      "scenes/04-131.anm"
+      "scenes/04-131.anm",
+      "scenes/05-20010.anm",
+      "scenes/05-20011.anm",
+      "scenes/05-20043.anm",
+      "scenes/05-80.anm"
     ],
-    "inflated_bytes_saved": 14393237,
+    "inflated_bytes_saved": 15369534,
     "decoded_visual_payloads_preserved": true
   },
   "render_cache": {

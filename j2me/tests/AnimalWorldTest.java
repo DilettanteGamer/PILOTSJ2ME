@@ -53,7 +53,7 @@ public final class AnimalWorldTest {
         if(turns==1) {
             act(0,0,24);check(exists(19),"tap/fountain chain did not move kangaroo");
             act(0,0,19);check(world.completed && world.heroes[0].x==576 && world.heroes[0].y==368,"kangaroo exit did not finish the third location");
-            check(SceneFlow.next(4,world.completed)==4,"unrequested fourth location opened");save();check(world.completed,"completion lost on save");
+            check(SceneFlow.next(4,world.completed)==5,"third location exit did not open garden");save();check(world.completed,"completion lost on save");
         }
     }
     public static void main(String[] args) throws Exception {
@@ -70,7 +70,7 @@ public final class AnimalWorldTest {
         }
         for(int turns=0;turns<4;turns++) fountain(turns,false);
         fountain(0,true);fountain(2,true);
-        AnimationCatalog catalog=new AnimationCatalog();check(catalog.scene==4 && catalog.ids.length==46,"new preview list");
+        AnimationCatalog catalog=new AnimationCatalog();check(catalog.scene==5 && catalog.ids.length==25,"new preview list");
         check(AnimalWorldTest.class.getResourceAsStream("/scenes/02.animations")==null && AnimalWorldTest.class.getResourceAsStream("/scenes/03.animations")==null,"old preview lists survived");
         check(actions.containsAll(Arrays.asList(51,59,62,65,66,68,71,72,73,74,75,76,78,79,57)),"Missing source action coverage "+actions);
         System.out.println("AnimalWorld: full quest, four fountain states, blocked landings, source action coverage "+actions+", save/resume and third-only previews passed");

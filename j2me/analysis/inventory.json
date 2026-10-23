@@ -2598,14 +2598,15 @@
     },
     {
       "profile": "128x128",
-      "classes": 38,
+      "classes": 43,
       "scenes": [
         2,
         3,
-        4
+        4,
+        5
       ],
-      "animations": 305,
-      "frames": 3819,
+      "animations": 389,
+      "frames": 4545,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -2638,6 +2639,18 @@
           63
         ],
         "scenes/04.p8": [
+          320,
+          208,
+          640,
+          417
+        ],
+        "scenes/05.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/05.p8": [
           320,
           208,
           640,
@@ -2648,7 +2661,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.9.6",
+        "MIDlet-Version": "0.10.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2657,27 +2670,27 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "b5776f140663137789d72471614df248ac63cc867d7abbccbac71b1e5d26cb42",
-      "jar_bytes": 3987381,
-      "entry_count": 491,
-      "uncompressed_bytes": 24812333,
+      "sha256": "33ca833167a0abb20f4dec0ed726316e0d0b57a8231b5976f184797b9067ca08",
+      "jar_bytes": 4603123,
+      "entry_count": 610,
+      "uncompressed_bytes": 29102530,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 305,
-        ".bar": 3,
+        ".anm": 389,
+        ".bar": 4,
         ".bin": 1,
-        ".class": 38,
-        ".events": 3,
+        ".class": 43,
+        ".events": 4,
         ".hot": 3,
-        ".mid": 3,
-        ".p8": 3,
+        ".mid": 4,
+        ".p8": 4,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 1,
+        ".vm": 2,
         ".walk": 1,
-        ".wav": 125
+        ".wav": 150
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -2769,7 +2782,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "f6e68499fe7791127ca8c003acdda8a766fc446e9601d7372048265cf0c17b4e"
+          "sha256": "db37931dea2dd40239faf7e04ee4d8bd54bb06739066f797e1a655ed9fdaddbb"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -2888,7 +2901,70 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "a7cf9e82b13e0a08387700de74c52365d98c3fb31f71d68480f20225922a8437"
+          "sha256": "65200083a77f8443fe945b9b74124bc61a139d9bdefe44d1f7822d07ef59b66e"
+        },
+        "pilots/GardenLogic.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/String"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "b6a4c9b9e9c951610d73188f4c57197d297d938c3b81b794fbfb8adade49512a"
+        },
+        "pilots/GardenScene.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/Math",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "87f561ee1ee869ec61e49ef2d9bd6dd4ad6acbac1a18e73829e7663b2c84daec"
+        },
+        "pilots/GardenWorld$Definition.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": false,
+          "sha256": "c26dd464c324e28188e569669b8d90045791b542fbdd3fe5d241ee9d5f83a6df"
+        },
+        "pilots/GardenWorld$Thing.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": false,
+          "sha256": "59073fa0d89a9bde51f63aa2a9a3808d6a39d8dfce1fb82cf654cfc333bc3b4f"
+        },
+        "pilots/GardenWorld.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/ByteArrayInputStream",
+            "java/io/ByteArrayOutputStream",
+            "java/io/DataInputStream",
+            "java/io/DataOutputStream",
+            "java/io/IOException",
+            "java/io/InputStream",
+            "java/io/OutputStream",
+            "java/lang/Class",
+            "java/lang/IllegalStateException",
+            "java/lang/Math",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "java/lang/Throwable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "6bbc98c8eb74cf71e0d47ced9b96a2e62439e34caf945834d02e60d03811c669"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -2947,7 +3023,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "eccf3fcfc424c42f301304b496b6246835fce5a4e077f01421841976e214b4ee"
+          "sha256": "ad67a5694af206e9693885f8b129291edb931194d878b980e7fed01ef5ba3ae8"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -3048,7 +3124,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d9bca3832b8bed47ad324a01873c5a3394968a2d547ed420d3d95a4e5bdace5d"
+          "sha256": "1384c44ab39748d7f366e97dfedd8d25df28a06edf78f87f9a6bf1595393f620"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3071,7 +3147,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "9f4ff3a777d37d297917b356944b5f3d696e438d5f05cba112277797d7bac40b"
+          "sha256": "a8e4ec78ba85b8b4039e177c7993569774683cc19ee2a183eecb39e9fa3544af"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -3108,7 +3184,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d44c3f263c074477e5d646e13b221a640cda52f2bcb636065e4ee1cde446b19a"
+          "sha256": "f484d88d42d8cae8165b5d00dad6022fbab569a547e0af55479dc8e188a1a5f4"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -3196,7 +3272,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "921a63bda9b4e08d255474ae7043621dd2b190eee78728a86ee01803e377efe5"
+          "sha256": "b9b0796d0e8e8c36f481efb67ec6b57e7e01ac5437e40e6a1c95e51efd39cc6d"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -3211,7 +3287,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "bde97549cc2881b8c800d546a6fc226747a46714e2b9557a82797bc6acf79707"
+          "sha256": "a68218ce7dda3d0e4004673d46a2602a6c3ca1f3ccafc899e8d0a0ea9a64d2f9"
         },
         "pilots/ZooSubtitles.class": {
           "minor": 3,
@@ -4791,561 +4867,729 @@
           "count": 9,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 23688
+        },
+        "scenes/05-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/05-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/05-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/05-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/05-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/05-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/05-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/05-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/05-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/05-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/05-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/05-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/05-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/05-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/05-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/05-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/05-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/05-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/05-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/05-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/05-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/05-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/05-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/05-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/05-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/05-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/05-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/05-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/05-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/05-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/05-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/05-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/05-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/05-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/05-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2184
+        },
+        "scenes/05-47.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3124
+        },
+        "scenes/05-48.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4959
+        },
+        "scenes/05-49.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5452
+        },
+        "scenes/05-50.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2640
+        },
+        "scenes/05-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 61440
+        },
+        "scenes/05-52.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4416
+        },
+        "scenes/05-53.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8022
+        },
+        "scenes/05-54.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8232
+        },
+        "scenes/05-55.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/05-56.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 15184
+        },
+        "scenes/05-57.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 18180
+        },
+        "scenes/05-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 12040
+        },
+        "scenes/05-59.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 20020
+        },
+        "scenes/05-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 47232
+        },
+        "scenes/05-61.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8827
+        },
+        "scenes/05-62.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11615
+        },
+        "scenes/05-63.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22046
+        },
+        "scenes/05-64.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11716
+        },
+        "scenes/05-65.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5538
+        },
+        "scenes/05-66.anm": {
+          "count": 3,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6318
+        },
+        "scenes/05-67.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6806
+        },
+        "scenes/05-68.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7380
+        },
+        "scenes/05-69.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4899
+        },
+        "scenes/05-70.anm": {
+          "count": 3,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6318
+        },
+        "scenes/05-71.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6806
+        },
+        "scenes/05-72.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7380
+        },
+        "scenes/05-73.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4899
+        },
+        "scenes/05-74.anm": {
+          "count": 6,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5616
+        },
+        "scenes/05-75.anm": {
+          "count": 27,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16800
+        },
+        "scenes/05-76.anm": {
+          "count": 27,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9200
+        },
+        "scenes/05-77.anm": {
+          "count": 6,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2958
+        },
+        "scenes/05-78.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4623
+        },
+        "scenes/05-79.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4355
+        },
+        "scenes/05-80.anm": {
+          "count": 90,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9064
+        },
+        "scenes/05-81.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/05-82.anm": {
+          "count": 18,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-83.anm": {
+          "count": 11,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-84.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/05-85.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
         }
       },
-      "preview_scene": 4,
+      "preview_scene": 5,
       "preview_catalog": [
+        {
+          "resource_id": 47,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            541,
+            355
+          ],
+          "label": "01 Мартышка — 47"
+        },
+        {
+          "resource_id": 48,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            551,
+            355
+          ],
+          "label": "02 Мартышка — 48"
+        },
+        {
+          "resource_id": 49,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            536,
+            357
+          ],
+          "label": "03 Мартышка — 49"
+        },
         {
           "resource_id": 50,
           "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            548,
+            358
+          ],
+          "label": "04 Мартышка — 50"
+        },
+        {
+          "resource_id": 61,
+          "anchor": [
             128,
-            288
+            368
+          ],
+          "focus": [
+            161,
+            347
+          ],
+          "label": "05 Шеф — 61"
+        },
+        {
+          "resource_id": 62,
+          "anchor": [
+            128,
+            368
+          ],
+          "focus": [
+            129,
+            332
+          ],
+          "label": "06 Шеф — 62"
+        },
+        {
+          "resource_id": 63,
+          "anchor": [
+            128,
+            368
+          ],
+          "focus": [
+            138,
+            350
+          ],
+          "label": "07 Шеф — 63"
+        },
+        {
+          "resource_id": 64,
+          "anchor": [
+            128,
+            368
+          ],
+          "focus": [
+            188,
+            332
+          ],
+          "label": "08 Шеф — 64"
+        },
+        {
+          "resource_id": 65,
+          "anchor": [
+            128,
+            368
           ],
           "focus": [
             163,
-            267
+            345
           ],
-          "label": "01 Шеф — кран"
-        },
-        {
-          "resource_id": 53,
-          "anchor": [
-            256,
-            288
-          ],
-          "focus": [
-            264,
-            261
-          ],
-          "label": "02 Фонтан"
-        },
-        {
-          "resource_id": 54,
-          "anchor": [
-            256,
-            272
-          ],
-          "focus": [
-            251,
-            204
-          ],
-          "label": "03 Фонтан — состояние 1"
-        },
-        {
-          "resource_id": 55,
-          "anchor": [
-            256,
-            272
-          ],
-          "focus": [
-            269,
-            179
-          ],
-          "label": "04 Фонтан — состояние 2"
-        },
-        {
-          "resource_id": 56,
-          "anchor": [
-            256,
-            272
-          ],
-          "focus": [
-            276,
-            145
-          ],
-          "label": "05 Фонтан — состояние 3"
+          "label": "09 Шеф — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            320,
-            144
+            64,
+            368
           ],
           "focus": [
-            346,
-            119
+            99,
+            352
           ],
-          "label": "06 Шеф — подбор предмета"
-        },
-        {
-          "resource_id": 67,
-          "anchor": [
-            320,
-            144
-          ],
-          "focus": [
-            355,
-            126
-          ],
-          "label": "07 Коллега — подбор предмета"
+          "label": "10 Коллега — 66"
         },
         {
           "resource_id": 68,
           "anchor": [
-            320,
-            144
+            64,
+            368
           ],
           "focus": [
-            340,
-            127
+            97,
+            302
           ],
-          "label": "08 Коллега — грабли"
+          "label": "11 Коллега — 68"
         },
         {
           "resource_id": 69,
           "anchor": [
-            320,
-            144
+            64,
+            368
           ],
           "focus": [
-            348,
-            130
+            98,
+            358
           ],
-          "label": "09 Коллега — лейка"
+          "label": "12 Коллега — 69"
         },
         {
           "resource_id": 70,
           "anchor": [
-            448,
-            208
+            64,
+            368
           ],
           "focus": [
-            479,
-            188
+            92,
+            352
           ],
-          "label": "10 Шеф — полив пальмы"
+          "label": "13 Коллега — 70"
+        },
+        {
+          "resource_id": 72,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            94,
+            302
+          ],
+          "label": "14 Коллега — 72"
+        },
+        {
+          "resource_id": 73,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            92,
+            358
+          ],
+          "label": "15 Коллега — 73"
+        },
+        {
+          "resource_id": 74,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            95,
+            352
+          ],
+          "label": "16 Коллега — 74"
+        },
+        {
+          "resource_id": 75,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            112,
+            349
+          ],
+          "label": "17 Коллега — 75"
+        },
+        {
+          "resource_id": 76,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            91,
+            352
+          ],
+          "label": "18 Коллега — 76"
+        },
+        {
+          "resource_id": 77,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            550,
+            357
+          ],
+          "label": "19 Мартышка — 77"
         },
         {
           "resource_id": 79,
           "anchor": [
-            384,
-            32
+            256,
+            384
           ],
           "focus": [
-            443,
-            45
+            282,
+            367
           ],
-          "label": "11 Бананы — появление"
+          "label": "20 Коллега — 79"
         },
         {
-          "resource_id": 81,
+          "resource_id": 80,
           "anchor": [
-            512,
-            208
+            320,
+            384
           ],
           "focus": [
-            537,
-            194
+            348,
+            363
           ],
-          "label": "12 Коллега — бананы"
+          "label": "21 Шеф — 80"
         },
         {
           "resource_id": 82,
           "anchor": [
-            576,
-            224
+            128,
+            368
           ],
           "focus": [
-            627,
-            196
+            160,
+            347
           ],
-          "label": "13 Носорог — эффект"
+          "label": "22 Шеф — 82"
         },
         {
           "resource_id": 83,
           "anchor": [
-            0,
-            192
+            128,
+            368
           ],
           "focus": [
-            227,
-            10
+            160,
+            347
           ],
-          "label": "14 Носорог — движение"
+          "label": "23 Шеф — 83"
         },
         {
           "resource_id": 84,
           "anchor": [
-            256,
-            208
+            64,
+            368
           ],
           "focus": [
-            515,
-            187
+            92,
+            351
           ],
-          "label": "15 Носорог — реакция"
+          "label": "24 Коллега — 84"
         },
         {
-          "resource_id": 86,
-          "anchor": [
-            512,
-            240
-          ],
-          "focus": [
-            546,
-            219
-          ],
-          "label": "16 Звериная тропа"
-        },
-        {
-          "resource_id": 88,
-          "anchor": [
-            576,
-            240
-          ],
-          "focus": [
-            627,
-            201
-          ],
-          "label": "17 Носорог — появление"
-        },
-        {
-          "resource_id": 93,
-          "anchor": [
-            448,
-            208
-          ],
-          "focus": [
-            515,
-            187
-          ],
-          "label": "18 Пальма — действие"
-        },
-        {
-          "resource_id": 94,
-          "anchor": [
-            384,
-            192
-          ],
-          "focus": [
-            452,
-            111
-          ],
-          "label": "19 Пальма — реакция"
-        },
-        {
-          "resource_id": 95,
-          "anchor": [
-            512,
-            80
-          ],
-          "focus": [
-            506,
-            49
-          ],
-          "label": "20 Коллега — на пальме"
-        },
-        {
-          "resource_id": 96,
-          "anchor": [
-            512,
-            80
-          ],
-          "focus": [
-            509,
-            50
-          ],
-          "label": "21 Коллега — ответ"
-        },
-        {
-          "resource_id": 97,
-          "anchor": [
-            384,
-            192
-          ],
-          "focus": [
-            508,
-            120
-          ],
-          "label": "22 Пальма — превращение"
-        },
-        {
-          "resource_id": 98,
-          "anchor": [
-            0,
-            192
-          ],
-          "focus": [
-            284,
-            10
-          ],
-          "label": "23 Коллега — перемещение"
-        },
-        {
-          "resource_id": 99,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            272,
-            11
-          ],
-          "label": "24 Фонтан — выброс"
-        },
-        {
-          "resource_id": 100,
-          "anchor": [
-            448,
-            400
-          ],
-          "focus": [
-            233,
-            220
-          ],
-          "label": "25 Выход — анимация"
-        },
-        {
-          "resource_id": 101,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            264,
-            151
-          ],
-          "label": "26 Фонтан — вода"
-        },
-        {
-          "resource_id": 102,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            272,
-            11
-          ],
-          "label": "27 Фонтан — исчезновение"
-        },
-        {
-          "resource_id": 104,
-          "anchor": [
-            576,
-            384
-          ],
-          "focus": [
-            612,
-            347
-          ],
-          "label": "28 Птица"
-        },
-        {
-          "resource_id": 110,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            264,
-            188
-          ],
-          "label": "29 Фонтан — эффект"
-        },
-        {
-          "resource_id": 111,
+          "resource_id": 85,
           "anchor": [
             64,
             368
           ],
           "focus": [
-            131,
-            289
+            92,
+            351
           ],
-          "label": "30 Кенгуру — ожидание"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            97,
-            292
-          ],
-          "label": "31 Кенгуру — реакция"
-        },
-        {
-          "resource_id": 113,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            97,
-            292
-          ],
-          "label": "32 Кенгуру — появление"
-        },
-        {
-          "resource_id": 116,
-          "anchor": [
-            0,
-            224
-          ],
-          "focus": [
-            73,
-            130
-          ],
-          "label": "33 Начальная сцена — декорация"
-        },
-        {
-          "resource_id": 119,
-          "anchor": [
-            0,
-            320
-          ],
-          "focus": [
-            25,
-            271
-          ],
-          "label": "34 Начальная сцена — кадр"
-        },
-        {
-          "resource_id": 121,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            263,
-            95
-          ],
-          "label": "35 Начальная сцена — эффект"
-        },
-        {
-          "resource_id": 123,
-          "anchor": [
-            0,
-            352
-          ],
-          "focus": [
-            31,
-            331
-          ],
-          "label": "36 Шеф — кенгуру"
-        },
-        {
-          "resource_id": 124,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            118,
-            289
-          ],
-          "label": "37 Кенгуру — действие"
-        },
-        {
-          "resource_id": 125,
-          "anchor": [
-            448,
-            400
-          ],
-          "focus": [
-            449,
-            365
-          ],
-          "label": "38 Выход — действие"
-        },
-        {
-          "resource_id": 126,
-          "anchor": [
-            192,
-            304
-          ],
-          "focus": [
-            205,
-            286
-          ],
-          "label": "39 Шеф — вход"
-        },
-        {
-          "resource_id": 127,
-          "anchor": [
-            192,
-            304
-          ],
-          "focus": [
-            220,
-            277
-          ],
-          "label": "40 Шеф — ожидание"
-        },
-        {
-          "resource_id": 128,
-          "anchor": [
-            192,
-            304
-          ],
-          "focus": [
-            213,
-            278
-          ],
-          "label": "41 Шеф — реакция"
-        },
-        {
-          "resource_id": 129,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            237,
-            132
-          ],
-          "label": "42 Начальная сцена — пролёт"
-        },
-        {
-          "resource_id": 130,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            97,
-            292
-          ],
-          "label": "43 Кенгуру — вступление"
-        },
-        {
-          "resource_id": 131,
-          "anchor": [
-            0,
-            224
-          ],
-          "focus": [
-            55,
-            135
-          ],
-          "label": "44 Начальная сцена — объект"
-        },
-        {
-          "resource_id": 135,
-          "anchor": [
-            0,
-            416
-          ],
-          "focus": [
-            45,
-            315
-          ],
-          "label": "45 Начальная сцена — передний план"
-        },
-        {
-          "resource_id": 138,
-          "anchor": [
-            576,
-            240
-          ],
-          "focus": [
-            586,
-            233
-          ],
-          "label": "46 Носорог — уход"
+          "label": "25 Коллега — 85"
         }
       ],
       "largest_resources": [
@@ -5358,6 +5602,11 @@
           "path": "audio/03-23.wav",
           "bytes": 566623,
           "compressed_bytes": 280723
+        },
+        {
+          "path": "scenes/05-63.anm",
+          "bytes": 545538,
+          "compressed_bytes": 50556
         },
         {
           "path": "scenes/04-110.anm",
@@ -5393,24 +5642,20 @@
           "path": "scenes/03-57.anm",
           "bytes": 383151,
           "compressed_bytes": 51765
-        },
-        {
-          "path": "scenes/04-84.anm",
-          "bytes": 374642,
-          "compressed_bytes": 36318
         }
       ]
     },
     {
       "profile": "128x160",
-      "classes": 38,
+      "classes": 43,
       "scenes": [
         2,
         3,
-        4
+        4,
+        5
       ],
-      "animations": 305,
-      "frames": 3819,
+      "animations": 389,
+      "frames": 4545,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -5443,6 +5688,18 @@
           63
         ],
         "scenes/04.p8": [
+          320,
+          208,
+          640,
+          417
+        ],
+        "scenes/05.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/05.p8": [
           320,
           208,
           640,
@@ -5453,7 +5710,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.9.6",
+        "MIDlet-Version": "0.10.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -5462,27 +5719,27 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "fd07573c878af8ece983a7957644ebca98290e5c62c9f1890ee9e87e61087d18",
-      "jar_bytes": 3987382,
-      "entry_count": 491,
-      "uncompressed_bytes": 24812333,
+      "sha256": "f711256ca865c7f819094726d156ed2f990dad75990d2dbd1c55513b41c20be7",
+      "jar_bytes": 4603121,
+      "entry_count": 610,
+      "uncompressed_bytes": 29102530,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 305,
-        ".bar": 3,
+        ".anm": 389,
+        ".bar": 4,
         ".bin": 1,
-        ".class": 38,
-        ".events": 3,
+        ".class": 43,
+        ".events": 4,
         ".hot": 3,
-        ".mid": 3,
-        ".p8": 3,
+        ".mid": 4,
+        ".p8": 4,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 1,
+        ".vm": 2,
         ".walk": 1,
-        ".wav": 125
+        ".wav": 150
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -5574,7 +5831,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "f6e68499fe7791127ca8c003acdda8a766fc446e9601d7372048265cf0c17b4e"
+          "sha256": "db37931dea2dd40239faf7e04ee4d8bd54bb06739066f797e1a655ed9fdaddbb"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -5693,7 +5950,70 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "a7cf9e82b13e0a08387700de74c52365d98c3fb31f71d68480f20225922a8437"
+          "sha256": "65200083a77f8443fe945b9b74124bc61a139d9bdefe44d1f7822d07ef59b66e"
+        },
+        "pilots/GardenLogic.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/String"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "b6a4c9b9e9c951610d73188f4c57197d297d938c3b81b794fbfb8adade49512a"
+        },
+        "pilots/GardenScene.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/Math",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "87f561ee1ee869ec61e49ef2d9bd6dd4ad6acbac1a18e73829e7663b2c84daec"
+        },
+        "pilots/GardenWorld$Definition.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": false,
+          "sha256": "c26dd464c324e28188e569669b8d90045791b542fbdd3fe5d241ee9d5f83a6df"
+        },
+        "pilots/GardenWorld$Thing.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": false,
+          "sha256": "59073fa0d89a9bde51f63aa2a9a3808d6a39d8dfce1fb82cf654cfc333bc3b4f"
+        },
+        "pilots/GardenWorld.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/ByteArrayInputStream",
+            "java/io/ByteArrayOutputStream",
+            "java/io/DataInputStream",
+            "java/io/DataOutputStream",
+            "java/io/IOException",
+            "java/io/InputStream",
+            "java/io/OutputStream",
+            "java/lang/Class",
+            "java/lang/IllegalStateException",
+            "java/lang/Math",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "java/lang/Throwable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "6bbc98c8eb74cf71e0d47ced9b96a2e62439e34caf945834d02e60d03811c669"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -5752,7 +6072,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "eccf3fcfc424c42f301304b496b6246835fce5a4e077f01421841976e214b4ee"
+          "sha256": "ad67a5694af206e9693885f8b129291edb931194d878b980e7fed01ef5ba3ae8"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -5853,7 +6173,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d9bca3832b8bed47ad324a01873c5a3394968a2d547ed420d3d95a4e5bdace5d"
+          "sha256": "1384c44ab39748d7f366e97dfedd8d25df28a06edf78f87f9a6bf1595393f620"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -5876,7 +6196,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "9f4ff3a777d37d297917b356944b5f3d696e438d5f05cba112277797d7bac40b"
+          "sha256": "a8e4ec78ba85b8b4039e177c7993569774683cc19ee2a183eecb39e9fa3544af"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -5913,7 +6233,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d44c3f263c074477e5d646e13b221a640cda52f2bcb636065e4ee1cde446b19a"
+          "sha256": "f484d88d42d8cae8165b5d00dad6022fbab569a547e0af55479dc8e188a1a5f4"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -6001,7 +6321,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "921a63bda9b4e08d255474ae7043621dd2b190eee78728a86ee01803e377efe5"
+          "sha256": "b9b0796d0e8e8c36f481efb67ec6b57e7e01ac5437e40e6a1c95e51efd39cc6d"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -6016,7 +6336,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "bde97549cc2881b8c800d546a6fc226747a46714e2b9557a82797bc6acf79707"
+          "sha256": "a68218ce7dda3d0e4004673d46a2602a6c3ca1f3ccafc899e8d0a0ea9a64d2f9"
         },
         "pilots/ZooSubtitles.class": {
           "minor": 3,
@@ -7596,561 +7916,729 @@
           "count": 9,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 23688
+        },
+        "scenes/05-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/05-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/05-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/05-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/05-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/05-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/05-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/05-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/05-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/05-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/05-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/05-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/05-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/05-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/05-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/05-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/05-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/05-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/05-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/05-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/05-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/05-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/05-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/05-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/05-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/05-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/05-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/05-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/05-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/05-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/05-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/05-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/05-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/05-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/05-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2184
+        },
+        "scenes/05-47.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3124
+        },
+        "scenes/05-48.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4959
+        },
+        "scenes/05-49.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5452
+        },
+        "scenes/05-50.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2640
+        },
+        "scenes/05-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 61440
+        },
+        "scenes/05-52.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4416
+        },
+        "scenes/05-53.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8022
+        },
+        "scenes/05-54.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8232
+        },
+        "scenes/05-55.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/05-56.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 15184
+        },
+        "scenes/05-57.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 18180
+        },
+        "scenes/05-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 12040
+        },
+        "scenes/05-59.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 20020
+        },
+        "scenes/05-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 47232
+        },
+        "scenes/05-61.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8827
+        },
+        "scenes/05-62.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11615
+        },
+        "scenes/05-63.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22046
+        },
+        "scenes/05-64.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11716
+        },
+        "scenes/05-65.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5538
+        },
+        "scenes/05-66.anm": {
+          "count": 3,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6318
+        },
+        "scenes/05-67.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6806
+        },
+        "scenes/05-68.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7380
+        },
+        "scenes/05-69.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4899
+        },
+        "scenes/05-70.anm": {
+          "count": 3,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6318
+        },
+        "scenes/05-71.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6806
+        },
+        "scenes/05-72.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7380
+        },
+        "scenes/05-73.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4899
+        },
+        "scenes/05-74.anm": {
+          "count": 6,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5616
+        },
+        "scenes/05-75.anm": {
+          "count": 27,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16800
+        },
+        "scenes/05-76.anm": {
+          "count": 27,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9200
+        },
+        "scenes/05-77.anm": {
+          "count": 6,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2958
+        },
+        "scenes/05-78.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4623
+        },
+        "scenes/05-79.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4355
+        },
+        "scenes/05-80.anm": {
+          "count": 90,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9064
+        },
+        "scenes/05-81.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/05-82.anm": {
+          "count": 18,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-83.anm": {
+          "count": 11,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-84.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/05-85.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
         }
       },
-      "preview_scene": 4,
+      "preview_scene": 5,
       "preview_catalog": [
+        {
+          "resource_id": 47,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            541,
+            355
+          ],
+          "label": "01 Мартышка — 47"
+        },
+        {
+          "resource_id": 48,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            551,
+            355
+          ],
+          "label": "02 Мартышка — 48"
+        },
+        {
+          "resource_id": 49,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            536,
+            357
+          ],
+          "label": "03 Мартышка — 49"
+        },
         {
           "resource_id": 50,
           "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            548,
+            358
+          ],
+          "label": "04 Мартышка — 50"
+        },
+        {
+          "resource_id": 61,
+          "anchor": [
             128,
-            288
+            368
+          ],
+          "focus": [
+            161,
+            347
+          ],
+          "label": "05 Шеф — 61"
+        },
+        {
+          "resource_id": 62,
+          "anchor": [
+            128,
+            368
+          ],
+          "focus": [
+            129,
+            332
+          ],
+          "label": "06 Шеф — 62"
+        },
+        {
+          "resource_id": 63,
+          "anchor": [
+            128,
+            368
+          ],
+          "focus": [
+            138,
+            350
+          ],
+          "label": "07 Шеф — 63"
+        },
+        {
+          "resource_id": 64,
+          "anchor": [
+            128,
+            368
+          ],
+          "focus": [
+            188,
+            332
+          ],
+          "label": "08 Шеф — 64"
+        },
+        {
+          "resource_id": 65,
+          "anchor": [
+            128,
+            368
           ],
           "focus": [
             163,
-            267
+            345
           ],
-          "label": "01 Шеф — кран"
-        },
-        {
-          "resource_id": 53,
-          "anchor": [
-            256,
-            288
-          ],
-          "focus": [
-            264,
-            261
-          ],
-          "label": "02 Фонтан"
-        },
-        {
-          "resource_id": 54,
-          "anchor": [
-            256,
-            272
-          ],
-          "focus": [
-            251,
-            204
-          ],
-          "label": "03 Фонтан — состояние 1"
-        },
-        {
-          "resource_id": 55,
-          "anchor": [
-            256,
-            272
-          ],
-          "focus": [
-            269,
-            179
-          ],
-          "label": "04 Фонтан — состояние 2"
-        },
-        {
-          "resource_id": 56,
-          "anchor": [
-            256,
-            272
-          ],
-          "focus": [
-            276,
-            145
-          ],
-          "label": "05 Фонтан — состояние 3"
+          "label": "09 Шеф — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            320,
-            144
+            64,
+            368
           ],
           "focus": [
-            346,
-            119
+            99,
+            352
           ],
-          "label": "06 Шеф — подбор предмета"
-        },
-        {
-          "resource_id": 67,
-          "anchor": [
-            320,
-            144
-          ],
-          "focus": [
-            355,
-            126
-          ],
-          "label": "07 Коллега — подбор предмета"
+          "label": "10 Коллега — 66"
         },
         {
           "resource_id": 68,
           "anchor": [
-            320,
-            144
+            64,
+            368
           ],
           "focus": [
-            340,
-            127
+            97,
+            302
           ],
-          "label": "08 Коллега — грабли"
+          "label": "11 Коллега — 68"
         },
         {
           "resource_id": 69,
           "anchor": [
-            320,
-            144
+            64,
+            368
           ],
           "focus": [
-            348,
-            130
+            98,
+            358
           ],
-          "label": "09 Коллега — лейка"
+          "label": "12 Коллега — 69"
         },
         {
           "resource_id": 70,
           "anchor": [
-            448,
-            208
+            64,
+            368
           ],
           "focus": [
-            479,
-            188
+            92,
+            352
           ],
-          "label": "10 Шеф — полив пальмы"
+          "label": "13 Коллега — 70"
+        },
+        {
+          "resource_id": 72,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            94,
+            302
+          ],
+          "label": "14 Коллега — 72"
+        },
+        {
+          "resource_id": 73,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            92,
+            358
+          ],
+          "label": "15 Коллега — 73"
+        },
+        {
+          "resource_id": 74,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            95,
+            352
+          ],
+          "label": "16 Коллега — 74"
+        },
+        {
+          "resource_id": 75,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            112,
+            349
+          ],
+          "label": "17 Коллега — 75"
+        },
+        {
+          "resource_id": 76,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            91,
+            352
+          ],
+          "label": "18 Коллега — 76"
+        },
+        {
+          "resource_id": 77,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            550,
+            357
+          ],
+          "label": "19 Мартышка — 77"
         },
         {
           "resource_id": 79,
           "anchor": [
-            384,
-            32
+            256,
+            384
           ],
           "focus": [
-            443,
-            45
+            282,
+            367
           ],
-          "label": "11 Бананы — появление"
+          "label": "20 Коллега — 79"
         },
         {
-          "resource_id": 81,
+          "resource_id": 80,
           "anchor": [
-            512,
-            208
+            320,
+            384
           ],
           "focus": [
-            537,
-            194
+            348,
+            363
           ],
-          "label": "12 Коллега — бананы"
+          "label": "21 Шеф — 80"
         },
         {
           "resource_id": 82,
           "anchor": [
-            576,
-            224
+            128,
+            368
           ],
           "focus": [
-            627,
-            196
+            160,
+            347
           ],
-          "label": "13 Носорог — эффект"
+          "label": "22 Шеф — 82"
         },
         {
           "resource_id": 83,
           "anchor": [
-            0,
-            192
+            128,
+            368
           ],
           "focus": [
-            227,
-            10
+            160,
+            347
           ],
-          "label": "14 Носорог — движение"
+          "label": "23 Шеф — 83"
         },
         {
           "resource_id": 84,
           "anchor": [
-            256,
-            208
+            64,
+            368
           ],
           "focus": [
-            515,
-            187
+            92,
+            351
           ],
-          "label": "15 Носорог — реакция"
+          "label": "24 Коллега — 84"
         },
         {
-          "resource_id": 86,
-          "anchor": [
-            512,
-            240
-          ],
-          "focus": [
-            546,
-            219
-          ],
-          "label": "16 Звериная тропа"
-        },
-        {
-          "resource_id": 88,
-          "anchor": [
-            576,
-            240
-          ],
-          "focus": [
-            627,
-            201
-          ],
-          "label": "17 Носорог — появление"
-        },
-        {
-          "resource_id": 93,
-          "anchor": [
-            448,
-            208
-          ],
-          "focus": [
-            515,
-            187
-          ],
-          "label": "18 Пальма — действие"
-        },
-        {
-          "resource_id": 94,
-          "anchor": [
-            384,
-            192
-          ],
-          "focus": [
-            452,
-            111
-          ],
-          "label": "19 Пальма — реакция"
-        },
-        {
-          "resource_id": 95,
-          "anchor": [
-            512,
-            80
-          ],
-          "focus": [
-            506,
-            49
-          ],
-          "label": "20 Коллега — на пальме"
-        },
-        {
-          "resource_id": 96,
-          "anchor": [
-            512,
-            80
-          ],
-          "focus": [
-            509,
-            50
-          ],
-          "label": "21 Коллега — ответ"
-        },
-        {
-          "resource_id": 97,
-          "anchor": [
-            384,
-            192
-          ],
-          "focus": [
-            508,
-            120
-          ],
-          "label": "22 Пальма — превращение"
-        },
-        {
-          "resource_id": 98,
-          "anchor": [
-            0,
-            192
-          ],
-          "focus": [
-            284,
-            10
-          ],
-          "label": "23 Коллега — перемещение"
-        },
-        {
-          "resource_id": 99,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            272,
-            11
-          ],
-          "label": "24 Фонтан — выброс"
-        },
-        {
-          "resource_id": 100,
-          "anchor": [
-            448,
-            400
-          ],
-          "focus": [
-            233,
-            220
-          ],
-          "label": "25 Выход — анимация"
-        },
-        {
-          "resource_id": 101,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            264,
-            151
-          ],
-          "label": "26 Фонтан — вода"
-        },
-        {
-          "resource_id": 102,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            272,
-            11
-          ],
-          "label": "27 Фонтан — исчезновение"
-        },
-        {
-          "resource_id": 104,
-          "anchor": [
-            576,
-            384
-          ],
-          "focus": [
-            612,
-            347
-          ],
-          "label": "28 Птица"
-        },
-        {
-          "resource_id": 110,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            264,
-            188
-          ],
-          "label": "29 Фонтан — эффект"
-        },
-        {
-          "resource_id": 111,
+          "resource_id": 85,
           "anchor": [
             64,
             368
           ],
           "focus": [
-            131,
-            289
+            92,
+            351
           ],
-          "label": "30 Кенгуру — ожидание"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            97,
-            292
-          ],
-          "label": "31 Кенгуру — реакция"
-        },
-        {
-          "resource_id": 113,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            97,
-            292
-          ],
-          "label": "32 Кенгуру — появление"
-        },
-        {
-          "resource_id": 116,
-          "anchor": [
-            0,
-            224
-          ],
-          "focus": [
-            73,
-            130
-          ],
-          "label": "33 Начальная сцена — декорация"
-        },
-        {
-          "resource_id": 119,
-          "anchor": [
-            0,
-            320
-          ],
-          "focus": [
-            25,
-            271
-          ],
-          "label": "34 Начальная сцена — кадр"
-        },
-        {
-          "resource_id": 121,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            263,
-            95
-          ],
-          "label": "35 Начальная сцена — эффект"
-        },
-        {
-          "resource_id": 123,
-          "anchor": [
-            0,
-            352
-          ],
-          "focus": [
-            31,
-            331
-          ],
-          "label": "36 Шеф — кенгуру"
-        },
-        {
-          "resource_id": 124,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            118,
-            289
-          ],
-          "label": "37 Кенгуру — действие"
-        },
-        {
-          "resource_id": 125,
-          "anchor": [
-            448,
-            400
-          ],
-          "focus": [
-            449,
-            365
-          ],
-          "label": "38 Выход — действие"
-        },
-        {
-          "resource_id": 126,
-          "anchor": [
-            192,
-            304
-          ],
-          "focus": [
-            205,
-            286
-          ],
-          "label": "39 Шеф — вход"
-        },
-        {
-          "resource_id": 127,
-          "anchor": [
-            192,
-            304
-          ],
-          "focus": [
-            220,
-            277
-          ],
-          "label": "40 Шеф — ожидание"
-        },
-        {
-          "resource_id": 128,
-          "anchor": [
-            192,
-            304
-          ],
-          "focus": [
-            213,
-            278
-          ],
-          "label": "41 Шеф — реакция"
-        },
-        {
-          "resource_id": 129,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            237,
-            132
-          ],
-          "label": "42 Начальная сцена — пролёт"
-        },
-        {
-          "resource_id": 130,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            97,
-            292
-          ],
-          "label": "43 Кенгуру — вступление"
-        },
-        {
-          "resource_id": 131,
-          "anchor": [
-            0,
-            224
-          ],
-          "focus": [
-            55,
-            135
-          ],
-          "label": "44 Начальная сцена — объект"
-        },
-        {
-          "resource_id": 135,
-          "anchor": [
-            0,
-            416
-          ],
-          "focus": [
-            45,
-            315
-          ],
-          "label": "45 Начальная сцена — передний план"
-        },
-        {
-          "resource_id": 138,
-          "anchor": [
-            576,
-            240
-          ],
-          "focus": [
-            586,
-            233
-          ],
-          "label": "46 Носорог — уход"
+          "label": "25 Коллега — 85"
         }
       ],
       "largest_resources": [
@@ -8163,6 +8651,11 @@
           "path": "audio/03-23.wav",
           "bytes": 566623,
           "compressed_bytes": 280723
+        },
+        {
+          "path": "scenes/05-63.anm",
+          "bytes": 545538,
+          "compressed_bytes": 50556
         },
         {
           "path": "scenes/04-110.anm",
@@ -8198,24 +8691,20 @@
           "path": "scenes/03-57.anm",
           "bytes": 383151,
           "compressed_bytes": 51765
-        },
-        {
-          "path": "scenes/04-84.anm",
-          "bytes": 374642,
-          "compressed_bytes": 36318
         }
       ]
     },
     {
       "profile": "240x320",
-      "classes": 38,
+      "classes": 43,
       "scenes": [
         2,
         3,
-        4
+        4,
+        5
       ],
-      "animations": 305,
-      "frames": 3819,
+      "animations": 389,
+      "frames": 4545,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -8252,13 +8741,25 @@
           417,
           640,
           417
+        ],
+        "scenes/05.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/05.p8": [
+          640,
+          417,
+          640,
+          417
         ]
       },
       "path": "dist/Pilots-240x320.jar",
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.9.6",
+        "MIDlet-Version": "0.10.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -8267,27 +8768,27 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "f1c8613a6a3451aaa0d4aa899464ba944c2a791b64e189bfd2436cbc2b261685",
-      "jar_bytes": 4204333,
-      "entry_count": 491,
-      "uncompressed_bytes": 25413294,
+      "sha256": "4ec4a712075e6c96f333562579885d49ba9f26f8c6132fd966bbc46913903fec",
+      "jar_bytes": 4897569,
+      "entry_count": 610,
+      "uncompressed_bytes": 29903811,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 305,
-        ".bar": 3,
+        ".anm": 389,
+        ".bar": 4,
         ".bin": 1,
-        ".class": 38,
-        ".events": 3,
+        ".class": 43,
+        ".events": 4,
         ".hot": 3,
-        ".mid": 3,
-        ".p8": 3,
+        ".mid": 4,
+        ".p8": 4,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 1,
+        ".vm": 2,
         ".walk": 1,
-        ".wav": 125
+        ".wav": 150
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -8379,7 +8880,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "f6e68499fe7791127ca8c003acdda8a766fc446e9601d7372048265cf0c17b4e"
+          "sha256": "db37931dea2dd40239faf7e04ee4d8bd54bb06739066f797e1a655ed9fdaddbb"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -8498,7 +8999,70 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "a7cf9e82b13e0a08387700de74c52365d98c3fb31f71d68480f20225922a8437"
+          "sha256": "65200083a77f8443fe945b9b74124bc61a139d9bdefe44d1f7822d07ef59b66e"
+        },
+        "pilots/GardenLogic.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/String"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "b6a4c9b9e9c951610d73188f4c57197d297d938c3b81b794fbfb8adade49512a"
+        },
+        "pilots/GardenScene.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/Math",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "87f561ee1ee869ec61e49ef2d9bd6dd4ad6acbac1a18e73829e7663b2c84daec"
+        },
+        "pilots/GardenWorld$Definition.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": false,
+          "sha256": "c26dd464c324e28188e569669b8d90045791b542fbdd3fe5d241ee9d5f83a6df"
+        },
+        "pilots/GardenWorld$Thing.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": false,
+          "sha256": "59073fa0d89a9bde51f63aa2a9a3808d6a39d8dfce1fb82cf654cfc333bc3b4f"
+        },
+        "pilots/GardenWorld.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/ByteArrayInputStream",
+            "java/io/ByteArrayOutputStream",
+            "java/io/DataInputStream",
+            "java/io/DataOutputStream",
+            "java/io/IOException",
+            "java/io/InputStream",
+            "java/io/OutputStream",
+            "java/lang/Class",
+            "java/lang/IllegalStateException",
+            "java/lang/Math",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "java/lang/Throwable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "6bbc98c8eb74cf71e0d47ced9b96a2e62439e34caf945834d02e60d03811c669"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -8557,7 +9121,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "eccf3fcfc424c42f301304b496b6246835fce5a4e077f01421841976e214b4ee"
+          "sha256": "ad67a5694af206e9693885f8b129291edb931194d878b980e7fed01ef5ba3ae8"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -8658,7 +9222,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d9bca3832b8bed47ad324a01873c5a3394968a2d547ed420d3d95a4e5bdace5d"
+          "sha256": "1384c44ab39748d7f366e97dfedd8d25df28a06edf78f87f9a6bf1595393f620"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -8681,7 +9245,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "9f4ff3a777d37d297917b356944b5f3d696e438d5f05cba112277797d7bac40b"
+          "sha256": "a8e4ec78ba85b8b4039e177c7993569774683cc19ee2a183eecb39e9fa3544af"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -8718,7 +9282,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d44c3f263c074477e5d646e13b221a640cda52f2bcb636065e4ee1cde446b19a"
+          "sha256": "f484d88d42d8cae8165b5d00dad6022fbab569a547e0af55479dc8e188a1a5f4"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -8806,7 +9370,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "921a63bda9b4e08d255474ae7043621dd2b190eee78728a86ee01803e377efe5"
+          "sha256": "b9b0796d0e8e8c36f481efb67ec6b57e7e01ac5437e40e6a1c95e51efd39cc6d"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -8821,7 +9385,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "bde97549cc2881b8c800d546a6fc226747a46714e2b9557a82797bc6acf79707"
+          "sha256": "a68218ce7dda3d0e4004673d46a2602a6c3ca1f3ccafc899e8d0a0ea9a64d2f9"
         },
         "pilots/ZooSubtitles.class": {
           "minor": 3,
@@ -10401,561 +10965,729 @@
           "count": 9,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 23688
+        },
+        "scenes/05-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/05-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/05-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/05-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/05-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/05-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/05-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/05-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/05-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/05-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/05-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/05-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/05-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/05-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/05-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/05-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/05-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/05-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/05-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/05-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/05-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/05-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/05-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/05-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/05-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/05-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/05-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/05-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/05-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/05-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/05-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/05-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/05-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/05-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/05-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/05-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/05-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2184
+        },
+        "scenes/05-47.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3124
+        },
+        "scenes/05-48.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4959
+        },
+        "scenes/05-49.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5452
+        },
+        "scenes/05-50.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2640
+        },
+        "scenes/05-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 61440
+        },
+        "scenes/05-52.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4416
+        },
+        "scenes/05-53.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8022
+        },
+        "scenes/05-54.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8232
+        },
+        "scenes/05-55.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/05-56.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 15184
+        },
+        "scenes/05-57.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 18180
+        },
+        "scenes/05-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 12040
+        },
+        "scenes/05-59.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 20020
+        },
+        "scenes/05-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 47232
+        },
+        "scenes/05-61.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8827
+        },
+        "scenes/05-62.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11615
+        },
+        "scenes/05-63.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22046
+        },
+        "scenes/05-64.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11716
+        },
+        "scenes/05-65.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5538
+        },
+        "scenes/05-66.anm": {
+          "count": 3,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6318
+        },
+        "scenes/05-67.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6806
+        },
+        "scenes/05-68.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7380
+        },
+        "scenes/05-69.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4899
+        },
+        "scenes/05-70.anm": {
+          "count": 3,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6318
+        },
+        "scenes/05-71.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6806
+        },
+        "scenes/05-72.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7380
+        },
+        "scenes/05-73.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4899
+        },
+        "scenes/05-74.anm": {
+          "count": 6,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5616
+        },
+        "scenes/05-75.anm": {
+          "count": 27,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16800
+        },
+        "scenes/05-76.anm": {
+          "count": 27,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9200
+        },
+        "scenes/05-77.anm": {
+          "count": 6,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2958
+        },
+        "scenes/05-78.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4623
+        },
+        "scenes/05-79.anm": {
+          "count": 2,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4355
+        },
+        "scenes/05-80.anm": {
+          "count": 90,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9064
+        },
+        "scenes/05-81.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/05-82.anm": {
+          "count": 18,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-83.anm": {
+          "count": 11,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/05-84.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/05-85.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
         }
       },
-      "preview_scene": 4,
+      "preview_scene": 5,
       "preview_catalog": [
+        {
+          "resource_id": 47,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            541,
+            355
+          ],
+          "label": "01 Мартышка — 47"
+        },
+        {
+          "resource_id": 48,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            551,
+            355
+          ],
+          "label": "02 Мартышка — 48"
+        },
+        {
+          "resource_id": 49,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            536,
+            357
+          ],
+          "label": "03 Мартышка — 49"
+        },
         {
           "resource_id": 50,
           "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            548,
+            358
+          ],
+          "label": "04 Мартышка — 50"
+        },
+        {
+          "resource_id": 61,
+          "anchor": [
             128,
-            288
+            368
+          ],
+          "focus": [
+            161,
+            347
+          ],
+          "label": "05 Шеф — 61"
+        },
+        {
+          "resource_id": 62,
+          "anchor": [
+            128,
+            368
+          ],
+          "focus": [
+            129,
+            332
+          ],
+          "label": "06 Шеф — 62"
+        },
+        {
+          "resource_id": 63,
+          "anchor": [
+            128,
+            368
+          ],
+          "focus": [
+            138,
+            350
+          ],
+          "label": "07 Шеф — 63"
+        },
+        {
+          "resource_id": 64,
+          "anchor": [
+            128,
+            368
+          ],
+          "focus": [
+            188,
+            332
+          ],
+          "label": "08 Шеф — 64"
+        },
+        {
+          "resource_id": 65,
+          "anchor": [
+            128,
+            368
           ],
           "focus": [
             163,
-            267
+            345
           ],
-          "label": "01 Шеф — кран"
-        },
-        {
-          "resource_id": 53,
-          "anchor": [
-            256,
-            288
-          ],
-          "focus": [
-            264,
-            261
-          ],
-          "label": "02 Фонтан"
-        },
-        {
-          "resource_id": 54,
-          "anchor": [
-            256,
-            272
-          ],
-          "focus": [
-            251,
-            204
-          ],
-          "label": "03 Фонтан — состояние 1"
-        },
-        {
-          "resource_id": 55,
-          "anchor": [
-            256,
-            272
-          ],
-          "focus": [
-            269,
-            179
-          ],
-          "label": "04 Фонтан — состояние 2"
-        },
-        {
-          "resource_id": 56,
-          "anchor": [
-            256,
-            272
-          ],
-          "focus": [
-            276,
-            145
-          ],
-          "label": "05 Фонтан — состояние 3"
+          "label": "09 Шеф — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            320,
-            144
+            64,
+            368
           ],
           "focus": [
-            346,
-            119
+            99,
+            352
           ],
-          "label": "06 Шеф — подбор предмета"
-        },
-        {
-          "resource_id": 67,
-          "anchor": [
-            320,
-            144
-          ],
-          "focus": [
-            355,
-            126
-          ],
-          "label": "07 Коллега — подбор предмета"
+          "label": "10 Коллега — 66"
         },
         {
           "resource_id": 68,
           "anchor": [
-            320,
-            144
+            64,
+            368
           ],
           "focus": [
-            340,
-            127
+            97,
+            302
           ],
-          "label": "08 Коллега — грабли"
+          "label": "11 Коллега — 68"
         },
         {
           "resource_id": 69,
           "anchor": [
-            320,
-            144
+            64,
+            368
           ],
           "focus": [
-            348,
-            130
+            98,
+            358
           ],
-          "label": "09 Коллега — лейка"
+          "label": "12 Коллега — 69"
         },
         {
           "resource_id": 70,
           "anchor": [
-            448,
-            208
+            64,
+            368
           ],
           "focus": [
-            479,
-            188
+            92,
+            352
           ],
-          "label": "10 Шеф — полив пальмы"
+          "label": "13 Коллега — 70"
+        },
+        {
+          "resource_id": 72,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            94,
+            302
+          ],
+          "label": "14 Коллега — 72"
+        },
+        {
+          "resource_id": 73,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            92,
+            358
+          ],
+          "label": "15 Коллега — 73"
+        },
+        {
+          "resource_id": 74,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            95,
+            352
+          ],
+          "label": "16 Коллега — 74"
+        },
+        {
+          "resource_id": 75,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            112,
+            349
+          ],
+          "label": "17 Коллега — 75"
+        },
+        {
+          "resource_id": 76,
+          "anchor": [
+            64,
+            368
+          ],
+          "focus": [
+            91,
+            352
+          ],
+          "label": "18 Коллега — 76"
+        },
+        {
+          "resource_id": 77,
+          "anchor": [
+            512,
+            368
+          ],
+          "focus": [
+            550,
+            357
+          ],
+          "label": "19 Мартышка — 77"
         },
         {
           "resource_id": 79,
           "anchor": [
-            384,
-            32
+            256,
+            384
           ],
           "focus": [
-            443,
-            45
+            282,
+            367
           ],
-          "label": "11 Бананы — появление"
+          "label": "20 Коллега — 79"
         },
         {
-          "resource_id": 81,
+          "resource_id": 80,
           "anchor": [
-            512,
-            208
+            320,
+            384
           ],
           "focus": [
-            537,
-            194
+            348,
+            363
           ],
-          "label": "12 Коллега — бананы"
+          "label": "21 Шеф — 80"
         },
         {
           "resource_id": 82,
           "anchor": [
-            576,
-            224
+            128,
+            368
           ],
           "focus": [
-            627,
-            196
+            160,
+            347
           ],
-          "label": "13 Носорог — эффект"
+          "label": "22 Шеф — 82"
         },
         {
           "resource_id": 83,
           "anchor": [
-            0,
-            192
+            128,
+            368
           ],
           "focus": [
-            227,
-            10
+            160,
+            347
           ],
-          "label": "14 Носорог — движение"
+          "label": "23 Шеф — 83"
         },
         {
           "resource_id": 84,
           "anchor": [
-            256,
-            208
+            64,
+            368
           ],
           "focus": [
-            515,
-            187
+            92,
+            351
           ],
-          "label": "15 Носорог — реакция"
+          "label": "24 Коллега — 84"
         },
         {
-          "resource_id": 86,
-          "anchor": [
-            512,
-            240
-          ],
-          "focus": [
-            546,
-            219
-          ],
-          "label": "16 Звериная тропа"
-        },
-        {
-          "resource_id": 88,
-          "anchor": [
-            576,
-            240
-          ],
-          "focus": [
-            627,
-            201
-          ],
-          "label": "17 Носорог — появление"
-        },
-        {
-          "resource_id": 93,
-          "anchor": [
-            448,
-            208
-          ],
-          "focus": [
-            515,
-            187
-          ],
-          "label": "18 Пальма — действие"
-        },
-        {
-          "resource_id": 94,
-          "anchor": [
-            384,
-            192
-          ],
-          "focus": [
-            452,
-            111
-          ],
-          "label": "19 Пальма — реакция"
-        },
-        {
-          "resource_id": 95,
-          "anchor": [
-            512,
-            80
-          ],
-          "focus": [
-            506,
-            49
-          ],
-          "label": "20 Коллега — на пальме"
-        },
-        {
-          "resource_id": 96,
-          "anchor": [
-            512,
-            80
-          ],
-          "focus": [
-            509,
-            50
-          ],
-          "label": "21 Коллега — ответ"
-        },
-        {
-          "resource_id": 97,
-          "anchor": [
-            384,
-            192
-          ],
-          "focus": [
-            508,
-            120
-          ],
-          "label": "22 Пальма — превращение"
-        },
-        {
-          "resource_id": 98,
-          "anchor": [
-            0,
-            192
-          ],
-          "focus": [
-            284,
-            10
-          ],
-          "label": "23 Коллега — перемещение"
-        },
-        {
-          "resource_id": 99,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            272,
-            11
-          ],
-          "label": "24 Фонтан — выброс"
-        },
-        {
-          "resource_id": 100,
-          "anchor": [
-            448,
-            400
-          ],
-          "focus": [
-            233,
-            220
-          ],
-          "label": "25 Выход — анимация"
-        },
-        {
-          "resource_id": 101,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            264,
-            151
-          ],
-          "label": "26 Фонтан — вода"
-        },
-        {
-          "resource_id": 102,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            272,
-            11
-          ],
-          "label": "27 Фонтан — исчезновение"
-        },
-        {
-          "resource_id": 104,
-          "anchor": [
-            576,
-            384
-          ],
-          "focus": [
-            612,
-            347
-          ],
-          "label": "28 Птица"
-        },
-        {
-          "resource_id": 110,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            264,
-            188
-          ],
-          "label": "29 Фонтан — эффект"
-        },
-        {
-          "resource_id": 111,
+          "resource_id": 85,
           "anchor": [
             64,
             368
           ],
           "focus": [
-            131,
-            289
+            92,
+            351
           ],
-          "label": "30 Кенгуру — ожидание"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            97,
-            292
-          ],
-          "label": "31 Кенгуру — реакция"
-        },
-        {
-          "resource_id": 113,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            97,
-            292
-          ],
-          "label": "32 Кенгуру — появление"
-        },
-        {
-          "resource_id": 116,
-          "anchor": [
-            0,
-            224
-          ],
-          "focus": [
-            73,
-            130
-          ],
-          "label": "33 Начальная сцена — декорация"
-        },
-        {
-          "resource_id": 119,
-          "anchor": [
-            0,
-            320
-          ],
-          "focus": [
-            25,
-            271
-          ],
-          "label": "34 Начальная сцена — кадр"
-        },
-        {
-          "resource_id": 121,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            263,
-            95
-          ],
-          "label": "35 Начальная сцена — эффект"
-        },
-        {
-          "resource_id": 123,
-          "anchor": [
-            0,
-            352
-          ],
-          "focus": [
-            31,
-            331
-          ],
-          "label": "36 Шеф — кенгуру"
-        },
-        {
-          "resource_id": 124,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            118,
-            289
-          ],
-          "label": "37 Кенгуру — действие"
-        },
-        {
-          "resource_id": 125,
-          "anchor": [
-            448,
-            400
-          ],
-          "focus": [
-            449,
-            365
-          ],
-          "label": "38 Выход — действие"
-        },
-        {
-          "resource_id": 126,
-          "anchor": [
-            192,
-            304
-          ],
-          "focus": [
-            205,
-            286
-          ],
-          "label": "39 Шеф — вход"
-        },
-        {
-          "resource_id": 127,
-          "anchor": [
-            192,
-            304
-          ],
-          "focus": [
-            220,
-            277
-          ],
-          "label": "40 Шеф — ожидание"
-        },
-        {
-          "resource_id": 128,
-          "anchor": [
-            192,
-            304
-          ],
-          "focus": [
-            213,
-            278
-          ],
-          "label": "41 Шеф — реакция"
-        },
-        {
-          "resource_id": 129,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            237,
-            132
-          ],
-          "label": "42 Начальная сцена — пролёт"
-        },
-        {
-          "resource_id": 130,
-          "anchor": [
-            64,
-            368
-          ],
-          "focus": [
-            97,
-            292
-          ],
-          "label": "43 Кенгуру — вступление"
-        },
-        {
-          "resource_id": 131,
-          "anchor": [
-            0,
-            224
-          ],
-          "focus": [
-            55,
-            135
-          ],
-          "label": "44 Начальная сцена — объект"
-        },
-        {
-          "resource_id": 135,
-          "anchor": [
-            0,
-            416
-          ],
-          "focus": [
-            45,
-            315
-          ],
-          "label": "45 Начальная сцена — передний план"
-        },
-        {
-          "resource_id": 138,
-          "anchor": [
-            576,
-            240
-          ],
-          "focus": [
-            586,
-            233
-          ],
-          "label": "46 Носорог — уход"
+          "label": "25 Коллега — 85"
         }
       ],
       "largest_resources": [
@@ -10968,6 +11700,11 @@
           "path": "audio/03-23.wav",
           "bytes": 566623,
           "compressed_bytes": 280723
+        },
+        {
+          "path": "scenes/05-63.anm",
+          "bytes": 545538,
+          "compressed_bytes": 50556
         },
         {
           "path": "scenes/04-110.anm",
@@ -11003,11 +11740,6 @@
           "path": "scenes/03-57.anm",
           "bytes": 383151,
           "compressed_bytes": 51765
-        },
-        {
-          "path": "scenes/04-84.anm",
-          "bytes": 374642,
-          "compressed_bytes": 36318
         }
       ]
     }
