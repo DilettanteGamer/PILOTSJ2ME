@@ -31,6 +31,8 @@ public final class GardenWorld {
     public boolean completed;
     private byte[] initial;
     private int monkeyDirection=-1;
+    private static final int[] STEP_X={0,1,0,-1},STEP_Y={-1,0,1,0};
+    private final int[] monkeyQueue=new int[300],monkeyFirst=new int[300];
     private boolean acknowledge;
     public GardenWorld(GameState state) throws IOException {
         this.state=state;
@@ -81,7 +83,7 @@ public final class GardenWorld {
     }
     int at(int x,int y) {
         if(x<0 || x>=10 || y<0 || y>=30) return 254;
-        for(int h=0;h<2;h++) if(heroes[h]!=null && heroes[h].active && heroes[h].x==x*64 && heroes[h].y==y*16) return 11+h;
+        for(int h=0;h<2;h++) if(heroes[h]!=null && heroes[h].active && heroes[h].x/64==x && heroes[h].y/16==y) return 11+h;
         Thing t=cells[y*10+x];return t==null?254:t.id;
     }
     private void remove(int x,int y) {
@@ -207,7 +209,12 @@ public final class GardenWorld {
                     v=word(code,p);p+=4;
                     int arg=0;
                     if(!(v==0||v==1||v==3||v==4||v==0x1a||v==0x1b||v==0x1e)) { if(top==0) throw new IllegalStateException("Missing native argument "+v+" entity "+owner.id);arg=stack[--top]; }
-                    a=nativeCall(v,arg);break;
+                    if(v==0x24) {
+                        if(top==0) throw new IllegalStateException("Missing path target");
+                        int target=stack[--top];
+                        monkeyDirection=context.id==14 && arg==2?passageDirection(context,target):-1;
+                        a=monkeyDirection>=0?1:0;
+                    } else a=nativeCall(v,arg);break;
                 default:throw new IllegalStateException("Unsupported original opcode "+op+" in entity "+owner.id);
                 }
             }
@@ -239,6 +246,7 @@ public final class GardenWorld {
         }
     }
     private boolean rules(Thing t) {
+        monkeyDirection=-1;
         Definition def=definitions[t.id];if(!t.active || def==null || def.type==0) return false;
         for(int i=0;i<def.rules.length;i++) {
             byte[][] rule=def.rules[i];int mask=word(rule[0],0);
@@ -266,7 +274,7 @@ public final class GardenWorld {
         for(int i=0;i<cells.length;i++) animate(cells[i]);
         for(int h=0;h<2;h++) animate(heroes[h]);
         for(int i=0;i<effects.length;i++) if(effects[i]!=null) { animate(effects[i]);if(effects[i].finished) effects[i]=null; }
-        walkTick();monkeyDirection=escapeDirection();
+        walkTick();
         // Native controller order follows allocation, not entity number or paint layer.
         int ceiling=serial,last=0;
         while(true) {
@@ -298,26 +306,33 @@ public final class GardenWorld {
         if(entity==14) { Thing t=find(14);if(t==null) return false;return move(t.x,t.y); }
         return false;
     }
-    private int escapeDirection() {
-        Thing m=find(14);if(m==null || action()>=11 || g(4)%5!=0) return -1;
-        int[] dx={0,64,0,-64},dy={-16,0,16,0},dir={0,2,4,6};
-        int best=-1,score=-1;
-        for(int i=0;i<4;i++) {
-            int x=m.x+dx[i],y=m.y+dy[i];if(!allowed(x,y,m.x,m.y)) continue;
-            boolean occupied=false;int distance=10000;
-            for(int h=0;h<2;h++) {
-                int hx=heroes[h].x/64,hy=heroes[h].y/16;
-                if(hx==x/64 && hy==y/16) occupied=true;
-                distance=Math.min(distance,Math.abs(hx-x/64)+Math.abs(hy-y/16));
+    /** Native 24(target,2): path through empty cells to a controller-selected passage.
+     * FUN_0040844c -> 0040803c -> 00407f04. Heroes and scenery block this path.
+     * Controller 15 opens the exits ahead of a pursuer; distance alone cannot choose
+     * the correct side of the loop or preserve the Chief's ambush at map 41.
+     */
+    private int passageDirection(Thing monkey,int target) {
+        if(action()>=11 || monkey.clip>=47 && monkey.clip<=50 && !monkey.finished) return -1;
+        int start=monkey.y/16*10+monkey.x/64;
+        for(int i=0;i<300;i++) monkeyFirst[i]=-1;
+        int head=0,tail=0;monkeyQueue[tail++]=start;monkeyFirst[start]=8;
+        while(head<tail) {
+            int cell=monkeyQueue[head++],x=cell%10,y=cell/10;
+            for(int d=0;d<4;d++) {
+                int nx=x+STEP_X[d],ny=y+STEP_Y[d];if(nx<0||nx>=10||ny<0||ny>=26) continue;
+                int next=ny*10+nx;if(monkeyFirst[next]>=0) continue;
+                int id=at(nx,ny);if(id!=254 && id!=target) continue;
+                monkeyFirst[next]=cell==start?d*2:monkeyFirst[cell];
+                if(id==target) return monkeyFirst[next];
+                monkeyQueue[tail++]=next;
             }
-            if(!occupied && distance>score) { best=dir[i];score=distance; }
         }
-        return best;
+        return -1;
     }
     private boolean walk(int h,int x,int y,int entity,int restore) {
         int other=1-h;
         if(heroes[other]!=null && heroes[other].active && heroes[other].x==x && heroes[other].y==y && entity>=0 && restore<0) {
-            int[] ax={x-16,x+16,x,x},ay={y,y,y+16,y-16};
+            int[] ax={x-64,x+64,x,x},ay={y,y,y+16,y-16};
             for(int i=0;i<ax.length;i++) {
                 if(heroes[h].x==ax[i] && heroes[h].y==ay[i] || !allowed(ax[i],ay[i],heroes[other].x,heroes[other].y)) continue;
                 if(walk(other,ax[i],ay[i],entity,h)) return true;
@@ -326,9 +341,9 @@ public final class GardenWorld {
         }
         int[] route=plan(heroes[h].x,heroes[h].y,x,y);
         if(route.length==0) return false;
-        g(0x24,1);walkHero=h;walkX=x;walkY=y;walkEntity=entity;walkRestore=restore;path=route;pathIndex=0;walkPhase=-1;syncSave();return true;
+        g(0x24,1);walkHero=h;walkX=x;walkY=y;walkEntity=entity;walkRestore=restore;path=route;pathIndex=2;walkPhase=-1;syncSave();return true;
     }
-    public boolean move(int x,int y) { return !completed && !busy() && walk(hero(),(x+8)/16*16,(y+8)/16*16,-1,-1); }
+    public boolean move(int x,int y) { return !completed && !busy() && walk(hero(),Math.max(0,Math.min(576,(x+32)/64*64)),Math.max(16,Math.min(400,(y+8)/16*16)),-1,-1); }
     private void idle(Thing hero) {
         int pose=g(hero.id==11?0x10:0x14);
         hero.clip=(hero.id==11?12:16)+(pose==3?1:pose==7?2:pose==9?3:0);
@@ -337,21 +352,20 @@ public final class GardenWorld {
     private void walkTick() {
         if(walkHero<0) return;
         Thing h=heroes[walkHero];
-        if(path==null) { path=plan(h.x,h.y,walkX,walkY);pathIndex=0; }
-        if(path.length==0) { walkHero=-1;return; }
+        if(path==null) { path=plan(h.x,h.y,walkX,walkY);pathIndex=2;walkPhase=-1; }
+        if(path.length==0) { walkHero=-1;idle(h);return; }
         if(pathIndex<path.length) {
-            int dx=Math.max(-8,Math.min(8,path[pathIndex]-h.x)),dy=Math.max(-8,Math.min(8,path[pathIndex+1]-h.y));
-            if(dx!=0 || dy!=0) {
-                walkPhase=(walkPhase+1)%10;int half=walkPhase/5;
+            walkPhase=(walkPhase+1)%10;int half=walkPhase/5;
+            if(walkPhase%5==0) {
+                h.fromX=h.x;h.fromY=h.y;h.x=path[pathIndex];h.y=path[pathIndex+1];
+                int dx=h.x-h.fromX,dy=h.y-h.fromY;
                 h.clip=walkHero==0?(dx<0?20:dx>0?21:dy<0?24+half:22+half):(dx<0?32+half:dx>0?28+half:dy<0?30+half:26+half);
-                h.frame=walkPhase%5;h.x+=dx;h.y+=dy;
-                h.finished=false;h.fallback=-1;
-                int depth=3+(400-h.y)*3/16;g(walkHero==0?0x40:0x44,depth);h.layer=depth+1;
+                int depth=6+(368-h.y)*3/16;g(walkHero==0?0x40:0x44,depth);h.layer=depth;
                 int pose=dx<0?(half==0?7:1):dx>0?(half==0?9:3):dy<0?(half==0?7:9):(half==0?1:3);
-                g(walkHero==0?0x10:0x14,pose);g(walkHero==0?8:12,1-half);
-                if(walkPhase%5==0) cue(0);
+                g(walkHero==0?0x10:0x14,pose);g(walkHero==0?8:12,1-half);cue(0);
             }
-            if(h.x==path[pathIndex] && h.y==path[pathIndex+1]) pathIndex+=2;
+            h.frame=walkPhase%5;h.finished=false;h.fallback=-1;
+            if(walkPhase%5==4) pathIndex+=2;
             return;
         }
         int entity=walkEntity,restore=walkRestore;g(0x24,0);walkHero=-1;path=null;walkEntity=walkRestore=-1;
@@ -367,33 +381,34 @@ public final class GardenWorld {
     }
     private void interactAfterAside(int h,int entity) { g(0x18,h);interact(entity); }
     private boolean allowed(int x,int y,int sx,int sy) {
-        if(x<0 || x>624 || y<16 || y>400) return false;
+        if(x<0 || x>576 || y<16 || y>400) return false;
         if(x==sx && y==sy) return true;
+        for(int h=0;h<2;h++) if(heroes[h]!=null && heroes[h].active && heroes[h].x/64==x/64 && heroes[h].y/16==y/16) return false;
         Thing t=cells[y/16*10+x/64];
         return t==null || t.id!=0 && (definitions[t.id]==null || definitions[t.id].type!=0 || t.id==6||t.id==7||t.id==16);
     }
     int[] plan(int sx,int sy,int tx,int ty) {
         if(!allowed(tx,ty,sx,sy)) return new int[0];
-        int width=40,size=40*26,start=((sy+8)/16)*width+(sx+8)/16,end=ty/16*width+tx/16;
-        if(start<0||start>=size) return new int[0];
+        int width=10,size=10*26,start=((sy+8)/16)*width+(sx+32)/64,end=ty/16*width+tx/64;
+        if(start<0||start>=size||end<0||end>=size) return new int[0];
         int[] previous=new int[size],queue=new int[size];for(int i=0;i<size;i++) previous[i]=-1;
         int head=0,tail=0;queue[tail++]=start;previous[start]=start;int[] dx={-1,1,0,0},dy={0,0,-1,1};
         while(head<tail && previous[end]<0) {
             int n=queue[head++],x=n%width,y=n/width;
-            for(int i=0;i<4;i++) { int nx=x+dx[i],ny=y+dy[i];if(!allowed(nx*16,ny*16,sx,sy)) continue;
+            for(int i=0;i<4;i++) { int nx=x+dx[i],ny=y+dy[i];if(!allowed(nx*64,ny*16,sx,sy)) continue;
                 int next=ny*width+nx;if(previous[next]<0) { previous[next]=n;queue[tail++]=next; }
             }
         }
         if(previous[end]<0) return new int[0];int length=1;
         for(int p=end;p!=start;p=previous[p]) length++;
         int[] result=new int[length*2];int p=end;
-        for(int i=length-1;i>=0;i--) { result[i*2]=p%width*16;result[i*2+1]=p/width*16;p=previous[p]; }
+        for(int i=length-1;i>=0;i--) { result[i*2]=p%width*64;result[i*2+1]=p/width*16;p=previous[p]; }
         return result;
     }
     public void syncSave() {
         try {
             ByteArrayOutputStream bytes=new ByteArrayOutputStream();DataOutputStream out=new DataOutputStream(bytes);
-            out.writeInt(0x47575331);out.writeInt(serial);out.writeBoolean(completed);
+            out.writeInt(0x47575332);out.writeInt(serial);out.writeBoolean(completed);
             out.writeInt(walkHero);out.writeInt(walkX);out.writeInt(walkY);out.writeInt(walkEntity);out.writeInt(walkRestore);out.writeInt(walkPhase);
             out.writeInt(captionTicks);out.writeUTF(caption==null?"":caption);
             for(int i=0;i<cells.length+2+effects.length;i++) {
@@ -407,16 +422,38 @@ public final class GardenWorld {
             out.close();state.location=bytes.toByteArray();
         } catch(IOException e) { throw new IllegalStateException(e.toString()); }
     }
+    /** 0.10.0/0.10.1 saved physical positions and a 16-pixel path. Replan once
+     * on the original 64x16 map, preserving the quest and cinematic controllers. */
+    private void migrateWalking() {
+        for(int h=0;h<2;h++) {
+            Thing t=heroes[h];int best=-1,distance=100000;
+            for(int y=16;y<=400;y+=16) for(int x=0;x<640;x+=64) {
+                if(!allowed(x,y,t.x,t.y)) continue;
+                int d=Math.abs(x-t.x)+Math.abs(y-t.y);
+                if(d<distance) { best=y/16*10+x/64;distance=d; }
+            }
+            if(best>=0) { t.x=best%10*64;t.y=best/10*16; }
+            if(action()==0 || walkHero==h) {
+                int depth=6+(368-t.y)*3/16;g(h==0?0x40:0x44,depth);t.layer=depth;
+                if(walkHero==h) idle(t);
+            }
+        }
+        if(walkHero>=0) {
+            Thing t=heroes[walkHero];walkX=Math.max(0,Math.min(576,(walkX+32)/64*64));
+            path=plan(t.x,t.y,walkX,walkY);pathIndex=2;walkPhase=-1;
+            if(path.length==0) { walkHero=-1;path=null;walkEntity=walkRestore=-1;g(0x24,0); }
+        }
+    }
     private void restore(byte[] bytes) throws IOException {
         DataInputStream in=new DataInputStream(new ByteArrayInputStream(bytes));
-        int version=in.readInt();boolean extended=version==0x47575331;
+        int version=in.readInt();boolean extended=version==0x47575331 || version==0x47575332;
         if(!extended) throw new IOException("Invalid garden save");
         serial=in.readInt();completed=in.readBoolean();
         walkHero=in.readInt();walkX=in.readInt();walkY=in.readInt();walkEntity=in.readInt();walkRestore=in.readInt();walkPhase=in.readInt();captionTicks=in.readInt();caption=in.readUTF();
         if(walkHero < -1 || walkHero>1) throw new IOException("Invalid walking hero");
         for(int i=0;i<(302+effects.length);i++) if(in.readBoolean()) {
             int id=in.readUnsignedByte();boolean active=in.readBoolean(),finished=extended&&in.readBoolean();int x=in.readShort(),y=in.readShort();if(id>=76 || x<0 || x>=640 || y<0 || y>=480) throw new IOException("Invalid saved garden object");
-            Thing t=new Thing(id,x,y,0);t.active=active;t.finished=finished;t.clip=in.readShort();t.frame=in.readShort();if(version==0x47575331) t.fallback=in.readShort();t.fromX=in.readShort();t.fromY=in.readShort();t.layer=in.readShort();t.under=in.readUnsignedByte();t.serial=in.readInt();
+            Thing t=new Thing(id,x,y,0);t.active=active;t.finished=finished;t.clip=in.readShort();t.frame=in.readShort();t.fallback=in.readShort();t.fromX=in.readShort();t.fromY=in.readShort();t.layer=in.readShort();t.under=in.readUnsignedByte();t.serial=in.readInt();
             for(int j=0;j<t.local.length;j++) t.local[j]=in.readInt();
             if(i<300) cells[i]=t;else if(i<302) heroes[i-300]=t;else effects[i-302]=t;
         }
@@ -424,5 +461,6 @@ public final class GardenWorld {
         if(length>0) { path=new int[length];for(int i=0;i<length;i++) path[i]=in.readInt(); }
         pathIndex=in.readInt();if(pathIndex<0 || pathIndex>length || pathIndex%2!=0) throw new IOException("Invalid path progress");
         if(in.read()!=-1 || heroes[0]==null || heroes[1]==null) throw new IOException("Incomplete garden save");
+        if(version==0x47575331) migrateWalking();
     }
 }

@@ -2661,7 +2661,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.10.1",
+        "MIDlet-Version": "0.10.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2670,10 +2670,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "10dba3f4b371fab94526d6c24ebe224efc6570729dbe902d4b0a627bc49d4a3e",
-      "jar_bytes": 4603053,
+      "sha256": "cff1b8eec4619940e3c8c284a3e53edc3890d680f9ef57083f3c2d96e0514101",
+      "jar_bytes": 4603826,
       "entry_count": 610,
-      "uncompressed_bytes": 29102441,
+      "uncompressed_bytes": 29104021,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -2924,7 +2924,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "87f561ee1ee869ec61e49ef2d9bd6dd4ad6acbac1a18e73829e7663b2c84daec"
+          "sha256": "c23b29388e1627de4b342663e63bb3bf6614aded3fe46d69e1523b72487b7302"
         },
         "pilots/GardenWorld$Definition.class": {
           "minor": 3,
@@ -2964,7 +2964,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "6bbc98c8eb74cf71e0d47ced9b96a2e62439e34caf945834d02e60d03811c669"
+          "sha256": "6d6a681813e406b7547bc6a3445ab9e0c30cf7479b5c23de7937cbdc5b83cc68"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -5710,7 +5710,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.10.1",
+        "MIDlet-Version": "0.10.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -5719,10 +5719,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "6ea2bc46b9c2f3cdff8bc01f784daf925baa2dc7fbd59b09ec20f7e9d551f72b",
-      "jar_bytes": 4603052,
+      "sha256": "28a2f1a1a2fe24ff0fa21baaf682b7da408e34c43852bc0e3b1f6acd1e323314",
+      "jar_bytes": 4603827,
       "entry_count": 610,
-      "uncompressed_bytes": 29102441,
+      "uncompressed_bytes": 29104021,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -5973,7 +5973,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "87f561ee1ee869ec61e49ef2d9bd6dd4ad6acbac1a18e73829e7663b2c84daec"
+          "sha256": "c23b29388e1627de4b342663e63bb3bf6614aded3fe46d69e1523b72487b7302"
         },
         "pilots/GardenWorld$Definition.class": {
           "minor": 3,
@@ -6013,7 +6013,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "6bbc98c8eb74cf71e0d47ced9b96a2e62439e34caf945834d02e60d03811c669"
+          "sha256": "6d6a681813e406b7547bc6a3445ab9e0c30cf7479b5c23de7937cbdc5b83cc68"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -8759,7 +8759,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.10.1",
+        "MIDlet-Version": "0.10.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -8768,10 +8768,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "1e86939fcf537e5401e5cbfe039fccbedb21dcaed9b6b7f32e48dcb62ec879f4",
-      "jar_bytes": 4897499,
+      "sha256": "78b83c04ff1ec432165d6b1387aa0ad841b86b73c3c40211a19b0c16883fe291",
+      "jar_bytes": 4898271,
       "entry_count": 610,
-      "uncompressed_bytes": 29903722,
+      "uncompressed_bytes": 29905302,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -9022,7 +9022,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "87f561ee1ee869ec61e49ef2d9bd6dd4ad6acbac1a18e73829e7663b2c84daec"
+          "sha256": "c23b29388e1627de4b342663e63bb3bf6614aded3fe46d69e1523b72487b7302"
         },
         "pilots/GardenWorld$Definition.class": {
           "minor": 3,
@@ -9062,7 +9062,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "6bbc98c8eb74cf71e0d47ced9b96a2e62439e34caf945834d02e60d03811c669"
+          "sha256": "6d6a681813e406b7547bc6a3445ab9e0c30cf7479b5c23de7937cbdc5b83cc68"
         },
         "pilots/Hotspot.class": {
           "minor": 3,

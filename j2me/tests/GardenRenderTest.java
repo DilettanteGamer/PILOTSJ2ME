@@ -21,16 +21,30 @@ public final class GardenRenderTest {
         int width=Integer.parseInt(a[0]),height=Integer.parseInt(a[1]);scene=new Scene(5);state=new GameState();state.scene=5;
         try {
             garden=new GardenScene(scene,state);settle();
-            check(scene.actors[230+8]!=null || garden.animals.world.cells[238]!=null,"monkey map position");
+            boolean present=false;for(int i=0;i<300;i++) if(garden.animals.world.cells[i]!=null && garden.animals.world.cells[i].id==14)present=true;
+            check(present,"monkey map position");
             capture(width,height,a[2]+"-entry.png");capture(640,480,a[2]+"-world.png");
-            check(garden.logic.select(0) && garden.request(384,368),"first physical approach");settle();
-            check(garden.request(512,272),"second physical approach");
-            boolean key=false;int budget=2000;
-            while(garden.logic.busy()&&budget-->0) {
+            check(garden.logic.select(0) && garden.request(384,272),"Chief tree approach");
+            settle();capture(width,height,a[2]+"-tree.png");capture(640,480,a[2]+"-tree-world.png");
+            check(garden.animals.world.heroes[0].layer==24,"Chief depth at tree");
+            check(garden.logic.select(1),"Colleague chase");
+            boolean key=false,walk=false;int budget=2000;
+            while(!garden.logic.completed() && budget-->0) {
+                if(!garden.logic.busy()) {
+                    GardenWorld.Thing monkey=null;
+                    for(int i=0;i<300;i++) if(garden.animals.world.cells[i]!=null && garden.animals.world.cells[i].id==14)monkey=garden.animals.world.cells[i];
+                    check(monkey!=null && garden.request(monkey.x,monkey.y),"physical pursuit");
+                }
                 if(garden.animals.world.action()==51)garden.request(320,384);garden.update(100);
+                if(!walk && garden.animals.world.walkHero==1 && garden.animals.world.heroes[1].y==240) {
+                    GardenWorld.Thing hero=garden.animals.world.heroes[1];AnimatedActor actor=scene.actors[301];
+                    check(hero.layer==30,"source hero depth at middle path");
+                    check(actor.x==hero.fromX+(hero.x-hero.fromX)*(hero.frame+1)/5 && actor.y==hero.fromY+(hero.y-hero.fromY)*(hero.frame+1)/5,"walking root interpolation");
+                    capture(640,480,a[2]+"-chase-world.png");walk=true;
+                }
                 if(!key && garden.animals.world.action()==50 && garden.animals.world.step()==30){capture(640,480,a[2]+"-key-world.png");key=true;}
             }
-            check(budget>0 && garden.logic.completed() && key && garden.logic.hasItem(1),"physical capture/key sequence failed");
+            check(budget>0 && garden.logic.completed() && key && walk && garden.logic.hasItem(1),"physical capture/key sequence failed");
             capture(width,height,a[2]+"-end.png");
         } finally {scene.close();}
         System.out.println("GardenRender: physical input, source roots/layers, entry, final key caption and inventory captured");

@@ -70,9 +70,9 @@
     5
   ],
   "active_preview_scene": 5,
-  "version": "0.10.1",
-  "jar_size": 4603052,
-  "jar_sha256": "6ea2bc46b9c2f3cdff8bc01f784daf925baa2dc7fbd59b09ec20f7e9d551f72b",
+  "version": "0.10.2",
+  "jar_size": 4603827,
+  "jar_sha256": "28a2f1a1a2fe24ff0fa21baaf682b7da408e34c43852bc0e3b1f6acd1e323314",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -200,7 +200,7 @@
   "original_animal_section": 6,
   "original_animal_local_clips": 93,
   "animal_preview_count": 46,
-  "save_format": "PSV2 scene 05 GWS1; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader",
+  "save_format": "PSV2 scene 05 GWS2 with GWS1 migration; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader",
   "validation": "Four-location gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test",
   "removed_animation_ids": [
     106
