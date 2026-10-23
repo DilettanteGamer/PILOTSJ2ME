@@ -6,8 +6,8 @@ import javax.microedition.media.Player;
 import javax.microedition.media.control.VolumeControl;
 
 /** One MIDI and at most three PCM players; only the worker touches MMAPI. */
-public final class GameAudio implements Runnable,SoundSink {
-    private int scene=2,generation;
+public final class GameAudio implements Runnable,MusicSink {
+    private int scene=2,generation,track=1;
     private boolean active,enabled=true,closed,activated;
     private final int[] queue=new int[16];
     private int count;
@@ -23,7 +23,8 @@ public final class GameAudio implements Runnable,SoundSink {
     private long serial;
 
     public GameAudio() { worker=new Thread(this);worker.start(); }
-    public synchronized void scene(int value) { scene=value;generation++;count=0;activated=false;notifyAll(); }
+    public synchronized void scene(int value) { scene=value;track=1;generation++;count=0;activated=false;notifyAll(); }
+    public synchronized void music(int value) { if(value>=1 && value<=2) { track=value;notifyAll(); } }
     public synchronized void active(boolean value) { active=value;if(value) activated=true;if(!value && activated) count=0;notifyAll(); }
     public synchronized boolean toggle() { enabled=!enabled;generation++;count=0;notifyAll();return enabled; }
     public synchronized void play(int cue) {
@@ -33,24 +34,25 @@ public final class GameAudio implements Runnable,SoundSink {
     }
     public synchronized void close() { closed=true;count=0;notifyAll(); }
     public void run() {
-        int applied=-1;boolean wasActive=false;
+        int applied=-1,appliedTrack=-1;boolean wasActive=false;
         try {
             while(true) {
-                int current,revision,cue=-1;boolean running;
+                int current,revision,currentTrack,cue=-1;boolean running;
                 synchronized(this) {
                     if(closed) break;
-                    current=scene;revision=generation;running=active&&enabled;
+                    current=scene;currentTrack=track;revision=generation;running=active&&enabled;
                     if(running && count>0) {
                         cue=queue[0];for(int i=1;i<count;i++) queue[i-1]=queue[i];count--;
                     }
                 }
                 if(applied!=revision) { releaseAll();applied=revision;wasActive=false;musicAttempted=false; }
+                if(appliedTrack!=currentTrack) { closeMusic();musicAttempted=false;appliedTrack=currentTrack; }
                 if(running!=wasActive) {
                     for(int i=0;i<effects.length;i++) resume[i]=pause(effects[i],running,resume[i]);
                     resumeMusic=pause(music,running,resumeMusic);wasActive=running;
                 }
                 reap();
-                if(running && !musicAttempted) { musicAttempted=true;startMusic(current); }
+                if(running && !musicAttempted) { musicAttempted=true;startMusic(current,currentTrack); }
                 if(running && cue>=0) startEffect(current,cue);
                 synchronized(this) {
                     if(!closed && (!running || count==0) && applied==generation && wasActive==(active&&enabled))
@@ -71,9 +73,9 @@ public final class GameAudio implements Runnable,SoundSink {
         VolumeControl control=(VolumeControl)player.getControl("VolumeControl");
         if(control!=null) control.setLevel(level);
     }
-    private void startMusic(int location) {
+    private void startMusic(int location,int selected) {
         try {
-            musicStream=getClass().getResourceAsStream("/audio/0"+location+".mid");
+            musicStream=getClass().getResourceAsStream("/audio/0"+location+(selected==1?"":"-02")+".mid");
             if(musicStream==null) return;
             music=Manager.createPlayer(musicStream,"audio/midi");music.realize();music.prefetch();
             volume(music,45);music.start();
@@ -81,7 +83,7 @@ public final class GameAudio implements Runnable,SoundSink {
         catch(OutOfMemoryError ignored) { closeMusic(); }
     }
     private void startEffect(int location,int cue) {
-        int rank=location==3&&cue==23?0:cue==(location==3 || location==6?0:31)?1:
+        int rank=location==3&&cue==23?0:cue==(location==3 || location==6?0:location==9?3:31)?1:
             cue==6||cue==7||location==2&&cue>=34&&cue<=36||location==3&&cue>=20&&cue<=22||location==4&&cue==58||location==6&&cue==31?3:2;
         int slot=-1;
         for(int i=0;i<effects.length;i++) {
