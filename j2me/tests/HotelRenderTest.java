@@ -46,9 +46,55 @@ public final class HotelRenderTest {
    }
   } finally {scene.close();}
  }
+ static int slot(HotelScene h,int id) {
+  for(int i=0;i<300;i++)if(h.animals.world.cells[i]!=null&&h.animals.world.cells[i].id==id)return i;
+  throw new RuntimeException("Missing object "+id);
+ }
+ static Graphics worldPaint(HotelScene h) {
+  Graphics g=new Graphics(640,417);Viewport v=new Viewport(640,417,640,417);
+  h.scene.background.paint(g,v);h.paint(g,v);return g;
+ }
+ static void entryAndLock(int width,int height,String path)throws Exception {
+  Scene scene=new Scene(9);GameState state=new GameState();state.scene=9;
+  try {HotelScene h=new HotelScene(scene,state);int overlaps=0,frames=0;
+   while(h.animals.world.action()==83) {
+    int doorSlot=-1;for(int i=0;i<300;i++)if(h.animals.world.cells[i]!=null&&h.animals.world.cells[i].id==51)doorSlot=i;
+    // The source removes this closed-door mask when the entry opens.
+    if(doorSlot>=0) {
+    AnimatedActor door=scene.actors[doorSlot];
+    HotelWorld.Thing doorThing=h.animals.world.cells[doorSlot];
+    check(h.layer(doorSlot)==doorThing.layer,"entry must use original door plane");
+    Graphics painted=worldPaint(h),expected=new Graphics(640,417);door.paint(expected,new Viewport(640,417,640,417));
+    for(int hero=0;hero<2;hero++) {
+     HotelWorld.Thing t=h.animals.world.heroes[hero];AnimatedActor a=scene.actors[300+hero];
+     if(a==null||t.layer<=doorThing.layer)continue;
+     for(int y=Math.max(0,a.y+a.clip.offsetY);y<Math.min(417,a.y+a.clip.offsetY+a.clip.height);y++)
+      for(int x=Math.max(0,a.x+a.clip.offsetX);x<Math.min(640,a.x+a.clip.offsetX+a.clip.width);x++)
+       if(a.clip.contains(x-a.x,y-a.y)&&door.clip.contains(x-door.x,y-door.y)) {
+        check(painted.image.getRGB(x,y)==expected.image.getRGB(x,y),"entry hero painted on closed door at "+frames+":"+x+","+y);overlaps++;
+       }
+    }
+    }
+    if(frames==10){capture(h,width,height,path+"-room-entry.png");capture(h,640,480,path+"-room-entry-world.png");}
+    check(++frames<500,"entry did not finish");h.update(100);
+   }
+   check(overlaps>0,"entry regression never overlapped door");settle(h);
+   AnimatedActor lock=scene.actors[slot(h,33)],body=scene.actors[slot(h,61)];
+   Graphics painted=worldPaint(h),expected=new Graphics(640,417);lock.paint(expected,new Viewport(640,417,640,417));int pixels=0;
+   for(int y=lock.y+lock.clip.offsetY;y<lock.y+lock.clip.offsetY+lock.clip.height;y++)
+    for(int x=lock.x+lock.clip.offsetX;x<lock.x+lock.clip.offsetX+lock.clip.width;x++)
+     if(lock.clip.contains(x-lock.x,y-lock.y)&&body.clip.contains(x-body.x,y-body.y)) {
+      check(painted.image.getRGB(x,y)==expected.image.getRGB(x,y),"refrigerator covers padlock at "+x+","+y);
+      check(h.targetAt(x,y)==33,"visible padlock not selectable");pixels++;
+     }
+   check(pixels>0,"padlock regression never overlapped refrigerator");
+   capture(h,640,480,path+"-lock-world.png");
+  }finally{scene.close();}
+ }
  public static void main(String[] a)throws Exception {
   occlusion();
   int width=Integer.parseInt(a[0]),height=Integer.parseInt(a[1]);
+  entryAndLock(width,height,a[2]);
   for(int n=8;n<=9;n++){Scene scene=new Scene(n);GameState state=new GameState();state.scene=n;
    try{HotelScene hotel=new HotelScene(scene,state);if(n==8){for(int i=0;i<110;i++)hotel.update(100);capture(hotel,width,height,a[2]+"-entrance.png");settle(hotel);}
    else{settle(hotel);capture(hotel,width,height,a[2]+"-room.png");capture(hotel,640,480,a[2]+"-world.png");

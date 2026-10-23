@@ -40,20 +40,25 @@ public final class HotelScene extends ZooScene {
         if(animals.world.scene==9) {
             // These are wall/door cutouts, not foreground furniture. Their floor
             // plane is the bottom of the opaque mask; hero roots sit 16px above feet.
-            if(t.id==51 || t.id==58 || t.id==59 || t.id==60) {
+            if(animals.world.action()!=83 && (t.id==51 || t.id==58 || t.id==59 || t.id==60)) {
                 AnimatedActor a=scene.actors[slot];
                 if(a!=null)return 58-(a.y+a.clip.offsetY+a.clip.height-16)/8;
             }
             // The lock and handle belong to the closed refrigerator's surface.
             if(t.id==33 || t.id==35)return 25;
-            if(t.id==36 || t.id==37)return 22; // Switch mounted on wall mask 58.
+            if(animals.world.action()!=83 && (t.id==36 || t.id==37))return 22; // Switch mounted on wall mask 58.
         }
         return t.layer;
+    }
+    private int paintDepth(int slot) {
+        // Keep attachments in front of their supporting surface at equal depth,
+        // without moving that surface across a neighbouring character plane.
+        return layer(slot)*2+(animals.world.scene==9 && thing(slot).id==61?1:0);
     }
     public void paint(Graphics graphics,Viewport view) {
         int n=0;
         for(int i=0;i<scene.actors.length;i++) if(scene.actors[i]!=null) {
-            int j=n;while(j>0 && layer(order[j-1])<layer(i)) { order[j]=order[j-1];j--; }order[j]=i;n++;
+            int j=n;while(j>0 && paintDepth(order[j-1])<paintDepth(i)) { order[j]=order[j-1];j--; }order[j]=i;n++;
         }
         boolean grid=false;
         for(int i=0;i<n;i++) {
@@ -74,11 +79,11 @@ public final class HotelScene extends ZooScene {
         int hit=-1,best=999;
         for(int i=0;i<302;i++) {
             HotelWorld.Thing t=thing(i);AnimatedActor actor=scene.actors[i];
-            if(t!=null && actor!=null && actor.clip.contains(x-actor.x,y-actor.y) && layer(i)<=best) {
-                hit=interactive(t.id) && (t.id!=34 || animals.world.keyAvailable())?t.id:-1;best=layer(i);
+            if(t!=null && actor!=null && actor.clip.contains(x-actor.x,y-actor.y) && paintDepth(i)<=best) {
+                hit=interactive(t.id) && (t.id!=34 || animals.world.keyAvailable())?t.id:-1;best=paintDepth(i);
             }
         }
-        if(animals.world.fridgePanelVisible() && x>=434 && x<500 && y>=195 && y<261 && (25<best || 25==best && hit!=12 && hit!=13))hit=101;
+        if(animals.world.fridgePanelVisible() && x>=434 && x<500 && y>=195 && y<261 && (50<best || 50==best && hit!=12 && hit!=13))hit=101;
         return hit;
     }
     public int targetAt(int x,int y) { int id=target(x,y);return id<0?0:id; }
