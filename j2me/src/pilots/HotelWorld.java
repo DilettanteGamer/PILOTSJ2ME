@@ -64,7 +64,14 @@ public final class HotelWorld {
             // Controller 14 initializes the room; the entrance starts at source frame zero.
             if(scene==9)tick();
         }
-        initFridge();syncSave();
+        initFridge();
+        // Reconcile snapshots written before map replacement retired hero 12.
+        if(scene==9 && !completed && state.variables[63]==0 && (action()==84 || action()==87) && find(97)!=null) {
+            heroes[1].active=false;heroes[1].clip=-1;
+        }
+        // Older hotel builds stopped after the first exit, leaving pose 97.
+        if(scene==9 && completed && state.variables[63]==0 && heroes[1].active)beginPartnerExit();
+        syncSave();
     }
     public boolean fridgePanelVisible() { return scene==9 && find(35)!=null; }
     public int fridgeMask() { return state.variables[61]; }
@@ -171,6 +178,11 @@ public final class HotelWorld {
         // The bath controller creates the crocodile on step 1; its first rules
         // must run before that controller advances to step 2 on the next tick.
         if(id==27)rules(t);
+        // Source map replacement 12 -> 97 retires the movie controller. Keep
+        // its root for the final J2ME exit, but display only the authored hold.
+        if(scene==9 && id==97 && heroes[1]!=null && heroes[1].x==t.x && heroes[1].y==t.y) {
+            heroes[1].active=false;heroes[1].clip=-1;
+        }
     }
     boolean inGroup(int group,int id) {
         byte[] bits=group>=0 && group<groups.length?groups[group]:null;
@@ -286,7 +298,10 @@ public final class HotelWorld {
         case 4:return clicked==context.id?1:0;
         case 5:return acknowledge?1:0;
         case 9:return apply(maps[arg],context,true,true)?1:0;
-        case 0x0e:if(arg==(scene==8?9:10)) { completed=true;g(0x20,0);g(0x30,0);g(0x88,0); }return 1;
+        case 0x0e:
+            if(scene==9 && arg==10)beginPartnerExit();
+            else if(scene==8 && arg==9) { completed=true;g(0x20,0);g(0x30,0);g(0x88,0); }
+            return 1;
         case 0x10:if(sound instanceof MusicSink)((MusicSink)sound).music(arg);return 1; // MIDI lifecycle belongs to GameAudio.
         case 0x11:cue(arg);return 1;
         case 0x13:if(context.clip==arg && !context.finished) return 1;context.clip=arg;context.frame=0;context.finished=false;if(frames[arg]==1) context.fallback=-1;return 1;
@@ -327,6 +342,24 @@ public final class HotelWorld {
             else t.frame=0;
         }
     }
+    /** The PC switches scenes at native 0e(10). Finish both visible exits here. */
+    private void beginPartnerExit() {
+        if(state.variables[63]!=0)return;
+        completed=false;state.variables[63]=1;
+        for(int i=0;i<cells.length;i++)if(cells[i]!=null && cells[i].id==97)removeCell(i%10,i/10);
+        heroes[0].active=false;heroes[0].clip=-1;
+        heroes[1].active=true;idle(heroes[1]);
+        g(0x18,0);g(0x20,87);g(0x30,0);g(0x88,1);
+        // Source controller 12 follows marker 7 when controller 13 is selected.
+        // Reuse the same doorway after the first character has cleared it.
+        place(7,0,18);
+    }
+    private boolean finishPartnerExit() {
+        Thing t=heroes[1];
+        if(scene!=9 || state.variables[63]!=1 || t.x!=0 || t.y!=288 || nativeWalking())return false;
+        t.active=false;t.clip=-1;completed=true;state.variables[63]=2;
+        g(0x20,0);g(0x30,0);g(0x88,0);return true;
+    }
     public void tick() {
         if(completed || fridgeRequested()) return;
         int previousAction=action();
@@ -336,6 +369,7 @@ public final class HotelWorld {
         for(int h=0;h<2;h++) animate(heroes[h]);
         for(int i=0;i<effects.length;i++) if(effects[i]!=null) { animate(effects[i]);if(effects[i].finished) effects[i]=null; }
         walkTick();
+        if(finishPartnerExit()) { syncSave();return; }
         // Native controller order follows allocation, not entity number or paint layer.
         int ceiling=serial,last=0;
         while(true) {
