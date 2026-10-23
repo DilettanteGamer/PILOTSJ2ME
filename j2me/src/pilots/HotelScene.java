@@ -7,8 +7,10 @@ public final class HotelScene extends ZooScene {
     public final HotelLogic animals;
     private final int[] order=new int[310];
     private long elapsed;
+    private final RefrigeratorPuzzle handles;
     public HotelScene(Scene scene,GameState state) throws IOException {
         super(scene,state,new HotelLogic(state),false);animals=(HotelLogic)logic;
+        handles=state.scene==9?new RefrigeratorPuzzle():null;
         scene.close();scene.actors=new AnimatedActor[310];refresh();
     }
     private HotelWorld.Thing thing(int slot) { return slot<300?animals.world.cells[slot]:slot<302?animals.world.heroes[slot-300]:animals.world.effects[slot-302]; }
@@ -33,7 +35,21 @@ public final class HotelScene extends ZooScene {
         }
     }
     private boolean hiddenGrid(int id) { return animals.world.scene==9 && (id>=42 && id<=49 || id>=64 && id<=95); }
-    public int layer(int slot) { HotelWorld.Thing t=thing(slot);return t==null?0:t.layer; }
+    public int layer(int slot) {
+        HotelWorld.Thing t=thing(slot);if(t==null)return 0;
+        if(animals.world.scene==9) {
+            // These are wall/door cutouts, not foreground furniture. Their floor
+            // plane is the bottom of the opaque mask; hero roots sit 16px above feet.
+            if(t.id==51 || t.id==58 || t.id==59 || t.id==60) {
+                AnimatedActor a=scene.actors[slot];
+                if(a!=null)return 58-(a.y+a.clip.offsetY+a.clip.height-16)/8;
+            }
+            // The lock and handle belong to the closed refrigerator's surface.
+            if(t.id==33 || t.id==35)return 25;
+            if(t.id==36 || t.id==37)return 22; // Switch mounted on wall mask 58.
+        }
+        return t.layer;
+    }
     public void paint(Graphics graphics,Viewport view) {
         int n=0;
         for(int i=0;i<scene.actors.length;i++) if(scene.actors[i]!=null) {
@@ -41,25 +57,28 @@ public final class HotelScene extends ZooScene {
         }
         boolean grid=false;
         for(int i=0;i<n;i++) {
-            if(!grid && layer(order[i])<24) { paintGrid(graphics,view);grid=true; }
+            if(!grid && (layer(order[i])<25 || layer(order[i])==25 && order[i]>=300)) { paintGrid(graphics,view);grid=true; }
             scene.actors[order[i]].paint(graphics,view);
+            // Paint the panel directly on its refrigerator, before equal-depth
+            // character reactions. A separate layer would cover those poses.
+            if(!grid && thing(order[i]).id==61) { paintGrid(graphics,view);grid=true; }
         }
         if(!grid)paintGrid(graphics,view);
     }
     private void paintGrid(Graphics graphics,Viewport view) {
         if(!animals.world.fridgePanelVisible())return;
-        RefrigeratorPuzzle.paint(graphics,view.screenX(434),view.screenY(195),Math.max(3,view.screenX(500)-view.screenX(434)),animals.world.fridgeMask(),-1);
+        handles.paint(graphics,view.screenX(434),view.screenY(195),Math.max(3,view.screenX(500)-view.screenX(434)),animals.world.fridgeMask(),-1);
     }
     private boolean interactive(int id) { return id==12 || id==13 || animals.world.interactive(id); }
     private int target(int x,int y) {
         int hit=-1,best=999;
         for(int i=0;i<302;i++) {
             HotelWorld.Thing t=thing(i);AnimatedActor actor=scene.actors[i];
-            if(t!=null && actor!=null && actor.clip.contains(x-actor.x,y-actor.y) && t.layer<=best) {
-                hit=interactive(t.id) && (t.id!=34 || animals.world.keyAvailable())?t.id:-1;best=t.layer;
+            if(t!=null && actor!=null && actor.clip.contains(x-actor.x,y-actor.y) && layer(i)<=best) {
+                hit=interactive(t.id) && (t.id!=34 || animals.world.keyAvailable())?t.id:-1;best=layer(i);
             }
         }
-        if(animals.world.fridgePanelVisible() && x>=434 && x<500 && y>=195 && y<261 && 24<=best)hit=101;
+        if(animals.world.fridgePanelVisible() && x>=434 && x<500 && y>=195 && y<261 && (25<best || 25==best && hit!=12 && hit!=13))hit=101;
         return hit;
     }
     public int targetAt(int x,int y) { int id=target(x,y);return id<0?0:id; }

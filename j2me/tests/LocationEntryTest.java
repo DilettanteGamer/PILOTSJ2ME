@@ -51,7 +51,19 @@ public final class LocationEntryTest {
             int progress=hotel.fridgeMask();canvas.save();detail.input(48);check(Display.getDisplay(app).getCurrent()==canvas,"detail Back");
             canvas.startLocation(2);canvas.load();canvas.tick(100);check(Display.getDisplay(app).getCurrent() instanceof FridgeCanvas,"detail save did not reopen");
             check(((HotelScene)get(canvas,"zoo")).animals.world.fridgeMask()==progress,"detail save lost handles");
-            ((FridgeCanvas)Display.getDisplay(app).getCurrent()).input(48);
+            detail=(FridgeCanvas)Display.getDisplay(app).getCurrent();
+            int solution=-1;
+            for(int moves=0;moves<512;moves++){int mask=progress;for(int i=0;i<9;i++)if((moves&(1<<i))!=0)mask=RefrigeratorPuzzle.turn(mask,i);if(mask==0){solution=moves;break;}}
+            check(solution>0,"nontrivial detail solution");
+            int selected=0;
+            for(int i=0;i<9;i++)if((solution&(1<<i))!=0){
+                while(selected/3<i/3){detail.input(56);selected+=3;}
+                while(selected%3<i%3){detail.input(54);selected++;}
+                while(selected%3>i%3){detail.input(52);selected--;}
+                detail.input(53);
+            }
+            check(Display.getDisplay(app).getCurrent()==canvas,"solved puzzle did not return to room");
+            check(!((HotelScene)get(canvas,"zoo")).animals.world.fridgeRequested(),"room stayed paused after solution");
             canvas.startLocation(6);
             // Re-enter, restore a street save, and verify its actual loader.
             GameState saved=GameState.decode(((GameState)get(canvas,"state")).encode(),7);

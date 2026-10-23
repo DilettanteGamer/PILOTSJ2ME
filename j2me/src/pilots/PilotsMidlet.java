@@ -113,7 +113,7 @@ MenuCanvas.Host {
         }
     }
 
-    private void showFridge(final HotelWorld world) {
+    private void showFridge(final HotelWorld world) throws IOException {
         this.fridge=new FridgeCanvas(world,new FridgeCanvas.Host() {
             public void back() { PilotsMidlet.this.fridge=null;PilotsMidlet.this.display.setCurrent(PilotsMidlet.this.canvas); }
             public void active(boolean active) { PilotsMidlet.this.canvas.audio.active(active && !PilotsMidlet.this.canvas.appPaused); }
