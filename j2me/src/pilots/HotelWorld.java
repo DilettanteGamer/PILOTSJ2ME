@@ -64,6 +64,37 @@ public final class HotelWorld {
             // Controller 14 initializes the room; the entrance starts at source frame zero.
             if(scene==9)tick();
         }
+        initFridge();syncSave();
+    }
+    public boolean fridgePanelVisible() { return scene==9 && find(35)!=null; }
+    public int fridgeMask() { return state.variables[61]; }
+    public boolean fridgeRequested() { return scene==9 && (state.variables[59]==2 || state.variables[59]==3); }
+    public void beginFridge() { if(!fridgeRequested())throw new IllegalStateException("No refrigerator approach");state.variables[59]=3;syncSave(); }
+    public void endFridge() { state.variables[59]=0;syncSave(); }
+    public boolean turnFridge(int index) {
+        if(scene!=9 || state.variables[59]!=3 || completed || hero()!=0 || item()!=0)return false;
+        state.variables[61]=RefrigeratorPuzzle.turn(fridgeMask(),index);mirrorFridge();cue(13);syncSave();return true;
+    }
+    private void initFridge() {
+        if(scene!=9)return;
+        if(state.variables[62]!=0x46523331) {
+            if(action()!=83)for(int h=0;h<2;h++)if(heroes[h]!=null && heroes[h].active) {
+                Thing t=heroes[h];int offset=t.layer-g(h==0?0x40:0x44),depth=58-t.y/8;
+                g(h==0?0x40:0x44,depth);t.layer=depth+offset;
+            }
+            int seed=0;for(int i=0;i<16;i++)if(at(2+i%4*2,3+i/4*2)>=80)seed|=1<<i;
+            state.variables[61]=seed==0?0:RefrigeratorPuzzle.initial(seed);state.variables[62]=0x46523331;mirrorFridge();
+        }
+    }
+    private void mirrorFridge() {
+        for(int i=0;i<16;i++) {
+            int x=2+i%4*2,y=3+i/4*2,id=64+i+(i<9 && (fridgeMask()&(1<<i))!=0?16:0);
+            Thing t=cells[y*10+x];if(t==null || t.id!=id)place(id,x,y);
+        }
+        for(int i=0;i<4;i++) { int id=(fridgeMask()==0?46:42)+i;Thing t=cells[20+2+i*2];if(t==null || t.id!=id)place(id,2+i*2,2); }
+    }
+    public boolean keyAvailable() {
+        return scene==9 && find(57)==null && find(27)==null && g(0x9c)<100 && apply(maps[95],null,true,true);
     }
     private byte[] blob(DataInputStream in) throws IOException {
         int length=in.readInt();if(length<0 || length>65536) throw new IOException("Invalid VM block");
@@ -76,7 +107,8 @@ public final class HotelWorld {
     public int hero() { return g(0x18)==1?1:0; }
     public int action() { return g(0x20); }
     public int step() { return g(0x30); }
-    public boolean busy() { return !completed && (scene==8 || action()!=0 || walkHero>=0); }
+    private boolean nativeWalking() { for(int h=0;h<2;h++) { Thing t=heroes[h];if(t!=null && t.active && t.clip>=20 && t.clip<=33 && !t.finished)return true; }return false; }
+    public boolean busy() { return !completed && (scene==8 || action()!=0 || walkHero>=0 || nativeWalking()); }
     public void sound(SoundSink value) { sound=value;if(value instanceof MusicSink && scene==9 && (completed || action()==87 || action()==84 && step()>=10))((MusicSink)value).music(2);if(value!=null) { for(int i=0;i<initialCueCount;i++) value.play(initialCues[i]);initialCueCount=0; } }
     public void cue(int cue) {
         if(sound!=null) sound.play(cue);else if(initialCueCount<initialCues.length) initialCues[initialCueCount++]=cue;
@@ -127,7 +159,7 @@ public final class HotelWorld {
         if(x<0 || x>=10 || y<0 || y>=30) throw new IllegalStateException("Map cell outside scene");
         if(heroIndex(id)>=0) {
             int h=heroIndex(id);Thing t=heroes[h];if(t==null) { t=new Thing(id,x*64,y*16,++serial);heroes[h]=t;t.layer=definitions[id].layer;execute(definitions[id].init,t); }
-            else { t.x=x*64;t.y=y*16;t.active=true;if(t.clip<0) idle(t); }
+            else { t.x=x*64;t.y=y*16;t.active=true;if(t.clip<0 || t.clip>=20 && t.clip<=33) idle(t);t.fromX=t.x;t.fromY=t.y; }
             enter(t);return;
         }
         if(id==254) { remove(x,y);return; }
@@ -136,6 +168,9 @@ public final class HotelWorld {
         Thing t=new Thing(id,x*64,y*16,++serial);t.under=under;cells[y*10+x]=t;
         Definition d=definitions[id];
         if(d!=null) { t.layer=d.layer;execute(d.init,t); }
+        // The bath controller creates the crocodile on step 1; its first rules
+        // must run before that controller advances to step 2 on the next tick.
+        if(id==27)rules(t);
     }
     boolean inGroup(int group,int id) {
         byte[] bits=group>=0 && group<groups.length?groups[group]:null;
@@ -270,6 +305,7 @@ public final class HotelWorld {
     }
     private boolean rules(Thing t) {
         routeDirection=-1;
+        if(t.id==34 && action()==6 && !keyAvailable()) { g(0x20,13);g(0x30,0); }
         if((t==heroes[0] || t==heroes[1]) && t.clip>=20 && t.clip<=33 && !t.finished) return false;
         Definition def=definitions[t.id];if(!t.active || def==null || def.type==0) return false;
         for(int i=0;i<def.rules.length;i++) {
@@ -292,7 +328,8 @@ public final class HotelWorld {
         }
     }
     public void tick() {
-        if(completed) return;
+        if(completed || fridgeRequested()) return;
+        int previousAction=action();
         if(captionTicks>0) captionTicks--;
         g(4,g(4)+1);
         for(int i=0;i<cells.length;i++) animate(cells[i]);
@@ -309,27 +346,39 @@ public final class HotelWorld {
             if(walkHero>=0 && next==heroes[walkHero]) continue;
             if(rules(next)) break;
         }
+        if(scene==9 && previousAction!=0 && action()==0 && !completed && walkHero<0) {
+            for(int h=0;h<2;h++)if(heroes[h]!=null && heroes[h].active) {
+                Thing t=heroes[h];
+                if(previousAction==83) { int depth=58-t.y/8;g(h==0?0x40:0x44,depth);t.layer=depth; }
+                if(!(t.clip>=20 && t.clip<=33 && !t.finished))idle(t);
+            }
+        }
+        if(scene==9 && state.variables[59]==1 && action()==0) state.variables[59]=previousAction==78?4:0;
+        if(scene==9 && state.variables[59]==4 && !nativeWalking() && walkHero<0)state.variables[59]=2;
         clicked=-1;acknowledge=false;
         if(action()==0 && walkHero<0) g(0x88,0);
         syncSave();
     }
     // Both characters are selectable in the room; the entrance is a cinematic.
     public boolean select(int hero) {
-        if(busy() || completed || scene!=9 || hero<0 || hero>1) return false;g(0x18,hero);syncSave();return true;
+        if(fridgeRequested() || busy() || completed || scene!=9 || hero<0 || hero>1) return false;g(0x18,hero);syncSave();return true;
     }
     public boolean hasItem(int item) { return item==0 || item>=1 && item<=3 && find(item==1?56:item==2?54:55)!=null; }
     public int item() { return g(0x1c)-2; }
     public boolean selectItem(int item) {
-        if(busy() || completed || !hasItem(item)) return false;g(0x1c,item+2);syncSave();return true;
+        if(fridgeRequested() || busy() || completed || !hasItem(item)) return false;g(0x1c,item+2);syncSave();return true;
     }
     public boolean interact(int entity) {
-        if(completed || busy()) return false;
+        if(completed || fridgeRequested() || busy()) return false;
         if(entity>=54 && entity<=56)return selectItem(entity==56?1:entity==54?2:3);
         if(heroIndex(entity)>=0) return select(heroIndex(entity));
+        if(entity==101)entity=35;
+        if(entity==34 && !keyAvailable() || entity>=64 && entity<=95)return false;
         Thing t=find(entity);if(t==null || !interactive(entity)) return false;
+        if(entity==35 && hero()==0 && item()==0)state.variables[59]=1;
         g(0x88,0);clicked=entity;rules(t);clicked=-1;g(0x88,1);syncSave();return action()!=0;
     }
-    public boolean interactive(int id) { return scene==9 && (id>=20 && id<=37 || id>=64 && id<=95); }
+    public boolean interactive(int id) { return scene==9 && (id>=20 && id<=37); }
     /** Native 24(target,2), shared by the autonomous Chief and pending approaches. */
     private int passageDirection(Thing actor,int target) {
         if(actor.clip>=20 && actor.clip<=33 && !actor.finished) return -1;
@@ -363,7 +412,7 @@ public final class HotelWorld {
         if(route.length==0) return false;
         g(0x24,1);walkHero=h;walkX=x;walkY=y;walkEntity=entity;walkRestore=restore;path=route;pathIndex=2;walkPhase=-1;syncSave();return true;
     }
-    public boolean move(int x,int y) { return !completed && !busy() && walk(hero(),Math.max(0,Math.min(576,(x+32)/64*64)),Math.max(16,Math.min(400,(y+8)/16*16)),-1,-1); }
+    public boolean move(int x,int y) { return !completed && !fridgeRequested() && !busy() && walk(hero(),Math.max(0,Math.min(576,(x+32)/64*64)),Math.max(16,Math.min(400,(y+8)/16*16)),-1,-1); }
     private void idle(Thing hero) {
         int pose=g(hero.id==13?0x10:0x14);
         hero.clip=(hero.id==13?12:16)+(pose==3?1:pose==7?2:pose==9?3:0);
@@ -381,7 +430,7 @@ public final class HotelWorld {
                 enter(h);
                 int dx=h.x-h.fromX,dy=h.y-h.fromY;
                 h.clip=walkHero==0?(dx<0?20:dx>0?21:dy<0?24+half:22+half):(dx<0?32+half:dx>0?28+half:dy<0?30+half:26+half);
-                int depth=3+(400-h.y)*3/16;g(walkHero==0?0x40:0x44,depth);h.layer=depth;
+                int depth=58-h.y/8;g(walkHero==0?0x40:0x44,depth);h.layer=depth;
                 int pose=dx<0?(half==0?7:1):dx>0?(half==0?9:3):dy<0?(half==0?7:9):(half==0?1:3);
                 g(walkHero==0?0x10:0x14,pose);g(walkHero==0?8:12,1-half);cue(0);
             }

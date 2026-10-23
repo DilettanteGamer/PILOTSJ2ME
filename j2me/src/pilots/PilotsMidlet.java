@@ -44,6 +44,7 @@ MenuCanvas.Host {
     private final Command menuCommand = new Command("\u041c\u0435\u043d\u044e", 1, 1);
     private Display display;
     private GameCanvas canvas;
+    private FridgeCanvas fridge;
     private MenuCanvas menu;
     private MenuCanvas animationMenu;
     private AnimationCatalog animationCatalog;
@@ -67,6 +68,7 @@ MenuCanvas.Host {
             this.showMenu();
         }
         this.canvas.pauseAnimation(false);
+        if(this.fridge!=null)this.canvas.audio.active(true);
     }
 
     protected void pauseApp() {
@@ -109,6 +111,14 @@ MenuCanvas.Host {
                 this.showMenu();
             }
         }
+    }
+
+    private void showFridge(final HotelWorld world) {
+        this.fridge=new FridgeCanvas(world,new FridgeCanvas.Host() {
+            public void back() { PilotsMidlet.this.fridge=null;PilotsMidlet.this.display.setCurrent(PilotsMidlet.this.canvas); }
+            public void active(boolean active) { PilotsMidlet.this.canvas.audio.active(active && !PilotsMidlet.this.canvas.appPaused); }
+        });
+        this.display.setCurrent(this.fridge);
     }
 
     private void showMenu() {
@@ -211,7 +221,8 @@ MenuCanvas.Host {
     }
 
     private void help() {
-        String location=this.canvas!=null && this.canvas.state.scene==6?
+        String location=this.canvas!=null && this.canvas.state.scene==9?
+            "Гостиница: выбирайте героев и предметы в нижней строке. Холодильник открывает отдельный экран с ручками 3×3; поворачиваются строка и столбец. ":this.canvas!=null && this.canvas.state.scene==6?
             "Улица: управляйте Коллегой. Шеф действует самостоятельно у светофора. Исследуйте урну и люк; следите за машинами и прохожим на другой стороне. ":this.canvas!=null && this.canvas.state.scene==5?
             "Сад: выбирайте братьев в нижней строке и перекрывайте мартышке пути отхода. После сцены с ключом нажмите 5. ":this.canvas!=null && this.canvas.state.scene==4?
             "Звериный двор: выбирайте предметы в нижней строке и проверяйте действия обоих героев. ":this.canvas!=null && this.canvas.state.scene==3?
@@ -453,6 +464,9 @@ MenuCanvas.Host {
                 bl = this.zoo.update(l);
                 int next=SceneFlow.next(this.state.scene,this.zoo.logic.completed());
                 if(next!=this.state.scene) { this.startLocation(next);return; }
+                if(PilotsMidlet.this.fridge==null && this.zoo instanceof HotelScene && ((HotelScene)this.zoo).animals.world.fridgeRequested()) {
+                    PilotsMidlet.this.showFridge(((HotelScene)this.zoo).animals.world);return;
+                }
             } else {
                 for (int n = 0; n < this.scene.actors.length; n++)
                     bl = this.scene.actors[n].update(l) || bl;
