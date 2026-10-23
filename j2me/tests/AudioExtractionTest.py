@@ -9,7 +9,7 @@ from extract_scene02 import records
 original=(Path(__file__).resolve().parents[2]/'PILOTS.EXE').read_bytes()
 resources,report=extract(original)
 common,_,_=records(original,1)
-for scene,section in [(2,4),(3,5),(4,6),(5,7),(6,8),(8,10),(9,11)]:
+for scene,section in [(2,4),(3,5),(4,6),(5,7),(6,8),(8,10),(9,11),(10,12)]:
     local,_,_=records(original,section)
     for record in common+local:
         if record['code']!=0x51:continue

@@ -75,7 +75,7 @@ public final class GameAudio implements Runnable,MusicSink {
     }
     private void startMusic(int location,int selected) {
         try {
-            musicStream=getClass().getResourceAsStream("/audio/0"+location+(selected==1?"":"-02")+".mid");
+            musicStream=getClass().getResourceAsStream("/audio/"+(location<10?"0":"")+location+(selected==1?"":"-02")+".mid");
             if(musicStream==null) return;
             music=Manager.createPlayer(musicStream,"audio/midi");music.realize();music.prefetch();
             volume(music,45);music.start();
@@ -92,7 +92,7 @@ public final class GameAudio implements Runnable,MusicSink {
         }
         if(slot<0) return;
         release(slot);priority[slot]=rank;age[slot]=++serial;
-        String path="/audio/0"+location+"-"+(cue<10?"0":"")+cue+".wav";
+        String path="/audio/"+(location<10?"0":"")+location+"-"+(cue<10?"0":"")+cue+".wav";
         // Some MIDP implementations cannot mix MIDI and WAV: give gameplay audio priority.
         for(int attempt=0;attempt<3;attempt++) {
             try {
