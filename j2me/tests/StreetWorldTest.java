@@ -3,7 +3,7 @@ import java.util.*;
 /** Original section 8, including the autonomous Chief and timed street controllers. */
 public final class StreetWorldTest {
     static StreetWorld world,replay;static Set<Integer> actions=new TreeSet<Integer>();
-    static List<Integer> cues=new ArrayList<Integer>();static boolean hiddenColleague;
+    static List<Integer> cues=new ArrayList<Integer>();static boolean hiddenColleague;static boolean[] jumpFrames=new boolean[17];
     static void check(boolean ok,String message){if(!ok)throw new RuntimeException(message);}
     static StreetWorld resume(StreetWorld w)throws Exception {
         w.syncSave();byte[] before=w.state.encode();GameState state=GameState.decode(before,7);
@@ -15,6 +15,11 @@ public final class StreetWorldTest {
         check(Arrays.equals(world.state.encode(),replay.state.encode()),"street replay diverged at "+world.action()+"/"+world.step());
         replay=resume(replay);
         if(!world.heroes[1].active){check(world.action()>=61 || world.completed,"Colleague vanished before sewer exit");hiddenColleague=true;}
+        if(world.action()==61 && world.step()>=21 && world.step()<=37) {
+            StreetWorld.Thing jump=null;for(StreetWorld.Thing effect:world.effects)if(effect!=null && effect.id==11 && effect.clip==79)jump=effect;
+            check(jump!=null && jump.frame==world.step()-21,"Colleague exit animation missing at sewer step "+world.step());
+            jumpFrames[jump.frame]=true;
+        }
         check(world.heroes[0].active && world.heroes[0].clip>=0,"autonomous Chief vanished");
         if(world.heroes[1].active && world.action()!=61)check(world.heroes[1].clip>=0,"Colleague lost visible pose");
     }
@@ -42,6 +47,7 @@ public final class StreetWorldTest {
         int budget=1200;while(world.at(9,18)!=25 && budget-->0)tick();check(budget>0,"source pedestrian timer did not fire");
         act(16);check(actions.contains(60) && world.at(3,22)==20,"timed crossing did not open the sewer route");
         act(20);check(world.completed && actions.contains(61) && actions.contains(62) && actions.contains(63),"sewer finale incomplete "+actions);
+        for(int frame=0;frame<jumpFrames.length;frame++)check(jumpFrames[frame],"missing jump frame "+frame);
         check(hiddenColleague && !world.heroes[1].active && world.heroes[0].x==256 && world.heroes[0].y==352,"source sewer exit positions");
         check(cues.contains(31) && cues.contains(27) && cues.contains(25) && cues.contains(26),"finale or traffic sound missing "+cues);
         check(SceneFlow.next(5,true)==6 && SceneFlow.next(6,true)==6,"fifth location transition boundary");
