@@ -111,6 +111,6 @@ public final class AudioTest {
         }
     }
     public static void main(String[] args) throws Exception {
-        resources(args);logic();worker();System.out.println("Audio: 182 WAVs, 5 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
+        resources(args);logic();worker();System.out.println("Audio: 251 WAVs, 8 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
     }
 }

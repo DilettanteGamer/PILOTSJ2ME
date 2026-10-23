@@ -27,7 +27,7 @@ from extract_street import extract as extract_street
 from extract_hotel import extract as extract_hotel
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.12.0'
+VERSION = '0.13.0'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -148,7 +148,7 @@ def package(profile, classes, sprites, output):
     jad = {k: v for k, v in manifest.items() if k != 'Manifest-Version'}
     jad.update({'MIDlet-Jar-URL': target.name, 'MIDlet-Jar-Size': str(target.stat().st_size)})
     target.with_suffix('.jad').write_bytes(('\r\n'.join(k + ': ' + v for k, v in jad.items()) + '\r\n').encode())
-    report.update(audio_wav_count=251,audio_midi_count=8,audio_event_tables='Original bytecode predicates and animal yard VM; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3,4,5,6,8,9],active_preview_scene=9,skipped_source_scene=7,hotel_sections=[10,11],version=VERSION, jar_size=target.stat().st_size,
+    report.update(audio_wav_count=251,audio_midi_count=8,audio_event_tables='Original bytecode predicates and animal yard VM; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3,4,5,6,8,9],active_preview_scene=9,skipped_source_scene=7,hotel_sections=[10,11],hotel_puzzle={'matrix':[3,3],'detail_screen':'FridgeCanvas','room_timer_paused':True,'save_cookie':'FR31'},hotel_key_gate='removed towel, crocodile withdrawn, original 100-tick window',version=VERSION, jar_size=target.stat().st_size,
                   jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(), bytecode_preserved=False,
                   compilation='ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs',
                   preverification='ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation',
@@ -229,7 +229,7 @@ def main():
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalWorldTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.GardenWorldTest',ROOT / 'tests/fixtures/garden-0.10.1-walking.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.StreetWorldTest'])
-            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.HotelWorldTest'])
+            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.HotelWorldTest',ROOT / 'tests/fixtures/hotel-0.12.0-room.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalVisibilityTest', ROOT / 'tests/fixtures/animal-0.9.3-entry.psv', ROOT / 'tests/fixtures/animal-0.9.3-pickup.psv', ROOT / 'tests/fixtures/animal-0.9.4-rhino.psv', ROOT / 'tests/fixtures/animal-0.9.5-entry.psv'])
             courtyard_fixture=Path(temporary) / 'courtyard-source-actions.csv'
             courtyard_fixture.write_text('\n'.join(','.join(map(str,row)) for row in courtyard_report['actions'])+'\n')
@@ -251,7 +251,7 @@ def main():
             run([java,'-cp',str(audio_classes)+os.pathsep+classpath,'pilots.AudioTest']+[audio_report['scenes'][str(n)]['music']['event_sha256'] for n in [2,3,4,5,6,8,9]])
             panel_classes=Path(temporary) / 'panel-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',panel_classes,
-                 ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Image.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java',ROOT / 'tests/AnimalRenderTest.java',ROOT / 'tests/GardenRenderTest.java',ROOT / 'tests/StreetRenderTest.java',ROOT / 'tests/HotelRenderTest.java',ROOT / 'tests/AnimalVisibilityTest.java',ROOT / 'tests/AnimalSequenceRenderTest.java',ROOT / 'tests/RGBCompatibilityTest.java',ROOT / 'tests/RenderPerformanceTest.java',ROOT / 'tests/AnimationDecodeTest.java',ROOT / 'tests/ScrollRenderTest.java'])
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Font.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Image.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Canvas.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Displayable.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Command.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java',ROOT / 'tests/AnimalRenderTest.java',ROOT / 'tests/GardenRenderTest.java',ROOT / 'tests/StreetRenderTest.java',ROOT / 'tests/HotelRenderTest.java',ROOT / 'tests/AnimalVisibilityTest.java',ROOT / 'tests/AnimalSequenceRenderTest.java',ROOT / 'tests/RGBCompatibilityTest.java',ROOT / 'tests/RenderPerformanceTest.java',ROOT / 'tests/AnimationDecodeTest.java',ROOT / 'tests/ScrollRenderTest.java'])
             frame_hashes=Path(temporary) / ('frame-hashes-'+profile+'.properties')
             with zipfile.ZipFile(target) as archive:
                 frame_hashes.write_text(''.join(name+'='+hashlib.sha256(decode_animation(archive.read(name))[777:]).hexdigest()+'\n' for name in archive.namelist() if name.endswith('.anm')))

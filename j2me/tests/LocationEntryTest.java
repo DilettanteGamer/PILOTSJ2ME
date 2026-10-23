@@ -42,6 +42,16 @@ public final class LocationEntryTest {
             app.choose(12);check(((GameState)get(canvas,"state")).scene==8,"cinematic menu");
             app.choose(13);check(((GameState)get(canvas,"state")).scene==9,"hotel interior menu");
             canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==9,"interior save");
+            HotelWorld hotel=((HotelScene)get(canvas,"zoo")).animals.world;
+            for(int i=0;i<180;i++)canvas.tick(100);check(hotel.interact(101),"fridge approach");
+            for(int i=0;i<180 && !(Display.getDisplay(app).getCurrent() instanceof FridgeCanvas);i++)canvas.tick(100);
+            check(Display.getDisplay(app).getCurrent() instanceof FridgeCanvas,"detail canvas was not displayed");
+            FridgeCanvas detail=(FridgeCanvas)Display.getDisplay(app).getCurrent();int before=hotel.fridgeMask();
+            detail.input(54);detail.input(56);detail.input(53);check(hotel.fridgeMask()==RefrigeratorPuzzle.turn(before,4),"detail keyboard selection");
+            int progress=hotel.fridgeMask();canvas.save();detail.input(48);check(Display.getDisplay(app).getCurrent()==canvas,"detail Back");
+            canvas.startLocation(2);canvas.load();canvas.tick(100);check(Display.getDisplay(app).getCurrent() instanceof FridgeCanvas,"detail save did not reopen");
+            check(((HotelScene)get(canvas,"zoo")).animals.world.fridgeMask()==progress,"detail save lost handles");
+            ((FridgeCanvas)Display.getDisplay(app).getCurrent()).input(48);
             canvas.startLocation(6);
             // Re-enter, restore a street save, and verify its actual loader.
             GameState saved=GameState.decode(((GameState)get(canvas,"state")).encode(),7);
@@ -56,6 +66,6 @@ public final class LocationEntryTest {
             catch(IOException expected) {}
             check(get(canvas,"zoo")==original,"invalid scene damaged active scene");
         } finally { canvas.shutdown(); }
-        System.out.println("LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return and invalid catalog ID passed");
+        System.out.println("LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge Canvas controls/RMS restore and invalid catalog ID passed");
     }
 }

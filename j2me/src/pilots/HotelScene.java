@@ -15,7 +15,7 @@ public final class HotelScene extends ZooScene {
     private void refresh() throws IOException {
         for(int i=0;i<scene.actors.length;i++) {
             HotelWorld.Thing t=thing(i);AnimatedActor actor=scene.actors[i];
-            if(t==null || !t.active || t.clip<0 || t.y>=417) {
+            if(t==null || !t.active || t.clip<0 || t.y>=417 || hiddenGrid(t.id)) {
                 if(actor!=null) { actor.close();scene.actors[i]=null; }continue;
             }
             int id=t.clip<46?20000+t.clip:t.clip;
@@ -32,27 +32,40 @@ public final class HotelScene extends ZooScene {
             actor.playing=false;actor.visible=true;
         }
     }
+    private boolean hiddenGrid(int id) { return animals.world.scene==9 && (id>=42 && id<=49 || id>=64 && id<=95); }
     public int layer(int slot) { HotelWorld.Thing t=thing(slot);return t==null?0:t.layer; }
     public void paint(Graphics graphics,Viewport view) {
         int n=0;
         for(int i=0;i<scene.actors.length;i++) if(scene.actors[i]!=null) {
             int j=n;while(j>0 && layer(order[j-1])<layer(i)) { order[j]=order[j-1];j--; }order[j]=i;n++;
         }
-        for(int i=0;i<n;i++) scene.actors[order[i]].paint(graphics,view);
+        boolean grid=false;
+        for(int i=0;i<n;i++) {
+            if(!grid && layer(order[i])<24) { paintGrid(graphics,view);grid=true; }
+            scene.actors[order[i]].paint(graphics,view);
+        }
+        if(!grid)paintGrid(graphics,view);
+    }
+    private void paintGrid(Graphics graphics,Viewport view) {
+        if(!animals.world.fridgePanelVisible())return;
+        RefrigeratorPuzzle.paint(graphics,view.screenX(434),view.screenY(195),Math.max(3,view.screenX(500)-view.screenX(434)),animals.world.fridgeMask(),-1);
     }
     private boolean interactive(int id) { return id==12 || id==13 || animals.world.interactive(id); }
     private int target(int x,int y) {
         int hit=-1,best=999;
         for(int i=0;i<302;i++) {
             HotelWorld.Thing t=thing(i);AnimatedActor actor=scene.actors[i];
-            if(t!=null && interactive(t.id) && actor!=null && actor.clip.contains(x-actor.x,y-actor.y) && t.layer<=best) { hit=t.id;best=t.layer; }
+            if(t!=null && actor!=null && actor.clip.contains(x-actor.x,y-actor.y) && t.layer<=best) {
+                hit=interactive(t.id) && (t.id!=34 || animals.world.keyAvailable())?t.id:-1;best=t.layer;
+            }
         }
+        if(animals.world.fridgePanelVisible() && x>=434 && x<500 && y>=195 && y<261 && 24<=best)hit=101;
         return hit;
     }
     public int targetAt(int x,int y) { int id=target(x,y);return id<0?0:id; }
     public String hoverText(int x,int y) {
         int id=target(x,y);
-        return id==13?"Шеф":id==12?"Коллега":id==20||id==21?"Выход":id==22?"Штора":id==23||id==24?"Куча":id==25?"Отвёртка":id==26?"Баллончик":id==27?"Злобное чудище":id==28||id==29?"Ванная":id==30?"Чайник":id==31||id==32?"Сахарница":id==33?"Замок":id==34?"Ключ":id==35?"Ручка":id==36||id==37?"Включатель":id>=64&&id<=95?"Переключатель":null;
+        return id==101?"Холодильник":id==13?"Шеф":id==12?"Коллега":id==20||id==21?"Выход":id==22?"Штора":id==23||id==24?"Куча":id==25?"Отвёртка":id==26?"Баллончик":id==27?"Злобное чудище":id==28||id==29?"Ванная":id==30?"Чайник":id==31||id==32?"Сахарница":id==33?"Замок":id==34?"Ключ":id==35?"Ручка":id==36||id==37?"Включатель":id>=64&&id<=95?"Переключатель":null;
     }
     public boolean request(int x,int y) throws IOException {
         if(animals.world.busy()) return false;

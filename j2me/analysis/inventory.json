@@ -2598,7 +2598,7 @@
     },
     {
       "profile": "128x128",
-      "classes": 54,
+      "classes": 58,
       "scenes": [
         2,
         3,
@@ -2700,7 +2700,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.12.0",
+        "MIDlet-Version": "0.13.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2709,10 +2709,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "70e5c5229010dd1db8d26187e6360e027f9ba129d1816d6728e1f58dafe337a6",
-      "jar_bytes": 8015856,
-      "entry_count": 1087,
-      "uncompressed_bytes": 51999809,
+      "sha256": "cf32e48e85099787f6e944931b421cf5f8e52f3b7764023f61ffd45c5a22b006",
+      "jar_bytes": 8022162,
+      "entry_count": 1091,
+      "uncompressed_bytes": 52011245,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -2720,7 +2720,7 @@
         ".anm": 738,
         ".bar": 7,
         ".bin": 1,
-        ".class": 54,
+        ".class": 58,
         ".events": 7,
         ".hot": 3,
         ".mid": 8,
@@ -2901,6 +2901,32 @@
           "stackmap_utf8_present": true,
           "sha256": "abf9de1dff7fadba86402d421d16ed40bfa155d4d9f70314720aba69b7574139"
         },
+        "pilots/FridgeCanvas$Host.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": false,
+          "sha256": "a2dcf6a58e8a72ce8215a0552490d0d7e6d85631280bc49fb27bbf9728eee911"
+        },
+        "pilots/FridgeCanvas.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/IllegalArgumentException",
+            "java/lang/Math",
+            "java/lang/String",
+            "javax/microedition/lcdui/Canvas",
+            "javax/microedition/lcdui/Command",
+            "javax/microedition/lcdui/CommandListener",
+            "javax/microedition/lcdui/Displayable",
+            "javax/microedition/lcdui/Font",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "06f411b5f1c4ec1d80f9e50954d378a10e5c38aa7a850677a137ed43138a977e"
+        },
         "pilots/GameAudio.class": {
           "minor": 3,
           "major": 45,
@@ -3026,7 +3052,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "2941ece1b5d1378109859b1404c39032dd20e96806d628106436a86102384ef6"
+          "sha256": "439b0bad5511091ddf0fc3bb7b4ef3f37e90891b0ec58f99c3330cec68cfc569"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -3067,7 +3093,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "27c93732b675651fd873b087698d828c35bdff838eae2ee640468be92eda6534"
+          "sha256": "0c9d2d06649b5980311615db84d7d5a22c2b043a68f2db3a3b358b7632e58f27"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -3177,9 +3203,20 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": false,
-          "sha256": "f9e3d288745afa73a19c6dd08b442857bb3cf974c75b8def175d759016d55ad7"
+          "sha256": "599b198a3ea4fb80523466063347b78b7573187b7f07520cd1236a35a10cd7bb"
         },
         "pilots/PilotsMidlet$2.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object",
+            "javax/microedition/lcdui/Display",
+            "javax/microedition/lcdui/Displayable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "8c1c9c0f6ca8da629252bb8418d485bd8f1f5774b3e58184aac20dbd4e1d71ec"
+        },
+        "pilots/PilotsMidlet$3.class": {
           "minor": 3,
           "major": 45,
           "api_references": [
@@ -3191,9 +3228,9 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0ce6995e24ef1c2c595bd4ab0922b655de834816f63074fd54850907ef0c51ae"
+          "sha256": "6dd90b3f46e9bc54bdb2ab7142c5d629d8d9c09b3368740f78a43b1e75a1c82e"
         },
-        "pilots/PilotsMidlet$3.class": {
+        "pilots/PilotsMidlet$4.class": {
           "minor": 3,
           "major": 45,
           "api_references": [
@@ -3202,7 +3239,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0224145fc11be63b3a9f0f6589859b9eda2aa51f0cfb3c4ae6307d69068a7ef8"
+          "sha256": "cc8b9985abcb4d71578852f7ba1f8a4a1caf7c1b25866d1d0ac0c285dc259bfa"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -3236,7 +3273,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d8a74a52415deb8e68e9ae98dea7c36efd19632151111cd36468c79dafe5d363"
+          "sha256": "466b21cf499df3fcb0d089dd785ba48f82b815ced62c2c80c409751ee4b2019c"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3259,7 +3296,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ae0dd33b9ae8265f45cf2a1f3d6b1074f0c33ab6d83d86ade46af61845041bb3"
+          "sha256": "1570bb2d38c0514078282eaf6c0aed2e9ff2237ba5ae4bb6e5fd260515c21f15"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -3271,6 +3308,18 @@
           ],
           "stackmap_utf8_present": true,
           "sha256": "34cae326c040c12768963ecdcce68e312dc01efda9817563b7cb22d841cc7301"
+        },
+        "pilots/RefrigeratorPuzzle.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/IllegalArgumentException",
+            "java/lang/Math",
+            "java/lang/Object",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "2a91246a0ec3820b22ce6e5d36b566e0b949ede72157781509ddb2c7c63888e3"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -8131,7 +8180,7 @@
     },
     {
       "profile": "128x160",
-      "classes": 54,
+      "classes": 58,
       "scenes": [
         2,
         3,
@@ -8233,7 +8282,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.12.0",
+        "MIDlet-Version": "0.13.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -8242,10 +8291,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "7da4a15800720c6c4acac39adaf275fc3b001411fd12641a5eee6b2f2cff5efe",
-      "jar_bytes": 8015854,
-      "entry_count": 1087,
-      "uncompressed_bytes": 51999809,
+      "sha256": "a776b333296ef97059428055107b8d48ade9ac6850c6d6b3535f464d2908db74",
+      "jar_bytes": 8022160,
+      "entry_count": 1091,
+      "uncompressed_bytes": 52011245,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -8253,7 +8302,7 @@
         ".anm": 738,
         ".bar": 7,
         ".bin": 1,
-        ".class": 54,
+        ".class": 58,
         ".events": 7,
         ".hot": 3,
         ".mid": 8,
@@ -8434,6 +8483,32 @@
           "stackmap_utf8_present": true,
           "sha256": "abf9de1dff7fadba86402d421d16ed40bfa155d4d9f70314720aba69b7574139"
         },
+        "pilots/FridgeCanvas$Host.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": false,
+          "sha256": "a2dcf6a58e8a72ce8215a0552490d0d7e6d85631280bc49fb27bbf9728eee911"
+        },
+        "pilots/FridgeCanvas.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/IllegalArgumentException",
+            "java/lang/Math",
+            "java/lang/String",
+            "javax/microedition/lcdui/Canvas",
+            "javax/microedition/lcdui/Command",
+            "javax/microedition/lcdui/CommandListener",
+            "javax/microedition/lcdui/Displayable",
+            "javax/microedition/lcdui/Font",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "06f411b5f1c4ec1d80f9e50954d378a10e5c38aa7a850677a137ed43138a977e"
+        },
         "pilots/GameAudio.class": {
           "minor": 3,
           "major": 45,
@@ -8559,7 +8634,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "2941ece1b5d1378109859b1404c39032dd20e96806d628106436a86102384ef6"
+          "sha256": "439b0bad5511091ddf0fc3bb7b4ef3f37e90891b0ec58f99c3330cec68cfc569"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -8600,7 +8675,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "27c93732b675651fd873b087698d828c35bdff838eae2ee640468be92eda6534"
+          "sha256": "0c9d2d06649b5980311615db84d7d5a22c2b043a68f2db3a3b358b7632e58f27"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -8710,9 +8785,20 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": false,
-          "sha256": "f9e3d288745afa73a19c6dd08b442857bb3cf974c75b8def175d759016d55ad7"
+          "sha256": "599b198a3ea4fb80523466063347b78b7573187b7f07520cd1236a35a10cd7bb"
         },
         "pilots/PilotsMidlet$2.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object",
+            "javax/microedition/lcdui/Display",
+            "javax/microedition/lcdui/Displayable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "8c1c9c0f6ca8da629252bb8418d485bd8f1f5774b3e58184aac20dbd4e1d71ec"
+        },
+        "pilots/PilotsMidlet$3.class": {
           "minor": 3,
           "major": 45,
           "api_references": [
@@ -8724,9 +8810,9 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0ce6995e24ef1c2c595bd4ab0922b655de834816f63074fd54850907ef0c51ae"
+          "sha256": "6dd90b3f46e9bc54bdb2ab7142c5d629d8d9c09b3368740f78a43b1e75a1c82e"
         },
-        "pilots/PilotsMidlet$3.class": {
+        "pilots/PilotsMidlet$4.class": {
           "minor": 3,
           "major": 45,
           "api_references": [
@@ -8735,7 +8821,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0224145fc11be63b3a9f0f6589859b9eda2aa51f0cfb3c4ae6307d69068a7ef8"
+          "sha256": "cc8b9985abcb4d71578852f7ba1f8a4a1caf7c1b25866d1d0ac0c285dc259bfa"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -8769,7 +8855,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d8a74a52415deb8e68e9ae98dea7c36efd19632151111cd36468c79dafe5d363"
+          "sha256": "466b21cf499df3fcb0d089dd785ba48f82b815ced62c2c80c409751ee4b2019c"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -8792,7 +8878,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ae0dd33b9ae8265f45cf2a1f3d6b1074f0c33ab6d83d86ade46af61845041bb3"
+          "sha256": "1570bb2d38c0514078282eaf6c0aed2e9ff2237ba5ae4bb6e5fd260515c21f15"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -8804,6 +8890,18 @@
           ],
           "stackmap_utf8_present": true,
           "sha256": "34cae326c040c12768963ecdcce68e312dc01efda9817563b7cb22d841cc7301"
+        },
+        "pilots/RefrigeratorPuzzle.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/IllegalArgumentException",
+            "java/lang/Math",
+            "java/lang/Object",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "2a91246a0ec3820b22ce6e5d36b566e0b949ede72157781509ddb2c7c63888e3"
         },
         "pilots/Scene.class": {
           "minor": 3,
@@ -13664,7 +13762,7 @@
     },
     {
       "profile": "240x320",
-      "classes": 54,
+      "classes": 58,
       "scenes": [
         2,
         3,
@@ -13766,7 +13864,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.12.0",
+        "MIDlet-Version": "0.13.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -13775,10 +13873,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "eee1d8c53d19d73f5131e6d4bed94dc8050a2086c8b06e3edb19a868c349b821",
-      "jar_bytes": 8489651,
-      "entry_count": 1087,
-      "uncompressed_bytes": 53402050,
+      "sha256": "6ddbc9184a5d401d3b9e909d17b5da3e9e7c419d010974da44953b8921684ae6",
+      "jar_bytes": 8495957,
+      "entry_count": 1091,
+      "uncompressed_bytes": 53413486,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -13786,7 +13884,7 @@
         ".anm": 738,
         ".bar": 7,
         ".bin": 1,
-        ".class": 54,
+        ".class": 58,
         ".events": 7,
         ".hot": 3,
         ".mid": 8,
@@ -13967,6 +14065,32 @@
           "stackmap_utf8_present": true,
           "sha256": "abf9de1dff7fadba86402d421d16ed40bfa155d4d9f70314720aba69b7574139"
         },
+        "pilots/FridgeCanvas$Host.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object"
+          ],
+          "stackmap_utf8_present": false,
+          "sha256": "a2dcf6a58e8a72ce8215a0552490d0d7e6d85631280bc49fb27bbf9728eee911"
+        },
+        "pilots/FridgeCanvas.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/IllegalArgumentException",
+            "java/lang/Math",
+            "java/lang/String",
+            "javax/microedition/lcdui/Canvas",
+            "javax/microedition/lcdui/Command",
+            "javax/microedition/lcdui/CommandListener",
+            "javax/microedition/lcdui/Displayable",
+            "javax/microedition/lcdui/Font",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "06f411b5f1c4ec1d80f9e50954d378a10e5c38aa7a850677a137ed43138a977e"
+        },
         "pilots/GameAudio.class": {
           "minor": 3,
           "major": 45,
@@ -14092,7 +14216,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "2941ece1b5d1378109859b1404c39032dd20e96806d628106436a86102384ef6"
+          "sha256": "439b0bad5511091ddf0fc3bb7b4ef3f37e90891b0ec58f99c3330cec68cfc569"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -14133,7 +14257,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "27c93732b675651fd873b087698d828c35bdff838eae2ee640468be92eda6534"
+          "sha256": "0c9d2d06649b5980311615db84d7d5a22c2b043a68f2db3a3b358b7632e58f27"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -14243,9 +14367,20 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": false,
-          "sha256": "f9e3d288745afa73a19c6dd08b442857bb3cf974c75b8def175d759016d55ad7"
+          "sha256": "599b198a3ea4fb80523466063347b78b7573187b7f07520cd1236a35a10cd7bb"
         },
         "pilots/PilotsMidlet$2.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Object",
+            "javax/microedition/lcdui/Display",
+            "javax/microedition/lcdui/Displayable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "8c1c9c0f6ca8da629252bb8418d485bd8f1f5774b3e58184aac20dbd4e1d71ec"
+        },
+        "pilots/PilotsMidlet$3.class": {
           "minor": 3,
           "major": 45,
           "api_references": [
@@ -14257,9 +14392,9 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0ce6995e24ef1c2c595bd4ab0922b655de834816f63074fd54850907ef0c51ae"
+          "sha256": "6dd90b3f46e9bc54bdb2ab7142c5d629d8d9c09b3368740f78a43b1e75a1c82e"
         },
-        "pilots/PilotsMidlet$3.class": {
+        "pilots/PilotsMidlet$4.class": {
           "minor": 3,
           "major": 45,
           "api_references": [
@@ -14268,7 +14403,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0224145fc11be63b3a9f0f6589859b9eda2aa51f0cfb3c4ae6307d69068a7ef8"
+          "sha256": "cc8b9985abcb4d71578852f7ba1f8a4a1caf7c1b25866d1d0ac0c285dc259bfa"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -14302,7 +14437,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d8a74a52415deb8e68e9ae98dea7c36efd19632151111cd36468c79dafe5d363"
+          "sha256": "466b21cf499df3fcb0d089dd785ba48f82b815ced62c2c80c409751ee4b2019c"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -14325,7 +14460,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ae0dd33b9ae8265f45cf2a1f3d6b1074f0c33ab6d83d86ade46af61845041bb3"
+          "sha256": "1570bb2d38c0514078282eaf6c0aed2e9ff2237ba5ae4bb6e5fd260515c21f15"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -14337,6 +14472,18 @@
           ],
           "stackmap_utf8_present": true,
           "sha256": "34cae326c040c12768963ecdcce68e312dc01efda9817563b7cb22d841cc7301"
+        },
+        "pilots/RefrigeratorPuzzle.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/IllegalArgumentException",
+            "java/lang/Math",
+            "java/lang/Object",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "2a91246a0ec3820b22ce6e5d36b566e0b949ede72157781509ddb2c7c63888e3"
         },
         "pilots/Scene.class": {
           "minor": 3,
