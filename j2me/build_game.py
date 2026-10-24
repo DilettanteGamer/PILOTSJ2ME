@@ -25,9 +25,10 @@ from extract_animals import extract as extract_animals
 from extract_garden import extract as extract_garden
 from extract_street import extract as extract_street
 from extract_hotel import extract as extract_hotel
+from extract_basement_platform import extract as extract_basement_platform
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.18.0'
+VERSION = '0.19.0'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -153,7 +154,7 @@ def package(profile, classes, sprites, output):
     jad = {k: v for k, v in manifest.items() if k != 'Manifest-Version'}
     jad.update({'MIDlet-Jar-URL': target.name, 'MIDlet-Jar-Size': str(target.stat().st_size)})
     target.with_suffix('.jad').write_bytes(('\r\n'.join(k + ': ' + v for k, v in jad.items()) + '\r\n').encode())
-    report.update(audio_wav_count=sum(n.endswith('.wav') for n in sprites),audio_midi_count=sum(n.endswith('.mid') for n in sprites),audio_event_tables='Original bytecode predicates and animal yard VM; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3,4,5,6,8,9,10,11,12,13,15],active_preview_scene=15,original_basement_section=17,basement_preview_count=35,original_switchboard_section=15,switchboard_preview_count=40,switchboard_puzzle={'detail_screen':'SwitchboardCanvas','original_wire_count':27,'original_states':[2,4],'automatic_return':True,'original_scripts':True},skipped_source_scene=7,hotel_sections=[10,11],original_bathroom_section=14,bathroom_preview_count=27,original_facade_section=13,facade_preview_count=19,hotel_puzzle={'matrix':[3,3],'detail_screen':'FridgeCanvas','room_timer_paused':True,'save_cookie':'FR31','original_handle_sprites':[116,132],'automatic_return':True,'opening_door_matrix':[3,3]},hotel_key_gate='removed towel, crocodile withdrawn, original 100-tick window',version=VERSION, jar_size=target.stat().st_size,
+    report.update(audio_wav_count=sum(n.endswith('.wav') for n in sprites),audio_midi_count=sum(n.endswith('.mid') for n in sprites),audio_event_tables='Original bytecode predicates and animal yard VM; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3,4,5,6,8,9,10,11,12,13,15],active_preview_scene=15,original_basement_section=17,basement_preview_count=35,basement_detail_screen="BasementCanvas",basement_controls="2/8 lanes, 4/6 move, auto jump, 5 gun on safe lane, 0 back",original_switchboard_section=15,switchboard_preview_count=40,switchboard_puzzle={'detail_screen':'SwitchboardCanvas','original_wire_count':27,'original_states':[2,4],'automatic_return':True,'original_scripts':True},skipped_source_scene=7,hotel_sections=[10,11],original_bathroom_section=14,bathroom_preview_count=27,original_facade_section=13,facade_preview_count=19,hotel_puzzle={'matrix':[3,3],'detail_screen':'FridgeCanvas','room_timer_paused':True,'save_cookie':'FR31','original_handle_sprites':[116,132],'automatic_return':True,'opening_door_matrix':[3,3]},hotel_key_gate='removed towel, crocodile withdrawn, original 100-tick window',version=VERSION, jar_size=target.stat().st_size,
                   jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(), bytecode_preserved=False,
                   compilation='ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs',
                   preverification='ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation',
@@ -212,6 +213,9 @@ def main():
     (ROOT / 'analysis/street-original-rules.json').write_text(json.dumps(street_report,ensure_ascii=False,indent=2)+'\n')
     (ROOT / 'analysis/garden-original-rules.json').write_text(json.dumps(garden_report,ensure_ascii=False,indent=2)+'\n')
     (ROOT / 'analysis/animals-original-rules.json').write_text(json.dumps(animal_report,ensure_ascii=False,indent=2)+'\n')
+    platform_resources,platform_report=extract_basement_platform((ROOT.parent / 'PILOTS.EXE').read_bytes())
+    sprites.update(platform_resources)
+    (ROOT / 'analysis/basement-platform-assets.json').write_text(json.dumps(platform_report,ensure_ascii=False,indent=2)+'\n')
     audio_resources,audio_report=extract_audio((ROOT.parent / 'PILOTS.EXE').read_bytes())
     sprites.update(audio_resources)
     (ROOT / 'analysis/audio-original-cues.json').write_text(json.dumps(audio_report,ensure_ascii=False,indent=2)+'\n')
@@ -240,7 +244,7 @@ def main():
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.FacadeWorldTest',ROOT / 'tests/fixtures/facade-0.15.0-intro-gap.psv',ROOT / 'tests/fixtures/facade-0.15.0-lift-hidden.psv',ROOT / 'tests/fixtures/facade-0.15.1-lift-walking.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BathroomWorldTest',ROOT / 'tests/fixtures/bathroom-0.16.1-sink-close.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.SwitchboardWorldTest',ROOT / 'tests/fixtures/switchboard-0.17.0-lift-covered.psv',ROOT / 'tests/fixtures/switchboard-0.17.0-lift-duplicate.psv'])
-            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BasementWorldTest',ROOT / 'tests/fixtures/basement-route.csv'])
+            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BasementWorldTest',ROOT / 'tests/fixtures/basement-0.18.0-shot.psv',ROOT / 'tests/fixtures/basement-0.18.0-exit.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalVisibilityTest', ROOT / 'tests/fixtures/animal-0.9.3-entry.psv', ROOT / 'tests/fixtures/animal-0.9.3-pickup.psv', ROOT / 'tests/fixtures/animal-0.9.4-rhino.psv', ROOT / 'tests/fixtures/animal-0.9.5-entry.psv'])
             courtyard_fixture=Path(temporary) / 'courtyard-source-actions.csv'
             courtyard_fixture.write_text('\n'.join(','.join(map(str,row)) for row in courtyard_report['actions'])+'\n')
@@ -252,7 +256,7 @@ def main():
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Command.java',
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Displayable.java',
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Canvas.java',
-                 ROOT / 'tests/stubs/javax/microedition/lcdui/Display.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Font.java',ROOT / 'tests/LocationEntryTest.java'])
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Display.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Font.java',ROOT / 'tests/stubs/javax/microedition/media/MediaException.java',ROOT / 'tests/stubs/javax/microedition/media/Manager.java',ROOT / 'tests/LocationEntryTest.java'])
             entry_width,entry_height=profile.split('x')
             run([java,'-Dpilots.test.width='+entry_width,'-Dpilots.test.height='+entry_height,
                  '-cp',str(entry_classes)+os.pathsep+classpath,'pilots.LocationEntryTest'])
@@ -315,6 +319,7 @@ def main():
         if args.profile == 'all':
             run([sys.executable, ROOT / 'tests/BuildProfilesTest.py', output])
             run([sys.executable, ROOT / 'tests/BasementAssetsTest.py', output])
+            run([sys.executable, ROOT / 'tests/BasementPlatformAssetsTest.py', output])
 
 
 if __name__ == '__main__':

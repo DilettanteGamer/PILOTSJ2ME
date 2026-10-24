@@ -29,6 +29,9 @@ public final class HotelWorld {
     private SoundSink sound;
     private final int[] initialCues=new int[16];private int initialCueCount;
     private final int[] boardGlobals=new int[32];
+    private final int[] basementData=new int[24];
+    public final BasementGame basement=new BasementGame(this,basementData);
+    private boolean basementExtended;
     private int clickX,clickY,clickSerial=-1,clickMap=254;
     private boolean clickPending,clickActive;
     private int serial,clicked=-1,continuing,captionTicks;
@@ -97,6 +100,7 @@ public final class HotelWorld {
             if(lift!=null && lift.id==46 && lift.under==58)lift.under=254;
             if(action()==99 && lift!=null && lift.id==58)removeCell(7,25);
         }
+        initBasement();
         initFridge();
         // Reconcile snapshots written before map replacement retired hero 12.
         if(scene==9 && !completed && state.variables[63]==0 && (action()==84 || action()==87) && find(97)!=null) {
@@ -106,6 +110,37 @@ public final class HotelWorld {
         if(scene==9 && completed && state.variables[63]==0 && heroes[1].active)beginPartnerExit();
         clearSinkPassage();
         syncSave();
+    }
+    private void initBasement() {
+        if(scene!=15 || basementExtended)return;
+        basement.initialize();basementExtended=true;
+        // Keep the gun and Colleague's approach; retire an old interrupted shot/fall.
+        if(completed || find(17)!=null){basementData[BasementGame.SOLVED]=1;return;}
+        for(int i=0;i<cells.length;i++)if(cells[i]!=null) {
+            int id=cells[i].id;
+            if(id>=16 && id<=20 || id==22 || id==24 || id==30 || id==34)cells[i]=null;
+        }
+        place(16,6,24);place(24,6,22);Thing box=find(24);box.clip=50;box.frame=0;box.finished=false;box.fallback=-1;
+        Thing servant=find(36);if(servant!=null){servant.clip=86;servant.frame=0;servant.finished=false;servant.fallback=-1;}
+        int[] offsets={0x1e1b58,0x1e1b60,0x1e1b6c,0x1e1b88,0x1e1b8c,0x1e1b90,0x1e1b94,0x1e1bac,0x1e1bc0,0x1e1bc4};
+        for(int i=0;i<offsets.length;i++)g(offsets[i],0);
+        g(0x1e1ba8,0);g(0x1e1ba4,1);g(0x1e1b9c,0);g(0x1e1bb4,0);g(0x1e1bbc,0);g(0x1e1bc8,0);g(0x1e1bcc,0);
+        if(find(12)==null && find(13)==null)g(0x88,0);
+    }
+    public boolean basementRequested(){return scene==15 && basement.requested();}
+    void basementReturn(){if(scene!=15)return;if(!basement.solved())mirrorBasementCrates();g(0x1c,2);clickPending=clickActive=false;g(0x88,0);}
+    private void mirrorBasementCrates(){
+        for(int i=0;i<cells.length;i++)if(cells[i]!=null && cells[i].id==24)cells[i]=null;
+        for(int c=0;c<4;c++)for(int row=0;row<basement.crates(c);row++){
+            place(24,6+c,22-row*3);Thing box=cells[(22-row*3)*10+6+c];box.clip=50;box.frame=0;box.finished=false;box.fallback=-1;
+        }
+    }
+    void finishBasement(){
+        // Hand back to source controller 17: celebration, ladder and both exits.
+        for(int i=0;i<cells.length;i++)if(cells[i]!=null){int id=cells[i].id;if(id>=16&&id<=20 || id==22 || id==24 || id==30 || id==34)cells[i]=null;}
+        mirrorBasementCrates();
+        g(0x1e1b58,0);g(0x1e1b60,0);g(0x1e1ba8,4);g(0x1e1bb0,0);g(0x1c,2);g(0x88,1);
+        place(17,6,9);syncSave();
     }
     public boolean boardRequested() { return scene==13 && (state.variables[59]==2 || state.variables[59]==3); }
     public void beginBoard() { if(!boardRequested())throw new IllegalStateException("No switchboard approach");state.variables[59]=3;syncSave(); }
@@ -173,7 +208,7 @@ public final class HotelWorld {
     public int action() { return g(0x20); }
     public int step() { return g(0x30); }
     private boolean nativeWalking() { for(int h=0;h<2;h++) { Thing t=heroes[h];if(t!=null && t.active && t.clip>=20 && t.clip<=33 && !t.finished)return true; }return false; }
-    public boolean busy() { if(scene==15)return !completed&&g(0x88)==1;return !completed && (scene==8 || scene==13 && g(0x88)!=0 && (find(6)!=null || find(7)!=null) || scene==12 && g(0x1e1b60)==1 || action()!=0 || walkHero>=0 || nativeWalking()); }
+    public boolean busy() { if(scene==15)return !completed&&(g(0x88)==1 || basementRequested() || basement.solved());return !completed && (scene==8 || scene==13 && g(0x88)!=0 && (find(6)!=null || find(7)!=null) || scene==12 && g(0x1e1b60)==1 || action()!=0 || walkHero>=0 || nativeWalking()); }
     public void sound(SoundSink value) { sound=value;if(value instanceof MusicSink && scene==9 && (completed || action()==87 || action()==84 && step()>=10))((MusicSink)value).music(2);if(value!=null) { for(int i=0;i<initialCueCount;i++) value.play(initialCues[i]);initialCueCount=0; } }
     public void cue(int cue) {
         if(sound!=null) sound.play(cue);else if(initialCueCount<initialCues.length) initialCues[initialCueCount++]=cue;
@@ -419,6 +454,8 @@ public final class HotelWorld {
     private boolean ledgeRecoil() { return ledgeReaction() && g(4)>=5; }
     private boolean rules(Thing t) {
         routeDirection=-1;
+        // The phone crate segment owns these actors. Source 17 still owns the exit.
+        if(scene==15 && (t.id==24 || t.id==36 && !basement.solved()))return false;
         if(scene==15 && t.waitTicks>0)return false;
         if(scene==9 && t.id==34 && action()==6 && !keyAvailable()) { g(0x20,13);g(0x30,0); }
         if((t==heroes[0] || t==heroes[1]) && t.clip>=20 && t.clip<=33 && !t.finished && !ledgeRecoil()) return false;
@@ -464,7 +501,7 @@ public final class HotelWorld {
         g(0x20,0);g(0x30,0);g(0x88,0);return true;
     }
     public void tick() {
-        if(completed || fridgeRequested() || boardRequested()) return;
+        if(completed || fridgeRequested() || boardRequested() || basementRequested()) return;
         int previousAction=action();
         if(scene==15){clickActive=clickPending;clickPending=false;}
         if(captionTicks>0) captionTicks--;
@@ -612,6 +649,8 @@ public final class HotelWorld {
     private void interactAfterAside(int h,int entity) { g(0x18,h);interact(entity); }
     public boolean requestBasement(Thing target,int x,int y) {
         if(scene!=15 || busy() || completed)return false;
+        if(hero()==0 && x>=336 && y>=160 && y<417){basement.request();return true;}
+        if(hero()==1 && target!=null && target.id==24){cue(7);syncSave();return true;}
         clickX=Math.max(0,Math.min(639,x))/64*64;clickY=Math.max(0,Math.min(416,y))/16*16;
         clickSerial=target==null?-1:target.serial;clickMap=at(clickX/64,clickY/16);clickPending=true;syncSave();return true;
     }
@@ -671,7 +710,7 @@ public final class HotelWorld {
             if(path!=null) for(int i=0;i<path.length;i++) out.writeInt(path[i]);
             out.writeInt(path==null?0:pathIndex);
             if(scene==13 || scene==15)for(int i=0;i<boardGlobals.length;i++)out.writeInt(boardGlobals[i]);
-            if(scene==15){out.writeInt(clickX);out.writeInt(clickY);out.writeInt(clickSerial);out.writeInt(clickMap);out.writeBoolean(clickPending);}
+            if(scene==15){out.writeInt(clickX);out.writeInt(clickY);out.writeInt(clickSerial);out.writeInt(clickMap);out.writeBoolean(clickPending);out.writeInt(BasementGame.COOKIE);for(int i=0;i<basementData.length;i++)out.writeInt(basementData[i]);}
             out.close();state.location=bytes.toByteArray();
         } catch(IOException e) { throw new IllegalStateException(e.toString()); }
     }
@@ -693,7 +732,12 @@ public final class HotelWorld {
         if(length>0) { path=new int[length];for(int i=0;i<length;i++) path[i]=in.readInt(); }
         pathIndex=in.readInt();if(pathIndex<0 || pathIndex>length || pathIndex%2!=0) throw new IOException("Invalid path progress");
         if(scene==13 || scene==15)for(int i=0;i<boardGlobals.length;i++)boardGlobals[i]=in.readInt();
-        if(scene==15){clickX=in.readInt();clickY=in.readInt();clickSerial=in.readInt();clickMap=in.readInt();clickPending=in.readBoolean();}
+        if(scene==15){clickX=in.readInt();clickY=in.readInt();clickSerial=in.readInt();clickMap=in.readInt();clickPending=in.readBoolean();
+            if(in.available()>0){if(in.readInt()!=BasementGame.COOKIE)throw new IOException("Invalid crate save");for(int i=0;i<basementData.length;i++)basementData[i]=in.readInt();basementExtended=true;
+                if(basementData[0]<0 || basementData[0]>2 || basementData[1]<0 || basementData[1]>3 || basementData[2]<0 || basementData[2]>1 || basementData[3]<0 || basementData[3]>4 || basementData[5]<-1 || basementData[5]>3 || basementData[7]<-1 || basementData[7]>3 || basementData[9]<0 || basementData[9]>4)throw new IOException("Invalid crate position");
+                for(int i=20;i<24;i++)if(basementData[i]<0 || basementData[i]>4)throw new IOException("Invalid crate height");
+            }
+        }
         if(in.read()!=-1 || (scene==9 || scene==10 || scene==11 && action()!=90 || scene==12) && (heroes[0]==null || heroes[1]==null)) throw new IOException("Incomplete hotel save");
     }
 }

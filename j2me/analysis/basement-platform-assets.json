@@ -1,0 +1,30 @@
+{
+  "atlas_sha256": "ae777dc63ea0e9d2be82e0672581f8da2fedad1f5f613bfb85f3f156beb3d6f7",
+  "resources": [
+    "puzzles/basement.p8",
+    "puzzles/basement-crates.sprite",
+    "puzzles/basement-servant.sprite",
+    "puzzles/basement-chief-idle.sprite",
+    "puzzles/basement-chief-left.sprite",
+    "puzzles/basement-chief-right.sprite",
+    "puzzles/basement-chief-jump.sprite",
+    "puzzles/basement-chief-gun.sprite"
+  ],
+  "stage": [
+    256,
+    176
+  ],
+  "crate_columns": 4,
+  "lanes": [
+    "crates",
+    "safe"
+  ],
+  "controls": {
+    "2": "crate lane",
+    "8": "safe lane",
+    "4": "left",
+    "6": "right",
+    "5": "gun on safe lane",
+    "0": "back"
+  }
+}

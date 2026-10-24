@@ -106,6 +106,7 @@ public final class HotelScene extends ZooScene {
         // A cursor left on the cistern must not label the movie as a hero.
         if(animals.world.scene==12 && (animals.world.action()==95 || animals.world.action()==96))return null;
         int id=target(x,y);
+        if(animals.world.scene==15 && animals.world.hero()==0 && x>=336 && y>=160 && y<417)return "Ящики: отдельный экран";
         if(animals.world.scene==15)return id==14?(animals.world.hasItem(1)?"Ящик без автомата":"Ящик с автоматом"):id==24?"Ящик":id==31?"Электричество":id==33?"Автомат":id==15||id==12||id==13?"Коллега":id>=16&&id<=20?"Шеф":null;
         if(animals.world.scene==13)return id==12?"Шеф":id==11?"Коллега":id==15||id==51?"Огнетушитель":id==48?"Щит":id>=16&&id<=42?"Провода":id==52?"Лифт":null;
         if(animals.world.scene==12)return id==12?"Шеф":id==11?"Коллега":id==15?"Ручка":id==16?"Выход":id==17||id==24?"Мыло":id==18?"Кран":id==19?"Рулон":id==20?"Шнурок":id==21||id==22||id==23||id==25?"Вантуз":id==26?"Унитаз":id==28?"Кот":id==31?"Умывальник":null;
