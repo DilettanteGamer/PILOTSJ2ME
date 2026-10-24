@@ -1,19 +1,59 @@
 package pilots;
 import java.lang.reflect.Method;
+import javax.microedition.lcdui.Graphics;
 /** Actual opaque object hits, timed HUD icons and exit rendering in section 14. */
 public final class BathroomRenderTest {
  static void check(boolean b,String m){if(!b)throw new RuntimeException(m);}
  static void settle(HotelScene h)throws Exception{int n=3000;while(h.logic.busy()&&n-->0)h.update(100);check(n>0,"bathroom render lock");}
  static void act(HotelScene h,int hero,int item,int id)throws Exception{check(h.logic.select(hero)&&h.logic.selectItem(item),"bathroom render selection");HotelRenderTest.act(h,id);settle(h);}
  static int icon(HotelScene h)throws Exception{ZooPanel panel=new ZooPanel(12);try{Method m=ZooPanel.class.getDeclaredMethod("itemIcon",ZooLogic.class,int.class,boolean.class);m.setAccessible(true);return ((Integer)m.invoke(panel,h.logic,1,true)).intValue();}finally{panel.close();}}
+ static void soapMovie(HotelScene h,int expected)throws Exception {
+  check(h.logic.select(1)&&h.logic.selectItem(2),"soap movie selection");HotelRenderTest.act(h,28);
+  int frames=0,hits=0,limit=3000;
+  while(h.logic.busy()&&limit-->0) {
+   if(h.animals.world.action()==expected) {
+    frames++;AnimatedActor a=h.scene.actors[301];
+    if(a!=null)for(int y=Math.max(0,a.y+a.clip.offsetY);y<Math.min(417,a.y+a.clip.offsetY+a.clip.height);y+=4)
+     for(int x=Math.max(0,a.x+a.clip.offsetX);x<Math.min(640,a.x+a.clip.offsetX+a.clip.width);x+=4)
+      if(h.targetAt(x,y)==11){check(h.hoverText(x,y)==null,"Colleague hover caption on soap movie");hits++;}
+   }
+   h.update(100);
+  }
+  check(limit>0&&frames>0&&hits>0,"soap movie regression did not reach visible Colleague "+expected);
+ }
+ static void sinkDepth()throws Exception {
+  Scene scene=new Scene(12);GameState s=new GameState();s.scene=12;
+  try {HotelScene h=new HotelScene(scene,s);settle(h);int slot=HotelRenderTest.slot(h,31),behind=0,front=0;
+   for(int hero=0;hero<2;hero++)for(int y:new int[]{288,304,320})for(int pose=0;pose<8;pose++) {
+    HotelWorld.Thing other=h.animals.world.heroes[1-hero];other.x=other.fromX=512;other.y=other.fromY=352;other.layer=12;
+    h.animals.world.g(hero==0?0x44:0x40,12);
+    HotelWorld.Thing t=h.animals.world.heroes[hero];t.x=t.fromX=192;t.y=t.fromY=y;t.layer=78-y*3/16;
+    h.animals.world.g(hero==0?0x40:0x44,t.layer);t.clip=pose<4?(hero==0?12:16)+pose:hero==0?22:26;t.frame=pose<4?0:pose-4;t.finished=false;
+    if(pose>=4)t.fromY=y-16;
+    h.update(100);AnimatedActor bowl=scene.actors[slot],actor=scene.actors[300+hero];
+    Graphics actual=HotelRenderTest.worldPaint(h),expected=new Graphics(640,417);Viewport v=new Viewport(640,417,640,417);
+    boolean rear=actor.y<320;
+    if(rear){actor.paint(expected,v);bowl.paint(expected,v);}else{bowl.paint(expected,v);actor.paint(expected,v);}
+    for(int py=bowl.y+bowl.clip.offsetY;py<bowl.y+bowl.clip.offsetY+bowl.clip.height;py++)
+     for(int px=bowl.x+bowl.clip.offsetX;px<bowl.x+bowl.clip.offsetX+bowl.clip.width;px++)
+      if(bowl.clip.contains(px-bowl.x,py-bowl.y)&&actor.clip.contains(px-actor.x,py-actor.y)) {
+       check(actual.image.getRGB(px,py)==expected.image.getRGB(px,py),"sink depth "+hero+":"+y+":"+pose+" at "+px+","+py);
+       if(rear)behind++;else front++;
+      }
+   }
+   check(behind>0&&front>0,"sink regression did not cross both planes");
+  }finally{scene.close();}
+ }
  public static void main(String[] args)throws Exception{
+  sinkDepth();
   int width=Integer.parseInt(args[0]),height=Integer.parseInt(args[1]);Scene scene=new Scene(12);GameState s=new GameState();s.scene=12;
   try{HotelScene h=new HotelScene(scene,s);settle(h);
    BalconyRenderTest.capture(h,640,480,args[2]+"-world.png");BalconyRenderTest.capture(h,width,height,args[2]+"-entry.png");
    BalconyRenderTest.label(h,21,"Вантуз");BalconyRenderTest.label(h,17,"Мыло");BalconyRenderTest.label(h,20,"Шнурок");BalconyRenderTest.label(h,18,"Кран");
    act(h,0,0,21);act(h,1,0,17);check(h.logic.hasItem(1)&&h.logic.hasItem(2)&&icon(h)==6,"bathroom dry inventory");
    BalconyRenderTest.capture(h,width,height,args[2]+"-inventory.png");
-   act(h,0,0,18);act(h,1,2,28);act(h,0,1,26);act(h,1,0,20);act(h,0,0,25);
+   soapMovie(h,96);check(h.logic.hasItem(2),"failed soap attempt consumed soap");
+   act(h,0,0,18);soapMovie(h,95);act(h,0,1,26);act(h,1,0,20);act(h,0,0,25);
    check(icon(h)==13,"first timed plunger icon");BalconyRenderTest.capture(h,width,height,args[2]+"-plunger.png");
    byte[] prepared=s.encode();while(h.animals.world.state.variables[54]<200)h.update(100);check(icon(h)==15,"second timed plunger icon");
    while(h.animals.world.state.variables[54]!=0)h.update(100);check(icon(h)==6,"expired plunger icon");

@@ -52,6 +52,16 @@ public final class HotelScene extends ZooScene {
             if(t.id==33 || t.id==35)return 25;
             if(animals.world.action()!=83 && !authoredFinale() && (t.id==36 || t.id==37))return 22; // Switch mounted on wall mask 58.
         }
+        // The bowl is rooted on the wall (y=256), but its floor plane is
+        // y=320. Scripted approaches at y=288/304 must pass behind it.
+        if(animals.world.scene==12) {
+            if(t.id==31)return 18;
+            // Walking roots already hold the next grid cell. Sort the visible
+            // intermediate pose on its current plane, preserving script offsets.
+            AnimatedActor a=scene.actors[slot];
+            if(slot>=300 && slot<302 && a!=null && t.clip>=20 && t.clip<=33 && !t.finished)
+                return t.layer+t.y*3/16-a.y*3/16;
+        }
         return t.layer;
     }
     private int paintDepth(int slot) {
@@ -92,6 +102,9 @@ public final class HotelScene extends ZooScene {
     }
     public int targetAt(int x,int y) { int id=target(x,y);return id<0?0:id; }
     public String hoverText(int x,int y) {
+        // These authored clips include Colleague far above his walking root.
+        // A cursor left on the cistern must not label the movie as a hero.
+        if(animals.world.scene==12 && (animals.world.action()==95 || animals.world.action()==96))return null;
         int id=target(x,y);
         if(animals.world.scene==12)return id==12?"Шеф":id==11?"Коллега":id==15?"Ручка":id==16?"Выход":id==17||id==24?"Мыло":id==18?"Кран":id==19?"Рулон":id==20?"Шнурок":id==21||id==22||id==23||id==25?"Вантуз":id==26?"Унитаз":id==28?"Кот":id==31?"Умывальник":null;
         if(animals.world.scene==11)return id==12?"Шеф":id==11?"Коллега":id==15||id==16||id==17?"Окно":id==18?"Трос":id==19||id==20?"Осколок":null;
