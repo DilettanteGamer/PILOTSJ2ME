@@ -2598,7 +2598,7 @@
     },
     {
       "profile": "128x128",
-      "classes": 68,
+      "classes": 71,
       "scenes": [
         2,
         3,
@@ -2612,10 +2612,11 @@
         12,
         13,
         14,
-        15
+        15,
+        16
       ],
-      "animations": 1442,
-      "frames": 17042,
+      "animations": 1513,
+      "frames": 18633,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -2776,6 +2777,18 @@
         "scenes/15.p8": [
           320,
           208,
+          640,
+          417
+        ],
+        "scenes/16.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/16.p8": [
+          128,
+          115,
           640,
           417
         ]
@@ -2784,7 +2797,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.20.1",
+        "MIDlet-Version": "0.21.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2793,29 +2806,29 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "aaae11b19b1372163736832c9085021f7e1894a4d4175f9ceb22e267249e7df0",
-      "jar_bytes": 16052047,
-      "entry_count": 2062,
-      "uncompressed_bytes": 109557698,
+      "sha256": "dd1079e8e20c60bedcbb59e73cab1877c9f8bd221918ff4ca169f7267bc2b295",
+      "jar_bytes": 17346011,
+      "entry_count": 2169,
+      "uncompressed_bytes": 119811333,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1442,
-        ".bar": 13,
+        ".anm": 1513,
+        ".bar": 14,
         ".bin": 1,
         ".board": 1,
-        ".class": 68,
-        ".events": 13,
+        ".class": 71,
+        ".events": 14,
         ".hot": 3,
-        ".mid": 14,
-        ".p8": 14,
+        ".mid": 15,
+        ".p8": 15,
         ".rules": 1,
         ".sprite": 7,
         ".subtitles": 1,
-        ".vm": 11,
+        ".vm": 12,
         ".walk": 1,
-        ".wav": 469
+        ".wav": 497
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -2907,7 +2920,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "470caefb044700d2fb2db3cf189e74b18a9925d0ea38e028dce5fb6fd8197488"
+          "sha256": "b92e63074547eb47371b8eff12f790c5ba61a72835a0f18b419edd17913bd4f1"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -3043,6 +3056,43 @@
           "stackmap_utf8_present": true,
           "sha256": "abf9de1dff7fadba86402d421d16ed40bfa155d4d9f70314720aba69b7574139"
         },
+        "pilots/FlightLogic.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/String"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "21ae5ef18f61373af92c16b0967cc952e97a74fe05612e2263751d77453933d3"
+        },
+        "pilots/FlightScene.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/Math",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "b0be687bdb78634ae7225b5a9058066427759969d2d983998656be5fabc4f66c"
+        },
+        "pilots/FlightView.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Math",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Font",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "33bc6f6fe0e02859d338792a74d4d605f8ff1f9f3e360e2a6dbefe2e2c1434b4"
+        },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
           "major": 45,
@@ -3109,7 +3159,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8929b9a104e0239d1ea4e2d97310402920a68948df43db23a7fa5507315f7f58"
+          "sha256": "4328aacb2df954e9598a9009ef6e894fded433fb5ac15345d3f524b1b3b99979"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -3236,7 +3286,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "517b751d293120918a6a5624b35ff5c98a1691d3a873f5d907f882466f756670"
+          "sha256": "4424e0c338a999c923f58365b6d7be72cae98085b49f314a821c8c43c48e63d8"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -3424,7 +3474,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "f219cc04ac5593052c82464e8082dc4625bfdddaa382a8afae8ea326e7c1fc2a"
+          "sha256": "51b8270be154ed91882565c3d4286c3db6d1ccfa0a5aa1911fb726250aabb065"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -3458,7 +3508,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e9002d014a460a7dcfc442d0e95a6372cb2046038754c39c0ac5df3b27b72037"
+          "sha256": "0537f3b6110c765ba7e358da56797cabce19553d6ebcfb9ea010d1cbfc286cc7"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3481,7 +3531,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "db300a6113ac7c358d01ee0b02a2e5c61b6079bfaf0e2ef5d27878c51c0c8f09"
+          "sha256": "cac9e63910c11c3f1ba0d0bcd3821ba92e39e6d6e9dd4c8d2b7dd00e8506dc49"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -3531,7 +3581,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "07272aa72f5945b44016cfb1c172add33bb3051b2e373d946515daa39af0b70f"
+          "sha256": "ff2414838a05eb30ca1869037f18422c2becd76a789e9ff939fa07433cd3a87f"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -11005,393 +11055,640 @@
           "count": 4,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4416
+        },
+        "scenes/16-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/16-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/16-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/16-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/16-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/16-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/16-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/16-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/16-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/16-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/16-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/16-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/16-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/16-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/16-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/16-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/16-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/16-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/16-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/16-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/16-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/16-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/16-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/16-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/16-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/16-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/16-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/16-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/16-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/16-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/16-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/16-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/16-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/16-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/16-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/16-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/16-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-47.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-48.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-49.anm": {
+          "count": 21,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-50.anm": {
+          "count": 81,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 62279
+        },
+        "scenes/16-51.anm": {
+          "count": 21,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 57939
+        },
+        "scenes/16-52.anm": {
+          "count": 22,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-53.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-54.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-55.anm": {
+          "count": 89,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 62279
+        },
+        "scenes/16-56.anm": {
+          "count": 29,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 57939
+        },
+        "scenes/16-57.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1886
+        },
+        "scenes/16-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 92160
+        },
+        "scenes/16-59.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 81920
+        },
+        "scenes/16-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 92160
+        },
+        "scenes/16-61.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2898
+        },
+        "scenes/16-62.anm": {
+          "count": 42,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 77700
+        },
+        "scenes/16-63.anm": {
+          "count": 43,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 80100
+        },
+        "scenes/16-64.anm": {
+          "count": 44,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 70125
+        },
+        "scenes/16-65.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4309
+        },
+        "scenes/16-66.anm": {
+          "count": 70,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6109
+        },
+        "scenes/16-67.anm": {
+          "count": 140,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3588
+        },
+        "scenes/16-68.anm": {
+          "count": 140,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4235
+        },
+        "scenes/16-69.anm": {
+          "count": 220,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4266
+        },
+        "scenes/16-70.anm": {
+          "count": 56,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11760
+        },
+        "scenes/16-71.anm": {
+          "count": 17,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11760
+        },
+        "scenes/16-72.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10810
         }
       },
-      "preview_scene": 14,
+      "preview_scene": 16,
       "preview_catalog": [
+        {
+          "resource_id": 47,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "01 Полёт — 47"
+        },
+        {
+          "resource_id": 48,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            114
+          ],
+          "label": "02 Полёт — 48"
+        },
+        {
+          "resource_id": 49,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            306
+          ],
+          "label": "03 Полёт — 49"
+        },
+        {
+          "resource_id": 50,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "04 Полёт — 50"
+        },
+        {
+          "resource_id": 51,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "05 Полёт — 51"
+        },
+        {
+          "resource_id": 52,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            114
+          ],
+          "label": "06 Полёт — 52"
+        },
+        {
+          "resource_id": 53,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "07 Полёт — 53"
+        },
+        {
+          "resource_id": 54,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            114
+          ],
+          "label": "08 Полёт — 54"
+        },
+        {
+          "resource_id": 55,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            306
+          ],
+          "label": "09 Полёт — 55"
+        },
+        {
+          "resource_id": 56,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            306
+          ],
+          "label": "10 Полёт — 56"
+        },
+        {
+          "resource_id": 57,
+          "anchor": [
+            256,
+            400
+          ],
+          "focus": [
+            292,
+            144
+          ],
+          "label": "11 Полёт — 57"
+        },
+        {
+          "resource_id": 61,
+          "anchor": [
+            0,
+            224
+          ],
+          "focus": [
+            639,
+            303
+          ],
+          "label": "12 Полёт — 61"
+        },
         {
           "resource_id": 62,
           "anchor": [
-            128,
-            304
+            0,
+            192
           ],
           "focus": [
-            194,
-            212
+            174,
+            306
           ],
-          "label": "01 Крыша — 62"
+          "label": "13 Полёт — 62"
         },
         {
           "resource_id": 63,
           "anchor": [
-            128,
-            304
+            0,
+            192
           ],
           "focus": [
-            194,
-            212
+            174,
+            229
           ],
-          "label": "02 Крыша — 63"
+          "label": "14 Полёт — 63"
+        },
+        {
+          "resource_id": 64,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            174,
+            133
+          ],
+          "label": "15 Полёт — 64"
+        },
+        {
+          "resource_id": 65,
+          "anchor": [
+            576,
+            288
+          ],
+          "focus": [
+            634,
+            328
+          ],
+          "label": "16 Полёт — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            128,
-            304
+            576,
+            288
           ],
           "focus": [
-            162,
-            286
+            620,
+            338
           ],
-          "label": "03 Крыша — 66"
+          "label": "17 Полёт — 66"
         },
         {
           "resource_id": 67,
           "anchor": [
-            128,
-            304
+            576,
+            128
           ],
           "focus": [
-            162,
-            286
+            636,
+            177
           ],
-          "label": "04 Крыша — 67"
+          "label": "18 Полёт — 67"
+        },
+        {
+          "resource_id": 68,
+          "anchor": [
+            576,
+            32
+          ],
+          "focus": [
+            635,
+            79
+          ],
+          "label": "19 Полёт — 68"
+        },
+        {
+          "resource_id": 69,
+          "anchor": [
+            256,
+            0
+          ],
+          "focus": [
+            635,
+            13
+          ],
+          "label": "20 Полёт — 69"
+        },
+        {
+          "resource_id": 70,
+          "anchor": [
+            320,
+            400
+          ],
+          "focus": [
+            357,
+            77
+          ],
+          "label": "21 Полёт — 70"
         },
         {
           "resource_id": 71,
           "anchor": [
-            128,
-            304
+            0,
+            400
           ],
           "focus": [
-            162,
-            286
+            9,
+            276
           ],
-          "label": "05 Крыша — 71"
+          "label": "22 Полёт — 71"
         },
         {
           "resource_id": 72,
           "anchor": [
-            256,
-            48
+            448,
+            400
           ],
           "focus": [
-            335,
-            77
+            508,
+            409
           ],
-          "label": "06 Крыша — 72"
-        },
-        {
-          "resource_id": 74,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            227,
-            298
-          ],
-          "label": "07 Крыша — 74"
-        },
-        {
-          "resource_id": 76,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            138,
-            276
-          ],
-          "label": "08 Крыша — 76"
-        },
-        {
-          "resource_id": 77,
-          "anchor": [
-            0,
-            64
-          ],
-          "focus": [
-            45,
-            46
-          ],
-          "label": "09 Крыша — 77"
-        },
-        {
-          "resource_id": 78,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            121,
-            287
-          ],
-          "label": "10 Крыша — 78"
-        },
-        {
-          "resource_id": 79,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            184,
-            299
-          ],
-          "label": "11 Крыша — 79"
-        },
-        {
-          "resource_id": 80,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            184,
-            299
-          ],
-          "label": "12 Крыша — 80"
-        },
-        {
-          "resource_id": 81,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            224,
-            298
-          ],
-          "label": "13 Крыша — 81"
-        },
-        {
-          "resource_id": 84,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            133,
-            281
-          ],
-          "label": "14 Крыша — 84"
-        },
-        {
-          "resource_id": 88,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            189,
-            283
-          ],
-          "label": "15 Крыша — 88"
-        },
-        {
-          "resource_id": 89,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            465,
-            118
-          ],
-          "label": "16 Крыша — 89"
-        },
-        {
-          "resource_id": 92,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            184,
-            270
-          ],
-          "label": "17 Крыша — 92"
-        },
-        {
-          "resource_id": 94,
-          "anchor": [
-            128,
-            368
-          ],
-          "focus": [
-            216,
-            385
-          ],
-          "label": "18 Крыша — 94"
-        },
-        {
-          "resource_id": 97,
-          "anchor": [
-            128,
-            352
-          ],
-          "focus": [
-            176,
-            358
-          ],
-          "label": "19 Крыша — 97"
-        },
-        {
-          "resource_id": 98,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            224,
-            299
-          ],
-          "label": "20 Крыша — 98"
-        },
-        {
-          "resource_id": 99,
-          "anchor": [
-            320,
-            0
-          ],
-          "focus": [
-            300,
-            49
-          ],
-          "label": "21 Крыша — 99"
-        },
-        {
-          "resource_id": 101,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            158,
-            286
-          ],
-          "label": "22 Крыша — 101"
-        },
-        {
-          "resource_id": 102,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            227,
-            298
-          ],
-          "label": "23 Крыша — 102"
-        },
-        {
-          "resource_id": 103,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            227,
-            298
-          ],
-          "label": "24 Крыша — 103"
-        },
-        {
-          "resource_id": 104,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            195,
-            297
-          ],
-          "label": "25 Крыша — 104"
-        },
-        {
-          "resource_id": 105,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            162,
-            286
-          ],
-          "label": "26 Крыша — 105"
-        },
-        {
-          "resource_id": 106,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            223,
-            298
-          ],
-          "label": "27 Крыша — 106"
-        },
-        {
-          "resource_id": 108,
-          "anchor": [
-            192,
-            48
-          ],
-          "focus": [
-            260,
-            75
-          ],
-          "label": "28 Крыша — 108"
-        },
-        {
-          "resource_id": 109,
-          "anchor": [
-            256,
-            48
-          ],
-          "focus": [
-            335,
-            77
-          ],
-          "label": "29 Крыша — 109"
-        },
-        {
-          "resource_id": 110,
-          "anchor": [
-            192,
-            48
-          ],
-          "focus": [
-            265,
-            75
-          ],
-          "label": "30 Крыша — 110"
-        },
-        {
-          "resource_id": 111,
-          "anchor": [
-            256,
-            48
-          ],
-          "focus": [
-            303,
-            104
-          ],
-          "label": "31 Крыша — 111"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            256,
-            48
-          ],
-          "focus": [
-            340,
-            78
-          ],
-          "label": "32 Крыша — 112"
+          "label": "23 Полёт — 72"
         }
       ],
       "largest_resources": [
@@ -11409,6 +11706,16 @@
           "path": "scenes/06-82.anm",
           "bytes": 1566161,
           "compressed_bytes": 97658
+        },
+        {
+          "path": "scenes/16-55.anm",
+          "bytes": 1517666,
+          "compressed_bytes": 80472
+        },
+        {
+          "path": "scenes/16-50.anm",
+          "bytes": 1383357,
+          "compressed_bytes": 69805
         },
         {
           "path": "scenes/13-187.anm",
@@ -11434,22 +11741,12 @@
           "path": "scenes/08-46.anm",
           "bytes": 817842,
           "compressed_bytes": 128175
-        },
-        {
-          "path": "scenes/14-76.anm",
-          "bytes": 744096,
-          "compressed_bytes": 43799
-        },
-        {
-          "path": "scenes/14-111.anm",
-          "bytes": 741808,
-          "compressed_bytes": 114938
         }
       ]
     },
     {
       "profile": "128x160",
-      "classes": 68,
+      "classes": 71,
       "scenes": [
         2,
         3,
@@ -11463,10 +11760,11 @@
         12,
         13,
         14,
-        15
+        15,
+        16
       ],
-      "animations": 1442,
-      "frames": 17042,
+      "animations": 1513,
+      "frames": 18633,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -11627,6 +11925,18 @@
         "scenes/15.p8": [
           320,
           208,
+          640,
+          417
+        ],
+        "scenes/16.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/16.p8": [
+          128,
+          147,
           640,
           417
         ]
@@ -11635,7 +11945,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.20.1",
+        "MIDlet-Version": "0.21.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -11644,29 +11954,29 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "047bc6bd13be3a8b1812c2c72d20071db2986d09dbe02d7248830fe89519a7c5",
-      "jar_bytes": 16052049,
-      "entry_count": 2062,
-      "uncompressed_bytes": 109557698,
+      "sha256": "b1b10b7b1aa09868f1839bf1f2c802844fb0208b05e050c6886655e8a3ba0d9b",
+      "jar_bytes": 17346274,
+      "entry_count": 2169,
+      "uncompressed_bytes": 119815429,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1442,
-        ".bar": 13,
+        ".anm": 1513,
+        ".bar": 14,
         ".bin": 1,
         ".board": 1,
-        ".class": 68,
-        ".events": 13,
+        ".class": 71,
+        ".events": 14,
         ".hot": 3,
-        ".mid": 14,
-        ".p8": 14,
+        ".mid": 15,
+        ".p8": 15,
         ".rules": 1,
         ".sprite": 7,
         ".subtitles": 1,
-        ".vm": 11,
+        ".vm": 12,
         ".walk": 1,
-        ".wav": 469
+        ".wav": 497
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -11758,7 +12068,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "470caefb044700d2fb2db3cf189e74b18a9925d0ea38e028dce5fb6fd8197488"
+          "sha256": "b92e63074547eb47371b8eff12f790c5ba61a72835a0f18b419edd17913bd4f1"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -11894,6 +12204,43 @@
           "stackmap_utf8_present": true,
           "sha256": "abf9de1dff7fadba86402d421d16ed40bfa155d4d9f70314720aba69b7574139"
         },
+        "pilots/FlightLogic.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/String"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "21ae5ef18f61373af92c16b0967cc952e97a74fe05612e2263751d77453933d3"
+        },
+        "pilots/FlightScene.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/Math",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "b0be687bdb78634ae7225b5a9058066427759969d2d983998656be5fabc4f66c"
+        },
+        "pilots/FlightView.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Math",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Font",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "33bc6f6fe0e02859d338792a74d4d605f8ff1f9f3e360e2a6dbefe2e2c1434b4"
+        },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
           "major": 45,
@@ -11960,7 +12307,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8929b9a104e0239d1ea4e2d97310402920a68948df43db23a7fa5507315f7f58"
+          "sha256": "4328aacb2df954e9598a9009ef6e894fded433fb5ac15345d3f524b1b3b99979"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -12087,7 +12434,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "517b751d293120918a6a5624b35ff5c98a1691d3a873f5d907f882466f756670"
+          "sha256": "4424e0c338a999c923f58365b6d7be72cae98085b49f314a821c8c43c48e63d8"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -12275,7 +12622,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "f219cc04ac5593052c82464e8082dc4625bfdddaa382a8afae8ea326e7c1fc2a"
+          "sha256": "51b8270be154ed91882565c3d4286c3db6d1ccfa0a5aa1911fb726250aabb065"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -12309,7 +12656,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e9002d014a460a7dcfc442d0e95a6372cb2046038754c39c0ac5df3b27b72037"
+          "sha256": "0537f3b6110c765ba7e358da56797cabce19553d6ebcfb9ea010d1cbfc286cc7"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -12332,7 +12679,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "db300a6113ac7c358d01ee0b02a2e5c61b6079bfaf0e2ef5d27878c51c0c8f09"
+          "sha256": "cac9e63910c11c3f1ba0d0bcd3821ba92e39e6d6e9dd4c8d2b7dd00e8506dc49"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -12382,7 +12729,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "07272aa72f5945b44016cfb1c172add33bb3051b2e373d946515daa39af0b70f"
+          "sha256": "ff2414838a05eb30ca1869037f18422c2becd76a789e9ff939fa07433cd3a87f"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -19856,393 +20203,640 @@
           "count": 4,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4416
+        },
+        "scenes/16-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/16-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/16-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/16-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/16-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/16-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/16-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/16-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/16-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/16-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/16-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/16-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/16-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/16-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/16-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/16-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/16-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/16-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/16-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/16-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/16-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/16-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/16-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/16-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/16-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/16-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/16-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/16-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/16-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/16-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/16-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/16-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/16-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/16-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/16-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/16-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/16-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-47.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-48.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-49.anm": {
+          "count": 21,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-50.anm": {
+          "count": 81,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 62279
+        },
+        "scenes/16-51.anm": {
+          "count": 21,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 57939
+        },
+        "scenes/16-52.anm": {
+          "count": 22,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-53.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-54.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-55.anm": {
+          "count": 89,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 62279
+        },
+        "scenes/16-56.anm": {
+          "count": 29,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 57939
+        },
+        "scenes/16-57.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1886
+        },
+        "scenes/16-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 92160
+        },
+        "scenes/16-59.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 81920
+        },
+        "scenes/16-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 92160
+        },
+        "scenes/16-61.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2898
+        },
+        "scenes/16-62.anm": {
+          "count": 42,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 77700
+        },
+        "scenes/16-63.anm": {
+          "count": 43,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 80100
+        },
+        "scenes/16-64.anm": {
+          "count": 44,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 70125
+        },
+        "scenes/16-65.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4309
+        },
+        "scenes/16-66.anm": {
+          "count": 70,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6109
+        },
+        "scenes/16-67.anm": {
+          "count": 140,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3588
+        },
+        "scenes/16-68.anm": {
+          "count": 140,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4235
+        },
+        "scenes/16-69.anm": {
+          "count": 220,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4266
+        },
+        "scenes/16-70.anm": {
+          "count": 56,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11760
+        },
+        "scenes/16-71.anm": {
+          "count": 17,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11760
+        },
+        "scenes/16-72.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10810
         }
       },
-      "preview_scene": 14,
+      "preview_scene": 16,
       "preview_catalog": [
+        {
+          "resource_id": 47,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "01 Полёт — 47"
+        },
+        {
+          "resource_id": 48,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            114
+          ],
+          "label": "02 Полёт — 48"
+        },
+        {
+          "resource_id": 49,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            306
+          ],
+          "label": "03 Полёт — 49"
+        },
+        {
+          "resource_id": 50,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "04 Полёт — 50"
+        },
+        {
+          "resource_id": 51,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "05 Полёт — 51"
+        },
+        {
+          "resource_id": 52,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            114
+          ],
+          "label": "06 Полёт — 52"
+        },
+        {
+          "resource_id": 53,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "07 Полёт — 53"
+        },
+        {
+          "resource_id": 54,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            114
+          ],
+          "label": "08 Полёт — 54"
+        },
+        {
+          "resource_id": 55,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            306
+          ],
+          "label": "09 Полёт — 55"
+        },
+        {
+          "resource_id": 56,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            306
+          ],
+          "label": "10 Полёт — 56"
+        },
+        {
+          "resource_id": 57,
+          "anchor": [
+            256,
+            400
+          ],
+          "focus": [
+            292,
+            144
+          ],
+          "label": "11 Полёт — 57"
+        },
+        {
+          "resource_id": 61,
+          "anchor": [
+            0,
+            224
+          ],
+          "focus": [
+            639,
+            303
+          ],
+          "label": "12 Полёт — 61"
+        },
         {
           "resource_id": 62,
           "anchor": [
-            128,
-            304
+            0,
+            192
           ],
           "focus": [
-            194,
-            212
+            174,
+            306
           ],
-          "label": "01 Крыша — 62"
+          "label": "13 Полёт — 62"
         },
         {
           "resource_id": 63,
           "anchor": [
-            128,
-            304
+            0,
+            192
           ],
           "focus": [
-            194,
-            212
+            174,
+            229
           ],
-          "label": "02 Крыша — 63"
+          "label": "14 Полёт — 63"
+        },
+        {
+          "resource_id": 64,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            174,
+            133
+          ],
+          "label": "15 Полёт — 64"
+        },
+        {
+          "resource_id": 65,
+          "anchor": [
+            576,
+            288
+          ],
+          "focus": [
+            634,
+            328
+          ],
+          "label": "16 Полёт — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            128,
-            304
+            576,
+            288
           ],
           "focus": [
-            162,
-            286
+            620,
+            338
           ],
-          "label": "03 Крыша — 66"
+          "label": "17 Полёт — 66"
         },
         {
           "resource_id": 67,
           "anchor": [
-            128,
-            304
+            576,
+            128
           ],
           "focus": [
-            162,
-            286
+            636,
+            177
           ],
-          "label": "04 Крыша — 67"
+          "label": "18 Полёт — 67"
+        },
+        {
+          "resource_id": 68,
+          "anchor": [
+            576,
+            32
+          ],
+          "focus": [
+            635,
+            79
+          ],
+          "label": "19 Полёт — 68"
+        },
+        {
+          "resource_id": 69,
+          "anchor": [
+            256,
+            0
+          ],
+          "focus": [
+            635,
+            13
+          ],
+          "label": "20 Полёт — 69"
+        },
+        {
+          "resource_id": 70,
+          "anchor": [
+            320,
+            400
+          ],
+          "focus": [
+            357,
+            77
+          ],
+          "label": "21 Полёт — 70"
         },
         {
           "resource_id": 71,
           "anchor": [
-            128,
-            304
+            0,
+            400
           ],
           "focus": [
-            162,
-            286
+            9,
+            276
           ],
-          "label": "05 Крыша — 71"
+          "label": "22 Полёт — 71"
         },
         {
           "resource_id": 72,
           "anchor": [
-            256,
-            48
+            448,
+            400
           ],
           "focus": [
-            335,
-            77
+            508,
+            409
           ],
-          "label": "06 Крыша — 72"
-        },
-        {
-          "resource_id": 74,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            227,
-            298
-          ],
-          "label": "07 Крыша — 74"
-        },
-        {
-          "resource_id": 76,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            138,
-            276
-          ],
-          "label": "08 Крыша — 76"
-        },
-        {
-          "resource_id": 77,
-          "anchor": [
-            0,
-            64
-          ],
-          "focus": [
-            45,
-            46
-          ],
-          "label": "09 Крыша — 77"
-        },
-        {
-          "resource_id": 78,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            121,
-            287
-          ],
-          "label": "10 Крыша — 78"
-        },
-        {
-          "resource_id": 79,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            184,
-            299
-          ],
-          "label": "11 Крыша — 79"
-        },
-        {
-          "resource_id": 80,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            184,
-            299
-          ],
-          "label": "12 Крыша — 80"
-        },
-        {
-          "resource_id": 81,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            224,
-            298
-          ],
-          "label": "13 Крыша — 81"
-        },
-        {
-          "resource_id": 84,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            133,
-            281
-          ],
-          "label": "14 Крыша — 84"
-        },
-        {
-          "resource_id": 88,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            189,
-            283
-          ],
-          "label": "15 Крыша — 88"
-        },
-        {
-          "resource_id": 89,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            465,
-            118
-          ],
-          "label": "16 Крыша — 89"
-        },
-        {
-          "resource_id": 92,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            184,
-            270
-          ],
-          "label": "17 Крыша — 92"
-        },
-        {
-          "resource_id": 94,
-          "anchor": [
-            128,
-            368
-          ],
-          "focus": [
-            216,
-            385
-          ],
-          "label": "18 Крыша — 94"
-        },
-        {
-          "resource_id": 97,
-          "anchor": [
-            128,
-            352
-          ],
-          "focus": [
-            176,
-            358
-          ],
-          "label": "19 Крыша — 97"
-        },
-        {
-          "resource_id": 98,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            224,
-            299
-          ],
-          "label": "20 Крыша — 98"
-        },
-        {
-          "resource_id": 99,
-          "anchor": [
-            320,
-            0
-          ],
-          "focus": [
-            300,
-            49
-          ],
-          "label": "21 Крыша — 99"
-        },
-        {
-          "resource_id": 101,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            158,
-            286
-          ],
-          "label": "22 Крыша — 101"
-        },
-        {
-          "resource_id": 102,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            227,
-            298
-          ],
-          "label": "23 Крыша — 102"
-        },
-        {
-          "resource_id": 103,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            227,
-            298
-          ],
-          "label": "24 Крыша — 103"
-        },
-        {
-          "resource_id": 104,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            195,
-            297
-          ],
-          "label": "25 Крыша — 104"
-        },
-        {
-          "resource_id": 105,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            162,
-            286
-          ],
-          "label": "26 Крыша — 105"
-        },
-        {
-          "resource_id": 106,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            223,
-            298
-          ],
-          "label": "27 Крыша — 106"
-        },
-        {
-          "resource_id": 108,
-          "anchor": [
-            192,
-            48
-          ],
-          "focus": [
-            260,
-            75
-          ],
-          "label": "28 Крыша — 108"
-        },
-        {
-          "resource_id": 109,
-          "anchor": [
-            256,
-            48
-          ],
-          "focus": [
-            335,
-            77
-          ],
-          "label": "29 Крыша — 109"
-        },
-        {
-          "resource_id": 110,
-          "anchor": [
-            192,
-            48
-          ],
-          "focus": [
-            265,
-            75
-          ],
-          "label": "30 Крыша — 110"
-        },
-        {
-          "resource_id": 111,
-          "anchor": [
-            256,
-            48
-          ],
-          "focus": [
-            303,
-            104
-          ],
-          "label": "31 Крыша — 111"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            256,
-            48
-          ],
-          "focus": [
-            340,
-            78
-          ],
-          "label": "32 Крыша — 112"
+          "label": "23 Полёт — 72"
         }
       ],
       "largest_resources": [
@@ -20260,6 +20854,16 @@
           "path": "scenes/06-82.anm",
           "bytes": 1566161,
           "compressed_bytes": 97658
+        },
+        {
+          "path": "scenes/16-55.anm",
+          "bytes": 1517666,
+          "compressed_bytes": 80472
+        },
+        {
+          "path": "scenes/16-50.anm",
+          "bytes": 1383357,
+          "compressed_bytes": 69805
         },
         {
           "path": "scenes/13-187.anm",
@@ -20285,22 +20889,12 @@
           "path": "scenes/08-46.anm",
           "bytes": 817842,
           "compressed_bytes": 128175
-        },
-        {
-          "path": "scenes/14-76.anm",
-          "bytes": 744096,
-          "compressed_bytes": 43799
-        },
-        {
-          "path": "scenes/14-111.anm",
-          "bytes": 741808,
-          "compressed_bytes": 114938
         }
       ]
     },
     {
       "profile": "240x320",
-      "classes": 68,
+      "classes": 71,
       "scenes": [
         2,
         3,
@@ -20314,10 +20908,11 @@
         12,
         13,
         14,
-        15
+        15,
+        16
       ],
-      "animations": 1442,
-      "frames": 17042,
+      "animations": 1513,
+      "frames": 18633,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -20480,13 +21075,25 @@
           417,
           640,
           417
+        ],
+        "scenes/16.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/16.p8": [
+          240,
+          296,
+          640,
+          417
         ]
       },
       "path": "dist/Pilots-240x320.jar",
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.20.1",
+        "MIDlet-Version": "0.21.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -20495,29 +21102,29 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "894f9e05e29c84c7f75533a2e39bc13a231d48a3a375194dd9627d91e23c4c31",
-      "jar_bytes": 16906180,
-      "entry_count": 2062,
-      "uncompressed_bytes": 112161859,
+      "sha256": "419f04274496c754f172b4bdbaf18b87d2a6d901e0ac8f06b44d699875a5a348",
+      "jar_bytes": 18203645,
+      "entry_count": 2169,
+      "uncompressed_bytes": 122471814,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1442,
-        ".bar": 13,
+        ".anm": 1513,
+        ".bar": 14,
         ".bin": 1,
         ".board": 1,
-        ".class": 68,
-        ".events": 13,
+        ".class": 71,
+        ".events": 14,
         ".hot": 3,
-        ".mid": 14,
-        ".p8": 14,
+        ".mid": 15,
+        ".p8": 15,
         ".rules": 1,
         ".sprite": 7,
         ".subtitles": 1,
-        ".vm": 11,
+        ".vm": 12,
         ".walk": 1,
-        ".wav": 469
+        ".wav": 497
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -20609,7 +21216,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "470caefb044700d2fb2db3cf189e74b18a9925d0ea38e028dce5fb6fd8197488"
+          "sha256": "b92e63074547eb47371b8eff12f790c5ba61a72835a0f18b419edd17913bd4f1"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -20745,6 +21352,43 @@
           "stackmap_utf8_present": true,
           "sha256": "abf9de1dff7fadba86402d421d16ed40bfa155d4d9f70314720aba69b7574139"
         },
+        "pilots/FlightLogic.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/String"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "21ae5ef18f61373af92c16b0967cc952e97a74fe05612e2263751d77453933d3"
+        },
+        "pilots/FlightScene.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/Math",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "b0be687bdb78634ae7225b5a9058066427759969d2d983998656be5fabc4f66c"
+        },
+        "pilots/FlightView.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/lang/Math",
+            "java/lang/Object",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Font",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "33bc6f6fe0e02859d338792a74d4d605f8ff1f9f3e360e2a6dbefe2e2c1434b4"
+        },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
           "major": 45,
@@ -20811,7 +21455,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8929b9a104e0239d1ea4e2d97310402920a68948df43db23a7fa5507315f7f58"
+          "sha256": "4328aacb2df954e9598a9009ef6e894fded433fb5ac15345d3f524b1b3b99979"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -20938,7 +21582,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "517b751d293120918a6a5624b35ff5c98a1691d3a873f5d907f882466f756670"
+          "sha256": "4424e0c338a999c923f58365b6d7be72cae98085b49f314a821c8c43c48e63d8"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -21126,7 +21770,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "f219cc04ac5593052c82464e8082dc4625bfdddaa382a8afae8ea326e7c1fc2a"
+          "sha256": "51b8270be154ed91882565c3d4286c3db6d1ccfa0a5aa1911fb726250aabb065"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -21160,7 +21804,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e9002d014a460a7dcfc442d0e95a6372cb2046038754c39c0ac5df3b27b72037"
+          "sha256": "0537f3b6110c765ba7e358da56797cabce19553d6ebcfb9ea010d1cbfc286cc7"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -21183,7 +21827,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "db300a6113ac7c358d01ee0b02a2e5c61b6079bfaf0e2ef5d27878c51c0c8f09"
+          "sha256": "cac9e63910c11c3f1ba0d0bcd3821ba92e39e6d6e9dd4c8d2b7dd00e8506dc49"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -21233,7 +21877,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "07272aa72f5945b44016cfb1c172add33bb3051b2e373d946515daa39af0b70f"
+          "sha256": "ff2414838a05eb30ca1869037f18422c2becd76a789e9ff939fa07433cd3a87f"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -28707,393 +29351,640 @@
           "count": 4,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4416
+        },
+        "scenes/16-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/16-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/16-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/16-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/16-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/16-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/16-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/16-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/16-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/16-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/16-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/16-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/16-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/16-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/16-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/16-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/16-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/16-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/16-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/16-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/16-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/16-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/16-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/16-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/16-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/16-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/16-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/16-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/16-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/16-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/16-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/16-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/16-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/16-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/16-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/16-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/16-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/16-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/16-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-47.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-48.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-49.anm": {
+          "count": 21,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-50.anm": {
+          "count": 81,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 62279
+        },
+        "scenes/16-51.anm": {
+          "count": 21,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 57939
+        },
+        "scenes/16-52.anm": {
+          "count": 22,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-53.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-54.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 52297
+        },
+        "scenes/16-55.anm": {
+          "count": 89,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 62279
+        },
+        "scenes/16-56.anm": {
+          "count": 29,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 57939
+        },
+        "scenes/16-57.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1886
+        },
+        "scenes/16-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 92160
+        },
+        "scenes/16-59.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 81920
+        },
+        "scenes/16-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 92160
+        },
+        "scenes/16-61.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2898
+        },
+        "scenes/16-62.anm": {
+          "count": 42,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 77700
+        },
+        "scenes/16-63.anm": {
+          "count": 43,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 80100
+        },
+        "scenes/16-64.anm": {
+          "count": 44,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 70125
+        },
+        "scenes/16-65.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4309
+        },
+        "scenes/16-66.anm": {
+          "count": 70,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6109
+        },
+        "scenes/16-67.anm": {
+          "count": 140,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3588
+        },
+        "scenes/16-68.anm": {
+          "count": 140,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4235
+        },
+        "scenes/16-69.anm": {
+          "count": 220,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4266
+        },
+        "scenes/16-70.anm": {
+          "count": 56,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11760
+        },
+        "scenes/16-71.anm": {
+          "count": 17,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11760
+        },
+        "scenes/16-72.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10810
         }
       },
-      "preview_scene": 14,
+      "preview_scene": 16,
       "preview_catalog": [
+        {
+          "resource_id": 47,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "01 Полёт — 47"
+        },
+        {
+          "resource_id": 48,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            114
+          ],
+          "label": "02 Полёт — 48"
+        },
+        {
+          "resource_id": 49,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            306
+          ],
+          "label": "03 Полёт — 49"
+        },
+        {
+          "resource_id": 50,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "04 Полёт — 50"
+        },
+        {
+          "resource_id": 51,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "05 Полёт — 51"
+        },
+        {
+          "resource_id": 52,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            114
+          ],
+          "label": "06 Полёт — 52"
+        },
+        {
+          "resource_id": 53,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            210
+          ],
+          "label": "07 Полёт — 53"
+        },
+        {
+          "resource_id": 54,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            114
+          ],
+          "label": "08 Полёт — 54"
+        },
+        {
+          "resource_id": 55,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            306
+          ],
+          "label": "09 Полёт — 55"
+        },
+        {
+          "resource_id": 56,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            157,
+            306
+          ],
+          "label": "10 Полёт — 56"
+        },
+        {
+          "resource_id": 57,
+          "anchor": [
+            256,
+            400
+          ],
+          "focus": [
+            292,
+            144
+          ],
+          "label": "11 Полёт — 57"
+        },
+        {
+          "resource_id": 61,
+          "anchor": [
+            0,
+            224
+          ],
+          "focus": [
+            639,
+            303
+          ],
+          "label": "12 Полёт — 61"
+        },
         {
           "resource_id": 62,
           "anchor": [
-            128,
-            304
+            0,
+            192
           ],
           "focus": [
-            194,
-            212
+            174,
+            306
           ],
-          "label": "01 Крыша — 62"
+          "label": "13 Полёт — 62"
         },
         {
           "resource_id": 63,
           "anchor": [
-            128,
-            304
+            0,
+            192
           ],
           "focus": [
-            194,
-            212
+            174,
+            229
           ],
-          "label": "02 Крыша — 63"
+          "label": "14 Полёт — 63"
+        },
+        {
+          "resource_id": 64,
+          "anchor": [
+            0,
+            192
+          ],
+          "focus": [
+            174,
+            133
+          ],
+          "label": "15 Полёт — 64"
+        },
+        {
+          "resource_id": 65,
+          "anchor": [
+            576,
+            288
+          ],
+          "focus": [
+            634,
+            328
+          ],
+          "label": "16 Полёт — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            128,
-            304
+            576,
+            288
           ],
           "focus": [
-            162,
-            286
+            620,
+            338
           ],
-          "label": "03 Крыша — 66"
+          "label": "17 Полёт — 66"
         },
         {
           "resource_id": 67,
           "anchor": [
-            128,
-            304
+            576,
+            128
           ],
           "focus": [
-            162,
-            286
+            636,
+            177
           ],
-          "label": "04 Крыша — 67"
+          "label": "18 Полёт — 67"
+        },
+        {
+          "resource_id": 68,
+          "anchor": [
+            576,
+            32
+          ],
+          "focus": [
+            635,
+            79
+          ],
+          "label": "19 Полёт — 68"
+        },
+        {
+          "resource_id": 69,
+          "anchor": [
+            256,
+            0
+          ],
+          "focus": [
+            635,
+            13
+          ],
+          "label": "20 Полёт — 69"
+        },
+        {
+          "resource_id": 70,
+          "anchor": [
+            320,
+            400
+          ],
+          "focus": [
+            357,
+            77
+          ],
+          "label": "21 Полёт — 70"
         },
         {
           "resource_id": 71,
           "anchor": [
-            128,
-            304
+            0,
+            400
           ],
           "focus": [
-            162,
-            286
+            9,
+            276
           ],
-          "label": "05 Крыша — 71"
+          "label": "22 Полёт — 71"
         },
         {
           "resource_id": 72,
           "anchor": [
-            256,
-            48
+            448,
+            400
           ],
           "focus": [
-            335,
-            77
+            508,
+            409
           ],
-          "label": "06 Крыша — 72"
-        },
-        {
-          "resource_id": 74,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            227,
-            298
-          ],
-          "label": "07 Крыша — 74"
-        },
-        {
-          "resource_id": 76,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            138,
-            276
-          ],
-          "label": "08 Крыша — 76"
-        },
-        {
-          "resource_id": 77,
-          "anchor": [
-            0,
-            64
-          ],
-          "focus": [
-            45,
-            46
-          ],
-          "label": "09 Крыша — 77"
-        },
-        {
-          "resource_id": 78,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            121,
-            287
-          ],
-          "label": "10 Крыша — 78"
-        },
-        {
-          "resource_id": 79,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            184,
-            299
-          ],
-          "label": "11 Крыша — 79"
-        },
-        {
-          "resource_id": 80,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            184,
-            299
-          ],
-          "label": "12 Крыша — 80"
-        },
-        {
-          "resource_id": 81,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            224,
-            298
-          ],
-          "label": "13 Крыша — 81"
-        },
-        {
-          "resource_id": 84,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            133,
-            281
-          ],
-          "label": "14 Крыша — 84"
-        },
-        {
-          "resource_id": 88,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            189,
-            283
-          ],
-          "label": "15 Крыша — 88"
-        },
-        {
-          "resource_id": 89,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            465,
-            118
-          ],
-          "label": "16 Крыша — 89"
-        },
-        {
-          "resource_id": 92,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            184,
-            270
-          ],
-          "label": "17 Крыша — 92"
-        },
-        {
-          "resource_id": 94,
-          "anchor": [
-            128,
-            368
-          ],
-          "focus": [
-            216,
-            385
-          ],
-          "label": "18 Крыша — 94"
-        },
-        {
-          "resource_id": 97,
-          "anchor": [
-            128,
-            352
-          ],
-          "focus": [
-            176,
-            358
-          ],
-          "label": "19 Крыша — 97"
-        },
-        {
-          "resource_id": 98,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            224,
-            299
-          ],
-          "label": "20 Крыша — 98"
-        },
-        {
-          "resource_id": 99,
-          "anchor": [
-            320,
-            0
-          ],
-          "focus": [
-            300,
-            49
-          ],
-          "label": "21 Крыша — 99"
-        },
-        {
-          "resource_id": 101,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            158,
-            286
-          ],
-          "label": "22 Крыша — 101"
-        },
-        {
-          "resource_id": 102,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            227,
-            298
-          ],
-          "label": "23 Крыша — 102"
-        },
-        {
-          "resource_id": 103,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            227,
-            298
-          ],
-          "label": "24 Крыша — 103"
-        },
-        {
-          "resource_id": 104,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            195,
-            297
-          ],
-          "label": "25 Крыша — 104"
-        },
-        {
-          "resource_id": 105,
-          "anchor": [
-            128,
-            304
-          ],
-          "focus": [
-            162,
-            286
-          ],
-          "label": "26 Крыша — 105"
-        },
-        {
-          "resource_id": 106,
-          "anchor": [
-            192,
-            320
-          ],
-          "focus": [
-            223,
-            298
-          ],
-          "label": "27 Крыша — 106"
-        },
-        {
-          "resource_id": 108,
-          "anchor": [
-            192,
-            48
-          ],
-          "focus": [
-            260,
-            75
-          ],
-          "label": "28 Крыша — 108"
-        },
-        {
-          "resource_id": 109,
-          "anchor": [
-            256,
-            48
-          ],
-          "focus": [
-            335,
-            77
-          ],
-          "label": "29 Крыша — 109"
-        },
-        {
-          "resource_id": 110,
-          "anchor": [
-            192,
-            48
-          ],
-          "focus": [
-            265,
-            75
-          ],
-          "label": "30 Крыша — 110"
-        },
-        {
-          "resource_id": 111,
-          "anchor": [
-            256,
-            48
-          ],
-          "focus": [
-            303,
-            104
-          ],
-          "label": "31 Крыша — 111"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            256,
-            48
-          ],
-          "focus": [
-            340,
-            78
-          ],
-          "label": "32 Крыша — 112"
+          "label": "23 Полёт — 72"
         }
       ],
       "largest_resources": [
@@ -29111,6 +30002,16 @@
           "path": "scenes/06-82.anm",
           "bytes": 1566161,
           "compressed_bytes": 97658
+        },
+        {
+          "path": "scenes/16-55.anm",
+          "bytes": 1517666,
+          "compressed_bytes": 80472
+        },
+        {
+          "path": "scenes/16-50.anm",
+          "bytes": 1383357,
+          "compressed_bytes": 69805
         },
         {
           "path": "scenes/13-187.anm",
@@ -29136,16 +30037,6 @@
           "path": "scenes/08-46.anm",
           "bytes": 817842,
           "compressed_bytes": 128175
-        },
-        {
-          "path": "scenes/14-76.anm",
-          "bytes": 744096,
-          "compressed_bytes": 43799
-        },
-        {
-          "path": "scenes/14-111.anm",
-          "bytes": 741808,
-          "compressed_bytes": 114938
         }
       ]
     }

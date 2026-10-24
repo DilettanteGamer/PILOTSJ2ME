@@ -38,7 +38,7 @@ public final class RoofWorldTest {
   act(1,2,35);check(find(46)&&find(47)&&!world.completed,"wrong paint on rope blocked basket actor");
   act(0,0,15);check(world.heroes[0].active&&world.hasItem(1),"basket item click did not descend and resume source action");
   world=new HotelWorld(GameState.decode(basket,16));replay=copy(world);world.sound(new SoundSink(){public void play(int c){cues[c]++;}});
-  act(1,3,35);check(world.completed&&SceneFlow.next(15,true)==14&&SceneFlow.next(14,true)==14,"source flight/scene boundary");
+  act(1,3,35);check(world.completed&&SceneFlow.next(15,true)==14&&SceneFlow.next(14,true)==16,"source flight/scene boundary");
   for(HotelWorld.Thing t:world.cells)if(t!=null&&t.id==46)check(t.clip<0,"departed Colleague returned to basket rest pose");
   check(cues[44]==1,"final flight voice missing");
   latePaint();

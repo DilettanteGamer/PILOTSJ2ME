@@ -9259,6 +9259,329 @@
         }
       ],
       "explicit_transitions": []
+    },
+    "16": {
+      "section": 18,
+      "binding": "original section VM",
+      "samples": [
+        {
+          "cue": 0,
+          "samples": 1120,
+          "duration_ms": 101,
+          "pcm_sha256": "f57c1ba35a0d0d59ba57599c0b087f28765dd5334e08c25369c6a4e2c0a06efb"
+        },
+        {
+          "cue": 1,
+          "samples": 3441,
+          "duration_ms": 312,
+          "pcm_sha256": "40e4aef6ef8142112233499759ad525bbef5f29678a4a92071c1d9fd6f687934"
+        },
+        {
+          "cue": 2,
+          "samples": 2559,
+          "duration_ms": 232,
+          "pcm_sha256": "c24101368c8d57c89997513030a55c869e20d0bfad21f829d6dcb0716894999b"
+        },
+        {
+          "cue": 3,
+          "samples": 2500,
+          "duration_ms": 226,
+          "pcm_sha256": "7e1a1bed1207fff99ab1f33ae623eb12f7a302fce5b05de1035e165acbf74dda"
+        },
+        {
+          "cue": 4,
+          "samples": 2500,
+          "duration_ms": 226,
+          "pcm_sha256": "19f83c50347b536a48241f534e1d49e842b3aa0d3f146aa8e10443d11a957791"
+        },
+        {
+          "cue": 5,
+          "samples": 1817,
+          "duration_ms": 164,
+          "pcm_sha256": "0531dae6a5d4dad6f0963e3f18335d6dfaa1c99c61a356bf1b6c1a1bce926e5b"
+        },
+        {
+          "cue": 6,
+          "samples": 11839,
+          "duration_ms": 1073,
+          "pcm_sha256": "530aecb661380af395cba837562b898a7a242bcae87665381f02dcbfa8f93eab"
+        },
+        {
+          "cue": 7,
+          "samples": 11297,
+          "duration_ms": 1024,
+          "pcm_sha256": "9d2ec92bef8a81e0892b9b364437bee41f69ef6f1cba06a3d4db4cbf0394252c"
+        },
+        {
+          "cue": 8,
+          "samples": 9119,
+          "duration_ms": 827,
+          "pcm_sha256": "875effdaf87047e05d617c2ef6a80c8f3ffa0ec1103daee71d7ef21ece4cb8c3"
+        },
+        {
+          "cue": 9,
+          "samples": 4554,
+          "duration_ms": 413,
+          "pcm_sha256": "94b28890b33965ea8ff49912a930cd1b265bc8f79bbc70ca74121f060acdcbe5"
+        },
+        {
+          "cue": 10,
+          "samples": 922,
+          "duration_ms": 83,
+          "pcm_sha256": "e3260655f30c424126de9ce58bec7f3ad9c842d911aef2c1d4b680552e7d85d9"
+        },
+        {
+          "cue": 11,
+          "samples": 922,
+          "duration_ms": 83,
+          "pcm_sha256": "7a4e8b6dc6b6aa680220a5ad7bdd92999010728986ad153cbeb04d12304be902"
+        },
+        {
+          "cue": 12,
+          "samples": 25541,
+          "duration_ms": 2316,
+          "pcm_sha256": "a10e0e4e96d5378063d75f84920c90280e7570f20007f743f521af8cf44425ea"
+        },
+        {
+          "cue": 13,
+          "samples": 10217,
+          "duration_ms": 926,
+          "pcm_sha256": "5c55c33a0e08782bae4cc1e7597898a5f4e1735a031807d2989ab4118615460d"
+        },
+        {
+          "cue": 14,
+          "samples": 16092,
+          "duration_ms": 1459,
+          "pcm_sha256": "7e27ddf8f8d71130465fc9e079468ef589313c6523b29c34b10e000cdd6df524"
+        },
+        {
+          "cue": 15,
+          "samples": 11924,
+          "duration_ms": 1081,
+          "pcm_sha256": "f03a65658c5857e65f54a53254c91f4e67748a92d96b293ebd3a50615cafc8c0"
+        },
+        {
+          "cue": 16,
+          "samples": 18745,
+          "duration_ms": 1700,
+          "pcm_sha256": "37082cd8cf8556331f1904d91dbde5e0acaa4f2f5571653b522e1d96268e6f25"
+        },
+        {
+          "cue": 17,
+          "samples": 8026,
+          "duration_ms": 727,
+          "pcm_sha256": "e507c2aba3346df04b07810e49dbad665ac95c3228c906d6f9b5e87217c0778d"
+        },
+        {
+          "cue": 18,
+          "samples": 8026,
+          "duration_ms": 727,
+          "pcm_sha256": "e507c2aba3346df04b07810e49dbad665ac95c3228c906d6f9b5e87217c0778d"
+        },
+        {
+          "cue": 19,
+          "samples": 22640,
+          "duration_ms": 2053,
+          "pcm_sha256": "33e52e1320c6a9a4ed4156e9528bd13840de9617f728e73bb44fd8459b430a04"
+        },
+        {
+          "cue": 20,
+          "samples": 20724,
+          "duration_ms": 1879,
+          "pcm_sha256": "de3b3b900832237ca9dcadae0ce825a0662d5ef40428695ec4e9d11d6294b975"
+        },
+        {
+          "cue": 21,
+          "samples": 38514,
+          "duration_ms": 3493,
+          "pcm_sha256": "526de3a5eb31e73a796357f86a82f6516319516e74a70b4001140ff66d0fe3df"
+        },
+        {
+          "cue": 22,
+          "samples": 30050,
+          "duration_ms": 2725,
+          "pcm_sha256": "41dd8c36bb7e6707b702727dbb948da859354c1d1c51e6731a7aa079db487761"
+        },
+        {
+          "cue": 23,
+          "samples": 30050,
+          "duration_ms": 2725,
+          "pcm_sha256": "41dd8c36bb7e6707b702727dbb948da859354c1d1c51e6731a7aa079db487761"
+        },
+        {
+          "cue": 24,
+          "samples": 30050,
+          "duration_ms": 2725,
+          "pcm_sha256": "41dd8c36bb7e6707b702727dbb948da859354c1d1c51e6731a7aa079db487761"
+        },
+        {
+          "cue": 25,
+          "samples": 49854,
+          "duration_ms": 4521,
+          "pcm_sha256": "e684c6af2cbfc9f5f0d288a55327c4c2f8ec3645f32406e6b39540c282871a11"
+        },
+        {
+          "cue": 26,
+          "samples": 14495,
+          "duration_ms": 1314,
+          "pcm_sha256": "24b1f1e0e311a3862da3e9da7de0df4a164b7c570f77615b728b3f8cf72a614a"
+        },
+        {
+          "cue": 27,
+          "samples": 14495,
+          "duration_ms": 1314,
+          "pcm_sha256": "24b1f1e0e311a3862da3e9da7de0df4a164b7c570f77615b728b3f8cf72a614a"
+        }
+      ],
+      "music": {
+        "events": 8522,
+        "duration_ms": 109700,
+        "event_sha256": "3c3c50a9b08d48597ccec4d2740db1cbb906510278277993713cade18c5d1791"
+      },
+      "events": [],
+      "source_rules": [
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 5,
+          "offset": 36792727,
+          "body": "1d2900000010200000001d0100000010300000001d0000000010581b1e001d00000000105c1b1e001d040000002136140000001d3e0000002136130000001d1600000021361100000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 6,
+          "offset": 36792874,
+          "body": "1d2900000010200000001d0100000010300000001d0000000010581b1e001d00000000105c1b1e001d040000002136140000001d3e0000002136130000001d1600000021361100000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 7,
+          "offset": 36793058,
+          "body": "1d2a00000010200000001d0100000010300000001d0000000010581b1e001d00000000105c1b1e001d060000002136140000001d3f0000002136130000001d1700000021361100000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 8,
+          "offset": 36793205,
+          "body": "1d2a00000010200000001d0100000010300000001d0000000010581b1e001d00000000105c1b1e001d060000002136140000001d3f0000002136130000001d1700000021361100000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 9,
+          "offset": 36793407,
+          "body": "1d2a00000010200000001d0100000010300000001d0000000010581b1e001d00000000105c1b1e001d060000002136140000001d3f0000002136130000001d1700000021361100000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 10,
+          "offset": 36793573,
+          "body": "1d2b00000010200000001d0100000010300000001d0000000010581b1e001d00000000105c1b1e001d080000002136140000001d400000002136130000001d1800000021361100000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 11,
+          "offset": 36793774,
+          "body": "1d2b00000010200000001d0100000010300000001d0000000010581b1e001d00000000105c1b1e001d080000002136140000001d400000002136130000001d1800000021361100000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 13,
+          "offset": 36793982,
+          "body": "1d310000002136130000001d0d0000002136110000001d01000000103000000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 17,
+          "offset": 36794351,
+          "body": "1d330000002136130000001d0f0000002136110000001d01000000103000000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 22,
+          "offset": 36794810,
+          "body": "1d320000002136130000001d0e0000002136110000001d01000000103000000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 24,
+          "offset": 36794990,
+          "body": "3130000000211d01000000221510300000001d0c00000021361100000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 28,
+          "offset": 36795362,
+          "body": "1d380000002136130000001d140000002136110000001d01000000103000000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 33,
+          "offset": 36795821,
+          "body": "1d370000002136130000001d130000002136110000001d01000000103000000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 35,
+          "offset": 36796002,
+          "body": "3130000000211d01000000221510300000001d0c00000021361100000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 43,
+          "offset": 36796731,
+          "body": "1d350000002136130000001d110000002136110000001d01000000103000000000"
+        },
+        {
+          "object": 13,
+          "kind": 44,
+          "index": 47,
+          "offset": 36797100,
+          "body": "1d360000002136130000001d120000002136110000001d01000000103000000000"
+        },
+        {
+          "object": 18,
+          "kind": 33,
+          "index": 0,
+          "offset": 36798879,
+          "body": "1d3d0000002136130000001d1500000021361100000000"
+        },
+        {
+          "object": 30,
+          "kind": 33,
+          "index": 0,
+          "offset": 36801566,
+          "body": "1d470000002136130000001d1a00000021361100000000"
+        },
+        {
+          "object": 31,
+          "kind": 33,
+          "index": 0,
+          "offset": 36801601,
+          "body": "1d480000002136130000001d1b00000021361100000000"
+        },
+        {
+          "object": 33,
+          "kind": 33,
+          "index": 0,
+          "offset": 36801857,
+          "body": "1d460000002136130000001d1900000021361100000000"
+        }
+      ],
+      "explicit_transitions": []
     }
   }
 }

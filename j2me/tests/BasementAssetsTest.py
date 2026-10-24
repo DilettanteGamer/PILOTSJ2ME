@@ -64,7 +64,7 @@ for profile in ['128x128','128x160','240x320']:
    rr=[r for r in local if r['code']==op];assert u16()==len(rr)
    for r in rr:assert u16()==r['id'] and blob()==r['data']
   assert u16()==0 and p==len(data),'Unexpected text relocation'
-  assert [n for n in jar.namelist() if n.endswith('.animations')]==['scenes/14.animations']
+  assert [n for n in jar.namelist() if n.endswith('.animations')]==['scenes/16.animations']
   profiles.append(dict(profile=profile,clips=count,frames=frames,source_rules=rule_count,source_maps=len(maps),source_sha256=EXPECTED,vm_sha256=hashlib.sha256(data).hexdigest()))
 print('BasementAssets: all three profiles, 95 original clips / 1291 frames, four directional poses, all VM definitions/rules/maps and new-only preview catalog passed')
 (ROOT/'analysis/basement-assets-audit.json').write_text(json.dumps(profiles,indent=2)+'\n')
