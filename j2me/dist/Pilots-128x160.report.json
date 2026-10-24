@@ -182,9 +182,9 @@
     ]
   },
   "hotel_key_gate": "removed towel, crocodile withdrawn, original 100-tick window",
-  "version": "0.16.1",
-  "jar_size": 11483121,
-  "jar_sha256": "0227ab100d46168b37a3e382b537bd8d924a878ad7bb94cc3d879cc519609c6f",
+  "version": "0.16.2",
+  "jar_size": 11483417,
+  "jar_sha256": "541cfbc52c355c736f398c322c708e74cb1d95216a4014144c0f342589755c44",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",

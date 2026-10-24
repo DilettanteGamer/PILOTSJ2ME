@@ -21,32 +21,49 @@ public final class BathroomRenderTest {
   }
   check(limit>0&&frames>0&&hits>0,"soap movie regression did not reach visible Colleague "+expected);
  }
- static void sinkDepth()throws Exception {
+ static void sinkPassage(int width,int height,String path)throws Exception {
   Scene scene=new Scene(12);GameState s=new GameState();s.scene=12;
-  try {HotelScene h=new HotelScene(scene,s);settle(h);int slot=HotelRenderTest.slot(h,31),behind=0,front=0;
-   for(int hero=0;hero<2;hero++)for(int y:new int[]{288,304,320})for(int pose=0;pose<8;pose++) {
-    HotelWorld.Thing other=h.animals.world.heroes[1-hero];other.x=other.fromX=512;other.y=other.fromY=352;other.layer=12;
-    h.animals.world.g(hero==0?0x44:0x40,12);
-    HotelWorld.Thing t=h.animals.world.heroes[hero];t.x=t.fromX=192;t.y=t.fromY=y;t.layer=78-y*3/16;
-    h.animals.world.g(hero==0?0x40:0x44,t.layer);t.clip=pose<4?(hero==0?12:16)+pose:hero==0?22:26;t.frame=pose<4?0:pose-4;t.finished=false;
-    if(pose>=4)t.fromY=y-16;
-    h.update(100);AnimatedActor bowl=scene.actors[slot],actor=scene.actors[300+hero];
+  try {HotelScene h=new HotelScene(scene,s);settle(h);int slot=HotelRenderTest.slot(h,31);
+   check(h.layer(slot)==26,"sink must retain its source foreground plane");
+   for(int hero=0;hero<2;hero++) {
+    check(h.logic.select(hero),"sink walker selection");
+    check(!h.animals.world.move(192,320)&&!h.animals.world.move(256,320),"free walk entered sink clearance");
+    check(h.animals.world.move(192,336),"nearest safe sink approach");int limit=1000;
+    while(h.logic.busy()&&limit-->0) {
+     h.update(100);HotelWorld.Thing t=h.animals.world.heroes[hero];
+     check(!(t.x>=192&&t.x<=256&&t.y<336),"route crossed pedestal clearance");
+    }
+    check(limit>0,"sink aisle route did not settle");
+    AnimatedActor actor=scene.actors[300+hero],bowl=scene.actors[slot];
+    check(h.layer(300+hero)<h.layer(slot),"safe approach hidden by sink");
     Graphics actual=HotelRenderTest.worldPaint(h),expected=new Graphics(640,417);Viewport v=new Viewport(640,417,640,417);
-    boolean rear=actor.y<320;
-    if(rear){actor.paint(expected,v);bowl.paint(expected,v);}else{bowl.paint(expected,v);actor.paint(expected,v);}
+    bowl.paint(expected,v);actor.paint(expected,v);
     for(int py=bowl.y+bowl.clip.offsetY;py<bowl.y+bowl.clip.offsetY+bowl.clip.height;py++)
      for(int px=bowl.x+bowl.clip.offsetX;px<bowl.x+bowl.clip.offsetX+bowl.clip.width;px++)
       if(bowl.clip.contains(px-bowl.x,py-bowl.y)&&actor.clip.contains(px-actor.x,py-actor.y)) {
-       check(actual.image.getRGB(px,py)==expected.image.getRGB(px,py),"sink depth "+hero+":"+y+":"+pose+" at "+px+","+py);
-       if(rear)behind++;else front++;
+       check(actual.image.getRGB(px,py)==expected.image.getRGB(px,py),"safe sink foreground pixels");
       }
+    // The safe pose can clear the bowl entirely; layer ordering still matters
+    // for the authored wash pose, which deliberately reaches towards it.
+    BalconyRenderTest.capture(h,640,480,path+"-sink-"+hero+"-world.png");
+    BalconyRenderTest.capture(h,width,height,path+"-sink-"+hero+".png");
+    check(h.animals.world.move(hero==0?512:448,368),"leave sink aisle");settle(h);
    }
-   check(behind>0&&front>0,"sink regression did not cross both planes");
+   check(h.logic.select(1)&&h.logic.selectItem(0),"wash selection");HotelRenderTest.act(h,31);int frames=0,limit=3000;
+   while(h.logic.busy()&&limit-->0) {
+    if(h.animals.world.heroes[1].clip==95) {
+     check(h.layer(301)<h.layer(slot),"authored wash hidden by bowl");
+     if(frames++==20)BalconyRenderTest.capture(h,640,480,path+"-washing-world.png");
+    }
+    h.update(100);
+   }
+   check(limit>0&&frames>0&&h.animals.world.heroes[1].y>=336,"Colleague did not step back after washing");
+   BalconyRenderTest.capture(h,640,480,path+"-washed-world.png");
   }finally{scene.close();}
  }
  public static void main(String[] args)throws Exception{
-  sinkDepth();
   int width=Integer.parseInt(args[0]),height=Integer.parseInt(args[1]);Scene scene=new Scene(12);GameState s=new GameState();s.scene=12;
+  sinkPassage(width,height,args[2]);
   try{HotelScene h=new HotelScene(scene,s);settle(h);
    BalconyRenderTest.capture(h,640,480,args[2]+"-world.png");BalconyRenderTest.capture(h,width,height,args[2]+"-entry.png");
    BalconyRenderTest.label(h,21,"Вантуз");BalconyRenderTest.label(h,17,"Мыло");BalconyRenderTest.label(h,20,"Шнурок");BalconyRenderTest.label(h,18,"Кран");

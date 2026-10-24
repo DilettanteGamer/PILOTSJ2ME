@@ -93,6 +93,7 @@ public final class HotelWorld {
         }
         // Older hotel builds stopped after the first exit, leaving pose 97.
         if(scene==9 && completed && state.variables[63]==0 && heroes[1].active)beginPartnerExit();
+        clearSinkPassage();
         syncSave();
     }
     public boolean fridgePanelVisible() { return scene==9 && find(35)!=null; }
@@ -432,6 +433,7 @@ public final class HotelWorld {
         }
         if(scene==9 && state.variables[59]==1 && action()==0) state.variables[59]=previousAction==78?4:0;
         if(scene==9 && state.variables[59]==4 && !nativeWalking() && walkHero<0)state.variables[59]=2;
+        clearSinkPassage();
         clicked=-1;acknowledge=false;
         if(action()==0 && walkHero<0 && !(scene==12 && g(0x1e1b60)==1)) g(0x88,0);
         syncSave();
@@ -471,6 +473,9 @@ public final class HotelWorld {
                 int nx=x+STEP_X[d],ny=y+STEP_Y[d];if(nx<0||nx>=10||ny<0||ny>=26) continue;
                 int next=ny*10+nx;if(routeFirst[next]>=0) continue;
                 int id=at(nx,ny);if(id!=254 && id!=target) continue;
+                // Only the final authored approach may enter the wash position.
+                // Ordinary routes go around the pedestal through the front aisle.
+                if(sinkObstacle(nx*64,ny*16) && !(action()==23 && target==6 && id==6 && nx==4 && ny==20))continue;
                 routeFirst[next]=cell==start?d*2:routeFirst[cell];
                 if(id==target) return routeFirst[next];
                 routeQueue[tail++]=next;
@@ -531,9 +536,22 @@ public final class HotelWorld {
         }
     }
     private void interactAfterAside(int h,int entity) { g(0x18,h);interact(entity); }
+    private boolean sinkObstacle(int x,int y) {
+        return scene==12 && x>=192 && x<=256 && y<336;
+    }
+    /** Keep the wash pose authored at its original root; then visibly step back. */
+    private void clearSinkPassage() {
+        if(scene!=12 || completed || action()!=0 || walkHero>=0 || nativeWalking())return;
+        for(int h=0;h<2;h++) {
+            Thing t=heroes[h];if(t==null || !t.active || !sinkObstacle(t.x,t.y))continue;
+            int[] xs={t.x,t.x,128,320},ys={336,352,336,336};
+            for(int i=0;i<xs.length;i++)if(walk(h,xs[i],ys[i],-1,-1))return;
+        }
+    }
     private boolean allowed(int x,int y,int sx,int sy) {
         if(x<0 || x>576 || y<16 || y>400) return false;
         if(x==sx && y==sy) return true;
+        if(sinkObstacle(x,y))return false;
         for(int h=0;h<2;h++) if(heroes[h]!=null && heroes[h].active && heroes[h].x/64==x/64 && heroes[h].y/16==y/16) return false;
         Thing t=cells[y/16*10+x/64];
         // Native 23(8) walks through empty cells. Approach markers belong to
