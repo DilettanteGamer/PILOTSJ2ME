@@ -355,10 +355,12 @@ public final class HotelWorld {
         default:throw new IllegalStateException("Unsupported original native "+api+" in entity "+context.id);
         }
     }
+    private boolean ledgeReaction() { return scene==11 && (action()==53 || action()==54); }
+    private boolean ledgeRecoil() { return ledgeReaction() && g(4)>=5; }
     private boolean rules(Thing t) {
         routeDirection=-1;
         if(scene==9 && t.id==34 && action()==6 && !keyAvailable()) { g(0x20,13);g(0x30,0); }
-        if((t==heroes[0] || t==heroes[1]) && t.clip>=20 && t.clip<=33 && !t.finished) return false;
+        if((t==heroes[0] || t==heroes[1]) && t.clip>=20 && t.clip<=33 && !t.finished && !ledgeRecoil()) return false;
         Definition def=definitions[t.id];if(!t.active || def==null || def.type==0) return false;
         for(int i=0;i<def.rules.length;i++) {
             byte[][] rule=def.rules[i];int mask=word(rule[0],0);
@@ -416,7 +418,7 @@ public final class HotelWorld {
             for(int i=0;i<cells.length;i++) { Thing t=cells[i];if(t!=null && t.serial>last && t.serial<=ceiling && (next==null||t.serial<next.serial)) next=t; }
             for(int h=0;h<2;h++) { Thing t=heroes[h];if(t!=null && t.serial>last && t.serial<=ceiling && (next==null||t.serial<next.serial)) next=t; }
             if(next==null) break;last=next.serial;
-            if(walkHero>=0 && next==heroes[walkHero]) continue;
+            if(walkHero>=0 && next==heroes[walkHero] && !ledgeRecoil()) continue;
             if(rules(next)) break;
         }
         if(scene==9 && previousAction!=0 && action()==0 && !completed && walkHero<0) {
@@ -494,7 +496,8 @@ public final class HotelWorld {
         hero.frame=0;hero.finished=false;hero.fallback=-1;
     }
     private void walkTick() {
-        if(walkHero<0) return;
+        // The lift interrupts travel before native 2a(0) cancels it at tick 5.
+        if(walkHero<0 || ledgeReaction()) return;
         Thing h=heroes[walkHero];
         if(path==null) { path=plan(h.x,h.y,walkX,walkY);pathIndex=2;walkPhase=-1; }
         if(path.length==0) { walkHero=-1;idle(h);return; }

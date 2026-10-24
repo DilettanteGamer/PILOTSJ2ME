@@ -13,6 +13,26 @@ public final class FacadeWorldTest {
    check(lift&&rope,"lift/rope vanished after reaction");tick();}
  }
  static void act(int hero,int item,int id)throws Exception{check(world.select(hero)&&replay.select(hero),"ledge hero");check(world.selectItem(item)&&replay.selectItem(item),"ledge item");check(world.interact(id)&&replay.interact(id),"ledge target "+id);settle();}
+ static void liftOnce(int hero,boolean manual)throws Exception {
+  final List<String> sounds=new ArrayList<String>();world.sound(new SoundSink(){public void play(int cue){sounds.add(cue+":"+world.g(4));}});sounds.clear();
+  check(world.select(hero)&&replay.select(hero),"lift actor select");
+  if(manual)check(world.move(256,320)&&replay.move(256,320),"unsafe manual lift route");
+  else check(world.interact(15)&&replay.interact(15),"unsafe window route");
+  int episodes=0,starts=0,withdrawals=0;boolean was=false;
+  for(int i=0;i<180;i++) {
+   boolean reaction=world.action()==53||world.action()==54;
+   if(reaction&&!was)episodes++;was=reaction;
+   for(HotelWorld.Thing t:world.cells)if(t!=null&&t.id==21&&t.clip==53&&t.frame==0)starts++;
+   if(manual&&reaction&&world.g(4)<5)check(world.heroes[hero].clip>=20&&world.heroes[hero].clip<=33,"lift interrupted the current gait frame");
+   if(reaction&&world.g(4)==5){check(world.walkHero==-1&&world.heroes[hero].clip==(hero==0?74:72),"lift reaction missed walking cancellation/withdrawal");withdrawals++;}
+   if(reaction&&world.g(4)==6)check(world.heroes[hero].clip==(hero==0?75:73),"lift response animation missing");
+   tick();
+  }
+  check(episodes==1&&starts==1&&withdrawals==1,"duplicate/incomplete lift sequence "+episodes+"/"+starts+"/"+withdrawals);
+  check(!world.busy()&&world.walkHero==-1&&world.heroes[hero].x==384,"lift continued original route");
+  List<String> relevant=new ArrayList<String>();for(String cue:sounds)if(cue.startsWith("18:")||cue.startsWith("20:")||cue.startsWith("21:"))relevant.add(cue);
+  check(relevant.equals(hero==0?Arrays.asList("18:8","18:36"):Arrays.asList("21:5","18:8","20:21","18:36")),"lift voice/effect timing "+relevant);
+ }
  static void quest(int pickupHero,int exitHero)throws Exception{
   act(1,0,16);check(has(17),"Colleague did not open right window");
   act(0,0,17);check(has(19)&&has(23),"Chief did not reveal glass shard");
@@ -40,6 +60,9 @@ public final class FacadeWorldTest {
   for(int hero=0;hero<2;hero++){
    world=new HotelWorld(GameState.decode(initial,12));replay=resume(world);world.select(hero);replay.select(hero);
    check(world.move(448,320)&&replay.move(448,320),"manual ledge route");settle();check(world.heroes[hero].layer==46-world.heroes[hero].y/8,"manual ledge depth");
+  }
+  for(int hero=0;hero<2;hero++)for(int mode=0;mode<2;mode++){
+   world=new HotelWorld(GameState.decode(initial,12));replay=resume(world);liftOnce(hero,mode==0);systemRest();quest(0,0);
   }
   for(int exit=0;exit<2;exit++){
    world=new HotelWorld(GameState.decode(initial,12));replay=resume(world);quest(exit,exit);
