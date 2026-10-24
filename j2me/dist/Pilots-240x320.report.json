@@ -163,10 +163,10 @@
       63
     ],
     "puzzles/basement.p8": [
-      256,
-      176,
-      256,
-      176
+      128,
+      160,
+      128,
+      160
     ]
   },
   "audio_wav_count": 424,
@@ -232,9 +232,9 @@
     ]
   },
   "hotel_key_gate": "removed towel, crocodile withdrawn, original 100-tick window",
-  "version": "0.19.1",
-  "jar_size": 15447711,
-  "jar_sha256": "951e8222a9af3f916792c6cf4f007bd37524747a46279219e38c671ecc8f4489",
+  "version": "0.19.2",
+  "jar_size": 15422957,
+  "jar_sha256": "f376b5be91164037652e90d304eed455bd03811c662b9c0b18842bdc4f67849a",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",

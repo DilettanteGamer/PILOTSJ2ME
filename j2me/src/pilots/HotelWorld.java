@@ -100,6 +100,7 @@ public final class HotelWorld {
             if(lift!=null && lift.id==46 && lift.under==58)lift.under=254;
             if(action()==99 && lift!=null && lift.id==58)removeCell(7,25);
         }
+        if(scene==15 && "Автомат достанет Коллега.".equals(caption)){caption=null;captionTicks=0;}
         initBasement();
         reconcileBasementRoom();
         initFridge();
@@ -174,7 +175,7 @@ public final class HotelWorld {
             t.frame=walkPhase;t.finished=false;t.fallback=-1;if(walkPhase==4)pathIndex+=2;return;
         }
         int target=walkEntity;walkHero=-1;path=null;pathIndex=0;walkEntity=-1;t.waitTicks=0;t.clip=13;t.frame=0;t.fallback=-1;t.finished=false;
-        if(target==14 && !hasItem(1)){caption="Автомат достанет Коллега.";captionTicks=35;}else if(target==31)cue(6);else if(target==-14)interact(14);
+        if(target==14 && !hasItem(1)){t.id=18;execute(definitions[18].init,t);g(0x1e1b90,20);g(0x88,1);}else if(target==31)cue(6);else if(target==-14)interact(14);
     }
     private void mirrorBasementCrates(){
         for(int i=0;i<cells.length;i++)if(cells[i]!=null && cells[i].id==24)cells[i]=null;
@@ -255,7 +256,7 @@ public final class HotelWorld {
     public int action() { return g(0x20); }
     public int step() { return g(0x30); }
     private boolean nativeWalking() { for(int h=0;h<2;h++) { Thing t=heroes[h];if(t!=null && t.active && t.clip>=20 && t.clip<=33 && !t.finished)return true; }return false; }
-    public boolean busy() { if(scene==15)return !completed&&(g(0x88)==1 || find(12)!=null || find(13)!=null || walkHero>=0 || basementRequested() || basement.solved());return !completed && (scene==8 || scene==13 && g(0x88)!=0 && (find(6)!=null || find(7)!=null) || scene==12 && g(0x1e1b60)==1 || action()!=0 || walkHero>=0 || nativeWalking()); }
+    public boolean busy() { if(scene==15)return !completed&&(g(0x88)==1 || g(0x1e1b90)==20 || find(12)!=null || find(13)!=null || walkHero>=0 || basementRequested() || basement.solved());return !completed && (scene==8 || scene==13 && g(0x88)!=0 && (find(6)!=null || find(7)!=null) || scene==12 && g(0x1e1b60)==1 || action()!=0 || walkHero>=0 || nativeWalking()); }
     public void sound(SoundSink value) { sound=value;if(value instanceof MusicSink && scene==9 && (completed || action()==87 || action()==84 && step()>=10))((MusicSink)value).music(2);if(value!=null) { for(int i=0;i<initialCueCount;i++) value.play(initialCues[i]);initialCueCount=0; } }
     public void cue(int cue) {
         if(sound!=null) sound.play(cue);else if(initialCueCount<initialCues.length) initialCues[initialCueCount++]=cue;
@@ -502,7 +503,7 @@ public final class HotelWorld {
     private boolean rules(Thing t) {
         routeDirection=-1;
         // The phone crate segment owns these actors. Source 17 still owns the exit.
-        if(scene==15 && (t.id==24 || !basement.solved() && (t.id==36 || t.id==22 || t.id==30 || t.id==34 || t.id>=16 && t.id<=20)))return false;
+        if(scene==15 && (t.id==24 || !basement.solved() && (t.id==36 || t.id==22 || t.id==30 || t.id==34 || t.id>=16 && t.id<=20 && !(t.id==18 && g(0x1e1b90)==20))))return false;
         if(scene==15 && t.waitTicks>0)return false;
         if(scene==9 && t.id==34 && action()==6 && !keyAvailable()) { g(0x20,13);g(0x30,0); }
         if((t==heroes[0] || t==heroes[1]) && t.clip>=20 && t.clip<=33 && !t.finished && !ledgeRecoil()) return false;
@@ -583,7 +584,7 @@ public final class HotelWorld {
         clearSinkPassage();
         if(scene==15){
             for(int i=0;i<cells.length;i++){Thing box=cells[i];if(box!=null && box.id==24 && box.x>=384 && box.y<=352)box.layer=14-(352-box.y)/48;}
-            if(!basement.solved() && walkHero<0){Thing chief=basementChief();if(chief!=null){chief.id=16;chief.clip=13;chief.frame=0;chief.fallback=-1;chief.finished=false;chief.waitTicks=0;}}
+            if(!basement.solved() && walkHero<0 && g(0x1e1b90)!=20){Thing chief=basementChief();if(chief!=null){chief.id=16;chief.clip=13;chief.frame=0;chief.fallback=-1;chief.finished=false;chief.waitTicks=0;}}
             clickActive=false;
         }
         clicked=-1;acknowledge=false;
@@ -704,7 +705,7 @@ public final class HotelWorld {
         if(hero()==0 && x>=336 && y>=160 && y<417){basement.request();return true;}
         if(hero()==0){
             if(target!=null && target.id==15)return select(1);
-            if(target!=null && target.id==14)return walkBasementChief(192,384,14);
+            if(target!=null && target.id==14)return walkBasementChief(256,336,14);
             if(target!=null && target.id==31)return walkBasementChief(128,368,31);
             return walkBasementChief(x,y,-1);
         }

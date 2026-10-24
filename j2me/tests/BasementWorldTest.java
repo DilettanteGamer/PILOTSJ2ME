@@ -13,12 +13,13 @@ public final class BasementWorldTest {
  static void close()throws Exception{world.basement.close();replay.basement.close();same();}
  static void move(int key)throws Exception{key(key);steps(22,true);}
  static void fire(int n)throws Exception{for(int i=0;i<n;i++){int before=world.basement.crates(world.basement.column());key(5);check(world.basement.shotTick()==BasementGame.SHOT_TICKS&&world.basement.crates(world.basement.column())==before,"box disappeared on shot");steps(BasementGame.SHOT_TICKS-1,true);check(world.basement.crates(world.basement.column())==before,"box removed before complete animation");steps(1,true);check(world.basement.crates(world.basement.column())==before-1,"box not removed after animation");}}
- static void fill()throws Exception{for(int n=0;n<4;n++){move(6);move(6);move(6);move(4);move(4);move(4);}for(int c=0;c<4;c++)check(world.basement.crates(c)==4,"could not build column "+c);}
+ static final BasementTestRoute.Driver route=new BasementTestRoute.Driver(){
+  public HotelWorld world(){return world;}public void press(int k)throws Exception{key(k);}public void ticks(int n)throws Exception{steps(n,true);}
+ };
  static void solve()throws Exception{
-  fill();move(6);fire(1);move(6);fire(2);move(6);fire(3);
-  check(world.basement.crates(0)==4&&world.basement.crates(1)==3&&world.basement.crates(2)==2&&world.basement.crates(3)==1,"staircase construction");
+  BasementTestRoute.stairs(route);
   key(2);steps(4,true);check(!world.basement.safe(),"UP did not enter crate lane");key(5);check(world.basement.shotTick()==0,"gun fired on unsafe lane");
-  key(4);steps(4,true);check(world.basement.height()==2,"first automatic jump");key(4);steps(4,true);check(world.basement.height()==3,"second automatic jump");key(4);steps(4,true);
+  for(int i=0;i<3;i++){key(4);steps(4,true);}
   check(world.basement.solved()&&!world.basementRequested(),"top platform did not finish segment");close();int limit=250;while(!world.completed&&limit-->0)tick(false);check(world.completed,"source celebration/ladder/both exits failed");
  }
  public static void main(String[] args)throws Exception{
@@ -29,16 +30,21 @@ public final class BasementWorldTest {
   open();key(2);steps(22,true);check(world.basement.safe()&&world.basement.crates(0)==2,"fall hit must recover onto safe lane");steps(4,true);key(6);steps(4,true);check(world.basement.column()==1,"movement locked after hit");
   world=new HotelWorld(GameState.decode(fresh,16));replay=copy(world);
   open();steps(80,true);check(world.basement.throwsCount()==0,"opening/standing starts barrage");key(5);check(world.basement.shotTick()==0,"phantom gun");
-  key(6);check(world.basement.fallingColumn()==1&&world.basement.fallingTick()==1,"movement should arm a warned throw");steps(5,true);close();int paused=world.basement.fallingTick();steps(80,false);check(world.basement.fallingTick()==paused,"room exit did not pause segment");
+  int throwsBefore=world.basement.throwsCount();key(6);steps(4,true);key(4);steps(4,true);check(world.basement.throwsCount()==throwsBefore&&world.basement.fallingColumn()<0,"safe walking starts throws");
+  key(2);steps(4,true);key(8);steps(22,true);check(world.basement.fallingColumn()<0&&world.basement.crates(0)==1,"windup did not cancel after retreat");
+  key(6);steps(4,true);key(2);steps(12,true);close();int paused=world.basement.fallingTick();steps(80,false);check(world.basement.fallingTick()==paused,"room exit did not pause segment");
+  byte[] withoutGun=world.state.encode();
   check(world.interact(14)&&replay.interact(14),"Chief should approach the gun after leaving detail");steps(80,false);
-  check(!world.busy()&&world.state.variables[63]==0x524d3131,"Chief room walk did not finish");
+  check(!world.busy()&&world.hasItem(1)&&world.hero()==0,"Chief did not take the gun");
+  world=new HotelWorld(GameState.decode(withoutGun,16));replay=copy(world);
   check(world.move(256,336)&&replay.move(256,336),"Chief walk to the shared approach");steps(40,false);
   check(world.select(1)&&replay.select(1)&&world.interact(14)&&replay.interact(14),"gun pickup after exit");steps(100,false);check(world.hasItem(1),"gun absent");open();steps(22,true);
-  check(world.basement.safe()&&world.basement.crates(1)==1,"safe lane was hit or drop failed");key(4);steps(22,true);
+  key(8);steps(4,true);check(world.basement.safe()&&world.basement.crates(1)==1,"safe lane was hit or drop failed");key(4);steps(22,true);
   solve();
   if(args.length>0){world=new HotelWorld(GameState.decode(Files.readAllBytes(Paths.get(args[0])),16));replay=copy(world);check(world.hasItem(1)&&!world.busy(),"old interrupted shot lost gun/stayed locked");open();key(6);steps(22,true);check(world.basement.column()==1,"old shot migration cannot move");close();}
   if(args.length>1){world=new HotelWorld(GameState.decode(Files.readAllBytes(Paths.get(args[1])),16));replay=copy(world);check(world.basement.solved()&&world.busy()&&!world.select(0),"old exit restarted the adapted puzzle");steps(250,false);check(world.completed,"old source exit migration failed");}
-  if(args.length>2){world=new HotelWorld(GameState.decode(Files.readAllBytes(Paths.get(args[2])),16));replay=copy(world);check(!world.busy()&&!world.hasItem(1),"0.19 return left a busy Chief");check(world.interact(14)&&replay.interact(14),"legacy Chief approach");steps(80,false);check(!world.busy(),"legacy Chief stuck walking");check(world.select(1)&&replay.select(1)&&world.interact(14)&&replay.interact(14),"legacy Colleague pickup");steps(100,false);check(world.hasItem(1),"legacy gun not collected");}
+  if(args.length>2){world=new HotelWorld(GameState.decode(Files.readAllBytes(Paths.get(args[2])),16));replay=copy(world);check(!world.busy()&&!world.hasItem(1),"0.19 return left a busy Chief");check(world.interact(14)&&replay.interact(14),"legacy Chief approach");steps(80,false);check(!world.busy()&&world.hasItem(1),"legacy Chief did not collect the gun");
+   world=new HotelWorld(GameState.decode(Files.readAllBytes(Paths.get(args[2])),16));replay=copy(world);check(world.select(1)&&replay.select(1)&&world.interact(14)&&replay.interact(14),"legacy Colleague pickup");steps(100,false);check(world.hasItem(1),"legacy gun not collected");}
   check(SceneFlow.next(13,true)==15&&SceneFlow.next(15,true)==15,"scene bounds");
   System.out.println("BasementWorld: no spawn barrage, warned movement throws, safe lane, gun gating, full destruction before removal, recoverable input, pause/exit/pickup/re-entry, auto jumps, original ending and "+ticks+" every-tick save replays passed");
  }

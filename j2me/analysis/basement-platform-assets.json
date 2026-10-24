@@ -1,5 +1,5 @@
 {
-  "atlas_sha256": "ae777dc63ea0e9d2be82e0672581f8da2fedad1f5f613bfb85f3f156beb3d6f7",
+  "background_sha256": "63ff721d65d82184a6dada7df0bebd3d15244391caed0b9971ea34ad01530c33",
   "resources": [
     "puzzles/basement.p8",
     "puzzles/basement-crates.sprite",
@@ -11,8 +11,14 @@
     "puzzles/basement-chief-gun.sprite"
   ],
   "stage": [
-    256,
-    176
+    128,
+    160
+  ],
+  "floor_y": 132,
+  "stack_step": 18,
+  "servant_anchor": [
+    86,
+    48
   ],
   "crate_columns": 4,
   "lanes": [
@@ -340,8 +346,8 @@
         ]
       ],
       "scale": [
-        11,
-        25
+        3,
+        8
       ],
       "anchor": [
         51,

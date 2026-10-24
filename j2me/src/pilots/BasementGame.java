@@ -26,7 +26,7 @@ public final class BasementGame {
     public boolean hasGun(){return world.hasItem(1);}
     public boolean requested(){return data[STATUS]!=0;}
     public void request(){if(!solved())data[STATUS]=1;world.syncSave();}
-    public void open(){if(!requested())throw new IllegalStateException("No crate approach");data[STATUS]=2;world.syncSave();}
+    public void open(){if(!requested())throw new IllegalStateException("No crate approach");data[STATUS]=2;if(safe()&&data[FALL]>=0&&data[FALL_TICK]<12){data[FALL]=-1;data[FALL_TICK]=0;}world.syncSave();}
     public void close(){data[STATUS]=0;world.basementReturn();world.syncSave();}
     public String message(){
         if(data[MESSAGE_TICK]<=0)return null;
@@ -47,7 +47,8 @@ public final class BasementGame {
         data[COLUMN]=col;data[LANE]=lane;data[HEIGHT]=next;data[MOTION]=4;data[MOVED]=1;
         world.cue(3);
         // No timer-driven barrage: a completed movement arms at most one throw.
-        if(data[FALL]<0 && crates(col)<4 && data[SHOT_TICK]==0){data[FALL]=col;data[FALL_TICK]=1;data[THROWS]++;}
+        if(lane==1 && data[FALL]<0 && crates(col)<4 && data[SHOT_TICK]==0){data[FALL]=col;data[FALL_TICK]=1;data[THROWS]++;}
+        if(lane==0 && data[FALL]>=0 && data[FALL_TICK]<12){data[FALL]=-1;data[FALL_TICK]=0;}
         world.syncSave();return true;
     }
     private boolean fire(){

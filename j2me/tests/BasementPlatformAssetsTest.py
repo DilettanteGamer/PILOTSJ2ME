@@ -6,7 +6,7 @@ root=Path(__file__).resolve().parents[1];sys.path.insert(0,str(root));sys.dont_w
 from extract_hotel import extract
 source,_=extract((root.parent/'PILOTS.EXE').read_bytes(),15)
 report=json.loads((root/'analysis/basement-platform-assets.json').read_text())
-assert hashlib.sha256((root/'assets/basement-platform-atlas.png').read_bytes()).hexdigest()==report['atlas_sha256']
+assert hashlib.sha256((root/'assets/basement-platform-background.png').read_bytes()).hexdigest()==report['background_sha256']
 def original(clip,f):
  b=source['scenes/15-%d.anm'%(20000+clip if clip<46 else clip)];p=777
  for i in range(f+1):
@@ -18,7 +18,7 @@ for profile in ['128x128','128x160','240x320']:
   resources={n:jar.read(n) for n in report['resources']}
   if canonical is None:canonical=resources
   assert resources==canonical
-  bg=resources['puzzles/basement.p8'];assert bg[:4]==b'P8BG' and struct.unpack_from('>HHHH',bg,4)==(256,176,256,176) and len(bg)==12+768+256*176
+  bg=resources['puzzles/basement.p8'];assert bg[:4]==b'P8BG' and struct.unpack_from('>HHHH',bg,4)==(128,160,128,160) and len(bg)==12+768+128*160
   for name,info in report['original_sprites'].items():
    b=resources[name];assert b[:4]==b'ANM1';assert struct.unpack_from('>H',b,4)[0]==len(info['source_frames']);p=777
    num,den=info['scale'];ax,ay=info['anchor']
