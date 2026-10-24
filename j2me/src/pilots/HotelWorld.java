@@ -73,6 +73,19 @@ public final class HotelWorld {
                 syncSave();
             }
         }
+        if(scene==11 && state.location!=null) {
+            // Older saves lost the loop underneath the lift/rope reaction.
+            for(int i=0;i<cells.length;i++) {
+                Thing t=cells[i];if(t==null || t.id!=18 && t.id!=21)continue;
+                int base=t.id==18?54:51;
+                if(t.clip<0) { t.clip=base;t.frame=0;t.finished=false;t.fallback=-1; }
+                else if(t.clip==(t.id==18?56:53) && t.fallback<0)t.fallback=base;
+            }
+            if(action()==90)for(int h=0;h<2;h++)if(heroes[h]!=null && heroes[h].active && heroes[h].clip<0) {
+                idle(heroes[h]);heroes[h].layer=g(h==0?0x40:0x44);
+            }
+            syncSave();
+        }
         initFridge();
         // Reconcile snapshots written before map replacement retired hero 12.
         if(scene==9 && !completed && state.variables[63]==0 && (action()==84 || action()==87) && find(97)!=null) {
@@ -178,7 +191,9 @@ public final class HotelWorld {
     private void place(int id,int x,int y) {
         if(x<0 || x>=10 || y<0 || y>=30) throw new IllegalStateException("Map cell outside scene");
         if(heroIndex(id)>=0) {
-            int h=heroIndex(id);Thing t=heroes[h];if(t==null) { t=new Thing(id,x*64,y*16,++serial);heroes[h]=t;t.layer=definitions[id].layer;execute(definitions[id].init,t); }
+            int h=heroIndex(id);Thing t=heroes[h];if(t==null) { t=new Thing(id,x*64,y*16,++serial);heroes[h]=t;t.layer=definitions[id].layer;execute(definitions[id].init,t);
+                if(scene==11 && action()==90 && t.clip<0) { idle(t);t.layer=g(h==0?0x40:0x44); }
+            }
             else { t.x=x*64;t.y=y*16;t.active=true;if(t.clip<0 || t.clip>=20 && t.clip<=33) idle(t);t.fromX=t.x;t.fromY=t.y; }
             enter(t);return;
         }
@@ -317,7 +332,13 @@ public final class HotelWorld {
             return 1;
         case 0x10:if(sound instanceof MusicSink)((MusicSink)sound).music(arg);return 1; // MIDI lifecycle belongs to GameAudio.
         case 0x11:cue(arg);return 1;
-        case 0x13:if(context.clip==arg && !context.finished) return 1;context.clip=arg;context.frame=0;context.finished=false;if(frames[arg]==1) context.fallback=-1;return 1;
+        case 0x13:
+            if(context.clip==arg && !context.finished)return 1;
+            // FUN_00406d80 keeps the base sprite when flag 1 marks a temporary
+            // animation. A loop replaces the base; a one-shot returns to it.
+            if((flags[arg]&1)!=0 && context.clip>=0 && (flags[context.clip]&1)==0)context.fallback=context.clip;
+            if((flags[arg]&1)==0)context.fallback=-1;
+            context.clip=arg;context.frame=0;context.finished=false;return 1;
         case 0x14:apply(maps[arg],null,true,false);return 1;
         case 0x19:context.layer=arg;return 1;
         case 0x1a:captionTicks=0;return 1;
