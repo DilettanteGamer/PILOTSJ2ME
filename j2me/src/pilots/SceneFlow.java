@@ -3,6 +3,7 @@ package pilots;
 public final class SceneFlow {
     public static int next(int scene,boolean completed) {
         if(completed && scene==6) return 8;
+        if(completed && scene==11) return 12;
         if(completed && scene==10) return 11;
         if(completed && scene==9) return 10;
         if(completed && scene==8) return 9;

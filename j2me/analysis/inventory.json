@@ -2608,10 +2608,11 @@
         8,
         9,
         10,
-        11
+        11,
+        12
       ],
-      "animations": 932,
-      "frames": 11402,
+      "animations": 1027,
+      "frames": 12864,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -2720,13 +2721,25 @@
           208,
           640,
           417
+        ],
+        "scenes/12.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/12.p8": [
+          320,
+          208,
+          640,
+          417
         ]
       },
       "path": "dist/Pilots-128x128.jar",
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.15.2",
+        "MIDlet-Version": "0.16.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2735,27 +2748,27 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "982af3da46902768b5a3e61bbce43b45c1ceb26c47a3355813905c38acfa3419",
-      "jar_bytes": 10194069,
-      "entry_count": 1362,
-      "uncompressed_bytes": 67014753,
+      "sha256": "580b84b2d2a11c5177ef22bc4096b56d5552e2b6290635a866ed261645971527",
+      "jar_bytes": 11483028,
+      "entry_count": 1508,
+      "uncompressed_bytes": 76401199,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 932,
-        ".bar": 9,
+        ".anm": 1027,
+        ".bar": 10,
         ".bin": 1,
         ".class": 59,
-        ".events": 9,
+        ".events": 10,
         ".hot": 3,
-        ".mid": 10,
-        ".p8": 9,
+        ".mid": 11,
+        ".p8": 10,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 7,
+        ".vm": 8,
         ".walk": 1,
-        ".wav": 317
+        ".wav": 363
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -2847,7 +2860,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0ef276224833bc64ec133a9e201301a9fb0ab019cd0c7b1f5c8ed6df06d483d4"
+          "sha256": "78ee30de3ba60671b33275a80659340c3f6bb6b3adfa66170eda383540827518"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -2993,7 +3006,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fb9f8030d9732dba65071e12df20484989a03f5d0bd929a0caea327aa3061496"
+          "sha256": "bbc9ed216f4113853917525f8c9dc3bb6eaff655275f1885dcfee0355c2b874c"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -3079,7 +3092,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "86272b2fa22c966bb68cabb2593167447a6f6bd7498f00ec2fd440786eaa9b77"
+          "sha256": "230725ce15334ee57fb2405f38ea5d9ab409d8f2e550abb2ee6f2bbab1786768"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -3120,7 +3133,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "cfe8bf7ce5cc839fd609ae618e262027713262ab2a945989e4fa40feaf74a24d"
+          "sha256": "185fa1a4b0eda52775dbb1b6c2b7b9d4937b5459ba4bf413c8952e907c3f8e7a"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -3314,7 +3327,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fcb954d917762059dd3c72f263a67853bd5c77ad0cab93fdc731eaddfd9d0dd3"
+          "sha256": "d150946457feaf035fc2573969bb7ef9761876db3c280c67fae0c8593c216dbb"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3337,7 +3350,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "00be635bc3ec3a58409b05e874b32a250f9efddb6358a3d4099fbaf99f1a7a35"
+          "sha256": "f4701f50871146c03fd7e3e5722d89909581d6f0bbd1b411b4df84e767c6ea15"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -3387,7 +3400,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ec120a92a6085e65816af51a37b5a46bff940a993ced35e1633d75847b871e92"
+          "sha256": "bbf9e132a7699c7ab84e30d26fbe28214753e70117dec9ad38debc15a4dbd711"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -3538,7 +3551,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e748bebf2647974db7a027b1ffa28edeb09477ea8e369139d96cd3e548b78700"
+          "sha256": "3cdb57d38e7f68bdd2fc93d7f91bc120848850092ed8efdd27fb2c45095eff5d"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -8268,237 +8281,808 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 970
+        },
+        "scenes/12-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/12-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/12-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/12-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/12-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/12-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/12-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/12-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/12-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/12-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/12-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/12-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/12-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/12-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/12-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/12-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/12-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/12-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/12-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/12-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/12-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/12-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/12-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/12-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/12-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/12-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/12-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/12-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/12-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/12-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/12-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/12-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/12-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/12-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/12-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/12-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/12-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 396
+        },
+        "scenes/12-47.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 361
+        },
+        "scenes/12-48.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14381
+        },
+        "scenes/12-49.anm": {
+          "count": 28,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7171
+        },
+        "scenes/12-50.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1656
+        },
+        "scenes/12-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 990
+        },
+        "scenes/12-52.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-53.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-54.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-55.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-56.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-57.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-58.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5922
+        },
+        "scenes/12-59.anm": {
+          "count": 28,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8827
+        },
+        "scenes/12-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1632
+        },
+        "scenes/12-61.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 484
+        },
+        "scenes/12-62.anm": {
+          "count": 9,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10504
+        },
+        "scenes/12-63.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14464
+        },
+        "scenes/12-64.anm": {
+          "count": 21,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8989
+        },
+        "scenes/12-65.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8239
+        },
+        "scenes/12-66.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/12-67.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/12-68.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19588
+        },
+        "scenes/12-69.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 37740
+        },
+        "scenes/12-70.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 450
+        },
+        "scenes/12-71.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3477
+        },
+        "scenes/12-72.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 310
+        },
+        "scenes/12-73.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 20252
+        },
+        "scenes/12-74.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10948
+        },
+        "scenes/12-75.anm": {
+          "count": 27,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1953
+        },
+        "scenes/12-76.anm": {
+          "count": 51,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8272
+        },
+        "scenes/12-77.anm": {
+          "count": 62,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8272
+        },
+        "scenes/12-78.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 230
+        },
+        "scenes/12-79.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-80.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-81.anm": {
+          "count": 70,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5472
+        },
+        "scenes/12-82.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4828
+        },
+        "scenes/12-83.anm": {
+          "count": 28,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4828
+        },
+        "scenes/12-84.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19942
+        },
+        "scenes/12-85.anm": {
+          "count": 92,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 81740
+        },
+        "scenes/12-86.anm": {
+          "count": 59,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 71904
+        },
+        "scenes/12-87.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7560
+        },
+        "scenes/12-88.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7560
+        },
+        "scenes/12-89.anm": {
+          "count": 15,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22644
+        },
+        "scenes/12-90.anm": {
+          "count": 15,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8991
+        },
+        "scenes/12-91.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 13968
+        },
+        "scenes/12-92.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8832
+        },
+        "scenes/12-93.anm": {
+          "count": 95,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19152
+        },
+        "scenes/12-94.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3196
+        },
+        "scenes/12-95.anm": {
+          "count": 61,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9500
+        },
+        "scenes/12-96.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 624
         }
       },
-      "preview_scene": 11,
+      "preview_scene": 12,
       "preview_catalog": [
         {
           "resource_id": 49,
           "anchor": [
-            384,
+            448,
+            336
+          ],
+          "focus": [
+            483,
             320
           ],
-          "focus": [
-            416,
-            305
-          ],
-          "label": "01 Карниз гостиницы — 49"
+          "label": "01 Ванная комната — 49"
         },
         {
-          "resource_id": 50,
+          "resource_id": 58,
           "anchor": [
-            512,
-            320
+            448,
+            336
           ],
           "focus": [
-            544,
-            299
+            475,
+            321
           ],
-          "label": "02 Карниз гостиницы — 50"
+          "label": "02 Ванная комната — 58"
         },
         {
-          "resource_id": 52,
+          "resource_id": 59,
           "anchor": [
-            320,
-            0
+            448,
+            336
           ],
           "focus": [
-            266,
-            104
+            472,
+            319
           ],
-          "label": "03 Карниз гостиницы — 52"
-        },
-        {
-          "resource_id": 53,
-          "anchor": [
-            320,
-            0
-          ],
-          "focus": [
-            266,
-            104
-          ],
-          "label": "04 Карниз гостиницы — 53"
-        },
-        {
-          "resource_id": 55,
-          "anchor": [
-            384,
-            0
-          ],
-          "focus": [
-            370,
-            208
-          ],
-          "label": "05 Карниз гостиницы — 55"
-        },
-        {
-          "resource_id": 56,
-          "anchor": [
-            384,
-            0
-          ],
-          "focus": [
-            373,
-            208
-          ],
-          "label": "06 Карниз гостиницы — 56"
-        },
-        {
-          "resource_id": 57,
-          "anchor": [
-            128,
-            224
-          ],
-          "focus": [
-            172,
-            285
-          ],
-          "label": "07 Карниз гостиницы — 57"
-        },
-        {
-          "resource_id": 61,
-          "anchor": [
-            512,
-            320
-          ],
-          "focus": [
-            563,
-            218
-          ],
-          "label": "08 Карниз гостиницы — 61"
+          "label": "03 Ванная комната — 59"
         },
         {
           "resource_id": 62,
           "anchor": [
             512,
-            320
+            352
           ],
           "focus": [
-            547,
-            299
+            518,
+            331
           ],
-          "label": "09 Карниз гостиницы — 62"
+          "label": "04 Ванная комната — 62"
+        },
+        {
+          "resource_id": 63,
+          "anchor": [
+            512,
+            352
+          ],
+          "focus": [
+            530,
+            320
+          ],
+          "label": "05 Ванная комната — 63"
         },
         {
           "resource_id": 64,
           "anchor": [
             512,
-            320
+            352
           ],
           "focus": [
-            543,
-            299
+            533,
+            331
           ],
-          "label": "10 Карниз гостиницы — 64"
+          "label": "06 Ванная комната — 64"
         },
         {
           "resource_id": 65,
           "anchor": [
-            384,
+            320,
             320
           ],
           "focus": [
-            420,
-            304
+            352,
+            299
           ],
-          "label": "11 Карниз гостиницы — 65"
+          "label": "07 Ванная комната — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            384,
-            320
+            512,
+            352
           ],
           "focus": [
-            428,
-            218
+            543,
+            335
           ],
-          "label": "12 Карниз гостиницы — 66"
+          "label": "08 Ванная комната — 66"
         },
         {
           "resource_id": 67,
           "anchor": [
-            384,
-            320
+            512,
+            352
           ],
           "focus": [
-            430,
-            219
+            543,
+            335
           ],
-          "label": "13 Карниз гостиницы — 67"
+          "label": "09 Ванная комната — 67"
         },
         {
           "resource_id": 68,
           "anchor": [
-            384,
-            320
+            512,
+            352
           ],
           "focus": [
-            409,
-            300
+            543,
+            335
           ],
-          "label": "14 Карниз гостиницы — 68"
+          "label": "10 Ванная комната — 68"
         },
         {
           "resource_id": 69,
           "anchor": [
             512,
-            320
+            352
           ],
           "focus": [
-            531,
-            294
+            543,
+            330
           ],
-          "label": "15 Карниз гостиницы — 69"
-        },
-        {
-          "resource_id": 70,
-          "anchor": [
-            0,
-            240
-          ],
-          "focus": [
-            272,
-            371
-          ],
-          "label": "16 Карниз гостиницы — 70"
+          "label": "11 Ванная комната — 69"
         },
         {
           "resource_id": 73,
           "anchor": [
-            384,
+            448,
+            336
+          ],
+          "focus": [
+            481,
+            318
+          ],
+          "label": "12 Ванная комната — 73"
+        },
+        {
+          "resource_id": 74,
+          "anchor": [
+            320,
             320
           ],
           "focus": [
-            350,
-            312
+            327,
+            302
           ],
-          "label": "17 Карниз гостиницы — 73"
+          "label": "13 Ванная комната — 74"
         },
         {
           "resource_id": 75,
           "anchor": [
-            512,
-            320
+            384,
+            112
           ],
           "focus": [
-            476,
-            295
+            400,
+            133
           ],
-          "label": "18 Карниз гостиницы — 75"
+          "label": "14 Ванная комната — 75"
         },
         {
           "resource_id": 76,
           "anchor": [
-            576,
-            0
+            448,
+            336
           ],
           "focus": [
-            454,
-            1
+            483,
+            320
           ],
-          "label": "19 Карниз гостиницы — 76"
+          "label": "15 Ванная комната — 76"
+        },
+        {
+          "resource_id": 77,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            318
+          ],
+          "label": "16 Ванная комната — 77"
+        },
+        {
+          "resource_id": 81,
+          "anchor": [
+            384,
+            112
+          ],
+          "focus": [
+            400,
+            135
+          ],
+          "label": "17 Ванная комната — 81"
+        },
+        {
+          "resource_id": 82,
+          "anchor": [
+            384,
+            112
+          ],
+          "focus": [
+            398,
+            114
+          ],
+          "label": "18 Ванная комната — 82"
+        },
+        {
+          "resource_id": 83,
+          "anchor": [
+            384,
+            112
+          ],
+          "focus": [
+            398,
+            114
+          ],
+          "label": "19 Ванная комната — 83"
+        },
+        {
+          "resource_id": 85,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            318
+          ],
+          "label": "20 Ванная комната — 85"
+        },
+        {
+          "resource_id": 86,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            318
+          ],
+          "label": "21 Ванная комната — 86"
+        },
+        {
+          "resource_id": 89,
+          "anchor": [
+            320,
+            80
+          ],
+          "focus": [
+            398,
+            190
+          ],
+          "label": "22 Ванная комната — 89"
+        },
+        {
+          "resource_id": 90,
+          "anchor": [
+            320,
+            80
+          ],
+          "focus": [
+            400,
+            119
+          ],
+          "label": "23 Ванная комната — 90"
+        },
+        {
+          "resource_id": 91,
+          "anchor": [
+            512,
+            352
+          ],
+          "focus": [
+            543,
+            330
+          ],
+          "label": "24 Ванная комната — 91"
+        },
+        {
+          "resource_id": 92,
+          "anchor": [
+            512,
+            352
+          ],
+          "focus": [
+            547,
+            330
+          ],
+          "label": "25 Ванная комната — 92"
+        },
+        {
+          "resource_id": 93,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            481,
+            318
+          ],
+          "label": "26 Ванная комната — 93"
+        },
+        {
+          "resource_id": 95,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            319
+          ],
+          "label": "27 Ванная комната — 95"
         }
       ],
       "largest_resources": [
@@ -8528,6 +9112,16 @@
           "compressed_bytes": 128175
         },
         {
+          "path": "scenes/12-69.anm",
+          "bytes": 658918,
+          "compressed_bytes": 52736
+        },
+        {
+          "path": "scenes/12-85.anm",
+          "bytes": 633751,
+          "compressed_bytes": 117863
+        },
+        {
           "path": "scenes/10-98.anm",
           "bytes": 613979,
           "compressed_bytes": 29128
@@ -8541,16 +9135,6 @@
           "path": "scenes/09-148.anm",
           "bytes": 586388,
           "compressed_bytes": 47072
-        },
-        {
-          "path": "scenes/06-62.anm",
-          "bytes": 573728,
-          "compressed_bytes": 53504
-        },
-        {
-          "path": "audio/03-23.wav",
-          "bytes": 566623,
-          "compressed_bytes": 280723
         }
       ]
     },
@@ -8566,10 +9150,11 @@
         8,
         9,
         10,
-        11
+        11,
+        12
       ],
-      "animations": 932,
-      "frames": 11402,
+      "animations": 1027,
+      "frames": 12864,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -8678,13 +9263,25 @@
           208,
           640,
           417
+        ],
+        "scenes/12.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/12.p8": [
+          320,
+          208,
+          640,
+          417
         ]
       },
       "path": "dist/Pilots-128x160.jar",
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.15.2",
+        "MIDlet-Version": "0.16.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -8693,27 +9290,27 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "d43588f4a175d623a3125cf34c991051724bb0838aeb99b26e869a4b1b1a0fad",
-      "jar_bytes": 10194070,
-      "entry_count": 1362,
-      "uncompressed_bytes": 67014753,
+      "sha256": "84b0b364117d853784b5a000cb5342faa44314ba06ca0afaad283e948a9f5824",
+      "jar_bytes": 11483026,
+      "entry_count": 1508,
+      "uncompressed_bytes": 76401199,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 932,
-        ".bar": 9,
+        ".anm": 1027,
+        ".bar": 10,
         ".bin": 1,
         ".class": 59,
-        ".events": 9,
+        ".events": 10,
         ".hot": 3,
-        ".mid": 10,
-        ".p8": 9,
+        ".mid": 11,
+        ".p8": 10,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 7,
+        ".vm": 8,
         ".walk": 1,
-        ".wav": 317
+        ".wav": 363
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -8805,7 +9402,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0ef276224833bc64ec133a9e201301a9fb0ab019cd0c7b1f5c8ed6df06d483d4"
+          "sha256": "78ee30de3ba60671b33275a80659340c3f6bb6b3adfa66170eda383540827518"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -8951,7 +9548,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fb9f8030d9732dba65071e12df20484989a03f5d0bd929a0caea327aa3061496"
+          "sha256": "bbc9ed216f4113853917525f8c9dc3bb6eaff655275f1885dcfee0355c2b874c"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -9037,7 +9634,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "86272b2fa22c966bb68cabb2593167447a6f6bd7498f00ec2fd440786eaa9b77"
+          "sha256": "230725ce15334ee57fb2405f38ea5d9ab409d8f2e550abb2ee6f2bbab1786768"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -9078,7 +9675,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "cfe8bf7ce5cc839fd609ae618e262027713262ab2a945989e4fa40feaf74a24d"
+          "sha256": "185fa1a4b0eda52775dbb1b6c2b7b9d4937b5459ba4bf413c8952e907c3f8e7a"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -9272,7 +9869,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fcb954d917762059dd3c72f263a67853bd5c77ad0cab93fdc731eaddfd9d0dd3"
+          "sha256": "d150946457feaf035fc2573969bb7ef9761876db3c280c67fae0c8593c216dbb"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -9295,7 +9892,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "00be635bc3ec3a58409b05e874b32a250f9efddb6358a3d4099fbaf99f1a7a35"
+          "sha256": "f4701f50871146c03fd7e3e5722d89909581d6f0bbd1b411b4df84e767c6ea15"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -9345,7 +9942,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ec120a92a6085e65816af51a37b5a46bff940a993ced35e1633d75847b871e92"
+          "sha256": "bbf9e132a7699c7ab84e30d26fbe28214753e70117dec9ad38debc15a4dbd711"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -9496,7 +10093,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e748bebf2647974db7a027b1ffa28edeb09477ea8e369139d96cd3e548b78700"
+          "sha256": "3cdb57d38e7f68bdd2fc93d7f91bc120848850092ed8efdd27fb2c45095eff5d"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -14226,237 +14823,808 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 970
+        },
+        "scenes/12-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/12-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/12-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/12-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/12-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/12-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/12-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/12-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/12-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/12-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/12-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/12-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/12-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/12-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/12-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/12-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/12-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/12-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/12-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/12-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/12-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/12-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/12-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/12-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/12-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/12-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/12-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/12-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/12-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/12-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/12-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/12-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/12-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/12-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/12-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/12-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/12-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 396
+        },
+        "scenes/12-47.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 361
+        },
+        "scenes/12-48.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14381
+        },
+        "scenes/12-49.anm": {
+          "count": 28,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7171
+        },
+        "scenes/12-50.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1656
+        },
+        "scenes/12-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 990
+        },
+        "scenes/12-52.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-53.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-54.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-55.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-56.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-57.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-58.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5922
+        },
+        "scenes/12-59.anm": {
+          "count": 28,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8827
+        },
+        "scenes/12-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1632
+        },
+        "scenes/12-61.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 484
+        },
+        "scenes/12-62.anm": {
+          "count": 9,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10504
+        },
+        "scenes/12-63.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14464
+        },
+        "scenes/12-64.anm": {
+          "count": 21,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8989
+        },
+        "scenes/12-65.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8239
+        },
+        "scenes/12-66.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/12-67.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/12-68.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19588
+        },
+        "scenes/12-69.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 37740
+        },
+        "scenes/12-70.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 450
+        },
+        "scenes/12-71.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3477
+        },
+        "scenes/12-72.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 310
+        },
+        "scenes/12-73.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 20252
+        },
+        "scenes/12-74.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10948
+        },
+        "scenes/12-75.anm": {
+          "count": 27,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1953
+        },
+        "scenes/12-76.anm": {
+          "count": 51,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8272
+        },
+        "scenes/12-77.anm": {
+          "count": 62,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8272
+        },
+        "scenes/12-78.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 230
+        },
+        "scenes/12-79.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-80.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-81.anm": {
+          "count": 70,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5472
+        },
+        "scenes/12-82.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4828
+        },
+        "scenes/12-83.anm": {
+          "count": 28,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4828
+        },
+        "scenes/12-84.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19942
+        },
+        "scenes/12-85.anm": {
+          "count": 92,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 81740
+        },
+        "scenes/12-86.anm": {
+          "count": 59,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 71904
+        },
+        "scenes/12-87.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7560
+        },
+        "scenes/12-88.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7560
+        },
+        "scenes/12-89.anm": {
+          "count": 15,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22644
+        },
+        "scenes/12-90.anm": {
+          "count": 15,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8991
+        },
+        "scenes/12-91.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 13968
+        },
+        "scenes/12-92.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8832
+        },
+        "scenes/12-93.anm": {
+          "count": 95,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19152
+        },
+        "scenes/12-94.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3196
+        },
+        "scenes/12-95.anm": {
+          "count": 61,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9500
+        },
+        "scenes/12-96.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 624
         }
       },
-      "preview_scene": 11,
+      "preview_scene": 12,
       "preview_catalog": [
         {
           "resource_id": 49,
           "anchor": [
-            384,
+            448,
+            336
+          ],
+          "focus": [
+            483,
             320
           ],
-          "focus": [
-            416,
-            305
-          ],
-          "label": "01 Карниз гостиницы — 49"
+          "label": "01 Ванная комната — 49"
         },
         {
-          "resource_id": 50,
+          "resource_id": 58,
           "anchor": [
-            512,
-            320
+            448,
+            336
           ],
           "focus": [
-            544,
-            299
+            475,
+            321
           ],
-          "label": "02 Карниз гостиницы — 50"
+          "label": "02 Ванная комната — 58"
         },
         {
-          "resource_id": 52,
+          "resource_id": 59,
           "anchor": [
-            320,
-            0
+            448,
+            336
           ],
           "focus": [
-            266,
-            104
+            472,
+            319
           ],
-          "label": "03 Карниз гостиницы — 52"
-        },
-        {
-          "resource_id": 53,
-          "anchor": [
-            320,
-            0
-          ],
-          "focus": [
-            266,
-            104
-          ],
-          "label": "04 Карниз гостиницы — 53"
-        },
-        {
-          "resource_id": 55,
-          "anchor": [
-            384,
-            0
-          ],
-          "focus": [
-            370,
-            208
-          ],
-          "label": "05 Карниз гостиницы — 55"
-        },
-        {
-          "resource_id": 56,
-          "anchor": [
-            384,
-            0
-          ],
-          "focus": [
-            373,
-            208
-          ],
-          "label": "06 Карниз гостиницы — 56"
-        },
-        {
-          "resource_id": 57,
-          "anchor": [
-            128,
-            224
-          ],
-          "focus": [
-            172,
-            285
-          ],
-          "label": "07 Карниз гостиницы — 57"
-        },
-        {
-          "resource_id": 61,
-          "anchor": [
-            512,
-            320
-          ],
-          "focus": [
-            563,
-            218
-          ],
-          "label": "08 Карниз гостиницы — 61"
+          "label": "03 Ванная комната — 59"
         },
         {
           "resource_id": 62,
           "anchor": [
             512,
-            320
+            352
           ],
           "focus": [
-            547,
-            299
+            518,
+            331
           ],
-          "label": "09 Карниз гостиницы — 62"
+          "label": "04 Ванная комната — 62"
+        },
+        {
+          "resource_id": 63,
+          "anchor": [
+            512,
+            352
+          ],
+          "focus": [
+            530,
+            320
+          ],
+          "label": "05 Ванная комната — 63"
         },
         {
           "resource_id": 64,
           "anchor": [
             512,
-            320
+            352
           ],
           "focus": [
-            543,
-            299
+            533,
+            331
           ],
-          "label": "10 Карниз гостиницы — 64"
+          "label": "06 Ванная комната — 64"
         },
         {
           "resource_id": 65,
           "anchor": [
-            384,
+            320,
             320
           ],
           "focus": [
-            420,
-            304
+            352,
+            299
           ],
-          "label": "11 Карниз гостиницы — 65"
+          "label": "07 Ванная комната — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            384,
-            320
+            512,
+            352
           ],
           "focus": [
-            428,
-            218
+            543,
+            335
           ],
-          "label": "12 Карниз гостиницы — 66"
+          "label": "08 Ванная комната — 66"
         },
         {
           "resource_id": 67,
           "anchor": [
-            384,
-            320
+            512,
+            352
           ],
           "focus": [
-            430,
-            219
+            543,
+            335
           ],
-          "label": "13 Карниз гостиницы — 67"
+          "label": "09 Ванная комната — 67"
         },
         {
           "resource_id": 68,
           "anchor": [
-            384,
-            320
+            512,
+            352
           ],
           "focus": [
-            409,
-            300
+            543,
+            335
           ],
-          "label": "14 Карниз гостиницы — 68"
+          "label": "10 Ванная комната — 68"
         },
         {
           "resource_id": 69,
           "anchor": [
             512,
-            320
+            352
           ],
           "focus": [
-            531,
-            294
+            543,
+            330
           ],
-          "label": "15 Карниз гостиницы — 69"
-        },
-        {
-          "resource_id": 70,
-          "anchor": [
-            0,
-            240
-          ],
-          "focus": [
-            272,
-            371
-          ],
-          "label": "16 Карниз гостиницы — 70"
+          "label": "11 Ванная комната — 69"
         },
         {
           "resource_id": 73,
           "anchor": [
-            384,
+            448,
+            336
+          ],
+          "focus": [
+            481,
+            318
+          ],
+          "label": "12 Ванная комната — 73"
+        },
+        {
+          "resource_id": 74,
+          "anchor": [
+            320,
             320
           ],
           "focus": [
-            350,
-            312
+            327,
+            302
           ],
-          "label": "17 Карниз гостиницы — 73"
+          "label": "13 Ванная комната — 74"
         },
         {
           "resource_id": 75,
           "anchor": [
-            512,
-            320
+            384,
+            112
           ],
           "focus": [
-            476,
-            295
+            400,
+            133
           ],
-          "label": "18 Карниз гостиницы — 75"
+          "label": "14 Ванная комната — 75"
         },
         {
           "resource_id": 76,
           "anchor": [
-            576,
-            0
+            448,
+            336
           ],
           "focus": [
-            454,
-            1
+            483,
+            320
           ],
-          "label": "19 Карниз гостиницы — 76"
+          "label": "15 Ванная комната — 76"
+        },
+        {
+          "resource_id": 77,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            318
+          ],
+          "label": "16 Ванная комната — 77"
+        },
+        {
+          "resource_id": 81,
+          "anchor": [
+            384,
+            112
+          ],
+          "focus": [
+            400,
+            135
+          ],
+          "label": "17 Ванная комната — 81"
+        },
+        {
+          "resource_id": 82,
+          "anchor": [
+            384,
+            112
+          ],
+          "focus": [
+            398,
+            114
+          ],
+          "label": "18 Ванная комната — 82"
+        },
+        {
+          "resource_id": 83,
+          "anchor": [
+            384,
+            112
+          ],
+          "focus": [
+            398,
+            114
+          ],
+          "label": "19 Ванная комната — 83"
+        },
+        {
+          "resource_id": 85,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            318
+          ],
+          "label": "20 Ванная комната — 85"
+        },
+        {
+          "resource_id": 86,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            318
+          ],
+          "label": "21 Ванная комната — 86"
+        },
+        {
+          "resource_id": 89,
+          "anchor": [
+            320,
+            80
+          ],
+          "focus": [
+            398,
+            190
+          ],
+          "label": "22 Ванная комната — 89"
+        },
+        {
+          "resource_id": 90,
+          "anchor": [
+            320,
+            80
+          ],
+          "focus": [
+            400,
+            119
+          ],
+          "label": "23 Ванная комната — 90"
+        },
+        {
+          "resource_id": 91,
+          "anchor": [
+            512,
+            352
+          ],
+          "focus": [
+            543,
+            330
+          ],
+          "label": "24 Ванная комната — 91"
+        },
+        {
+          "resource_id": 92,
+          "anchor": [
+            512,
+            352
+          ],
+          "focus": [
+            547,
+            330
+          ],
+          "label": "25 Ванная комната — 92"
+        },
+        {
+          "resource_id": 93,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            481,
+            318
+          ],
+          "label": "26 Ванная комната — 93"
+        },
+        {
+          "resource_id": 95,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            319
+          ],
+          "label": "27 Ванная комната — 95"
         }
       ],
       "largest_resources": [
@@ -14486,6 +15654,16 @@
           "compressed_bytes": 128175
         },
         {
+          "path": "scenes/12-69.anm",
+          "bytes": 658918,
+          "compressed_bytes": 52736
+        },
+        {
+          "path": "scenes/12-85.anm",
+          "bytes": 633751,
+          "compressed_bytes": 117863
+        },
+        {
           "path": "scenes/10-98.anm",
           "bytes": 613979,
           "compressed_bytes": 29128
@@ -14499,16 +15677,6 @@
           "path": "scenes/09-148.anm",
           "bytes": 586388,
           "compressed_bytes": 47072
-        },
-        {
-          "path": "scenes/06-62.anm",
-          "bytes": 573728,
-          "compressed_bytes": 53504
-        },
-        {
-          "path": "audio/03-23.wav",
-          "bytes": 566623,
-          "compressed_bytes": 280723
         }
       ]
     },
@@ -14524,10 +15692,11 @@
         8,
         9,
         10,
-        11
+        11,
+        12
       ],
-      "animations": 932,
-      "frames": 11402,
+      "animations": 1027,
+      "frames": 12864,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -14636,13 +15805,25 @@
           417,
           640,
           417
+        ],
+        "scenes/12.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/12.p8": [
+          640,
+          417,
+          640,
+          417
         ]
       },
       "path": "dist/Pilots-240x320.jar",
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.15.2",
+        "MIDlet-Version": "0.16.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -14651,27 +15832,27 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "f8c242b62d33583bdca0848084c40f1ef9860a93ef3ac84175a220cb1a4cc403",
-      "jar_bytes": 10817981,
-      "entry_count": 1362,
-      "uncompressed_bytes": 68817634,
+      "sha256": "93eae9b5506b8299c56caf537f68046cd5becd458abd8038803a904c39430d25",
+      "jar_bytes": 12200334,
+      "entry_count": 1508,
+      "uncompressed_bytes": 78404400,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 932,
-        ".bar": 9,
+        ".anm": 1027,
+        ".bar": 10,
         ".bin": 1,
         ".class": 59,
-        ".events": 9,
+        ".events": 10,
         ".hot": 3,
-        ".mid": 10,
-        ".p8": 9,
+        ".mid": 11,
+        ".p8": 10,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 7,
+        ".vm": 8,
         ".walk": 1,
-        ".wav": 317
+        ".wav": 363
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -14763,7 +15944,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0ef276224833bc64ec133a9e201301a9fb0ab019cd0c7b1f5c8ed6df06d483d4"
+          "sha256": "78ee30de3ba60671b33275a80659340c3f6bb6b3adfa66170eda383540827518"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -14909,7 +16090,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fb9f8030d9732dba65071e12df20484989a03f5d0bd929a0caea327aa3061496"
+          "sha256": "bbc9ed216f4113853917525f8c9dc3bb6eaff655275f1885dcfee0355c2b874c"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -14995,7 +16176,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "86272b2fa22c966bb68cabb2593167447a6f6bd7498f00ec2fd440786eaa9b77"
+          "sha256": "230725ce15334ee57fb2405f38ea5d9ab409d8f2e550abb2ee6f2bbab1786768"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -15036,7 +16217,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "cfe8bf7ce5cc839fd609ae618e262027713262ab2a945989e4fa40feaf74a24d"
+          "sha256": "185fa1a4b0eda52775dbb1b6c2b7b9d4937b5459ba4bf413c8952e907c3f8e7a"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -15230,7 +16411,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fcb954d917762059dd3c72f263a67853bd5c77ad0cab93fdc731eaddfd9d0dd3"
+          "sha256": "d150946457feaf035fc2573969bb7ef9761876db3c280c67fae0c8593c216dbb"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -15253,7 +16434,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "00be635bc3ec3a58409b05e874b32a250f9efddb6358a3d4099fbaf99f1a7a35"
+          "sha256": "f4701f50871146c03fd7e3e5722d89909581d6f0bbd1b411b4df84e767c6ea15"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -15303,7 +16484,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ec120a92a6085e65816af51a37b5a46bff940a993ced35e1633d75847b871e92"
+          "sha256": "bbf9e132a7699c7ab84e30d26fbe28214753e70117dec9ad38debc15a4dbd711"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -15454,7 +16635,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e748bebf2647974db7a027b1ffa28edeb09477ea8e369139d96cd3e548b78700"
+          "sha256": "3cdb57d38e7f68bdd2fc93d7f91bc120848850092ed8efdd27fb2c45095eff5d"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -20184,237 +21365,808 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 970
+        },
+        "scenes/12-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/12-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/12-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/12-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/12-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/12-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/12-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/12-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/12-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/12-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/12-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/12-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/12-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/12-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/12-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/12-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/12-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/12-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/12-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/12-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/12-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/12-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/12-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/12-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/12-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/12-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/12-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/12-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/12-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/12-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/12-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/12-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/12-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/12-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/12-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/12-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/12-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 396
+        },
+        "scenes/12-47.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 361
+        },
+        "scenes/12-48.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14381
+        },
+        "scenes/12-49.anm": {
+          "count": 28,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7171
+        },
+        "scenes/12-50.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1656
+        },
+        "scenes/12-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 990
+        },
+        "scenes/12-52.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-53.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-54.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-55.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-56.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-57.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-58.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5922
+        },
+        "scenes/12-59.anm": {
+          "count": 28,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8827
+        },
+        "scenes/12-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1632
+        },
+        "scenes/12-61.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 484
+        },
+        "scenes/12-62.anm": {
+          "count": 9,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10504
+        },
+        "scenes/12-63.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14464
+        },
+        "scenes/12-64.anm": {
+          "count": 21,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8989
+        },
+        "scenes/12-65.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8239
+        },
+        "scenes/12-66.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/12-67.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/12-68.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19588
+        },
+        "scenes/12-69.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 37740
+        },
+        "scenes/12-70.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 450
+        },
+        "scenes/12-71.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3477
+        },
+        "scenes/12-72.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 310
+        },
+        "scenes/12-73.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 20252
+        },
+        "scenes/12-74.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10948
+        },
+        "scenes/12-75.anm": {
+          "count": 27,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1953
+        },
+        "scenes/12-76.anm": {
+          "count": 51,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8272
+        },
+        "scenes/12-77.anm": {
+          "count": 62,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8272
+        },
+        "scenes/12-78.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 230
+        },
+        "scenes/12-79.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/12-80.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/12-81.anm": {
+          "count": 70,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5472
+        },
+        "scenes/12-82.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4828
+        },
+        "scenes/12-83.anm": {
+          "count": 28,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4828
+        },
+        "scenes/12-84.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19942
+        },
+        "scenes/12-85.anm": {
+          "count": 92,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 81740
+        },
+        "scenes/12-86.anm": {
+          "count": 59,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 71904
+        },
+        "scenes/12-87.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7560
+        },
+        "scenes/12-88.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7560
+        },
+        "scenes/12-89.anm": {
+          "count": 15,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22644
+        },
+        "scenes/12-90.anm": {
+          "count": 15,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8991
+        },
+        "scenes/12-91.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 13968
+        },
+        "scenes/12-92.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8832
+        },
+        "scenes/12-93.anm": {
+          "count": 95,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19152
+        },
+        "scenes/12-94.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3196
+        },
+        "scenes/12-95.anm": {
+          "count": 61,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9500
+        },
+        "scenes/12-96.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 624
         }
       },
-      "preview_scene": 11,
+      "preview_scene": 12,
       "preview_catalog": [
         {
           "resource_id": 49,
           "anchor": [
-            384,
+            448,
+            336
+          ],
+          "focus": [
+            483,
             320
           ],
-          "focus": [
-            416,
-            305
-          ],
-          "label": "01 Карниз гостиницы — 49"
+          "label": "01 Ванная комната — 49"
         },
         {
-          "resource_id": 50,
+          "resource_id": 58,
           "anchor": [
-            512,
-            320
+            448,
+            336
           ],
           "focus": [
-            544,
-            299
+            475,
+            321
           ],
-          "label": "02 Карниз гостиницы — 50"
+          "label": "02 Ванная комната — 58"
         },
         {
-          "resource_id": 52,
+          "resource_id": 59,
           "anchor": [
-            320,
-            0
+            448,
+            336
           ],
           "focus": [
-            266,
-            104
+            472,
+            319
           ],
-          "label": "03 Карниз гостиницы — 52"
-        },
-        {
-          "resource_id": 53,
-          "anchor": [
-            320,
-            0
-          ],
-          "focus": [
-            266,
-            104
-          ],
-          "label": "04 Карниз гостиницы — 53"
-        },
-        {
-          "resource_id": 55,
-          "anchor": [
-            384,
-            0
-          ],
-          "focus": [
-            370,
-            208
-          ],
-          "label": "05 Карниз гостиницы — 55"
-        },
-        {
-          "resource_id": 56,
-          "anchor": [
-            384,
-            0
-          ],
-          "focus": [
-            373,
-            208
-          ],
-          "label": "06 Карниз гостиницы — 56"
-        },
-        {
-          "resource_id": 57,
-          "anchor": [
-            128,
-            224
-          ],
-          "focus": [
-            172,
-            285
-          ],
-          "label": "07 Карниз гостиницы — 57"
-        },
-        {
-          "resource_id": 61,
-          "anchor": [
-            512,
-            320
-          ],
-          "focus": [
-            563,
-            218
-          ],
-          "label": "08 Карниз гостиницы — 61"
+          "label": "03 Ванная комната — 59"
         },
         {
           "resource_id": 62,
           "anchor": [
             512,
-            320
+            352
           ],
           "focus": [
-            547,
-            299
+            518,
+            331
           ],
-          "label": "09 Карниз гостиницы — 62"
+          "label": "04 Ванная комната — 62"
+        },
+        {
+          "resource_id": 63,
+          "anchor": [
+            512,
+            352
+          ],
+          "focus": [
+            530,
+            320
+          ],
+          "label": "05 Ванная комната — 63"
         },
         {
           "resource_id": 64,
           "anchor": [
             512,
-            320
+            352
           ],
           "focus": [
-            543,
-            299
+            533,
+            331
           ],
-          "label": "10 Карниз гостиницы — 64"
+          "label": "06 Ванная комната — 64"
         },
         {
           "resource_id": 65,
           "anchor": [
-            384,
+            320,
             320
           ],
           "focus": [
-            420,
-            304
+            352,
+            299
           ],
-          "label": "11 Карниз гостиницы — 65"
+          "label": "07 Ванная комната — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            384,
-            320
+            512,
+            352
           ],
           "focus": [
-            428,
-            218
+            543,
+            335
           ],
-          "label": "12 Карниз гостиницы — 66"
+          "label": "08 Ванная комната — 66"
         },
         {
           "resource_id": 67,
           "anchor": [
-            384,
-            320
+            512,
+            352
           ],
           "focus": [
-            430,
-            219
+            543,
+            335
           ],
-          "label": "13 Карниз гостиницы — 67"
+          "label": "09 Ванная комната — 67"
         },
         {
           "resource_id": 68,
           "anchor": [
-            384,
-            320
+            512,
+            352
           ],
           "focus": [
-            409,
-            300
+            543,
+            335
           ],
-          "label": "14 Карниз гостиницы — 68"
+          "label": "10 Ванная комната — 68"
         },
         {
           "resource_id": 69,
           "anchor": [
             512,
-            320
+            352
           ],
           "focus": [
-            531,
-            294
+            543,
+            330
           ],
-          "label": "15 Карниз гостиницы — 69"
-        },
-        {
-          "resource_id": 70,
-          "anchor": [
-            0,
-            240
-          ],
-          "focus": [
-            272,
-            371
-          ],
-          "label": "16 Карниз гостиницы — 70"
+          "label": "11 Ванная комната — 69"
         },
         {
           "resource_id": 73,
           "anchor": [
-            384,
+            448,
+            336
+          ],
+          "focus": [
+            481,
+            318
+          ],
+          "label": "12 Ванная комната — 73"
+        },
+        {
+          "resource_id": 74,
+          "anchor": [
+            320,
             320
           ],
           "focus": [
-            350,
-            312
+            327,
+            302
           ],
-          "label": "17 Карниз гостиницы — 73"
+          "label": "13 Ванная комната — 74"
         },
         {
           "resource_id": 75,
           "anchor": [
-            512,
-            320
+            384,
+            112
           ],
           "focus": [
-            476,
-            295
+            400,
+            133
           ],
-          "label": "18 Карниз гостиницы — 75"
+          "label": "14 Ванная комната — 75"
         },
         {
           "resource_id": 76,
           "anchor": [
-            576,
-            0
+            448,
+            336
           ],
           "focus": [
-            454,
-            1
+            483,
+            320
           ],
-          "label": "19 Карниз гостиницы — 76"
+          "label": "15 Ванная комната — 76"
+        },
+        {
+          "resource_id": 77,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            318
+          ],
+          "label": "16 Ванная комната — 77"
+        },
+        {
+          "resource_id": 81,
+          "anchor": [
+            384,
+            112
+          ],
+          "focus": [
+            400,
+            135
+          ],
+          "label": "17 Ванная комната — 81"
+        },
+        {
+          "resource_id": 82,
+          "anchor": [
+            384,
+            112
+          ],
+          "focus": [
+            398,
+            114
+          ],
+          "label": "18 Ванная комната — 82"
+        },
+        {
+          "resource_id": 83,
+          "anchor": [
+            384,
+            112
+          ],
+          "focus": [
+            398,
+            114
+          ],
+          "label": "19 Ванная комната — 83"
+        },
+        {
+          "resource_id": 85,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            318
+          ],
+          "label": "20 Ванная комната — 85"
+        },
+        {
+          "resource_id": 86,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            318
+          ],
+          "label": "21 Ванная комната — 86"
+        },
+        {
+          "resource_id": 89,
+          "anchor": [
+            320,
+            80
+          ],
+          "focus": [
+            398,
+            190
+          ],
+          "label": "22 Ванная комната — 89"
+        },
+        {
+          "resource_id": 90,
+          "anchor": [
+            320,
+            80
+          ],
+          "focus": [
+            400,
+            119
+          ],
+          "label": "23 Ванная комната — 90"
+        },
+        {
+          "resource_id": 91,
+          "anchor": [
+            512,
+            352
+          ],
+          "focus": [
+            543,
+            330
+          ],
+          "label": "24 Ванная комната — 91"
+        },
+        {
+          "resource_id": 92,
+          "anchor": [
+            512,
+            352
+          ],
+          "focus": [
+            547,
+            330
+          ],
+          "label": "25 Ванная комната — 92"
+        },
+        {
+          "resource_id": 93,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            481,
+            318
+          ],
+          "label": "26 Ванная комната — 93"
+        },
+        {
+          "resource_id": 95,
+          "anchor": [
+            448,
+            336
+          ],
+          "focus": [
+            482,
+            319
+          ],
+          "label": "27 Ванная комната — 95"
         }
       ],
       "largest_resources": [
@@ -20444,6 +22196,16 @@
           "compressed_bytes": 128175
         },
         {
+          "path": "scenes/12-69.anm",
+          "bytes": 658918,
+          "compressed_bytes": 52736
+        },
+        {
+          "path": "scenes/12-85.anm",
+          "bytes": 633751,
+          "compressed_bytes": 117863
+        },
+        {
           "path": "scenes/10-98.anm",
           "bytes": 613979,
           "compressed_bytes": 29128
@@ -20457,16 +22219,6 @@
           "path": "scenes/09-148.anm",
           "bytes": 586388,
           "compressed_bytes": 47072
-        },
-        {
-          "path": "scenes/06-62.anm",
-          "bytes": 573728,
-          "compressed_bytes": 53504
-        },
-        {
-          "path": "audio/03-23.wav",
-          "bytes": 566623,
-          "compressed_bytes": 280723
         }
       ]
     }
