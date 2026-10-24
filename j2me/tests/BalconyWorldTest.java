@@ -14,6 +14,8 @@ public final class BalconyWorldTest {
  }
  static void settle()throws Exception {int n=1800;while(world.busy()&&n-->0)tick();check(n>0,"balcony hangs "+world.action()+"/"+world.step());}
  static boolean has(int id){for(HotelWorld.Thing t:world.cells)if(t!=null&&t.id==id)return true;return false;}
+ static HotelWorld.Thing fly(){for(HotelWorld.Thing t:world.cells)if(t!=null&&t.id==38)return t;throw new RuntimeException("missing fly");}
+ static void rest(int clip,int count)throws Exception {for(int i=0;i<count;i++){check(fly().clip==clip&&!fly().finished,"fly left rest pose "+clip+" for "+fly().clip);tick();}}
  static void act(int hero,int item,int id)throws Exception {
   check(world.select(hero)&&replay.select(hero),"hero selection "+hero);
   check(world.selectItem(item)&&replay.selectItem(item),"item selection "+item);
@@ -44,13 +46,19 @@ public final class BalconyWorldTest {
   act(1,0,16);check(!world.heroes[1].active&&has(35)&&has(36)&&has(37),"Colleague balcony departure");
   check(!world.select(1)&&!replay.select(1),"absent Colleague can be selected");
   act(0,0,16);check(!world.completed&&world.state.variables[57]==2&&has(38),"first balcony attempt must fail");
-  act(0,1,38);check(world.state.variables[57]==1,"first switch reaction");
+  rest(109,90);
+  act(0,1,38);check(world.state.variables[57]==1,"first fly reaction");
+  check(fly().clip==110,"missing TV-to-pennant flight");
+  for(int i=0;i<10;i++)tick();rest(111,90);
   act(0,1,38);check(world.state.variables[57]==0&&!has(38),"switch not reset");
   // The original fly timer closes the opportunity; the puzzle must remain recoverable.
   for(int i=0;i<190;i++)tick();check(has(38)&&world.state.variables[57]==1,"fly timeout did not restore switch");
   act(0,1,38);check(!has(38),"switch retry failed");
   act(0,0,16);check(world.completed&&actions.contains(78)&&actions.contains(79),"original balcony finale");
   check(SceneFlow.next(9,true)==10&&SceneFlow.next(10,true)==10,"chapter boundary");
+  world=new HotelWorld(GameState.decode(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(args[0])),11));replay=resume(world);
+  check(world.state.variables[57]==2,"legacy fly puzzle phase changed");rest(109,90);
+  act(0,1,38);for(int i=0;i<10;i++)tick();rest(111,30);
   System.out.println("BalconyWorld: original intro, both hero branches, pickups, cord, balcony, fly timeout/retry, finale and "+ticks+" every-tick save replays passed "+actions);
  }
 }

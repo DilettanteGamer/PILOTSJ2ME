@@ -2,7 +2,7 @@ package pilots;
 
 import java.io.*;
 
-/** Sections 10/11 VM. Original object rules and map predicates are packaged unchanged. */
+/** Sections 10/11/12 VM. Original object rules and map predicates are packaged unchanged. */
 public final class HotelWorld {
     public static final class Definition {
         int type,layer;byte[] init,exit;byte[][][] rules;
@@ -63,6 +63,15 @@ public final class HotelWorld {
             apply(initial,null,true,false);
             // Controller 14 initializes the room; the entrance starts at source frame zero.
             if(scene>=9)tick();
+        }
+        // 0.14.0 treated a returned static sprite as an ended animation. The
+        // fly's default end rule consequently replaced its TV pose with 111.
+        if(scene==10 && state.location!=null) {
+            Thing fly=find(38);
+            if(fly!=null && g(0x1e1b60)==2 && fly.clip==111) {
+                fly.clip=fly.fallback=action()==74?108:109;fly.frame=0;fly.finished=false;
+                syncSave();
+            }
         }
         initFridge();
         // Reconcile snapshots written before map replacement retired hero 12.
@@ -341,7 +350,9 @@ public final class HotelWorld {
         if(t==null || !t.active || t.clip<0 || t.finished) return;
         if(++t.frame>=frames[t.clip]) {
             if((flags[t.clip]&1)!=0) { t.finished=true;t.frame=frames[t.clip]-1;
-                if(t.fallback>=0) { t.clip=t.fallback;t.frame=0; }
+                // Returning to a looping rest pose starts that animation. Its
+                // completion predicate must not report the preceding flight.
+                if(t.fallback>=0) { t.clip=t.fallback;t.frame=0;t.finished=false; }
                 else if(t!=heroes[0] && t!=heroes[1]) t.clip=-1; }
             else t.frame=0;
         }

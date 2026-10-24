@@ -12,6 +12,11 @@ public final class BalconyRenderTest {
   ZooPanel p=new ZooPanel(10);try{p.paint(g,h.logic,width,height,bar);}finally{p.close();}
   ImageIO.write(g.image,"png",new File(path));
  }
+ static void label(HotelScene h,int id,String text)throws Exception {
+  for(int i=0;i<300;i++) {HotelWorld.Thing t=h.animals.world.cells[i];AnimatedActor a=h.scene.actors[i];if(t==null||t.id!=id||a==null)continue;
+   for(int y=Math.max(0,a.y+a.clip.offsetY);y<Math.min(417,a.y+a.clip.offsetY+a.clip.height);y++)for(int x=Math.max(0,a.x+a.clip.offsetX);x<Math.min(640,a.x+a.clip.offsetX+a.clip.width);x++)if(h.targetAt(x,y)==id){check(text.equals(h.hoverText(x,y)),"incorrect hover for "+id);return;}
+  }throw new RuntimeException("label hotspot hidden: "+id);
+ }
  static void act(HotelScene h,int hero,int item,int target)throws Exception {
   check(h.logic.select(hero)&&h.logic.selectItem(item),"balcony selection");HotelRenderTest.act(h,target);settle(h);
  }
@@ -20,7 +25,8 @@ public final class BalconyRenderTest {
   try{HotelScene h=new HotelScene(scene,state);settle(h);capture(h,width,height,args[2]+"-room.png");capture(h,640,480,args[2]+"-world.png");
    act(h,0,0,23);act(h,0,0,17);act(h,1,0,28);capture(h,width,height,args[2]+"-inventory.png");
    act(h,0,0,30);act(h,1,0,29);act(h,1,0,16);capture(h,width,height,args[2]+"-balcony.png");
-   act(h,0,0,16);act(h,0,1,38);act(h,0,1,38);act(h,0,0,16);
+   act(h,0,0,16);label(h,34,"Тумблер");label(h,38,"Гнусный Мух");capture(h,640,480,args[2]+"-fly-tv-world.png");
+   act(h,0,1,38);for(int i=0;i<10;i++)h.update(100);label(h,38,"Гнусный Мух");capture(h,640,480,args[2]+"-fly-pennant-world.png");act(h,0,1,38);act(h,0,0,16);
    check(h.logic.completed(),"physical balcony quest did not finish");capture(h,width,height,args[2]+"-finale.png");
   }finally{scene.close();}
   System.out.println("BalconyRender: production hotspots, source poses, inventory and complete balcony puzzle at "+width+"x"+height+" passed");
