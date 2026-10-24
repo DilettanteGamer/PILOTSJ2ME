@@ -136,15 +136,18 @@ public final class LocationEntryTest {
             basement=((HotelScene)get(canvas,"zoo")).animals.world;
             check(basement.select(0)&&((HotelScene)get(canvas,"zoo")).request(400,350),"crate zone approach");canvas.tick(100);
             check(Display.getDisplay(app).getCurrent() instanceof BasementCanvas,"crate Canvas missing");
-            BasementCanvas crates=(BasementCanvas)Display.getDisplay(app).getCurrent();crates.showNotify();crateKey(crates,canvas,6,5);
+            BasementCanvas crates=(BasementCanvas)Display.getDisplay(app).getCurrent();crates.showNotify();crateKey(crates,canvas,6,4);
+            check(basement.basement.fallingColumn()<0,"safe Canvas movement armed throw");crateKey(crates,canvas,2,5);
             int fall=basement.basement.fallingTick();check(fall>1,"detail timer is not driven by Canvas");canvas.save();
             crates.hideNotify();canvas.tick(100);check(basement.basement.fallingTick()==fall,"hidden detail continued");
             crates.showNotify();crates.input(48);check(Display.getDisplay(app).getCurrent()==canvas,"crate Back");
             canvas.startLocation(2);canvas.load();canvas.tick(100);check(Display.getDisplay(app).getCurrent() instanceof BasementCanvas,"crate RMS did not reopen detail");
             crates=(BasementCanvas)Display.getDisplay(app).getCurrent();crates.showNotify();basement=((HotelScene)get(canvas,"zoo")).animals.world;
             check(basement.basement.fallingTick()==fall,"RMS lost falling crate");for(int i=0;i<22;i++)canvas.tick(100);crateKey(crates,canvas,4,22);
-            for(int n=0;n<4;n++){crateKey(crates,canvas,6,22);crateKey(crates,canvas,6,22);crateKey(crates,canvas,6,22);crateKey(crates,canvas,4,22);crateKey(crates,canvas,4,22);crateKey(crates,canvas,4,22);}
-            for(int c=1;c<=3;c++){crateKey(crates,canvas,6,22);for(int shots=0;shots<c;shots++)crateKey(crates,canvas,5,BasementGame.SHOT_TICKS);}
+            final BasementCanvas crateScreen=crates;final PilotsMidlet.GameCanvas gameScreen=canvas;final HotelWorld crateWorld=basement;
+            BasementTestRoute.stairs(new BasementTestRoute.Driver(){
+                public HotelWorld world(){return crateWorld;}public void press(int k){crateScreen.input(48+k);}public void ticks(int n)throws Exception{for(int i=0;i<n;i++)gameScreen.tick(100);}
+            });
             crateKey(crates,canvas,2,4);crateKey(crates,canvas,4,4);crateKey(crates,canvas,4,4);crateKey(crates,canvas,4,4);
             check(Display.getDisplay(app).getCurrent()==canvas&&get(app,"basement")==null&&basement.basement.solved(),"crate solution did not automatically return to source room");
             for(int i=0;i<250&&!basement.completed;i++)canvas.tick(100);check(basement.completed,"source ending after crate Canvas");

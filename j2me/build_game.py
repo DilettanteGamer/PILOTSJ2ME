@@ -28,7 +28,7 @@ from extract_hotel import extract as extract_hotel
 from extract_basement_platform import extract as extract_basement_platform
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.19.1'
+VERSION = '0.19.2'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -230,7 +230,7 @@ def main():
             target = output / ('Pilots-' + profile + '.jar')
             classpath = os.pathsep.join(map(str, [target, tools['midpapi20-2.0.4.jar']]))
             run([javac, '-encoding', 'UTF-8', '-cp', classpath, '-d', test_classes,
-                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java',ROOT / 'tests/CourtyardSceneTest.java',ROOT / 'tests/CourtyardRulesTest.java',ROOT / 'tests/AnimalWorldTest.java',ROOT / 'tests/GardenWorldTest.java',ROOT / 'tests/StreetWorldTest.java',ROOT / 'tests/HotelWorldTest.java',ROOT / 'tests/BalconyWorldTest.java',ROOT / 'tests/FacadeWorldTest.java',ROOT / 'tests/BathroomWorldTest.java',ROOT / 'tests/SwitchboardWorldTest.java',ROOT / 'tests/BasementWorldTest.java',ROOT / 'tests/AnimalVisibilityTest.java'])
+                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java',ROOT / 'tests/CourtyardSceneTest.java',ROOT / 'tests/CourtyardRulesTest.java',ROOT / 'tests/AnimalWorldTest.java',ROOT / 'tests/GardenWorldTest.java',ROOT / 'tests/StreetWorldTest.java',ROOT / 'tests/HotelWorldTest.java',ROOT / 'tests/BalconyWorldTest.java',ROOT / 'tests/FacadeWorldTest.java',ROOT / 'tests/BathroomWorldTest.java',ROOT / 'tests/SwitchboardWorldTest.java',ROOT / 'tests/BasementWorldTest.java',ROOT / 'tests/BasementTestRoute.java',ROOT / 'tests/AnimalVisibilityTest.java'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.ZooSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BarrelSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.FirstLocationSceneTest'])
@@ -256,7 +256,7 @@ def main():
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Command.java',
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Displayable.java',
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Canvas.java',
-                 ROOT / 'tests/stubs/javax/microedition/lcdui/Display.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Font.java',ROOT / 'tests/stubs/javax/microedition/media/MediaException.java',ROOT / 'tests/stubs/javax/microedition/media/Manager.java',ROOT / 'tests/LocationEntryTest.java'])
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Display.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Font.java',ROOT / 'tests/stubs/javax/microedition/media/MediaException.java',ROOT / 'tests/stubs/javax/microedition/media/Manager.java',ROOT / 'tests/BasementTestRoute.java',ROOT / 'tests/LocationEntryTest.java'])
             entry_width,entry_height=profile.split('x')
             run([java,'-Dpilots.test.width='+entry_width,'-Dpilots.test.height='+entry_height,
                  '-cp',str(entry_classes)+os.pathsep+classpath,'pilots.LocationEntryTest'])
@@ -266,7 +266,7 @@ def main():
             run([java,'-cp',str(audio_classes)+os.pathsep+classpath,'pilots.AudioTest']+[audio_report['scenes'][str(n)]['music']['event_sha256'] for n in [2,3,4,5,6,8,9,10,11,12,13,15]])
             panel_classes=Path(temporary) / 'panel-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',panel_classes,
-                 ROOT / 'tests/stubs/javax/microedition/lcdui/Font.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Image.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Canvas.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Displayable.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Command.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java',ROOT / 'tests/AnimalRenderTest.java',ROOT / 'tests/GardenRenderTest.java',ROOT / 'tests/StreetRenderTest.java',ROOT / 'tests/HotelRenderTest.java',ROOT / 'tests/BalconyRenderTest.java',ROOT / 'tests/FacadeRenderTest.java',ROOT / 'tests/BathroomRenderTest.java',ROOT / 'tests/SwitchboardRenderTest.java',ROOT / 'tests/BasementRenderTest.java',ROOT / 'tests/AnimalVisibilityTest.java',ROOT / 'tests/AnimalSequenceRenderTest.java',ROOT / 'tests/RGBCompatibilityTest.java',ROOT / 'tests/RenderPerformanceTest.java',ROOT / 'tests/AnimationDecodeTest.java',ROOT / 'tests/ScrollRenderTest.java'])
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Font.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Image.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Canvas.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Displayable.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Command.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java',ROOT / 'tests/AnimalRenderTest.java',ROOT / 'tests/GardenRenderTest.java',ROOT / 'tests/StreetRenderTest.java',ROOT / 'tests/HotelRenderTest.java',ROOT / 'tests/BalconyRenderTest.java',ROOT / 'tests/FacadeRenderTest.java',ROOT / 'tests/BathroomRenderTest.java',ROOT / 'tests/SwitchboardRenderTest.java',ROOT / 'tests/BasementRenderTest.java',ROOT / 'tests/BasementTestRoute.java',ROOT / 'tests/AnimalVisibilityTest.java',ROOT / 'tests/AnimalSequenceRenderTest.java',ROOT / 'tests/RGBCompatibilityTest.java',ROOT / 'tests/RenderPerformanceTest.java',ROOT / 'tests/AnimationDecodeTest.java',ROOT / 'tests/ScrollRenderTest.java'])
             frame_hashes=Path(temporary) / ('frame-hashes-'+profile+'.properties')
             with zipfile.ZipFile(target) as archive:
                 frame_hashes.write_text(''.join(name+'='+hashlib.sha256(decode_animation(archive.read(name))[777:]).hexdigest()+'\n' for name in archive.namelist() if name.endswith('.anm')))

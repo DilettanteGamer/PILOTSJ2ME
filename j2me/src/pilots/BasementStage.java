@@ -8,7 +8,7 @@ public final class BasementStage {
     private final IndexedBackground background;
     private final AnimationClip crates,servant;
     private final AnimationClip[] chief=new AnimationClip[5];
-    private final Viewport view=new Viewport(256,176,256,176);
+    private final Viewport view=new Viewport(128,160,128,160);
     public BasementStage(BasementGame game)throws IOException{
         this.game=game;background=new IndexedBackground(getClass().getResourceAsStream("/puzzles/basement.p8"));
         crates=new AnimationClip("/puzzles/basement-crates.sprite");servant=new AnimationClip("/puzzles/basement-servant.sprite");
@@ -20,27 +20,26 @@ public final class BasementStage {
     private void frame(AnimationClip clip,int index)throws IOException{
         index=Math.max(0,Math.min(clip.count-1,index));if(clip.index>index)clip.restart();while(clip.index<index)clip.advance();
     }
-    private int x(int col){return 112+36*col;}
-    private int feet(int lane,int height){return lane==0?170:144-20*height;}
+    static int x(int col){return 16+32*col;}
+    static int feet(int lane,int height){return lane==0?154:132-18*height;}
     public void paint(Graphics g,int width,int height)throws IOException{
-        int available=Math.max(1,height-42),w=Math.min(width,available*256/176),h=Math.max(1,w*176/256);
+        int available=Math.max(1,height-42),w=Math.min(width,available*128/160),h=Math.max(1,w*160/128);
         view.width=width;view.height=height;view.drawWidth=w;view.drawHeight=h;view.left=(width-w)/2;view.top=15+(available-h)/2;view.paintClip(view.left,view.top,w,h);
         background.paint(g,view);
-        // The foreground band is a separate plane; falling crates never enter it.
-        g.setColor(0x6c6248);g.fillRect(view.screenX(0),view.screenY(153),w,Math.max(1,view.screenY(176)-view.screenY(153)));
-        g.setColor(0xd0bd88);g.drawLine(view.screenX(0),view.screenY(154),view.screenX(256),view.screenY(154));
+        // The contact line and sprite feet use the same logical floor coordinate.
+        g.setColor(0x968b66);g.drawLine(view.screenX(0),view.screenY(132),view.screenX(128),view.screenY(132));
         int col=game.fallingColumn(),t=game.fallingTick();
-        frame(servant,col<0?0:1+(t-1)*(servant.count-2)/20);servant.paint(g,view,col<0?182:x(col),63);
+        frame(servant,col<0?0:1+(t-1)*(servant.count-2)/20);servant.paint(g,view,86,48);
         frame(crates,0);
         for(int c=0;c<4;c++)for(int row=0;row<game.crates(c);row++){
             if(c==game.shotColumn() && row==game.shotLevel()-1 && game.shotTick()>0)continue;
-            crates.paint(g,view,x(c),144-row*20);
+            crates.paint(g,view,x(c),132-row*18);
         }
         if(col>=0){
-            g.setColor(0xf7d24d);int sx=view.screenX(x(col));g.drawLine(sx,view.screenY(70),sx,view.screenY(144-game.crates(col)*20));
-            if(t>=12){frame(crates,0);int end=144-game.crates(col)*20;crates.paint(g,view,x(col),64+(end-64)*(t-12)/10);}
+            g.setColor(0xf7d24d);int sx=view.screenX(x(col));g.drawLine(sx,view.screenY(52),sx,view.screenY(132-game.crates(col)*18));
+            if(t>=12){frame(crates,0);int end=132-game.crates(col)*18;int progress=t-12;crates.paint(g,view,86+(x(col)-86)*progress/10,48+(end-48)*progress*progress/100);}
         }
-        if(game.shotTick()>0){frame(crates,1+(BasementGame.SHOT_TICKS-game.shotTick())*(crates.count-2)/(BasementGame.SHOT_TICKS-1));crates.paint(g,view,x(game.shotColumn()),144-(game.shotLevel()-1)*20);}
+        if(game.shotTick()>0){frame(crates,1+(BasementGame.SHOT_TICKS-game.shotTick())*(crates.count-2)/(BasementGame.SHOT_TICKS-1));crates.paint(g,view,x(game.shotColumn()),132-(game.shotLevel()-1)*18);}
         int px=x(game.column()),py=feet(game.safe()?0:1,game.height()),motion=game.motion();
         if(motion>0){int progress=4-motion;px=x(game.data[BasementGame.FROM_COLUMN])+(px-x(game.data[BasementGame.FROM_COLUMN]))*progress/4;
             int from=feet(game.data[BasementGame.FROM_LANE],game.data[BasementGame.FROM_HEIGHT]);py=from+(py-from)*progress/4;
