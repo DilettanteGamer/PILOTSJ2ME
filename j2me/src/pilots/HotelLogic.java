@@ -6,13 +6,21 @@ public final class HotelLogic extends ZooLogic {
     public final HotelWorld world;
     public HotelLogic(GameState state) throws IOException { super(state);world=new HotelWorld(state); }
     public int hero() { return world.hero(); }
-    public int heroX(int h) { return world.heroes[h]==null?128:world.heroes[h].x; }
-    public int heroY(int h) { return world.heroes[h]==null?208:world.heroes[h].y; }
+    private HotelWorld.Thing character(int h) {
+        if(world.scene!=15)return world.heroes[h];
+        for(int i=0;i<world.cells.length;i++) {
+            HotelWorld.Thing t=world.cells[i];
+            if(t!=null && (h==0?t.id>=16&&t.id<=20:t.id==15||t.id==12||t.id==13))return t;
+        }
+        return null;
+    }
+    public int heroX(int h) { HotelWorld.Thing t=character(h);return t==null?128:t.x; }
+    public int heroY(int h) { HotelWorld.Thing t=character(h);return t==null?208:t.y; }
     public boolean select(int h) { return world.select(h); }
     public boolean busy() { return world.busy(); }
     public boolean walking() { return world.walkHero>=0; }
     public int pendingAction() { return world.action(); }
-    public int pendingClip() { return world.heroes[hero()]==null?-1:world.heroes[hero()].clip; }
+    public int pendingClip() { HotelWorld.Thing t=character(hero());return t==null?-1:t.clip; }
     public int step() { return world.step(); }
     public boolean hasItem(int item) { return world.hasItem(item); }
     public boolean hasKettle() { return false; }

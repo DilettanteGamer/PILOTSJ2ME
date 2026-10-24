@@ -21,8 +21,8 @@ public final class LocationEntryTest {
     static void location(PilotsMidlet app,int scene)throws Exception {
         app.choose(7);
         MenuCanvas menu=(MenuCanvas)Display.getDisplay(app).getCurrent();
-        check(((String[])get(menu,"items")).length==12,"location submenu entries");
-        int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13};
+        check(((String[])get(menu,"items")).length==13,"location submenu entries");
+        int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13,15};
         for(int i=1;i<ids.length;i++)if(ids[i]==scene){((MenuCanvas.Host)get(menu,"host")).choose(i);return;}
         throw new RuntimeException("missing menu scene "+scene);
     }
@@ -120,6 +120,16 @@ public final class LocationEntryTest {
             electrical=(SwitchboardCanvas)Display.getDisplay(app).getCurrent();
             for(int i=0;i<27;i++)if(board.boardOrientation(i)!=1){boardSelect(electrical,i);int n=4;while(board.boardOrientation(i)!=1&&n-->0)electrical.input(53);}
             check(Display.getDisplay(app).getCurrent()==canvas&&!board.boardRequested()&&board.action()==97,"correct circuit did not automatically close detail");
+            board.completed=true;canvas.tick(100);
+            check(((GameState)get(canvas,"state")).scene==15,"electrical-to-basement transition");
+            location(app,15);canvas.save();canvas.startLocation(2);canvas.load();
+            check(((HotelScene)get(canvas,"zoo")).animals.world.scene==15,"basement intro RMS restore");
+            for(int i=0;i<80;i++)canvas.tick(100);
+            HotelWorld basement=((HotelScene)get(canvas,"zoo")).animals.world;
+            check(!basement.busy()&&basement.select(1)&&basement.interact(14),"basement gun approach");
+            for(int i=0;i<80;i++)canvas.tick(100);
+            check(basement.hasItem(1),"basement inventory pickup");canvas.save();canvas.startLocation(2);canvas.load();
+            check(((HotelScene)get(canvas,"zoo")).animals.world.hasItem(1),"basement gun RMS restore");
             canvas.startLocation(6);
             // Re-enter, restore a street save, and verify its actual loader.
             GameState saved=GameState.decode(((GameState)get(canvas,"state")).encode(),7);
@@ -127,7 +137,7 @@ public final class LocationEntryTest {
             street(canvas,"restored fifth location entry");
             // Garden previews must load from another scene and return to it.
             canvas.startLocation(2);set(app,"animationCatalog",new AnimationCatalog());
-            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==13,"preview scene");
+            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==15,"preview scene");
             canvas.finishPreview();check(((GameState)get(canvas,"state")).scene==2,"preview return");
             Object original=get(canvas,"zoo");
             try { canvas.goToScene(7);throw new RuntimeException("unsupported scene accepted"); }

@@ -2610,10 +2610,11 @@
         10,
         11,
         12,
-        13
+        13,
+        15
       ],
-      "animations": 1236,
-      "frames": 14329,
+      "animations": 1331,
+      "frames": 15620,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -2746,13 +2747,25 @@
           208,
           640,
           417
+        ],
+        "scenes/15.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/15.p8": [
+          320,
+          208,
+          640,
+          417
         ]
       },
       "path": "dist/Pilots-128x128.jar",
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.17.1",
+        "MIDlet-Version": "0.18.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2761,28 +2774,28 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "ccb2a6f24a446b563e1655981873ee9fef488128247cee8f960f150e638da2e6",
-      "jar_bytes": 13409719,
-      "entry_count": 1758,
-      "uncompressed_bytes": 89123838,
+      "sha256": "d438cfb1c3690850be7f98d42f4ba93766bd9742cb7abec99d481948db05cfd0",
+      "jar_bytes": 14549682,
+      "entry_count": 1888,
+      "uncompressed_bytes": 99136245,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1236,
-        ".bar": 11,
+        ".anm": 1331,
+        ".bar": 12,
         ".bin": 1,
         ".board": 1,
         ".class": 63,
-        ".events": 11,
+        ".events": 12,
         ".hot": 3,
-        ".mid": 12,
-        ".p8": 11,
+        ".mid": 13,
+        ".p8": 12,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 9,
+        ".vm": 10,
         ".walk": 1,
-        ".wav": 394
+        ".wav": 424
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -2874,7 +2887,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "3bee90597dca99d399fb2c07dd37e7696be7afd02c6b4dd508fa8efac11d9cc1"
+          "sha256": "58c29e4ec2869bfa5f727197023b81480c83ee2805573b9a975d91afbdbe2e0c"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -3020,7 +3033,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0b0a24c741f87b39d624e589dc8e010da07826c9a7c2af434d3df4aff8d0952e"
+          "sha256": "1f26ccca8a5f12e83f823e338827ab7f1adb0996f9b36cc3def4a7512b751dfa"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -3093,7 +3106,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "984d103148495eaf6cd88f1e0adea5be6211ab30d78f8815dbb94ab934ddc950"
+          "sha256": "8910d9553750ea9c17287228f5f48f368276449b345a596d126c19d01aa04e52"
         },
         "pilots/HotelScene.class": {
           "minor": 3,
@@ -3106,7 +3119,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "329cbd6b56f16906ef9c9164296bd37f7da7cb1365ebdee78e67901297fcfe88"
+          "sha256": "fa876ad6d8fddb5b37975cced4de82ef16c766e443bf69a0794f35744521b336"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -3124,7 +3137,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": false,
-          "sha256": "4c72a78dbb17520eef566b1ce8e5888c9c0210b34d9e11995339ddcfa1f03576"
+          "sha256": "af8899581e8adb0af85f43abc00cc428a8949c9420f49d7c3ebcbceb748b4892"
         },
         "pilots/HotelWorld.class": {
           "minor": 3,
@@ -3147,7 +3160,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fb8cbe5a89fbd8ca463a7b9b38821d43d59e91841eeb33206cd2042f47e4b3a7"
+          "sha256": "8089d9b49b12fe899039a1a70dafdb749b641a4cfe7284c10e044069661b78c8"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -3355,7 +3368,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ae96041f342662df7262012d41df6dd883ea8e8e17620f9966c9c61b0f8b5f6d"
+          "sha256": "261f98ce679121b1a3655c7592cb410a60fcda9b356be5001568e495b59dd8c5"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3378,7 +3391,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "12e0815cab92e4369bc651dba880a9acf3637497681466fa9a07e92749bc6262"
+          "sha256": "19232dcd2ba7b2a61795a1fc33928f76028982b8e502e8616b5dc5c6c62038ad"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -3428,7 +3441,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d254b16b6a1ba75c325e28aa02944797a6c7ddeadb212795ff58b406a2e80418"
+          "sha256": "3f09e2b30b1da49b7e2883eabe03f46859596828c1b8191df2e0c509efe066a1"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -3622,7 +3635,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7db978e0a4bbeee0b4841ad0a1020adb5ec7831b3c20c90bc04b32c523ba02d9"
+          "sha256": "931de0a42ae86912141b9b90535fef65f68c47a8ec5476bf5f5b961f409872c7"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -9872,489 +9885,904 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 143
+        },
+        "scenes/15-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/15-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/15-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/15-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/15-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/15-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/15-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/15-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/15-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/15-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/15-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/15-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/15-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/15-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/15-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/15-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/15-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/15-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/15-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/15-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/15-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/15-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/15-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/15-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/15-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/15-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/15-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/15-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/15-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/15-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/15-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/15-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/15-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/15-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/15-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/15-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4800
+        },
+        "scenes/15-47.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7138
+        },
+        "scenes/15-48.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3162
+        },
+        "scenes/15-49.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4096
+        },
+        "scenes/15-50.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4096
+        },
+        "scenes/15-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5096
+        },
+        "scenes/15-52.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 37572
+        },
+        "scenes/15-53.anm": {
+          "count": 19,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11928
+        },
+        "scenes/15-54.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17420
+        },
+        "scenes/15-55.anm": {
+          "count": 19,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11928
+        },
+        "scenes/15-56.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17420
+        },
+        "scenes/15-57.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14720
+        },
+        "scenes/15-58.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-59.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8526
+        },
+        "scenes/15-60.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-61.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 27492
+        },
+        "scenes/15-62.anm": {
+          "count": 52,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 27492
+        },
+        "scenes/15-63.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 23345
+        },
+        "scenes/15-64.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22540
+        },
+        "scenes/15-65.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17227
+        },
+        "scenes/15-66.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17227
+        },
+        "scenes/15-67.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19276
+        },
+        "scenes/15-68.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19276
+        },
+        "scenes/15-69.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-70.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8526
+        },
+        "scenes/15-71.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-72.anm": {
+          "count": 22,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19292
+        },
+        "scenes/15-73.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9292
+        },
+        "scenes/15-74.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8989
+        },
+        "scenes/15-75.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8989
+        },
+        "scenes/15-76.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9292
+        },
+        "scenes/15-77.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-78.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-79.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14400
+        },
+        "scenes/15-80.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/15-81.anm": {
+          "count": 22,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7387
+        },
+        "scenes/15-82.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7387
+        },
+        "scenes/15-83.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-84.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-85.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 460
+        },
+        "scenes/15-86.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7000
+        },
+        "scenes/15-87.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8610
+        },
+        "scenes/15-88.anm": {
+          "count": 15,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10028
+        },
+        "scenes/15-89.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 432
+        },
+        "scenes/15-90.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 348
+        },
+        "scenes/15-91.anm": {
+          "count": 55,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-92.anm": {
+          "count": 55,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-93.anm": {
+          "count": 55,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-94.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6225
+        },
+        "scenes/15-95.anm": {
+          "count": 70,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 20410
+        },
+        "scenes/15-96.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4416
         }
       },
-      "preview_scene": 13,
+      "preview_scene": 15,
       "preview_catalog": [
         {
-          "resource_id": 150,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            36,
-            154
-          ],
-          "label": "01 Электрощитовая — 150"
-        },
-        {
-          "resource_id": 151,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            36,
-            154
-          ],
-          "label": "02 Электрощитовая — 151"
-        },
-        {
-          "resource_id": 152,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "03 Электрощитовая — 152"
-        },
-        {
-          "resource_id": 153,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "04 Электрощитовая — 153"
-        },
-        {
-          "resource_id": 154,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "05 Электрощитовая — 154"
-        },
-        {
-          "resource_id": 155,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            31,
-            154
-          ],
-          "label": "06 Электрощитовая — 155"
-        },
-        {
-          "resource_id": 156,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "07 Электрощитовая — 156"
-        },
-        {
-          "resource_id": 157,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "08 Электрощитовая — 157"
-        },
-        {
-          "resource_id": 158,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "09 Электрощитовая — 158"
-        },
-        {
-          "resource_id": 159,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "10 Электрощитовая — 159"
-        },
-        {
-          "resource_id": 160,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "11 Электрощитовая — 160"
-        },
-        {
-          "resource_id": 161,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "12 Электрощитовая — 161"
-        },
-        {
-          "resource_id": 162,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "13 Электрощитовая — 162"
-        },
-        {
-          "resource_id": 163,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "14 Электрощитовая — 163"
-        },
-        {
-          "resource_id": 164,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "15 Электрощитовая — 164"
-        },
-        {
-          "resource_id": 165,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "16 Электрощитовая — 165"
-        },
-        {
-          "resource_id": 166,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "17 Электрощитовая — 166"
-        },
-        {
-          "resource_id": 167,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "18 Электрощитовая — 167"
-        },
-        {
-          "resource_id": 168,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            31,
-            154
-          ],
-          "label": "19 Электрощитовая — 168"
-        },
-        {
-          "resource_id": 169,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "20 Электрощитовая — 169"
-        },
-        {
-          "resource_id": 170,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "21 Электрощитовая — 170"
-        },
-        {
-          "resource_id": 171,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "22 Электрощитовая — 171"
-        },
-        {
-          "resource_id": 172,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "23 Электрощитовая — 172"
-        },
-        {
-          "resource_id": 173,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "24 Электрощитовая — 173"
-        },
-        {
-          "resource_id": 174,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "25 Электрощитовая — 174"
-        },
-        {
-          "resource_id": 175,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "26 Электрощитовая — 175"
-        },
-        {
-          "resource_id": 176,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            58,
-            147
-          ],
-          "label": "27 Электрощитовая — 176"
-        },
-        {
-          "resource_id": 178,
+          "resource_id": 53,
           "anchor": [
             512,
-            0
-          ],
-          "focus": [
-            432,
-            113
-          ],
-          "label": "28 Электрощитовая — 178"
-        },
-        {
-          "resource_id": 179,
-          "anchor": [
-            512,
-            0
-          ],
-          "focus": [
-            456,
-            218
-          ],
-          "label": "29 Электрощитовая — 179"
-        },
-        {
-          "resource_id": 184,
-          "anchor": [
-            192,
-            0
-          ],
-          "focus": [
-            183,
-            76
-          ],
-          "label": "30 Электрощитовая — 184"
-        },
-        {
-          "resource_id": 187,
-          "anchor": [
-            0,
-            160
-          ],
-          "focus": [
-            0,
-            94
-          ],
-          "label": "31 Электрощитовая — 187"
-        },
-        {
-          "resource_id": 190,
-          "anchor": [
-            0,
-            160
-          ],
-          "focus": [
-            38,
-            143
-          ],
-          "label": "32 Электрощитовая — 190"
-        },
-        {
-          "resource_id": 191,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            35,
-            154
-          ],
-          "label": "33 Электрощитовая — 191"
-        },
-        {
-          "resource_id": 192,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            32,
-            153
-          ],
-          "label": "34 Электрощитовая — 192"
-        },
-        {
-          "resource_id": 193,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            32,
-            153
-          ],
-          "label": "35 Электрощитовая — 193"
-        },
-        {
-          "resource_id": 196,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            74,
-            139
-          ],
-          "label": "36 Электрощитовая — 196"
-        },
-        {
-          "resource_id": 198,
-          "anchor": [
-            256,
             400
           ],
           "focus": [
-            441,
-            294
+            552,
+            386
           ],
-          "label": "37 Электрощитовая — 198"
+          "label": "01 Подвал — 53"
         },
         {
-          "resource_id": 199,
+          "resource_id": 54,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            558,
+            373
+          ],
+          "label": "02 Подвал — 54"
+        },
+        {
+          "resource_id": 55,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            386
+          ],
+          "label": "03 Подвал — 55"
+        },
+        {
+          "resource_id": 56,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            530,
+            373
+          ],
+          "label": "04 Подвал — 56"
+        },
+        {
+          "resource_id": 58,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            546,
+            374
+          ],
+          "label": "05 Подвал — 58"
+        },
+        {
+          "resource_id": 59,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            547,
+            378
+          ],
+          "label": "06 Подвал — 59"
+        },
+        {
+          "resource_id": 60,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            546,
+            374
+          ],
+          "label": "07 Подвал — 60"
+        },
+        {
+          "resource_id": 61,
           "anchor": [
             448,
+            144
+          ],
+          "focus": [
+            486,
+            76
+          ],
+          "label": "08 Подвал — 61"
+        },
+        {
+          "resource_id": 62,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "09 Подвал — 62"
+        },
+        {
+          "resource_id": 63,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            498,
+            76
+          ],
+          "label": "10 Подвал — 63"
+        },
+        {
+          "resource_id": 64,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "11 Подвал — 64"
+        },
+        {
+          "resource_id": 65,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "12 Подвал — 65"
+        },
+        {
+          "resource_id": 66,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            489,
+            76
+          ],
+          "label": "13 Подвал — 66"
+        },
+        {
+          "resource_id": 67,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            481,
+            76
+          ],
+          "label": "14 Подвал — 67"
+        },
+        {
+          "resource_id": 68,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "15 Подвал — 68"
+        },
+        {
+          "resource_id": 69,
+          "anchor": [
+            512,
             400
           ],
           "focus": [
-            429,
-            391
+            541,
+            374
           ],
-          "label": "38 Электрощитовая — 199"
+          "label": "16 Подвал — 69"
         },
         {
-          "resource_id": 200,
+          "resource_id": 70,
           "anchor": [
-            0,
-            160
-          ],
-          "focus": [
-            33,
-            143
-          ],
-          "label": "39 Электрощитовая — 200"
-        },
-        {
-          "resource_id": 204,
-          "anchor": [
-            576,
+            512,
             400
           ],
           "focus": [
-            442,
-            219
+            540,
+            378
           ],
-          "label": "40 Электрощитовая — 204"
+          "label": "17 Подвал — 70"
+        },
+        {
+          "resource_id": 71,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            541,
+            374
+          ],
+          "label": "18 Подвал — 71"
+        },
+        {
+          "resource_id": 72,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            384
+          ],
+          "label": "19 Подвал — 72"
+        },
+        {
+          "resource_id": 73,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            545,
+            371
+          ],
+          "label": "20 Подвал — 73"
+        },
+        {
+          "resource_id": 74,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            548,
+            377
+          ],
+          "label": "21 Подвал — 74"
+        },
+        {
+          "resource_id": 75,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            547,
+            377
+          ],
+          "label": "22 Подвал — 75"
+        },
+        {
+          "resource_id": 76,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            535,
+            371
+          ],
+          "label": "23 Подвал — 76"
+        },
+        {
+          "resource_id": 77,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            543,
+            377
+          ],
+          "label": "24 Подвал — 77"
+        },
+        {
+          "resource_id": 78,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            377
+          ],
+          "label": "25 Подвал — 78"
+        },
+        {
+          "resource_id": 81,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            297,
+            331
+          ],
+          "label": "26 Подвал — 81"
+        },
+        {
+          "resource_id": 82,
+          "anchor": [
+            128,
+            336
+          ],
+          "focus": [
+            161,
+            303
+          ],
+          "label": "27 Подвал — 82"
+        },
+        {
+          "resource_id": 87,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            570,
+            108
+          ],
+          "label": "28 Подвал — 87"
+        },
+        {
+          "resource_id": 88,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            519,
+            369
+          ],
+          "label": "29 Подвал — 88"
+        },
+        {
+          "resource_id": 91,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            285,
+            336
+          ],
+          "label": "30 Подвал — 91"
+        },
+        {
+          "resource_id": 92,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            285,
+            336
+          ],
+          "label": "31 Подвал — 92"
+        },
+        {
+          "resource_id": 93,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            285,
+            336
+          ],
+          "label": "32 Подвал — 93"
+        },
+        {
+          "resource_id": 94,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            543,
+            381
+          ],
+          "label": "33 Подвал — 94"
+        },
+        {
+          "resource_id": 95,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            284,
+            336
+          ],
+          "label": "34 Подвал — 95"
+        },
+        {
+          "resource_id": 96,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            388
+          ],
+          "label": "35 Подвал — 96"
         }
       ],
       "largest_resources": [
@@ -10424,10 +10852,11 @@
         10,
         11,
         12,
-        13
+        13,
+        15
       ],
-      "animations": 1236,
-      "frames": 14329,
+      "animations": 1331,
+      "frames": 15620,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -10560,13 +10989,25 @@
           208,
           640,
           417
+        ],
+        "scenes/15.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/15.p8": [
+          320,
+          208,
+          640,
+          417
         ]
       },
       "path": "dist/Pilots-128x160.jar",
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.17.1",
+        "MIDlet-Version": "0.18.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -10575,28 +11016,28 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "83a11f77d7c0150caa3f16ea935b4f40554e67a8c226d736aa942021773b8e55",
-      "jar_bytes": 13409720,
-      "entry_count": 1758,
-      "uncompressed_bytes": 89123838,
+      "sha256": "9b8bfa50a55104b360976567fb126f9b69694d0200c6c8c8fe951c6efc6e956c",
+      "jar_bytes": 14549680,
+      "entry_count": 1888,
+      "uncompressed_bytes": 99136245,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1236,
-        ".bar": 11,
+        ".anm": 1331,
+        ".bar": 12,
         ".bin": 1,
         ".board": 1,
         ".class": 63,
-        ".events": 11,
+        ".events": 12,
         ".hot": 3,
-        ".mid": 12,
-        ".p8": 11,
+        ".mid": 13,
+        ".p8": 12,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 9,
+        ".vm": 10,
         ".walk": 1,
-        ".wav": 394
+        ".wav": 424
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -10688,7 +11129,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "3bee90597dca99d399fb2c07dd37e7696be7afd02c6b4dd508fa8efac11d9cc1"
+          "sha256": "58c29e4ec2869bfa5f727197023b81480c83ee2805573b9a975d91afbdbe2e0c"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -10834,7 +11275,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0b0a24c741f87b39d624e589dc8e010da07826c9a7c2af434d3df4aff8d0952e"
+          "sha256": "1f26ccca8a5f12e83f823e338827ab7f1adb0996f9b36cc3def4a7512b751dfa"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -10907,7 +11348,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "984d103148495eaf6cd88f1e0adea5be6211ab30d78f8815dbb94ab934ddc950"
+          "sha256": "8910d9553750ea9c17287228f5f48f368276449b345a596d126c19d01aa04e52"
         },
         "pilots/HotelScene.class": {
           "minor": 3,
@@ -10920,7 +11361,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "329cbd6b56f16906ef9c9164296bd37f7da7cb1365ebdee78e67901297fcfe88"
+          "sha256": "fa876ad6d8fddb5b37975cced4de82ef16c766e443bf69a0794f35744521b336"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -10938,7 +11379,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": false,
-          "sha256": "4c72a78dbb17520eef566b1ce8e5888c9c0210b34d9e11995339ddcfa1f03576"
+          "sha256": "af8899581e8adb0af85f43abc00cc428a8949c9420f49d7c3ebcbceb748b4892"
         },
         "pilots/HotelWorld.class": {
           "minor": 3,
@@ -10961,7 +11402,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fb8cbe5a89fbd8ca463a7b9b38821d43d59e91841eeb33206cd2042f47e4b3a7"
+          "sha256": "8089d9b49b12fe899039a1a70dafdb749b641a4cfe7284c10e044069661b78c8"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -11169,7 +11610,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ae96041f342662df7262012d41df6dd883ea8e8e17620f9966c9c61b0f8b5f6d"
+          "sha256": "261f98ce679121b1a3655c7592cb410a60fcda9b356be5001568e495b59dd8c5"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -11192,7 +11633,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "12e0815cab92e4369bc651dba880a9acf3637497681466fa9a07e92749bc6262"
+          "sha256": "19232dcd2ba7b2a61795a1fc33928f76028982b8e502e8616b5dc5c6c62038ad"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -11242,7 +11683,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d254b16b6a1ba75c325e28aa02944797a6c7ddeadb212795ff58b406a2e80418"
+          "sha256": "3f09e2b30b1da49b7e2883eabe03f46859596828c1b8191df2e0c509efe066a1"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -11436,7 +11877,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7db978e0a4bbeee0b4841ad0a1020adb5ec7831b3c20c90bc04b32c523ba02d9"
+          "sha256": "931de0a42ae86912141b9b90535fef65f68c47a8ec5476bf5f5b961f409872c7"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -17686,489 +18127,904 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 143
+        },
+        "scenes/15-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/15-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/15-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/15-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/15-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/15-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/15-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/15-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/15-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/15-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/15-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/15-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/15-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/15-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/15-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/15-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/15-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/15-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/15-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/15-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/15-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/15-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/15-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/15-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/15-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/15-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/15-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/15-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/15-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/15-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/15-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/15-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/15-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/15-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/15-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/15-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4800
+        },
+        "scenes/15-47.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7138
+        },
+        "scenes/15-48.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3162
+        },
+        "scenes/15-49.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4096
+        },
+        "scenes/15-50.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4096
+        },
+        "scenes/15-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5096
+        },
+        "scenes/15-52.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 37572
+        },
+        "scenes/15-53.anm": {
+          "count": 19,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11928
+        },
+        "scenes/15-54.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17420
+        },
+        "scenes/15-55.anm": {
+          "count": 19,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11928
+        },
+        "scenes/15-56.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17420
+        },
+        "scenes/15-57.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14720
+        },
+        "scenes/15-58.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-59.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8526
+        },
+        "scenes/15-60.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-61.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 27492
+        },
+        "scenes/15-62.anm": {
+          "count": 52,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 27492
+        },
+        "scenes/15-63.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 23345
+        },
+        "scenes/15-64.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22540
+        },
+        "scenes/15-65.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17227
+        },
+        "scenes/15-66.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17227
+        },
+        "scenes/15-67.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19276
+        },
+        "scenes/15-68.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19276
+        },
+        "scenes/15-69.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-70.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8526
+        },
+        "scenes/15-71.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-72.anm": {
+          "count": 22,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19292
+        },
+        "scenes/15-73.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9292
+        },
+        "scenes/15-74.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8989
+        },
+        "scenes/15-75.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8989
+        },
+        "scenes/15-76.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9292
+        },
+        "scenes/15-77.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-78.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-79.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14400
+        },
+        "scenes/15-80.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/15-81.anm": {
+          "count": 22,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7387
+        },
+        "scenes/15-82.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7387
+        },
+        "scenes/15-83.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-84.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-85.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 460
+        },
+        "scenes/15-86.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7000
+        },
+        "scenes/15-87.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8610
+        },
+        "scenes/15-88.anm": {
+          "count": 15,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10028
+        },
+        "scenes/15-89.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 432
+        },
+        "scenes/15-90.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 348
+        },
+        "scenes/15-91.anm": {
+          "count": 55,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-92.anm": {
+          "count": 55,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-93.anm": {
+          "count": 55,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-94.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6225
+        },
+        "scenes/15-95.anm": {
+          "count": 70,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 20410
+        },
+        "scenes/15-96.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4416
         }
       },
-      "preview_scene": 13,
+      "preview_scene": 15,
       "preview_catalog": [
         {
-          "resource_id": 150,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            36,
-            154
-          ],
-          "label": "01 Электрощитовая — 150"
-        },
-        {
-          "resource_id": 151,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            36,
-            154
-          ],
-          "label": "02 Электрощитовая — 151"
-        },
-        {
-          "resource_id": 152,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "03 Электрощитовая — 152"
-        },
-        {
-          "resource_id": 153,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "04 Электрощитовая — 153"
-        },
-        {
-          "resource_id": 154,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "05 Электрощитовая — 154"
-        },
-        {
-          "resource_id": 155,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            31,
-            154
-          ],
-          "label": "06 Электрощитовая — 155"
-        },
-        {
-          "resource_id": 156,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "07 Электрощитовая — 156"
-        },
-        {
-          "resource_id": 157,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "08 Электрощитовая — 157"
-        },
-        {
-          "resource_id": 158,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "09 Электрощитовая — 158"
-        },
-        {
-          "resource_id": 159,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "10 Электрощитовая — 159"
-        },
-        {
-          "resource_id": 160,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "11 Электрощитовая — 160"
-        },
-        {
-          "resource_id": 161,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "12 Электрощитовая — 161"
-        },
-        {
-          "resource_id": 162,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "13 Электрощитовая — 162"
-        },
-        {
-          "resource_id": 163,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "14 Электрощитовая — 163"
-        },
-        {
-          "resource_id": 164,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "15 Электрощитовая — 164"
-        },
-        {
-          "resource_id": 165,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "16 Электрощитовая — 165"
-        },
-        {
-          "resource_id": 166,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "17 Электрощитовая — 166"
-        },
-        {
-          "resource_id": 167,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "18 Электрощитовая — 167"
-        },
-        {
-          "resource_id": 168,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            31,
-            154
-          ],
-          "label": "19 Электрощитовая — 168"
-        },
-        {
-          "resource_id": 169,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "20 Электрощитовая — 169"
-        },
-        {
-          "resource_id": 170,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "21 Электрощитовая — 170"
-        },
-        {
-          "resource_id": 171,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "22 Электрощитовая — 171"
-        },
-        {
-          "resource_id": 172,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "23 Электрощитовая — 172"
-        },
-        {
-          "resource_id": 173,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "24 Электрощитовая — 173"
-        },
-        {
-          "resource_id": 174,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "25 Электрощитовая — 174"
-        },
-        {
-          "resource_id": 175,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "26 Электрощитовая — 175"
-        },
-        {
-          "resource_id": 176,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            58,
-            147
-          ],
-          "label": "27 Электрощитовая — 176"
-        },
-        {
-          "resource_id": 178,
+          "resource_id": 53,
           "anchor": [
             512,
-            0
-          ],
-          "focus": [
-            432,
-            113
-          ],
-          "label": "28 Электрощитовая — 178"
-        },
-        {
-          "resource_id": 179,
-          "anchor": [
-            512,
-            0
-          ],
-          "focus": [
-            456,
-            218
-          ],
-          "label": "29 Электрощитовая — 179"
-        },
-        {
-          "resource_id": 184,
-          "anchor": [
-            192,
-            0
-          ],
-          "focus": [
-            183,
-            76
-          ],
-          "label": "30 Электрощитовая — 184"
-        },
-        {
-          "resource_id": 187,
-          "anchor": [
-            0,
-            160
-          ],
-          "focus": [
-            0,
-            94
-          ],
-          "label": "31 Электрощитовая — 187"
-        },
-        {
-          "resource_id": 190,
-          "anchor": [
-            0,
-            160
-          ],
-          "focus": [
-            38,
-            143
-          ],
-          "label": "32 Электрощитовая — 190"
-        },
-        {
-          "resource_id": 191,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            35,
-            154
-          ],
-          "label": "33 Электрощитовая — 191"
-        },
-        {
-          "resource_id": 192,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            32,
-            153
-          ],
-          "label": "34 Электрощитовая — 192"
-        },
-        {
-          "resource_id": 193,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            32,
-            153
-          ],
-          "label": "35 Электрощитовая — 193"
-        },
-        {
-          "resource_id": 196,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            74,
-            139
-          ],
-          "label": "36 Электрощитовая — 196"
-        },
-        {
-          "resource_id": 198,
-          "anchor": [
-            256,
             400
           ],
           "focus": [
-            441,
-            294
+            552,
+            386
           ],
-          "label": "37 Электрощитовая — 198"
+          "label": "01 Подвал — 53"
         },
         {
-          "resource_id": 199,
+          "resource_id": 54,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            558,
+            373
+          ],
+          "label": "02 Подвал — 54"
+        },
+        {
+          "resource_id": 55,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            386
+          ],
+          "label": "03 Подвал — 55"
+        },
+        {
+          "resource_id": 56,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            530,
+            373
+          ],
+          "label": "04 Подвал — 56"
+        },
+        {
+          "resource_id": 58,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            546,
+            374
+          ],
+          "label": "05 Подвал — 58"
+        },
+        {
+          "resource_id": 59,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            547,
+            378
+          ],
+          "label": "06 Подвал — 59"
+        },
+        {
+          "resource_id": 60,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            546,
+            374
+          ],
+          "label": "07 Подвал — 60"
+        },
+        {
+          "resource_id": 61,
           "anchor": [
             448,
+            144
+          ],
+          "focus": [
+            486,
+            76
+          ],
+          "label": "08 Подвал — 61"
+        },
+        {
+          "resource_id": 62,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "09 Подвал — 62"
+        },
+        {
+          "resource_id": 63,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            498,
+            76
+          ],
+          "label": "10 Подвал — 63"
+        },
+        {
+          "resource_id": 64,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "11 Подвал — 64"
+        },
+        {
+          "resource_id": 65,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "12 Подвал — 65"
+        },
+        {
+          "resource_id": 66,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            489,
+            76
+          ],
+          "label": "13 Подвал — 66"
+        },
+        {
+          "resource_id": 67,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            481,
+            76
+          ],
+          "label": "14 Подвал — 67"
+        },
+        {
+          "resource_id": 68,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "15 Подвал — 68"
+        },
+        {
+          "resource_id": 69,
+          "anchor": [
+            512,
             400
           ],
           "focus": [
-            429,
-            391
+            541,
+            374
           ],
-          "label": "38 Электрощитовая — 199"
+          "label": "16 Подвал — 69"
         },
         {
-          "resource_id": 200,
+          "resource_id": 70,
           "anchor": [
-            0,
-            160
-          ],
-          "focus": [
-            33,
-            143
-          ],
-          "label": "39 Электрощитовая — 200"
-        },
-        {
-          "resource_id": 204,
-          "anchor": [
-            576,
+            512,
             400
           ],
           "focus": [
-            442,
-            219
+            540,
+            378
           ],
-          "label": "40 Электрощитовая — 204"
+          "label": "17 Подвал — 70"
+        },
+        {
+          "resource_id": 71,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            541,
+            374
+          ],
+          "label": "18 Подвал — 71"
+        },
+        {
+          "resource_id": 72,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            384
+          ],
+          "label": "19 Подвал — 72"
+        },
+        {
+          "resource_id": 73,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            545,
+            371
+          ],
+          "label": "20 Подвал — 73"
+        },
+        {
+          "resource_id": 74,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            548,
+            377
+          ],
+          "label": "21 Подвал — 74"
+        },
+        {
+          "resource_id": 75,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            547,
+            377
+          ],
+          "label": "22 Подвал — 75"
+        },
+        {
+          "resource_id": 76,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            535,
+            371
+          ],
+          "label": "23 Подвал — 76"
+        },
+        {
+          "resource_id": 77,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            543,
+            377
+          ],
+          "label": "24 Подвал — 77"
+        },
+        {
+          "resource_id": 78,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            377
+          ],
+          "label": "25 Подвал — 78"
+        },
+        {
+          "resource_id": 81,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            297,
+            331
+          ],
+          "label": "26 Подвал — 81"
+        },
+        {
+          "resource_id": 82,
+          "anchor": [
+            128,
+            336
+          ],
+          "focus": [
+            161,
+            303
+          ],
+          "label": "27 Подвал — 82"
+        },
+        {
+          "resource_id": 87,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            570,
+            108
+          ],
+          "label": "28 Подвал — 87"
+        },
+        {
+          "resource_id": 88,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            519,
+            369
+          ],
+          "label": "29 Подвал — 88"
+        },
+        {
+          "resource_id": 91,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            285,
+            336
+          ],
+          "label": "30 Подвал — 91"
+        },
+        {
+          "resource_id": 92,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            285,
+            336
+          ],
+          "label": "31 Подвал — 92"
+        },
+        {
+          "resource_id": 93,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            285,
+            336
+          ],
+          "label": "32 Подвал — 93"
+        },
+        {
+          "resource_id": 94,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            543,
+            381
+          ],
+          "label": "33 Подвал — 94"
+        },
+        {
+          "resource_id": 95,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            284,
+            336
+          ],
+          "label": "34 Подвал — 95"
+        },
+        {
+          "resource_id": 96,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            388
+          ],
+          "label": "35 Подвал — 96"
         }
       ],
       "largest_resources": [
@@ -18238,10 +19094,11 @@
         10,
         11,
         12,
-        13
+        13,
+        15
       ],
-      "animations": 1236,
-      "frames": 14329,
+      "animations": 1331,
+      "frames": 15620,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -18374,13 +19231,25 @@
           417,
           640,
           417
+        ],
+        "scenes/15.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/15.p8": [
+          640,
+          417,
+          640,
+          417
         ]
       },
       "path": "dist/Pilots-240x320.jar",
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.17.1",
+        "MIDlet-Version": "0.18.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -18389,28 +19258,28 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "157decf6c3ce4f1250f784c67b12bde2ff9dde7ace3e2e24e84097ed260e6a38",
-      "jar_bytes": 14145981,
-      "entry_count": 1758,
-      "uncompressed_bytes": 91327359,
+      "sha256": "68bbaa3591e991a692a06ac3b6c11951a8be41ecfcb85989a49b8ce12456e29e",
+      "jar_bytes": 15359389,
+      "entry_count": 1888,
+      "uncompressed_bytes": 101540086,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1236,
-        ".bar": 11,
+        ".anm": 1331,
+        ".bar": 12,
         ".bin": 1,
         ".board": 1,
         ".class": 63,
-        ".events": 11,
+        ".events": 12,
         ".hot": 3,
-        ".mid": 12,
-        ".p8": 11,
+        ".mid": 13,
+        ".p8": 12,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 9,
+        ".vm": 10,
         ".walk": 1,
-        ".wav": 394
+        ".wav": 424
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -18502,7 +19371,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "3bee90597dca99d399fb2c07dd37e7696be7afd02c6b4dd508fa8efac11d9cc1"
+          "sha256": "58c29e4ec2869bfa5f727197023b81480c83ee2805573b9a975d91afbdbe2e0c"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -18648,7 +19517,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0b0a24c741f87b39d624e589dc8e010da07826c9a7c2af434d3df4aff8d0952e"
+          "sha256": "1f26ccca8a5f12e83f823e338827ab7f1adb0996f9b36cc3def4a7512b751dfa"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -18721,7 +19590,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "984d103148495eaf6cd88f1e0adea5be6211ab30d78f8815dbb94ab934ddc950"
+          "sha256": "8910d9553750ea9c17287228f5f48f368276449b345a596d126c19d01aa04e52"
         },
         "pilots/HotelScene.class": {
           "minor": 3,
@@ -18734,7 +19603,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "329cbd6b56f16906ef9c9164296bd37f7da7cb1365ebdee78e67901297fcfe88"
+          "sha256": "fa876ad6d8fddb5b37975cced4de82ef16c766e443bf69a0794f35744521b336"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -18752,7 +19621,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": false,
-          "sha256": "4c72a78dbb17520eef566b1ce8e5888c9c0210b34d9e11995339ddcfa1f03576"
+          "sha256": "af8899581e8adb0af85f43abc00cc428a8949c9420f49d7c3ebcbceb748b4892"
         },
         "pilots/HotelWorld.class": {
           "minor": 3,
@@ -18775,7 +19644,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fb8cbe5a89fbd8ca463a7b9b38821d43d59e91841eeb33206cd2042f47e4b3a7"
+          "sha256": "8089d9b49b12fe899039a1a70dafdb749b641a4cfe7284c10e044069661b78c8"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -18983,7 +19852,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ae96041f342662df7262012d41df6dd883ea8e8e17620f9966c9c61b0f8b5f6d"
+          "sha256": "261f98ce679121b1a3655c7592cb410a60fcda9b356be5001568e495b59dd8c5"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -19006,7 +19875,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "12e0815cab92e4369bc651dba880a9acf3637497681466fa9a07e92749bc6262"
+          "sha256": "19232dcd2ba7b2a61795a1fc33928f76028982b8e502e8616b5dc5c6c62038ad"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -19056,7 +19925,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d254b16b6a1ba75c325e28aa02944797a6c7ddeadb212795ff58b406a2e80418"
+          "sha256": "3f09e2b30b1da49b7e2883eabe03f46859596828c1b8191df2e0c509efe066a1"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -19250,7 +20119,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7db978e0a4bbeee0b4841ad0a1020adb5ec7831b3c20c90bc04b32c523ba02d9"
+          "sha256": "931de0a42ae86912141b9b90535fef65f68c47a8ec5476bf5f5b961f409872c7"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -25500,489 +26369,904 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 143
+        },
+        "scenes/15-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/15-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/15-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/15-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/15-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/15-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/15-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/15-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/15-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/15-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/15-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/15-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/15-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/15-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/15-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/15-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/15-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/15-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/15-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/15-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/15-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/15-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/15-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/15-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/15-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/15-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/15-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/15-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/15-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/15-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/15-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/15-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/15-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/15-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/15-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/15-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4800
+        },
+        "scenes/15-47.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7138
+        },
+        "scenes/15-48.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3162
+        },
+        "scenes/15-49.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4096
+        },
+        "scenes/15-50.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4096
+        },
+        "scenes/15-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5096
+        },
+        "scenes/15-52.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 37572
+        },
+        "scenes/15-53.anm": {
+          "count": 19,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11928
+        },
+        "scenes/15-54.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17420
+        },
+        "scenes/15-55.anm": {
+          "count": 19,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11928
+        },
+        "scenes/15-56.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17420
+        },
+        "scenes/15-57.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14720
+        },
+        "scenes/15-58.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-59.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8526
+        },
+        "scenes/15-60.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-61.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 27492
+        },
+        "scenes/15-62.anm": {
+          "count": 52,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 27492
+        },
+        "scenes/15-63.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 23345
+        },
+        "scenes/15-64.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22540
+        },
+        "scenes/15-65.anm": {
+          "count": 49,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17227
+        },
+        "scenes/15-66.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17227
+        },
+        "scenes/15-67.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19276
+        },
+        "scenes/15-68.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19276
+        },
+        "scenes/15-69.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-70.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8526
+        },
+        "scenes/15-71.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-72.anm": {
+          "count": 22,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 19292
+        },
+        "scenes/15-73.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9292
+        },
+        "scenes/15-74.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8989
+        },
+        "scenes/15-75.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8989
+        },
+        "scenes/15-76.anm": {
+          "count": 14,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9292
+        },
+        "scenes/15-77.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-78.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8484
+        },
+        "scenes/15-79.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 14400
+        },
+        "scenes/15-80.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/15-81.anm": {
+          "count": 22,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7387
+        },
+        "scenes/15-82.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7387
+        },
+        "scenes/15-83.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/15-84.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/15-85.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 460
+        },
+        "scenes/15-86.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7000
+        },
+        "scenes/15-87.anm": {
+          "count": 12,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8610
+        },
+        "scenes/15-88.anm": {
+          "count": 15,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10028
+        },
+        "scenes/15-89.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 432
+        },
+        "scenes/15-90.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 348
+        },
+        "scenes/15-91.anm": {
+          "count": 55,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-92.anm": {
+          "count": 55,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-93.anm": {
+          "count": 55,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/15-94.anm": {
+          "count": 13,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6225
+        },
+        "scenes/15-95.anm": {
+          "count": 70,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 20410
+        },
+        "scenes/15-96.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4416
         }
       },
-      "preview_scene": 13,
+      "preview_scene": 15,
       "preview_catalog": [
         {
-          "resource_id": 150,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            36,
-            154
-          ],
-          "label": "01 Электрощитовая — 150"
-        },
-        {
-          "resource_id": 151,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            36,
-            154
-          ],
-          "label": "02 Электрощитовая — 151"
-        },
-        {
-          "resource_id": 152,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "03 Электрощитовая — 152"
-        },
-        {
-          "resource_id": 153,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "04 Электрощитовая — 153"
-        },
-        {
-          "resource_id": 154,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "05 Электрощитовая — 154"
-        },
-        {
-          "resource_id": 155,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            31,
-            154
-          ],
-          "label": "06 Электрощитовая — 155"
-        },
-        {
-          "resource_id": 156,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "07 Электрощитовая — 156"
-        },
-        {
-          "resource_id": 157,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "08 Электрощитовая — 157"
-        },
-        {
-          "resource_id": 158,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "09 Электрощитовая — 158"
-        },
-        {
-          "resource_id": 159,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "10 Электрощитовая — 159"
-        },
-        {
-          "resource_id": 160,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "11 Электрощитовая — 160"
-        },
-        {
-          "resource_id": 161,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "12 Электрощитовая — 161"
-        },
-        {
-          "resource_id": 162,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "13 Электрощитовая — 162"
-        },
-        {
-          "resource_id": 163,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "14 Электрощитовая — 163"
-        },
-        {
-          "resource_id": 164,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "15 Электрощитовая — 164"
-        },
-        {
-          "resource_id": 165,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "16 Электрощитовая — 165"
-        },
-        {
-          "resource_id": 166,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "17 Электрощитовая — 166"
-        },
-        {
-          "resource_id": 167,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            29,
-            154
-          ],
-          "label": "18 Электрощитовая — 167"
-        },
-        {
-          "resource_id": 168,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            31,
-            154
-          ],
-          "label": "19 Электрощитовая — 168"
-        },
-        {
-          "resource_id": 169,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "20 Электрощитовая — 169"
-        },
-        {
-          "resource_id": 170,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "21 Электрощитовая — 170"
-        },
-        {
-          "resource_id": 171,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "22 Электрощитовая — 171"
-        },
-        {
-          "resource_id": 172,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            54,
-            149
-          ],
-          "label": "23 Электрощитовая — 172"
-        },
-        {
-          "resource_id": 173,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "24 Электрощитовая — 173"
-        },
-        {
-          "resource_id": 174,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "25 Электрощитовая — 174"
-        },
-        {
-          "resource_id": 175,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            51,
-            151
-          ],
-          "label": "26 Электрощитовая — 175"
-        },
-        {
-          "resource_id": 176,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            58,
-            147
-          ],
-          "label": "27 Электрощитовая — 176"
-        },
-        {
-          "resource_id": 178,
+          "resource_id": 53,
           "anchor": [
             512,
-            0
-          ],
-          "focus": [
-            432,
-            113
-          ],
-          "label": "28 Электрощитовая — 178"
-        },
-        {
-          "resource_id": 179,
-          "anchor": [
-            512,
-            0
-          ],
-          "focus": [
-            456,
-            218
-          ],
-          "label": "29 Электрощитовая — 179"
-        },
-        {
-          "resource_id": 184,
-          "anchor": [
-            192,
-            0
-          ],
-          "focus": [
-            183,
-            76
-          ],
-          "label": "30 Электрощитовая — 184"
-        },
-        {
-          "resource_id": 187,
-          "anchor": [
-            0,
-            160
-          ],
-          "focus": [
-            0,
-            94
-          ],
-          "label": "31 Электрощитовая — 187"
-        },
-        {
-          "resource_id": 190,
-          "anchor": [
-            0,
-            160
-          ],
-          "focus": [
-            38,
-            143
-          ],
-          "label": "32 Электрощитовая — 190"
-        },
-        {
-          "resource_id": 191,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            35,
-            154
-          ],
-          "label": "33 Электрощитовая — 191"
-        },
-        {
-          "resource_id": 192,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            32,
-            153
-          ],
-          "label": "34 Электрощитовая — 192"
-        },
-        {
-          "resource_id": 193,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            32,
-            153
-          ],
-          "label": "35 Электрощитовая — 193"
-        },
-        {
-          "resource_id": 196,
-          "anchor": [
-            0,
-            176
-          ],
-          "focus": [
-            74,
-            139
-          ],
-          "label": "36 Электрощитовая — 196"
-        },
-        {
-          "resource_id": 198,
-          "anchor": [
-            256,
             400
           ],
           "focus": [
-            441,
-            294
+            552,
+            386
           ],
-          "label": "37 Электрощитовая — 198"
+          "label": "01 Подвал — 53"
         },
         {
-          "resource_id": 199,
+          "resource_id": 54,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            558,
+            373
+          ],
+          "label": "02 Подвал — 54"
+        },
+        {
+          "resource_id": 55,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            386
+          ],
+          "label": "03 Подвал — 55"
+        },
+        {
+          "resource_id": 56,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            530,
+            373
+          ],
+          "label": "04 Подвал — 56"
+        },
+        {
+          "resource_id": 58,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            546,
+            374
+          ],
+          "label": "05 Подвал — 58"
+        },
+        {
+          "resource_id": 59,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            547,
+            378
+          ],
+          "label": "06 Подвал — 59"
+        },
+        {
+          "resource_id": 60,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            546,
+            374
+          ],
+          "label": "07 Подвал — 60"
+        },
+        {
+          "resource_id": 61,
           "anchor": [
             448,
+            144
+          ],
+          "focus": [
+            486,
+            76
+          ],
+          "label": "08 Подвал — 61"
+        },
+        {
+          "resource_id": 62,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "09 Подвал — 62"
+        },
+        {
+          "resource_id": 63,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            498,
+            76
+          ],
+          "label": "10 Подвал — 63"
+        },
+        {
+          "resource_id": 64,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "11 Подвал — 64"
+        },
+        {
+          "resource_id": 65,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "12 Подвал — 65"
+        },
+        {
+          "resource_id": 66,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            489,
+            76
+          ],
+          "label": "13 Подвал — 66"
+        },
+        {
+          "resource_id": 67,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            481,
+            76
+          ],
+          "label": "14 Подвал — 67"
+        },
+        {
+          "resource_id": 68,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            499,
+            105
+          ],
+          "label": "15 Подвал — 68"
+        },
+        {
+          "resource_id": 69,
+          "anchor": [
+            512,
             400
           ],
           "focus": [
-            429,
-            391
+            541,
+            374
           ],
-          "label": "38 Электрощитовая — 199"
+          "label": "16 Подвал — 69"
         },
         {
-          "resource_id": 200,
+          "resource_id": 70,
           "anchor": [
-            0,
-            160
-          ],
-          "focus": [
-            33,
-            143
-          ],
-          "label": "39 Электрощитовая — 200"
-        },
-        {
-          "resource_id": 204,
-          "anchor": [
-            576,
+            512,
             400
           ],
           "focus": [
-            442,
-            219
+            540,
+            378
           ],
-          "label": "40 Электрощитовая — 204"
+          "label": "17 Подвал — 70"
+        },
+        {
+          "resource_id": 71,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            541,
+            374
+          ],
+          "label": "18 Подвал — 71"
+        },
+        {
+          "resource_id": 72,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            384
+          ],
+          "label": "19 Подвал — 72"
+        },
+        {
+          "resource_id": 73,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            545,
+            371
+          ],
+          "label": "20 Подвал — 73"
+        },
+        {
+          "resource_id": 74,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            548,
+            377
+          ],
+          "label": "21 Подвал — 74"
+        },
+        {
+          "resource_id": 75,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            547,
+            377
+          ],
+          "label": "22 Подвал — 75"
+        },
+        {
+          "resource_id": 76,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            535,
+            371
+          ],
+          "label": "23 Подвал — 76"
+        },
+        {
+          "resource_id": 77,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            543,
+            377
+          ],
+          "label": "24 Подвал — 77"
+        },
+        {
+          "resource_id": 78,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            377
+          ],
+          "label": "25 Подвал — 78"
+        },
+        {
+          "resource_id": 81,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            297,
+            331
+          ],
+          "label": "26 Подвал — 81"
+        },
+        {
+          "resource_id": 82,
+          "anchor": [
+            128,
+            336
+          ],
+          "focus": [
+            161,
+            303
+          ],
+          "label": "27 Подвал — 82"
+        },
+        {
+          "resource_id": 87,
+          "anchor": [
+            448,
+            144
+          ],
+          "focus": [
+            570,
+            108
+          ],
+          "label": "28 Подвал — 87"
+        },
+        {
+          "resource_id": 88,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            519,
+            369
+          ],
+          "label": "29 Подвал — 88"
+        },
+        {
+          "resource_id": 91,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            285,
+            336
+          ],
+          "label": "30 Подвал — 91"
+        },
+        {
+          "resource_id": 92,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            285,
+            336
+          ],
+          "label": "31 Подвал — 92"
+        },
+        {
+          "resource_id": 93,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            285,
+            336
+          ],
+          "label": "32 Подвал — 93"
+        },
+        {
+          "resource_id": 94,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            543,
+            381
+          ],
+          "label": "33 Подвал — 94"
+        },
+        {
+          "resource_id": 95,
+          "anchor": [
+            256,
+            352
+          ],
+          "focus": [
+            284,
+            336
+          ],
+          "label": "34 Подвал — 95"
+        },
+        {
+          "resource_id": 96,
+          "anchor": [
+            512,
+            400
+          ],
+          "focus": [
+            544,
+            388
+          ],
+          "label": "35 Подвал — 96"
         }
       ],
       "largest_resources": [
