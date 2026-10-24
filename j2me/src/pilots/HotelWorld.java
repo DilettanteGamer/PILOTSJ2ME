@@ -87,6 +87,13 @@ public final class HotelWorld {
             }
             syncSave();
         }
+        if(scene==13 && state.location!=null) {
+            // 0.17.0 retained the summoned empty platform under the closed lift.
+            // Source map 52 must remove that lift without replaying the summon.
+            Thing lift=cells[25*10+7];
+            if(lift!=null && lift.id==46 && lift.under==58)lift.under=254;
+            if(action()==99 && lift!=null && lift.id==58)removeCell(7,25);
+        }
         initFridge();
         // Reconcile snapshots written before map replacement retired hero 12.
         if(scene==9 && !completed && state.variables[63]==0 && (action()==84 || action()==87) && find(97)!=null) {
@@ -214,6 +221,9 @@ public final class HotelWorld {
         }
         if(id==254) { remove(x,y);return; }
         Thing old=cells[y*10+x];int under=old==null?254:definitions[old.id]!=null&&definitions[old.id].type!=0?old.under:old.id;
+        // Map 43 replaces the empty platform's one-shot (58/199) with the
+        // stationary lift (46/180). Retain its ground, not the retired summon.
+        if(scene==13 && id==46 && old!=null && old.id==58)under=old.under;
         if(old!=null && definitions[old.id]!=null) exit(definitions[old.id],old);
         Thing t=new Thing(id,x*64,y*16,++serial);t.under=under;cells[y*10+x]=t;
         Definition d=definitions[id];
