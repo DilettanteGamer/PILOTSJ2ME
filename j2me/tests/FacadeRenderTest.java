@@ -14,11 +14,22 @@ public final class FacadeRenderTest {
     if(i==66)BalconyRenderTest.capture(h,640,480,args[2]+"-handoff-world.png");
    }
    settle(h);BalconyRenderTest.capture(h,640,480,args[2]+"-world.png");BalconyRenderTest.capture(h,width,height,args[2]+"-entry.png");
-   act(h,0,0,15);for(int i=0;i<90;i++)h.update(100);
+   check(h.logic.select(1)&&h.request(256,320),"manual lift approach");
+   int responses=0;
+   for(int i=0;i<180;i++){
+    h.update(100);
+    if((h.animals.world.action()==53||h.animals.world.action()==54)&&h.animals.world.g(4)==5){
+     check(scene.actors[301]!=null&&scene.actors[301].id==72,"lift moved without Colleague withdrawal");responses++;
+     BalconyRenderTest.capture(h,640,480,args[2]+"-lift-withdraw-world.png");
+    }
+   }
+   check(responses==1,"lift withdrawal must happen once");
    check(scene.actors[5]!=null&&scene.actors[5].id==51&&scene.actors[6]!=null&&scene.actors[6].id==54,"lift system disappeared after fall");
    BalconyRenderTest.capture(h,640,480,args[2]+"-lift-rest-world.png");
    BalconyRenderTest.label(h,18,"Трос");BalconyRenderTest.label(h,16,"Окно");
-   act(h,1,0,16);act(h,0,0,17);BalconyRenderTest.label(h,19,"Осколок");act(h,1,0,19);
+   act(h,1,0,16);act(h,0,0,17);
+   check(h.logic.select(1)&&h.request(448,336),"move Colleague clear of shard");settle(h);
+   BalconyRenderTest.label(h,19,"Осколок");act(h,1,0,19);
    check(h.logic.hasItem(1),"glass HUD pickup");BalconyRenderTest.capture(h,width,height,args[2]+"-inventory.png");
    act(h,0,1,18);BalconyRenderTest.capture(h,640,480,args[2]+"-rope-world.png");
    check(h.logic.select(0)&&h.logic.selectItem(0),"left window selection");HotelRenderTest.act(h,15);
