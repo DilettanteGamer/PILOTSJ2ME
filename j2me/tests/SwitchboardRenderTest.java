@@ -34,7 +34,18 @@ public final class SwitchboardRenderTest {
    }finally{p.close();}
    h.refreshState();settle(h);BalconyRenderTest.capture(h,640,480,args[2]+"-powered-world.png");
    act(h,0,0,51);check(w.hasItem(1),"physical extinguisher pickup");BalconyRenderTest.capture(h,width,height,args[2]+"-inventory.png");
-   act(h,0,1,52);act(h,0,0,52);check(w.completed,"physical elevator exit");
+   act(h,0,1,52);check(h.logic.select(0)&&h.logic.selectItem(0),"elevator selection");HotelRenderTest.act(h,52);
+   int frames=0,limit=1000;
+   while(h.logic.busy()&&limit-->0) {
+    h.update(100);int descents=0;
+    for(int i=0;i<scene.actors.length;i++)if(scene.actors[i]!=null&&scene.actors[i].id==204)descents++;
+    if(descents>0) {
+     check(descents==1,"multiple occupied platforms");
+     for(int i=0;i<scene.actors.length;i++)check(scene.actors[i]==null || scene.actors[i].id!=199,"empty platform rises through descending brothers");
+     frames++;if(frames==10||frames==30){BalconyRenderTest.capture(h,640,480,args[2]+"-descent-"+frames+"-world.png");BalconyRenderTest.capture(h,width,height,args[2]+"-descent-"+frames+".png");}
+    }
+   }
+   check(limit>0&&frames==60&&w.completed,"incomplete physical elevator descent");
    BalconyRenderTest.capture(h,640,480,args[2]+"-exit-world.png");
   }finally{scene.close();}
   System.out.println("SwitchboardRender: source hotspots/layers, original enlarged panel, all arrow routes, original solution, inventory and both exits at "+width+"x"+height+" passed");
