@@ -27,7 +27,7 @@ from extract_street import extract as extract_street
 from extract_hotel import extract as extract_hotel
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.16.0'
+VERSION = '0.16.1'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
