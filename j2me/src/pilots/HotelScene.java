@@ -97,6 +97,8 @@ public final class HotelScene extends ZooScene {
                 hitSlot=i;hit=interactive(t.id) && (animals.world.scene!=9 || t.id!=34 || animals.world.keyAvailable())?t.id:-1;best=paintDepth(i);
             }
         }
+        // Fixed union of all four hose poses, enlarged for keypad cursor steps.
+        if(animals.world.roofHoseAvailable() && x>=144 && x<216 && y>=316 && y<390 && (hit<0 || hit==39))hit=39;
         if(animals.world.fridgePanelVisible() && x>=434 && x<500 && y>=195 && y<261 && (50<best || 50==best && hit!=12 && hit!=13))hit=101;
         return hit;
     }
@@ -104,6 +106,7 @@ public final class HotelScene extends ZooScene {
     public String hoverText(int x,int y) {
         // These authored clips include Colleague far above his walking root.
         // A cursor left on the cistern must not label the movie as a hero.
+        if(animals.world.scene==14 && animals.world.busy())return null;
         if(animals.world.scene==12 && (animals.world.action()==95 || animals.world.action()==96))return null;
         int id=target(x,y);
         if(animals.world.scene==15 && animals.world.hero()==0 && x>=336 && y>=160 && y<417)return "Ящики: отдельный экран";

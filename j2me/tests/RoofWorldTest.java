@@ -6,10 +6,17 @@ public final class RoofWorldTest {
  static void check(boolean b,String m){if(!b)throw new RuntimeException(m);}
  static HotelWorld copy(HotelWorld w)throws Exception{w.syncSave();byte[] b=w.state.encode();GameState s=GameState.decode(b,16);HotelWorld c=new HotelWorld(s);check(Arrays.equals(b,s.encode()),"roof restore mutated snapshot");return c;}
  static void tick()throws Exception{world.tick();replay.tick();check(Arrays.equals(world.state.encode(),replay.state.encode()),"roof replay "+ticks);replay=copy(replay);ticks++;}
- static void settle()throws Exception{int n=2500;while(world.busy()&&n-->0)tick();check(n>0,"roof lock "+world.action()+"/"+world.step());tick();}
+ static void settle()throws Exception{int n=2500;while(world.busy()&&n-->0)tick();check(n>0,"roof lock "+world.action()+"/"+world.step()+" busyFlag="+world.g(0x88)+" hero="+world.hero()+" walk="+world.walkHero+" aux="+world.g(0x1e1b6c)+" seat="+world.g(0x1e1b60)+","+world.g(0x1e1b5c)+" restore="+world.g(0x1e1b80)+","+world.g(0x1e1b84));tick();}
  static void act(int hero,int item,int id)throws Exception{check(world.select(hero)&&replay.select(hero),"roof hero "+hero);check(world.selectItem(item)&&replay.selectItem(item),"roof item "+item);check(world.interact(id)&&replay.interact(id),"roof target "+id);settle();}
  static void move(int hero,int x,int y)throws Exception{check(world.select(hero)&&replay.select(hero),"move select");check(world.move(x,y)&&replay.move(x,y),"roof move");settle();}
  static boolean find(int id){for(HotelWorld.Thing t:world.cells)if(t!=null&&t.id==id)return true;return false;}
+ static void idle(int n)throws Exception{for(int i=0;i<n;i++)tick();check(!world.busy(),"roof idle stranded action "+world.action()+"/"+world.step());}
+ static void latePaint()throws Exception{
+  GameState s=new GameState();s.scene=14;world=new HotelWorld(s);replay=copy(world);settle();
+  act(0,0,15);act(0,0,23);act(0,0,28);move(0,384,384);act(1,0,27);act(0,4,18);act(0,0,39);act(0,0,17);
+  idle(1200);check(find(47)&&world.heroes[1].active,"Chief waiting in basket changed actors");
+  act(1,1,22);idle(1200);act(1,0,17);idle(1200);act(1,3,35);check(world.completed,"late green paint blocks final flight");
+ }
  public static void main(String[] args)throws Exception{
   GameState s=new GameState();s.scene=14;world=new HotelWorld(s);replay=copy(world);world.sound(new SoundSink(){public void play(int c){cues[c]++;}});
   check(world.action()==99&&!world.select(1),"intro accepted input");settle();check(cues[12]==1,"original entrance sound");
@@ -34,6 +41,12 @@ public final class RoofWorldTest {
   act(1,3,35);check(world.completed&&SceneFlow.next(15,true)==14&&SceneFlow.next(14,true)==14,"source flight/scene boundary");
   for(HotelWorld.Thing t:world.cells)if(t!=null&&t.id==46)check(t.clip<0,"departed Colleague returned to basket rest pose");
   check(cues[44]==1,"final flight voice missing");
+  latePaint();
+  if(args.length>0){
+   world=new HotelWorld(GameState.decode(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(args[0])),16));replay=copy(world);
+   check(world.action()==0&&!world.busy()&&find(47),"legacy orphaned idle did not recover");
+   act(1,1,22);idle(600);act(1,0,17);idle(600);act(1,3,35);check(world.completed,"recovered 0.20.0 save cannot finish");
+  }
   System.out.println("RoofWorld: original intro, incorrect actions, both paints, green/red branch, ladder, scissors, hose cooperation, both basket actors, descent/reentry, flight and "+ticks+" every-tick save replays passed");
  }
 }
