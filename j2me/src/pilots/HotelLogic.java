@@ -7,6 +7,7 @@ public final class HotelLogic extends ZooLogic {
     public HotelLogic(GameState state) throws IOException { super(state);world=new HotelWorld(state); }
     public int hero() { return world.hero(); }
     private HotelWorld.Thing character(int h) {
+        if(world.scene==14 && !world.heroes[h].active){for(int i=0;i<world.cells.length;i++)if(world.cells[i]!=null && world.cells[i].id==(h==0?47:46))return world.cells[i];}
         if(world.scene!=15)return world.heroes[h];
         for(int i=0;i<world.cells.length;i++) {
             HotelWorld.Thing t=world.cells[i];

@@ -2,7 +2,7 @@ package pilots;
 
 import java.io.*;
 
-/** Sections 10–15/17 VM. Original object rules and map predicates are packaged unchanged. */
+/** Sections 10–17 VM. Original object rules and map predicates are packaged unchanged. */
 public final class HotelWorld {
     public static final class Definition {
         int type,layer;byte[] init,exit;byte[][][] rules;
@@ -242,7 +242,7 @@ public final class HotelWorld {
         if((scene==10 || scene==12) && offset>=0x1e1b54 && offset<=0x1e1b64)return 54+(offset-0x1e1b54)/4;
         return offset==0x1e1b54?60:offset/4;
     }
-    int g(int offset) { return (scene==13 || scene==15) && offset>=0x1e1b54 && offset<=0x1e1bd0?boardGlobals[(offset-0x1e1b54)/4]:state.variables[variableIndex(offset)]; }
+    int g(int offset) { return (scene==13 || scene==14 || scene==15) && offset>=0x1e1b54 && offset<=0x1e1bd0?boardGlobals[(offset-0x1e1b54)/4]:state.variables[variableIndex(offset)]; }
     void g(int offset,int value) {
         // An incidental laugh must not consume the exact first ladder-climb tick.
         if(scene==15 && offset==0x1e1bb0 && value==5 && g(offset)!=5) {
@@ -250,19 +250,19 @@ public final class HotelWorld {
             Thing partner=find(15);
             if(partner!=null && partner.clip==11) { partner.clip=16;partner.frame=0;partner.finished=false;partner.fallback=-1; }
         }
-        if((scene==13 || scene==15) && offset>=0x1e1b54 && offset<=0x1e1bd0)boardGlobals[(offset-0x1e1b54)/4]=value;else state.variables[variableIndex(offset)]=value; }
+        if((scene==13 || scene==14 || scene==15) && offset>=0x1e1b54 && offset<=0x1e1bd0)boardGlobals[(offset-0x1e1b54)/4]=value;else state.variables[variableIndex(offset)]=value; }
     private int heroIndex(int id) { if(scene==15)return -1;return scene>=10?(id==12?0:id==11?1:-1):scene==9 && (id==12 || id==13)?(id==13?0:1):-1; }
     public int hero() { return scene==15?(g(0x18)==1?0:1):g(0x18)==1?1:0; }
     public int action() { return g(0x20); }
     public int step() { return g(0x30); }
     private boolean nativeWalking() { for(int h=0;h<2;h++) { Thing t=heroes[h];if(t!=null && t.active && t.clip>=20 && t.clip<=33 && !t.finished)return true; }return false; }
-    public boolean busy() { if(scene==15)return !completed&&(g(0x88)==1 || g(0x1e1b90)==20 || find(12)!=null || find(13)!=null || walkHero>=0 || basementRequested() || basement.solved());return !completed && (scene==8 || scene==13 && g(0x88)!=0 && (find(6)!=null || find(7)!=null) || scene==12 && g(0x1e1b60)==1 || action()!=0 || walkHero>=0 || nativeWalking()); }
+    public boolean busy() { if(scene==14 && !completed && (g(0x1e1b6c)!=0 || g(0x1e1b88)!=0 || g(0x1e1b8c)!=0))return true;if(scene==15)return !completed&&(g(0x88)==1 || g(0x1e1b90)==20 || find(12)!=null || find(13)!=null || walkHero>=0 || basementRequested() || basement.solved());return !completed && (scene==8 || scene==13 && g(0x88)!=0 && (find(6)!=null || find(7)!=null) || scene==12 && g(0x1e1b60)==1 || action()!=0 || walkHero>=0 || nativeWalking()); }
     public void sound(SoundSink value) { sound=value;if(value instanceof MusicSink && scene==9 && (completed || action()==87 || action()==84 && step()>=10))((MusicSink)value).music(2);if(value!=null) { for(int i=0;i<initialCueCount;i++) value.play(initialCues[i]);initialCueCount=0; } }
     public void cue(int cue) {
         if(sound!=null) sound.play(cue);else if(initialCueCount<initialCues.length) initialCues[initialCueCount++]=cue;
         if(cue==6 || cue==7) { caption=cue==6?"Шеф: Ничего не понимаю.":"Коллега: Ничего не понимаю.";captionTicks=35; }
     }
-    public String caption() { return captionTicks>0?caption:completed?(scene==15?"Подвал пройден":scene==13?"Электрощитовая пройдена":scene==12?"Ванная комната пройдена":scene==11?"Карниз гостиницы пройден":scene==10?"Комната с балконом пройдена":"Гостиница пройдена"):null; }
+    public String caption() { return captionTicks>0?caption:completed?(scene==14?"Крыша пройдена":scene==15?"Подвал пройден":scene==13?"Электрощитовая пройдена":scene==12?"Ванная комната пройдена":scene==11?"Карниз гостиницы пройден":scene==10?"Комната с балконом пройдена":"Гостиница пройдена"):null; }
     private Thing find(int id) {
         if(heroIndex(id)>=0) { int h=heroIndex(id);return heroes[h]!=null && heroes[h].active?heroes[h]:null; }
         for(int i=0;i<cells.length;i++) if(cells[i]!=null && cells[i].id==id) return cells[i];
@@ -314,7 +314,11 @@ public final class HotelWorld {
             enter(t);return;
         }
         if(id==254) { remove(x,y);return; }
-        Thing old=cells[y*10+x];int under=old==null?254:definitions[old.id]!=null&&definitions[old.id].type!=0?old.under:old.id;
+        Thing old=cells[y*10+x];
+        // Basket controllers reaffirm map 126 every tick. Keep their shared
+        // input controller allocated so it can process the same tick's click.
+        if(scene==14 && id==45 && old!=null && old.id==45)return;
+        int under=old==null?254:definitions[old.id]!=null&&definitions[old.id].type!=0?old.under:old.id;
         // Map 43 replaces the empty platform's one-shot (58/199) with the
         // stationary lift (46/180). Retain its ground, not the retired summon.
         if(scene==13 && id==46 && old!=null && old.id==58)under=old.under;
@@ -416,6 +420,8 @@ public final class HotelWorld {
                 case 0:return a;
                 case 0x25:case 0x23:case 0x1d:a=word(code,p);p+=4;break;
                 case 0x31:a=g(word(code,p));p+=4;break;
+                // FUN_00409000: signed byte read from the global bank (roof input state).
+                case 0x2f:v=word(code,p);p+=4;a=(byte)(g(v&~3)>>>((v&3)*8));break;
                 case 0x32:a=owner.local[word(code,p)/4];p+=4;break;
                 case 0x10:g(word(code,p),a);p+=4;break;
                 case 0x11:owner.local[word(code,p)/4]=a;p+=4;break;
@@ -466,6 +472,8 @@ public final class HotelWorld {
         case 9:return apply(maps[arg],context,true,true)?1:0;
         case 0x0e:
             if(scene==9 && arg==10)beginPartnerExit();
+            // At the last included boundary there is no next canvas to retire the actor.
+            else if(scene==14 && arg==16){context.clip=-1;context.fallback=-1;completed=true;g(0x20,0);g(0x30,0);g(0x88,0);}
             else if(scene==15 && arg==14 || scene==8 && arg==9 || scene==10 && arg==11 || scene==11 && arg==12 || scene==12 && arg==13 || scene==13 && arg==15) { completed=true;g(0x20,0);g(0x30,0);g(0x88,0); }
             return 1;
         case 0x10:if(sound instanceof MusicSink)((MusicSink)sound).music(arg);return 1; // MIDI lifecycle belongs to GameAudio.
@@ -588,19 +596,20 @@ public final class HotelWorld {
             clickActive=false;
         }
         clicked=-1;acknowledge=false;
+        if(scene==14)g(0,g(0)&0x00ffffff);
         if(scene!=15 && action()==0 && walkHero<0 && !(scene==13 && (find(6)!=null || find(7)!=null)) && !(scene==12 && g(0x1e1b60)==1)) g(0x88,0);
         syncSave();
     }
     // Both characters are selectable in the room; the entrance is a cinematic.
     public boolean select(int hero) {
         if(scene==15){if(hero<0||hero>1||busy()||completed)return false;g(0x18,hero==0?1:2);syncSave();return true;}
-        if(fridgeRequested() || boardRequested() || busy() || completed || scene<9 || hero<0 || hero>1 || scene>=10 && (heroes[hero]==null || !heroes[hero].active)) return false;g(0x18,hero);syncSave();return true;
+        if(fridgeRequested() || boardRequested() || busy() || completed || scene<9 || hero<0 || hero>1 || scene>=10 && (heroes[hero]==null || !heroes[hero].active && !(scene==14 && find(hero==0?47:46)!=null))) return false;g(0x18,hero);syncSave();return true;
     }
-    public boolean hasItem(int item) { if(scene==15)return item==0 || item==1 && find(33)!=null;if(scene==13)return item==0 || item==1 && find(15)!=null;if(scene==12)return item==0 || item==1 && (find(22)!=null || find(23)!=null) || item==2 && find(24)!=null;if(scene==11)return item==0 || item==1 && find(20)!=null;if(scene==10)return item==0 || item==1 && find(18)!=null;return item==0 || item>=1 && item<=3 && find(item==1?56:item==2?54:55)!=null; }
-    public int item() { return scene==15?(g(0x1c)==1?1:0):g(0x1c)-2; }
+    public boolean hasItem(int item) { if(scene==14)return item==0 || item>=1 && item<=4 && find(item==4?21:item==3?31:18+item)!=null;if(scene==15)return item==0 || item==1 && find(33)!=null;if(scene==13)return item==0 || item==1 && find(15)!=null;if(scene==12)return item==0 || item==1 && (find(22)!=null || find(23)!=null) || item==2 && find(24)!=null;if(scene==11)return item==0 || item==1 && find(20)!=null;if(scene==10)return item==0 || item==1 && find(18)!=null;return item==0 || item>=1 && item<=3 && find(item==1?56:item==2?54:55)!=null; }
+    public int item() { if(scene==14)return g(0x1c)==6?4:g(0x1c)-2;return scene==15?(g(0x1c)==1?1:0):g(0x1c)-2; }
     public boolean selectItem(int item) {
         if(scene==15){if(busy()||completed||!hasItem(item))return false;g(0x1c,item==0?2:1);syncSave();return true;}
-        if(fridgeRequested() || boardRequested() || busy() || completed || !hasItem(item)) return false;g(0x1c,item+2);syncSave();return true;
+        if(fridgeRequested() || boardRequested() || busy() || completed || !hasItem(item)) return false;g(0x1c,scene==14 && item==4?6:item+2);syncSave();return true;
     }
     public boolean interact(int entity) {
         if(scene==15) {
@@ -608,20 +617,27 @@ public final class HotelWorld {
             Thing t=find(entity);return t!=null && requestBasement(t,t.x,t.y);
         }
         if(completed || fridgeRequested() || boardRequested() || busy()) return false;
+        if(scene==14 && (entity>=19 && entity<=21 || entity==31))return selectItem(entity==21?4:entity==31?3:entity-18);
         if(scene==13 && entity==15)return selectItem(1);
         if(scene==12 && entity>=22 && entity<=24)return selectItem(entity==24?2:1);
         if(scene==11 && entity==20)return selectItem(1);
         if(scene==10 && entity==18)return selectItem(1);
         if(scene==9 && entity>=54 && entity<=56)return selectItem(entity==56?1:entity==54?2:3);
+        if(scene==14 && (entity==46 || entity==47))return select(entity==47?0:1);
         if(heroIndex(entity)>=0) return select(heroIndex(entity));
         if(scene==9 && entity==101)entity=35;
         if(scene==9 && (entity==34 && !keyAvailable() || entity>=64 && entity<=95))return false;
         Thing t=find(entity);if(t==null || !interactive(entity)) return false;
+        // Source rope 35 has no paint branch once both brothers are seated.
+        // Use the basket actor's original refusal instead of leaving action 24 open.
+        if(scene==14 && entity==35 && hero()==1 && (item()==1 || item()==2) && find(46)!=null && find(47)!=null){g(0x20,13);g(0x30,0);g(0x88,1);syncSave();return true;}
         if(scene==13 && entity>=16 && entity<=42 && hero()==0 && item()==0 && state.variables[59]!=4)state.variables[59]=1;
         if(scene==9 && entity==35 && hero()==0 && item()==0)state.variables[59]=1;
+        // Original roof controller 45 reads the high input byte to leave the basket.
+        if(scene==14)g(0,(g(0)&0x00ffffff)|0x20000000);
         g(0x88,0);clicked=entity;rules(t);clicked=-1;g(0x88,1);syncSave();return action()!=0;
     }
-    public boolean interactive(int id) { return scene==15?(id==14||id==24||id==31||id==33||id==16||id==18||id==15||id==19||id==20):scene==13?(id>=15 && id<=42 || id==48 || id==51 || id==52):scene==12?(id>=15 && id<=26 || id==28 || id==31):scene==11?(id>=15 && id<=20):scene==10?(id==15 || id==16 || id==17 || id==18 || id==22 || id==23 || id==24 || id>=26 && id<=34 || id==38 || id>=40 && id<=42):scene==9 && (id>=20 && id<=37); }
+    public boolean interactive(int id) { return scene==14?(id>=15 && id<=23 || id>=25 && id<=28 || id==31 || id==35 || id==39 || id==46 || id==47):scene==15?(id==14||id==24||id==31||id==33||id==16||id==18||id==15||id==19||id==20):scene==13?(id>=15 && id<=42 || id==48 || id==51 || id==52):scene==12?(id>=15 && id<=26 || id==28 || id==31):scene==11?(id>=15 && id<=20):scene==10?(id==15 || id==16 || id==17 || id==18 || id==22 || id==23 || id==24 || id>=26 && id<=34 || id==38 || id>=40 && id<=42):scene==9 && (id>=20 && id<=37); }
     /** Native 24(target,2), shared by the autonomous Chief and pending approaches. */
     private int passageDirection(Thing actor,int target) {
         if(actor.clip>=20 && actor.clip<=33 && !actor.finished) return -1;
@@ -660,6 +676,10 @@ public final class HotelWorld {
     }
     public boolean move(int x,int y) {
         if(scene==15)return requestBasement(null,x,y);
+        if(scene==14 && !busy() && !completed && find(hero()==0?47:46)!=null){
+            walkHero=hero();walkX=Math.max(0,Math.min(576,(x+32)/64*64));walkY=Math.max(16,Math.min(400,(y+8)/16*16));
+            walkEntity=walkRestore=-1;path=null;pathIndex=0;walkPhase=-1;g(0x1e1b6c,62);g(0x88,1);g(0x30,0);syncSave();return true;
+        }
         return !completed && !fridgeRequested() && !boardRequested() && !busy() && walk(hero(),Math.max(0,Math.min(576,(x+32)/64*64)),Math.max(16,Math.min(400,(y+8)/16*16)),-1,-1); }
     private void idle(Thing hero) {
         int pose=g(heroIndex(hero.id)==0?0x10:0x14);
@@ -671,6 +691,7 @@ public final class HotelWorld {
         if(walkHero<0 || ledgeReaction()) return;
         if(scene==15){walkBasementTick();return;}
         Thing h=heroes[walkHero];
+        if(scene==14 && !h.active)return;
         if(path==null) { path=plan(h.x,h.y,walkX,walkY);pathIndex=2;walkPhase=-1; }
         if(path.length==0) { walkHero=-1;idle(h);return; }
         if(pathIndex<path.length) {
@@ -680,7 +701,7 @@ public final class HotelWorld {
                 enter(h);
                 int dx=h.x-h.fromX,dy=h.y-h.fromY;
                 h.clip=walkHero==0?(dx<0?20:dx>0?21:dy<0?24+half:22+half):(dx<0?32+half:dx>0?28+half:dy<0?30+half:26+half);
-                int depth=scene==13?30-h.y/8:scene==12?78-h.y*3/16:scene==11?46-h.y/8:scene==10?69-h.y*3/16:58-h.y/8;g(walkHero==0?0x40:0x44,depth);h.layer=depth;
+                int depth=scene==14?78-h.y*3/16:scene==13?30-h.y/8:scene==12?78-h.y*3/16:scene==11?46-h.y/8:scene==10?69-h.y*3/16:58-h.y/8;g(walkHero==0?0x40:0x44,depth);h.layer=depth;
                 int pose=dx<0?(half==0?7:1):dx>0?(half==0?9:3):dy<0?(half==0?7:9):(half==0?1:3);
                 g(walkHero==0?0x10:0x14,pose);g(walkHero==0?8:12,1-half);cue(0);
             }
@@ -771,7 +792,7 @@ public final class HotelWorld {
             out.writeInt(path==null?0:path.length);
             if(path!=null) for(int i=0;i<path.length;i++) out.writeInt(path[i]);
             out.writeInt(path==null?0:pathIndex);
-            if(scene==13 || scene==15)for(int i=0;i<boardGlobals.length;i++)out.writeInt(boardGlobals[i]);
+            if(scene==13 || scene==14 || scene==15)for(int i=0;i<boardGlobals.length;i++)out.writeInt(boardGlobals[i]);
             if(scene==15){out.writeInt(clickX);out.writeInt(clickY);out.writeInt(clickSerial);out.writeInt(clickMap);out.writeBoolean(clickPending);out.writeInt(BasementGame.COOKIE);for(int i=0;i<basementData.length;i++)out.writeInt(basementData[i]);}
             out.close();state.location=bytes.toByteArray();
         } catch(IOException e) { throw new IllegalStateException(e.toString()); }
@@ -793,7 +814,7 @@ public final class HotelWorld {
         int length=in.readInt();if(length<0 || length>2080 || length%2!=0) throw new IOException("Invalid saved path");
         if(length>0) { path=new int[length];for(int i=0;i<length;i++) path[i]=in.readInt(); }
         pathIndex=in.readInt();if(pathIndex<0 || pathIndex>length || pathIndex%2!=0) throw new IOException("Invalid path progress");
-        if(scene==13 || scene==15)for(int i=0;i<boardGlobals.length;i++)boardGlobals[i]=in.readInt();
+        if(scene==13 || scene==14 || scene==15)for(int i=0;i<boardGlobals.length;i++)boardGlobals[i]=in.readInt();
         if(scene==15){clickX=in.readInt();clickY=in.readInt();clickSerial=in.readInt();clickMap=in.readInt();clickPending=in.readBoolean();
             if(in.available()>0){if(in.readInt()!=BasementGame.COOKIE)throw new IOException("Invalid crate save");for(int i=0;i<basementData.length;i++)basementData[i]=in.readInt();basementExtended=true;
                 if(basementData[0]<0 || basementData[0]>2 || basementData[1]<0 || basementData[1]>3 || basementData[2]<0 || basementData[2]>1 || basementData[3]<0 || basementData[3]>4 || basementData[5]<-1 || basementData[5]>3 || basementData[7]<-1 || basementData[7]>3 || basementData[9]<0 || basementData[9]>4)throw new IOException("Invalid crate position");
