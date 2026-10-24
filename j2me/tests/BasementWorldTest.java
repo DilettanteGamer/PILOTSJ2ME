@@ -55,7 +55,7 @@ public final class BasementWorldTest {
   if(args.length>1){world=new HotelWorld(GameState.decode(Files.readAllBytes(Paths.get(args[1])),16));replay=copy(world);check(world.basement.solved()&&world.busy()&&!world.select(0),"old exit restarted the adapted puzzle");steps(250,false);check(world.completed,"old source exit migration failed");}
   if(args.length>2){world=new HotelWorld(GameState.decode(Files.readAllBytes(Paths.get(args[2])),16));replay=copy(world);check(!world.busy()&&!world.hasItem(1),"0.19 return left a busy Chief");check(world.interact(14)&&replay.interact(14),"legacy Chief approach");steps(80,false);check(!world.busy()&&world.hasItem(1),"legacy Chief did not collect the gun");
    world=new HotelWorld(GameState.decode(Files.readAllBytes(Paths.get(args[2])),16));replay=copy(world);check(world.select(1)&&replay.select(1)&&world.interact(14)&&replay.interact(14),"legacy Colleague pickup");steps(100,false);check(world.hasItem(1),"legacy gun not collected");}
-  check(SceneFlow.next(13,true)==15&&SceneFlow.next(15,true)==15,"scene bounds");
+  check(SceneFlow.next(13,true)==15&&SceneFlow.next(15,true)==14,"scene bounds");
   System.out.println("BasementWorld: no spawn barrage, warned movement throws, safe lane, gun gating, full destruction before removal, recoverable input, pause/exit/pickup/re-entry, auto jumps, original ending and "+ticks+" every-tick save replays passed");
  }
 }

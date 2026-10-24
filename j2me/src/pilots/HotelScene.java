@@ -107,6 +107,7 @@ public final class HotelScene extends ZooScene {
         if(animals.world.scene==12 && (animals.world.action()==95 || animals.world.action()==96))return null;
         int id=target(x,y);
         if(animals.world.scene==15 && animals.world.hero()==0 && x>=336 && y>=160 && y<417)return "Ящики: отдельный экран";
+        if(animals.world.scene==14)return id==12||id==47?"Шеф":id==11||id==46?"Коллега":id==15?"Зелёная краска":id==16?"Красная краска":id==17||id==18?"Воздушный шар":id==19?"Зелёная краска":id==20?"Красная краска":id==21||id==23?"Лестница":id==22?"Килоперьев":id==25?"Фишка":id==31||id==28?"Ножницы":id==26?"Вытяжка":id==27?"Кран":id==35?"Верёвка":id==39?"Шланг":null;
         if(animals.world.scene==15)return id==14?(animals.world.hasItem(1)?"Ящик без автомата":"Ящик с автоматом"):id==24?"Ящик":id==31?"Электричество":id==33?"Автомат":id==15||id==12||id==13?"Коллега":id>=16&&id<=20?"Шеф":null;
         if(animals.world.scene==13)return id==12?"Шеф":id==11?"Коллега":id==15||id==51?"Огнетушитель":id==48?"Щит":id>=16&&id<=42?"Провода":id==52?"Лифт":null;
         if(animals.world.scene==12)return id==12?"Шеф":id==11?"Коллега":id==15?"Ручка":id==16?"Выход":id==17||id==24?"Мыло":id==18?"Кран":id==19?"Рулон":id==20?"Шнурок":id==21||id==22||id==23||id==25?"Вантуз":id==26?"Унитаз":id==28?"Кот":id==31?"Умывальник":null;

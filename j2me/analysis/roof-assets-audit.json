@@ -1,0 +1,29 @@
+[
+  {
+    "profile": "128x128",
+    "clips": 111,
+    "frames": 1422,
+    "source_rules": 416,
+    "source_maps": 150,
+    "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
+    "vm_sha256": "ae3daa3bf5a36f200f72742634672de2687a82f1949f6c69e0d430c09f86f9e8"
+  },
+  {
+    "profile": "128x160",
+    "clips": 111,
+    "frames": 1422,
+    "source_rules": 416,
+    "source_maps": 150,
+    "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
+    "vm_sha256": "ae3daa3bf5a36f200f72742634672de2687a82f1949f6c69e0d430c09f86f9e8"
+  },
+  {
+    "profile": "240x320",
+    "clips": 111,
+    "frames": 1422,
+    "source_rules": 416,
+    "source_maps": 150,
+    "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
+    "vm_sha256": "ae3daa3bf5a36f200f72742634672de2687a82f1949f6c69e0d430c09f86f9e8"
+  }
+]

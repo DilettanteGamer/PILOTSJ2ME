@@ -197,11 +197,11 @@ MenuCanvas.Host {
 
     private void showInventory() {
         if(this.canvas.zoo==null) return;
-        final int[] values=new int[5];
+        final int[] values=new int[6];
         int count=2;values[0]=-1;values[1]=0;
-        for(int item=1;item<=3;item++) if(this.canvas.zoo.logic.hasItem(item)) values[count++]=item;
+        for(int item=1;item<=(this.canvas.state.scene==14?4:3);item++) if(this.canvas.zoo.logic.hasItem(item)) values[count++]=item;
         String[] labels=new String[count];labels[0]="Назад";labels[1]="Без предмета";
-        for(int i=2;i<count;i++) labels[i]=this.canvas.state.scene==15?"Автомат":this.canvas.state.scene==13?"Огнетушитель":this.canvas.state.scene==12?(values[i]==1?"Вантуз":"Мыло"):this.canvas.state.scene==11?"Осколок":this.canvas.state.scene==10?"Мухобойка":this.canvas.state.scene==9?(values[i]==1?"Баллончик":values[i]==2?"Ключ":"Отвёртка"):this.canvas.state.scene==6?"Штопор":this.canvas.state.scene==5?"Ключ":this.canvas.state.scene==4?(values[i]==1?"Лейка":values[i]==2?"Грабли":"Секатор"):(values[i]==1?"Чайник":values[i]==2?"Кирка":"Монета");
+        for(int i=2;i<count;i++) labels[i]=this.canvas.state.scene==14?(values[i]==1?"Зелёная краска":values[i]==2?"Красная краска":values[i]==3?"Ножницы":"Лестница"):this.canvas.state.scene==15?"Автомат":this.canvas.state.scene==13?"Огнетушитель":this.canvas.state.scene==12?(values[i]==1?"Вантуз":"Мыло"):this.canvas.state.scene==11?"Осколок":this.canvas.state.scene==10?"Мухобойка":this.canvas.state.scene==9?(values[i]==1?"Баллончик":values[i]==2?"Ключ":"Отвёртка"):this.canvas.state.scene==6?"Штопор":this.canvas.state.scene==5?"Ключ":this.canvas.state.scene==4?(values[i]==1?"Лейка":values[i]==2?"Грабли":"Секатор"):(values[i]==1?"Чайник":values[i]==2?"Кирка":"Монета");
         MenuCanvas inventory=new MenuCanvas(new MenuCanvas.Host() {
             public void choose(int choice) {
                 if(choice>0) PilotsMidlet.this.canvas.selectItem(values[choice]);
@@ -212,8 +212,8 @@ MenuCanvas.Host {
     }
 
     private void showLocations() {
-        final int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13,15};
-        String[] labels={"Назад","У ворот","Двор зоопарка","Звериный двор","Сад","Улица","Гостиница: вступление","Гостиница: интерьер","Комната с балконом","Карниз гостиницы","Ванная комната","Электрощитовая","Подвал"};
+        final int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13,15,14};
+        String[] labels={"Назад","У ворот","Двор зоопарка","Звериный двор","Сад","Улица","Гостиница: вступление","Гостиница: интерьер","Комната с балконом","Карниз гостиницы","Ванная комната","Электрощитовая","Подвал","Крыша"};
         MenuCanvas locations=new MenuCanvas(new MenuCanvas.Host() {
             public void choose(int choice) {
                 if(choice==0) { showMenu();return; }
@@ -257,7 +257,7 @@ MenuCanvas.Host {
     }
 
     private void help() {
-        String location=this.canvas!=null && this.canvas.state.scene==15?
+        String location=this.canvas!=null && this.canvas.state.scene==14?"Крыша: используйте краску, ножницы и лестницу, подготовьте воздушный шар и вытяжку. Предметы доступны в нижней строке и через #. ":this.canvas!=null && this.canvas.state.scene==15?
             "Подвал: укажите Шефом область ящиков справа, чтобы открыть отдельный экран. 2 — к ящикам, 8 — безопасная дорожка, 4/6 — движение и автоматический прыжок, 5 — автомат только с дорожки, 0 — назад. Автомат из ящика может взять любой брат. ":this.canvas!=null && this.canvas.state.scene==13?
             "Электрощитовая: открывайте щит Коллегой, соединяйте провода Шефом. В подробном виде 2/4/6/8 выбирают участок, 5 поворачивает, 0 возвращает в комнату. ":this.canvas!=null && this.canvas.state.scene==12?
             "Ванная комната: выбирайте вантуз и мыло в нижней строке. Для действий с бачком понадобятся оба брата; состояние вантуза ограничено по времени. ":this.canvas!=null && this.canvas.state.scene==11?
@@ -704,7 +704,7 @@ MenuCanvas.Host {
                     }
                     if (!bl && n == 55 && this.zoo!=null) {
                         int item=this.zoo.logic.selectedItem();
-                        for(int i=0;i<4;i++) { item=(item+1)%4;if(this.zoo.logic.hasItem(item)) break; }
+                        int count=this.state.scene==14?5:4;for(int i=0;i<count;i++) { item=(item+1)%count;if(this.zoo.logic.hasItem(item)) break; }
                         this.zoo.logic.selectItem(item);this.repaint();return;
                     }
                     if (!bl && n == 57 && this.zoo!=null) {
@@ -728,7 +728,7 @@ MenuCanvas.Host {
                 int slot=ZooPanel.slotAt(n,n2,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()));
                 if(slot==0 || slot==1) this.zoo.logic.select(slot==0?1:0);
                 else if(slot==3) this.zoo.logic.selectItem(0);
-                else if(slot>=4 && slot<=6) this.zoo.logic.selectItem(slot-3);
+                else if(slot>=4 && slot<=(this.state.scene==14?7:6)) this.zoo.logic.selectItem(slot-3);
                 else if(slot==9) PilotsMidlet.this.showMenu();
                 this.repaint();return;
             }
@@ -754,7 +754,7 @@ MenuCanvas.Host {
         synchronized void startCourtyard() throws IOException { startLocation(3); }
         synchronized void startLocation(int id) throws IOException {
             this.previewReturnState=null;this.previewIndex=-1;
-            this.state=new GameState();this.state.scene=id;this.state.x=id==15?384:id==13?192:id==12?448:id==11?448:id==10?192:id==8?192:id==9?320:id==6?576:id==4?192:128;this.state.y=id==15?384:id==13?176:id==12?336:id==11?320:id==10?224:id==8?208:id==9?320:id==6?400:id==5?368:id==4?304:272;
+            this.state=new GameState();this.state.scene=id;this.state.x=id==14?192:id==15?384:id==13?192:id==12?448:id==11?448:id==10?192:id==8?192:id==9?320:id==6?576:id==4?192:128;this.state.y=id==14?320:id==15?384:id==13?176:id==12?336:id==11?320:id==10?224:id==8?208:id==9?320:id==6?400:id==5?368:id==4?304:272;
             this.goToScene(id);
         }
         synchronized void newGame() throws IOException {
