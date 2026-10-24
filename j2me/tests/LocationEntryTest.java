@@ -21,10 +21,19 @@ public final class LocationEntryTest {
     static void location(PilotsMidlet app,int scene)throws Exception {
         app.choose(7);
         MenuCanvas menu=(MenuCanvas)Display.getDisplay(app).getCurrent();
-        check(((String[])get(menu,"items")).length==11,"location submenu entries");
-        int[] ids={-1,2,3,4,5,6,8,9,10,11,12};
+        check(((String[])get(menu,"items")).length==12,"location submenu entries");
+        int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13};
         for(int i=1;i<ids.length;i++)if(ids[i]==scene){((MenuCanvas.Host)get(menu,"host")).choose(i);return;}
         throw new RuntimeException("missing menu scene "+scene);
+    }
+    static void boardSelect(SwitchboardCanvas canvas,int target)throws Exception {
+        SwitchboardPuzzle puzzle=(SwitchboardPuzzle)get(canvas,"puzzle");int from=((Integer)get(canvas,"selected")).intValue();
+        int[] previous=new int[27],keys=new int[27],queue=new int[27];for(int i=0;i<27;i++)previous[i]=-1;
+        int head=0,tail=0;queue[tail++]=from;previous[from]=from;int[] dx={0,-1,1,0},dy={-1,0,0,1},code={50,52,54,56};
+        while(head<tail){int a=queue[head++];for(int d=0;d<4;d++){int b=puzzle.select(a,dx[d],dy[d]);if(previous[b]<0){previous[b]=a;keys[b]=code[d];queue[tail++]=b;}}}
+        check(previous[target]>=0,"detail arrow target unreachable");int length=0;for(int n=target;n!=from;n=previous[n])length++;
+        int[] path=new int[length];for(int n=target,i=length-1;n!=from;n=previous[n])path[i--]=keys[n];for(int i=0;i<path.length;i++)canvas.input(path[i]);
+        check(((Integer)get(canvas,"selected")).intValue()==target,"detail arrow selection");
     }
     public static void main(String[] args)throws Exception {
         PilotsMidlet app=new PilotsMidlet();PilotsMidlet.GameCanvas canvas=app.new GameCanvas();
@@ -95,6 +104,22 @@ public final class LocationEntryTest {
             location(app,12);check(((HotelScene)get(canvas,"zoo")).animals.world.scene==12,"bathroom submenu");
             canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==12,"bathroom RMS restore");
             check(!((HotelScene)get(canvas,"zoo")).logic.busy(),"bathroom not interactive");
+            ((HotelScene)get(canvas,"zoo")).animals.world.completed=true;canvas.tick(100);
+            check(((GameState)get(canvas,"state")).scene==13,"bathroom-to-switchboard transition");
+            location(app,13);HotelWorld board=((HotelScene)get(canvas,"zoo")).animals.world;
+            for(int i=0;i<500&&board.busy();i++)canvas.tick(100);check(!board.busy(),"electrical intro did not finish");
+            check(board.select(1)&&board.interact(48),"open electrical shield");for(int i=0;i<500&&board.busy();i++)canvas.tick(100);
+            check(board.select(0)&&board.interact(16),"approach enlarged electrical panel");
+            for(int i=0;i<500&&!(Display.getDisplay(app).getCurrent() instanceof SwitchboardCanvas);i++)canvas.tick(100);
+            check(Display.getDisplay(app).getCurrent() instanceof SwitchboardCanvas,"electrical detail canvas missing");
+            SwitchboardCanvas electrical=(SwitchboardCanvas)Display.getDisplay(app).getCurrent();int orientation=board.boardOrientation(0);
+            electrical.input(53);check(board.boardOrientation(0)==orientation%4+1,"electrical FIRE did not rotate source wire");
+            orientation=board.boardOrientation(0);canvas.save();electrical.input(48);check(Display.getDisplay(app).getCurrent()==canvas,"electrical Back");
+            canvas.startLocation(2);canvas.load();canvas.tick(100);check(Display.getDisplay(app).getCurrent() instanceof SwitchboardCanvas,"electrical detail RMS reopen");
+            board=((HotelScene)get(canvas,"zoo")).animals.world;check(board.boardOrientation(0)==orientation,"electrical RMS lost orientation");
+            electrical=(SwitchboardCanvas)Display.getDisplay(app).getCurrent();
+            for(int i=0;i<27;i++)if(board.boardOrientation(i)!=1){boardSelect(electrical,i);int n=4;while(board.boardOrientation(i)!=1&&n-->0)electrical.input(53);}
+            check(Display.getDisplay(app).getCurrent()==canvas&&!board.boardRequested()&&board.action()==97,"correct circuit did not automatically close detail");
             canvas.startLocation(6);
             // Re-enter, restore a street save, and verify its actual loader.
             GameState saved=GameState.decode(((GameState)get(canvas,"state")).encode(),7);
@@ -102,13 +127,13 @@ public final class LocationEntryTest {
             street(canvas,"restored fifth location entry");
             // Garden previews must load from another scene and return to it.
             canvas.startLocation(2);set(app,"animationCatalog",new AnimationCatalog());
-            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==12,"preview scene");
+            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==13,"preview scene");
             canvas.finishPreview();check(((GameState)get(canvas,"state")).scene==2,"preview return");
             Object original=get(canvas,"zoo");
             try { canvas.goToScene(7);throw new RuntimeException("unsupported scene accepted"); }
             catch(IOException expected) {}
             check(get(canvas,"zoo")==original,"invalid scene damaged active scene");
         } finally { canvas.shutdown(); }
-        System.out.println("LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge Canvas controls/RMS restore and invalid catalog ID passed");
+        System.out.println("LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge and switchboard Canvas controls/RMS restore/automatic return and invalid catalog ID passed");
     }
 }
