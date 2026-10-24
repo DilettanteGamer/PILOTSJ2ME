@@ -70,7 +70,7 @@ public final class GameState {
         }
         if(version==1347635762) {
             int length=dataInputStream.readInt();
-            if((gameState.scene!=4 && gameState.scene!=5 && gameState.scene!=6 && gameState.scene!=8 && gameState.scene!=9 && gameState.scene!=10) || length<0 || length!=byArray.length-303) throw new IOException("Invalid scene save extension");
+            if((gameState.scene!=4 && gameState.scene!=5 && gameState.scene!=6 && gameState.scene!=8 && gameState.scene!=9 && gameState.scene!=10 && gameState.scene!=11) || length<0 || length!=byArray.length-303) throw new IOException("Invalid scene save extension");
             gameState.location=new byte[length];dataInputStream.readFully(gameState.location);
         } else if(byArray.length!=299) throw new IOException("Trailing save data");
         return gameState;

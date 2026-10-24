@@ -9,7 +9,7 @@ public final class BalconyRenderTest {
  static void capture(HotelScene h,int width,int height,String path)throws Exception {
   int bar=(width*63+320)/640;Viewport v=new Viewport(width,height-bar,640,417);v.cursorX=352;v.cursorY=240;v.update();
   Graphics g=new Graphics(width,height);h.scene.background.paint(g,v);h.paint(g,v);h.scene.panel.paintPanel(g,width,height,bar);
-  ZooPanel p=new ZooPanel(10);try{p.paint(g,h.logic,width,height,bar);}finally{p.close();}
+  ZooPanel p=new ZooPanel(h.animals.world.scene);try{p.paint(g,h.logic,width,height,bar);}finally{p.close();}
   ImageIO.write(g.image,"png",new File(path));
  }
  static void label(HotelScene h,int id,String text)throws Exception {

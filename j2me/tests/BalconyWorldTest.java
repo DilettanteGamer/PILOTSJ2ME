@@ -55,7 +55,7 @@ public final class BalconyWorldTest {
   for(int i=0;i<190;i++)tick();check(has(38)&&world.state.variables[57]==1,"fly timeout did not restore switch");
   act(0,1,38);check(!has(38),"switch retry failed");
   act(0,0,16);check(world.completed&&actions.contains(78)&&actions.contains(79),"original balcony finale");
-  check(SceneFlow.next(9,true)==10&&SceneFlow.next(10,true)==10,"chapter boundary");
+  check(SceneFlow.next(9,true)==10&&SceneFlow.next(10,true)==11,"chapter boundary");
   world=new HotelWorld(GameState.decode(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(args[0])),11));replay=resume(world);
   check(world.state.variables[57]==2,"legacy fly puzzle phase changed");rest(109,90);
   act(0,1,38);for(int i=0;i<10;i++)tick();rest(111,30);
