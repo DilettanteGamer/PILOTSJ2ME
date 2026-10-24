@@ -21,8 +21,8 @@ public final class LocationEntryTest {
     static void location(PilotsMidlet app,int scene)throws Exception {
         app.choose(7);
         MenuCanvas menu=(MenuCanvas)Display.getDisplay(app).getCurrent();
-        check(((String[])get(menu,"items")).length==10,"location submenu entries");
-        int[] ids={-1,2,3,4,5,6,8,9,10,11};
+        check(((String[])get(menu,"items")).length==11,"location submenu entries");
+        int[] ids={-1,2,3,4,5,6,8,9,10,11,12};
         for(int i=1;i<ids.length;i++)if(ids[i]==scene){((MenuCanvas.Host)get(menu,"host")).choose(i);return;}
         throw new RuntimeException("missing menu scene "+scene);
     }
@@ -90,6 +90,11 @@ public final class LocationEntryTest {
             for(int i=0;i<85;i++)canvas.tick(100);
             check(!((HotelScene)get(canvas,"zoo")).logic.busy(),"ledge entry did not finish");
             canvas.save();canvas.startLocation(2);canvas.load();check(((HotelScene)get(canvas,"zoo")).animals.world.heroes[0]!=null,"ledge room RMS restore");
+            ((HotelScene)get(canvas,"zoo")).animals.world.completed=true;canvas.tick(100);
+            check(((GameState)get(canvas,"state")).scene==12,"ledge-to-bathroom transition");
+            location(app,12);check(((HotelScene)get(canvas,"zoo")).animals.world.scene==12,"bathroom submenu");
+            canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==12,"bathroom RMS restore");
+            check(!((HotelScene)get(canvas,"zoo")).logic.busy(),"bathroom not interactive");
             canvas.startLocation(6);
             // Re-enter, restore a street save, and verify its actual loader.
             GameState saved=GameState.decode(((GameState)get(canvas,"state")).encode(),7);
@@ -97,7 +102,7 @@ public final class LocationEntryTest {
             street(canvas,"restored fifth location entry");
             // Garden previews must load from another scene and return to it.
             canvas.startLocation(2);set(app,"animationCatalog",new AnimationCatalog());
-            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==11,"preview scene");
+            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==12,"preview scene");
             canvas.finishPreview();check(((GameState)get(canvas,"state")).scene==2,"preview return");
             Object original=get(canvas,"zoo");
             try { canvas.goToScene(7);throw new RuntimeException("unsupported scene accepted"); }

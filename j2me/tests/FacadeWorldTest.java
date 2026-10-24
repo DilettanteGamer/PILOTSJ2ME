@@ -75,7 +75,7 @@ public final class FacadeWorldTest {
    if(fixture==0)for(HotelWorld.Thing h:world.heroes)check(h!=null&&h.clip>=0,"legacy intro gap not repaired");
    settle();systemRest();quest(0,0);
   }
-  check(SceneFlow.next(10,true)==11&&SceneFlow.next(11,true)==11,"ledge chapter routing");
+  check(SceneFlow.next(10,true)==11&&SceneFlow.next(11,true)==12,"ledge chapter routing");
   System.out.println("FacadeWorld: all intro frames, both heroes' branches, fall/recovery, window/shard/rope puzzle, both exit leaders and "+ticks+" every-tick saves passed "+actions);
  }
 }
