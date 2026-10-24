@@ -1,0 +1,53 @@
+[
+  {
+    "profile": "128x128",
+    "unchanged_resources": 1825,
+    "changed_sprites": [
+      "puzzles/basement-chief-gun.sprite",
+      "puzzles/basement-chief-idle.sprite",
+      "puzzles/basement-chief-jump.sprite",
+      "puzzles/basement-chief-left.sprite",
+      "puzzles/basement-chief-right.sprite",
+      "puzzles/basement-crates.sprite",
+      "puzzles/basement-servant.sprite"
+    ],
+    "jar_bytes": 14638004,
+    "jar_sha256": "8c2431dc7e3c87f21867110d98a8fad93ec763c32ccdc81af0d0967be1d001e6",
+    "crc_valid": true,
+    "jad_valid": true
+  },
+  {
+    "profile": "128x160",
+    "unchanged_resources": 1825,
+    "changed_sprites": [
+      "puzzles/basement-chief-gun.sprite",
+      "puzzles/basement-chief-idle.sprite",
+      "puzzles/basement-chief-jump.sprite",
+      "puzzles/basement-chief-left.sprite",
+      "puzzles/basement-chief-right.sprite",
+      "puzzles/basement-crates.sprite",
+      "puzzles/basement-servant.sprite"
+    ],
+    "jar_bytes": 14638005,
+    "jar_sha256": "5f3e407fb850147e96b9b9c4fe8fb0a7cb7ac1e3759d9f6a19fe71412bb11cf7",
+    "crc_valid": true,
+    "jad_valid": true
+  },
+  {
+    "profile": "240x320",
+    "unchanged_resources": 1825,
+    "changed_sprites": [
+      "puzzles/basement-chief-gun.sprite",
+      "puzzles/basement-chief-idle.sprite",
+      "puzzles/basement-chief-jump.sprite",
+      "puzzles/basement-chief-left.sprite",
+      "puzzles/basement-chief-right.sprite",
+      "puzzles/basement-crates.sprite",
+      "puzzles/basement-servant.sprite"
+    ],
+    "jar_bytes": 15447711,
+    "jar_sha256": "951e8222a9af3f916792c6cf4f007bd37524747a46279219e38c671ecc8f4489",
+    "crc_valid": true,
+    "jad_valid": true
+  }
+]

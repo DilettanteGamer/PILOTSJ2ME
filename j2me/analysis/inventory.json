@@ -2771,7 +2771,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.19.0",
+        "MIDlet-Version": "0.19.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2780,10 +2780,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "30ec436df421df8d97e6874f076bee0b458e8cabcfbb48d17678429732490fa3",
-      "jar_bytes": 14615378,
+      "sha256": "8c2431dc7e3c87f21867110d98a8fad93ec763c32ccdc81af0d0967be1d001e6",
+      "jar_bytes": 14638004,
       "entry_count": 1901,
-      "uncompressed_bytes": 99245762,
+      "uncompressed_bytes": 99391228,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -2971,7 +2971,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8685aa2c33108d3c460f5355c55e4c5f9dbd2d60112941f574f0498262a5f601"
+          "sha256": "1ccfe09add2005f2a29ca662c775be6dacf24843909199c5228ab47e6a3793b7"
         },
         "pilots/BasementStage.class": {
           "minor": 3,
@@ -2988,7 +2988,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "21a0627a029d68bdad416623b34d1cc455832789e2c61f699912cf5945aae39d"
+          "sha256": "be1e77857e58948361f8f875a4f974dc5c74e13ad3fff2cada6710705b4c8956"
         },
         "pilots/CourtyardLogic.class": {
           "minor": 3,
@@ -3223,7 +3223,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "32f90a277ec6e1882da4347e8c0693bf0e6731b546aace0dc3eb070c295ee0a5"
+          "sha256": "a0dfe70d089a3497437dd81ec19570e3877e56b5ea1c08d48ab9be1f80585e81"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -11090,7 +11090,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.19.0",
+        "MIDlet-Version": "0.19.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -11099,10 +11099,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "922e02a05847bade85350e88823a1b835699334246f2fe6041cbe70145950c4b",
-      "jar_bytes": 14615376,
+      "sha256": "5f3e407fb850147e96b9b9c4fe8fb0a7cb7ac1e3759d9f6a19fe71412bb11cf7",
+      "jar_bytes": 14638005,
       "entry_count": 1901,
-      "uncompressed_bytes": 99245762,
+      "uncompressed_bytes": 99391228,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -11290,7 +11290,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8685aa2c33108d3c460f5355c55e4c5f9dbd2d60112941f574f0498262a5f601"
+          "sha256": "1ccfe09add2005f2a29ca662c775be6dacf24843909199c5228ab47e6a3793b7"
         },
         "pilots/BasementStage.class": {
           "minor": 3,
@@ -11307,7 +11307,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "21a0627a029d68bdad416623b34d1cc455832789e2c61f699912cf5945aae39d"
+          "sha256": "be1e77857e58948361f8f875a4f974dc5c74e13ad3fff2cada6710705b4c8956"
         },
         "pilots/CourtyardLogic.class": {
           "minor": 3,
@@ -11542,7 +11542,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "32f90a277ec6e1882da4347e8c0693bf0e6731b546aace0dc3eb070c295ee0a5"
+          "sha256": "a0dfe70d089a3497437dd81ec19570e3877e56b5ea1c08d48ab9be1f80585e81"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -19409,7 +19409,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.19.0",
+        "MIDlet-Version": "0.19.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -19418,10 +19418,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "4f0175cb66306f7c7cdb68ec0ea1a1336dae72574cce031bf708c417d9405c5c",
-      "jar_bytes": 15425085,
+      "sha256": "951e8222a9af3f916792c6cf4f007bd37524747a46279219e38c671ecc8f4489",
+      "jar_bytes": 15447711,
       "entry_count": 1901,
-      "uncompressed_bytes": 101649603,
+      "uncompressed_bytes": 101795069,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -19609,7 +19609,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8685aa2c33108d3c460f5355c55e4c5f9dbd2d60112941f574f0498262a5f601"
+          "sha256": "1ccfe09add2005f2a29ca662c775be6dacf24843909199c5228ab47e6a3793b7"
         },
         "pilots/BasementStage.class": {
           "minor": 3,
@@ -19626,7 +19626,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "21a0627a029d68bdad416623b34d1cc455832789e2c61f699912cf5945aae39d"
+          "sha256": "be1e77857e58948361f8f875a4f974dc5c74e13ad3fff2cada6710705b4c8956"
         },
         "pilots/CourtyardLogic.class": {
           "minor": 3,
@@ -19861,7 +19861,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "32f90a277ec6e1882da4347e8c0693bf0e6731b546aace0dc3eb070c295ee0a5"
+          "sha256": "a0dfe70d089a3497437dd81ec19570e3877e56b5ea1c08d48ab9be1f80585e81"
         },
         "pilots/Hotspot.class": {
           "minor": 3,

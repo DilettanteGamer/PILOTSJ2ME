@@ -144,7 +144,7 @@ public final class LocationEntryTest {
             crates=(BasementCanvas)Display.getDisplay(app).getCurrent();crates.showNotify();basement=((HotelScene)get(canvas,"zoo")).animals.world;
             check(basement.basement.fallingTick()==fall,"RMS lost falling crate");for(int i=0;i<22;i++)canvas.tick(100);crateKey(crates,canvas,4,22);
             for(int n=0;n<4;n++){crateKey(crates,canvas,6,22);crateKey(crates,canvas,6,22);crateKey(crates,canvas,6,22);crateKey(crates,canvas,4,22);crateKey(crates,canvas,4,22);crateKey(crates,canvas,4,22);}
-            for(int c=1;c<=3;c++){crateKey(crates,canvas,6,22);for(int shots=0;shots<c;shots++)crateKey(crates,canvas,5,18);}
+            for(int c=1;c<=3;c++){crateKey(crates,canvas,6,22);for(int shots=0;shots<c;shots++)crateKey(crates,canvas,5,BasementGame.SHOT_TICKS);}
             crateKey(crates,canvas,2,4);crateKey(crates,canvas,4,4);crateKey(crates,canvas,4,4);crateKey(crates,canvas,4,4);
             check(Display.getDisplay(app).getCurrent()==canvas&&get(app,"basement")==null&&basement.basement.solved(),"crate solution did not automatically return to source room");
             for(int i=0;i<250&&!basement.completed;i++)canvas.tick(100);check(basement.completed,"source ending after crate Canvas");

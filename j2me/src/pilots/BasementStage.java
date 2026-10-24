@@ -2,7 +2,7 @@ package pilots;
 import java.io.IOException;
 import javax.microedition.lcdui.*;
 
-/** Generated front-view scenery and sprites; original Chief poses remain recognizable. */
+/** Front-view backdrop with original crate, servant and Chief artwork. */
 public final class BasementStage {
     private final BasementGame game;
     private final IndexedBackground background;
@@ -30,7 +30,7 @@ public final class BasementStage {
         g.setColor(0x6c6248);g.fillRect(view.screenX(0),view.screenY(153),w,Math.max(1,view.screenY(176)-view.screenY(153)));
         g.setColor(0xd0bd88);g.drawLine(view.screenX(0),view.screenY(154),view.screenX(256),view.screenY(154));
         int col=game.fallingColumn(),t=game.fallingTick();
-        frame(servant,col<0?0:t<12?1:2);servant.paint(g,view,col<0?182:x(col),63);
+        frame(servant,col<0?0:1+(t-1)*(servant.count-2)/20);servant.paint(g,view,col<0?182:x(col),63);
         frame(crates,0);
         for(int c=0;c<4;c++)for(int row=0;row<game.crates(c);row++){
             if(c==game.shotColumn() && row==game.shotLevel()-1 && game.shotTick()>0)continue;
@@ -40,14 +40,14 @@ public final class BasementStage {
             g.setColor(0xf7d24d);int sx=view.screenX(x(col));g.drawLine(sx,view.screenY(70),sx,view.screenY(144-game.crates(col)*20));
             if(t>=12){frame(crates,0);int end=144-game.crates(col)*20;crates.paint(g,view,x(col),64+(end-64)*(t-12)/10);}
         }
-        if(game.shotTick()>0){frame(crates,game.shotTick()>12?1:game.shotTick()>6?2:3);crates.paint(g,view,x(game.shotColumn()),144-(game.shotLevel()-1)*20);}
+        if(game.shotTick()>0){frame(crates,1+(BasementGame.SHOT_TICKS-game.shotTick())*(crates.count-2)/(BasementGame.SHOT_TICKS-1));crates.paint(g,view,x(game.shotColumn()),144-(game.shotLevel()-1)*20);}
         int px=x(game.column()),py=feet(game.safe()?0:1,game.height()),motion=game.motion();
         if(motion>0){int progress=4-motion;px=x(game.data[BasementGame.FROM_COLUMN])+(px-x(game.data[BasementGame.FROM_COLUMN]))*progress/4;
             int from=feet(game.data[BasementGame.FROM_LANE],game.data[BasementGame.FROM_HEIGHT]);py=from+(py-from)*progress/4;
             if(!game.safe())py-=progress*(4-progress)*3;
         }
         int pose=game.shotTick()>0?4:motion>0?game.safe()?(game.data[BasementGame.FACING]<0?1:2):3:0;
-        frame(chief[pose],motion>0?4-motion:game.shotTick()>0?18-game.shotTick():0);chief[pose].paint(g,view,px,py);
+        frame(chief[pose],motion>0?4-motion:game.shotTick()>0?BasementGame.SHOT_TICKS-game.shotTick():0);chief[pose].paint(g,view,px,py);
         g.setColor(0xffe09a);g.setFont(Font.getFont(Font.FACE_SYSTEM,Font.STYLE_PLAIN,Font.SIZE_SMALL));
         String message=game.message();g.drawString(message!=null?message:game.safe()?"Безопасная дорожка":"Ящики: прыжок авто",width/2,1,Graphics.TOP|Graphics.HCENTER);
         g.drawString("2/4/6/8 — Шеф",width/2,height-26,Graphics.TOP|Graphics.HCENTER);
