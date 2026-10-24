@@ -101,6 +101,7 @@ public final class HotelWorld {
             if(action()==99 && lift!=null && lift.id==58)removeCell(7,25);
         }
         if(scene==15 && "Автомат достанет Коллега.".equals(caption)){caption=null;captionTicks=0;}
+        repairRoofIdle();
         initBasement();
         reconcileBasementRoom();
         initFridge();
@@ -113,6 +114,15 @@ public final class HotelWorld {
         clearSinkPassage();
         syncSave();
     }
+    private void repairRoofIdle() {
+        if(scene!=14 || completed)return;
+        // Common controller 5 targets the walking figures, not basket actors.
+        // Recover the same orphaned ambient action in a 0.20.0 snapshot.
+        if(action()==32 && (g(0x1e1b60)==1 || !heroes[0].active) || action()==33 && (g(0x1e1b5c)==1 || !heroes[1].active)){
+            g(0x20,0);g(0x30,0);g(0x88,0);g(0xa0,0);g(0xa4,0);
+        }
+    }
+    boolean roofHoseAvailable(){return scene==14 && find(39)!=null;}
     private void initBasement() {
         if(scene!=15 || basementExtended)return;
         basement.initialize();basementExtended=true;
@@ -510,6 +520,11 @@ public final class HotelWorld {
     private boolean ledgeRecoil() { return ledgeReaction() && g(4)>=5; }
     private boolean rules(Thing t) {
         routeDirection=-1;
+        // The basket replaces one or both walking actors. Its source scripts
+        // have no handlers for the ground-only idle actions 32 and 33.
+        // Do not release the original busy flag during a queued basket descent.
+        if(scene==14 && t.id==8 && g(0x1e1b6c)==62)return false;
+        if(scene==14 && t.id==5 && (walkHero>=0 || !heroes[0].active || !heroes[1].active || g(0x1e1b60)==1 || g(0x1e1b5c)==1))return false;
         // The phone crate segment owns these actors. Source 17 still owns the exit.
         if(scene==15 && (t.id==24 || !basement.solved() && (t.id==36 || t.id==22 || t.id==30 || t.id==34 || t.id>=16 && t.id<=20 && !(t.id==18 && g(0x1e1b90)==20))))return false;
         if(scene==15 && t.waitTicks>0)return false;
@@ -557,6 +572,7 @@ public final class HotelWorld {
         g(0x20,0);g(0x30,0);g(0x88,0);return true;
     }
     public void tick() {
+        repairRoofIdle();
         if(completed || fridgeRequested() || boardRequested() || basementRequested()) return;
         int previousAction=action();
         if(scene==15){clickActive=clickPending;clickPending=false;}

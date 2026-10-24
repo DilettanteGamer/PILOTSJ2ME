@@ -28,7 +28,7 @@ from extract_hotel import extract as extract_hotel
 from extract_basement_platform import extract as extract_basement_platform
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.20.0'
+VERSION = '0.20.1'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -246,7 +246,7 @@ def main():
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BathroomWorldTest',ROOT / 'tests/fixtures/bathroom-0.16.1-sink-close.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.SwitchboardWorldTest',ROOT / 'tests/fixtures/switchboard-0.17.0-lift-covered.psv',ROOT / 'tests/fixtures/switchboard-0.17.0-lift-duplicate.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BasementWorldTest',ROOT / 'tests/fixtures/basement-0.18.0-shot.psv',ROOT / 'tests/fixtures/basement-0.18.0-exit.psv',ROOT / 'tests/fixtures/basement-0.19.0-return.psv'])
-            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.RoofWorldTest'])
+            run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.RoofWorldTest',ROOT / 'tests/fixtures/roof-0.20.0-basket-idle.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalVisibilityTest', ROOT / 'tests/fixtures/animal-0.9.3-entry.psv', ROOT / 'tests/fixtures/animal-0.9.3-pickup.psv', ROOT / 'tests/fixtures/animal-0.9.4-rhino.psv', ROOT / 'tests/fixtures/animal-0.9.5-entry.psv'])
             courtyard_fixture=Path(temporary) / 'courtyard-source-actions.csv'
             courtyard_fixture.write_text('\n'.join(','.join(map(str,row)) for row in courtyard_report['actions'])+'\n')
