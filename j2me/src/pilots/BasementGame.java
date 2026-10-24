@@ -2,6 +2,7 @@ package pilots;
 
 /** Phone adaptation of the crate segment. One throw per movement, two distinct lanes. */
 public final class BasementGame {
+    public static final int SHOT_TICKS=22;
     static final int COOKIE=0x42535031;
     static final int STATUS=0,COLUMN=1,LANE=2,HEIGHT=3,MOVED=4,FALL=5,FALL_TICK=6,
         SHOT=7,SHOT_TICK=8,MOTION=9,FROM_COLUMN=10,FROM_HEIGHT=11,FROM_LANE=12,
@@ -53,7 +54,7 @@ public final class BasementGame {
         if(!hasGun()){say(1);return false;}
         if(!safe()){say(2);return false;}
         if(data[SHOT_TICK]>0 || data[MOTION]>0 || crates(column())==0)return false;
-        data[SHOT]=column();data[SHOT_LEVEL]=crates(column());data[SHOT_TICK]=18;world.cue(5);return true;
+        data[SHOT]=column();data[SHOT_LEVEL]=crates(column());data[SHOT_TICK]=SHOT_TICKS;world.cue(5);return true;
     }
     public void tick(){
         if(data[STATUS]!=2 || solved())return;
