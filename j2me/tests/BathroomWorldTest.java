@@ -20,6 +20,11 @@ public final class BathroomWorldTest {
   act(0,0,25);check(world.hasItem(1)&&world.state.variables[54]>0&&has(22),"timed plunger recovery");
  }
  public static void main(String[] args)throws Exception {
+  if(args.length>0) {
+   world=new HotelWorld(GameState.decode(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(args[0])),13));replay=resume(world);
+   check(world.heroes[1].x==256&&world.heroes[1].y==320&&world.walkHero==1&&world.busy(),"legacy sink pose must visibly step back");
+   settle();check(world.heroes[1].x==256&&world.heroes[1].y==336,"legacy sink clearance");
+  }
   GameState s=new GameState();s.scene=12;world=new HotelWorld(s);replay=resume(world);
   check(!world.busy()&&world.heroes[0].id==12&&world.heroes[1].id==11,"bathroom entry");
   check(world.heroes[0].layer==78-world.heroes[0].y*3/16&&world.heroes[1].layer==78-world.heroes[1].y*3/16,"source bathroom planes");

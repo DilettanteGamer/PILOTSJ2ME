@@ -52,10 +52,7 @@ public final class HotelScene extends ZooScene {
             if(t.id==33 || t.id==35)return 25;
             if(animals.world.action()!=83 && !authoredFinale() && (t.id==36 || t.id==37))return 22; // Switch mounted on wall mask 58.
         }
-        // The bowl is rooted on the wall (y=256), but its floor plane is
-        // y=320. Scripted approaches at y=288/304 must pass behind it.
         if(animals.world.scene==12) {
-            if(t.id==31)return 18;
             // Walking roots already hold the next grid cell. Sort the visible
             // intermediate pose on its current plane, preserving script offsets.
             AnimatedActor a=scene.actors[slot];
