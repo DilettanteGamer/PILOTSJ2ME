@@ -78,7 +78,7 @@ public final class HotelScene extends ZooScene {
         if(!animals.world.fridgePanelVisible())return;
         handles.paint(graphics,view.screenX(434),view.screenY(195),Math.max(3,view.screenX(500)-view.screenX(434)),animals.world.fridgeMask(),-1);
     }
-    private boolean interactive(int id) { return id==(animals.world.scene==10?11:13) || id==12 || animals.world.interactive(id); }
+    private boolean interactive(int id) { return id==(animals.world.scene>=10?11:13) || id==12 || animals.world.interactive(id); }
     private int target(int x,int y) {
         int hit=-1,best=999;
         for(int i=0;i<302;i++) {
@@ -93,6 +93,7 @@ public final class HotelScene extends ZooScene {
     public int targetAt(int x,int y) { int id=target(x,y);return id<0?0:id; }
     public String hoverText(int x,int y) {
         int id=target(x,y);
+        if(animals.world.scene==11)return id==12?"Шеф":id==11?"Коллега":id==15||id==16||id==17?"Окно":id==18?"Трос":id==19||id==20?"Осколок":null;
         if(animals.world.scene==10)return id==12?"Шеф":id==11?"Коллега":id==15?"Диван":id==16?"Балкон":id==17||id==18?"Мухобойка":id>=22&&id<=24?"Ящик":id==26?"Бумага":id==27||id==28?"Дверца":id==29||id==30?"Шнур":id==31||id==32||id>=40&&id<=42?"Телевизор":id==33?"Кнопка":id==34?"Тумблер":id==38?"Гнусный Мух":null;
         return id==101?"Холодильник":id==13?"Шеф":id==12?"Коллега":id==20||id==21?"Выход":id==22?"Штора":id==23||id==24?"Куча":id==25?"Отвёртка":id==26?"Баллончик":id==27?"Злобное чудище":id==28||id==29?"Ванная":id==30?"Чайник":id==31||id==32?"Сахарница":id==33?"Замок":id==34?"Ключ":id==35?"Ручка":id==36||id==37?"Включатель":id>=64&&id<=95?"Переключатель":null;
     }

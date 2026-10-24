@@ -2607,10 +2607,11 @@
         6,
         8,
         9,
-        10
+        10,
+        11
       ],
-      "animations": 856,
-      "frames": 10246,
+      "animations": 932,
+      "frames": 11402,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -2707,13 +2708,25 @@
           208,
           640,
           417
+        ],
+        "scenes/11.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/11.p8": [
+          320,
+          208,
+          640,
+          417
         ]
       },
       "path": "dist/Pilots-128x128.jar",
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.14.1",
+        "MIDlet-Version": "0.15.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2722,27 +2735,27 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "80d10c9b18c048375571d6004f564b07fb53f715f810e92fed8781b63f732cfa",
-      "jar_bytes": 9410916,
-      "entry_count": 1257,
-      "uncompressed_bytes": 61256115,
+      "sha256": "192aedfeadc6c791cd266dd1c7fae6b6d90b2580b4630a85bbb6ad72e8453d9a",
+      "jar_bytes": 10193658,
+      "entry_count": 1362,
+      "uncompressed_bytes": 67013769,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 856,
-        ".bar": 8,
+        ".anm": 932,
+        ".bar": 9,
         ".bin": 1,
         ".class": 59,
-        ".events": 8,
+        ".events": 9,
         ".hot": 3,
-        ".mid": 9,
-        ".p8": 8,
+        ".mid": 10,
+        ".p8": 9,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 6,
+        ".vm": 7,
         ".walk": 1,
-        ".wav": 293
+        ".wav": 317
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -2834,7 +2847,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "20db148bace34f784fa17e127181d06b3d80dc8d519403cbab0a7947826bbc67"
+          "sha256": "0ef276224833bc64ec133a9e201301a9fb0ab019cd0c7b1f5c8ed6df06d483d4"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -2980,7 +2993,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "b31b88aa7252ca1e602610fe0e66c6b76751580f928b43459631b1423f7c0c70"
+          "sha256": "fb9f8030d9732dba65071e12df20484989a03f5d0bd929a0caea327aa3061496"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -3066,7 +3079,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "abb3ad9b35c6e4ac58e5b34247452325d65258dc7efcfae04f6730d33fe31323"
+          "sha256": "86272b2fa22c966bb68cabb2593167447a6f6bd7498f00ec2fd440786eaa9b77"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -3107,7 +3120,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d1b58a1cdff7f5c10da9b8dbc5640c1dfae466aa4adcf49447bfae1a2459c6a1"
+          "sha256": "4a1496929ec9ec5f3a93c5ff90653719e7f6c141aeafb844de20e2ee5e210b6d"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -3301,7 +3314,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ee1b72477f5cde168422db8ac961d3d1cd1762ccced0d79bd46fbb12337c824f"
+          "sha256": "fcb954d917762059dd3c72f263a67853bd5c77ad0cab93fdc731eaddfd9d0dd3"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3324,7 +3337,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "cfa390d471eb7d5f5f0b6221e4d89484bfec164433ef18a65c8b3c077c00f0a7"
+          "sha256": "00be635bc3ec3a58409b05e874b32a250f9efddb6358a3d4099fbaf99f1a7a35"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -3374,7 +3387,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fdd1e1aad39266c135c5fbb3f534f35d3a3e11e5d7126043e7c51869561f1da9"
+          "sha256": "ec120a92a6085e65816af51a37b5a46bff940a993ced35e1633d75847b871e92"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -3525,7 +3538,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "78f23be8b5ae1e7df6d0eb50ae10e629c672622913ef2b70575da6140aa69cc4"
+          "sha256": "e748bebf2647974db7a027b1ffa28edeb09477ea8e369139d96cd3e548b78700"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -7875,513 +7888,617 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 24030
+        },
+        "scenes/11-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/11-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/11-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/11-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/11-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/11-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/11-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/11-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/11-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/11-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/11-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/11-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/11-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/11-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/11-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/11-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/11-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/11-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/11-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/11-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/11-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/11-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/11-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/11-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/11-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/11-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/11-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/11-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/11-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/11-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/11-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/11-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/11-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/11-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/11-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/11-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/11-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 408
+        },
+        "scenes/11-47.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-48.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-49.anm": {
+          "count": 54,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6972
+        },
+        "scenes/11-50.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 13936
+        },
+        "scenes/11-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 24960
+        },
+        "scenes/11-52.anm": {
+          "count": 98,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 47424
+        },
+        "scenes/11-53.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 42939
+        },
+        "scenes/11-54.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10816
+        },
+        "scenes/11-55.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10816
+        },
+        "scenes/11-56.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10816
+        },
+        "scenes/11-57.anm": {
+          "count": 100,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8000
+        },
+        "scenes/11-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8322
+        },
+        "scenes/11-59.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3234
+        },
+        "scenes/11-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5781
+        },
+        "scenes/11-61.anm": {
+          "count": 71,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 47310
+        },
+        "scenes/11-62.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7125
+        },
+        "scenes/11-63.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 279
+        },
+        "scenes/11-64.anm": {
+          "count": 46,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6816
+        },
+        "scenes/11-65.anm": {
+          "count": 9,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6110
+        },
+        "scenes/11-66.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 28792
+        },
+        "scenes/11-67.anm": {
+          "count": 17,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 33840
+        },
+        "scenes/11-68.anm": {
+          "count": 8,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/11-69.anm": {
+          "count": 11,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6786
+        },
+        "scenes/11-70.anm": {
+          "count": 45,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10962
+        },
+        "scenes/11-71.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11520
+        },
+        "scenes/11-72.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4331
+        },
+        "scenes/11-73.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6888
+        },
+        "scenes/11-74.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5402
+        },
+        "scenes/11-75.anm": {
+          "count": 33,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/11-76.anm": {
+          "count": 66,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 69216
+        },
+        "scenes/11-77.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 970
         }
       },
-      "preview_scene": 10,
+      "preview_scene": 11,
       "preview_catalog": [
         {
-          "resource_id": 54,
+          "resource_id": 49,
           "anchor": [
             384,
-            400
+            320
           ],
           "focus": [
-            479,
-            315
+            416,
+            305
           ],
-          "label": "01 Комната с балконом — 54"
+          "label": "01 Карниз гостиницы — 49"
+        },
+        {
+          "resource_id": 50,
+          "anchor": [
+            512,
+            320
+          ],
+          "focus": [
+            544,
+            299
+          ],
+          "label": "02 Карниз гостиницы — 50"
+        },
+        {
+          "resource_id": 52,
+          "anchor": [
+            320,
+            0
+          ],
+          "focus": [
+            266,
+            104
+          ],
+          "label": "03 Карниз гостиницы — 52"
+        },
+        {
+          "resource_id": 53,
+          "anchor": [
+            320,
+            0
+          ],
+          "focus": [
+            266,
+            104
+          ],
+          "label": "04 Карниз гостиницы — 53"
         },
         {
           "resource_id": 55,
           "anchor": [
-            64,
-            192
+            384,
+            0
           ],
           "focus": [
-            93,
-            175
+            370,
+            208
           ],
-          "label": "02 Комната с балконом — 55"
+          "label": "05 Карниз гостиницы — 55"
         },
         {
           "resource_id": 56,
           "anchor": [
-            64,
-            192
+            384,
+            0
           ],
           "focus": [
-            94,
-            163
-          ],
-          "label": "03 Комната с балконом — 56"
-        },
-        {
-          "resource_id": 58,
-          "anchor": [
-            64,
+            373,
             208
           ],
-          "focus": [
-            92,
-            185
+          "label": "06 Карниз гостиницы — 56"
+        },
+        {
+          "resource_id": 57,
+          "anchor": [
+            128,
+            224
           ],
-          "label": "04 Комната с балконом — 58"
+          "focus": [
+            172,
+            285
+          ],
+          "label": "07 Карниз гостиницы — 57"
+        },
+        {
+          "resource_id": 61,
+          "anchor": [
+            512,
+            320
+          ],
+          "focus": [
+            563,
+            218
+          ],
+          "label": "08 Карниз гостиницы — 61"
         },
         {
           "resource_id": 62,
           "anchor": [
-            64,
-            208
+            512,
+            320
           ],
           "focus": [
-            93,
-            186
+            547,
+            299
           ],
-          "label": "05 Комната с балконом — 62"
-        },
-        {
-          "resource_id": 63,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            97,
-            175
-          ],
-          "label": "06 Комната с балконом — 63"
+          "label": "09 Карниз гостиницы — 62"
         },
         {
           "resource_id": 64,
           "anchor": [
-            64,
-            208
+            512,
+            320
           ],
           "focus": [
-            96,
-            186
+            543,
+            299
           ],
-          "label": "07 Комната с балконом — 64"
+          "label": "10 Карниз гостиницы — 64"
         },
         {
           "resource_id": 65,
           "anchor": [
-            64,
-            208
+            384,
+            320
           ],
           "focus": [
-            96,
-            186
+            420,
+            304
           ],
-          "label": "08 Комната с балконом — 65"
+          "label": "11 Карниз гостиницы — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            64,
-            208
+            384,
+            320
           ],
           "focus": [
-            96,
-            186
+            428,
+            218
           ],
-          "label": "09 Комната с балконом — 66"
+          "label": "12 Карниз гостиницы — 66"
         },
         {
           "resource_id": 67,
           "anchor": [
-            64,
-            208
+            384,
+            320
           ],
           "focus": [
-            96,
-            186
+            430,
+            219
           ],
-          "label": "10 Комната с балконом — 67"
+          "label": "13 Карниз гостиницы — 67"
         },
         {
           "resource_id": 68,
           "anchor": [
-            64,
-            192
+            384,
+            320
           ],
           "focus": [
-            75,
-            175
+            409,
+            300
           ],
-          "label": "11 Комната с балконом — 68"
+          "label": "14 Карниз гостиницы — 68"
+        },
+        {
+          "resource_id": 69,
+          "anchor": [
+            512,
+            320
+          ],
+          "focus": [
+            531,
+            294
+          ],
+          "label": "15 Карниз гостиницы — 69"
+        },
+        {
+          "resource_id": 70,
+          "anchor": [
+            0,
+            240
+          ],
+          "focus": [
+            272,
+            371
+          ],
+          "label": "16 Карниз гостиницы — 70"
         },
         {
           "resource_id": 73,
           "anchor": [
-            64,
-            192
+            384,
+            320
           ],
           "focus": [
-            98,
-            178
+            350,
+            312
           ],
-          "label": "12 Комната с балконом — 73"
-        },
-        {
-          "resource_id": 74,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            105,
-            180
-          ],
-          "label": "13 Комната с балконом — 74"
+          "label": "17 Карниз гостиницы — 73"
         },
         {
           "resource_id": 75,
           "anchor": [
-            64,
-            192
+            512,
+            320
           ],
           "focus": [
-            95,
-            175
+            476,
+            295
           ],
-          "label": "14 Комната с балконом — 75"
+          "label": "18 Карниз гостиницы — 75"
         },
         {
-          "resource_id": 78,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            99,
-            186
-          ],
-          "label": "15 Комната с балконом — 78"
-        },
-        {
-          "resource_id": 79,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            85,
-            195
-          ],
-          "label": "16 Комната с балконом — 79"
-        },
-        {
-          "resource_id": 80,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            96,
-            175
-          ],
-          "label": "17 Комната с балконом — 80"
-        },
-        {
-          "resource_id": 81,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            87,
-            183
-          ],
-          "label": "18 Комната с балконом — 81"
-        },
-        {
-          "resource_id": 83,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "19 Комната с балконом — 83"
-        },
-        {
-          "resource_id": 84,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "20 Комната с балконом — 84"
-        },
-        {
-          "resource_id": 85,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "21 Комната с балконом — 85"
-        },
-        {
-          "resource_id": 86,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "22 Комната с балконом — 86"
-        },
-        {
-          "resource_id": 91,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            88,
-            178
-          ],
-          "label": "23 Комната с балконом — 91"
-        },
-        {
-          "resource_id": 92,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            95,
-            186
-          ],
-          "label": "24 Комната с балконом — 92"
-        },
-        {
-          "resource_id": 93,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            99,
-            184
-          ],
-          "label": "25 Комната с балконом — 93"
-        },
-        {
-          "resource_id": 94,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            93,
-            186
-          ],
-          "label": "26 Комната с балконом — 94"
-        },
-        {
-          "resource_id": 95,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            96,
-            174
-          ],
-          "label": "27 Комната с балконом — 95"
-        },
-        {
-          "resource_id": 96,
+          "resource_id": 76,
           "anchor": [
             576,
-            400
-          ],
-          "focus": [
-            548,
-            327
-          ],
-          "label": "28 Комната с балконом — 96"
-        },
-        {
-          "resource_id": 98,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            220,
-            131
-          ],
-          "label": "29 Комната с балконом — 98"
-        },
-        {
-          "resource_id": 100,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            114,
-            184
-          ],
-          "label": "30 Комната с балконом — 100"
-        },
-        {
-          "resource_id": 102,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            128,
-            150
-          ],
-          "label": "31 Комната с балконом — 102"
-        },
-        {
-          "resource_id": 104,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            177,
-            275
-          ],
-          "label": "32 Комната с балконом — 104"
-        },
-        {
-          "resource_id": 105,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            90,
-            189
-          ],
-          "label": "33 Комната с балконом — 105"
-        },
-        {
-          "resource_id": 106,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            85,
-            114
-          ],
-          "label": "34 Комната с балконом — 106"
-        },
-        {
-          "resource_id": 107,
-          "anchor": [
-            256,
             0
           ],
           "focus": [
-            118,
-            9
+            454,
+            1
           ],
-          "label": "35 Комната с балконом — 107"
-        },
-        {
-          "resource_id": 110,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            179,
-            72
-          ],
-          "label": "36 Комната с балконом — 110"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            153,
-            54
-          ],
-          "label": "37 Комната с балконом — 112"
-        },
-        {
-          "resource_id": 113,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            177,
-            277
-          ],
-          "label": "38 Комната с балконом — 113"
-        },
-        {
-          "resource_id": 114,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            292,
-            143
-          ],
-          "label": "39 Комната с балконом — 114"
-        },
-        {
-          "resource_id": 116,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            250,
-            108
-          ],
-          "label": "40 Комната с балконом — 116"
-        },
-        {
-          "resource_id": 117,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            250,
-            127
-          ],
-          "label": "41 Комната с балконом — 117"
-        },
-        {
-          "resource_id": 119,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            255,
-            115
-          ],
-          "label": "42 Комната с балконом — 119"
+          "label": "19 Карниз гостиницы — 76"
         }
       ],
       "largest_resources": [
@@ -8448,10 +8565,11 @@
         6,
         8,
         9,
-        10
+        10,
+        11
       ],
-      "animations": 856,
-      "frames": 10246,
+      "animations": 932,
+      "frames": 11402,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -8548,13 +8666,25 @@
           208,
           640,
           417
+        ],
+        "scenes/11.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/11.p8": [
+          320,
+          208,
+          640,
+          417
         ]
       },
       "path": "dist/Pilots-128x160.jar",
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.14.1",
+        "MIDlet-Version": "0.15.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -8563,27 +8693,27 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "15ad6b3304996a6dc2750b6ca23818e030ed31b96d7694a09a53ecb0f2fe8e5a",
-      "jar_bytes": 9410917,
-      "entry_count": 1257,
-      "uncompressed_bytes": 61256115,
+      "sha256": "af2cd4ece6eced886141b7f53d79f5cf508f4a87538b2bb5ad7a7ccf0c38a882",
+      "jar_bytes": 10193656,
+      "entry_count": 1362,
+      "uncompressed_bytes": 67013769,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 856,
-        ".bar": 8,
+        ".anm": 932,
+        ".bar": 9,
         ".bin": 1,
         ".class": 59,
-        ".events": 8,
+        ".events": 9,
         ".hot": 3,
-        ".mid": 9,
-        ".p8": 8,
+        ".mid": 10,
+        ".p8": 9,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 6,
+        ".vm": 7,
         ".walk": 1,
-        ".wav": 293
+        ".wav": 317
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -8675,7 +8805,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "20db148bace34f784fa17e127181d06b3d80dc8d519403cbab0a7947826bbc67"
+          "sha256": "0ef276224833bc64ec133a9e201301a9fb0ab019cd0c7b1f5c8ed6df06d483d4"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -8821,7 +8951,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "b31b88aa7252ca1e602610fe0e66c6b76751580f928b43459631b1423f7c0c70"
+          "sha256": "fb9f8030d9732dba65071e12df20484989a03f5d0bd929a0caea327aa3061496"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -8907,7 +9037,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "abb3ad9b35c6e4ac58e5b34247452325d65258dc7efcfae04f6730d33fe31323"
+          "sha256": "86272b2fa22c966bb68cabb2593167447a6f6bd7498f00ec2fd440786eaa9b77"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -8948,7 +9078,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d1b58a1cdff7f5c10da9b8dbc5640c1dfae466aa4adcf49447bfae1a2459c6a1"
+          "sha256": "4a1496929ec9ec5f3a93c5ff90653719e7f6c141aeafb844de20e2ee5e210b6d"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -9142,7 +9272,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ee1b72477f5cde168422db8ac961d3d1cd1762ccced0d79bd46fbb12337c824f"
+          "sha256": "fcb954d917762059dd3c72f263a67853bd5c77ad0cab93fdc731eaddfd9d0dd3"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -9165,7 +9295,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "cfa390d471eb7d5f5f0b6221e4d89484bfec164433ef18a65c8b3c077c00f0a7"
+          "sha256": "00be635bc3ec3a58409b05e874b32a250f9efddb6358a3d4099fbaf99f1a7a35"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -9215,7 +9345,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fdd1e1aad39266c135c5fbb3f534f35d3a3e11e5d7126043e7c51869561f1da9"
+          "sha256": "ec120a92a6085e65816af51a37b5a46bff940a993ced35e1633d75847b871e92"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -9366,7 +9496,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "78f23be8b5ae1e7df6d0eb50ae10e629c672622913ef2b70575da6140aa69cc4"
+          "sha256": "e748bebf2647974db7a027b1ffa28edeb09477ea8e369139d96cd3e548b78700"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -13716,513 +13846,617 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 24030
+        },
+        "scenes/11-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/11-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/11-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/11-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/11-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/11-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/11-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/11-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/11-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/11-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/11-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/11-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/11-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/11-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/11-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/11-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/11-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/11-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/11-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/11-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/11-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/11-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/11-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/11-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/11-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/11-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/11-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/11-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/11-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/11-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/11-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/11-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/11-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/11-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/11-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/11-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/11-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 408
+        },
+        "scenes/11-47.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-48.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-49.anm": {
+          "count": 54,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6972
+        },
+        "scenes/11-50.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 13936
+        },
+        "scenes/11-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 24960
+        },
+        "scenes/11-52.anm": {
+          "count": 98,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 47424
+        },
+        "scenes/11-53.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 42939
+        },
+        "scenes/11-54.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10816
+        },
+        "scenes/11-55.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10816
+        },
+        "scenes/11-56.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10816
+        },
+        "scenes/11-57.anm": {
+          "count": 100,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8000
+        },
+        "scenes/11-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8322
+        },
+        "scenes/11-59.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3234
+        },
+        "scenes/11-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5781
+        },
+        "scenes/11-61.anm": {
+          "count": 71,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 47310
+        },
+        "scenes/11-62.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7125
+        },
+        "scenes/11-63.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 279
+        },
+        "scenes/11-64.anm": {
+          "count": 46,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6816
+        },
+        "scenes/11-65.anm": {
+          "count": 9,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6110
+        },
+        "scenes/11-66.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 28792
+        },
+        "scenes/11-67.anm": {
+          "count": 17,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 33840
+        },
+        "scenes/11-68.anm": {
+          "count": 8,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/11-69.anm": {
+          "count": 11,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6786
+        },
+        "scenes/11-70.anm": {
+          "count": 45,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10962
+        },
+        "scenes/11-71.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11520
+        },
+        "scenes/11-72.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4331
+        },
+        "scenes/11-73.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6888
+        },
+        "scenes/11-74.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5402
+        },
+        "scenes/11-75.anm": {
+          "count": 33,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/11-76.anm": {
+          "count": 66,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 69216
+        },
+        "scenes/11-77.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 970
         }
       },
-      "preview_scene": 10,
+      "preview_scene": 11,
       "preview_catalog": [
         {
-          "resource_id": 54,
+          "resource_id": 49,
           "anchor": [
             384,
-            400
+            320
           ],
           "focus": [
-            479,
-            315
+            416,
+            305
           ],
-          "label": "01 Комната с балконом — 54"
+          "label": "01 Карниз гостиницы — 49"
+        },
+        {
+          "resource_id": 50,
+          "anchor": [
+            512,
+            320
+          ],
+          "focus": [
+            544,
+            299
+          ],
+          "label": "02 Карниз гостиницы — 50"
+        },
+        {
+          "resource_id": 52,
+          "anchor": [
+            320,
+            0
+          ],
+          "focus": [
+            266,
+            104
+          ],
+          "label": "03 Карниз гостиницы — 52"
+        },
+        {
+          "resource_id": 53,
+          "anchor": [
+            320,
+            0
+          ],
+          "focus": [
+            266,
+            104
+          ],
+          "label": "04 Карниз гостиницы — 53"
         },
         {
           "resource_id": 55,
           "anchor": [
-            64,
-            192
+            384,
+            0
           ],
           "focus": [
-            93,
-            175
+            370,
+            208
           ],
-          "label": "02 Комната с балконом — 55"
+          "label": "05 Карниз гостиницы — 55"
         },
         {
           "resource_id": 56,
           "anchor": [
-            64,
-            192
+            384,
+            0
           ],
           "focus": [
-            94,
-            163
-          ],
-          "label": "03 Комната с балконом — 56"
-        },
-        {
-          "resource_id": 58,
-          "anchor": [
-            64,
+            373,
             208
           ],
-          "focus": [
-            92,
-            185
+          "label": "06 Карниз гостиницы — 56"
+        },
+        {
+          "resource_id": 57,
+          "anchor": [
+            128,
+            224
           ],
-          "label": "04 Комната с балконом — 58"
+          "focus": [
+            172,
+            285
+          ],
+          "label": "07 Карниз гостиницы — 57"
+        },
+        {
+          "resource_id": 61,
+          "anchor": [
+            512,
+            320
+          ],
+          "focus": [
+            563,
+            218
+          ],
+          "label": "08 Карниз гостиницы — 61"
         },
         {
           "resource_id": 62,
           "anchor": [
-            64,
-            208
+            512,
+            320
           ],
           "focus": [
-            93,
-            186
+            547,
+            299
           ],
-          "label": "05 Комната с балконом — 62"
-        },
-        {
-          "resource_id": 63,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            97,
-            175
-          ],
-          "label": "06 Комната с балконом — 63"
+          "label": "09 Карниз гостиницы — 62"
         },
         {
           "resource_id": 64,
           "anchor": [
-            64,
-            208
+            512,
+            320
           ],
           "focus": [
-            96,
-            186
+            543,
+            299
           ],
-          "label": "07 Комната с балконом — 64"
+          "label": "10 Карниз гостиницы — 64"
         },
         {
           "resource_id": 65,
           "anchor": [
-            64,
-            208
+            384,
+            320
           ],
           "focus": [
-            96,
-            186
+            420,
+            304
           ],
-          "label": "08 Комната с балконом — 65"
+          "label": "11 Карниз гостиницы — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            64,
-            208
+            384,
+            320
           ],
           "focus": [
-            96,
-            186
+            428,
+            218
           ],
-          "label": "09 Комната с балконом — 66"
+          "label": "12 Карниз гостиницы — 66"
         },
         {
           "resource_id": 67,
           "anchor": [
-            64,
-            208
+            384,
+            320
           ],
           "focus": [
-            96,
-            186
+            430,
+            219
           ],
-          "label": "10 Комната с балконом — 67"
+          "label": "13 Карниз гостиницы — 67"
         },
         {
           "resource_id": 68,
           "anchor": [
-            64,
-            192
+            384,
+            320
           ],
           "focus": [
-            75,
-            175
+            409,
+            300
           ],
-          "label": "11 Комната с балконом — 68"
+          "label": "14 Карниз гостиницы — 68"
+        },
+        {
+          "resource_id": 69,
+          "anchor": [
+            512,
+            320
+          ],
+          "focus": [
+            531,
+            294
+          ],
+          "label": "15 Карниз гостиницы — 69"
+        },
+        {
+          "resource_id": 70,
+          "anchor": [
+            0,
+            240
+          ],
+          "focus": [
+            272,
+            371
+          ],
+          "label": "16 Карниз гостиницы — 70"
         },
         {
           "resource_id": 73,
           "anchor": [
-            64,
-            192
+            384,
+            320
           ],
           "focus": [
-            98,
-            178
+            350,
+            312
           ],
-          "label": "12 Комната с балконом — 73"
-        },
-        {
-          "resource_id": 74,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            105,
-            180
-          ],
-          "label": "13 Комната с балконом — 74"
+          "label": "17 Карниз гостиницы — 73"
         },
         {
           "resource_id": 75,
           "anchor": [
-            64,
-            192
+            512,
+            320
           ],
           "focus": [
-            95,
-            175
+            476,
+            295
           ],
-          "label": "14 Комната с балконом — 75"
+          "label": "18 Карниз гостиницы — 75"
         },
         {
-          "resource_id": 78,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            99,
-            186
-          ],
-          "label": "15 Комната с балконом — 78"
-        },
-        {
-          "resource_id": 79,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            85,
-            195
-          ],
-          "label": "16 Комната с балконом — 79"
-        },
-        {
-          "resource_id": 80,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            96,
-            175
-          ],
-          "label": "17 Комната с балконом — 80"
-        },
-        {
-          "resource_id": 81,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            87,
-            183
-          ],
-          "label": "18 Комната с балконом — 81"
-        },
-        {
-          "resource_id": 83,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "19 Комната с балконом — 83"
-        },
-        {
-          "resource_id": 84,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "20 Комната с балконом — 84"
-        },
-        {
-          "resource_id": 85,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "21 Комната с балконом — 85"
-        },
-        {
-          "resource_id": 86,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "22 Комната с балконом — 86"
-        },
-        {
-          "resource_id": 91,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            88,
-            178
-          ],
-          "label": "23 Комната с балконом — 91"
-        },
-        {
-          "resource_id": 92,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            95,
-            186
-          ],
-          "label": "24 Комната с балконом — 92"
-        },
-        {
-          "resource_id": 93,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            99,
-            184
-          ],
-          "label": "25 Комната с балконом — 93"
-        },
-        {
-          "resource_id": 94,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            93,
-            186
-          ],
-          "label": "26 Комната с балконом — 94"
-        },
-        {
-          "resource_id": 95,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            96,
-            174
-          ],
-          "label": "27 Комната с балконом — 95"
-        },
-        {
-          "resource_id": 96,
+          "resource_id": 76,
           "anchor": [
             576,
-            400
-          ],
-          "focus": [
-            548,
-            327
-          ],
-          "label": "28 Комната с балконом — 96"
-        },
-        {
-          "resource_id": 98,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            220,
-            131
-          ],
-          "label": "29 Комната с балконом — 98"
-        },
-        {
-          "resource_id": 100,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            114,
-            184
-          ],
-          "label": "30 Комната с балконом — 100"
-        },
-        {
-          "resource_id": 102,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            128,
-            150
-          ],
-          "label": "31 Комната с балконом — 102"
-        },
-        {
-          "resource_id": 104,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            177,
-            275
-          ],
-          "label": "32 Комната с балконом — 104"
-        },
-        {
-          "resource_id": 105,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            90,
-            189
-          ],
-          "label": "33 Комната с балконом — 105"
-        },
-        {
-          "resource_id": 106,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            85,
-            114
-          ],
-          "label": "34 Комната с балконом — 106"
-        },
-        {
-          "resource_id": 107,
-          "anchor": [
-            256,
             0
           ],
           "focus": [
-            118,
-            9
+            454,
+            1
           ],
-          "label": "35 Комната с балконом — 107"
-        },
-        {
-          "resource_id": 110,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            179,
-            72
-          ],
-          "label": "36 Комната с балконом — 110"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            153,
-            54
-          ],
-          "label": "37 Комната с балконом — 112"
-        },
-        {
-          "resource_id": 113,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            177,
-            277
-          ],
-          "label": "38 Комната с балконом — 113"
-        },
-        {
-          "resource_id": 114,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            292,
-            143
-          ],
-          "label": "39 Комната с балконом — 114"
-        },
-        {
-          "resource_id": 116,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            250,
-            108
-          ],
-          "label": "40 Комната с балконом — 116"
-        },
-        {
-          "resource_id": 117,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            250,
-            127
-          ],
-          "label": "41 Комната с балконом — 117"
-        },
-        {
-          "resource_id": 119,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            255,
-            115
-          ],
-          "label": "42 Комната с балконом — 119"
+          "label": "19 Карниз гостиницы — 76"
         }
       ],
       "largest_resources": [
@@ -14289,10 +14523,11 @@
         6,
         8,
         9,
-        10
+        10,
+        11
       ],
-      "animations": 856,
-      "frames": 10246,
+      "animations": 932,
+      "frames": 11402,
       "backgrounds": {
         "scenes/02.bar": [
           640,
@@ -14389,13 +14624,25 @@
           417,
           640,
           417
+        ],
+        "scenes/11.bar": [
+          640,
+          63,
+          640,
+          63
+        ],
+        "scenes/11.p8": [
+          640,
+          417,
+          640,
+          417
         ]
       },
       "path": "dist/Pilots-240x320.jar",
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.14.1",
+        "MIDlet-Version": "0.15.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -14404,27 +14651,27 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "a0dcf3104e799dfe7ad5f236e8eeef8260d44dc6d8f48e45ef4cd25eaeefbf78",
-      "jar_bytes": 9954734,
-      "entry_count": 1257,
-      "uncompressed_bytes": 62858676,
+      "sha256": "3290b2f51c79a85090dea4ea664cf1b09da37b00438b6b497267d011a0ba3190",
+      "jar_bytes": 10817570,
+      "entry_count": 1362,
+      "uncompressed_bytes": 68816650,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 856,
-        ".bar": 8,
+        ".anm": 932,
+        ".bar": 9,
         ".bin": 1,
         ".class": 59,
-        ".events": 8,
+        ".events": 9,
         ".hot": 3,
-        ".mid": 9,
-        ".p8": 8,
+        ".mid": 10,
+        ".p8": 9,
         ".rules": 1,
         ".subtitles": 1,
-        ".vm": 6,
+        ".vm": 7,
         ".walk": 1,
-        ".wav": 293
+        ".wav": 317
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -14516,7 +14763,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "20db148bace34f784fa17e127181d06b3d80dc8d519403cbab0a7947826bbc67"
+          "sha256": "0ef276224833bc64ec133a9e201301a9fb0ab019cd0c7b1f5c8ed6df06d483d4"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -14662,7 +14909,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "b31b88aa7252ca1e602610fe0e66c6b76751580f928b43459631b1423f7c0c70"
+          "sha256": "fb9f8030d9732dba65071e12df20484989a03f5d0bd929a0caea327aa3061496"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -14748,7 +14995,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "abb3ad9b35c6e4ac58e5b34247452325d65258dc7efcfae04f6730d33fe31323"
+          "sha256": "86272b2fa22c966bb68cabb2593167447a6f6bd7498f00ec2fd440786eaa9b77"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -14789,7 +15036,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d1b58a1cdff7f5c10da9b8dbc5640c1dfae466aa4adcf49447bfae1a2459c6a1"
+          "sha256": "4a1496929ec9ec5f3a93c5ff90653719e7f6c141aeafb844de20e2ee5e210b6d"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -14983,7 +15230,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ee1b72477f5cde168422db8ac961d3d1cd1762ccced0d79bd46fbb12337c824f"
+          "sha256": "fcb954d917762059dd3c72f263a67853bd5c77ad0cab93fdc731eaddfd9d0dd3"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -15006,7 +15253,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "cfa390d471eb7d5f5f0b6221e4d89484bfec164433ef18a65c8b3c077c00f0a7"
+          "sha256": "00be635bc3ec3a58409b05e874b32a250f9efddb6358a3d4099fbaf99f1a7a35"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -15056,7 +15303,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "fdd1e1aad39266c135c5fbb3f534f35d3a3e11e5d7126043e7c51869561f1da9"
+          "sha256": "ec120a92a6085e65816af51a37b5a46bff940a993ced35e1633d75847b871e92"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -15207,7 +15454,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "78f23be8b5ae1e7df6d0eb50ae10e629c672622913ef2b70575da6140aa69cc4"
+          "sha256": "e748bebf2647974db7a027b1ffa28edeb09477ea8e369139d96cd3e548b78700"
         },
         "pilots/ZooScene.class": {
           "minor": 3,
@@ -19557,513 +19804,617 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 24030
+        },
+        "scenes/11-20000.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 198
+        },
+        "scenes/11-20001.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 216
+        },
+        "scenes/11-20002.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 272
+        },
+        "scenes/11-20003.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 1024
+        },
+        "scenes/11-20004.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-20005.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20006.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-20007.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20008.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-20009.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20010.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 16170
+        },
+        "scenes/11-20011.anm": {
+          "count": 26,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 17097
+        },
+        "scenes/11-20012.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/11-20013.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4599
+        },
+        "scenes/11-20014.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/11-20015.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4275
+        },
+        "scenes/11-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/11-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/11-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/11-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/11-20020.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/11-20021.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6084
+        },
+        "scenes/11-20022.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/11-20023.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5494
+        },
+        "scenes/11-20024.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5040
+        },
+        "scenes/11-20025.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5103
+        },
+        "scenes/11-20026.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5775
+        },
+        "scenes/11-20027.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5624
+        },
+        "scenes/11-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/11-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/11-20030.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/11-20031.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5106
+        },
+        "scenes/11-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/11-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/11-20034.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4662
+        },
+        "scenes/11-20035.anm": {
+          "count": 53,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8118
+        },
+        "scenes/11-20036.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/11-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
+        "scenes/11-20040.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/11-20041.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4032
+        },
+        "scenes/11-20042.anm": {
+          "count": 34,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7326
+        },
+        "scenes/11-20043.anm": {
+          "count": 32,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10296
+        },
+        "scenes/11-20044.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-20045.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-46.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 408
+        },
+        "scenes/11-47.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3245
+        },
+        "scenes/11-48.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2430
+        },
+        "scenes/11-49.anm": {
+          "count": 54,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6972
+        },
+        "scenes/11-50.anm": {
+          "count": 50,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 13936
+        },
+        "scenes/11-51.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 24960
+        },
+        "scenes/11-52.anm": {
+          "count": 98,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 47424
+        },
+        "scenes/11-53.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 42939
+        },
+        "scenes/11-54.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10816
+        },
+        "scenes/11-55.anm": {
+          "count": 7,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10816
+        },
+        "scenes/11-56.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10816
+        },
+        "scenes/11-57.anm": {
+          "count": 100,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8000
+        },
+        "scenes/11-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8322
+        },
+        "scenes/11-59.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3234
+        },
+        "scenes/11-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5781
+        },
+        "scenes/11-61.anm": {
+          "count": 71,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 47310
+        },
+        "scenes/11-62.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7125
+        },
+        "scenes/11-63.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 279
+        },
+        "scenes/11-64.anm": {
+          "count": 46,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6816
+        },
+        "scenes/11-65.anm": {
+          "count": 9,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6110
+        },
+        "scenes/11-66.anm": {
+          "count": 10,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 28792
+        },
+        "scenes/11-67.anm": {
+          "count": 17,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 33840
+        },
+        "scenes/11-68.anm": {
+          "count": 8,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5304
+        },
+        "scenes/11-69.anm": {
+          "count": 11,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6786
+        },
+        "scenes/11-70.anm": {
+          "count": 45,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 10962
+        },
+        "scenes/11-71.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 11520
+        },
+        "scenes/11-72.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4331
+        },
+        "scenes/11-73.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6888
+        },
+        "scenes/11-74.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5402
+        },
+        "scenes/11-75.anm": {
+          "count": 33,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 8585
+        },
+        "scenes/11-76.anm": {
+          "count": 66,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 69216
+        },
+        "scenes/11-77.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 970
         }
       },
-      "preview_scene": 10,
+      "preview_scene": 11,
       "preview_catalog": [
         {
-          "resource_id": 54,
+          "resource_id": 49,
           "anchor": [
             384,
-            400
+            320
           ],
           "focus": [
-            479,
-            315
+            416,
+            305
           ],
-          "label": "01 Комната с балконом — 54"
+          "label": "01 Карниз гостиницы — 49"
+        },
+        {
+          "resource_id": 50,
+          "anchor": [
+            512,
+            320
+          ],
+          "focus": [
+            544,
+            299
+          ],
+          "label": "02 Карниз гостиницы — 50"
+        },
+        {
+          "resource_id": 52,
+          "anchor": [
+            320,
+            0
+          ],
+          "focus": [
+            266,
+            104
+          ],
+          "label": "03 Карниз гостиницы — 52"
+        },
+        {
+          "resource_id": 53,
+          "anchor": [
+            320,
+            0
+          ],
+          "focus": [
+            266,
+            104
+          ],
+          "label": "04 Карниз гостиницы — 53"
         },
         {
           "resource_id": 55,
           "anchor": [
-            64,
-            192
+            384,
+            0
           ],
           "focus": [
-            93,
-            175
+            370,
+            208
           ],
-          "label": "02 Комната с балконом — 55"
+          "label": "05 Карниз гостиницы — 55"
         },
         {
           "resource_id": 56,
           "anchor": [
-            64,
-            192
+            384,
+            0
           ],
           "focus": [
-            94,
-            163
-          ],
-          "label": "03 Комната с балконом — 56"
-        },
-        {
-          "resource_id": 58,
-          "anchor": [
-            64,
+            373,
             208
           ],
-          "focus": [
-            92,
-            185
+          "label": "06 Карниз гостиницы — 56"
+        },
+        {
+          "resource_id": 57,
+          "anchor": [
+            128,
+            224
           ],
-          "label": "04 Комната с балконом — 58"
+          "focus": [
+            172,
+            285
+          ],
+          "label": "07 Карниз гостиницы — 57"
+        },
+        {
+          "resource_id": 61,
+          "anchor": [
+            512,
+            320
+          ],
+          "focus": [
+            563,
+            218
+          ],
+          "label": "08 Карниз гостиницы — 61"
         },
         {
           "resource_id": 62,
           "anchor": [
-            64,
-            208
+            512,
+            320
           ],
           "focus": [
-            93,
-            186
+            547,
+            299
           ],
-          "label": "05 Комната с балконом — 62"
-        },
-        {
-          "resource_id": 63,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            97,
-            175
-          ],
-          "label": "06 Комната с балконом — 63"
+          "label": "09 Карниз гостиницы — 62"
         },
         {
           "resource_id": 64,
           "anchor": [
-            64,
-            208
+            512,
+            320
           ],
           "focus": [
-            96,
-            186
+            543,
+            299
           ],
-          "label": "07 Комната с балконом — 64"
+          "label": "10 Карниз гостиницы — 64"
         },
         {
           "resource_id": 65,
           "anchor": [
-            64,
-            208
+            384,
+            320
           ],
           "focus": [
-            96,
-            186
+            420,
+            304
           ],
-          "label": "08 Комната с балконом — 65"
+          "label": "11 Карниз гостиницы — 65"
         },
         {
           "resource_id": 66,
           "anchor": [
-            64,
-            208
+            384,
+            320
           ],
           "focus": [
-            96,
-            186
+            428,
+            218
           ],
-          "label": "09 Комната с балконом — 66"
+          "label": "12 Карниз гостиницы — 66"
         },
         {
           "resource_id": 67,
           "anchor": [
-            64,
-            208
+            384,
+            320
           ],
           "focus": [
-            96,
-            186
+            430,
+            219
           ],
-          "label": "10 Комната с балконом — 67"
+          "label": "13 Карниз гостиницы — 67"
         },
         {
           "resource_id": 68,
           "anchor": [
-            64,
-            192
+            384,
+            320
           ],
           "focus": [
-            75,
-            175
+            409,
+            300
           ],
-          "label": "11 Комната с балконом — 68"
+          "label": "14 Карниз гостиницы — 68"
+        },
+        {
+          "resource_id": 69,
+          "anchor": [
+            512,
+            320
+          ],
+          "focus": [
+            531,
+            294
+          ],
+          "label": "15 Карниз гостиницы — 69"
+        },
+        {
+          "resource_id": 70,
+          "anchor": [
+            0,
+            240
+          ],
+          "focus": [
+            272,
+            371
+          ],
+          "label": "16 Карниз гостиницы — 70"
         },
         {
           "resource_id": 73,
           "anchor": [
-            64,
-            192
+            384,
+            320
           ],
           "focus": [
-            98,
-            178
+            350,
+            312
           ],
-          "label": "12 Комната с балконом — 73"
-        },
-        {
-          "resource_id": 74,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            105,
-            180
-          ],
-          "label": "13 Комната с балконом — 74"
+          "label": "17 Карниз гостиницы — 73"
         },
         {
           "resource_id": 75,
           "anchor": [
-            64,
-            192
+            512,
+            320
           ],
           "focus": [
-            95,
-            175
+            476,
+            295
           ],
-          "label": "14 Комната с балконом — 75"
+          "label": "18 Карниз гостиницы — 75"
         },
         {
-          "resource_id": 78,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            99,
-            186
-          ],
-          "label": "15 Комната с балконом — 78"
-        },
-        {
-          "resource_id": 79,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            85,
-            195
-          ],
-          "label": "16 Комната с балконом — 79"
-        },
-        {
-          "resource_id": 80,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            96,
-            175
-          ],
-          "label": "17 Комната с балконом — 80"
-        },
-        {
-          "resource_id": 81,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            87,
-            183
-          ],
-          "label": "18 Комната с балконом — 81"
-        },
-        {
-          "resource_id": 83,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "19 Комната с балконом — 83"
-        },
-        {
-          "resource_id": 84,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "20 Комната с балконом — 84"
-        },
-        {
-          "resource_id": 85,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "21 Комната с балконом — 85"
-        },
-        {
-          "resource_id": 86,
-          "anchor": [
-            192,
-            80
-          ],
-          "focus": [
-            201,
-            120
-          ],
-          "label": "22 Комната с балконом — 86"
-        },
-        {
-          "resource_id": 91,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            88,
-            178
-          ],
-          "label": "23 Комната с балконом — 91"
-        },
-        {
-          "resource_id": 92,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            95,
-            186
-          ],
-          "label": "24 Комната с балконом — 92"
-        },
-        {
-          "resource_id": 93,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            99,
-            184
-          ],
-          "label": "25 Комната с балконом — 93"
-        },
-        {
-          "resource_id": 94,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            93,
-            186
-          ],
-          "label": "26 Комната с балконом — 94"
-        },
-        {
-          "resource_id": 95,
-          "anchor": [
-            64,
-            192
-          ],
-          "focus": [
-            96,
-            174
-          ],
-          "label": "27 Комната с балконом — 95"
-        },
-        {
-          "resource_id": 96,
+          "resource_id": 76,
           "anchor": [
             576,
-            400
-          ],
-          "focus": [
-            548,
-            327
-          ],
-          "label": "28 Комната с балконом — 96"
-        },
-        {
-          "resource_id": 98,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            220,
-            131
-          ],
-          "label": "29 Комната с балконом — 98"
-        },
-        {
-          "resource_id": 100,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            114,
-            184
-          ],
-          "label": "30 Комната с балконом — 100"
-        },
-        {
-          "resource_id": 102,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            128,
-            150
-          ],
-          "label": "31 Комната с балконом — 102"
-        },
-        {
-          "resource_id": 104,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            177,
-            275
-          ],
-          "label": "32 Комната с балконом — 104"
-        },
-        {
-          "resource_id": 105,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            90,
-            189
-          ],
-          "label": "33 Комната с балконом — 105"
-        },
-        {
-          "resource_id": 106,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            85,
-            114
-          ],
-          "label": "34 Комната с балконом — 106"
-        },
-        {
-          "resource_id": 107,
-          "anchor": [
-            256,
             0
           ],
           "focus": [
-            118,
-            9
+            454,
+            1
           ],
-          "label": "35 Комната с балконом — 107"
-        },
-        {
-          "resource_id": 110,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            179,
-            72
-          ],
-          "label": "36 Комната с балконом — 110"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            153,
-            54
-          ],
-          "label": "37 Комната с балконом — 112"
-        },
-        {
-          "resource_id": 113,
-          "anchor": [
-            64,
-            208
-          ],
-          "focus": [
-            177,
-            277
-          ],
-          "label": "38 Комната с балконом — 113"
-        },
-        {
-          "resource_id": 114,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            292,
-            143
-          ],
-          "label": "39 Комната с балконом — 114"
-        },
-        {
-          "resource_id": 116,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            250,
-            108
-          ],
-          "label": "40 Комната с балконом — 116"
-        },
-        {
-          "resource_id": 117,
-          "anchor": [
-            256,
-            80
-          ],
-          "focus": [
-            250,
-            127
-          ],
-          "label": "41 Комната с балконом — 117"
-        },
-        {
-          "resource_id": 119,
-          "anchor": [
-            256,
-            0
-          ],
-          "focus": [
-            255,
-            115
-          ],
-          "label": "42 Комната с балконом — 119"
+          "label": "19 Карниз гостиницы — 76"
         }
       ],
       "largest_resources": [
