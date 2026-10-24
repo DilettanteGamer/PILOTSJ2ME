@@ -2771,7 +2771,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.19.2",
+        "MIDlet-Version": "0.19.3",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2780,10 +2780,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "068589b403dfcba89162447cf7f69fe120f1ecb06391e50b89fee43b9b5aef4d",
-      "jar_bytes": 14613251,
+      "sha256": "542b6e61f1d075763d81688b4da572f9a561291d3345453e092807c772c02ce5",
+      "jar_bytes": 14613356,
       "entry_count": 1901,
-      "uncompressed_bytes": 99335520,
+      "uncompressed_bytes": 99335741,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -2971,7 +2971,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "87fbd61cd83f64d0ddea11d4428d4f7157286be7cf3a3a87f657f35d2ea086d3"
+          "sha256": "cf1a9aa6d6b46343346c0a846467df3cbd5ea4b4482f8c5ea6e5cb8bcff85e8f"
         },
         "pilots/BasementStage.class": {
           "minor": 3,
@@ -11090,7 +11090,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.19.2",
+        "MIDlet-Version": "0.19.3",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -11099,10 +11099,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "69be21d2b43502de5e2552e3e330dedb27498fefc5ef48922bf8f6a648689f7b",
-      "jar_bytes": 14613252,
+      "sha256": "34f402b7bbe5e64b212b8653b1ac62221c8f461e5a2a57b3de190a48ca7a7c03",
+      "jar_bytes": 14613357,
       "entry_count": 1901,
-      "uncompressed_bytes": 99335520,
+      "uncompressed_bytes": 99335741,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -11290,7 +11290,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "87fbd61cd83f64d0ddea11d4428d4f7157286be7cf3a3a87f657f35d2ea086d3"
+          "sha256": "cf1a9aa6d6b46343346c0a846467df3cbd5ea4b4482f8c5ea6e5cb8bcff85e8f"
         },
         "pilots/BasementStage.class": {
           "minor": 3,
@@ -19409,7 +19409,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.19.2",
+        "MIDlet-Version": "0.19.3",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -19418,10 +19418,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "f376b5be91164037652e90d304eed455bd03811c662b9c0b18842bdc4f67849a",
-      "jar_bytes": 15422957,
+      "sha256": "5ba837c460e7afcdf5493e97615c3aa0e550c600df7bd59c56a04e2c1755ca7f",
+      "jar_bytes": 15423062,
       "entry_count": 1901,
-      "uncompressed_bytes": 101739361,
+      "uncompressed_bytes": 101739582,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -19609,7 +19609,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "87fbd61cd83f64d0ddea11d4428d4f7157286be7cf3a3a87f657f35d2ea086d3"
+          "sha256": "cf1a9aa6d6b46343346c0a846467df3cbd5ea4b4482f8c5ea6e5cb8bcff85e8f"
         },
         "pilots/BasementStage.class": {
           "minor": 3,

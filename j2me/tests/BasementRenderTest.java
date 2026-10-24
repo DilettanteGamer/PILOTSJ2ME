@@ -53,6 +53,14 @@ public final class BasementRenderTest {
     contacts(stage);
     int attempts=w.basement.throwsCount();move(w,6);move(w,4);check(w.basement.throwsCount()==attempts&&w.basement.fallingColumn()<0,"safe walking threw a crate");check(w.basement.input(5),"safe gun fire");
     for(int f=0;f<BasementGame.SHOT_TICKS;f++){if(f==0||f==7||f==13)capture(stage,width,height,args[2]+"-shot-"+f+".png");w.basement.tick();}
+    move(w,6);check(w.basement.input(2),"enter danger line");steps(w,4);
+    check(w.basement.input(4),"jump onto crate");steps(w,4);
+    int idleLimit=40;while(w.basement.fallingColumn()>=0&&idleLimit-->0)steps(w,1);check(idleLimit>0,"initial throw did not land");
+    steps(w,1);int oldColumn=w.basement.column();
+    check(w.basement.height()>0&&w.basement.fallingColumn()==oldColumn,"standing on crate did not attract aim");
+    check(w.basement.input(6),"jump away from target");steps(w,2);
+    check(w.basement.column()==oldColumn+1&&w.basement.fallingColumn()==oldColumn,"warning follows jump destination");
+    capture(stage,width,height,args[2]+"-target-escape.png");check(w.basement.input(8),"safe retreat");steps(w,4);
     BasementTestRoute.stairs(driver(w));capture(stage,width,height,args[2]+"-stairs.png");
     check(w.basement.input(2),"enter box plane");steps(w,4);
     for(int n=0;n<3;n++){check(w.basement.input(4),"auto jump");steps(w,2);capture(stage,width,height,args[2]+"-jump-"+n+".png");steps(w,2);}
