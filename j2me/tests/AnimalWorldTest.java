@@ -70,7 +70,7 @@ public final class AnimalWorldTest {
         }
         for(int turns=0;turns<4;turns++) fountain(turns,false);
         fountain(0,true);fountain(2,true);
-        AnimationCatalog catalog=new AnimationCatalog();check(catalog.scene==13 && catalog.ids.length==40,"new preview list");
+        AnimationCatalog catalog=new AnimationCatalog();check(catalog.scene==15 && catalog.ids.length==35,"new preview list");
         check(AnimalWorldTest.class.getResourceAsStream("/scenes/02.animations")==null && AnimalWorldTest.class.getResourceAsStream("/scenes/03.animations")==null,"old preview lists survived");
         check(actions.containsAll(Arrays.asList(51,59,62,65,66,68,71,72,73,74,75,76,78,79,57)),"Missing source action coverage "+actions);
         System.out.println("AnimalWorld: full quest, four fountain states, blocked landings, source action coverage "+actions+", save/resume and third-only previews passed");

@@ -36,7 +36,7 @@ public final class SwitchboardWorldTest {
   act(0,0,51);check(world.hasItem(1),"extinguisher pickup");act(0,1,52);watchLift=true;act(0,0,52);watchLift=false;
   check(summons==1&&descentFrames==60,"expected one summon and 60 original descent frames");
   check(world.completed&&world.g(0x1e1bcc)==1&&world.g(0x1e1bd0)==1,"source elevator exit requires both brothers");
-  check(SceneFlow.next(12,true)==13&&SceneFlow.next(13,true)==13,"switchboard scene boundaries");
+  check(SceneFlow.next(12,true)==13&&SceneFlow.next(13,true)==15,"switchboard scene boundaries");
   for(int i=0;i<args.length;i++) {
    GameState old=GameState.decode(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(args[i])),14);
    world=new HotelWorld(old);replay=copy(world);HotelWorld.Thing lift=world.cells[257];

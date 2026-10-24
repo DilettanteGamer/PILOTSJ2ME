@@ -7,6 +7,7 @@ public final class HotelScene extends ZooScene {
     public final HotelLogic animals;
     private final int[] order=new int[310];
     private long elapsed;
+    private int hitSlot=-1;
     private final RefrigeratorPuzzle handles;
     public HotelScene(Scene scene,GameState state) throws IOException {
         super(scene,state,new HotelLogic(state),false);animals=(HotelLogic)logic;
@@ -20,14 +21,15 @@ public final class HotelScene extends ZooScene {
             if(t==null || !t.active || t.clip<0 || t.y>=417 || hiddenGrid(t.id)) {
                 if(actor!=null) { actor.close();scene.actors[i]=null; }continue;
             }
+            int frame=animals.world.scene==15 && t.clip==80?(t.direction==1?0:t.direction==5?2:t.direction==7?3:1):t.frame;
             int id=t.clip<46?20000+t.clip:t.clip;
-            if(actor==null || actor.id!=id || actor.clip.index>t.frame) {
+            if(actor==null || actor.id!=id || actor.clip.index>frame) {
                 AnimatedActor next=new AnimatedActor(id,"/scenes/"+(animals.world.scene<10?"0":"")+animals.world.scene+"-"+id+".anm",t.x,t.y);
                 if(actor!=null) actor.close();scene.actors[i]=actor=next;
             }
-            while(actor.clip.index<Math.min(t.frame,actor.clip.count-1)) actor.clip.advance();
+            while(actor.clip.index<Math.min(frame,actor.clip.count-1)) actor.clip.advance();
             actor.x=t.x;actor.y=t.y;
-            if(i>=300 && i<302 && t.clip>=20 && t.clip<=33 && !t.finished) {
+            if((i>=300 && i<302 || animals.world.scene==15 && t.waitTicks>0) && t.clip>=20 && t.clip<=33 && !t.finished) {
                 int progress=t.frame+1;
                 actor.x=t.fromX+(t.x-t.fromX)*progress/5;actor.y=t.fromY+(t.y-t.fromY)*progress/5;
             }
@@ -88,11 +90,11 @@ public final class HotelScene extends ZooScene {
     }
     private boolean interactive(int id) { return id==(animals.world.scene>=10?11:13) || id==12 || animals.world.interactive(id); }
     private int target(int x,int y) {
-        int hit=-1,best=999;
+        int hit=-1,best=999;hitSlot=-1;
         for(int i=0;i<302;i++) {
             HotelWorld.Thing t=thing(i);AnimatedActor actor=scene.actors[i];
             if(t!=null && actor!=null && actor.clip.contains(x-actor.x,y-actor.y) && paintDepth(i)<=best) {
-                hit=interactive(t.id) && (animals.world.scene!=9 || t.id!=34 || animals.world.keyAvailable())?t.id:-1;best=paintDepth(i);
+                hitSlot=i;hit=interactive(t.id) && (animals.world.scene!=9 || t.id!=34 || animals.world.keyAvailable())?t.id:-1;best=paintDepth(i);
             }
         }
         if(animals.world.fridgePanelVisible() && x>=434 && x<500 && y>=195 && y<261 && (50<best || 50==best && hit!=12 && hit!=13))hit=101;
@@ -104,6 +106,7 @@ public final class HotelScene extends ZooScene {
         // A cursor left on the cistern must not label the movie as a hero.
         if(animals.world.scene==12 && (animals.world.action()==95 || animals.world.action()==96))return null;
         int id=target(x,y);
+        if(animals.world.scene==15)return id==14?(animals.world.hasItem(1)?"Ящик без автомата":"Ящик с автоматом"):id==24?"Ящик":id==31?"Электричество":id==33?"Автомат":id==15||id==12||id==13?"Коллега":id>=16&&id<=20?"Шеф":null;
         if(animals.world.scene==13)return id==12?"Шеф":id==11?"Коллега":id==15||id==51?"Огнетушитель":id==48?"Щит":id>=16&&id<=42?"Провода":id==52?"Лифт":null;
         if(animals.world.scene==12)return id==12?"Шеф":id==11?"Коллега":id==15?"Ручка":id==16?"Выход":id==17||id==24?"Мыло":id==18?"Кран":id==19?"Рулон":id==20?"Шнурок":id==21||id==22||id==23||id==25?"Вантуз":id==26?"Унитаз":id==28?"Кот":id==31?"Умывальник":null;
         if(animals.world.scene==11)return id==12?"Шеф":id==11?"Коллега":id==15||id==16||id==17?"Окно":id==18?"Трос":id==19||id==20?"Осколок":null;
@@ -112,7 +115,7 @@ public final class HotelScene extends ZooScene {
     }
     public boolean request(int x,int y) throws IOException {
         if(animals.world.busy()) return false;
-        int id=target(x,y);boolean result=id>=0?animals.world.interact(id):animals.world.move(x,y);refresh();return result;
+        int id=target(x,y);if(animals.world.scene==15)return animals.world.requestBasement(id>=0&&hitSlot>=0?thing(hitSlot):null,x,y);boolean result=id>=0?animals.world.interact(id):animals.world.move(x,y);refresh();return result;
     }
     public boolean activate(int x,int y) throws IOException { return request(x,y); }
     public boolean update(long delta) throws IOException {

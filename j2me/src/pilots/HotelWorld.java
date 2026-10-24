@@ -2,13 +2,14 @@ package pilots;
 
 import java.io.*;
 
-/** Sections 10/11/12/13/14 VM. Original object rules and map predicates are packaged unchanged. */
+/** Sections 10–15/17 VM. Original object rules and map predicates are packaged unchanged. */
 public final class HotelWorld {
     public static final class Definition {
         int type,layer;byte[] init,exit;byte[][][] rules;
     }
     public static final class Thing {
         public int id,x,y,clip=-1,frame,layer,under=254,serial,fallback=-1,fromX,fromY;
+        int mode=16,underMode=240,waitTicks,direction;
         boolean active=true;
         boolean finished;
         int[] local=new int[8];
@@ -28,6 +29,8 @@ public final class HotelWorld {
     private SoundSink sound;
     private final int[] initialCues=new int[16];private int initialCueCount;
     private final int[] boardGlobals=new int[32];
+    private int clickX,clickY,clickSerial=-1,clickMap=254;
+    private boolean clickPending,clickActive;
     private int serial,clicked=-1,continuing,captionTicks;
     private String caption;
     public int walkHero=-1,walkX,walkY,walkEntity=-1,walkRestore=-1;
@@ -156,20 +159,27 @@ public final class HotelWorld {
         if((scene==10 || scene==12) && offset>=0x1e1b54 && offset<=0x1e1b64)return 54+(offset-0x1e1b54)/4;
         return offset==0x1e1b54?60:offset/4;
     }
-    int g(int offset) { return scene==13 && offset>=0x1e1b54 && offset<=0x1e1bd0?boardGlobals[(offset-0x1e1b54)/4]:state.variables[variableIndex(offset)]; }
-    void g(int offset,int value) { if(scene==13 && offset>=0x1e1b54 && offset<=0x1e1bd0)boardGlobals[(offset-0x1e1b54)/4]=value;else state.variables[variableIndex(offset)]=value; }
-    private int heroIndex(int id) { return scene>=10?(id==12?0:id==11?1:-1):scene==9 && (id==12 || id==13)?(id==13?0:1):-1; }
-    public int hero() { return g(0x18)==1?1:0; }
+    int g(int offset) { return (scene==13 || scene==15) && offset>=0x1e1b54 && offset<=0x1e1bd0?boardGlobals[(offset-0x1e1b54)/4]:state.variables[variableIndex(offset)]; }
+    void g(int offset,int value) {
+        // An incidental laugh must not consume the exact first ladder-climb tick.
+        if(scene==15 && offset==0x1e1bb0 && value==5 && g(offset)!=5) {
+            boardGlobals[(0x1e1b84-0x1e1b54)/4]=0;
+            Thing partner=find(15);
+            if(partner!=null && partner.clip==11) { partner.clip=16;partner.frame=0;partner.finished=false;partner.fallback=-1; }
+        }
+        if((scene==13 || scene==15) && offset>=0x1e1b54 && offset<=0x1e1bd0)boardGlobals[(offset-0x1e1b54)/4]=value;else state.variables[variableIndex(offset)]=value; }
+    private int heroIndex(int id) { if(scene==15)return -1;return scene>=10?(id==12?0:id==11?1:-1):scene==9 && (id==12 || id==13)?(id==13?0:1):-1; }
+    public int hero() { return scene==15?(g(0x18)==1?0:1):g(0x18)==1?1:0; }
     public int action() { return g(0x20); }
     public int step() { return g(0x30); }
     private boolean nativeWalking() { for(int h=0;h<2;h++) { Thing t=heroes[h];if(t!=null && t.active && t.clip>=20 && t.clip<=33 && !t.finished)return true; }return false; }
-    public boolean busy() { return !completed && (scene==8 || scene==13 && g(0x88)!=0 && (find(6)!=null || find(7)!=null) || scene==12 && g(0x1e1b60)==1 || action()!=0 || walkHero>=0 || nativeWalking()); }
+    public boolean busy() { if(scene==15)return !completed&&g(0x88)==1;return !completed && (scene==8 || scene==13 && g(0x88)!=0 && (find(6)!=null || find(7)!=null) || scene==12 && g(0x1e1b60)==1 || action()!=0 || walkHero>=0 || nativeWalking()); }
     public void sound(SoundSink value) { sound=value;if(value instanceof MusicSink && scene==9 && (completed || action()==87 || action()==84 && step()>=10))((MusicSink)value).music(2);if(value!=null) { for(int i=0;i<initialCueCount;i++) value.play(initialCues[i]);initialCueCount=0; } }
     public void cue(int cue) {
         if(sound!=null) sound.play(cue);else if(initialCueCount<initialCues.length) initialCues[initialCueCount++]=cue;
         if(cue==6 || cue==7) { caption=cue==6?"Шеф: Ничего не понимаю.":"Коллега: Ничего не понимаю.";captionTicks=35; }
     }
-    public String caption() { return captionTicks>0?caption:completed?(scene==13?"Электрощитовая пройдена":scene==12?"Ванная комната пройдена":scene==11?"Карниз гостиницы пройден":scene==10?"Комната с балконом пройдена":"Гостиница пройдена"):null; }
+    public String caption() { return captionTicks>0?caption:completed?(scene==15?"Подвал пройден":scene==13?"Электрощитовая пройдена":scene==12?"Ванная комната пройдена":scene==11?"Карниз гостиницы пройден":scene==10?"Комната с балконом пройдена":"Гостиница пройдена"):null; }
     private Thing find(int id) {
         if(heroIndex(id)>=0) { int h=heroIndex(id);return heroes[h]!=null && heroes[h].active?heroes[h]:null; }
         for(int i=0;i<cells.length;i++) if(cells[i]!=null && cells[i].id==id) return cells[i];
@@ -198,7 +208,7 @@ public final class HotelWorld {
         Thing t=cells[y*10+x];if(t==null) return;
         cells[y*10+x]=null;
         Definition d=definitions[t.id];if(d!=null) exit(d,t);
-        if(t.under!=254) place(t.under,x,y);
+        if(t.under!=254) place(t.under,x,y,t.underMode);
     }
     /** Original exit scripts may leave an unbound sprite after deleting their map object. */
     private void exit(Definition definition,Thing owner) {
@@ -210,7 +220,8 @@ public final class HotelWorld {
             throw new IllegalStateException("Too many hotel exit sprites");
         }
     }
-    private void place(int id,int x,int y) {
+    private void place(int id,int x,int y) { place(id,x,y,16); }
+    private void place(int id,int x,int y,int mode) {
         if(x<0 || x>=10 || y<0 || y>=30) throw new IllegalStateException("Map cell outside scene");
         if(heroIndex(id)>=0) {
             int h=heroIndex(id);Thing t=heroes[h];if(t==null) { t=new Thing(id,x*64,y*16,++serial);heroes[h]=t;t.layer=definitions[id].layer;execute(definitions[id].init,t);
@@ -225,7 +236,7 @@ public final class HotelWorld {
         // stationary lift (46/180). Retain its ground, not the retired summon.
         if(scene==13 && id==46 && old!=null && old.id==58)under=old.under;
         if(old!=null && definitions[old.id]!=null) exit(definitions[old.id],old);
-        Thing t=new Thing(id,x*64,y*16,++serial);t.under=under;cells[y*10+x]=t;
+        Thing t=new Thing(id,x*64,y*16,++serial);t.under=under;t.mode=mode;t.direction=old==null?0:old.direction;t.underMode=old==null?240:old.mode;cells[y*10+x]=t;
         Definition d=definitions[id];
         if(d!=null) { t.layer=d.layer;execute(d.init,t); }
         // The bath controller creates the crocodile on step 1; its first rules
@@ -253,11 +264,19 @@ public final class HotelWorld {
                     int id=data[p]&255,bits=data[p+1]&255,x=data[p+2],y=data[p+3];p+=4;
                     if(!absolute && owner!=null) { x+=owner.x/64;y+=owner.y/16; }
                     else { x&=255;y&=255; }
+                    if(scene==15){x=(x%10+10)%10;y=(y%30+30)%30;}
                     int actual=at(x,y);
                     boolean match=(bits&1)!=0?inGroup(id,actual):id==actual;
+                    if(scene==15) {
+                        int cellMode=x<0||x>=10||y<0||y>=30?240:cells[y*10+x]==null?240:cells[y*10+x].mode;
+                        match=match && (cellMode&bits&240)!=0;
+                    }
                     if((bits&2)!=0) match=!match;
                     if(match) group=true;
                     if(!match && (bits&12)==4) return false;
+                    // Section 17 uses negative optional probes to implement a
+                    // spatial OR: the first failure skips the rest of this group.
+                    if(scene==15 && !match && (bits&12)==0){p+=(count-i-1)*4;break;}
                     if(!match && (bits&12)==8) accepted=true;
                 }
                 if(header>>>24==4 && !group) return false;
@@ -272,11 +291,19 @@ public final class HotelWorld {
         if((mask&4)!=0 && owner!=null) {
             int dx=(byte)(mask>>16),dy=(byte)(mask>>24);
             int old=owner.y/16*10+owner.x/64;
+            int nextMode=(mask>>>8)&240;
             owner.fromX=owner.x;owner.fromY=owner.y;owner.x+=dx*64;owner.y+=dy*16;
+            if(scene==15){
+                owner.x=(owner.x%640+640)%640;owner.y=(owner.y%480+480)%480;
+                if(dx<0)owner.direction=7;else if(dx>0)owner.direction=3;
+                else if(dy<0)owner.direction=owner.clip==25?7:3;else if(dy>0)owner.direction=owner.clip==23?5:1;
+            }
+            if(scene==15 && (dx!=0 || dy!=0 || owner.mode!=nextMode))owner.waitTicks=owner.clip<0?1:Math.max(1,frames[owner.clip]);
+            owner.mode=nextMode;
             if(owner==heroes[0] || owner==heroes[1]) enter(owner);
             if(owner!=heroes[0] && owner!=heroes[1] && old>=0 && old<300 && cells[old]==owner) {
-                cells[old]=null;if(owner.under!=254) place(owner.under,old%10,old/10);
-                int next=owner.y/16*10+owner.x/64;Thing ground=cells[next];owner.under=ground==null?254:ground.id;cells[next]=owner;
+                cells[old]=null;if(owner.under!=254) place(owner.under,old%10,old/10,owner.underMode);
+                int next=owner.y/16*10+owner.x/64;Thing ground=cells[next];owner.under=ground==null?254:ground.id;owner.underMode=ground==null?240:ground.mode;cells[next]=owner;
             }
         }
         if((mask&8)!=0) p+=4;
@@ -288,7 +315,8 @@ public final class HotelWorld {
                     int id=data[p]&255,bits=data[p+1]&255,x=data[p+2],y=data[p+3];p+=4;
                     if((bits&1)!=0) { byte[] candidates=choices[id];random=random*0x41c64e6d+0x3039;id=candidates[1+((random>>>16)*(candidates[0]&255)>>>16)]&255; }
                     if(!absolute && owner!=null) { x+=owner.x/64;y+=owner.y/16; }else { x&=255;y&=255; }
-                    place(id,x,y);
+                    if(scene==15){x=(x%10+10)%10;y=(y%30+30)%30;}
+                    place(id,x,y,bits&240);
                 }
                 if((header&65536)!=0) break;
             }
@@ -303,7 +331,7 @@ public final class HotelWorld {
                 int op=code[p++]&255,v;
                 switch(op) {
                 case 0:return a;
-                case 0x23:case 0x1d:a=word(code,p);p+=4;break;
+                case 0x25:case 0x23:case 0x1d:a=word(code,p);p+=4;break;
                 case 0x31:a=g(word(code,p));p+=4;break;
                 case 0x32:a=owner.local[word(code,p)/4];p+=4;break;
                 case 0x10:g(word(code,p),a);p+=4;break;
@@ -335,7 +363,7 @@ public final class HotelWorld {
                     if(v==0x24) {
                         if(top==0) throw new IllegalStateException("Missing path target");
                         int target=stack[--top];
-                        routeDirection=(context==heroes[0] || context==heroes[1]) && arg==2?passageDirection(context,target):-1;
+                        routeDirection=(scene==15 || context==heroes[0] || context==heroes[1]) && arg==2?passageDirection(context,target):-1;
                         a=routeDirection>=0?1:0;
                     } else if(v==0x18) { if(top==0) throw new IllegalStateException("Missing caption position");top--;caption=texts[arg];captionTicks=10000;a=1; }
                     else a=nativeCall(v,arg);break;
@@ -350,12 +378,12 @@ public final class HotelWorld {
         case 0:continuing=1;if(context.clip>=0 && frames[context.clip]==1) context.fallback=context.clip;return 1;
         case 1:return context.clip<0 || context.finished?1:0;
         case 3:return 0; // Hover captions are rendered independently, without executing string bytecode.
-        case 4:return clicked==context.id?1:0;
+        case 4:return scene==15?(clickActive&&clickSerial==context.serial?1:0):clicked==context.id?1:0;
         case 5:return acknowledge?1:0;
         case 9:return apply(maps[arg],context,true,true)?1:0;
         case 0x0e:
             if(scene==9 && arg==10)beginPartnerExit();
-            else if(scene==8 && arg==9 || scene==10 && arg==11 || scene==11 && arg==12 || scene==12 && arg==13 || scene==13 && arg==15) { completed=true;g(0x20,0);g(0x30,0);g(0x88,0); }
+            else if(scene==15 && arg==14 || scene==8 && arg==9 || scene==10 && arg==11 || scene==11 && arg==12 || scene==12 && arg==13 || scene==13 && arg==15) { completed=true;g(0x20,0);g(0x30,0);g(0x88,0); }
             return 1;
         case 0x10:if(sound instanceof MusicSink)((MusicSink)sound).music(arg);return 1; // MIDI lifecycle belongs to GameAudio.
         case 0x11:cue(arg);return 1;
@@ -374,8 +402,12 @@ public final class HotelWorld {
         case 0x1c:context.under=arg;return 1;
         case 0x36:random=random*0x41c64e6d+0x3039;return (random>>>16)*arg>>>16;
         case 0x1f:return 1;
-        case 0x23:return 0;
+        case 0x23:if(scene==15 && clickActive && clickMap==254){if(arg==7){int dx=clickX/64-context.x/64,dy=clickY/16-context.y/16;routeDirection=dx==0&&dy==0?-1:Math.abs(dy)>=Math.abs(dx)?(dy<0?0:4):(dx<0?6:2);}else routeDirection=passageDirection(context,-1);return routeDirection<0?0:1;}return 0;
+        case 0x22:context.local[arg/4]=context.layer;return 1;
+        case 0x2d:return context.mode&arg;
+        case 0x2b:if(scene!=15)throw new IllegalStateException("Unexpected click marker");if(clickActive)place(arg,clickX/64,clickY/16);return 1;
         case 0x2a:
+            if(scene==15){clickMap=-1;routeDirection=-1;return 1;}
             if(scene!=11 || arg!=0)throw new IllegalStateException("Unexpected walk cancellation");
             walkHero=-1;path=null;pathIndex=0;walkEntity=walkRestore=-1;return 1;
         case 0x24:return routeDirection>=0?1:0;
@@ -387,6 +419,7 @@ public final class HotelWorld {
     private boolean ledgeRecoil() { return ledgeReaction() && g(4)>=5; }
     private boolean rules(Thing t) {
         routeDirection=-1;
+        if(scene==15 && t.waitTicks>0)return false;
         if(scene==9 && t.id==34 && action()==6 && !keyAvailable()) { g(0x20,13);g(0x30,0); }
         if((t==heroes[0] || t==heroes[1]) && t.clip>=20 && t.clip<=33 && !t.finished && !ledgeRecoil()) return false;
         Definition def=definitions[t.id];if(!t.active || def==null || def.type==0) return false;
@@ -401,6 +434,7 @@ public final class HotelWorld {
         return false;
     }
     private void animate(Thing t) {
+        if(t!=null && t.waitTicks>0)t.waitTicks--;
         if(t==null || !t.active || t.clip<0 || t.finished) return;
         if(++t.frame>=frames[t.clip]) {
             if((flags[t.clip]&1)!=0) { t.finished=true;t.frame=frames[t.clip]-1;
@@ -432,6 +466,7 @@ public final class HotelWorld {
     public void tick() {
         if(completed || fridgeRequested() || boardRequested()) return;
         int previousAction=action();
+        if(scene==15){clickActive=clickPending;clickPending=false;}
         if(captionTicks>0) captionTicks--;
         g(4,g(4)+1);
         for(int i=0;i<cells.length;i++) animate(cells[i]);
@@ -462,20 +497,27 @@ public final class HotelWorld {
             g(0x20,0);g(0x30,0);g(0x88,0);idle(heroes[0]);state.variables[59]=2;
         }
         clearSinkPassage();
+        if(scene==15)clickActive=false;
         clicked=-1;acknowledge=false;
-        if(action()==0 && walkHero<0 && !(scene==13 && (find(6)!=null || find(7)!=null)) && !(scene==12 && g(0x1e1b60)==1)) g(0x88,0);
+        if(scene!=15 && action()==0 && walkHero<0 && !(scene==13 && (find(6)!=null || find(7)!=null)) && !(scene==12 && g(0x1e1b60)==1)) g(0x88,0);
         syncSave();
     }
     // Both characters are selectable in the room; the entrance is a cinematic.
     public boolean select(int hero) {
+        if(scene==15){if(hero<0||hero>1||busy()||completed)return false;g(0x18,hero==0?1:2);syncSave();return true;}
         if(fridgeRequested() || boardRequested() || busy() || completed || scene<9 || hero<0 || hero>1 || scene>=10 && (heroes[hero]==null || !heroes[hero].active)) return false;g(0x18,hero);syncSave();return true;
     }
-    public boolean hasItem(int item) { if(scene==13)return item==0 || item==1 && find(15)!=null;if(scene==12)return item==0 || item==1 && (find(22)!=null || find(23)!=null) || item==2 && find(24)!=null;if(scene==11)return item==0 || item==1 && find(20)!=null;if(scene==10)return item==0 || item==1 && find(18)!=null;return item==0 || item>=1 && item<=3 && find(item==1?56:item==2?54:55)!=null; }
-    public int item() { return g(0x1c)-2; }
+    public boolean hasItem(int item) { if(scene==15)return item==0 || item==1 && find(33)!=null;if(scene==13)return item==0 || item==1 && find(15)!=null;if(scene==12)return item==0 || item==1 && (find(22)!=null || find(23)!=null) || item==2 && find(24)!=null;if(scene==11)return item==0 || item==1 && find(20)!=null;if(scene==10)return item==0 || item==1 && find(18)!=null;return item==0 || item>=1 && item<=3 && find(item==1?56:item==2?54:55)!=null; }
+    public int item() { return scene==15?(g(0x1c)==1?1:0):g(0x1c)-2; }
     public boolean selectItem(int item) {
+        if(scene==15){if(busy()||completed||!hasItem(item))return false;g(0x1c,item==0?2:1);syncSave();return true;}
         if(fridgeRequested() || boardRequested() || busy() || completed || !hasItem(item)) return false;g(0x1c,item+2);syncSave();return true;
     }
     public boolean interact(int entity) {
+        if(scene==15) {
+            if(entity==33)return selectItem(1);if(entity==41||entity==42)return select(entity==42?0:1);if(entity==43)return selectItem(0);
+            Thing t=find(entity);return t!=null && requestBasement(t,t.x,t.y);
+        }
         if(completed || fridgeRequested() || boardRequested() || busy()) return false;
         if(scene==13 && entity==15)return selectItem(1);
         if(scene==12 && entity>=22 && entity<=24)return selectItem(entity==24?2:1);
@@ -490,7 +532,7 @@ public final class HotelWorld {
         if(scene==9 && entity==35 && hero()==0 && item()==0)state.variables[59]=1;
         g(0x88,0);clicked=entity;rules(t);clicked=-1;g(0x88,1);syncSave();return action()!=0;
     }
-    public boolean interactive(int id) { return scene==13?(id>=15 && id<=42 || id==48 || id==51 || id==52):scene==12?(id>=15 && id<=26 || id==28 || id==31):scene==11?(id>=15 && id<=20):scene==10?(id==15 || id==16 || id==17 || id==18 || id==22 || id==23 || id==24 || id>=26 && id<=34 || id==38 || id>=40 && id<=42):scene==9 && (id>=20 && id<=37); }
+    public boolean interactive(int id) { return scene==15?(id==14||id==24||id==31||id==33||id==16||id==18||id==15||id==19||id==20):scene==13?(id>=15 && id<=42 || id==48 || id==51 || id==52):scene==12?(id>=15 && id<=26 || id==28 || id==31):scene==11?(id>=15 && id<=20):scene==10?(id==15 || id==16 || id==17 || id==18 || id==22 || id==23 || id==24 || id>=26 && id<=34 || id==38 || id>=40 && id<=42):scene==9 && (id>=20 && id<=37); }
     /** Native 24(target,2), shared by the autonomous Chief and pending approaches. */
     private int passageDirection(Thing actor,int target) {
         if(actor.clip>=20 && actor.clip<=33 && !actor.finished) return -1;
@@ -502,12 +544,12 @@ public final class HotelWorld {
             for(int d=0;d<4;d++) {
                 int nx=x+STEP_X[d],ny=y+STEP_Y[d];if(nx<0||nx>=10||ny<0||ny>=26) continue;
                 int next=ny*10+nx;if(routeFirst[next]>=0) continue;
-                int id=at(nx,ny);if(id!=254 && id!=target) continue;
+                int id=at(nx,ny);if(id!=254 && id!=target && !(scene==15 && target<0 && nx*64==clickX && ny*16==clickY)) continue;
                 // Only the final authored approach may enter the wash position.
                 // Ordinary routes go around the pedestal through the front aisle.
                 if(sinkObstacle(nx*64,ny*16) && !(action()==23 && target==6 && id==6 && nx==4 && ny==20))continue;
                 routeFirst[next]=cell==start?d*2:routeFirst[cell];
-                if(id==target) return routeFirst[next];
+                if(id==target || scene==15 && target<0 && nx*64==clickX && ny*16==clickY) return routeFirst[next];
                 routeQueue[tail++]=next;
             }
         }
@@ -527,7 +569,9 @@ public final class HotelWorld {
         if(route.length==0) return false;
         g(0x24,1);walkHero=h;walkX=x;walkY=y;walkEntity=entity;walkRestore=restore;path=route;pathIndex=2;walkPhase=-1;syncSave();return true;
     }
-    public boolean move(int x,int y) { return !completed && !fridgeRequested() && !boardRequested() && !busy() && walk(hero(),Math.max(0,Math.min(576,(x+32)/64*64)),Math.max(16,Math.min(400,(y+8)/16*16)),-1,-1); }
+    public boolean move(int x,int y) {
+        if(scene==15)return requestBasement(null,x,y);
+        return !completed && !fridgeRequested() && !boardRequested() && !busy() && walk(hero(),Math.max(0,Math.min(576,(x+32)/64*64)),Math.max(16,Math.min(400,(y+8)/16*16)),-1,-1); }
     private void idle(Thing hero) {
         int pose=g(heroIndex(hero.id)==0?0x10:0x14);
         hero.clip=(heroIndex(hero.id)==0?12:16)+(pose==3?1:pose==7?2:pose==9?3:0);
@@ -566,6 +610,11 @@ public final class HotelWorld {
         }
     }
     private void interactAfterAside(int h,int entity) { g(0x18,h);interact(entity); }
+    public boolean requestBasement(Thing target,int x,int y) {
+        if(scene!=15 || busy() || completed)return false;
+        clickX=Math.max(0,Math.min(639,x))/64*64;clickY=Math.max(0,Math.min(416,y))/16*16;
+        clickSerial=target==null?-1:target.serial;clickMap=at(clickX/64,clickY/16);clickPending=true;syncSave();return true;
+    }
     private boolean sinkObstacle(int x,int y) {
         return scene==12 && x>=192 && x<=256 && y<336;
     }
@@ -616,11 +665,13 @@ public final class HotelWorld {
                 Thing t=i<300?cells[i]:i<302?heroes[i-300]:effects[i-302];out.writeBoolean(t!=null);if(t==null) continue;
                 out.writeByte(t.id);out.writeBoolean(t.active);out.writeBoolean(t.finished);out.writeShort(t.x);out.writeShort(t.y);out.writeShort(t.clip);out.writeShort(t.frame);out.writeShort(t.fallback);out.writeShort(t.fromX);out.writeShort(t.fromY);out.writeShort(t.layer);out.writeByte(t.under);out.writeInt(t.serial);
                 for(int j=0;j<t.local.length;j++) out.writeInt(t.local[j]);
+                if(scene==15){out.writeByte(t.mode);out.writeByte(t.underMode);out.writeInt(t.waitTicks);out.writeByte(t.direction);}
             }
             out.writeInt(path==null?0:path.length);
             if(path!=null) for(int i=0;i<path.length;i++) out.writeInt(path[i]);
             out.writeInt(path==null?0:pathIndex);
-            if(scene==13)for(int i=0;i<boardGlobals.length;i++)out.writeInt(boardGlobals[i]);
+            if(scene==13 || scene==15)for(int i=0;i<boardGlobals.length;i++)out.writeInt(boardGlobals[i]);
+            if(scene==15){out.writeInt(clickX);out.writeInt(clickY);out.writeInt(clickSerial);out.writeInt(clickMap);out.writeBoolean(clickPending);}
             out.close();state.location=bytes.toByteArray();
         } catch(IOException e) { throw new IllegalStateException(e.toString()); }
     }
@@ -635,12 +686,14 @@ public final class HotelWorld {
             int id=in.readUnsignedByte();boolean active=in.readBoolean(),finished=extended&&in.readBoolean();int x=in.readShort(),y=in.readShort();if(id>=128 || x<0 || x>=640 || y<0 || y>=480) throw new IOException("Invalid saved hotel object");
             Thing t=new Thing(id,x,y,0);t.active=active;t.finished=finished;t.clip=in.readShort();t.frame=in.readShort();t.fallback=in.readShort();t.fromX=in.readShort();t.fromY=in.readShort();t.layer=in.readShort();t.under=in.readUnsignedByte();t.serial=in.readInt();
             for(int j=0;j<t.local.length;j++) t.local[j]=in.readInt();
+            if(scene==15){t.mode=in.readUnsignedByte();t.underMode=in.readUnsignedByte();t.waitTicks=in.readInt();t.direction=in.readUnsignedByte();}
             if(i<300) cells[i]=t;else if(i<302) heroes[i-300]=t;else effects[i-302]=t;
         }
         int length=in.readInt();if(length<0 || length>2080 || length%2!=0) throw new IOException("Invalid saved path");
         if(length>0) { path=new int[length];for(int i=0;i<length;i++) path[i]=in.readInt(); }
         pathIndex=in.readInt();if(pathIndex<0 || pathIndex>length || pathIndex%2!=0) throw new IOException("Invalid path progress");
-        if(scene==13)for(int i=0;i<boardGlobals.length;i++)boardGlobals[i]=in.readInt();
+        if(scene==13 || scene==15)for(int i=0;i<boardGlobals.length;i++)boardGlobals[i]=in.readInt();
+        if(scene==15){clickX=in.readInt();clickY=in.readInt();clickSerial=in.readInt();clickMap=in.readInt();clickPending=in.readBoolean();}
         if(in.read()!=-1 || (scene==9 || scene==10 || scene==11 && action()!=90 || scene==12) && (heroes[0]==null || heroes[1]==null)) throw new IOException("Incomplete hotel save");
     }
 }

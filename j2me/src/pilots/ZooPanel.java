@@ -14,8 +14,8 @@ public final class ZooPanel {
         boolean animals=scene==4;
         try {
             for(int i=0;i<IDS.length;i++) {
-                int id=scene==12 && i>=6 && i<=11?(i<8?(i%2==0?52:53):(i%2==0?79:80)):scene>=10 && i>=6 && i<=11?(i%2==0?47:48):scene==9 && i>=6 && i<=11?(i<8?(i%2==0?75:78):i<10?(i%2==0?74:77):(i%2==0?76:79)):scene==6 && i>=6 && i<=11?(i%2==0?47:48):scene==5 && i>=6 && i<=11?81:animals&&i>=6&&i<=11?(i<8?62:i<10?60:64)+(i%2==0?1:0):IDS[i];
-                icons[i]=new AnimationClip((scene==13?"/scenes/13-":scene==12?"/scenes/12-":scene==11?"/scenes/11-":scene==10?"/scenes/10-":scene==9?"/scenes/09-":scene==6?"/scenes/06-":scene==5?"/scenes/05-":animals?"/scenes/04-":"/scenes/02-")+id+".anm");
+                int id=scene==15 && i>=6 && i<=11?(i%2==0?83:84):scene==12 && i>=6 && i<=11?(i<8?(i%2==0?52:53):(i%2==0?79:80)):scene>=10 && i>=6 && i<=11?(i%2==0?47:48):scene==9 && i>=6 && i<=11?(i<8?(i%2==0?75:78):i<10?(i%2==0?74:77):(i%2==0?76:79)):scene==6 && i>=6 && i<=11?(i%2==0?47:48):scene==5 && i>=6 && i<=11?81:animals&&i>=6&&i<=11?(i<8?62:i<10?60:64)+(i%2==0?1:0):IDS[i];
+                icons[i]=new AnimationClip((scene==15?"/scenes/15-":scene==13?"/scenes/13-":scene==12?"/scenes/12-":scene==11?"/scenes/11-":scene==10?"/scenes/10-":scene==9?"/scenes/09-":scene==6?"/scenes/06-":scene==5?"/scenes/05-":animals?"/scenes/04-":"/scenes/02-")+id+".anm");
             }
             if(scene==12)for(int i=0;i<4;i++)icons[13+i]=new AnimationClip("/scenes/12-"+(54+i)+".anm");
         } catch(IOException failure) { close();throw failure; }
