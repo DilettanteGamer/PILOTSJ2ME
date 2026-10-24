@@ -1,0 +1,2 @@
+# Reproducible indexed conversion of the generated basement atlas.
+Pillow==12.3.0

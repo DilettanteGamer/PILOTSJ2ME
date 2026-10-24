@@ -46,6 +46,7 @@ MenuCanvas.Host {
     private GameCanvas canvas;
     private FridgeCanvas fridge;
     private SwitchboardCanvas switchboard;
+    private BasementCanvas basement;
     private MenuCanvas menu;
     private MenuCanvas animationMenu;
     private AnimationCatalog animationCatalog;
@@ -69,7 +70,7 @@ MenuCanvas.Host {
             this.showMenu();
         }
         this.canvas.pauseAnimation(false);
-        if(this.fridge!=null || this.switchboard!=null)this.canvas.audio.active(true);
+        if(this.fridge!=null || this.switchboard!=null || this.basement!=null)this.canvas.audio.active(true);
     }
 
     protected void pauseApp() {
@@ -79,6 +80,7 @@ MenuCanvas.Host {
     }
 
     protected void destroyApp(boolean bl) {
+        if(this.basement!=null){this.basement.shutdown();this.basement=null;}
         if (this.canvas != null) {
             this.canvas.shutdown();
         }
@@ -134,6 +136,23 @@ MenuCanvas.Host {
             public void error(IOException error){PilotsMidlet.this.notice("Электрощит",error.toString());}
         });
         this.display.setCurrent(this.switchboard);
+    }
+
+    private void showBasement(final HotelWorld world)throws IOException {
+        this.basement=new BasementCanvas(world,new BasementCanvas.Host(){
+            public void back(){
+                PilotsMidlet.this.basement=null;
+                try{((HotelScene)PilotsMidlet.this.canvas.zoo).refreshState();}
+                catch(IOException error){error(error);return;}
+                PilotsMidlet.this.display.setCurrent(PilotsMidlet.this.canvas);
+            }
+            public void active(boolean active){
+                PilotsMidlet.this.canvas.audio.active(active&&!PilotsMidlet.this.canvas.appPaused);
+                synchronized(PilotsMidlet.this.canvas){PilotsMidlet.this.canvas.lastTick=0;PilotsMidlet.this.canvas.notifyAll();}
+            }
+            public void error(IOException error){PilotsMidlet.this.notice("Ящики",error.toString());}
+        });
+        this.display.setCurrent(this.basement);
     }
 
     private void showMenu() {
@@ -239,7 +258,7 @@ MenuCanvas.Host {
 
     private void help() {
         String location=this.canvas!=null && this.canvas.state.scene==15?
-            "Подвал: Коллега достаёт автомат, Шеф прыгает по ящикам. Указывайте верх ящика или место следующего прыжка; автомат выбирается в нижней строке. Следите за Карбофосом и падающими ящиками. ":this.canvas!=null && this.canvas.state.scene==13?
+            "Подвал: укажите Шефом область ящиков справа, чтобы открыть отдельный экран. 2 — к ящикам, 8 — безопасная дорожка, 4/6 — движение и автоматический прыжок, 5 — автомат только с дорожки, 0 — назад. Коллега достаёт автомат из ящика. ":this.canvas!=null && this.canvas.state.scene==13?
             "Электрощитовая: открывайте щит Коллегой, соединяйте провода Шефом. В подробном виде 2/4/6/8 выбирают участок, 5 поворачивает, 0 возвращает в комнату. ":this.canvas!=null && this.canvas.state.scene==12?
             "Ванная комната: выбирайте вантуз и мыло в нижней строке. Для действий с бачком понадобятся оба брата; состояние вантуза ограничено по времени. ":this.canvas!=null && this.canvas.state.scene==11?
             "Карниз гостиницы: проверяйте действия обоих братьев у окон и троса; предметы выбираются в нижней строке. ":this.canvas!=null && this.canvas.state.scene==10?
@@ -441,7 +460,7 @@ MenuCanvas.Host {
                     while (true) {
                         gameCanvas = this;
                         synchronized (gameCanvas) {
-                            while (!(this.stopped || this.shown && !this.appPaused)) {
+                            while (!(this.stopped || (this.shown || PilotsMidlet.this.basement!=null && PilotsMidlet.this.basement.visible()) && !this.appPaused)) {
                                 this.wait();
                             }
                             if (this.stopped) {
@@ -481,11 +500,15 @@ MenuCanvas.Host {
             if (this.scene == null) {
                 return;
             }
+            if(PilotsMidlet.this.basement!=null){PilotsMidlet.this.basement.update(l);return;}
             boolean bl = false;
             if (this.zoo != null) {
                 bl = this.zoo.update(l);
                 int next=SceneFlow.next(this.state.scene,this.zoo.logic.completed());
                 if(next!=this.state.scene) { this.startLocation(next);return; }
+                if(PilotsMidlet.this.basement==null && this.zoo instanceof HotelScene && ((HotelScene)this.zoo).animals.world.basementRequested()) {
+                    PilotsMidlet.this.showBasement(((HotelScene)this.zoo).animals.world);return;
+                }
                 if(PilotsMidlet.this.switchboard==null && this.zoo instanceof HotelScene && ((HotelScene)this.zoo).animals.world.boardRequested()) {
                     PilotsMidlet.this.showSwitchboard(((HotelScene)this.zoo).animals.world);return;
                 }

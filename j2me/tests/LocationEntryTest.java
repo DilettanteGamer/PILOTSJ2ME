@@ -35,6 +35,9 @@ public final class LocationEntryTest {
         int[] path=new int[length];for(int n=target,i=length-1;n!=from;n=previous[n])path[i--]=keys[n];for(int i=0;i<path.length;i++)canvas.input(path[i]);
         check(((Integer)get(canvas,"selected")).intValue()==target,"detail arrow selection");
     }
+    static void crateKey(BasementCanvas detail,PilotsMidlet.GameCanvas canvas,int key,int ticks)throws Exception{
+        detail.input(48+key);for(int i=0;i<ticks;i++)canvas.tick(100);
+    }
     public static void main(String[] args)throws Exception {
         PilotsMidlet app=new PilotsMidlet();PilotsMidlet.GameCanvas canvas=app.new GameCanvas();
         try {
@@ -130,6 +133,21 @@ public final class LocationEntryTest {
             for(int i=0;i<80;i++)canvas.tick(100);
             check(basement.hasItem(1),"basement inventory pickup");canvas.save();canvas.startLocation(2);canvas.load();
             check(((HotelScene)get(canvas,"zoo")).animals.world.hasItem(1),"basement gun RMS restore");
+            basement=((HotelScene)get(canvas,"zoo")).animals.world;
+            check(basement.select(0)&&((HotelScene)get(canvas,"zoo")).request(400,350),"crate zone approach");canvas.tick(100);
+            check(Display.getDisplay(app).getCurrent() instanceof BasementCanvas,"crate Canvas missing");
+            BasementCanvas crates=(BasementCanvas)Display.getDisplay(app).getCurrent();crates.showNotify();crateKey(crates,canvas,6,5);
+            int fall=basement.basement.fallingTick();check(fall>1,"detail timer is not driven by Canvas");canvas.save();
+            crates.hideNotify();canvas.tick(100);check(basement.basement.fallingTick()==fall,"hidden detail continued");
+            crates.showNotify();crates.input(48);check(Display.getDisplay(app).getCurrent()==canvas,"crate Back");
+            canvas.startLocation(2);canvas.load();canvas.tick(100);check(Display.getDisplay(app).getCurrent() instanceof BasementCanvas,"crate RMS did not reopen detail");
+            crates=(BasementCanvas)Display.getDisplay(app).getCurrent();crates.showNotify();basement=((HotelScene)get(canvas,"zoo")).animals.world;
+            check(basement.basement.fallingTick()==fall,"RMS lost falling crate");for(int i=0;i<22;i++)canvas.tick(100);crateKey(crates,canvas,4,22);
+            for(int n=0;n<4;n++){crateKey(crates,canvas,6,22);crateKey(crates,canvas,6,22);crateKey(crates,canvas,6,22);crateKey(crates,canvas,4,22);crateKey(crates,canvas,4,22);crateKey(crates,canvas,4,22);}
+            for(int c=1;c<=3;c++){crateKey(crates,canvas,6,22);for(int shots=0;shots<c;shots++)crateKey(crates,canvas,5,18);}
+            crateKey(crates,canvas,2,4);crateKey(crates,canvas,4,4);crateKey(crates,canvas,4,4);crateKey(crates,canvas,4,4);
+            check(Display.getDisplay(app).getCurrent()==canvas&&get(app,"basement")==null&&basement.basement.solved(),"crate solution did not automatically return to source room");
+            for(int i=0;i<250&&!basement.completed;i++)canvas.tick(100);check(basement.completed,"source ending after crate Canvas");
             canvas.startLocation(6);
             // Re-enter, restore a street save, and verify its actual loader.
             GameState saved=GameState.decode(((GameState)get(canvas,"state")).encode(),7);
@@ -144,6 +162,6 @@ public final class LocationEntryTest {
             catch(IOException expected) {}
             check(get(canvas,"zoo")==original,"invalid scene damaged active scene");
         } finally { canvas.shutdown(); }
-        System.out.println("LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge and switchboard Canvas controls/RMS restore/automatic return and invalid catalog ID passed");
+        System.out.println("LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge, switchboard and crate Canvas controls/timer/pause/RMS restore/automatic return and invalid catalog ID passed");
     }
 }
