@@ -1,6 +1,6 @@
 package pilots;
 
-/** Phone adaptation of the crate segment. One throw per movement, two distinct lanes. */
+/** Crate segment: acquire a standing target, then keep it locked through the jump. */
 public final class BasementGame {
     public static final int SHOT_TICKS=22;
     static final int COOKIE=0x42535031;
@@ -37,7 +37,7 @@ public final class BasementGame {
         if(data[STATUS]!=2 || solved())return false;
         if(key==5){boolean fired=fire();world.syncSave();return fired;}
         if(data[MOTION]>0 && key!=8 || data[SHOT_TICK]>0 && key==2)return false;
-        int col=column(),lane=data[LANE],height=height();
+        int col=column(),lane=data[LANE],height=height(),previous=column();boolean wasSafe=safe();
         if(key==4)col--;else if(key==6)col++;else if(key==2)lane=1;else if(key==8)lane=0;else return false;
         if(col<0 || col>=4 || col==column() && lane==data[LANE])return false;
         int next=lane==0?0:crates(col);
@@ -46,10 +46,14 @@ public final class BasementGame {
         if(col!=column())data[FACING]=col>column()?1:-1;
         data[COLUMN]=col;data[LANE]=lane;data[HEIGHT]=next;data[MOTION]=4;data[MOVED]=1;
         world.cue(3);
-        // No timer-driven barrage: a completed movement arms at most one throw.
-        if(lane==1 && data[FALL]<0 && crates(col)<4 && data[SHOT_TICK]==0){data[FALL]=col;data[FALL_TICK]=1;data[THROWS]++;}
+        // A jump cannot redirect the throw from the place Chief just occupied.
+        if(lane==1 && data[FALL]<0 && data[SHOT_TICK]==0)aim(wasSafe?col:previous);
         if(lane==0 && data[FALL]>=0 && data[FALL_TICK]<12){data[FALL]=-1;data[FALL_TICK]=0;}
         world.syncSave();return true;
+    }
+    private void aim(int column){
+        if(crates(column)>=4)return;
+        data[FALL]=column;data[FALL_TICK]=1;data[THROWS]++;
     }
     private boolean fire(){
         if(!hasGun()){say(1);return false;}
@@ -66,6 +70,9 @@ public final class BasementGame {
             int col=data[SHOT];if(data[HEIGHTS+col]>0)data[HEIGHTS+col]--;
             data[SHOT]=-1;world.cue(29);
         }
+        // Standing on the danger line also attracts the servant. The chosen
+        // column remains fixed until that throw has landed or is cancelled.
+        if(data[FALL]<0 && !safe() && data[MOTION]==0 && data[SHOT_TICK]==0)aim(column());
         if(data[FALL]>=0){
             int col=data[FALL],t=++data[FALL_TICK];
             if(t==12)world.cue(28);

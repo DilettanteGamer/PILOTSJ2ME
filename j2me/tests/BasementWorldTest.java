@@ -27,6 +27,16 @@ public final class BasementWorldTest {
   check(!world.busy()&&world.basement.throwsCount()==0,"spawning/idle started throws");
   for(HotelWorld.Thing t:world.cells)if(t!=null&&t.id==36)check(t.clip==86,"servant throws before movement");
   byte[] fresh=world.state.encode();
+  open();key(2);steps(4,true);key(6);steps(4,true);
+  check(world.basement.fallingColumn()==0,"jump redirected the first target");
+  while(world.basement.fallingColumn()>=0)steps(1,true);
+  byte[] standing=world.state.encode();
+  key(6);check(world.basement.column()==2&&world.basement.fallingColumn()==1,"new throw must target the departed column");steps(4,true);
+  check(world.basement.fallingColumn()==1,"windup retargeted to jump destination");
+  world=new HotelWorld(GameState.decode(standing,16));replay=copy(world);steps(1,true);
+  check(world.basement.column()==1&&world.basement.fallingColumn()==1,"stationary Chief was not targeted");
+  key(6);steps(4,true);check(world.basement.fallingColumn()==1,"standing target changed after escape");
+  world=new HotelWorld(GameState.decode(fresh,16));replay=copy(world);
   open();key(2);steps(22,true);check(world.basement.safe()&&world.basement.crates(0)==2,"fall hit must recover onto safe lane");steps(4,true);key(6);steps(4,true);check(world.basement.column()==1,"movement locked after hit");
   world=new HotelWorld(GameState.decode(fresh,16));replay=copy(world);
   open();steps(80,true);check(world.basement.throwsCount()==0,"opening/standing starts barrage");key(5);check(world.basement.shotTick()==0,"phantom gun");

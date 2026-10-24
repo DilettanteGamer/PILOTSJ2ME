@@ -13,9 +13,11 @@ public final class BasementTestRoute {
  public static void fire(Driver d)throws Exception{check(d.world().basement.hasGun(),"route needs gun");act(d,5,BasementGame.SHOT_TICKS);}
  private static void entry(Driver d)throws Exception{go(d,3);while(d.world().basement.crates(3)>1)fire(d);}
  private static void grow(Driver d,int column)throws Exception{
-  entry(d);act(d,2,4);for(int c=2;c>column;c--)act(d,4,4);
-  d.ticks(22-4*(3-column));check(d.world().basement.fallingColumn()<0,"previous crate still airborne");
-  act(d,4,12);act(d,8,10);
+  entry(d);act(d,2,4);for(int c=2;c>=column;c--)act(d,4,4);
+  int limit=70;while(d.world().basement.fallingColumn()!=column && limit-->0)d.ticks(1);
+  check(limit>0,"servant did not target standing Chief");
+  while(d.world().basement.fallingTick()<12)d.ticks(1);
+  act(d,8,10);
  }
  public static void stairs(Driver d)throws Exception{
   for(int c=0;c<3;c++){go(d,c);while(d.world().basement.crates(c)<2)expose(d);while(d.world().basement.crates(c)>2)fire(d);}
