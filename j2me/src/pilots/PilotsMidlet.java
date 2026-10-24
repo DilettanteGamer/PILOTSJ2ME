@@ -45,6 +45,7 @@ MenuCanvas.Host {
     private Display display;
     private GameCanvas canvas;
     private FridgeCanvas fridge;
+    private SwitchboardCanvas switchboard;
     private MenuCanvas menu;
     private MenuCanvas animationMenu;
     private AnimationCatalog animationCatalog;
@@ -68,7 +69,7 @@ MenuCanvas.Host {
             this.showMenu();
         }
         this.canvas.pauseAnimation(false);
-        if(this.fridge!=null)this.canvas.audio.active(true);
+        if(this.fridge!=null || this.switchboard!=null)this.canvas.audio.active(true);
     }
 
     protected void pauseApp() {
@@ -121,6 +122,20 @@ MenuCanvas.Host {
         this.display.setCurrent(this.fridge);
     }
 
+    private void showSwitchboard(final HotelWorld world) throws IOException {
+        this.switchboard=new SwitchboardCanvas(world,new SwitchboardCanvas.Host() {
+            public void back() {
+                PilotsMidlet.this.switchboard=null;
+                try { ((HotelScene)PilotsMidlet.this.canvas.zoo).refreshState(); }
+                catch(IOException error){error(error);return;}
+                PilotsMidlet.this.display.setCurrent(PilotsMidlet.this.canvas);
+            }
+            public void active(boolean active){PilotsMidlet.this.canvas.audio.active(active && !PilotsMidlet.this.canvas.appPaused);}
+            public void error(IOException error){PilotsMidlet.this.notice("Электрощит",error.toString());}
+        });
+        this.display.setCurrent(this.switchboard);
+    }
+
     private void showMenu() {
         if (this.menu == null) {
             this.menu = new MenuCanvas(this);
@@ -167,7 +182,7 @@ MenuCanvas.Host {
         int count=2;values[0]=-1;values[1]=0;
         for(int item=1;item<=3;item++) if(this.canvas.zoo.logic.hasItem(item)) values[count++]=item;
         String[] labels=new String[count];labels[0]="Назад";labels[1]="Без предмета";
-        for(int i=2;i<count;i++) labels[i]=this.canvas.state.scene==12?(values[i]==1?"Вантуз":"Мыло"):this.canvas.state.scene==11?"Осколок":this.canvas.state.scene==10?"Мухобойка":this.canvas.state.scene==9?(values[i]==1?"Баллончик":values[i]==2?"Ключ":"Отвёртка"):this.canvas.state.scene==6?"Штопор":this.canvas.state.scene==5?"Ключ":this.canvas.state.scene==4?(values[i]==1?"Лейка":values[i]==2?"Грабли":"Секатор"):(values[i]==1?"Чайник":values[i]==2?"Кирка":"Монета");
+        for(int i=2;i<count;i++) labels[i]=this.canvas.state.scene==13?"Огнетушитель":this.canvas.state.scene==12?(values[i]==1?"Вантуз":"Мыло"):this.canvas.state.scene==11?"Осколок":this.canvas.state.scene==10?"Мухобойка":this.canvas.state.scene==9?(values[i]==1?"Баллончик":values[i]==2?"Ключ":"Отвёртка"):this.canvas.state.scene==6?"Штопор":this.canvas.state.scene==5?"Ключ":this.canvas.state.scene==4?(values[i]==1?"Лейка":values[i]==2?"Грабли":"Секатор"):(values[i]==1?"Чайник":values[i]==2?"Кирка":"Монета");
         MenuCanvas inventory=new MenuCanvas(new MenuCanvas.Host() {
             public void choose(int choice) {
                 if(choice>0) PilotsMidlet.this.canvas.selectItem(values[choice]);
@@ -178,8 +193,8 @@ MenuCanvas.Host {
     }
 
     private void showLocations() {
-        final int[] ids={-1,2,3,4,5,6,8,9,10,11,12};
-        String[] labels={"Назад","У ворот","Двор зоопарка","Звериный двор","Сад","Улица","Гостиница: вступление","Гостиница: интерьер","Комната с балконом","Карниз гостиницы","Ванная комната"};
+        final int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13};
+        String[] labels={"Назад","У ворот","Двор зоопарка","Звериный двор","Сад","Улица","Гостиница: вступление","Гостиница: интерьер","Комната с балконом","Карниз гостиницы","Ванная комната","Электрощитовая"};
         MenuCanvas locations=new MenuCanvas(new MenuCanvas.Host() {
             public void choose(int choice) {
                 if(choice==0) { showMenu();return; }
@@ -223,7 +238,8 @@ MenuCanvas.Host {
     }
 
     private void help() {
-        String location=this.canvas!=null && this.canvas.state.scene==12?
+        String location=this.canvas!=null && this.canvas.state.scene==13?
+            "Электрощитовая: открывайте щит Коллегой, соединяйте провода Шефом. В подробном виде 2/4/6/8 выбирают участок, 5 поворачивает, 0 возвращает в комнату. ":this.canvas!=null && this.canvas.state.scene==12?
             "Ванная комната: выбирайте вантуз и мыло в нижней строке. Для действий с бачком понадобятся оба брата; состояние вантуза ограничено по времени. ":this.canvas!=null && this.canvas.state.scene==11?
             "Карниз гостиницы: проверяйте действия обоих братьев у окон и троса; предметы выбираются в нижней строке. ":this.canvas!=null && this.canvas.state.scene==10?
             "Комната с балконом: исследуйте ящики, бумагу, телевизор и шнур. Действия братьев различаются; персонаж снаружи временно недоступен. ":this.canvas!=null && this.canvas.state.scene==9?
@@ -469,6 +485,9 @@ MenuCanvas.Host {
                 bl = this.zoo.update(l);
                 int next=SceneFlow.next(this.state.scene,this.zoo.logic.completed());
                 if(next!=this.state.scene) { this.startLocation(next);return; }
+                if(PilotsMidlet.this.switchboard==null && this.zoo instanceof HotelScene && ((HotelScene)this.zoo).animals.world.boardRequested()) {
+                    PilotsMidlet.this.showSwitchboard(((HotelScene)this.zoo).animals.world);return;
+                }
                 if(PilotsMidlet.this.fridge==null && this.zoo instanceof HotelScene && ((HotelScene)this.zoo).animals.world.fridgeRequested()) {
                     PilotsMidlet.this.showFridge(((HotelScene)this.zoo).animals.world);return;
                 }
@@ -711,7 +730,7 @@ MenuCanvas.Host {
         synchronized void startCourtyard() throws IOException { startLocation(3); }
         synchronized void startLocation(int id) throws IOException {
             this.previewReturnState=null;this.previewIndex=-1;
-            this.state=new GameState();this.state.scene=id;this.state.x=id==12?448:id==11?448:id==10?192:id==8?192:id==9?320:id==6?576:id==4?192:128;this.state.y=id==12?336:id==11?320:id==10?224:id==8?208:id==9?320:id==6?400:id==5?368:id==4?304:272;
+            this.state=new GameState();this.state.scene=id;this.state.x=id==13?192:id==12?448:id==11?448:id==10?192:id==8?192:id==9?320:id==6?576:id==4?192:128;this.state.y=id==13?176:id==12?336:id==11?320:id==10?224:id==8?208:id==9?320:id==6?400:id==5?368:id==4?304:272;
             this.goToScene(id);
         }
         synchronized void newGame() throws IOException {

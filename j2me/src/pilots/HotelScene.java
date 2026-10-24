@@ -34,6 +34,7 @@ public final class HotelScene extends ZooScene {
             actor.playing=false;actor.visible=true;
         }
     }
+    public void refreshState() throws IOException { refresh(); }
     private boolean hiddenGrid(int id) { return animals.world.scene==9 && (id>=42 && id<=49 || id>=64 && id<=95); }
     private boolean authoredFinale() { return animals.world.action()==84 || animals.world.action()==87; }
     public int layer(int slot) {
@@ -103,6 +104,7 @@ public final class HotelScene extends ZooScene {
         // A cursor left on the cistern must not label the movie as a hero.
         if(animals.world.scene==12 && (animals.world.action()==95 || animals.world.action()==96))return null;
         int id=target(x,y);
+        if(animals.world.scene==13)return id==12?"Шеф":id==11?"Коллега":id==15||id==51?"Огнетушитель":id==48?"Щит":id>=16&&id<=42?"Провода":id==52?"Лифт":null;
         if(animals.world.scene==12)return id==12?"Шеф":id==11?"Коллега":id==15?"Ручка":id==16?"Выход":id==17||id==24?"Мыло":id==18?"Кран":id==19?"Рулон":id==20?"Шнурок":id==21||id==22||id==23||id==25?"Вантуз":id==26?"Унитаз":id==28?"Кот":id==31?"Умывальник":null;
         if(animals.world.scene==11)return id==12?"Шеф":id==11?"Коллега":id==15||id==16||id==17?"Окно":id==18?"Трос":id==19||id==20?"Осколок":null;
         if(animals.world.scene==10)return id==12?"Шеф":id==11?"Коллега":id==15?"Диван":id==16?"Балкон":id==17||id==18?"Мухобойка":id>=22&&id<=24?"Ящик":id==26?"Бумага":id==27||id==28?"Дверца":id==29||id==30?"Шнур":id==31||id==32||id>=40&&id<=42?"Телевизор":id==33?"Кнопка":id==34?"Тумблер":id==38?"Гнусный Мух":null;

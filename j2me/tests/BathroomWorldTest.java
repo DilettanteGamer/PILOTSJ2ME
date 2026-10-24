@@ -42,7 +42,7 @@ public final class BathroomWorldTest {
   act(0,1,15);check(!world.completed,"expired plunger bypassed exit");
   world=new HotelWorld(GameState.decode(prepared,13));replay=resume(world);act(0,1,15);
   check(world.completed&&actions.contains(60)&&world.state.variables[57]==1,"bathroom ending / partner walk");
-  check(SceneFlow.next(11,true)==12&&SceneFlow.next(12,true)==12,"bathroom chapter bounds");
+  check(SceneFlow.next(11,true)==12&&SceneFlow.next(12,true)==13,"bathroom chapter bounds");
   System.out.println("BathroomWorld: both character branches, dry/timed plunger, soap/cat timeout/retry, cooperation, both exits and "+ticks+" every-tick save replays passed "+actions);
  }
 }

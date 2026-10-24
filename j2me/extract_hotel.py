@@ -12,6 +12,9 @@ def extract(original, scene=9, adapt_door=True):
     table={(r['code'],r['id'],r['args'][0]):r for r in common+local}
     bg=table[24,0,0]['data'];palette=bg[24+640*480:];out={};clips=[]
     out[prefix+'.p8']=b'P8BG'+struct.pack('>HHHH',640,417,640,417)+palette+bg[24:24+640*417]
+    if scene==13:
+        crop=b''.join(bg[24+y*640+124:24+y*640+252] for y in range(24,136))
+        out[prefix+'.board']=b'P8BG'+struct.pack('>HHHH',128,112,128,112)+palette+crop
     out[prefix+'.bar']=b'P8BG'+struct.pack('>HHHH',640,63,640,63)+palette+bg[24+640*417:24+640*480]
     for group in [common,local]:
         for r in group:
@@ -81,7 +84,7 @@ def extract(original, scene=9, adapt_door=True):
     catalog=bytearray(b'ANC2'+struct.pack('>H',len(preview)))
     for i,c in enumerate(preview,1):
         ident=c['id'];x,y=roots.get(ident,[320,320]);y=min(416,y)
-        text=('%02d %s — %d'%(i,names.get(ident,'Ванная комната' if scene==12 else 'Карниз гостиницы' if scene==11 else 'Комната с балконом' if scene==10 else 'Гостиница'),ident)).encode();ox,oy,w,h=struct.unpack_from('>hhHH',out[prefix+'-%d.anm'%ident],777)
+        text=('%02d %s — %d'%(i,names.get(ident,'Электрощитовая' if scene==13 else 'Ванная комната' if scene==12 else 'Карниз гостиницы' if scene==11 else 'Комната с балконом' if scene==10 else 'Гостиница'),ident)).encode();ox,oy,w,h=struct.unpack_from('>hhHH',out[prefix+'-%d.anm'%ident],777)
         catalog.extend(struct.pack('>HhhHHH',ident,x,y,max(0,min(639,x+ox+w//2)),max(0,min(416,y+oy+h//2)),len(text))+text)
     out[prefix+'.animations']=bytes(catalog)
     return out,dict(fridge_door_adaptation=door_adaptation,section=scene+2,source_sha256=EXPECTED,start=start,end=end,entities=entities,clips=clips,initial=absolute_cells(initial,64,16),preview_count=len(preview),preview_roots=roots,groups={str(r['id']):r['data'].hex() for r in groups},texts=texts,random_choices={str(r['id']):r['data'].hex() for r in choices},rules=[{**r,'data':r['data'].hex()} for r in local if r['code'] in [42,43,44,96,97]],hover_labels={20:'Выход',21:'Выход',22:'Штора',23:'Куча',24:'Куча',25:'Отвёртка',26:'Баллончик',27:'Злобное чудище',28:'Ванная',29:'Ванная',30:'Чайник',31:'Сахарница',32:'Сахарница',33:'Замок',34:'Ключ',35:'Ручка',36:'Включатель',37:'Включатель'} if scene==9 else {})

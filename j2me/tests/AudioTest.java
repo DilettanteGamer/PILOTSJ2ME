@@ -95,7 +95,7 @@ public final class AudioTest {
         check(Manager.players.stream().allMatch(p->p.state==Player.CLOSED),"Leaked player");
     }
     static void resources(String[] hashes) throws Exception {
-        int[] scenes={2,3,4,5,6,8,9,10,11,12};
+        int[] scenes={2,3,4,5,6,8,9,10,11,12,13};
         for(int si=0;si<scenes.length;si++) { int scene=scenes[si];
             javax.sound.midi.Sequence music=javax.sound.midi.MidiSystem.getSequence(AudioTest.class.getResourceAsStream("/audio/"+(scene<10?"0":"")+scene+".mid"));
             java.security.MessageDigest digest=java.security.MessageDigest.getInstance("SHA-256");
@@ -108,8 +108,8 @@ public final class AudioTest {
             }
             StringBuilder hex=new StringBuilder();for(byte b:digest.digest()) hex.append(String.format("%02x",b&255));
             check(hex.toString().equals(hashes[si]),"MIDI notes/timestamps changed in conversion");
-            check(music.getMicrosecondLength()==(scene==2?54850000L:scene==3?314020000L:scene==4?109580000L:scene==5?109670000L:scene==6?109710000L:scene==8?90300000L:scene==9?123390000L:scene==10?90350000L:scene==11?80160000L:109710000L),"MIDI timing changed");
-            for(int cue=0;cue<(scene==2?39:scene==3?24:scene==4?62:scene==5?25:scene==6?32:scene==8?16:scene==9?53:scene==10?42:scene==11?24:46);cue++) {
+            check(music.getMicrosecondLength()==(scene==2?54850000L:scene==3?314020000L:scene==4?109580000L:scene==5?109670000L:scene==6?109710000L:scene==8?90300000L:scene==9?123390000L:scene==10?90350000L:scene==11?80160000L:scene==12?109710000L:90300000L),"MIDI timing changed");
+            for(int cue=0;cue<(scene==2?39:scene==3?24:scene==4?62:scene==5?25:scene==6?32:scene==8?16:scene==9?53:scene==10?42:scene==11?24:scene==12?46:31);cue++) {
                 String path="/audio/"+(scene<10?"0":"")+scene+"-"+(cue<10?"0":"")+cue+".wav";
                 javax.sound.sampled.AudioInputStream wav=javax.sound.sampled.AudioSystem.getAudioInputStream(new BufferedInputStream(AudioTest.class.getResourceAsStream(path)));
                 check(wav.getFormat().getChannels()==1 && wav.getFormat().getSampleSizeInBits()==8 && wav.getFormat().getSampleRate()==11025,"PCM format changed");wav.close();
@@ -117,6 +117,6 @@ public final class AudioTest {
         }
     }
     public static void main(String[] args) throws Exception {
-        resources(args);logic();worker();System.out.println("Audio: 363 WAVs, 11 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
+        resources(args);logic();worker();System.out.println("Audio: 394 WAVs, 12 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
     }
 }
