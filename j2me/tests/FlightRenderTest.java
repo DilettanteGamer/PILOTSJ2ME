@@ -14,7 +14,7 @@ public final class FlightRenderTest {
    if(initial==1){check(h.input(8),"initial lower command");while(w.busy())h.update(100);}
    int n=2000;
    while(n-->0&&!(w.g(0x1e1b58)==band*100&&w.g(0x1e1b5c)==5&&!w.busy())){
-    if(w.g(0x1e1b58)<50&&!w.busy()&&w.g(0x1e1b54)!=initial)h.input(initial==1?8:5);
+    if(w.g(0x1e1b58)<50&&!w.busy()&&w.g(0x1e1b54)!=initial)h.input(8);
     h.update(100);
    }
    check(n>0&&h.input(key),"fall branch input "+band);
@@ -22,6 +22,10 @@ public final class FlightRenderTest {
    Viewport v=h.presentation.stage(width,play);
    n=150;while(!w.completed&&n-->0){
     h.update(100);
+    if(movie==64)for(AnimatedActor actor:scene.actors)if(actor!=null&&actor.id==64&&actor.clip.index==10){
+     check(actor.clip.offsetY<-192,"upper fall balloon still clipped");
+     capture(h,width,height,"/tmp/flight-repaired-top-"+width+"x"+height+".png");
+    }
     for(AnimatedActor actor:scene.actors)if(actor!=null&&actor.id==movie&&actor.y>192){
      check(actor.clip.index==17,"clipped fall pose "+band);
      int top=v.screenY(actor.y+actor.clip.offsetY);
@@ -30,6 +34,39 @@ public final class FlightRenderTest {
     }
    }
    check(w.completed&&ticks>=15&&crossed,"fall did not leave screen "+band);
+  }finally{scene.close();}
+ }
+ static void controlsAndDrops(int width,int height,String out)throws Exception{
+  GameState s=new GameState();s.scene=16;Scene scene=new Scene(16);
+  try{
+   FlightScene h=new FlightScene(scene,s);HotelWorld w=h.flight.world;
+   check(!h.input(5),"obsolete middle-height button active");
+   check(h.input(8),"relative down");int n=100;
+   while(w.busy()&&n-->0){w.g(0x1e1b58,-1000);h.update(100);}
+   check(n>0&&h.flight.altitude()==1&&!h.input(8),"lower limit");
+   check(h.input(2),"relative up from low");n=100;
+   while(w.busy()&&n-->0){w.g(0x1e1b58,-1000);h.update(100);}
+   check(n>0&&h.flight.altitude()==2&&h.flight.ballast()==3,"up skipped middle/used ballast early");
+   // Ordinary ascent throws the refrigerator; the last bag throws the cat.
+   w.g(0x94,2);check(h.input(2),"middle ascent");
+   boolean[] bottom=new boolean[3];int[] last={-1,-1,-1};int play=height-(width*63+320)/640;
+   Viewport v=h.presentation.stage(width,play);boolean returned=false,repeated=false;
+   for(int tick=0;tick<650;tick++){
+    w.g(0x1e1b58,-1000);h.update(100);
+    if(!w.busy()&&!returned){check(h.flight.altitude()==3&&!h.input(2),"upper limit");check(h.input(8),"relative down from high");returned=true;}
+    else if(returned&&!repeated&&!w.busy()){check(h.flight.altitude()==2,"down skipped middle");check(h.input(2),"last bag ascent");repeated=true;}
+    for(AnimatedActor actor:scene.actors)if(actor!=null){
+     int index=actor.id==57?0:actor.id==70?1:actor.id==72?2:-1;
+     int base=index==0?3:index==1?38:10;
+     if(index>=0&&actor.clip.index>base){
+      int top=v.screenY(actor.y+actor.clip.offsetY);
+      check(top>=last[index],"drop reversed "+actor.id);last[index]=top;
+      if(top>=play)bottom[index]=true;
+      if(index==0&&top<play&&v.screenY(actor.y+actor.clip.offsetY+actor.clip.height)>=play)capture(h,width,height,out+"-drop.png");
+     }
+    }
+   }
+   check(repeated&&bottom[0]&&bottom[1]&&bottom[2],"fridge/cat clipped before bottom "+bottom[0]+"/"+bottom[1]+"/"+bottom[2]+" tops "+last[0]+"/"+last[1]+"/"+last[2]);
   }finally{scene.close();}
  }
  public static void main(String[] args)throws Exception{
@@ -59,7 +96,8 @@ public final class FlightRenderTest {
    check(w.completed,"flight encounter did not complete");
    check(fallTicks>=15&&crossedBottom,"fall ended before leaving screen");
   }finally{scene.close();}
-  fallingBranch(width,height,1,2,8,62);fallingBranch(width,height,2,1,5,63);fallingBranch(width,height,3,2,2,64);
+  controlsAndDrops(width,height,out);
+  fallingBranch(width,height,1,2,8,62);fallingBranch(width,height,2,1,2,63);fallingBranch(width,height,3,2,2,64);
   System.out.println("FlightRender: static full-screen sky, camera independent of cursor/zoom, original balloon below 40% width, early visible crow, source encounter at "+width+"x"+height+" passed");
  }
 }

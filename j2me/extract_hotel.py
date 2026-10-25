@@ -4,6 +4,7 @@ import hashlib,struct
 from extract_scene02 import records,absolute_cells,EXPECTED
 from build import require
 from adapt_fridge import adapt
+from adapt_flight import adapt as adapt_flight
 
 def extract(original, scene=9, adapt_door=True):
     require(hashlib.sha256(original).hexdigest()==EXPECTED,'Original SHA mismatch')
@@ -31,6 +32,7 @@ def extract(original, scene=9, adapt_door=True):
                     require(len(image)==4+w*hh or scene>=10 and w==hh==1 and len(image)==16 and image[4]==0 or scene==16 and (ident,f,w,hh,len(image)) in [(62,21,5,1,16),(63,22,9,1,16),(64,23,6,1,16)] or scene==11 and ident==52 and 78<=f<=83 and w==1 and hh==2 and len(image)==16 and image[4:6]==b'\x14\x14','Bad frame');data.extend(struct.pack('>hhHH',-px,-py,w,hh)+image[4:4+w*hh])
             packed=20000+ident if group is common else ident
             out[prefix+'-%d.anm'%packed]=bytes(data);clips.append(dict(id=ident,packed=packed,frames=h[3],flags=h[1]))
+    flight_adaptation=adapt_flight(out,clips) if scene==16 else None
     door_adaptation=adapt(out) if scene==9 and adapt_door else None
     # Interior object 15 owns bilingual hover labels; HotelScene renders these.
     # Cinematic caption bytecode is retained with relocated inline text IDs.
@@ -90,4 +92,4 @@ def extract(original, scene=9, adapt_door=True):
         text=('%02d %s — %d'%(i,names.get(ident,'Полёт' if scene==16 else 'Крыша' if scene==14 else 'Подвал' if scene==15 else 'Электрощитовая' if scene==13 else 'Ванная комната' if scene==12 else 'Карниз гостиницы' if scene==11 else 'Комната с балконом' if scene==10 else 'Гостиница'),ident)).encode();ox,oy,w,h=struct.unpack_from('>hhHH',out[prefix+'-%d.anm'%ident],777)
         catalog.extend(struct.pack('>HhhHHH',ident,x,y,max(0,min(639,x+ox+w//2)),max(0,min(416,y+oy+h//2)),len(text))+text)
     out[prefix+'.animations']=bytes(catalog)
-    return out,dict(fridge_door_adaptation=door_adaptation,section=scene+2,source_sha256=EXPECTED,start=start,end=end,entities=entities,clips=clips,initial=absolute_cells(initial,64,16),preview_count=len(preview),preview_roots=roots,groups={str(r['id']):r['data'].hex() for r in groups},texts=texts,random_choices={str(r['id']):r['data'].hex() for r in choices},rules=[{**r,'data':r['data'].hex()} for r in local if r['code'] in [42,43,44,96,97]],hover_labels={20:'Выход',21:'Выход',22:'Штора',23:'Куча',24:'Куча',25:'Отвёртка',26:'Баллончик',27:'Злобное чудище',28:'Ванная',29:'Ванная',30:'Чайник',31:'Сахарница',32:'Сахарница',33:'Замок',34:'Ключ',35:'Ручка',36:'Включатель',37:'Включатель'} if scene==9 else {})
+    return out,dict(**({'flight_adaptation':flight_adaptation} if scene==16 else {}),fridge_door_adaptation=door_adaptation,section=scene+2,source_sha256=EXPECTED,start=start,end=end,entities=entities,clips=clips,initial=absolute_cells(initial,64,16),preview_count=len(preview),preview_roots=roots,groups={str(r['id']):r['data'].hex() for r in groups},texts=texts,random_choices={str(r['id']):r['data'].hex() for r in choices},rules=[{**r,'data':r['data'].hex()} for r in local if r['code'] in [42,43,44,96,97]],hover_labels={20:'Выход',21:'Выход',22:'Штора',23:'Куча',24:'Куча',25:'Отвёртка',26:'Баллончик',27:'Злобное чудище',28:'Ванная',29:'Ванная',30:'Чайник',31:'Сахарница',32:'Сахарница',33:'Замок',34:'Ключ',35:'Ручка',36:'Включатель',37:'Включатель'} if scene==9 else {})

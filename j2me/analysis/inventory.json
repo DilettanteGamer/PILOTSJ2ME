@@ -2616,7 +2616,7 @@
         16
       ],
       "animations": 1513,
-      "frames": 18633,
+      "frames": 18678,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -2797,7 +2797,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.21.0",
+        "MIDlet-Version": "0.21.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2806,10 +2806,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "dd1079e8e20c60bedcbb59e73cab1877c9f8bd221918ff4ca169f7267bc2b295",
-      "jar_bytes": 17346011,
+      "sha256": "dc655d77c556ace4ce54d4f371e74fdcdd0bac2534f2d78a58742c3f682648ba",
+      "jar_bytes": 17334438,
       "entry_count": 2169,
-      "uncompressed_bytes": 119811333,
+      "uncompressed_bytes": 119544131,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -3064,7 +3064,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "21ae5ef18f61373af92c16b0967cc952e97a74fe05612e2263751d77453933d3"
+          "sha256": "1bc169bbffb37ae0dc19db9f2bd45f31f5f996ae9fe23e4096efc6bf7437967f"
         },
         "pilots/FlightScene.class": {
           "minor": 3,
@@ -3077,7 +3077,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "b0be687bdb78634ae7225b5a9058066427759969d2d983998656be5fabc4f66c"
+          "sha256": "d218d02de1205af809c3a4ab01c3ab1b499da57e998a3a735bfd9952d3b4755e"
         },
         "pilots/FlightView.class": {
           "minor": 3,
@@ -3091,7 +3091,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "33bc6f6fe0e02859d338792a74d4d605f8ff1f9f3e360e2a6dbefe2e2c1434b4"
+          "sha256": "ef9973ba8833819d205f5996dcad5415ff98a38f846f4cfc391032a3d1370298"
         },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
@@ -3508,7 +3508,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0537f3b6110c765ba7e358da56797cabce19553d6ebcfb9ea010d1cbfc286cc7"
+          "sha256": "005d84739c6130ab735f2fd322f78df350ae1476f223fc9332183218e3529083"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3531,7 +3531,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "cac9e63910c11c3f1ba0d0bcd3821ba92e39e6d6e9dd4c8d2b7dd00e8506dc49"
+          "sha256": "017c87d73b3f3debc7640ead6715f95fbfe4ca2af08ad326b34d5bacc62e3dfa"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -11332,7 +11332,7 @@
           "max_indexed_frame_bytes": 57939
         },
         "scenes/16-57.anm": {
-          "count": 5,
+          "count": 20,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 1886
         },
@@ -11369,7 +11369,7 @@
         "scenes/16-64.anm": {
           "count": 44,
           "duration_ms": 100,
-          "max_indexed_frame_bytes": 70125
+          "max_indexed_frame_bytes": 80100
         },
         "scenes/16-65.anm": {
           "count": 50,
@@ -11397,7 +11397,7 @@
           "max_indexed_frame_bytes": 4266
         },
         "scenes/16-70.anm": {
-          "count": 56,
+          "count": 66,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 11760
         },
@@ -11407,7 +11407,7 @@
           "max_indexed_frame_bytes": 11760
         },
         "scenes/16-72.anm": {
-          "count": 20,
+          "count": 40,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 10810
         }
@@ -11764,7 +11764,7 @@
         16
       ],
       "animations": 1513,
-      "frames": 18633,
+      "frames": 18678,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -11945,7 +11945,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.21.0",
+        "MIDlet-Version": "0.21.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -11954,10 +11954,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "b1b10b7b1aa09868f1839bf1f2c802844fb0208b05e050c6886655e8a3ba0d9b",
-      "jar_bytes": 17346274,
+      "sha256": "9a6288dbd20ea9945d6b276fc06706bf2591c1042da1cc5ce6265cbf6a8fe075",
+      "jar_bytes": 17334703,
       "entry_count": 2169,
-      "uncompressed_bytes": 119815429,
+      "uncompressed_bytes": 119548227,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -12212,7 +12212,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "21ae5ef18f61373af92c16b0967cc952e97a74fe05612e2263751d77453933d3"
+          "sha256": "1bc169bbffb37ae0dc19db9f2bd45f31f5f996ae9fe23e4096efc6bf7437967f"
         },
         "pilots/FlightScene.class": {
           "minor": 3,
@@ -12225,7 +12225,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "b0be687bdb78634ae7225b5a9058066427759969d2d983998656be5fabc4f66c"
+          "sha256": "d218d02de1205af809c3a4ab01c3ab1b499da57e998a3a735bfd9952d3b4755e"
         },
         "pilots/FlightView.class": {
           "minor": 3,
@@ -12239,7 +12239,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "33bc6f6fe0e02859d338792a74d4d605f8ff1f9f3e360e2a6dbefe2e2c1434b4"
+          "sha256": "ef9973ba8833819d205f5996dcad5415ff98a38f846f4cfc391032a3d1370298"
         },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
@@ -12656,7 +12656,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0537f3b6110c765ba7e358da56797cabce19553d6ebcfb9ea010d1cbfc286cc7"
+          "sha256": "005d84739c6130ab735f2fd322f78df350ae1476f223fc9332183218e3529083"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -12679,7 +12679,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "cac9e63910c11c3f1ba0d0bcd3821ba92e39e6d6e9dd4c8d2b7dd00e8506dc49"
+          "sha256": "017c87d73b3f3debc7640ead6715f95fbfe4ca2af08ad326b34d5bacc62e3dfa"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -20480,7 +20480,7 @@
           "max_indexed_frame_bytes": 57939
         },
         "scenes/16-57.anm": {
-          "count": 5,
+          "count": 20,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 1886
         },
@@ -20517,7 +20517,7 @@
         "scenes/16-64.anm": {
           "count": 44,
           "duration_ms": 100,
-          "max_indexed_frame_bytes": 70125
+          "max_indexed_frame_bytes": 80100
         },
         "scenes/16-65.anm": {
           "count": 50,
@@ -20545,7 +20545,7 @@
           "max_indexed_frame_bytes": 4266
         },
         "scenes/16-70.anm": {
-          "count": 56,
+          "count": 66,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 11760
         },
@@ -20555,7 +20555,7 @@
           "max_indexed_frame_bytes": 11760
         },
         "scenes/16-72.anm": {
-          "count": 20,
+          "count": 40,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 10810
         }
@@ -20912,7 +20912,7 @@
         16
       ],
       "animations": 1513,
-      "frames": 18633,
+      "frames": 18678,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -21093,7 +21093,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.21.0",
+        "MIDlet-Version": "0.21.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -21102,10 +21102,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "419f04274496c754f172b4bdbaf18b87d2a6d901e0ac8f06b44d699875a5a348",
-      "jar_bytes": 18203645,
+      "sha256": "0f696e2c7fc76a62303faba95ff611e3d90f1382cf8e1f6d8765ed5fdcccb97c",
+      "jar_bytes": 18192070,
       "entry_count": 2169,
-      "uncompressed_bytes": 122471814,
+      "uncompressed_bytes": 122204612,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -21360,7 +21360,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "21ae5ef18f61373af92c16b0967cc952e97a74fe05612e2263751d77453933d3"
+          "sha256": "1bc169bbffb37ae0dc19db9f2bd45f31f5f996ae9fe23e4096efc6bf7437967f"
         },
         "pilots/FlightScene.class": {
           "minor": 3,
@@ -21373,7 +21373,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "b0be687bdb78634ae7225b5a9058066427759969d2d983998656be5fabc4f66c"
+          "sha256": "d218d02de1205af809c3a4ab01c3ab1b499da57e998a3a735bfd9952d3b4755e"
         },
         "pilots/FlightView.class": {
           "minor": 3,
@@ -21387,7 +21387,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "33bc6f6fe0e02859d338792a74d4d605f8ff1f9f3e360e2a6dbefe2e2c1434b4"
+          "sha256": "ef9973ba8833819d205f5996dcad5415ff98a38f846f4cfc391032a3d1370298"
         },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
@@ -21804,7 +21804,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "0537f3b6110c765ba7e358da56797cabce19553d6ebcfb9ea010d1cbfc286cc7"
+          "sha256": "005d84739c6130ab735f2fd322f78df350ae1476f223fc9332183218e3529083"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -21827,7 +21827,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "cac9e63910c11c3f1ba0d0bcd3821ba92e39e6d6e9dd4c8d2b7dd00e8506dc49"
+          "sha256": "017c87d73b3f3debc7640ead6715f95fbfe4ca2af08ad326b34d5bacc62e3dfa"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -29628,7 +29628,7 @@
           "max_indexed_frame_bytes": 57939
         },
         "scenes/16-57.anm": {
-          "count": 5,
+          "count": 20,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 1886
         },
@@ -29665,7 +29665,7 @@
         "scenes/16-64.anm": {
           "count": 44,
           "duration_ms": 100,
-          "max_indexed_frame_bytes": 70125
+          "max_indexed_frame_bytes": 80100
         },
         "scenes/16-65.anm": {
           "count": 50,
@@ -29693,7 +29693,7 @@
           "max_indexed_frame_bytes": 4266
         },
         "scenes/16-70.anm": {
-          "count": 56,
+          "count": 66,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 11760
         },
@@ -29703,7 +29703,7 @@
           "max_indexed_frame_bytes": 11760
         },
         "scenes/16-72.anm": {
-          "count": 20,
+          "count": 40,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 10810
         }

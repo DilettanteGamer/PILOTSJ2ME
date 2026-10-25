@@ -1,4 +1,27 @@
 {
+  "flight_adaptation": {
+    "repaired_balloon_frames": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "extended_clips": {
+      "57": 20,
+      "70": 66,
+      "72": 40
+    }
+  },
   "fridge_door_adaptation": null,
   "section": 18,
   "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
@@ -538,7 +561,7 @@
     {
       "id": 57,
       "packed": 57,
-      "frames": 5,
+      "frames": 20,
       "flags": 137
     },
     {
@@ -616,7 +639,7 @@
     {
       "id": 70,
       "packed": 70,
-      "frames": 56,
+      "frames": 66,
       "flags": 137
     },
     {
@@ -628,7 +651,7 @@
     {
       "id": 72,
       "packed": 72,
-      "frames": 20,
+      "frames": 40,
       "flags": 9
     }
   ],

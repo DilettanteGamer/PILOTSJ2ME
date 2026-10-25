@@ -2,28 +2,28 @@
   {
     "profile": "128x128",
     "clips": 71,
-    "frames": 1591,
+    "frames": 1636,
     "source_rules": 120,
     "source_maps": 25,
     "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
-    "vm_sha256": "8f0b6fce1ef9b3c5ac74fe8e7575a52dd7f50a49e9d0fb2bd54f20c5b3e65250"
+    "vm_sha256": "8b2960547cb96fbba4841e8cdbcd927375dd7a0a6bb43e3978b71cd9ff63cc48"
   },
   {
     "profile": "128x160",
     "clips": 71,
-    "frames": 1591,
+    "frames": 1636,
     "source_rules": 120,
     "source_maps": 25,
     "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
-    "vm_sha256": "8f0b6fce1ef9b3c5ac74fe8e7575a52dd7f50a49e9d0fb2bd54f20c5b3e65250"
+    "vm_sha256": "8b2960547cb96fbba4841e8cdbcd927375dd7a0a6bb43e3978b71cd9ff63cc48"
   },
   {
     "profile": "240x320",
     "clips": 71,
-    "frames": 1591,
+    "frames": 1636,
     "source_rules": 120,
     "source_maps": 25,
     "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
-    "vm_sha256": "8f0b6fce1ef9b3c5ac74fe8e7575a52dd7f50a49e9d0fb2bd54f20c5b3e65250"
+    "vm_sha256": "8b2960547cb96fbba4841e8cdbcd927375dd7a0a6bb43e3978b71cd9ff63cc48"
   }
 ]

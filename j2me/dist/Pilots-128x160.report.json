@@ -18,7 +18,7 @@
     16
   ],
   "animations": 1513,
-  "frames": 18633,
+  "frames": 18678,
   "backgrounds": {
     "scenes/02.bar": [
       640,
@@ -264,9 +264,9 @@
     ]
   },
   "hotel_key_gate": "removed towel, crocodile withdrawn, original 100-tick window",
-  "version": "0.21.1",
-  "jar_size": 17346393,
-  "jar_sha256": "1b4ae9a4aa6b851f8ab765776488c329806788f85e1b5a5c29ef78c7826c9ce5",
+  "version": "0.21.2",
+  "jar_size": 17334703,
+  "jar_sha256": "9a6288dbd20ea9945d6b276fc06706bf2591c1042da1cc5ce6265cbf6a8fe075",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -610,9 +610,11 @@
       "scenes/16-66.anm",
       "scenes/16-67.anm",
       "scenes/16-68.anm",
-      "scenes/16-69.anm"
+      "scenes/16-69.anm",
+      "scenes/16-70.anm",
+      "scenes/16-72.anm"
     ],
-    "inflated_bytes_saved": 94038759,
+    "inflated_bytes_saved": 94877200,
     "decoded_visual_payloads_preserved": true
   },
   "render_cache": {

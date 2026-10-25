@@ -1,0 +1,59 @@
+[
+  {
+    "profile": "128x128",
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "pilots/FlightLogic.class",
+      "pilots/FlightScene.class",
+      "pilots/FlightView.class",
+      "pilots/PilotsMidlet$GameCanvas.class",
+      "pilots/PilotsMidlet.class",
+      "scenes/16-57.anm",
+      "scenes/16-64.anm",
+      "scenes/16-70.anm",
+      "scenes/16-72.anm",
+      "scenes/16.vm"
+    ],
+    "unchanged": 2158,
+    "size": 17334438,
+    "sha256": "dc655d77c556ace4ce54d4f371e74fdcdd0bac2534f2d78a58742c3f682648ba"
+  },
+  {
+    "profile": "128x160",
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "pilots/FlightLogic.class",
+      "pilots/FlightScene.class",
+      "pilots/FlightView.class",
+      "pilots/PilotsMidlet$GameCanvas.class",
+      "pilots/PilotsMidlet.class",
+      "scenes/16-57.anm",
+      "scenes/16-64.anm",
+      "scenes/16-70.anm",
+      "scenes/16-72.anm",
+      "scenes/16.vm"
+    ],
+    "unchanged": 2158,
+    "size": 17334703,
+    "sha256": "9a6288dbd20ea9945d6b276fc06706bf2591c1042da1cc5ce6265cbf6a8fe075"
+  },
+  {
+    "profile": "240x320",
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "pilots/FlightLogic.class",
+      "pilots/FlightScene.class",
+      "pilots/FlightView.class",
+      "pilots/PilotsMidlet$GameCanvas.class",
+      "pilots/PilotsMidlet.class",
+      "scenes/16-57.anm",
+      "scenes/16-64.anm",
+      "scenes/16-70.anm",
+      "scenes/16-72.anm",
+      "scenes/16.vm"
+    ],
+    "unchanged": 2158,
+    "size": 18192070,
+    "sha256": "0f696e2c7fc76a62303faba95ff611e3d90f1382cf8e1f6d8765ed5fdcccb97c"
+  }
+]
