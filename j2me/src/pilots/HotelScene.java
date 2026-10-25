@@ -9,6 +9,25 @@ public final class HotelScene extends ZooScene {
     private long elapsed;
     private int hitSlot=-1;
     private final RefrigeratorPuzzle handles;
+    // Logical foot positions, not the tiny opaque ends of the background art.
+    private static final int[] BRANCH_X={192,0,576,320},BRANCH_Y={272,240,224,64};
+    private int branchEnd=-1;
+    private boolean branchAvailable(int index){
+        if(animals.world.scene!=17 || animals.world.completed || animals.world.busy())return false;
+        int height=animals.world.flag(animals.world.hero()==0?0x1e1b57:0x1e1b58);
+        return index==0?height==1:index==1?height==1||height==2:index==2?height==3:height==4;
+    }
+    private int branchAt(int x,int y){
+        for(int i=0;i<BRANCH_X.length;i++)if(branchAvailable(i) && Math.abs(x-BRANCH_X[i]-32)<=24 && Math.abs(y-BRANCH_Y[i]-16)<=18)return i;
+        return -1;
+    }
+    private void paintBranches(Graphics g,Viewport v){
+        for(int i=0;i<BRANCH_X.length;i++)if(branchAvailable(i)){
+            int x=v.screenX(BRANCH_X[i]+32),y=v.screenY(BRANCH_Y[i]+16),r=Math.max(3,v.screenX(10)-v.screenX(0));
+            g.setColor(0x302510);g.drawRect(x-r-1,y-r-1,r*2+2,r*2+2);
+            g.setColor(0xffe47a);g.drawRect(x-r,y-r,r*2,r*2);g.drawLine(x-2,y,x+2,y);g.drawLine(x,y-2,x,y+2);
+        }
+    }
     public HotelScene(Scene scene,GameState state) throws IOException {
         super(scene,state,new HotelLogic(state),false);animals=(HotelLogic)logic;
         handles=state.scene==9?new RefrigeratorPuzzle():null;
@@ -33,6 +52,11 @@ public final class HotelScene extends ZooScene {
                 int progress=t.frame+1;
                 actor.x=t.fromX+(t.x-t.fromX)*progress/5;actor.y=t.fromY+(t.y-t.fromY)*progress/5;
             }
+            // The source grid is flat here; the painted supporting bough dips
+            // by one row between its ends. Project the visible feet onto it,
+            // including idle poses and the return walk, without changing VM cells.
+            if(animals.world.scene==17 && t.id==25 && animals.world.flag(0x1e1b57)==4 && t.clip<=33 && actor.x>=320 && actor.x<=448 && actor.y>=64 && actor.y<=80)
+                actor.y=Math.max(actor.y,64+(64-Math.abs(actor.x-384))/4);
             actor.playing=false;actor.visible=true;
         }
     }
@@ -87,6 +111,7 @@ public final class HotelScene extends ZooScene {
             if(!grid && thing(order[i]).id==61) { paintGrid(graphics,view);grid=true; }
         }
         if(!grid)paintGrid(graphics,view);
+        paintBranches(graphics,view);
     }
     private void paintGrid(Graphics graphics,Viewport view) {
         if(!animals.world.fridgePanelVisible())return;
@@ -94,7 +119,7 @@ public final class HotelScene extends ZooScene {
     }
     private boolean interactive(int id) { return id==(animals.world.scene>=10?11:13) || id==12 || animals.world.interactive(id); }
     private int target(int x,int y) {
-        int hit=-1,best=999;hitSlot=-1;
+        int hit=-1,best=999;hitSlot=-1;branchEnd=-1;
         for(int i=0;i<302;i++) {
             HotelWorld.Thing t=thing(i);AnimatedActor actor=scene.actors[i];
             if(t!=null && actor!=null && actor.clip.contains(x-actor.x,y-actor.y) && paintDepth(i)<=best) {
@@ -104,6 +129,7 @@ public final class HotelScene extends ZooScene {
         // Fixed union of all four hose poses, enlarged for keypad cursor steps.
         if(animals.world.roofHoseAvailable() && x>=144 && x<216 && y>=316 && y<390 && (hit<0 || hit==39))hit=39;
         if(animals.world.fridgePanelVisible() && x>=434 && x<500 && y>=195 && y<261 && (50<best || 50==best && hit!=12 && hit!=13))hit=101;
+        if(hit<0){branchEnd=branchAt(x,y);if(branchEnd>=0)hit=102;}
         return hit;
     }
     public int targetAt(int x,int y) { int id=target(x,y);return id<0?0:id; }
@@ -114,7 +140,7 @@ public final class HotelScene extends ZooScene {
         if(animals.world.scene==12 && (animals.world.action()==95 || animals.world.action()==96))return null;
         int id=target(x,y);
         if(animals.world.scene==15 && animals.world.hero()==0 && x>=336 && y>=160 && y<417)return "Ящики: отдельный экран";
-        if(animals.world.scene==17)return id==24?"Коллега":id==25?"Шеф":id==26?"Слон":id==27?"Уроненная табуретка":id==28?"Табуретка":id==29?"Веточка":id==30?"Дупло":id==31?(animals.world.flag(0x1e1b64)<3?"Ствол":"Лесенка"):id==32?"Гордая Птица":id==33?(animals.world.flag(0x1e1b5e)==0?"Несчастный слуга":"Слуга"):id==34?"Флейта":id==35?"Упавшая флейта":id==36?"Флейта":id==37?"Ещё одна флейта":null;
+        if(animals.world.scene==17)return id==102?"Конец ветки":id==24?"Коллега":id==25?"Шеф":id==26?"Слон":id==27?"Уроненная табуретка":id==28?"Табуретка":id==29?"Веточка":id==30?"Дупло":id==31?(animals.world.flag(0x1e1b64)<3?"Ствол":"Лесенка"):id==32?"Гордая Птица":id==33?(animals.world.flag(0x1e1b5e)==0?"Несчастный слуга":"Слуга"):id==34?"Флейта":id==35?"Упавшая флейта":id==36?"Флейта":id==37?"Ещё одна флейта":null;
         if(animals.world.scene==14)return id==12||id==47?"Шеф":id==11||id==46?"Коллега":id==15?"Зелёная краска":id==16?"Красная краска":id==17||id==18?"Воздушный шар":id==19?"Зелёная краска":id==20?"Красная краска":id==21||id==23?"Лестница":id==22?"Килоперьев":id==25?"Фишка":id==31||id==28?"Ножницы":id==26?"Вытяжка":id==27?"Кран":id==35?"Верёвка":id==39?"Шланг":null;
         if(animals.world.scene==15)return id==14?(animals.world.hasItem(1)?"Ящик без автомата":"Ящик с автоматом"):id==24?"Ящик":id==31?"Электричество":id==33?"Автомат":id==15||id==12||id==13?"Коллега":id>=16&&id<=20?"Шеф":null;
         if(animals.world.scene==13)return id==12?"Шеф":id==11?"Коллега":id==15||id==51?"Огнетушитель":id==48?"Щит":id>=16&&id<=42?"Провода":id==52?"Лифт":null;
@@ -125,7 +151,7 @@ public final class HotelScene extends ZooScene {
     }
     public boolean request(int x,int y) throws IOException {
         if(animals.world.busy()) return false;
-        int id=target(x,y);if(animals.world.scene==17){boolean accepted=animals.world.requestFinal(id,x,y);refresh();return accepted;}if(animals.world.scene==15)return animals.world.requestBasement(id>=0&&hitSlot>=0?thing(hitSlot):null,x,y);boolean result=id>=0?animals.world.interact(id):animals.world.move(x,y);refresh();return result;
+        int id=target(x,y);if(animals.world.scene==17){if(id==102){x=BRANCH_X[branchEnd];y=BRANCH_Y[branchEnd];id=-1;}boolean accepted=animals.world.requestFinal(id,x,y);refresh();return accepted;}if(animals.world.scene==15)return animals.world.requestBasement(id>=0&&hitSlot>=0?thing(hitSlot):null,x,y);boolean result=id>=0?animals.world.interact(id):animals.world.move(x,y);refresh();return result;
     }
     public boolean activate(int x,int y) throws IOException { return request(x,y); }
     public boolean update(long delta) throws IOException {
