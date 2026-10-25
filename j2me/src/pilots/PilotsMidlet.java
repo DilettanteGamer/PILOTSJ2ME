@@ -41,6 +41,7 @@ public final class PilotsMidlet
 extends MIDlet
 implements CommandListener,
 MenuCanvas.Host {
+    private final PlayerProgress progress=new PlayerProgress();
     private final Command menuCommand = new Command("\u041c\u0435\u043d\u044e", 1, 1);
     private Display display;
     private GameCanvas canvas;
@@ -74,12 +75,14 @@ MenuCanvas.Host {
     }
 
     protected void pauseApp() {
+        autoSave();
         if (this.canvas != null) {
             this.canvas.pauseAnimation(true);
         }
     }
 
     protected void destroyApp(boolean bl) {
+        autoSave();
         if(this.basement!=null){this.basement.shutdown();this.basement=null;}
         if (this.canvas != null) {
             this.canvas.shutdown();
@@ -155,11 +158,30 @@ MenuCanvas.Host {
         this.display.setCurrent(this.basement);
     }
 
+    private void autoSave(){
+        if(this.canvas!=null&&this.canvas.sessionLoaded&&!this.canvas.isPreview())try{this.canvas.save();}catch(Exception ignored){}
+    }
     private void showMenu() {
-        if (this.menu == null) {
-            this.menu = new MenuCanvas(this);
-        }
-        this.display.setCurrent((Displayable)this.menu);
+        autoSave();
+        if(this.menu==null)this.menu=new MenuCanvas(this);
+        this.menu.sound(progress.sound);
+        this.display.setCurrent(this.menu);
+    }
+    private void startNewGame()throws IOException{
+        this.canvas.newGame();this.display.setCurrent(this.canvas);
+    }
+    private void confirmNewGame(){
+        this.display.setCurrent(new MenuCanvas(new MenuCanvas.Host(){public void choose(int choice){
+            if(choice==0){showMenu();return;}
+            try{startNewGame();}catch(Exception error){notice("Новая игра",error.toString());}
+        }},"Начать новую игру?",new String[]{"Нет","Да, начать заново"}));
+    }
+    private void continueGame()throws Exception{
+        if(progress.finished||!progress.started){startNewGame();return;}
+        if(this.canvas.sessionLoaded){this.display.setCurrent(this.canvas);return;}
+        try{this.canvas.load();}catch(Exception missing){this.canvas.startLocation(progress.lastScene);this.canvas.save();}
+        if(this.canvas.state.scene==17&&this.canvas.zoo.logic.completed()){startNewGame();return;}
+        this.display.setCurrent(this.canvas);
     }
 
     private void showAnimationMenu() {
@@ -213,48 +235,25 @@ MenuCanvas.Host {
     }
 
     private void showLocations() {
-        final int[] ids={-1,2,3,4,5,6,7,8,9,10,11,12,13,15,14,16,17};
-        String[] labels={"Назад","У ворот","Двор зоопарка","Звериный двор","Сад","Улица","Канализация","Гостиница: вступление","Гостиница: интерьер","Комната с балконом","Карниз гостиницы","Ванная комната","Электрощитовая","Подвал","Крыша","Полёт","Финал: лесная поляна"};
-        MenuCanvas locations=new MenuCanvas(new MenuCanvas.Host() {
-            public void choose(int choice) {
-                if(choice==0) { showMenu();return; }
-                try { canvas.startLocation(ids[choice]);display.setCurrent(canvas); }
-                catch(Exception error) { notice("Локация",error.toString()); }
-            }
-        },"Локации",labels);
+        int count=1;for(int i=0;i<PlayerProgress.ORDER.length;i++)if(progress.available(PlayerProgress.ORDER[i]))count++;
+        final int[] ids=new int[count];String[] labels=new String[count];labels[0]="Назад";int n=1;
+        for(int i=0;i<PlayerProgress.ORDER.length;i++)if(progress.available(PlayerProgress.ORDER[i])){ids[n]=PlayerProgress.ORDER[i];labels[n++]=PlayerProgress.NAMES[i];}
+        MenuCanvas locations=new MenuCanvas(new MenuCanvas.Host(){public void choose(int choice){
+            if(choice==0){showMenu();return;}
+            if(choice<0||choice>=ids.length||!progress.available(ids[choice]))return;
+            try{canvas.startLocation(ids[choice]);canvas.save();display.setCurrent(canvas);}catch(Exception error){notice("Локация",error.toString());}
+        }},"Локации",labels);
         this.display.setCurrent(locations);
     }
-
     public void choose(int n) {
-        if (n == 2) { this.showInventory(); return; }
-        if (n == 7) { this.showLocations(); return; }
-        if (n == 6) {
-            this.showAnimationMenu();
-            return;
-        }
-        this.display.setCurrent((Displayable)this.canvas);
-        try {
-            if (n == 1) {
-                this.canvas.newGame();
-
-            } else if (n == 3) {
-                this.canvas.save();
-                this.notice("\u0421\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0435", "\u041f\u043e\u0437\u0438\u0446\u0438\u044f \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0430");
-            } else if (n == 4) {
-                this.canvas.load();
-                this.notice("\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430", "\u041f\u043e\u0437\u0438\u0446\u0438\u044f \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0430");
-            } else if (n == 5) {
-                this.help();
-            } else if (n == 8) {
-                this.notice("Звук и музыка",this.canvas.audio.toggle()?"Включены":"Выключены");
-            } else if (n == 9) {
-                this.destroyApp(true);
-                this.notifyDestroyed();
-            }
-        }
-        catch (Exception exception) {
-            this.notice("\u041e\u0448\u0438\u0431\u043a\u0430", exception.toString());
-        }
+        try{
+            if(n==0){if(progress.started)confirmNewGame();else startNewGame();}
+            else if(n==1)continueGame();
+            else if(n==2)showLocations();
+            else if(n==3){progress.sound=this.canvas.audio.toggle();progress.persist();showMenu();}
+            else if(n==4)this.display.setCurrent(new AboutCanvas(new MenuCanvas.Host(){public void choose(int ignored){showMenu();}}));
+            else if(n==5){destroyApp(true);notifyDestroyed();}
+        }catch(Exception error){notice("Меню",error.toString());}
     }
 
     private void help() {
@@ -291,6 +290,7 @@ MenuCanvas.Host {
         private boolean appPaused;
         private boolean stopped;
         private boolean endingFocused;
+        private boolean sessionLoaded;
         private long lastTick;
         private GameState previewReturnState;
         private int previewIndex = -1;
@@ -330,7 +330,7 @@ MenuCanvas.Host {
             }
             this.state.x = 180;
             this.state.y = 260;
-            this.audio=new GameAudio();
+            this.audio=new GameAudio();if(!progress.sound)this.audio.toggle();
             try { this.goToScene(2); }
             catch(IOException failure) { this.audio.close();throw failure; }
             catch(OutOfMemoryError failure) { this.audio.close();throw failure; }
@@ -511,7 +511,8 @@ MenuCanvas.Host {
                     this.endingFocused=true;this.view.cursorX=380;this.view.cursorY=340;this.view.update();this.state.x=380;this.state.y=340;bl=true;
                 }
                 int next=SceneFlow.next(this.state.scene,this.zoo.logic.completed());
-                if(next!=this.state.scene) { this.startLocation(next);return; }
+                if(next!=this.state.scene) { this.startLocation(next);this.saveChecked();return; }
+                if(this.state.scene==17&&this.zoo.logic.completed()&&!progress.finished){progress.complete();this.saveChecked();}
                 if(PilotsMidlet.this.basement==null && this.zoo instanceof HotelScene && ((HotelScene)this.zoo).animals.world.basementRequested()) {
                     PilotsMidlet.this.showBasement(((HotelScene)this.zoo).animals.world);return;
                 }
@@ -780,12 +781,12 @@ MenuCanvas.Host {
         synchronized void startLocation(int id) throws IOException {
             this.previewReturnState=null;this.previewIndex=-1;
             this.state=new GameState();this.state.scene=id;this.state.x=id==16?320:id==14?192:id==15?384:id==13?192:id==12?448:id==11?448:id==10?192:id==8?192:id==9?320:id==6?576:id==4?192:128;this.state.y=id==16?208:id==14?320:id==15?384:id==13?176:id==12?336:id==11?320:id==10?224:id==8?208:id==9?320:id==6?400:id==5?368:id==4?304:272;
-            this.goToScene(id);
+            this.goToScene(id);this.sessionLoaded=true;progress.open(id);
         }
         synchronized void newGame() throws IOException {
             this.previewReturnState=null;this.previewIndex=-1;
             this.state=new GameState();this.state.x=320;this.state.y=304;
-            this.goToScene(2);
+            this.goToScene(2);this.sessionLoaded=true;progress.newGame();this.saveChecked();
         }
 
         private void activate() throws IOException {
@@ -821,6 +822,8 @@ MenuCanvas.Host {
             }
         }
 
+        private void saveChecked()throws IOException{try{save();}catch(Exception error){throw new IOException("Save: "+error.toString());}}
+
         synchronized void save() throws Exception {
             this.syncState();
             byte[] byArray = (this.previewReturnState == null ? this.state : this.previewReturnState).encode();
@@ -851,7 +854,7 @@ MenuCanvas.Host {
             GameState gameState2 = this.state;
             this.state = gameState;
             try {
-                this.goToScene(gameState.scene);
+                this.goToScene(gameState.scene);this.sessionLoaded=true;progress.open(gameState.scene);
             }
             catch (IOException iOException) {
                 this.state = gameState2;
