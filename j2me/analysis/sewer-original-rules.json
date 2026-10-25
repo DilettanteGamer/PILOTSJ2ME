@@ -35,15 +35,16 @@
       8
     ],
     "fall_clip": 64,
-    "swim_clip": 65,
-    "return_clip": 20037,
+    "swim_clip": 66,
+    "return_clip": 66,
     "return_voice": 17,
-    "hit_radius": 12,
-    "rat_hit_centers": [
-      224,
-      304,
-      416
-    ]
+    "hit_columns": "07.contact",
+    "contact_y": [
+      235,
+      272
+    ],
+    "minimum_contact_pixels": 4,
+    "middle_rat_center": 304
   },
   "rats": [
     {
@@ -194,8 +195,8 @@
       "frames": 20
     },
     {
-      "id": 65,
-      "packed": 65,
+      "id": 66,
+      "packed": 66,
       "frames": 101
     },
     {

@@ -17,6 +17,20 @@ for profile in ['128x128','128x160','240x320']:
     image=table[67,ident,0,f]['data'];w,hh=struct.unpack_from('<HH',image);_,px,py=struct.unpack_from('<Ihh',piv,f*8);assert struct.unpack_from('>hhHH',data,p)==(-px,-py,w,hh);p+=8;assert data[p:p+w*hh]==image[4:4+w*hh];p+=w*hh;frames+=1
    assert p==len(data)
   assert len(names)==37
+  contact=jar.read('scenes/07.contact');assert contact[:4]==b'RCT1';cp=4
+  for rat,(ident,root) in enumerate([(46,192),(47,272),(48,384)]):
+   assert struct.unpack_from('>h',contact,cp)[0]==root;cp+=2
+   piv=table[66,ident,0,0]['data']
+   for f in range(20):
+    dx,left,span=struct.unpack_from('>hhH',contact,cp);cp+=6;mask=contact[cp:cp+(span+7)//8];cp+=len(mask)
+    raw=table[67,ident,0,f]['data'];w,h=struct.unpack_from('<HH',raw);_,px,py=struct.unpack_from('<Ihh',piv,f*8)
+    if rat==1:assert root+dx-px+w//2==304
+    else:assert dx==0
+    for x in range(640):
+     visible=sum(raw[4+y*w+x-(root+dx-px)]!=0 for y in range(h) if 235<=160-py+y<=272)>=4 if root+dx-px<=x<root+dx-px+w else False
+     bit=left<=x<left+span and bool(mask[(x-left)//8]&(1<<((x-left)%8)))
+     assert bool(bit)==visible,(profile,ident,f,x)
+  assert cp==len(contact)
   crop=jar.read('scenes/07.p8');assert struct.unpack_from('>HHHH',crop,4)==(432,256,432,256);assert crop[12:780]==palette
   assert crop[780:]==b''.join(bg[24+y*640+104:24+y*640+536] for y in range(144,400))
   assert 'scenes/07.bar' not in jar.namelist() and 'scenes/07.hot' not in jar.namelist()

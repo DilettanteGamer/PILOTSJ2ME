@@ -1,0 +1,69 @@
+{
+  "version": "0.24.3",
+  "baseline": "f098a01",
+  "profiles": {
+    "128x128": {
+      "size": 20181832,
+      "sha256": "37f80fb6a0f0a4c2f2854d2d2b888813f366fc08bb336b9caec18be7ed989a93",
+      "unchanged_resources": 2343,
+      "added": [
+        "scenes/07-66.anm",
+        "scenes/07.contact"
+      ],
+      "removed": [
+        "scenes/07-65.anm"
+      ],
+      "changed_classes": [
+        "pilots/SewerLogic.class",
+        "pilots/SewerScene.class"
+      ],
+      "crc": "passed",
+      "jad": "passed",
+      "added_classes": [
+        "pilots/SewerRats.class"
+      ]
+    },
+    "128x160": {
+      "size": 20184181,
+      "sha256": "89fa69ba0d306c48327a7824c794772968ca73ade27db305b4b267e699b3c748",
+      "unchanged_resources": 2343,
+      "added": [
+        "scenes/07-66.anm",
+        "scenes/07.contact"
+      ],
+      "removed": [
+        "scenes/07-65.anm"
+      ],
+      "changed_classes": [
+        "pilots/SewerLogic.class",
+        "pilots/SewerScene.class"
+      ],
+      "crc": "passed",
+      "jad": "passed",
+      "added_classes": [
+        "pilots/SewerRats.class"
+      ]
+    },
+    "240x320": {
+      "size": 21883003,
+      "sha256": "cebbcf47f7a1dd02fbda543a6d72e70d9165fe8ecb4afa3ba26a4cc10a16978f",
+      "unchanged_resources": 2343,
+      "added": [
+        "scenes/07-66.anm",
+        "scenes/07.contact"
+      ],
+      "removed": [
+        "scenes/07-65.anm"
+      ],
+      "changed_classes": [
+        "pilots/SewerLogic.class",
+        "pilots/SewerScene.class"
+      ],
+      "crc": "passed",
+      "jad": "passed",
+      "added_classes": [
+        "pilots/SewerRats.class"
+      ]
+    }
+  }
+}

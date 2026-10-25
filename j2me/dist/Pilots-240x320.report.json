@@ -1,6 +1,6 @@
 {
   "profile": "240x320",
-  "classes": 81,
+  "classes": 82,
   "scenes": [
     2,
     3,
@@ -344,9 +344,9 @@
     ]
   },
   "hotel_key_gate": "removed towel, crocodile withdrawn, original 100-tick window",
-  "version": "0.24.2",
-  "jar_size": 21881308,
-  "jar_sha256": "9bfab10ed554299590a8e2c837f6f87ee3dc19183b3323e62654e4f77b56dd56",
+  "version": "0.24.3",
+  "jar_size": 21883003,
+  "jar_sha256": "cebbcf47f7a1dd02fbda543a6d72e70d9165fe8ecb4afa3ba26a4cc10a16978f",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -699,9 +699,9 @@
       "scenes/17-114.anm",
       "scenes/17-116.anm",
       "scenes/17-117.anm",
-      "scenes/07-65.anm"
+      "scenes/07-66.anm"
     ],
-    "inflated_bytes_saved": 104689397,
+    "inflated_bytes_saved": 104683363,
     "decoded_visual_payloads_preserved": true
   },
   "render_cache": {

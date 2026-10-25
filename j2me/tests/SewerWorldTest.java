@@ -22,8 +22,8 @@ public final class SewerWorldTest{
  }
  public static void main(String[] args)throws Exception{
   for(int rat=0;rat<3;rat++){
-   boolean struck=false;int center=new int[]{224,304,416}[rat];
-   for(int wait=0;wait<20&&!struck;wait++){SewerLogic trial=rat==2?new SewerLogic(state()):middle();for(int i=0;i<wait;i++)trial.tick();trial.input(4);for(int i=0;i<16&&trial.fall==0&&!trial.completed();i++)trial.tick();struck=trial.fall>0&&Math.abs(trial.fallX+32-center)<=12;}
+   boolean struck=false;
+   for(int wait=0;wait<20&&!struck;wait++){SewerLogic trial=rat==2?new SewerLogic(state()):middle();for(int i=0;i<wait;i++)trial.tick();trial.input(4);for(int i=0;i<16&&trial.fall==0&&!trial.completed();i++)trial.tick();struck=trial.fall>0&&trial.dangerous(rat)&&trial.rats.hits(rat,trial.clock%20,trial.fallX+32);}
    check(struck,"rat "+rat+" cannot strike");
   }
   SewerLogic safe=middle();for(int i=0;i<200;i++)safe.tick();check(safe.fall==0&&safe.x==328,"safe stop inside rat trajectory");
@@ -34,10 +34,11 @@ public final class SewerWorldTest{
   old=state();old.location=legacy(256,320,0,9,false);SewerLogic falling=new SewerLogic(old);check(falling.fall==9&&falling.fallX==256,"old fall migration");
   old=state();old.location=legacy(128,192,0,0,true);check(new SewerLogic(old).completed(),"old completed save migration");
   old=state();byte[] oldRoute=legacy(320,320,0,0,false);oldRoute[3]=0x32;old.location=oldRoute;check(new SewerLogic(old).x==328,"SWR2 safe stop migration");
+  old=state();byte[] oldRecovery=legacy(448,448,0,90,false);oldRecovery[3]=0x33;old.location=oldRecovery;check(new SewerLogic(old).fall==84,"SWR3 recovery migration");
   SewerLogic fail=new SewerLogic(state());check(!fail.input(2)&&!fail.input(5)&&!fail.input(8),"extra controls");
   for(int i=0;i<100&&fail.fall==0;i++){fail.input(4);fail.tick();}
   check(fail.fall>0,"rats never catch hurried crossing");SewerLogic replay=copy(fail);int falls=fail.falls;final java.util.List<Integer> cues=new java.util.ArrayList<Integer>();fail.setSound(new SoundSink(){public void play(int n){cues.add(n);}});boolean swimming=false,returned=false;
-  while(fail.fall>0){if(fail.fall>=21&&fail.fall<72)swimming=true;if(fail.fall>=72&&fail.x==448)returned=true;check(!fail.input(6),"fall accepts walk");fail.tick();replay.tick();check(Arrays.equals(snapshot(fail),snapshot(replay)),"fall RMS replay");replay=copy(replay);}
+  while(fail.fall>0){if(fail.fall>=21&&fail.fall<51)swimming=true;if(fail.fall>=76&&fail.x==448)returned=true;check(!fail.input(6),"fall accepts walk");fail.tick();replay.tick();check(Arrays.equals(snapshot(fail),snapshot(replay)),"fall RMS replay");replay=copy(replay);}
   check(swimming&&returned&&cues.contains(17),"missing swim/return/voice");
   check(fail.x==448&&fail.motion==0&&fail.falls==falls,"automatic start respawn");
   int[] keys=solution();SewerLogic s=new SewerLogic(state());replay=copy(s);
