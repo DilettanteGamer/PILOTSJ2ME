@@ -28,7 +28,7 @@ from extract_hotel import extract as extract_hotel
 from extract_basement_platform import extract as extract_basement_platform
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.21.2'
+VERSION = '0.21.3'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
