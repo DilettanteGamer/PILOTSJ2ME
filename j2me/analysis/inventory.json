@@ -2687,9 +2687,9 @@
           417
         ],
         "scenes/07.p8": [
-          432,
+          480,
           256,
-          432,
+          480,
           256
         ],
         "scenes/08.bar": [
@@ -2871,7 +2871,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.24.3",
+        "MIDlet-Version": "0.24.4",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2880,10 +2880,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "37f80fb6a0f0a4c2f2854d2d2b888813f366fc08bb336b9caec18be7ed989a93",
-      "jar_bytes": 20181832,
+      "sha256": "f4fb45ddc61d55be502ded946968e612828a54fc0cac429cbdea850368467e9c",
+      "jar_bytes": 20187333,
       "entry_count": 2428,
-      "uncompressed_bytes": 135934534,
+      "uncompressed_bytes": 135947024,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -3814,7 +3814,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d2359bdb5c824980e93762e303685204921a3b4ed58affef11f1fb58e5042376"
+          "sha256": "6087b82b9a1efe987efdac6adcca611a1fed2deb3a7a68fcd8976231481b507f"
         },
         "pilots/SewerRats.class": {
           "minor": 3,
@@ -3843,7 +3843,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "056dc33f23b2b9555b7cd2b196b364779b977fdf3be0e175cef72d35e1132918"
+          "sha256": "0e622ab59cbc27a6c297ec0466da25158b54f6abe4f890ce8763f2519b5446b7"
         },
         "pilots/SoundSink.class": {
           "minor": 3,
@@ -12762,9 +12762,9 @@
           417
         ],
         "scenes/07.p8": [
-          432,
+          480,
           256,
-          432,
+          480,
           256
         ],
         "scenes/08.bar": [
@@ -12946,7 +12946,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.24.3",
+        "MIDlet-Version": "0.24.4",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -12955,10 +12955,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "89fa69ba0d306c48327a7824c794772968ca73ade27db305b4b267e699b3c748",
-      "jar_bytes": 20184181,
+      "sha256": "bebf01f2eedff5fc34f645b662e990b665b06bb09346b3013256499c9ba7d774",
+      "jar_bytes": 20189682,
       "entry_count": 2428,
-      "uncompressed_bytes": 135942726,
+      "uncompressed_bytes": 135955216,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -13889,7 +13889,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d2359bdb5c824980e93762e303685204921a3b4ed58affef11f1fb58e5042376"
+          "sha256": "6087b82b9a1efe987efdac6adcca611a1fed2deb3a7a68fcd8976231481b507f"
         },
         "pilots/SewerRats.class": {
           "minor": 3,
@@ -13918,7 +13918,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "056dc33f23b2b9555b7cd2b196b364779b977fdf3be0e175cef72d35e1132918"
+          "sha256": "0e622ab59cbc27a6c297ec0466da25158b54f6abe4f890ce8763f2519b5446b7"
         },
         "pilots/SoundSink.class": {
           "minor": 3,
@@ -22837,9 +22837,9 @@
           417
         ],
         "scenes/07.p8": [
-          432,
+          480,
           256,
-          432,
+          480,
           256
         ],
         "scenes/08.bar": [
@@ -23021,7 +23021,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.24.3",
+        "MIDlet-Version": "0.24.4",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -23030,10 +23030,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "cebbcf47f7a1dd02fbda543a6d72e70d9165fe8ecb4afa3ba26a4cc10a16978f",
-      "jar_bytes": 21883003,
+      "sha256": "cd19247cfe58ee8556df56d740132cd16fbb9d5dd8bd64f9fad7cddb92539088",
+      "jar_bytes": 21888504,
       "entry_count": 2428,
-      "uncompressed_bytes": 139849031,
+      "uncompressed_bytes": 139861521,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -23964,7 +23964,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "d2359bdb5c824980e93762e303685204921a3b4ed58affef11f1fb58e5042376"
+          "sha256": "6087b82b9a1efe987efdac6adcca611a1fed2deb3a7a68fcd8976231481b507f"
         },
         "pilots/SewerRats.class": {
           "minor": 3,
@@ -23993,7 +23993,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "056dc33f23b2b9555b7cd2b196b364779b977fdf3be0e175cef72d35e1132918"
+          "sha256": "0e622ab59cbc27a6c297ec0466da25158b54f6abe4f890ce8763f2519b5446b7"
         },
         "pilots/SoundSink.class": {
           "minor": 3,

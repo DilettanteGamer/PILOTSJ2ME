@@ -4,7 +4,7 @@
   "crop": [
     104,
     144,
-    432,
+    480,
     256
   ],
   "bridge": {
@@ -38,6 +38,11 @@
     "swim_clip": 66,
     "return_clip": 66,
     "return_voice": 17,
+    "ladder_recovery_root": [
+      176,
+      368
+    ],
+    "return_walk_ticks": 3,
     "hit_columns": "07.contact",
     "contact_y": [
       235,

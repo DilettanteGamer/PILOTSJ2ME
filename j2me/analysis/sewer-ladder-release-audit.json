@@ -1,0 +1,36 @@
+{
+  "version": "0.24.4",
+  "baseline": "26fe681",
+  "profiles": {
+    "128x128": {
+      "size": 20187333,
+      "sha256": "f4fb45ddc61d55be502ded946968e612828a54fc0cac429cbdea850368467e9c",
+      "unchanged_resources": 2344,
+      "changed_resources": [
+        "scenes/07.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "128x160": {
+      "size": 20189682,
+      "sha256": "bebf01f2eedff5fc34f645b662e990b665b06bb09346b3013256499c9ba7d774",
+      "unchanged_resources": 2344,
+      "changed_resources": [
+        "scenes/07.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "240x320": {
+      "size": 21888504,
+      "sha256": "cd19247cfe58ee8556df56d740132cd16fbb9d5dd8bd64f9fad7cddb92539088",
+      "unchanged_resources": 2344,
+      "changed_resources": [
+        "scenes/07.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    }
+  }
+}
