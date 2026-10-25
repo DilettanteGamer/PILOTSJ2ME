@@ -1,0 +1,39 @@
+{
+  "version": "0.22.2",
+  "baseline": "587276c",
+  "profiles": {
+    "128x128": {
+      "jar_size": 19097530,
+      "sha256": "a2f32ea5a8c78656af2f6e1b7728cd1c4194af9dad5dd1c10d42044e675cac59",
+      "unchanged_resources": 2268,
+      "changed_entries": [
+        "META-INF/MANIFEST.MF",
+        "pilots/HotelScene.class"
+      ],
+      "zip_crc": "passed",
+      "jad": "passed"
+    },
+    "128x160": {
+      "jar_size": 19097795,
+      "sha256": "87d4d7e8f8e6ec6294b7d4290192be3439d7e805aeb935217bc3d4b82913c8c8",
+      "unchanged_resources": 2268,
+      "changed_entries": [
+        "META-INF/MANIFEST.MF",
+        "pilots/HotelScene.class"
+      ],
+      "zip_crc": "passed",
+      "jad": "passed"
+    },
+    "240x320": {
+      "jar_size": 20011998,
+      "sha256": "f9f35253012654ec1ea81202f9774510303bb5be68cb515d5808750d4e25e380",
+      "unchanged_resources": 2268,
+      "changed_entries": [
+        "META-INF/MANIFEST.MF",
+        "pilots/HotelScene.class"
+      ],
+      "zip_crc": "passed",
+      "jad": "passed"
+    }
+  }
+}
