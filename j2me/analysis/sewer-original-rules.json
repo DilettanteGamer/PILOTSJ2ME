@@ -24,8 +24,16 @@
       128,
       256
     ],
-    "move_ticks": 4,
-    "step": 64,
+    "safe_stops": [
+      128,
+      320,
+      448
+    ],
+    "speed_pixels_per_tick": 16,
+    "leg_ticks": [
+      12,
+      8
+    ],
     "fall_clip": 64
   },
   "rats": [
@@ -54,7 +62,7 @@
         6,
         11
       ],
-      "moving_only": true
+      "moving_only": false
     },
     {
       "object": 17,
@@ -90,6 +98,26 @@
       "id": 19,
       "packed": 20019,
       "frames": 1
+    },
+    {
+      "id": 28,
+      "packed": 20028,
+      "frames": 5
+    },
+    {
+      "id": 29,
+      "packed": 20029,
+      "frames": 5
+    },
+    {
+      "id": 32,
+      "packed": 20032,
+      "frames": 5
+    },
+    {
+      "id": 33,
+      "packed": 20033,
+      "frames": 5
     },
     {
       "id": 46,

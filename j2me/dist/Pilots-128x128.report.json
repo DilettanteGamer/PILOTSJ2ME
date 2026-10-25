@@ -19,8 +19,8 @@
     16,
     17
   ],
-  "animations": 1661,
-  "frames": 20772,
+  "animations": 1665,
+  "frames": 20792,
   "backgrounds": {
     "scenes/02.bar": [
       640,
@@ -290,9 +290,9 @@
     ]
   },
   "hotel_key_gate": "removed towel, crocodile withdrawn, original 100-tick window",
-  "version": "0.23.0",
-  "jar_size": 19770786,
-  "jar_sha256": "b221b4bd65f24aa46c0399f5a889eb80c626ab9e1e5999cbdad1d37655d48361",
+  "version": "0.23.1",
+  "jar_size": 19789825,
+  "jar_sha256": "e62491878993097f40ae895347e370f95898821e6c980837a55f023607ecada1",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -454,7 +454,7 @@
   "pending_character_relative_menu_numbers": [],
   "rgb_compatibility": {
     "model": "full-stride drawRGB bounds check; desktop spy, not a device test",
-    "animation_clips": 1661,
+    "animation_clips": 1665,
     "scales": [
       "normal",
       "zoomed"

@@ -17,10 +17,11 @@ public final class SewerScene extends ZooScene {
   // Original ambient mice remain outside the walking plane.
   int[] ax={152,-104,472,24},ay={224,224,224,-128};
   for(int i=0;i<4;i++){AnimatedActor a=scene.actors[4+i];a.x=ax[i];a.y=ay[i];frame(a,(sewer.clock+i*17)%100<a.clip.count?(sewer.clock+i*17)%100:a.clip.count-1);}
-  int id=sewer.fall>0?64:sewer.motion>0?(sewer.direction<0?61:57):sewer.direction<0?20018:20019;
+  int progress=sewer.motionProgress();
+  int id=sewer.fall>0?64:sewer.motion>0?(sewer.direction<0?20032:20028)+(progress/5&1):sewer.direction<0?20018:20019;
   AnimatedActor hero=scene.actors[8];if(hero.id!=id){hero.close();scene.actors[8]=hero=new AnimatedActor(id,"/scenes/07-"+id+".anm",0,0);}
   if(sewer.fall>0){hero.x=sewer.fallX-104-85;hero.y=260;frame(hero,Math.min(19,sewer.fall-1));}
-  else {hero.x=sewer.x-104;hero.y=128;frame(hero,sewer.motion>0?4-sewer.motion:0);}
+  else {hero.x=sewer.visibleX()-104;hero.y=128;frame(hero,sewer.motion>0?progress%5:0);}
  }
  public boolean input(int key)throws IOException{boolean changed=sewer.input(key);refresh();return changed;}
  public boolean update(long delta)throws IOException{if(delta<=0)return false;elapsed+=Math.min(delta,400);boolean changed=false;while(elapsed>=100){elapsed-=100;sewer.tick();changed=true;}if(changed)refresh();return changed;}

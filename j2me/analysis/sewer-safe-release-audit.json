@@ -1,0 +1,60 @@
+{
+  "version": "0.23.1",
+  "baseline": "76409dc",
+  "profiles": {
+    "128x128": {
+      "size": 19789825,
+      "sha256": "e62491878993097f40ae895347e370f95898821e6c980837a55f023607ecada1",
+      "unchanged_resources": 2328,
+      "added": [
+        "scenes/07-20028.anm",
+        "scenes/07-20029.anm",
+        "scenes/07-20032.anm",
+        "scenes/07-20033.anm"
+      ],
+      "changed": [
+        "META-INF/MANIFEST.MF",
+        "pilots/SewerLogic.class",
+        "pilots/SewerScene.class"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "128x160": {
+      "size": 19790090,
+      "sha256": "884c6d6d1267cd933c00d6e6a73652b85b19d926655a685363870d9276b4c6a3",
+      "unchanged_resources": 2328,
+      "added": [
+        "scenes/07-20028.anm",
+        "scenes/07-20029.anm",
+        "scenes/07-20032.anm",
+        "scenes/07-20033.anm"
+      ],
+      "changed": [
+        "META-INF/MANIFEST.MF",
+        "pilots/SewerLogic.class",
+        "pilots/SewerScene.class"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "240x320": {
+      "size": 20704293,
+      "sha256": "1aa38852efbf77f68d88df6dc43632926895251910ff14f64bc6cc3c9350760b",
+      "unchanged_resources": 2328,
+      "added": [
+        "scenes/07-20028.anm",
+        "scenes/07-20029.anm",
+        "scenes/07-20032.anm",
+        "scenes/07-20033.anm"
+      ],
+      "changed": [
+        "META-INF/MANIFEST.MF",
+        "pilots/SewerLogic.class",
+        "pilots/SewerScene.class"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    }
+  }
+}

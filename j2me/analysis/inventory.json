@@ -2617,8 +2617,8 @@
         16,
         17
       ],
-      "animations": 1661,
-      "frames": 20772,
+      "animations": 1665,
+      "frames": 20792,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -2817,7 +2817,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.23.0",
+        "MIDlet-Version": "0.23.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2826,15 +2826,15 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "b221b4bd65f24aa46c0399f5a889eb80c626ab9e1e5999cbdad1d37655d48361",
-      "jar_bytes": 19770786,
-      "entry_count": 2402,
-      "uncompressed_bytes": 135101777,
+      "sha256": "e62491878993097f40ae895347e370f95898821e6c980837a55f023607ecada1",
+      "jar_bytes": 19789825,
+      "entry_count": 2406,
+      "uncompressed_bytes": 135203473,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1661,
+        ".anm": 1665,
         ".bar": 15,
         ".bin": 1,
         ".board": 1,
@@ -3642,7 +3642,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "c928ae68101c69578e3f3cfc586fe65423ac14f7798608a8f6d2642821154970"
+          "sha256": "b01f2e21fc3e54b6955261132ea3948a02b558b79d8020a8aa731eadb8a64e6c"
         },
         "pilots/SewerScene.class": {
           "minor": 3,
@@ -3656,7 +3656,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "f48c83566d16b82d84d8336c0169273a46699ac9e73c9d2858e5f790fff9c78f"
+          "sha256": "e6fd1e2f5f60c49992d8bdab809c9e446f3f8bb498e687973dc19d724ececaba"
         },
         "pilots/SoundSink.class": {
           "minor": 3,
@@ -6329,6 +6329,26 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/07-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
         },
         "scenes/07-46.anm": {
           "count": 20,
@@ -12475,8 +12495,8 @@
         16,
         17
       ],
-      "animations": 1661,
-      "frames": 20772,
+      "animations": 1665,
+      "frames": 20792,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -12675,7 +12695,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.23.0",
+        "MIDlet-Version": "0.23.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -12684,15 +12704,15 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "9262b67a85c11faf5019a305229070bf0705249f8a8093c74a0d2225b72e774d",
-      "jar_bytes": 19771048,
-      "entry_count": 2402,
-      "uncompressed_bytes": 135105873,
+      "sha256": "884c6d6d1267cd933c00d6e6a73652b85b19d926655a685363870d9276b4c6a3",
+      "jar_bytes": 19790090,
+      "entry_count": 2406,
+      "uncompressed_bytes": 135207569,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1661,
+        ".anm": 1665,
         ".bar": 15,
         ".bin": 1,
         ".board": 1,
@@ -13500,7 +13520,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "c928ae68101c69578e3f3cfc586fe65423ac14f7798608a8f6d2642821154970"
+          "sha256": "b01f2e21fc3e54b6955261132ea3948a02b558b79d8020a8aa731eadb8a64e6c"
         },
         "pilots/SewerScene.class": {
           "minor": 3,
@@ -13514,7 +13534,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "f48c83566d16b82d84d8336c0169273a46699ac9e73c9d2858e5f790fff9c78f"
+          "sha256": "e6fd1e2f5f60c49992d8bdab809c9e446f3f8bb498e687973dc19d724ececaba"
         },
         "pilots/SoundSink.class": {
           "minor": 3,
@@ -16187,6 +16207,26 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/07-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
         },
         "scenes/07-46.anm": {
           "count": 20,
@@ -22333,8 +22373,8 @@
         16,
         17
       ],
-      "animations": 1661,
-      "frames": 20772,
+      "animations": 1665,
+      "frames": 20792,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -22533,7 +22573,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.23.0",
+        "MIDlet-Version": "0.23.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -22542,15 +22582,15 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "3eeeee0d34535e816196b5ddc4eaee87b830b92022b29951881ec6a095e1b07e",
-      "jar_bytes": 20685255,
-      "entry_count": 2402,
-      "uncompressed_bytes": 137962578,
+      "sha256": "1aa38852efbf77f68d88df6dc43632926895251910ff14f64bc6cc3c9350760b",
+      "jar_bytes": 20704293,
+      "entry_count": 2406,
+      "uncompressed_bytes": 138064274,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1661,
+        ".anm": 1665,
         ".bar": 15,
         ".bin": 1,
         ".board": 1,
@@ -23358,7 +23398,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "c928ae68101c69578e3f3cfc586fe65423ac14f7798608a8f6d2642821154970"
+          "sha256": "b01f2e21fc3e54b6955261132ea3948a02b558b79d8020a8aa731eadb8a64e6c"
         },
         "pilots/SewerScene.class": {
           "minor": 3,
@@ -23372,7 +23412,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "f48c83566d16b82d84d8336c0169273a46699ac9e73c9d2858e5f790fff9c78f"
+          "sha256": "e6fd1e2f5f60c49992d8bdab809c9e446f3f8bb498e687973dc19d724ececaba"
         },
         "pilots/SoundSink.class": {
           "minor": 3,
@@ -26045,6 +26085,26 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-20028.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-20029.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/07-20032.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-20033.anm": {
+          "count": 5,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
         },
         "scenes/07-46.anm": {
           "count": 20,
