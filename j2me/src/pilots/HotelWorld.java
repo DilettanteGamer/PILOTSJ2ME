@@ -46,7 +46,7 @@ public final class HotelWorld {
     int flag(int offset){return (byte)(g(offset&~3)>>>((offset&3)*8));}
     private void flag(int offset,int value){int shift=(offset&3)*8,at=offset&~3;g(at,(g(at)&~(255<<shift))|((value&255)<<shift));}
     private static final int[] STEP_X={0,1,0,-1},STEP_Y={-1,0,1,0};
-    private final int[] routeQueue=new int[300],routeFirst=new int[300];
+    private final int[] routeQueue=new int[300],routeFirst=new int[300],routePrevious=new int[300];
     private boolean acknowledge;
     public HotelWorld(GameState state) throws IOException {
         this.state=state;this.scene=state.scene;effects=new Thing[scene==17?32:8];
@@ -557,8 +557,8 @@ public final class HotelWorld {
     private boolean rules(Thing t) {
         routeDirection=-1;
         if(scene==17 && t.id==20 && action()!=22 && action()!=23){
-            Thing h=find(hero()==0?25:24);
-            if(h==null || !(hero()==0?h.x==128&&h.y==352:h.x==192&&h.y==272))return false;
+            Thing jumper=find(hero()==0?25:24),support=find(hero()==0?24:25);
+            if(jumper==null || support==null || jumper.x!=192 || jumper.y!=272 || support.x!=128 || support.y!=352)return false;
         }
         // The basket replaces one or both walking actors. Its source scripts
         // have no handlers for the ground-only idle actions 32 and 33.
@@ -711,29 +711,40 @@ public final class HotelWorld {
         int goalX=clickX/64,goalY=clickY/16;
         if(scene==17&&target>=0)for(int i=0;i<300;i++)if(cells[i]!=null&&cells[i].id==target){goalX=i%10;goalY=i/10;break;}
         int dxGoal=goalX-actor.x/64,dyGoal=goalY-actor.y/16;
-        boolean diagonal=scene==17 && (actor.id==25&&flag(0x1e1b57)>0||actor.id==24&&flag(0x1e1b58)>0);
+        boolean branch=scene==17 && (actor.id==25&&flag(0x1e1b57)>0||actor.id==24&&flag(0x1e1b58)>0);
         int horizontal=dxGoal<0?3:1,vertical=dyGoal<0?0:2;
         int first=Math.abs(dxGoal)>Math.abs(dyGoal)?horizontal:vertical,second=first==horizontal?vertical:horizontal;
         for(int i=0;i<300;i++) routeFirst[i]=-1;
         int head=0,tail=0;routeQueue[tail++]=start;routeFirst[start]=8;
         while(head<tail) {
             int cell=routeQueue[head++],x=cell%10,y=cell/10;
-            for(int direction=0;direction<(diagonal?8:4);direction++) {
+            for(int direction=0;direction<4;direction++) {
                 int d=scene==17?(direction==0?first:direction==1?second:direction==2?(second+2)%4:(first+2)%4):direction;
-                if(diagonal&&(direction==0||direction==4))continue;
-                int nx=x+(diagonal?(direction>=1&&direction<=3?1:direction>=5?-1:0):STEP_X[d]),ny=y+(diagonal?(direction==0||direction==1||direction==7?-1:direction>=3&&direction<=5?1:0):STEP_Y[d]);if(nx<0||nx>=10||ny<0||ny>=26) continue;
+                int nx=x+STEP_X[d],ny=y+STEP_Y[d];if(nx<0||nx>=10||ny<0||ny>=26) continue;
                 int next=ny*10+nx;if(routeFirst[next]>=0) continue;
                 int id=at(nx,ny);if(id!=254 && id!=target && !(nativeGrid() && target<0 && nx*64==clickX && ny*16==clickY)) continue;
                 // Only the final authored approach may enter the wash position.
                 // Ordinary routes go around the pedestal through the front aisle.
                 if(sinkObstacle(nx*64,ny*16) && !(action()==23 && target==6 && id==6 && nx==4 && ny==20))continue;
-                routeFirst[next]=cell==start?(diagonal?direction:d*2):routeFirst[cell];
+                routeFirst[next]=cell==start?d*2:routeFirst[cell];routePrevious[next]=cell;
                 if(id==target || nativeGrid() && target<0 && nx*64==clickX && ny*16==clickY){
                     routeX=nx;routeY=ny;int dx=nx-actor.x/64,dy=ny-actor.y/16;
                     routeAngle=dx==0||Math.abs(dy)>3*Math.abs(dx)?(dy<0?0:4):dy==0||Math.abs(dx)>3*Math.abs(dy)?(dx<0?6:2):dy<0?(dx<0?7:dx>0?1:0):dy>0?(dx<0?5:dx>0?3:4):dx<0?6:dx>0?2:8;
                     int step=routeFirst[next];
                     routeStepX=step==1||step==2||step==3?1:step>=5?-1:0;routeStepY=step==0||step==1||step==7?-1:step>=3&&step<=5?1:0;
-                    if(diagonal){routeAngle=step;return (step&1)==0?step:step==1||step==7?0:4;}
+                    if(scene==17){
+                        routeAngle=step;
+                        if(branch){
+                            // Native 27 joins the first two cardinal steps of the
+                            // flood path. A branch diagonal must never cut a blocked corner.
+                            int firstCell=next,secondCell=-1;
+                            while(routePrevious[firstCell]!=start){secondCell=firstCell;firstCell=routePrevious[firstCell];}
+                            if(secondCell>=0){
+                                int sx=secondCell%10-actor.x/64,sy=secondCell/10-actor.y/16;
+                                if(Math.abs(sx)==1&&Math.abs(sy)==1){routeStepX=sx;routeStepY=sy;routeAngle=sy<0?(sx<0?7:1):(sx<0?5:3);}
+                            }
+                        }
+                    }
                     return step;
                 }
                 routeQueue[tail++]=next;
