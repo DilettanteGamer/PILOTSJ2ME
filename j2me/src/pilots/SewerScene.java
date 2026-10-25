@@ -5,6 +5,7 @@ import javax.microedition.lcdui.*;
 public final class SewerScene extends ZooScene {
  public final SewerLogic sewer;
  private long elapsed;
+ private final Viewport backdrop=new Viewport(128,128,480,256);
  private final Viewport stage=new Viewport(128,128,480,256);
  public SewerScene(Scene scene,GameState state)throws IOException{super(scene,state,new SewerLogic(state),false);sewer=(SewerLogic)logic;scene.close();scene.actors=new AnimatedActor[9];
   int[] ids={70,46,47,48,72,75,77,81,20018};
@@ -41,8 +42,8 @@ public final class SewerScene extends ZooScene {
   g.setColor(0x171b13);g.fillRect(0,0,w,h);
   stage.width=w;stage.height=h;stage.drawWidth=w;stage.drawHeight=drawH;stage.left=0;stage.top=(h-drawH)/2;stage.paintClip(0,0,w,h);
   int cx=g.getClipX(),cy=g.getClipY(),cw=g.getClipWidth(),ch=g.getClipHeight();
-  g.clipRect(0,stage.top,w,drawH);stage.paintClip(0,stage.top,w,drawH);
-  scene.background.paint(g,stage);
+  backdrop.width=w;backdrop.height=h;backdrop.drawWidth=w;backdrop.drawHeight=h;backdrop.left=backdrop.top=0;backdrop.paintClip(0,0,w,h);
+  scene.background.paint(g,backdrop);
   for(int i=0;i<scene.actors.length;i++)scene.actors[i].paint(g,stage);
   g.setClip(cx,cy,cw,ch);
   g.setFont(Font.getFont(0,0,8));g.setColor(0xe2dab0);g.drawString("4/6  Меню: правая",w/2,h-2,Graphics.BOTTOM|Graphics.HCENTER);

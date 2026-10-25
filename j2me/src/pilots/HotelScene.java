@@ -128,11 +128,11 @@ public final class HotelScene extends ZooScene {
     public String hoverText(int x,int y) {
         // These authored clips include Colleague far above his walking root.
         // A cursor left on the cistern must not label the movie as a hero.
-        if((animals.world.scene==14||animals.world.scene==17) && animals.world.busy())return null;
+        if(animals.world.scene==8 || (animals.world.scene==14||animals.world.scene==17) && animals.world.busy())return null;
         if(animals.world.scene==12 && (animals.world.action()==95 || animals.world.action()==96))return null;
         int id=target(x,y);
         if(animals.world.scene==15 && animals.world.hero()==0 && x>=336 && y>=160 && y<417)return "Ящики: отдельный экран";
-        if(animals.world.scene==17)return id==102?"Конец ветки":id==24?"Коллега":id==25?"Шеф":id==26?"Слон":id==27?"Уроненная табуретка":id==28?"Табуретка":id==29?"Веточка":id==30?"Дупло":id==31?(animals.world.flag(0x1e1b64)<3?"Ствол":"Лесенка"):id==32?"Гордая Птица":id==33?(animals.world.flag(0x1e1b5e)==0?"Несчастный слуга":"Слуга"):id==34?"Флейта":id==35?"Упавшая флейта":id==36?"Флейта":id==37?"Ещё одна флейта":null;
+        if(animals.world.scene==17)return id==102?"Конец ветки":id==24?"Коллега":id==25?"Шеф":id==26?"Слон":id==27?"Уроненная табуретка":id==28?"Табуретка":id==29?"Веточка":id==30?"Дупло":id==31?(animals.world.flag(0x1e1b64)<3?"Ствол":"Лесенка"):id==32?"Гордая Птица":id==33?(animals.world.flag(0x1e1b5e)==0?"Несчастный слуга":"Слуга"):id==34?"Флейта":id==35?"Упавшая флейта":id==36?"Флейта":id==37?"Ещё одна флейта":id>=44&&id<=49?"Флейта":null;
         if(animals.world.scene==14)return id==12||id==47?"Шеф":id==11||id==46?"Коллега":id==15?"Зелёная краска":id==16?"Красная краска":id==17||id==18?"Воздушный шар":id==19?"Зелёная краска":id==20?"Красная краска":id==21||id==23?"Лестница":id==22?"Килоперьев":id==25?"Фишка":id==31||id==28?"Ножницы":id==26?"Вытяжка":id==27?"Кран":id==35?"Верёвка":id==39?"Шланг":null;
         if(animals.world.scene==15)return id==14?(animals.world.hasItem(1)?"Ящик без автомата":"Ящик с автоматом"):id==24?"Ящик":id==31?"Электричество":id==33?"Автомат":id==15||id==12||id==13?"Коллега":id>=16&&id<=20?"Шеф":null;
         if(animals.world.scene==13)return id==12?"Шеф":id==11?"Коллега":id==15||id==51?"Огнетушитель":id==48?"Щит":id>=16&&id<=42?"Провода":id==52?"Лифт":null;

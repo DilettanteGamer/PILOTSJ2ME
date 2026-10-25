@@ -155,7 +155,7 @@ MenuCanvas.Host {
                 synchronized(PilotsMidlet.this.canvas){PilotsMidlet.this.canvas.lastTick=0;PilotsMidlet.this.canvas.notifyAll();}
             }
             public void error(IOException error){PilotsMidlet.this.notice("Ящики",error.toString());}
-        });
+        },this.canvas.speech);
         this.display.setCurrent(this.basement);
     }
 
@@ -165,7 +165,7 @@ MenuCanvas.Host {
     private void showMenu() {
         autoSave();
         if(this.menu==null)this.menu=new MenuCanvas(this);
-        this.menu.sound(progress.sound);
+        this.menu.sound(progress.sound);this.menu.resume(this.canvas.sessionLoaded);
         this.canvas.audio.menu(true);
         this.display.setCurrent(this.menu);
         this.canvas.audio.active(true);
@@ -238,19 +238,20 @@ MenuCanvas.Host {
     }
 
     private void showLocations() {
-        int count=1;for(int i=0;i<PlayerProgress.ORDER.length;i++)if(progress.available(PlayerProgress.ORDER[i]))count++;
+        int count=1;for(int i=0;i<PlayerProgress.ORDER.length;i++)if(progress.listed(PlayerProgress.ORDER[i]))count++;
         final int[] ids=new int[count];String[] labels=new String[count];labels[0]="Назад";int n=1;
-        for(int i=0;i<PlayerProgress.ORDER.length;i++)if(progress.available(PlayerProgress.ORDER[i])){ids[n]=PlayerProgress.ORDER[i];labels[n++]=PlayerProgress.NAMES[i];}
+        for(int i=0;i<PlayerProgress.ORDER.length;i++)if(progress.listed(PlayerProgress.ORDER[i])){ids[n]=PlayerProgress.ORDER[i];labels[n++]=PlayerProgress.NAMES[i];}
         MenuCanvas locations=new MenuCanvas(new MenuCanvas.Host(){public void choose(int choice){
             if(choice==0){showMenu();return;}
-            if(choice<0||choice>=ids.length||!progress.available(ids[choice]))return;
+            if(choice<0||choice>=ids.length||!progress.listed(ids[choice]))return;
             try{canvas.startLocation(ids[choice]);canvas.save();display.setCurrent(canvas);}catch(Exception error){notice("Локация",error.toString());}
         }},"Локации",labels);
         this.display.setCurrent(locations);
     }
     public void choose(int n) {
         try{
-            if(n==0){if(progress.started)confirmNewGame();else startNewGame();}
+            if(n==-1){if(this.canvas.sessionLoaded)this.display.setCurrent(this.canvas);}
+            else if(n==0){if(progress.started)confirmNewGame();else startNewGame();}
             else if(n==1)continueGame();
             else if(n==2)showLocations();
             else if(n==3){progress.sound=this.canvas.audio.toggle();progress.persist();showMenu();}
@@ -269,6 +270,7 @@ MenuCanvas.Host {
     implements Runnable,
     ScriptVM.Host {
         private Scene scene;
+        private SpeechTrack speech;
         private GameAudio audio;
         private ZooScene zoo;
         private ZooPanel zooPanel;
@@ -354,7 +356,7 @@ MenuCanvas.Host {
             this.state.scene = n;this.endingFocused=false;
             this.zoo = n==7?new SewerScene(this.scene,this.state):n==16?new FlightScene(this.scene,this.state):n>=8?new HotelScene(this.scene,this.state):n==6?new StreetScene(this.scene,this.state):n==5?new GardenScene(this.scene,this.state):n==4?new AnimalScene(this.scene,this.state):n==3?new CourtyardScene(this.scene,this.state):new ZooScene(this.scene,this.state);
             this.zooPanel = n==7||n==8||n==16?null:new ZooPanel(n);
-            this.audio.scene(n);this.zoo.logic.setSound(this.audio);
+            this.audio.scene(n);this.speech=new SpeechTrack(this.audio,n);this.zoo.logic.setSound(this.speech);
             this.audio.active(this.shown && !this.appPaused && !this.isPreview());
             this.view = new Viewport(Math.max(1, this.getWidth()), this.sceneHeight(this.getWidth(), this.getHeight()), this.scene.background.worldWidth, this.scene.background.worldHeight);
             this.view.cursorX = this.state.x;
@@ -495,15 +497,16 @@ MenuCanvas.Host {
             if (this.scene == null) {
                 return;
             }
+            boolean captionChanged=this.speech!=null&&this.speech.update(l);
             if(PilotsMidlet.this.basement!=null){PilotsMidlet.this.basement.update(l);return;}
-            boolean bl = false;
+            boolean bl = captionChanged;
             if (this.zoo != null) {
                 bl = this.zoo.update(l);
                 if(this.state.scene==17&&!this.endingFocused&&((HotelScene)this.zoo).animals.world.flag(0x1e1b5c)>=11){
                     this.endingFocused=true;this.view.cursorX=380;this.view.cursorY=340;this.view.update();this.state.x=380;this.state.y=340;bl=true;
                 }
                 int next=SceneFlow.next(this.state.scene,this.zoo.logic.completed());
-                if(next!=this.state.scene) { this.startLocation(next);this.saveChecked();return; }
+                if(next!=this.state.scene) { SpeechTrack previous=this.speech;this.startLocation(next);this.speech.carry(previous);this.saveChecked();return; }
                 if(this.state.scene==17&&this.zoo.logic.completed()&&!progress.finished){progress.complete();this.saveChecked();}
                 if(PilotsMidlet.this.basement==null && this.zoo instanceof HotelScene && ((HotelScene)this.zoo).animals.world.basementRequested()) {
                     PilotsMidlet.this.showBasement(((HotelScene)this.zoo).animals.world);return;
@@ -611,23 +614,10 @@ MenuCanvas.Host {
             }
             if(this.zooPanel!=null && this.zoo!=null && clipY+clipHeight>this.view.height)
                 this.zooPanel.paint(graphics,this.zoo.logic,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()));
-            String caption=this.zoo==null?null:this.zoo.logic.message();
+            String caption=this.speech==null?null:this.speech.text();
+            if(caption==null)caption=this.zoo==null?null:this.zoo.logic.message();
             if(caption==null && this.zoo!=null) caption=this.zoo.hoverText(this.view.cursorX,this.view.cursorY);
-            if(caption!=null) {
-                javax.microedition.lcdui.Font font=javax.microedition.lcdui.Font.getFont(0,0,8);
-                graphics.setFont(font);
-                String remaining=caption;String[] lines=new String[6];int count=0;
-                while(remaining.length()>0 && count<lines.length) {
-                    int length=remaining.length();
-                    while(length>1 && font.stringWidth(remaining.substring(0,length))>this.getWidth()-4) length--;
-                    int space=remaining.substring(0,length).lastIndexOf(' ');
-                    if(length<remaining.length() && space>0) length=space;
-                    lines[count++]=remaining.substring(0,length);remaining=remaining.substring(length).trim();
-                }
-                graphics.setColor(0);graphics.fillRect(0,0,this.getWidth(),count*font.getHeight()+4);
-                graphics.setColor(0xffffff);
-                for(int i=0;i<count;i++) graphics.drawString(lines[i],2,2+i*font.getHeight(),20);
-            }
+            CaptionPanel.paint(graphics,this.getWidth(),this.getHeight(),caption,this.speech==null?0:this.speech.age());
         }
 
         protected void keyPressed(int n) {
@@ -639,7 +629,8 @@ MenuCanvas.Host {
         }
 
         private String cursorCaption() {
-            String text=this.zoo==null?null:this.zoo.logic.message();
+            String text=this.speech==null?null:this.speech.text();
+            if(text==null)text=this.zoo==null?null:this.zoo.logic.message();
             return text==null && this.zoo!=null?this.zoo.hoverText(this.view.cursorX,this.view.cursorY):text;
         }
 
@@ -820,14 +811,15 @@ MenuCanvas.Host {
             finally {
                 recordStore.closeRecordStore();
             }
+            if(this.previewReturnState==null&&this.speech!=null)this.speech.save(byArray);
         }
 
         synchronized void load() throws Exception {
-            GameState gameState;
+            GameState gameState;byte[] savedBytes;
             this.finishPreview();
             RecordStore recordStore = RecordStore.openRecordStore((String)"pilots-port-v1", (boolean)false);
             try {
-                gameState = GameState.decode(recordStore.getRecord(1), this.sceneIds[this.sceneCount - 1] + 1);
+                savedBytes=recordStore.getRecord(1);gameState = GameState.decode(savedBytes, this.sceneIds[this.sceneCount - 1] + 1);
             }
             finally {
                 recordStore.closeRecordStore();
@@ -836,7 +828,7 @@ MenuCanvas.Host {
             GameState gameState2 = this.state;
             this.state = gameState;
             try {
-                this.goToScene(gameState.scene);this.sessionLoaded=true;progress.open(gameState.scene);
+                this.goToScene(gameState.scene);this.speech.restore(savedBytes);this.sessionLoaded=true;progress.open(gameState.scene);
             }
             catch (IOException iOException) {
                 this.state = gameState2;

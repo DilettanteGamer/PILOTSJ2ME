@@ -28,9 +28,10 @@ public final class GraphicalMenuTest {
    first.choose(2);check(((String[])get(current(),"items")).length==2,"fresh locations expose future levels");
    MenuCanvas locationsBack=current();locationsBack.keyPressed(48);check(current()==locationsBack,"locations 0 disabled");locationsBack.keyPressed(-7);
    MenuCanvas main=current();check(((String[])get(main,"items")).length==7,"main item count");paint(main,w,h,out+"-main.png");
-   main.keyPressed(-2);check(((MenuLayout)get(main,"layout")).selected==1,"D-pad menu navigation");
+   check(main.commands.size()==0,"startup native context commands");main.keyPressed(-2);check(((MenuLayout)get(main,"layout")).selected==1,"D-pad menu navigation");
    first.choose(0);check(Display.getDisplay(null).getCurrent()==c&&p.started,"first New Game asks unnecessarily");
    c.keyPressed(48);c.keyPressed(-6);check(Display.getDisplay(null).getCurrent()==c,"disabled main-game menu keys");c.keyPressed(-7);check(Display.getDisplay(null).getCurrent() instanceof MenuCanvas,"right game menu key");
+   MenuCanvas resume=current();check(resume.commands.size()==1,"main menu should have only its return command");resume.commandAction((Command)get(resume,"back"),resume);check(Display.getDisplay(null).getCurrent()==c,"native right softkey did not resume game");c.keyPressed(-7);
    GameAudio menuAudio=(GameAudio)get(c,"audio");check(((Integer)get(menuAudio,"scene")).intValue()==2&&((Boolean)get(menuAudio,"menuMode")).booleanValue()&&((Boolean)get(menuAudio,"active")).booleanValue(),"first location loop in menu");
    c.hideNotify();check(((Boolean)get(menuAudio,"active")).booleanValue(),"delayed game hide stopped menu music");first.pauseApp();check(!((Boolean)get(menuAudio,"active")).booleanValue(),"pause left menu playing");first.startApp();check(((Boolean)get(menuAudio,"active")).booleanValue(),"resume lost menu music");
    set(c,"stopped",Boolean.TRUE);c.showNotify();check(!menuAudio.inMenu(),"game retained menu track");set(c,"stopped",Boolean.FALSE);c.hideNotify();c.keyPressed(-7);
@@ -38,8 +39,8 @@ public final class GraphicalMenuTest {
    byte[] before=((GameState)get(c,"state")).encode();first.choose(0);MenuCanvas confirm=current();check(((String[])get(confirm,"items")).length==2,"missing New Game confirmation");choose(confirm,0);check(Arrays.equals(before,((GameState)get(c,"state")).encode()),"Cancel reset game");
    c.startLocation(3);first.choose(2);check(((String[])get(current(),"items")).length==3,"visited location not unlocked");choose(current(),0);
    first.choose(0);choose(current(),1);check(((GameState)get(c,"state")).scene==2&&p.available(3),"New Game erases permanent unlocks");
-   for(int scene:PlayerProgress.ORDER)p.open(scene);first.choose(2);MenuCanvas locations=current();check(((String[])get(locations,"items")).length==17,"all unlocked locations missing");
-   locations.select(16);Graphics list=new Graphics(w,h);locations.paint(list);ImageIO.write(list.image,"png",new File(out+"-locations.png"));choose(locations,0);
+   for(int scene:PlayerProgress.ORDER)p.open(scene);first.choose(2);MenuCanvas locations=current();check(((String[])get(locations,"items")).length==16,"all unlocked locations missing");
+   locations.select(15);Graphics list=new Graphics(w,h);locations.paint(list);ImageIO.write(list.image,"png",new File(out+"-locations.png"));choose(locations,0);
    c.startLocation(7);c.tick(100);c.save();first.choose(3);check(!p.sound&&((String[])get(current(),"items"))[3].equals("Звук выкл."),"sound toggle label");
    second=app();PilotsMidlet.GameCanvas c2=(PilotsMidlet.GameCanvas)get(second,"canvas");PlayerProgress p2=(PlayerProgress)get(second,"progress");check(p2.available(3)&&!p2.sound,"cross-launch prefs/unlocks");
    second.choose(1);check(((GameState)get(c2,"state")).scene==7,"Continue overwrote save with startup scene");
@@ -47,7 +48,7 @@ public final class GraphicalMenuTest {
    javax.microedition.rms.RecordStore rms=javax.microedition.rms.RecordStore.openRecordStore("pilots-port-v1",true);rms.setRecord(1,new byte[]{0},0,1);rms.closeRecordStore();
    third=app();PilotsMidlet.GameCanvas c3=(PilotsMidlet.GameCanvas)get(third,"canvas");third.choose(1);check(((GameState)get(c3,"state")).scene==7,"Continue checkpoint fallback");
    c3.startLocation(17);((HotelScene)get(c3,"zoo")).animals.world.completed=true;c3.tick(100);check(((PlayerProgress)get(third,"progress")).finished,"completion not persisted");
-   third.choose(1);check(Display.getDisplay(null).getCurrent()==c3&&((GameState)get(c3,"state")).scene==2,"completed Continue did not start New Game");
+   c3.keyPressed(-7);current().keyPressed(-7);check(Display.getDisplay(null).getCurrent()==c3&&((GameState)get(c3,"state")).scene==17,"right softkey restarted completed game");third.choose(1);check(Display.getDisplay(null).getCurrent()==c3&&((GameState)get(c3,"state")).scene==2,"completed Continue did not start New Game");
    third.choose(4);AboutCanvas about=(AboutCanvas)Display.getDisplay(null).getCurrent();Graphics g=new Graphics(w,h);about.paint(g);ImageIO.write(g.image,"png",new File(out+"-credits.png"));
    for(int i=0;i<7;i++)about.input(54);about.paint(g);check(((Integer)get(about,"selected")).intValue()==7,"port credit page missing");ImageIO.write(g.image,"png",new File(out+"-port-author.png"));
    about.input(53);about.paint(g);about.input(48);check(Display.getDisplay(null).getCurrent()==about,"About 0 disabled");about.input(-7);check(Display.getDisplay(null).getCurrent() instanceof MenuCanvas,"About back");
