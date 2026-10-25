@@ -30,7 +30,7 @@ from extract_sewer import extract as extract_sewer
 from extract_basement_platform import extract as extract_basement_platform
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.24.3'
+VERSION = '0.24.4'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 

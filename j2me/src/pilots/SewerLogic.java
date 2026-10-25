@@ -35,17 +35,17 @@ public final class SewerLogic extends ZooLogic {
   if(fall>0){fall++;
    if(fall==5)cue(21);if(fall==30||fall==42)cue(15);if(fall==51)cue(16);
    if(fall==76){x=from=448;motion=0;direction=-1;cue(17);}
-   if(fall>86){fall=0;x=from=448;motion=0;direction=-1;}sync();return;}
+   if(fall>89){fall=0;x=from=448;motion=0;direction=-1;}sync();return;}
   if(motion>0)motion--;
   int feet=visibleX()+32;
   for(int i=0;i<3;i++)if(dangerous(i)&&rats.hits(i,clock%20,feet)){fallX=visibleX();fall=1;motion=0;falls++;cue(14);sync();return;}
   if(motion==0&&x==128)done=true;
   sync();
  }
- public void sync(){try{ByteArrayOutputStream b=new ByteArrayOutputStream();DataOutputStream o=new DataOutputStream(b);o.writeInt(0x53575234);o.writeShort(clock);o.writeShort(x);o.writeShort(from);o.writeByte(motion);o.writeByte(direction);o.writeByte(fall);o.writeShort(fallX);o.writeInt(falls);o.writeBoolean(done);o.close();state.location=b.toByteArray();}catch(IOException impossible){throw new RuntimeException(impossible.toString());}}
+ public void sync(){try{ByteArrayOutputStream b=new ByteArrayOutputStream();DataOutputStream o=new DataOutputStream(b);o.writeInt(0x53575235);o.writeShort(clock);o.writeShort(x);o.writeShort(from);o.writeByte(motion);o.writeByte(direction);o.writeByte(fall);o.writeShort(fallX);o.writeInt(falls);o.writeBoolean(done);o.close();state.location=b.toByteArray();}catch(IOException impossible){throw new RuntimeException(impossible.toString());}}
  private void load(byte[] b)throws IOException{
-  DataInputStream in=new DataInputStream(new ByteArrayInputStream(b));int cookie=in.readInt();boolean legacy=cookie==0x53575231,oldRoute=cookie==0x53575232,oldRecovery=cookie==0x53575233;if(!legacy&&!oldRoute&&!oldRecovery&&cookie!=0x53575234)throw new IOException("Invalid sewer save");clock=in.readUnsignedShort();x=in.readUnsignedShort();from=in.readUnsignedShort();motion=in.readUnsignedByte();direction=in.readByte();fall=in.readUnsignedByte();fallX=in.readUnsignedShort();falls=in.readInt();done=in.readBoolean();
-  if(in.read()!=-1||clock>=1000||x<128||x>448||from<128||from>448||direction!=-1&&direction!=1||fall>(legacy||oldRoute?24:oldRecovery?94:86)||fallX>512||falls<0||done&&(x!=128||motion!=0||fall!=0))throw new IOException("Invalid sewer state");
+  DataInputStream in=new DataInputStream(new ByteArrayInputStream(b));int cookie=in.readInt();boolean legacy=cookie==0x53575231,oldRoute=cookie==0x53575232,oldRecovery=cookie==0x53575233,oldAligned=cookie==0x53575234;if(!legacy&&!oldRoute&&!oldRecovery&&!oldAligned&&cookie!=0x53575235)throw new IOException("Invalid sewer save");clock=in.readUnsignedShort();x=in.readUnsignedShort();from=in.readUnsignedShort();motion=in.readUnsignedByte();direction=in.readByte();fall=in.readUnsignedByte();fallX=in.readUnsignedShort();falls=in.readInt();done=in.readBoolean();
+  if(in.read()!=-1||clock>=1000||x<128||x>448||from<128||from>448||direction!=-1&&direction!=1||fall>(legacy||oldRoute?24:oldRecovery?94:oldAligned?86:89)||fallX>512||falls<0||done&&(x!=128||motion!=0||fall!=0))throw new IOException("Invalid sewer state");
   if(legacy){
    if(x%64!=0||from%64!=0||Math.abs(x-from)>64||motion>4)throw new IOException("Invalid old sewer state");
    // Older builds allowed stopping in a rat's path. Resume from a safe point;
