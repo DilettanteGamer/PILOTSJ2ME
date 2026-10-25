@@ -1,0 +1,32 @@
+[
+  {
+    "profile": "128x128",
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "pilots/FlightScene.class"
+    ],
+    "unchanged": 2167,
+    "size": 17346127,
+    "sha256": "d20c93bab26578f867c538ac387fc0ebf1224deb964aad498a52a9c732efd85e"
+  },
+  {
+    "profile": "128x160",
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "pilots/FlightScene.class"
+    ],
+    "unchanged": 2167,
+    "size": 17346393,
+    "sha256": "1b4ae9a4aa6b851f8ab765776488c329806788f85e1b5a5c29ef78c7826c9ce5"
+  },
+  {
+    "profile": "240x320",
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "pilots/FlightScene.class"
+    ],
+    "unchanged": 2167,
+    "size": 18203760,
+    "sha256": "f265775fdca0d6a500b966aae77fabfbc92b5328ca8fce4b4ee3776de88e7f41"
+  }
+]

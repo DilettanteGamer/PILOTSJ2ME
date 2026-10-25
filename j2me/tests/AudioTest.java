@@ -79,13 +79,27 @@ public final class AudioTest {
             audio.active(false);audio.scene(4);audio.play(41);Thread.sleep(150);
             check(Manager.players.size()==9,"Initial scene sound escaped the hidden canvas");
             audio.active(true);waitFor(()->Manager.players.size()==11);
+            audio.scene(6);waitFor(()->Manager.players.size()==12);audio.play(31);waitFor(()->Manager.players.size()==13);
+            FakePlayer streetFinal=latest();Manager.maxPCM=1;audio.play(0);Thread.sleep(150);
+            check(streetFinal.state==Player.STARTED && Manager.players.size()==13,"Street footsteps interrupted final sound");
+            Manager.maxPCM=3;audio.scene(9);waitFor(()->Manager.players.size()==14);FakePlayer roomMusic=latest();audio.music(2);waitFor(()->Manager.players.size()==15);
+            check(roomMusic.state==Player.CLOSED && latest().type.equals("audio/midi"),"hotel ending music change failed");
+            audio.scene(10);waitFor(()->Manager.players.size()==16);audio.play(41);waitFor(()->Manager.players.size()==17);
+            check(latest().type.equals("audio/x-wav"),"balcony two-digit scene sound missing");
+            audio.scene(11);waitFor(()->Manager.players.size()==18);audio.play(23);waitFor(()->Manager.players.size()==19);
+            check(latest().type.equals("audio/x-wav"),"ledge speech missing");
+            audio.scene(12);waitFor(()->Manager.players.size()==20);audio.play(45);waitFor(()->Manager.players.size()==21);
+            check(latest().type.equals("audio/x-wav"),"bathroom cue missing");
+            audio.scene(15);waitFor(()->Manager.players.size()==22);audio.play(29);waitFor(()->Manager.players.size()==23);
+            check(latest().type.equals("audio/x-wav"),"basement cue missing");
         } finally { audio.close();Manager.rejectMidi=false;Manager.rejectAll=false;Manager.maxPCM=3; }
         waitFor(()->latest().state==Player.CLOSED);
         check(Manager.players.stream().allMatch(p->p.state==Player.CLOSED),"Leaked player");
     }
     static void resources(String[] hashes) throws Exception {
-        for(int scene=2;scene<=4;scene++) {
-            javax.sound.midi.Sequence music=javax.sound.midi.MidiSystem.getSequence(AudioTest.class.getResourceAsStream("/audio/0"+scene+".mid"));
+        int[] scenes={2,3,4,5,6,8,9,10,11,12,13,15,14,16,17};
+        for(int si=0;si<scenes.length;si++) { int scene=scenes[si];
+            javax.sound.midi.Sequence music=javax.sound.midi.MidiSystem.getSequence(AudioTest.class.getResourceAsStream("/audio/"+(scene<10?"0":"")+scene+".mid"));
             java.security.MessageDigest digest=java.security.MessageDigest.getInstance("SHA-256");
             javax.sound.midi.Track track=music.getTracks()[0];
             for(int i=0;i<track.size();i++) {
@@ -95,16 +109,16 @@ public final class AudioTest {
                 digest.update(event.getMessage().getMessage());
             }
             StringBuilder hex=new StringBuilder();for(byte b:digest.digest()) hex.append(String.format("%02x",b&255));
-            check(hex.toString().equals(hashes[scene-2]),"MIDI notes/timestamps changed in conversion");
-            check(music.getMicrosecondLength()==(scene==2?54850000L:scene==3?314020000L:109580000L),"MIDI timing changed");
-            for(int cue=0;cue<(scene==2?39:scene==3?24:62);cue++) {
-                String path="/audio/0"+scene+"-"+(cue<10?"0":"")+cue+".wav";
+            check(hex.toString().equals(hashes[si]),"MIDI notes/timestamps changed in conversion");
+            check(music.getMicrosecondLength()==(scene==2?54850000L:scene==3?314020000L:scene==4?109580000L:scene==5?109670000L:scene==6?109710000L:scene==8?90300000L:scene==9?123390000L:scene==10?90350000L:scene==11?80160000L:scene==17?107290000L:scene==16?109700000L:scene==14?82280000L:scene==12||scene==15?109710000L:90300000L),"MIDI timing changed");
+            for(int cue=0;cue<(scene==2?39:scene==3?24:scene==4?62:scene==5?25:scene==6?32:scene==8?16:scene==9?53:scene==10?42:scene==11?24:scene==12?46:scene==17?47:scene==16?28:scene==14?45:scene==15?30:31);cue++) {
+                String path="/audio/"+(scene<10?"0":"")+scene+"-"+(cue<10?"0":"")+cue+".wav";
                 javax.sound.sampled.AudioInputStream wav=javax.sound.sampled.AudioSystem.getAudioInputStream(new BufferedInputStream(AudioTest.class.getResourceAsStream(path)));
                 check(wav.getFormat().getChannels()==1 && wav.getFormat().getSampleSizeInBits()==8 && wav.getFormat().getSampleRate()==11025,"PCM format changed");wav.close();
             }
         }
     }
     public static void main(String[] args) throws Exception {
-        resources(args);logic();worker();System.out.println("Audio: 125 WAVs, 3 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
+        resources(args);logic();worker();System.out.println("Audio: 471 WAVs, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
     }
 }

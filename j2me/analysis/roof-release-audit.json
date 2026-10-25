@@ -1,0 +1,51 @@
+{
+  "version": "0.20.0",
+  "baseline": "0.19.3",
+  "profiles": {
+    "128x128": {
+      "size": 16051749,
+      "sha256": "2d63bef42f109894f09e9606e77f1b9f33a0d9ba65d2a7a9462ab0b64968756a",
+      "crc": "passed",
+      "jad_size": "passed",
+      "unchanged_previous_resources": 1830,
+      "changed_previous_resources": [
+        "catalog.bin"
+      ],
+      "removed_previous_resources": [
+        "scenes/15.animations"
+      ],
+      "active_preview_count": 32,
+      "added_resources": 162
+    },
+    "128x160": {
+      "size": 16051747,
+      "sha256": "6a9131633140faabb35eee1c399342780564bb3ea75ccadbc0dd5f08cc7016c5",
+      "crc": "passed",
+      "jad_size": "passed",
+      "unchanged_previous_resources": 1830,
+      "changed_previous_resources": [
+        "catalog.bin"
+      ],
+      "removed_previous_resources": [
+        "scenes/15.animations"
+      ],
+      "active_preview_count": 32,
+      "added_resources": 162
+    },
+    "240x320": {
+      "size": 16905882,
+      "sha256": "654b812837cd8a4a460efa09b694f22ef2aebec575a0459b157284d9e11b4429",
+      "crc": "passed",
+      "jad_size": "passed",
+      "unchanged_previous_resources": 1830,
+      "changed_previous_resources": [
+        "catalog.bin"
+      ],
+      "removed_previous_resources": [
+        "scenes/15.animations"
+      ],
+      "active_preview_count": 32,
+      "added_resources": 162
+    }
+  }
+}

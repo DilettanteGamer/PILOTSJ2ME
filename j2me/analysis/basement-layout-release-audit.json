@@ -1,0 +1,38 @@
+[
+  {
+    "profile": "128x128",
+    "unchanged_resources": 1830,
+    "changed_art": [
+      "puzzles/basement-servant.sprite",
+      "puzzles/basement.p8"
+    ],
+    "jar_bytes": 14613251,
+    "jar_sha256": "068589b403dfcba89162447cf7f69fe120f1ecb06391e50b89fee43b9b5aef4d",
+    "crc_valid": true,
+    "jad_valid": true
+  },
+  {
+    "profile": "128x160",
+    "unchanged_resources": 1830,
+    "changed_art": [
+      "puzzles/basement-servant.sprite",
+      "puzzles/basement.p8"
+    ],
+    "jar_bytes": 14613252,
+    "jar_sha256": "69be21d2b43502de5e2552e3e330dedb27498fefc5ef48922bf8f6a648689f7b",
+    "crc_valid": true,
+    "jad_valid": true
+  },
+  {
+    "profile": "240x320",
+    "unchanged_resources": 1830,
+    "changed_art": [
+      "puzzles/basement-servant.sprite",
+      "puzzles/basement.p8"
+    ],
+    "jar_bytes": 15422957,
+    "jar_sha256": "f376b5be91164037652e90d304eed455bd03811c662b9c0b18842bdc4f67849a",
+    "crc_valid": true,
+    "jad_valid": true
+  }
+]

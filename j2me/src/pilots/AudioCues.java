@@ -7,7 +7,7 @@ import java.io.IOException;
 public final class AudioCues {
     private final byte[] events;
     public AudioCues(int scene) throws IOException {
-        DataInputStream in=new DataInputStream(getClass().getResourceAsStream("/audio/0"+scene+".events"));
+        DataInputStream in=new DataInputStream(getClass().getResourceAsStream("/audio/"+(scene<10?"0":"")+scene+".events"));
         try {
             if(in.readInt()!=0x5a415531) throw new IOException("Invalid audio events");
             events=new byte[in.readUnsignedShort()*5];in.readFully(events);

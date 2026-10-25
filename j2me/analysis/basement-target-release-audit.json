@@ -1,0 +1,27 @@
+{
+  "version": "0.19.3",
+  "baseline": "0.19.2",
+  "profiles": {
+    "128x128": {
+      "size": 14613356,
+      "sha256": "542b6e61f1d075763d81688b4da572f9a561291d3345453e092807c772c02ce5",
+      "crc": "passed",
+      "jad_size": "passed",
+      "unchanged_resources": 1832
+    },
+    "128x160": {
+      "size": 14613357,
+      "sha256": "34f402b7bbe5e64b212b8653b1ac62221c8f461e5a2a57b3de190a48ca7a7c03",
+      "crc": "passed",
+      "jad_size": "passed",
+      "unchanged_resources": 1832
+    },
+    "240x320": {
+      "size": 15423062,
+      "sha256": "5ba837c460e7afcdf5493e97615c3aa0e550c600df7bd59c56a04e2c1755ca7f",
+      "crc": "passed",
+      "jad_size": "passed",
+      "unchanged_resources": 1832
+    }
+  }
+}

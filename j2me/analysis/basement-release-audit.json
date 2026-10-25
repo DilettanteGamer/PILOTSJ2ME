@@ -1,0 +1,38 @@
+[
+  {
+    "profile": "128x128",
+    "size_bytes": 14549682,
+    "jar_sha256": "d438cfb1c3690850be7f98d42f4ba93766bd9742cb7abec99d481948db05cfd0",
+    "unchanged_previous_resources": 1692,
+    "new_scene_resources": 99,
+    "new_audio_resources": 32,
+    "animations": 1331,
+    "frames": 15620,
+    "crc_valid": true,
+    "jad_valid": true
+  },
+  {
+    "profile": "128x160",
+    "size_bytes": 14549680,
+    "jar_sha256": "9b8bfa50a55104b360976567fb126f9b69694d0200c6c8c8fe951c6efc6e956c",
+    "unchanged_previous_resources": 1692,
+    "new_scene_resources": 99,
+    "new_audio_resources": 32,
+    "animations": 1331,
+    "frames": 15620,
+    "crc_valid": true,
+    "jad_valid": true
+  },
+  {
+    "profile": "240x320",
+    "size_bytes": 15359389,
+    "jar_sha256": "68bbaa3591e991a692a06ac3b6c11951a8be41ecfcb85989a49b8ce12456e29e",
+    "unchanged_previous_resources": 1692,
+    "new_scene_resources": 99,
+    "new_audio_resources": 32,
+    "animations": 1331,
+    "frames": 15620,
+    "crc_valid": true,
+    "jad_valid": true
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "profile": "128x128",
+    "unchanged_old_resources": 1824,
+    "new_art_resources": 8,
+    "compressed_art_bytes": 54315,
+    "jar_bytes": 14615378,
+    "jar_sha256": "30ec436df421df8d97e6874f076bee0b458e8cabcfbb48d17678429732490fa3",
+    "crc_valid": true,
+    "jad_valid": true
+  },
+  {
+    "profile": "128x160",
+    "unchanged_old_resources": 1824,
+    "new_art_resources": 8,
+    "compressed_art_bytes": 54315,
+    "jar_bytes": 14615376,
+    "jar_sha256": "922e02a05847bade85350e88823a1b835699334246f2fe6041cbe70145950c4b",
+    "crc_valid": true,
+    "jad_valid": true
+  },
+  {
+    "profile": "240x320",
+    "unchanged_old_resources": 1824,
+    "new_art_resources": 8,
+    "compressed_art_bytes": 54315,
+    "jar_bytes": 15425085,
+    "jar_sha256": "4f0175cb66306f7c7cdb68ec0ea1a1336dae72574cce031bf708c417d9405c5c",
+    "crc_valid": true,
+    "jad_valid": true
+  }
+]

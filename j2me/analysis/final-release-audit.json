@@ -1,0 +1,71 @@
+[
+  {
+    "profile": "128x128",
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "catalog.bin",
+      "pilots/AnimationCatalog.class",
+      "pilots/GameState.class",
+      "pilots/HotelLogic.class",
+      "pilots/HotelScene.class",
+      "pilots/HotelWorld.class",
+      "pilots/PilotsMidlet$GameCanvas.class",
+      "pilots/PilotsMidlet.class",
+      "pilots/SceneFlow.class",
+      "pilots/ZooPanel.class"
+    ],
+    "added_count": 172,
+    "removed": [
+      "scenes/16.animations"
+    ],
+    "unchanged_previous_resources": 2095,
+    "size": 19096738,
+    "sha256": "2ba3e0e5fa1974dedf951c1629f53b8bddcec953bc7973cdb5b2d5bf9d827a78"
+  },
+  {
+    "profile": "128x160",
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "catalog.bin",
+      "pilots/AnimationCatalog.class",
+      "pilots/GameState.class",
+      "pilots/HotelLogic.class",
+      "pilots/HotelScene.class",
+      "pilots/HotelWorld.class",
+      "pilots/PilotsMidlet$GameCanvas.class",
+      "pilots/PilotsMidlet.class",
+      "pilots/SceneFlow.class",
+      "pilots/ZooPanel.class"
+    ],
+    "added_count": 172,
+    "removed": [
+      "scenes/16.animations"
+    ],
+    "unchanged_previous_resources": 2095,
+    "size": 19097000,
+    "sha256": "6466c76cf0681eb262eb3d201ae76dc5c7bc94072df89323ff6005da76ae81b3"
+  },
+  {
+    "profile": "240x320",
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "catalog.bin",
+      "pilots/AnimationCatalog.class",
+      "pilots/GameState.class",
+      "pilots/HotelLogic.class",
+      "pilots/HotelScene.class",
+      "pilots/HotelWorld.class",
+      "pilots/PilotsMidlet$GameCanvas.class",
+      "pilots/PilotsMidlet.class",
+      "pilots/SceneFlow.class",
+      "pilots/ZooPanel.class"
+    ],
+    "added_count": 172,
+    "removed": [
+      "scenes/16.animations"
+    ],
+    "unchanged_previous_resources": 2095,
+    "size": 20011207,
+    "sha256": "d45af0d88159fee64847dddf95bd3c9383f85853b25c9babe89e1d74f2f7de30"
+  }
+]
