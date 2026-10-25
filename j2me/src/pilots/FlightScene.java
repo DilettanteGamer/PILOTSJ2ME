@@ -11,9 +11,14 @@ public final class FlightScene extends ZooScene {
  private void refresh()throws IOException{
   for(int i=0;i<scene.actors.length;i++){HotelWorld.Thing t=thing(i);AnimatedActor a=scene.actors[i];
    if(t==null||!t.active||t.clip<0||t.y>=417){if(a!=null){a.close();scene.actors[i]=null;}continue;}
+   // Original falling frames are clipped at source y=417. Keep the last
+   // whole pose and continue its descent through the taller phone sky.
+   boolean falling=t.clip>=62&&t.clip<=64;
+   int frame=falling?Math.min(t.frame,17):t.frame;
+   int fall=falling?Math.max(0,t.frame-17)*48:0;
    int id=t.clip<46?20000+t.clip:t.clip;
-   if(a==null||a.id!=id||a.clip.index>t.frame){AnimatedActor next=new AnimatedActor(id,"/scenes/16-"+id+".anm",t.x,t.y);if(a!=null)a.close();scene.actors[i]=a=next;}
-   while(a.clip.index<Math.min(t.frame,a.clip.count-1))a.clip.advance();a.x=t.x;a.y=t.y;a.playing=false;a.visible=true;
+   if(a==null||a.id!=id||a.clip.index>frame){AnimatedActor next=new AnimatedActor(id,"/scenes/16-"+id+".anm",t.x,t.y);if(a!=null)a.close();scene.actors[i]=a=next;}
+   while(a.clip.index<Math.min(frame,a.clip.count-1))a.clip.advance();a.x=t.x;a.y=t.y+fall;a.playing=false;a.visible=true;
   }
  }
  public boolean input(int key)throws IOException{boolean result=flight.command(key);refresh();return result;}
