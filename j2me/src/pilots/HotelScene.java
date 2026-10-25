@@ -5,20 +5,20 @@ import javax.microedition.lcdui.Graphics;
 /** Source object roots and layers, with the existing viewport and panel. */
 public final class HotelScene extends ZooScene {
     public final HotelLogic animals;
-    private final int[] order=new int[310];
+    private final int[] order;
     private long elapsed;
     private int hitSlot=-1;
     private final RefrigeratorPuzzle handles;
     public HotelScene(Scene scene,GameState state) throws IOException {
         super(scene,state,new HotelLogic(state),false);animals=(HotelLogic)logic;
         handles=state.scene==9?new RefrigeratorPuzzle():null;
-        scene.close();scene.actors=new AnimatedActor[310];refresh();
+        scene.close();scene.actors=new AnimatedActor[302+animals.world.effects.length];order=new int[scene.actors.length];refresh();
     }
     private HotelWorld.Thing thing(int slot) { return slot<300?animals.world.cells[slot]:slot<302?animals.world.heroes[slot-300]:animals.world.effects[slot-302]; }
     private void refresh() throws IOException {
         for(int i=0;i<scene.actors.length;i++) {
             HotelWorld.Thing t=thing(i);AnimatedActor actor=scene.actors[i];
-            if(t==null || !t.active || t.clip<0 || t.y>=417 || hiddenGrid(t.id)) {
+            if(t==null || !t.active || t.clip<0 || t.y>=417 || hiddenGrid(t.id) || ladderMovie(t)) {
                 if(actor!=null) { actor.close();scene.actors[i]=null; }continue;
             }
             int frame=animals.world.scene==15 && t.clip==80?(t.direction==1?0:t.direction==5?2:t.direction==7?3:1):t.frame;
@@ -29,12 +29,16 @@ public final class HotelScene extends ZooScene {
             }
             while(actor.clip.index<Math.min(frame,actor.clip.count-1)) actor.clip.advance();
             actor.x=t.x;actor.y=t.y;
-            if((i>=300 && i<302 || animals.world.scene==15 && t.waitTicks>0) && t.clip>=20 && t.clip<=33 && !t.finished) {
+            if((i>=300 && i<302 || (animals.world.scene==15||animals.world.scene==17) && t.waitTicks>0) && t.clip>=20 && t.clip<=33 && !t.finished) {
                 int progress=t.frame+1;
                 actor.x=t.fromX+(t.x-t.fromX)*progress/5;actor.y=t.fromY+(t.y-t.fromY)*progress/5;
             }
             actor.playing=false;actor.visible=true;
         }
+    }
+    private boolean ladderMovie(HotelWorld.Thing t){
+        if(animals.world.scene!=17||t.id!=25)return false;
+        for(int i=0;i<animals.world.effects.length;i++){HotelWorld.Thing effect=animals.world.effects[i];if(effect!=null&&effect.clip==114)return true;}return false;
     }
     public void refreshState() throws IOException { refresh(); }
     private boolean hiddenGrid(int id) { return animals.world.scene==9 && (id>=42 && id<=49 || id>=64 && id<=95); }
@@ -106,10 +110,11 @@ public final class HotelScene extends ZooScene {
     public String hoverText(int x,int y) {
         // These authored clips include Colleague far above his walking root.
         // A cursor left on the cistern must not label the movie as a hero.
-        if(animals.world.scene==14 && animals.world.busy())return null;
+        if((animals.world.scene==14||animals.world.scene==17) && animals.world.busy())return null;
         if(animals.world.scene==12 && (animals.world.action()==95 || animals.world.action()==96))return null;
         int id=target(x,y);
         if(animals.world.scene==15 && animals.world.hero()==0 && x>=336 && y>=160 && y<417)return "Ящики: отдельный экран";
+        if(animals.world.scene==17)return id==24?"Коллега":id==25?"Шеф":id==26?"Слон":id==27?"Уроненная табуретка":id==28?"Табуретка":id==29?"Веточка":id==30?"Дупло":id==31?(animals.world.flag(0x1e1b64)<3?"Ствол":"Лесенка"):id==32?"Гордая Птица":id==33?(animals.world.flag(0x1e1b5e)==0?"Несчастный слуга":"Слуга"):id==34?"Флейта":id==35?"Упавшая флейта":id==36?"Флейта":id==37?"Ещё одна флейта":null;
         if(animals.world.scene==14)return id==12||id==47?"Шеф":id==11||id==46?"Коллега":id==15?"Зелёная краска":id==16?"Красная краска":id==17||id==18?"Воздушный шар":id==19?"Зелёная краска":id==20?"Красная краска":id==21||id==23?"Лестница":id==22?"Килоперьев":id==25?"Фишка":id==31||id==28?"Ножницы":id==26?"Вытяжка":id==27?"Кран":id==35?"Верёвка":id==39?"Шланг":null;
         if(animals.world.scene==15)return id==14?(animals.world.hasItem(1)?"Ящик без автомата":"Ящик с автоматом"):id==24?"Ящик":id==31?"Электричество":id==33?"Автомат":id==15||id==12||id==13?"Коллега":id>=16&&id<=20?"Шеф":null;
         if(animals.world.scene==13)return id==12?"Шеф":id==11?"Коллега":id==15||id==51?"Огнетушитель":id==48?"Щит":id>=16&&id<=42?"Провода":id==52?"Лифт":null;
@@ -120,7 +125,7 @@ public final class HotelScene extends ZooScene {
     }
     public boolean request(int x,int y) throws IOException {
         if(animals.world.busy()) return false;
-        int id=target(x,y);if(animals.world.scene==15)return animals.world.requestBasement(id>=0&&hitSlot>=0?thing(hitSlot):null,x,y);boolean result=id>=0?animals.world.interact(id):animals.world.move(x,y);refresh();return result;
+        int id=target(x,y);if(animals.world.scene==17){boolean accepted=animals.world.requestFinal(id,x,y);refresh();return accepted;}if(animals.world.scene==15)return animals.world.requestBasement(id>=0&&hitSlot>=0?thing(hitSlot):null,x,y);boolean result=id>=0?animals.world.interact(id):animals.world.move(x,y);refresh();return result;
     }
     public boolean activate(int x,int y) throws IOException { return request(x,y); }
     public boolean update(long delta) throws IOException {

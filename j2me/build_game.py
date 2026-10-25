@@ -28,7 +28,7 @@ from extract_hotel import extract as extract_hotel
 from extract_basement_platform import extract as extract_basement_platform
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.21.3'
+VERSION = '0.22.0'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -94,16 +94,16 @@ def package(profile, classes, sprites, output):
     with zipfile.ZipFile(source) as archive:
         baseline = {n: archive.read(n) for n in archive.namelist()}
     entries, changes = resources.adjust_animations(baseline, json.loads((ROOT / 'animation-adjustments.json').read_text()))
-    entries = {n: d for n, d in entries.items() if not n.endswith('.class') and not n.startswith(('scenes/05','scenes/06','scenes/08','scenes/09','scenes/10','scenes/11','scenes/12','scenes/13','scenes/14','scenes/15','scenes/16'))}
+    entries = {n: d for n, d in entries.items() if not n.endswith('.class') and not n.startswith(('scenes/05','scenes/06','scenes/08','scenes/09','scenes/10','scenes/11','scenes/12','scenes/13','scenes/14','scenes/15','scenes/16','scenes/17'))}
     entries.update(classes)
     entries.update(sprites)
     # Reuse the verified, profile-scaled original garden background (320px on small phones).
-    for name in ['scenes/05.p8','scenes/05.bar','scenes/06.p8','scenes/06.bar','scenes/08.p8','scenes/08.bar','scenes/09.p8','scenes/09.bar','scenes/10.p8','scenes/10.bar','scenes/11.p8','scenes/11.bar','scenes/12.p8','scenes/12.bar','scenes/13.p8','scenes/13.bar','scenes/14.p8','scenes/14.bar','scenes/15.p8','scenes/15.bar']:
+    for name in ['scenes/05.p8','scenes/05.bar','scenes/06.p8','scenes/06.bar','scenes/08.p8','scenes/08.bar','scenes/09.p8','scenes/09.bar','scenes/10.p8','scenes/10.bar','scenes/11.p8','scenes/11.bar','scenes/12.p8','scenes/12.bar','scenes/13.p8','scenes/13.bar','scenes/14.p8','scenes/14.bar','scenes/15.p8','scenes/15.bar','scenes/17.p8','scenes/17.bar']:
         entries[name]=baseline[name]
     # Playable chapters, including both hotel sections. Sewer assets are deliberately excluded.
     removed_future_resources=[]
     for name in list(entries):
-        if name.startswith('scenes/') and name[7:9].isdigit() and int(name[7:9]) not in (2,3,4,5,6,8,9,10,11,12,13,14,15,16):
+        if name.startswith('scenes/') and name[7:9].isdigit() and int(name[7:9]) not in (2,3,4,5,6,8,9,10,11,12,13,14,15,16,17):
             removed_future_resources.append(name)
             del entries[name]
     width,height=map(int,profile.split('x'));bar=(width*63+320)//640;play_height=height-bar
@@ -111,7 +111,7 @@ def package(profile, classes, sprites, output):
     import struct
     crop=b''.join(sky[780+(y0+y)*640+x0:780+(y0+y)*640+x0+width] for y in range(play_height))
     entries['scenes/16.p8']=b'P8BG'+struct.pack('>HHHH',width,play_height,640,417)+sky[12:780]+crop
-    entries['catalog.bin']=b'PLT2\x00\x0e\x02\x03\x04\x05\x06\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10'
+    entries['catalog.bin']=b'PLT2\x00\x0f\x02\x03\x04\x05\x06\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11'
     packed_clips=[]
     inflated_bytes_saved=0
     for name,data in list(entries.items()):
@@ -134,6 +134,7 @@ def package(profile, classes, sprites, output):
     entries.pop('scenes/13.animations',None)
     entries.pop('scenes/15.animations',None)
     entries.pop('scenes/14.animations',None)
+    entries.pop('scenes/16.animations',None)
     changes['pending_placement_menu_numbers']=[]
     changes['pending_character_relative_menu_numbers']=[]
     manifest = resources.manifest(entries['META-INF/MANIFEST.MF'])
@@ -146,7 +147,7 @@ def package(profile, classes, sprites, output):
     entries['META-INF/MANIFEST.MF'] = ('\r\n'.join(k + ': ' + v for k, v in manifest.items()) + '\r\n\r\n').encode()
     report = resources.validate(entries, profile)
     # Decoded animation content and retained profile rasters must remain byte-identical.
-    resources.require(all((decode_animation(d) if n.endswith('.anm') else d) == baseline[n] for n, d in entries.items() if n in baseline and not n.startswith(('scenes/05','scenes/06','scenes/08','scenes/09','scenes/10','scenes/11','scenes/12','scenes/13','scenes/14','scenes/15','scenes/16')) and n.endswith(('.anm', '.p8', '.bar'))), 'Existing visual content changed')
+    resources.require(all((decode_animation(d) if n.endswith('.anm') else d) == baseline[n] for n, d in entries.items() if n in baseline and not n.startswith(('scenes/05','scenes/06','scenes/08','scenes/09','scenes/10','scenes/11','scenes/12','scenes/13','scenes/14','scenes/15','scenes/16','scenes/17')) and n.endswith(('.anm', '.p8', '.bar'))), 'Existing visual content changed')
     output.mkdir(parents=True, exist_ok=True)
     target = output / ('Pilots-' + profile + '.jar')
     with zipfile.ZipFile(target, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
@@ -161,11 +162,11 @@ def package(profile, classes, sprites, output):
     jad = {k: v for k, v in manifest.items() if k != 'Manifest-Version'}
     jad.update({'MIDlet-Jar-URL': target.name, 'MIDlet-Jar-Size': str(target.stat().st_size)})
     target.with_suffix('.jad').write_bytes(('\r\n'.join(k + ': ' + v for k, v in jad.items()) + '\r\n').encode())
-    report.update(audio_wav_count=sum(n.endswith('.wav') for n in sprites),audio_midi_count=sum(n.endswith('.mid') for n in sprites),audio_event_tables='Original bytecode predicates and animal yard VM; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3,4,5,6,8,9,10,11,12,13,15,14,16],active_preview_scene=16,original_flight_section=18,flight_preview_count=23,flight_layout="fixed native sky crop, full horizontal field, original sprites below 40% screen width",original_roof_section=16,original_basement_section=17,basement_preview_count=35,basement_detail_screen="BasementCanvas",basement_controls="2/8 lanes, 4/6 move, auto jump, 5 gun on safe lane, 0 back",original_switchboard_section=15,switchboard_preview_count=40,switchboard_puzzle={'detail_screen':'SwitchboardCanvas','original_wire_count':27,'original_states':[2,4],'automatic_return':True,'original_scripts':True},skipped_source_scene=7,hotel_sections=[10,11],original_bathroom_section=14,bathroom_preview_count=27,original_facade_section=13,facade_preview_count=19,hotel_puzzle={'matrix':[3,3],'detail_screen':'FridgeCanvas','room_timer_paused':True,'save_cookie':'FR31','original_handle_sprites':[116,132],'automatic_return':True,'opening_door_matrix':[3,3]},hotel_key_gate='removed towel, crocodile withdrawn, original 100-tick window',version=VERSION, jar_size=target.stat().st_size,
+    report.update(audio_wav_count=sum(n.endswith('.wav') for n in sprites),audio_midi_count=sum(n.endswith('.mid') for n in sprites),audio_event_tables='Original bytecode predicates and animal yard VM; audio-original-cues.json',audio_device_tested=False,playable_scene_ids=[2,3,4,5,6,8,9,10,11,12,13,15,14,16,17],active_preview_scene=17,original_final_section=19,final_preview_count=44,original_flight_section=18,flight_preview_count=23,flight_layout="fixed native sky crop, full horizontal field, original sprites below 40% screen width",original_roof_section=16,original_basement_section=17,basement_preview_count=35,basement_detail_screen="BasementCanvas",basement_controls="2/8 lanes, 4/6 move, auto jump, 5 gun on safe lane, 0 back",original_switchboard_section=15,switchboard_preview_count=40,switchboard_puzzle={'detail_screen':'SwitchboardCanvas','original_wire_count':27,'original_states':[2,4],'automatic_return':True,'original_scripts':True},skipped_source_scene=7,hotel_sections=[10,11],original_bathroom_section=14,bathroom_preview_count=27,original_facade_section=13,facade_preview_count=19,hotel_puzzle={'matrix':[3,3],'detail_screen':'FridgeCanvas','room_timer_paused':True,'save_cookie':'FR31','original_handle_sprites':[116,132],'automatic_return':True,'opening_door_matrix':[3,3]},hotel_key_gate='removed towel, crocodile withdrawn, original 100-tick window',version=VERSION, jar_size=target.stat().st_size,
                   jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(), bytecode_preserved=False,
                   compilation='ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs',
                   preverification='ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation',
-                  original_window_rule_oracle_cases=8, existing_visual_payloads_preserved=True, original_barrel_rule_oracle_cases=26, original_cat_rule_oracle_cases=7, original_full_location_route_cases=1024, subtitle_cues=[6,7,34,35,36], original_walking_sprite_ids=list(range(20,34)), added_original_sprite_ids=list(range(38))+[44], code_defined_hotspots={'scene_02_window': [150, 224, 68, 66], 'scene_02_kettle': [80, 284, 38, 36], 'scene_02_barrel': [128, 282, 64, 68], 'scene_02_pickaxe': [80, 248, 38, 36], 'scene_02_coin': [299, 305, 28, 23], 'scene_02_bell': [440, 205, 40, 65], 'scene_02_gate': [248, 155, 187, 125], 'scene_02_wall': [470, 180, 170, 110]}, original_street_section=8,street_preview_count=25,original_garden_section=7,garden_preview_count=25,original_animal_section=6,original_animal_local_clips=93,animal_preview_count=46,save_format='PSV2 scenes 08/09/10/11/12/13/14/15/16 HWS1 (13/14/15/16 globals; 15 cell modes, animation waits, direction and queued click); PSV2 scene 06 SWS1; PSV2 scene 05 GWS2 with GWS1 migration; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader',validation='Five original locations, hotel entrance/interior, balcony, ledge, bathroom, switchboard, basement, roof and flight gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test',
+                  original_window_rule_oracle_cases=8, existing_visual_payloads_preserved=True, original_barrel_rule_oracle_cases=26, original_cat_rule_oracle_cases=7, original_full_location_route_cases=1024, subtitle_cues=[6,7,34,35,36], original_walking_sprite_ids=list(range(20,34)), added_original_sprite_ids=list(range(38))+[44], code_defined_hotspots={'scene_02_window': [150, 224, 68, 66], 'scene_02_kettle': [80, 284, 38, 36], 'scene_02_barrel': [128, 282, 64, 68], 'scene_02_pickaxe': [80, 248, 38, 36], 'scene_02_coin': [299, 305, 28, 23], 'scene_02_bell': [440, 205, 40, 65], 'scene_02_gate': [248, 155, 187, 125], 'scene_02_wall': [470, 180, 170, 110]}, original_street_section=8,street_preview_count=25,original_garden_section=7,garden_preview_count=25,original_animal_section=6,original_animal_local_clips=93,animal_preview_count=46,save_format='PSV2 scenes 08/09/10/11/12/13/14/15/16/17 HWS1 (13/14/15/16/17 globals; 15 cell modes, animation waits, direction and queued click); PSV2 scene 06 SWS1; PSV2 scene 05 GWS2 with GWS1 migration; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader',validation='Five original locations, hotel entrance/interior, balcony, ledge, bathroom, switchboard, basement, roof, flight and final forest gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test',
                   **changes)
     report['rgb_compatibility'] = {'model': 'full-stride drawRGB bounds check; desktop spy, not a device test',
                                  'animation_clips': sum(n.endswith('.anm') for n in entries),
@@ -213,7 +214,7 @@ def main():
     sprites.update(garden_resources)
     street_resources,street_report=extract_street((ROOT.parent / 'PILOTS.EXE').read_bytes())
     sprites.update(street_resources)
-    for hotel_scene in [8,9,10,11,12,13,15,14,16]:
+    for hotel_scene in [8,9,10,11,12,13,15,14,16,17]:
         hotel_resources,hotel_report=extract_hotel((ROOT.parent / 'PILOTS.EXE').read_bytes(),hotel_scene)
         sprites.update(hotel_resources)
         (ROOT / ('analysis/hotel-%02d-original-rules.json'%hotel_scene)).write_text(json.dumps(hotel_report,ensure_ascii=False,indent=2)+'\n')
@@ -237,7 +238,7 @@ def main():
             target = output / ('Pilots-' + profile + '.jar')
             classpath = os.pathsep.join(map(str, [target, tools['midpapi20-2.0.4.jar']]))
             run([javac, '-encoding', 'UTF-8', '-cp', classpath, '-d', test_classes,
-                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java',ROOT / 'tests/CourtyardSceneTest.java',ROOT / 'tests/CourtyardRulesTest.java',ROOT / 'tests/AnimalWorldTest.java',ROOT / 'tests/GardenWorldTest.java',ROOT / 'tests/StreetWorldTest.java',ROOT / 'tests/HotelWorldTest.java',ROOT / 'tests/BalconyWorldTest.java',ROOT / 'tests/FacadeWorldTest.java',ROOT / 'tests/BathroomWorldTest.java',ROOT / 'tests/SwitchboardWorldTest.java',ROOT / 'tests/BasementWorldTest.java',ROOT / 'tests/RoofWorldTest.java',ROOT / 'tests/FlightWorldTest.java',ROOT / 'tests/BasementTestRoute.java',ROOT / 'tests/AnimalVisibilityTest.java'])
+                 ROOT / 'tests/ZooSceneTest.java', ROOT / 'tests/BarrelSceneTest.java', ROOT / 'tests/FirstLocationSceneTest.java',ROOT / 'tests/ZooPresentationTest.java',ROOT / 'tests/CourtyardSceneTest.java',ROOT / 'tests/CourtyardRulesTest.java',ROOT / 'tests/AnimalWorldTest.java',ROOT / 'tests/GardenWorldTest.java',ROOT / 'tests/StreetWorldTest.java',ROOT / 'tests/HotelWorldTest.java',ROOT / 'tests/BalconyWorldTest.java',ROOT / 'tests/FacadeWorldTest.java',ROOT / 'tests/BathroomWorldTest.java',ROOT / 'tests/SwitchboardWorldTest.java',ROOT / 'tests/BasementWorldTest.java',ROOT / 'tests/RoofWorldTest.java',ROOT / 'tests/FlightWorldTest.java',ROOT / 'tests/FinalTestRoute.java',ROOT / 'tests/FinalWorldTest.java',ROOT / 'tests/BasementTestRoute.java',ROOT / 'tests/AnimalVisibilityTest.java'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.ZooSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BarrelSceneTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.FirstLocationSceneTest'])
@@ -254,6 +255,7 @@ def main():
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.BasementWorldTest',ROOT / 'tests/fixtures/basement-0.18.0-shot.psv',ROOT / 'tests/fixtures/basement-0.18.0-exit.psv',ROOT / 'tests/fixtures/basement-0.19.0-return.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.RoofWorldTest',ROOT / 'tests/fixtures/roof-0.20.0-basket-idle.psv'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.FlightWorldTest'])
+            run([java,'-cp',str(test_classes)+os.pathsep+classpath,'pilots.FinalWorldTest'])
             run([java, '-cp', str(test_classes) + os.pathsep + classpath, 'pilots.AnimalVisibilityTest', ROOT / 'tests/fixtures/animal-0.9.3-entry.psv', ROOT / 'tests/fixtures/animal-0.9.3-pickup.psv', ROOT / 'tests/fixtures/animal-0.9.4-rhino.psv', ROOT / 'tests/fixtures/animal-0.9.5-entry.psv'])
             courtyard_fixture=Path(temporary) / 'courtyard-source-actions.csv'
             courtyard_fixture.write_text('\n'.join(','.join(map(str,row)) for row in courtyard_report['actions'])+'\n')
@@ -272,10 +274,10 @@ def main():
             audio_classes=Path(temporary) / 'audio-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',audio_classes,
                  ROOT / 'tests/stubs/javax/microedition/media/MediaException.java',ROOT / 'tests/stubs/javax/microedition/media/Manager.java',ROOT / 'tests/AudioTest.java'])
-            run([java,'-cp',str(audio_classes)+os.pathsep+classpath,'pilots.AudioTest']+[audio_report['scenes'][str(n)]['music']['event_sha256'] for n in [2,3,4,5,6,8,9,10,11,12,13,15,14,16]])
+            run([java,'-cp',str(audio_classes)+os.pathsep+classpath,'pilots.AudioTest']+[audio_report['scenes'][str(n)]['music']['event_sha256'] for n in [2,3,4,5,6,8,9,10,11,12,13,15,14,16,17]])
             panel_classes=Path(temporary) / 'panel-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',panel_classes,
-                 ROOT / 'tests/stubs/javax/microedition/lcdui/Font.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Image.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Canvas.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Displayable.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Command.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java',ROOT / 'tests/AnimalRenderTest.java',ROOT / 'tests/GardenRenderTest.java',ROOT / 'tests/StreetRenderTest.java',ROOT / 'tests/HotelRenderTest.java',ROOT / 'tests/BalconyRenderTest.java',ROOT / 'tests/FacadeRenderTest.java',ROOT / 'tests/BathroomRenderTest.java',ROOT / 'tests/SwitchboardRenderTest.java',ROOT / 'tests/BasementRenderTest.java',ROOT / 'tests/RoofRenderTest.java',ROOT / 'tests/FlightRenderTest.java',ROOT / 'tests/BasementTestRoute.java',ROOT / 'tests/AnimalVisibilityTest.java',ROOT / 'tests/AnimalSequenceRenderTest.java',ROOT / 'tests/RGBCompatibilityTest.java',ROOT / 'tests/RenderPerformanceTest.java',ROOT / 'tests/AnimationDecodeTest.java',ROOT / 'tests/ScrollRenderTest.java'])
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Font.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Image.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Canvas.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Displayable.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Command.java',ROOT / 'tests/PanelRenderTest.java',ROOT / 'tests/ZooGeometryTest.java',ROOT / 'tests/CourtyardRenderTest.java',ROOT / 'tests/AnimalRenderTest.java',ROOT / 'tests/GardenRenderTest.java',ROOT / 'tests/StreetRenderTest.java',ROOT / 'tests/HotelRenderTest.java',ROOT / 'tests/BalconyRenderTest.java',ROOT / 'tests/FacadeRenderTest.java',ROOT / 'tests/BathroomRenderTest.java',ROOT / 'tests/SwitchboardRenderTest.java',ROOT / 'tests/BasementRenderTest.java',ROOT / 'tests/RoofRenderTest.java',ROOT / 'tests/FlightRenderTest.java',ROOT / 'tests/FinalTestRoute.java',ROOT / 'tests/FinalRenderTest.java',ROOT / 'tests/BasementTestRoute.java',ROOT / 'tests/AnimalVisibilityTest.java',ROOT / 'tests/AnimalSequenceRenderTest.java',ROOT / 'tests/RGBCompatibilityTest.java',ROOT / 'tests/RenderPerformanceTest.java',ROOT / 'tests/AnimationDecodeTest.java',ROOT / 'tests/ScrollRenderTest.java'])
             frame_hashes=Path(temporary) / ('frame-hashes-'+profile+'.properties')
             with zipfile.ZipFile(target) as archive:
                 frame_hashes.write_text(''.join(name+'='+hashlib.sha256(decode_animation(archive.read(name))[777:]).hexdigest()+'\n' for name in archive.namelist() if name.endswith('.anm')))
@@ -329,10 +331,12 @@ def main():
                  'pilots.RoofRenderTest',width,height,ROOT / ('analysis/roof-'+profile+'-'+VERSION)])
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,
                  'pilots.FlightRenderTest',width,height,ROOT / ('analysis/flight-'+profile+'-'+VERSION)])
+            run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,'pilots.FinalRenderTest',width,height,ROOT / ('analysis/final-'+profile+'-'+VERSION)])
         if args.profile == 'all':
             run([sys.executable, ROOT / 'tests/BuildProfilesTest.py', output])
             run([sys.executable, ROOT / 'tests/RoofAssetsTest.py', output])
             run([sys.executable, ROOT / 'tests/FlightAssetsTest.py', output])
+            run([sys.executable,ROOT / 'tests/FinalAssetsTest.py',output])
             run([sys.executable, ROOT / 'tests/BasementAssetsTest.py', output])
             run([sys.executable, ROOT / 'tests/BasementPlatformAssetsTest.py', output])
 

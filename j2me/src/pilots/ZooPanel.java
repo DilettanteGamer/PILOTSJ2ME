@@ -15,9 +15,10 @@ public final class ZooPanel {
         sceneId=scene;boolean animals=scene==4;
         try {
             for(int i=0;i<IDS.length;i++) {
-                int id=scene==14 && i>=6 && i<=11?(i<8?51-i%2:i<10?53-i%2:86-i%2):scene==15 && i>=6 && i<=11?(i%2==0?83:84):scene==12 && i>=6 && i<=11?(i<8?(i%2==0?52:53):(i%2==0?79:80)):scene>=10 && i>=6 && i<=11?(i%2==0?47:48):scene==9 && i>=6 && i<=11?(i<8?(i%2==0?75:78):i<10?(i%2==0?74:77):(i%2==0?76:79)):scene==6 && i>=6 && i<=11?(i%2==0?47:48):scene==5 && i>=6 && i<=11?81:animals&&i>=6&&i<=11?(i<8?62:i<10?60:64)+(i%2==0?1:0):IDS[i];
-                icons[i]=new AnimationClip((scene==14?"/scenes/14-":scene==15?"/scenes/15-":scene==13?"/scenes/13-":scene==12?"/scenes/12-":scene==11?"/scenes/11-":scene==10?"/scenes/10-":scene==9?"/scenes/09-":scene==6?"/scenes/06-":scene==5?"/scenes/05-":animals?"/scenes/04-":"/scenes/02-")+id+".anm");
+                int id=scene==17 && i>=4 && i<=11?(i<6?94+i%2:i<8?96+i%2:i<10?99+i%2:101+i%2):scene==14 && i>=6 && i<=11?(i<8?51-i%2:i<10?53-i%2:86-i%2):scene==15 && i>=6 && i<=11?(i%2==0?83:84):scene==12 && i>=6 && i<=11?(i<8?(i%2==0?52:53):(i%2==0?79:80)):scene>=10 && i>=6 && i<=11?(i%2==0?47:48):scene==9 && i>=6 && i<=11?(i<8?(i%2==0?75:78):i<10?(i%2==0?74:77):(i%2==0?76:79)):scene==6 && i>=6 && i<=11?(i%2==0?47:48):scene==5 && i>=6 && i<=11?81:animals&&i>=6&&i<=11?(i<8?62:i<10?60:64)+(i%2==0?1:0):IDS[i];
+                icons[i]=new AnimationClip((scene==17?"/scenes/17-":scene==14?"/scenes/14-":scene==15?"/scenes/15-":scene==13?"/scenes/13-":scene==12?"/scenes/12-":scene==11?"/scenes/11-":scene==10?"/scenes/10-":scene==9?"/scenes/09-":scene==6?"/scenes/06-":scene==5?"/scenes/05-":animals?"/scenes/04-":"/scenes/02-")+id+".anm");
             }
+            if(scene==17)for(int i=0;i<4;i++)icons[13+i]=new AnimationClip("/scenes/17-"+(i<2?103+i:99+i-2)+".anm");
             if(scene==14){icons[13]=new AnimationClip("/scenes/14-55.anm");icons[14]=new AnimationClip("/scenes/14-54.anm");}
             if(scene==12)for(int i=0;i<4;i++)icons[13+i]=new AnimationClip("/scenes/12-"+(54+i)+".anm");
         } catch(IOException failure) { close();throw failure; }
@@ -26,7 +27,7 @@ public final class ZooPanel {
     public static int slotAt(int x,int y,int width,int height,int panelHeight) {
         if(width<1 || x<0 || x>=width || y<height-panelHeight || y>=height) return -1;
         int slot=(x*640/width)/64;
-        return slot==0 || slot==1 || slot==3 || slot==4 || slot==5 || slot==6 || slot==7 || slot==9 ? slot : -1;
+        return slot==0 || slot==1 || slot==3 || slot==4 || slot==5 || slot==6 || slot==7 || slot==8 || slot==9 ? slot : -1;
     }
     public void paint(Graphics graphics,ZooLogic logic,int width,int height,int panelHeight) {
         if(panelHeight<1) return;
@@ -37,7 +38,7 @@ public final class ZooPanel {
         icons[logic.hero()==1?0:1].paint(graphics,view,0,31);
         icons[logic.hero()==0?2:3].paint(graphics,view,64,31);
         icons[logic.selectedItem()==0?4:5].paint(graphics,view,192,31);
-        for(int item=1;item<=(sceneId==14?4:3);item++) if(logic.hasItem(item))
+        for(int item=1;item<=(sceneId==17?5:sceneId==14?4:3);item++) if(logic.hasItem(item))
             icons[itemIcon(logic,item,logic.selectedItem()==item)].paint(graphics,view,(item+3)*64,31);
         icons[12].paint(graphics,view,576,31);
         graphics.setColor(0xE8D43F);
@@ -46,6 +47,7 @@ public final class ZooPanel {
         outline(graphics,icons[item==0?4:itemIcon(logic,item,true)],item==0?192:(item+3)*64);
     }
     private int itemIcon(ZooLogic logic,int item,boolean selected) {
+        if(sceneId==17 && item>=4)return 13+(item-4)*2+(selected?0:1);
         if(sceneId==14 && item==4)return selected?13:14;
         if(item==1 && logic instanceof HotelLogic) {
             HotelWorld world=((HotelLogic)logic).world;

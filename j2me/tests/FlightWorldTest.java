@@ -26,7 +26,7 @@ public final class FlightWorldTest {
   key(2);check(world.g(0x94)==2,"upper band did not consume source ballast");settle();check(world.g(0x1e1b54)==3,"upper band");
   key(8);settle();check(world.g(0x1e1b54)==1,"lower band");key(5);settle();check(world.g(0x1e1b54)==2,"middle band");
   encounter(1,2,8,41);encounter(2,1,5,42);encounter(3,2,2,43);
-  check(SceneFlow.next(14,true)==16&&SceneFlow.next(16,true)==16,"flight boundary");
+  check(SceneFlow.next(14,true)==16&&SceneFlow.next(16,true)==17,"flight boundary");
   System.out.println("FlightWorld: original height controls, ballast, all three timed crow encounters/exits and "+ticks+" every-tick save replays passed");
  }
 }

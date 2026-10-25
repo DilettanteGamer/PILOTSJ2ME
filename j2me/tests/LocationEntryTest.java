@@ -21,8 +21,8 @@ public final class LocationEntryTest {
     static void location(PilotsMidlet app,int scene)throws Exception {
         app.choose(7);
         MenuCanvas menu=(MenuCanvas)Display.getDisplay(app).getCurrent();
-        check(((String[])get(menu,"items")).length==15,"location submenu entries");
-        int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13,15,14,16};
+        check(((String[])get(menu,"items")).length==16,"location submenu entries");
+        int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13,15,14,16,17};
         for(int i=1;i<ids.length;i++)if(ids[i]==scene){((MenuCanvas.Host)get(menu,"host")).choose(i);return;}
         throw new RuntimeException("missing menu scene "+scene);
     }
@@ -159,6 +159,11 @@ public final class LocationEntryTest {
             location(app,16);FlightScene flight=(FlightScene)get(canvas,"zoo");canvas.keyPressed(50);canvas.tick(100);check(flight.flight.ballast()==2&&flight.flight.world.action()==23,"flight keyboard upper band");
             int phase=flight.flight.world.step();canvas.save();canvas.startLocation(2);canvas.load();flight=(FlightScene)get(canvas,"zoo");check(flight.flight.world.step()==phase&&flight.flight.ballast()==2,"flight RMS phase/ballast");
             canvas.keyPressed(48);check(Display.getDisplay(app).getCurrent() instanceof MenuCanvas,"flight menu key");
+            flight.flight.world.completed=true;canvas.tick(100);check(((GameState)get(canvas,"state")).scene==17,"flight-to-final transition");
+            location(app,17);for(int i=0;i<100;i++)canvas.tick(100);HotelWorld forest=((HotelScene)get(canvas,"zoo")).animals.world;
+            check(!forest.busy()&&forest.move(384,368),"final click route");canvas.tick(100);canvas.save();canvas.startLocation(2);canvas.load();
+            check(((GameState)get(canvas,"state")).scene==17,"final RMS scene");for(int i=0;i<100;i++)canvas.tick(100);
+            check(!((HotelScene)get(canvas,"zoo")).animals.world.busy(),"final RMS queued route");
             canvas.startLocation(6);
             // Re-enter, restore a street save, and verify its actual loader.
             GameState saved=GameState.decode(((GameState)get(canvas,"state")).encode(),7);
@@ -166,7 +171,7 @@ public final class LocationEntryTest {
             street(canvas,"restored fifth location entry");
             // Garden previews must load from another scene and return to it.
             canvas.startLocation(2);set(app,"animationCatalog",new AnimationCatalog());
-            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==16,"preview scene");
+            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==17,"preview scene");
             canvas.finishPreview();check(((GameState)get(canvas,"state")).scene==2,"preview return");
             Object original=get(canvas,"zoo");
             try { canvas.goToScene(7);throw new RuntimeException("unsupported scene accepted"); }

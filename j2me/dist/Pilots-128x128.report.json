@@ -15,10 +15,11 @@
     13,
     14,
     15,
-    16
+    16,
+    17
   ],
-  "animations": 1513,
-  "frames": 18678,
+  "animations": 1630,
+  "frames": 20412,
   "backgrounds": {
     "scenes/02.bar": [
       640,
@@ -188,6 +189,18 @@
       640,
       63
     ],
+    "scenes/17.p8": [
+      320,
+      208,
+      640,
+      417
+    ],
+    "scenes/17.bar": [
+      640,
+      63,
+      640,
+      63
+    ],
     "puzzles/basement.p8": [
       128,
       160,
@@ -195,8 +208,8 @@
       160
     ]
   },
-  "audio_wav_count": 497,
-  "audio_midi_count": 15,
+  "audio_wav_count": 544,
+  "audio_midi_count": 17,
   "audio_event_tables": "Original bytecode predicates and animal yard VM; audio-original-cues.json",
   "audio_device_tested": false,
   "playable_scene_ids": [
@@ -213,9 +226,12 @@
     13,
     15,
     14,
-    16
+    16,
+    17
   ],
-  "active_preview_scene": 16,
+  "active_preview_scene": 17,
+  "original_final_section": 19,
+  "final_preview_count": 44,
   "original_flight_section": 18,
   "flight_preview_count": 23,
   "flight_layout": "fixed native sky crop, full horizontal field, original sprites below 40% screen width",
@@ -264,9 +280,9 @@
     ]
   },
   "hotel_key_gate": "removed towel, crocodile withdrawn, original 100-tick window",
-  "version": "0.21.3",
-  "jar_size": 17330551,
-  "jar_sha256": "b15744dd994f436adaafb769ce3860c0586ade0e36858c4b0564f3d54dce14db",
+  "version": "0.22.0",
+  "jar_size": 19096738,
+  "jar_sha256": "2ba3e0e5fa1974dedf951c1629f53b8bddcec953bc7973cdb5b2d5bf9d827a78",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -396,8 +412,8 @@
   "original_animal_section": 6,
   "original_animal_local_clips": 93,
   "animal_preview_count": 46,
-  "save_format": "PSV2 scenes 08/09/10/11/12/13/14/15/16 HWS1 (13/14/15/16 globals; 15 cell modes, animation waits, direction and queued click); PSV2 scene 06 SWS1; PSV2 scene 05 GWS2 with GWS1 migration; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader",
-  "validation": "Five original locations, hotel entrance/interior, balcony, ledge, bathroom, switchboard, basement, roof and flight gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test",
+  "save_format": "PSV2 scenes 08/09/10/11/12/13/14/15/16/17 HWS1 (13/14/15/16/17 globals; 15 cell modes, animation waits, direction and queued click); PSV2 scene 06 SWS1; PSV2 scene 05 GWS2 with GWS1 migration; PSV1 for scenes 02/03; PSV2 scene 04 AWS4 snapshot with fallback sprites and detached effects, AWS1/AWS2/AWS3 backward compatible reader",
+  "validation": "Five original locations, hotel entrance/interior, balcony, ledge, bathroom, switchboard, basement, roof, flight and final forest gameplay and exit tests, source audio/PCM/MIDI conversion, MMAPI lifecycle spy, production panel/scene rendering and static packaging checks; no emulator or device test",
   "removed_animation_ids": [
     106
   ],
@@ -428,7 +444,7 @@
   "pending_character_relative_menu_numbers": [],
   "rgb_compatibility": {
     "model": "full-stride drawRGB bounds check; desktop spy, not a device test",
-    "animation_clips": 1513,
+    "animation_clips": 1630,
     "scales": [
       "normal",
       "zoomed"
@@ -451,9 +467,6 @@
     "scenes/07.bar",
     "scenes/07.hot",
     "scenes/07.p8",
-    "scenes/17.bar",
-    "scenes/17.hot",
-    "scenes/17.p8",
     "scenes/18.hot",
     "scenes/18.p8",
     "scenes/19.hot",
@@ -612,9 +625,21 @@
       "scenes/16-68.anm",
       "scenes/16-69.anm",
       "scenes/16-70.anm",
-      "scenes/16-72.anm"
+      "scenes/16-72.anm",
+      "scenes/17-20010.anm",
+      "scenes/17-20011.anm",
+      "scenes/17-20043.anm",
+      "scenes/17-50.anm",
+      "scenes/17-63.anm",
+      "scenes/17-76.anm",
+      "scenes/17-81.anm",
+      "scenes/17-82.anm",
+      "scenes/17-83.anm",
+      "scenes/17-114.anm",
+      "scenes/17-116.anm",
+      "scenes/17-117.anm"
     ],
-    "inflated_bytes_saved": 94905727,
+    "inflated_bytes_saved": 104363214,
     "decoded_visual_payloads_preserved": true
   },
   "render_cache": {
