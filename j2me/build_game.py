@@ -31,7 +31,7 @@ from extract_sewer import extract as extract_sewer,profile as sewer_profile
 from extract_basement_platform import extract as extract_basement_platform
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.25.0'
+VERSION = '0.25.1'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 

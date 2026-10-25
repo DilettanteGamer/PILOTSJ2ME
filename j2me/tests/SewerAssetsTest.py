@@ -35,11 +35,12 @@ for profile in ['128x128','128x160','240x320']:
   draw=width*256//480;top=(height-draw)//2;expected=bytearray()
   for y in range(height):
    sy=144+(y-top)*256//draw
-   if sy<0:
-    q=(-sy-1)%64;sy=q if q<32 else 63-q
-   elif sy>415:
-    q=(sy-416)%96;sy=415-q if q<48 else 368+q-48
-   for x in range(width):expected.append(bg[24+sy*640+104+x*480//width])
+   if 0<=sy<=415:
+    for x in range(width):expected.append(bg[24+sy*640+104+x*480//width])
+   else:
+    # Index 211 is the original palette's closest colour to the old #171b13 margin.
+    expected.extend(bytes([211])*width)
+    assert len(set(crop[780+y*width:780+(y+1)*width]))==1,'Scenery repeated beyond original edge'
   assert crop[780:]==expected,'Full-height sewer changed bridge scale or included original inventory'
   assert 'scenes/07.bar' not in jar.namelist() and 'scenes/07.hot' not in jar.namelist()
   cat=jar.read('scenes/07.animations');assert struct.unpack_from('>H',cat,4)[0]==16

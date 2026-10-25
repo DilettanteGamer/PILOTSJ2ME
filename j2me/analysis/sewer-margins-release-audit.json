@@ -1,0 +1,42 @@
+{
+  "version": "0.25.1",
+  "baseline": "fbe7d66",
+  "profiles": {
+    "128x128": {
+      "size": 20150293,
+      "sha256": "77650e8638d0d4fb31ff77b180fc4ae67678f48aa8e182e93f87090ef9b0ffaa",
+      "changed": [
+        "META-INF/MANIFEST.MF",
+        "scenes/07.p8",
+        "scenes/13.speech"
+      ],
+      "all_other_resources_and_classes": "unchanged",
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "128x160": {
+      "size": 20153115,
+      "sha256": "7766a1c39bb3ff8d6af8ae9202f658caa493355f34120bc702fba456181ff9fb",
+      "changed": [
+        "META-INF/MANIFEST.MF",
+        "scenes/07.p8",
+        "scenes/13.speech"
+      ],
+      "all_other_resources_and_classes": "unchanged",
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "240x320": {
+      "size": 21869426,
+      "sha256": "6476d995a4c3cb7d58bcb69b62a827469f4e41c8078ff40438532df6bb184ed6",
+      "changed": [
+        "META-INF/MANIFEST.MF",
+        "scenes/07.p8",
+        "scenes/13.speech"
+      ],
+      "all_other_resources_and_classes": "unchanged",
+      "crc": "passed",
+      "jad": "passed"
+    }
+  }
+}

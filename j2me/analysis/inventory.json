@@ -2871,7 +2871,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.25.0",
+        "MIDlet-Version": "0.25.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2880,10 +2880,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "00887d16f73e5f52566eab9023182cfafab66e4b4c5d6fdc24fece3a22b1b2ad",
-      "jar_bytes": 20151003,
+      "sha256": "77650e8638d0d4fb31ff77b180fc4ae67678f48aa8e182e93f87090ef9b0ffaa",
+      "jar_bytes": 20150293,
       "entry_count": 2446,
-      "uncompressed_bytes": 135852211,
+      "uncompressed_bytes": 135852215,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -12983,7 +12983,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.25.0",
+        "MIDlet-Version": "0.25.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -12992,10 +12992,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "190748f49e570f2d6284da86328e73438ab432a4f2aae3f7ff2b0a91fe76357a",
-      "jar_bytes": 20154341,
+      "sha256": "7766a1c39bb3ff8d6af8ae9202f658caa493355f34120bc702fba456181ff9fb",
+      "jar_bytes": 20153115,
       "entry_count": 2446,
-      "uncompressed_bytes": 135864499,
+      "uncompressed_bytes": 135864503,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -23095,7 +23095,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.25.0",
+        "MIDlet-Version": "0.25.1",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -23104,10 +23104,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "b0eb37e1c664d4d11cb58e0171c1dd70a946608f41e00ccfd33980db233fe073",
-      "jar_bytes": 21872976,
+      "sha256": "6476d995a4c3cb7d58bcb69b62a827469f4e41c8078ff40438532df6bb184ed6",
+      "jar_bytes": 21869426,
       "entry_count": 2446,
-      "uncompressed_bytes": 139827124,
+      "uncompressed_bytes": 139827128,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
