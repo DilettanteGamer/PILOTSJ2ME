@@ -1,6 +1,6 @@
 {
   "profile": "240x320",
-  "classes": 73,
+  "classes": 79,
   "scenes": [
     2,
     3,
@@ -213,6 +213,60 @@
       208,
       432,
       208
+    ],
+    "ui/folder.p8": [
+      240,
+      320,
+      240,
+      320
+    ],
+    "ui/credits-0.p8": [
+      480,
+      360,
+      480,
+      360
+    ],
+    "ui/credits-1.p8": [
+      480,
+      360,
+      480,
+      360
+    ],
+    "ui/credits-2.p8": [
+      480,
+      360,
+      480,
+      360
+    ],
+    "ui/credits-3.p8": [
+      480,
+      360,
+      480,
+      360
+    ],
+    "ui/credits-4.p8": [
+      480,
+      360,
+      480,
+      360
+    ],
+    "ui/credits-5.p8": [
+      480,
+      360,
+      480,
+      360
+    ],
+    "ui/credits-6.p8": [
+      480,
+      360,
+      480,
+      360
+    ],
+    "ui/leather.p8": [
+      480,
+      360,
+      480,
+      360
     ]
   },
   "audio_wav_count": 570,
@@ -290,9 +344,9 @@
     ]
   },
   "hotel_key_gate": "removed towel, crocodile withdrawn, original 100-tick window",
-  "version": "0.23.1",
-  "jar_size": 20704293,
-  "jar_sha256": "1aa38852efbf77f68d88df6dc43632926895251910ff14f64bc6cc3c9350760b",
+  "version": "0.24.0",
+  "jar_size": 21831958,
+  "jar_sha256": "2d6f8d9c9712aa09490f5b9713f4b0ce5594397f5bb3ad2d029e49ddeaa62bde",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",

@@ -19,11 +19,11 @@ public final class LocationEntryTest {
         check(((GameState)get(canvas,"state")).scene==6 && get(canvas,"zoo") instanceof StreetScene,route);
     }
     static void location(PilotsMidlet app,int scene)throws Exception {
-        app.choose(7);
+        app.choose(2);
         MenuCanvas menu=(MenuCanvas)Display.getDisplay(app).getCurrent();
-        check(((String[])get(menu,"items")).length==17,"location submenu entries");
-        int[] ids={-1,2,3,4,5,6,7,8,9,10,11,12,13,15,14,16,17};
-        for(int i=1;i<ids.length;i++)if(ids[i]==scene){((MenuCanvas.Host)get(menu,"host")).choose(i);return;}
+        PlayerProgress progress=(PlayerProgress)get(app,"progress");
+        int count=1;for(int id:PlayerProgress.ORDER)if(progress.available(id))count++;check(((String[])get(menu,"items")).length==count,"locked locations exposed");
+        int choice=1;for(int id:PlayerProgress.ORDER)if(progress.available(id)){if(id==scene){((MenuCanvas.Host)get(menu,"host")).choose(choice);return;}choice++;}
         throw new RuntimeException("missing menu scene "+scene);
     }
     static void boardSelect(SwitchboardCanvas canvas,int target)throws Exception {
@@ -97,9 +97,9 @@ public final class LocationEntryTest {
             for(int i=0;i<180;i++)canvas.tick(100);
             check(!((HotelScene)get(canvas,"zoo")).logic.busy(),"balcony entry did not finish");
             byte[] menuBefore=((GameState)get(canvas,"state")).encode();
-            app.choose(7);MenuCanvas locations=(MenuCanvas)Display.getDisplay(app).getCurrent();locations.keyPressed(48);
+            app.choose(2);MenuCanvas locations=(MenuCanvas)Display.getDisplay(app).getCurrent();locations.keyPressed(48);
             MenuCanvas main=(MenuCanvas)Display.getDisplay(app).getCurrent();
-            check(((String[])get(main,"items")).length==10,"main menu still contains individual locations");
+            check(((String[])get(main,"items")).length==6,"main menu must have six game entries");
             check(java.util.Arrays.equals(menuBefore,((GameState)get(canvas,"state")).encode()),"submenu Back changed game");
             ((HotelScene)get(canvas,"zoo")).animals.world.completed=true;canvas.tick(100);
             check(((GameState)get(canvas,"state")).scene==11,"balcony-to-ledge transition");

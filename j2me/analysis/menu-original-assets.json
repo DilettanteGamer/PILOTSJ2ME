@@ -1,0 +1,19 @@
+{
+  "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
+  "folder_section": 2,
+  "folder_crop": [
+    192,
+    0,
+    448,
+    480
+  ],
+  "font_ids": [
+    38,
+    39
+  ],
+  "glyphs_per_font": 97,
+  "credits_section": 20,
+  "credit_pages": 7,
+  "button_rgb": 13353879,
+  "selected_rgb": 14671823
+}

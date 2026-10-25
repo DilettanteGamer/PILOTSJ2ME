@@ -1,0 +1,87 @@
+{
+  "version": "0.24.0",
+  "baseline": "9ce1643",
+  "profiles": {
+    "128x128": {
+      "size": 20131099,
+      "sha256": "d35c90ab76e9e0d4104d6bf8df9db46ee901d47e892295b0049968701dc3da3c",
+      "unchanged_game_resources": 2332,
+      "new_ui_resources": [
+        "ui/credits-0.p8",
+        "ui/credits-1.p8",
+        "ui/credits-2.p8",
+        "ui/credits-3.p8",
+        "ui/credits-4.p8",
+        "ui/credits-5.p8",
+        "ui/credits-6.p8",
+        "ui/folder.p8",
+        "ui/leather.p8",
+        "ui/original.font"
+      ],
+      "new_classes": [
+        "pilots/AboutCanvas.class",
+        "pilots/MenuTheme.class",
+        "pilots/OriginalFont.class",
+        "pilots/PilotsMidlet$8.class",
+        "pilots/PilotsMidlet$9.class",
+        "pilots/PlayerProgress.class"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "128x160": {
+      "size": 20133422,
+      "sha256": "0f018ddee7eb4ef85acb2c9d5cf272274236cb91ed31d3e6dfb3e6a33776354d",
+      "unchanged_game_resources": 2332,
+      "new_ui_resources": [
+        "ui/credits-0.p8",
+        "ui/credits-1.p8",
+        "ui/credits-2.p8",
+        "ui/credits-3.p8",
+        "ui/credits-4.p8",
+        "ui/credits-5.p8",
+        "ui/credits-6.p8",
+        "ui/folder.p8",
+        "ui/leather.p8",
+        "ui/original.font"
+      ],
+      "new_classes": [
+        "pilots/AboutCanvas.class",
+        "pilots/MenuTheme.class",
+        "pilots/OriginalFont.class",
+        "pilots/PilotsMidlet$8.class",
+        "pilots/PilotsMidlet$9.class",
+        "pilots/PlayerProgress.class"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "240x320": {
+      "size": 21831958,
+      "sha256": "2d6f8d9c9712aa09490f5b9713f4b0ce5594397f5bb3ad2d029e49ddeaa62bde",
+      "unchanged_game_resources": 2332,
+      "new_ui_resources": [
+        "ui/credits-0.p8",
+        "ui/credits-1.p8",
+        "ui/credits-2.p8",
+        "ui/credits-3.p8",
+        "ui/credits-4.p8",
+        "ui/credits-5.p8",
+        "ui/credits-6.p8",
+        "ui/folder.p8",
+        "ui/leather.p8",
+        "ui/original.font"
+      ],
+      "new_classes": [
+        "pilots/AboutCanvas.class",
+        "pilots/MenuTheme.class",
+        "pilots/OriginalFont.class",
+        "pilots/PilotsMidlet$8.class",
+        "pilots/PilotsMidlet$9.class",
+        "pilots/PlayerProgress.class"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    }
+  }
+}

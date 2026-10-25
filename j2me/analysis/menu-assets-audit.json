@@ -1,0 +1,41 @@
+[
+  {
+    "profile": "128x128",
+    "folder_crop": [
+      192,
+      0,
+      448,
+      480
+    ],
+    "glyphs": 194,
+    "credits_pages": 7,
+    "zoom_width": 256,
+    "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f"
+  },
+  {
+    "profile": "128x160",
+    "folder_crop": [
+      192,
+      0,
+      448,
+      480
+    ],
+    "glyphs": 194,
+    "credits_pages": 7,
+    "zoom_width": 256,
+    "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f"
+  },
+  {
+    "profile": "240x320",
+    "folder_crop": [
+      192,
+      0,
+      448,
+      480
+    ],
+    "glyphs": 194,
+    "credits_pages": 7,
+    "zoom_width": 480,
+    "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f"
+  }
+]

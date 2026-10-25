@@ -25,11 +25,12 @@ from extract_animals import extract as extract_animals
 from extract_garden import extract as extract_garden
 from extract_street import extract as extract_street
 from extract_hotel import extract as extract_hotel
+from extract_menu import extract as extract_menu,profile as menu_profile
 from extract_sewer import extract as extract_sewer
 from extract_basement_platform import extract as extract_basement_platform
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.23.1'
+VERSION = '0.24.0'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -98,6 +99,7 @@ def package(profile, classes, sprites, output):
     entries = {n: d for n, d in entries.items() if not n.endswith('.class') and not n.startswith(('scenes/05','scenes/06','scenes/07','scenes/08','scenes/09','scenes/10','scenes/11','scenes/12','scenes/13','scenes/14','scenes/15','scenes/16','scenes/17'))}
     entries.update(classes)
     entries.update(sprites)
+    menu_profile(entries,*map(int,profile.split('x')))
     # Reuse the verified, profile-scaled original garden background (320px on small phones).
     for name in ['scenes/05.p8','scenes/05.bar','scenes/06.p8','scenes/06.bar','scenes/08.p8','scenes/08.bar','scenes/09.p8','scenes/09.bar','scenes/10.p8','scenes/10.bar','scenes/11.p8','scenes/11.bar','scenes/12.p8','scenes/12.bar','scenes/13.p8','scenes/13.bar','scenes/14.p8','scenes/14.bar','scenes/15.p8','scenes/15.bar','scenes/17.p8','scenes/17.bar']:
         entries[name]=baseline[name]
@@ -229,6 +231,9 @@ def main():
     sewer_resources,sewer_report=extract_sewer((ROOT.parent / 'PILOTS.EXE').read_bytes())
     sprites.update(sewer_resources)
     (ROOT / 'analysis/sewer-original-rules.json').write_text(json.dumps(sewer_report,ensure_ascii=False,indent=2)+'\n')
+    menu_resources,menu_report=extract_menu((ROOT.parent / 'PILOTS.EXE').read_bytes())
+    sprites.update(menu_resources)
+    (ROOT / 'analysis/menu-original-assets.json').write_text(json.dumps(menu_report,ensure_ascii=False,indent=2)+'\n')
     audio_resources,audio_report=extract_audio((ROOT.parent / 'PILOTS.EXE').read_bytes())
     sprites.update(audio_resources)
     (ROOT / 'analysis/audio-original-cues.json').write_text(json.dumps(audio_report,ensure_ascii=False,indent=2)+'\n')
@@ -273,10 +278,11 @@ def main():
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Command.java',
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Displayable.java',
                  ROOT / 'tests/stubs/javax/microedition/lcdui/Canvas.java',
-                 ROOT / 'tests/stubs/javax/microedition/lcdui/Display.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Font.java',ROOT / 'tests/stubs/javax/microedition/media/MediaException.java',ROOT / 'tests/stubs/javax/microedition/media/Manager.java',ROOT / 'tests/BasementTestRoute.java',ROOT / 'tests/LocationEntryTest.java',ROOT / 'tests/SewerWorldTest.java'])
+                 ROOT / 'tests/stubs/javax/microedition/lcdui/Display.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Graphics.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Image.java',ROOT / 'tests/stubs/javax/microedition/lcdui/Font.java',ROOT / 'tests/stubs/javax/microedition/media/MediaException.java',ROOT / 'tests/stubs/javax/microedition/media/Manager.java',ROOT / 'tests/BasementTestRoute.java',ROOT / 'tests/LocationEntryTest.java',ROOT / 'tests/SewerWorldTest.java',ROOT / 'tests/GraphicalMenuTest.java'])
             entry_width,entry_height=profile.split('x')
             run([java,'-Dpilots.test.width='+entry_width,'-Dpilots.test.height='+entry_height,
                  '-cp',str(entry_classes)+os.pathsep+classpath,'pilots.LocationEntryTest'])
+            run([java,'-Djava.awt.headless=true','-Dpilots.test.width='+entry_width,'-Dpilots.test.height='+entry_height,'-cp',str(entry_classes)+os.pathsep+classpath,'pilots.GraphicalMenuTest',entry_width,entry_height,ROOT / ('analysis/menu-'+profile+'-'+VERSION)])
             audio_classes=Path(temporary) / 'audio-tests'
             run([javac,'-encoding','UTF-8','-cp',classpath,'-d',audio_classes,
                  ROOT / 'tests/stubs/javax/microedition/media/MediaException.java',ROOT / 'tests/stubs/javax/microedition/media/Manager.java',ROOT / 'tests/AudioTest.java'])
@@ -341,6 +347,7 @@ def main():
             run([java,'-Djava.awt.headless=true','-cp',str(panel_classes)+os.pathsep+classpath,'pilots.FinalRenderTest',width,height,ROOT / ('analysis/final-'+profile+'-'+VERSION)])
         if args.profile == 'all':
             run([sys.executable, ROOT / 'tests/BuildProfilesTest.py', output])
+            run([sys.executable, ROOT / 'tests/MenuAssetsTest.py', output])
             run([sys.executable, ROOT / 'tests/RoofAssetsTest.py', output])
             run([sys.executable, ROOT / 'tests/FlightAssetsTest.py', output])
             run([sys.executable,ROOT / 'tests/FinalAssetsTest.py',output])

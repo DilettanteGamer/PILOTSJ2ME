@@ -3,7 +3,8 @@ package javax.microedition.midlet;
 public abstract class MIDlet {
     public MIDlet() {}
     public String getAppProperty(String name) { return null; }
-    public void notifyDestroyed() {}
+    public boolean destroyed;
+    public void notifyDestroyed() {destroyed=true;}
     public void notifyPaused() {}
     public void resumeRequest() {}
     protected abstract void startApp();
