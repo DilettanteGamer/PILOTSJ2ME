@@ -49,14 +49,15 @@ def extract(original):
 
 
 def profile(entries,width,height):
- """Continue native wall/water textures to the screen edges at the bridge scale."""
+ """Show only existing scenery at the bridge scale, with solid margins."""
  raw=entries['scenes/07.p8'];require(struct.unpack_from('>HH',raw,4)==(480,480),'Invalid full sewer source')
  draw_height=width*256//480;top=(height-draw_height)//2;pixels=raw[780:];out=bytearray()
+ # Use the nearest original palette colour to the previous dark solid margin.
+ palette=raw[12:780];margin=min(range(256),key=lambda i:sum((palette[i*3+c]-v)**2 for c,v in enumerate((23,27,19))))
  for y in range(height):
   sy=144+(y-top)*256//draw_height
-  if sy<0:
-   phase=(-sy-1)%64;sy=phase if phase<32 else 63-phase
-  elif sy>415:
-   phase=(sy-416)%96;sy=415-phase if phase<48 else 368+phase-48
-  for x in range(width):out.append(pixels[sy*480+x*480//width])
+  if not 0<=sy<=415:
+   out.extend(bytes([margin])*width)
+  else:
+   for x in range(width):out.append(pixels[sy*480+x*480//width])
  entries['scenes/07.p8']=b'P8BG'+struct.pack('>HHHH',width,height,480,256)+raw[12:780]+out
