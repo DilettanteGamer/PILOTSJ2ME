@@ -21,8 +21,8 @@ public final class LocationEntryTest {
     static void location(PilotsMidlet app,int scene)throws Exception {
         app.choose(7);
         MenuCanvas menu=(MenuCanvas)Display.getDisplay(app).getCurrent();
-        check(((String[])get(menu,"items")).length==16,"location submenu entries");
-        int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13,15,14,16,17};
+        check(((String[])get(menu,"items")).length==17,"location submenu entries");
+        int[] ids={-1,2,3,4,5,6,7,8,9,10,11,12,13,15,14,16,17};
         for(int i=1;i<ids.length;i++)if(ids[i]==scene){((MenuCanvas.Host)get(menu,"host")).choose(i);return;}
         throw new RuntimeException("missing menu scene "+scene);
     }
@@ -55,7 +55,13 @@ public final class LocationEntryTest {
             canvas.tick(100);street(canvas,"fourth-to-fifth transition");
             canvas.save();canvas.startLocation(2);canvas.load();street(canvas,"RMS street restore");
             ((StreetScene)get(canvas,"zoo")).animals.world.completed=true;
-            canvas.tick(100);check(((GameState)get(canvas,"state")).scene==8,"street must skip sewer");
+            canvas.tick(100);check(((GameState)get(canvas,"state")).scene==7&&get(canvas,"zoo") instanceof SewerScene,"street-to-sewer transition");
+            location(app,7);SewerScene pipe=(SewerScene)get(canvas,"zoo");check(get(canvas,"zooPanel")==null&&((Scene)get(canvas,"scene")).panel==null,"sewer has inventory");
+            canvas.keyPressed(52);canvas.tick(100);canvas.save();canvas.startLocation(2);canvas.load();pipe=(SewerScene)get(canvas,"zoo");check(pipe.sewer.motion>0,"sewer RMS motion");
+            canvas.keyPressed(48);check(Display.getDisplay(app).getCurrent() instanceof MenuCanvas,"sewer menu key");
+            canvas.startLocation(7);
+            for(int key:SewerWorldTest.solution()){if(key!=0)canvas.keyPressed(48+key);canvas.tick(100);}
+            check(((GameState)get(canvas,"state")).scene==8,"single crossing must enter hotel");
             canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==8,"cinematic save");
             for(int i=0;i<230;i++)canvas.tick(100);
             check(((GameState)get(canvas,"state")).scene==9,"entrance-to-interior transition");
@@ -171,10 +177,10 @@ public final class LocationEntryTest {
             street(canvas,"restored fifth location entry");
             // Garden previews must load from another scene and return to it.
             canvas.startLocation(2);set(app,"animationCatalog",new AnimationCatalog());
-            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==17,"preview scene");
+            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==7,"preview scene");
             canvas.finishPreview();check(((GameState)get(canvas,"state")).scene==2,"preview return");
             Object original=get(canvas,"zoo");
-            try { canvas.goToScene(7);throw new RuntimeException("unsupported scene accepted"); }
+            try { canvas.goToScene(18);throw new RuntimeException("unsupported scene accepted"); }
             catch(IOException expected) {}
             check(get(canvas,"zoo")==original,"invalid scene damaged active scene");
         } finally { canvas.shutdown(); }
