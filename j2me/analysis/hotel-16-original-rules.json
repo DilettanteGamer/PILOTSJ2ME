@@ -1,5 +1,7 @@
 {
   "flight_adaptation": {
+    "bottom_entry_clip": 72,
+    "bottom_entry_whole_pose": 8,
     "repaired_balloon_frames": [
       3,
       4,

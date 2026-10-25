@@ -49,6 +49,7 @@ public final class FlightRenderTest {
    check(n>0&&h.flight.altitude()==2&&h.flight.ballast()==3,"up skipped middle/used ballast early");
    // Ordinary ascent throws the refrigerator; the last bag throws the cat.
    w.g(0x94,2);check(h.input(2),"middle ascent");
+   boolean entryHidden=false,entryEdge=false,entryWhole=false,entryReload=false;
    boolean[] bottom=new boolean[3];int[] last={-1,-1,-1};int play=height-(width*63+320)/640;
    Viewport v=h.presentation.stage(width,play);boolean returned=false,repeated=false;
    for(int tick=0;tick<650;tick++){
@@ -56,6 +57,22 @@ public final class FlightRenderTest {
     if(!w.busy()&&!returned){check(h.flight.altitude()==3&&!h.input(2),"upper limit");check(h.input(8),"relative down from high");returned=true;}
     else if(returned&&!repeated&&!w.busy()){check(h.flight.altitude()==2,"down skipped middle");check(h.input(2),"last bag ascent");repeated=true;}
     for(AnimatedActor actor:scene.actors)if(actor!=null){
+     if(actor.id==72&&actor.clip.index<=8){
+      Graphics shown=paint(h,width,height);actor.visible=false;Graphics hidden=paint(h,width,height);actor.visible=true;
+      int minY=play,maxY=-1;
+      for(int y=0;y<play;y++)for(int x=0;x<width;x++)if(shown.image.getRGB(x,y)!=hidden.image.getRGB(x,y)){minY=Math.min(minY,y);maxY=y;}
+      if(actor.clip.index==0){check(maxY<0,"cat starts inside screen");entryHidden=true;}
+      if(actor.clip.index==1){
+       check(minY>=play-Math.max(8,height/12)&&maxY==play-1,"cat does not enter through phone bottom");entryEdge=true;
+       capture(h,width,height,out+"-cat-entry.png");
+       w.syncSave();GameState restored=GameState.decode(s.encode(),17);Scene restoredScene=new Scene(16);
+       try{FlightScene loaded=new FlightScene(restoredScene,restored);Graphics image=paint(loaded,width,height);
+        for(int y=0;y<height;y++)for(int x=0;x<width;x++)check(image.image.getRGB(x,y)==shown.image.getRGB(x,y),"cat entry changed after load");
+       }finally{restoredScene.close();}
+       entryReload=true;
+      }
+      if(actor.clip.index==8){check(maxY>=minY&&maxY<play-1&&minY>=0,"cat entry never becomes whole");entryWhole=true;capture(h,width,height,out+"-cat-whole.png");}
+     }
      int index=actor.id==57?0:actor.id==70?1:actor.id==72?2:-1;
      int base=index==0?3:index==1?38:10;
      if(index>=0&&actor.clip.index>base){
@@ -66,6 +83,7 @@ public final class FlightRenderTest {
      }
     }
    }
+   check(entryHidden&&entryEdge&&entryWhole&&entryReload,"bottom entry coverage");
    check(repeated&&bottom[0]&&bottom[1]&&bottom[2],"fridge/cat clipped before bottom "+bottom[0]+"/"+bottom[1]+"/"+bottom[2]+" tops "+last[0]+"/"+last[1]+"/"+last[2]);
   }finally{scene.close();}
  }

@@ -39,6 +39,9 @@ for profile in ['128x128','128x160','240x320']:
       if extension and f>source_frame:
        base,speed,accel,drift=extension;elapsed=f-base
        x+=drift*elapsed;y+=speed*elapsed+accel*elapsed*(elapsed-1)//2
+      if group is local and ident==72 and f<8:
+       whole=next(r['data'] for r in local if r['code']==67 and r['id']==72 and r['args'][:2]==[0,8])
+       w,hh=struct.unpack_from('<HH',whole);pixels=whole[4:4+w*hh]
       if group is local and ident==64 and 3<=f<=16:
        middle_pivot=next(r['data'] for r in local if r['code']==66 and r['id']==63 and r['args'][0]==0)
        middle=next(r['data'] for r in local if r['code']==67 and r['id']==63 and r['args'][:2]==[0,f])
@@ -85,5 +88,5 @@ for profile in ['128x128','128x160','240x320']:
   assert u16()==0 and p==len(data),'Unexpected text relocation'
   assert [n for n in jar.namelist() if n.endswith('.animations')]==['scenes/16.animations']
   profiles.append(dict(profile=profile,clips=count,frames=frames,source_rules=rule_count,source_maps=len(maps),source_sha256=EXPECTED,vm_sha256=hashlib.sha256(data).hexdigest()))
-print('FlightAssets: all three profiles, 71 clips / 1636 frames, original pixels plus repaired top and extended drops, all VM definitions/rules/maps and new-only preview catalog passed')
+print('FlightAssets: all three profiles, 71 clips / 1636 frames, original pixels plus repaired top, bottom entry and extended drops, all VM definitions/rules/maps and new-only preview catalog passed')
 (ROOT/'analysis/flight-assets-audit.json').write_text(json.dumps(profiles,indent=2)+'\n')

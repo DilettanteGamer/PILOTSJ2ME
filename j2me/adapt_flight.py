@@ -26,10 +26,17 @@ def adapt(out,clips):
         result=original[:whole+1]
         for i in range(1,count-whole):
             result.append((x+drift*i,y+speed*i+accel*i*(i-1)//2,w,h,pixels))
+        if clip==72:
+            # The first eight PC frames contain only the portion above y=417.
+            # Reuse the first complete pose while it rises through the phone edge.
+            _,_,ew,eh,ep=original[8]
+            for i in range(8):
+                ex,ey,_,_,_=original[i]
+                result[i]=(ex,ey,ew,eh,ep)
         changed[clip]=result
     for clip,result in changed.items():
         key=prefix+str(clip)+'.anm';old=out[key]
         out[key]=old[:4]+struct.pack('>H',len(result))+old[6:777]+b''.join(struct.pack('>hhHH',x,y,w,h)+p for x,y,w,h,p in result)
         for entry in clips:
             if entry['packed']==clip:entry['frames']=len(result)
-    return dict(repaired_balloon_frames=list(range(3,17)),extended_clips={str(k):len(v) for k,v in changed.items() if k!=64})
+    return dict(bottom_entry_clip=72,bottom_entry_whole_pose=8,repaired_balloon_frames=list(range(3,17)),extended_clips={str(k):len(v) for k,v in changed.items() if k!=64})

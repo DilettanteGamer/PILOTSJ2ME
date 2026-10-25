@@ -14,7 +14,17 @@ public final class FlightView {
   sky.drawWidth=output.width;sky.drawHeight=output.height;sky.left=sky.top=sky.cameraX=sky.cameraY=0;sky.paintClip(0,0,output.width,output.height);
   scene.background.paint(g,sky);Viewport v=stage(output.width,output.height);int n=0;
   for(int i=0;i<scene.actors.length;i++)if(scene.actors[i]!=null){int j=n;while(j>0&&layer(world,order[j-1])<layer(world,i)){order[j]=order[j-1];j--;}order[j]=i;n++;}
-  for(int i=0;i<n;i++)scene.actors[order[i]].paint(g,v);
+  for(int i=0;i<n;i++){
+   AnimatedActor actor=scene.actors[order[i]];
+   int top=v.top;
+   // Source clip 72 enters from the PC floor, now inside the phone sky.
+   // Start below the actual view and join its authored path at whole pose 8.
+   if(actor.id==72&&actor.clip.index<8){
+    int gap=Math.max(0,v.height-v.screenY(actor.y+2));
+    v.top+=gap*(8-actor.clip.index)/8;
+   }
+   actor.paint(g,v);v.top=top;
+  }
  }
  private int layer(HotelWorld world,int i){return world==null?0:i<300?(world.cells[i]==null?0:world.cells[i].layer):i<302?0:world.effects[i-302].layer;}
  public void panel(Graphics g,int width,int height,int bar,FlightLogic logic){

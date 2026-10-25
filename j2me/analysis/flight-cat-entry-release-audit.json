@@ -1,0 +1,47 @@
+[
+  {
+    "profile": "128x128",
+    "updated_preview_anchor": [
+      72
+    ],
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "pilots/FlightView.class",
+      "scenes/16-72.anm",
+      "scenes/16.animations"
+    ],
+    "unchanged": 2165,
+    "size": 17330551,
+    "sha256": "b15744dd994f436adaafb769ce3860c0586ade0e36858c4b0564f3d54dce14db"
+  },
+  {
+    "profile": "128x160",
+    "updated_preview_anchor": [
+      72
+    ],
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "pilots/FlightView.class",
+      "scenes/16-72.anm",
+      "scenes/16.animations"
+    ],
+    "unchanged": 2165,
+    "size": 17330816,
+    "sha256": "453222a2d5660a49e5c339026909879544d2a71c7ac5446f124297f80f61f39f"
+  },
+  {
+    "profile": "240x320",
+    "updated_preview_anchor": [
+      72
+    ],
+    "changed": [
+      "META-INF/MANIFEST.MF",
+      "pilots/FlightView.class",
+      "scenes/16-72.anm",
+      "scenes/16.animations"
+    ],
+    "unchanged": 2165,
+    "size": 18188183,
+    "sha256": "e1693f91ad35aa0d2fb919ccdb85850f2783e397748614182d95cd7ee46b2d9f"
+  }
+]

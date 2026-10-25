@@ -2797,7 +2797,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.21.2",
+        "MIDlet-Version": "0.21.3",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2806,10 +2806,10 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "dc655d77c556ace4ce54d4f371e74fdcdd0bac2534f2d78a58742c3f682648ba",
-      "jar_bytes": 17334438,
+      "sha256": "b15744dd994f436adaafb769ce3860c0586ade0e36858c4b0564f3d54dce14db",
+      "jar_bytes": 17330551,
       "entry_count": 2169,
-      "uncompressed_bytes": 119544131,
+      "uncompressed_bytes": 119552902,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -3091,7 +3091,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ef9973ba8833819d205f5996dcad5415ff98a38f846f4cfc391032a3d1370298"
+          "sha256": "a2a54b83dbbf49b8dff832e4dbf43d277249fdc60954bfbe90ad8b9ef889ba7f"
         },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
@@ -11685,8 +11685,8 @@
             400
           ],
           "focus": [
-            508,
-            409
+            528,
+            416
           ],
           "label": "23 Полёт — 72"
         }
@@ -11945,7 +11945,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.21.2",
+        "MIDlet-Version": "0.21.3",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -11954,10 +11954,10 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "9a6288dbd20ea9945d6b276fc06706bf2591c1042da1cc5ce6265cbf6a8fe075",
-      "jar_bytes": 17334703,
+      "sha256": "453222a2d5660a49e5c339026909879544d2a71c7ac5446f124297f80f61f39f",
+      "jar_bytes": 17330816,
       "entry_count": 2169,
-      "uncompressed_bytes": 119548227,
+      "uncompressed_bytes": 119556998,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -12239,7 +12239,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ef9973ba8833819d205f5996dcad5415ff98a38f846f4cfc391032a3d1370298"
+          "sha256": "a2a54b83dbbf49b8dff832e4dbf43d277249fdc60954bfbe90ad8b9ef889ba7f"
         },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
@@ -20833,8 +20833,8 @@
             400
           ],
           "focus": [
-            508,
-            409
+            528,
+            416
           ],
           "label": "23 Полёт — 72"
         }
@@ -21093,7 +21093,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.21.2",
+        "MIDlet-Version": "0.21.3",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -21102,10 +21102,10 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "0f696e2c7fc76a62303faba95ff611e3d90f1382cf8e1f6d8765ed5fdcccb97c",
-      "jar_bytes": 18192070,
+      "sha256": "e1693f91ad35aa0d2fb919ccdb85850f2783e397748614182d95cd7ee46b2d9f",
+      "jar_bytes": 18188183,
       "entry_count": 2169,
-      "uncompressed_bytes": 122204612,
+      "uncompressed_bytes": 122213383,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
@@ -21387,7 +21387,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ef9973ba8833819d205f5996dcad5415ff98a38f846f4cfc391032a3d1370298"
+          "sha256": "a2a54b83dbbf49b8dff832e4dbf43d277249fdc60954bfbe90ad8b9ef889ba7f"
         },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
@@ -29981,8 +29981,8 @@
             400
           ],
           "focus": [
-            508,
-            409
+            528,
+            416
           ],
           "label": "23 Полёт — 72"
         }
