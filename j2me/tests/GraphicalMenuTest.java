@@ -25,7 +25,8 @@ public final class GraphicalMenuTest {
   PilotsMidlet first=app(),second=null,third=null;PilotsMidlet.GameCanvas c=(PilotsMidlet.GameCanvas)get(first,"canvas");
   try{
    PlayerProgress p=(PlayerProgress)get(first,"progress");check(!p.started&&p.available(2)&&!p.available(3),"fresh progress");
-   first.choose(2);check(((String[])get(current(),"items")).length==2,"fresh locations expose future levels");choose(current(),0);
+   first.choose(2);check(((String[])get(current(),"items")).length==2,"fresh locations expose future levels");
+   MenuCanvas locationsBack=current();locationsBack.keyPressed(48);check(current()==locationsBack,"locations 0 disabled");locationsBack.keyPressed(-7);
    MenuCanvas main=current();check(((String[])get(main,"items")).length==7,"main item count");paint(main,w,h,out+"-main.png");
    main.keyPressed(-2);check(((MenuLayout)get(main,"layout")).selected==1,"D-pad menu navigation");
    first.choose(0);check(Display.getDisplay(null).getCurrent()==c&&p.started,"first New Game asks unnecessarily");
@@ -33,7 +34,7 @@ public final class GraphicalMenuTest {
    GameAudio menuAudio=(GameAudio)get(c,"audio");check(((Integer)get(menuAudio,"scene")).intValue()==2&&((Boolean)get(menuAudio,"menuMode")).booleanValue()&&((Boolean)get(menuAudio,"active")).booleanValue(),"first location loop in menu");
    c.hideNotify();check(((Boolean)get(menuAudio,"active")).booleanValue(),"delayed game hide stopped menu music");first.pauseApp();check(!((Boolean)get(menuAudio,"active")).booleanValue(),"pause left menu playing");first.startApp();check(((Boolean)get(menuAudio,"active")).booleanValue(),"resume lost menu music");
    set(c,"stopped",Boolean.TRUE);c.showNotify();check(!menuAudio.inMenu(),"game retained menu track");set(c,"stopped",Boolean.FALSE);c.hideNotify();c.keyPressed(-7);
-   first.choose(5);HelpCanvas help=(HelpCanvas)Display.getDisplay(null).getCurrent();Graphics hg=new Graphics(w,h);help.paint(hg);for(int page=1;page<5;page++){help.keyPressed(54);help.paint(hg);}check(((Integer)get(help,"selected")).intValue()==4,"help pages");ImageIO.write(hg.image,"png",new File(out+"-help.png"));help.keyPressed(48);check(Display.getDisplay(null).getCurrent() instanceof MenuCanvas,"help back");
+   first.choose(5);HelpCanvas help=(HelpCanvas)Display.getDisplay(null).getCurrent();Graphics hg=new Graphics(w,h);help.paint(hg);help.keyPressed(48);help.keyPressed(54);check(Display.getDisplay(null).getCurrent()==help,"help must stay on its only page");ImageIO.write(hg.image,"png",new File(out+"-help.png"));help.keyPressed(-7);check(Display.getDisplay(null).getCurrent() instanceof MenuCanvas,"help back");
    byte[] before=((GameState)get(c,"state")).encode();first.choose(0);MenuCanvas confirm=current();check(((String[])get(confirm,"items")).length==2,"missing New Game confirmation");choose(confirm,0);check(Arrays.equals(before,((GameState)get(c,"state")).encode()),"Cancel reset game");
    c.startLocation(3);first.choose(2);check(((String[])get(current(),"items")).length==3,"visited location not unlocked");choose(current(),0);
    first.choose(0);choose(current(),1);check(((GameState)get(c,"state")).scene==2&&p.available(3),"New Game erases permanent unlocks");
@@ -49,7 +50,7 @@ public final class GraphicalMenuTest {
    third.choose(1);check(Display.getDisplay(null).getCurrent()==c3&&((GameState)get(c3,"state")).scene==2,"completed Continue did not start New Game");
    third.choose(4);AboutCanvas about=(AboutCanvas)Display.getDisplay(null).getCurrent();Graphics g=new Graphics(w,h);about.paint(g);ImageIO.write(g.image,"png",new File(out+"-credits.png"));
    for(int i=0;i<7;i++)about.input(54);about.paint(g);check(((Integer)get(about,"selected")).intValue()==7,"port credit page missing");ImageIO.write(g.image,"png",new File(out+"-port-author.png"));
-   about.input(53);about.paint(g);about.input(48);check(Display.getDisplay(null).getCurrent() instanceof MenuCanvas,"About back");
+   about.input(53);about.paint(g);about.input(48);check(Display.getDisplay(null).getCurrent()==about,"About 0 disabled");about.input(-7);check(Display.getDisplay(null).getCurrent() instanceof MenuCanvas,"About back");
    third.choose(6);check(third.destroyed,"Exit did not close MIDlet");
    System.out.println("GraphicalMenu: seven entries, original centered fonts, confirmation/cancel, saved and checkpoint Continue, permanent unlocks, sound persistence, complete/restart, original credits and port author, Exit at "+w+"x"+h+" passed");
   }finally{first.destroyApp(true);if(second!=null)second.destroyApp(true);if(third!=null)third.destroyApp(true);}

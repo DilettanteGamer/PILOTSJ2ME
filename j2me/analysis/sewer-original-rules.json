@@ -5,7 +5,7 @@
     104,
     144,
     432,
-    208
+    256
   ],
   "bridge": {
     "clip": 70,
@@ -26,15 +26,24 @@
     ],
     "safe_stops": [
       128,
-      320,
+      328,
       448
     ],
     "speed_pixels_per_tick": 16,
     "leg_ticks": [
-      12,
+      13,
       8
     ],
-    "fall_clip": 64
+    "fall_clip": 64,
+    "swim_clip": 65,
+    "return_clip": 20037,
+    "return_voice": 17,
+    "hit_radius": 12,
+    "rat_hit_centers": [
+      224,
+      304,
+      416
+    ]
   },
   "rats": [
     {
@@ -54,7 +63,7 @@
       "object": 16,
       "clip": 47,
       "root": [
-        256,
+        272,
         160
       ],
       "period": 20,
@@ -120,6 +129,11 @@
       "frames": 5
     },
     {
+      "id": 37,
+      "packed": 20037,
+      "frames": 23
+    },
+    {
       "id": 46,
       "packed": 46,
       "frames": 20
@@ -178,6 +192,11 @@
       "id": 64,
       "packed": 64,
       "frames": 20
+    },
+    {
+      "id": 65,
+      "packed": 65,
+      "frames": 101
     },
     {
       "id": 70,

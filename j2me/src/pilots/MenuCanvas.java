@@ -43,7 +43,9 @@ public final class MenuCanvas extends Canvas implements CommandListener {
  protected void keyPressed(int key){input(key,false);}
  protected void keyRepeated(int key){input(key,true);}
  private void input(int key,boolean repeated){int action=0;try{action=getGameAction(key);}catch(IllegalArgumentException ignored){}
-  if(key==KEY_NUM2||action==UP)move(-1);else if(key==KEY_NUM8||action==DOWN)move(1);else if(!repeated&&key==KEY_NUM0)host.choose(mainMenu?1:0);else if(!repeated&&(key==KEY_NUM5||action==FIRE))host.choose(layout.selected);
+  if(key==KEY_NUM0||key==-6)return;
+  if(!repeated&&key==-7){host.choose(mainMenu?1:0);return;}
+  if(key==KEY_NUM2||action==UP)move(-1);else if(key==KEY_NUM8||action==DOWN)move(1);else if(!repeated&&(key==KEY_NUM5||action==FIRE))host.choose(layout.selected);
  }
  public synchronized void select(int n){layout.select(n);repaint();}
  private synchronized void move(int n){layout.move(n);repaint();}

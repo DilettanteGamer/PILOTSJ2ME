@@ -97,7 +97,7 @@ public final class LocationEntryTest {
             for(int i=0;i<180;i++)canvas.tick(100);
             check(!((HotelScene)get(canvas,"zoo")).logic.busy(),"balcony entry did not finish");
             byte[] menuBefore=((GameState)get(canvas,"state")).encode();
-            app.choose(2);MenuCanvas locations=(MenuCanvas)Display.getDisplay(app).getCurrent();locations.keyPressed(48);
+            app.choose(2);MenuCanvas locations=(MenuCanvas)Display.getDisplay(app).getCurrent();locations.keyPressed(-7);
             MenuCanvas main=(MenuCanvas)Display.getDisplay(app).getCurrent();
             check(((String[])get(main,"items")).length==7,"main menu must have seven game entries");
             check(java.util.Arrays.equals(menuBefore,((GameState)get(canvas,"state")).encode()),"submenu Back changed game");
@@ -162,7 +162,7 @@ public final class LocationEntryTest {
             HotelWorld roof=((HotelScene)get(canvas,"zoo")).animals.world;check(!roof.busy(),"roof menu entry");
             canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==14,"roof RMS restore");
             ((HotelScene)get(canvas,"zoo")).animals.world.completed=true;canvas.tick(100);check(((GameState)get(canvas,"state")).scene==16&&get(canvas,"zoo") instanceof FlightScene,"roof-to-flight transition");
-            location(app,16);FlightScene flight=(FlightScene)get(canvas,"zoo");canvas.keyPressed(50);canvas.tick(100);check(flight.flight.ballast()==2&&flight.flight.world.action()==23,"flight keyboard upper band");
+            location(app,16);check(((Viewport)get(canvas,"view")).height==canvas.getHeight(),"flight retains bottom panel");FlightScene flight=(FlightScene)get(canvas,"zoo");canvas.keyPressed(50);canvas.tick(100);check(flight.flight.ballast()==2&&flight.flight.world.action()==23,"flight keyboard upper band");
             int phase=flight.flight.world.step();canvas.save();canvas.startLocation(2);canvas.load();flight=(FlightScene)get(canvas,"zoo");check(flight.flight.world.step()==phase&&flight.flight.ballast()==2,"flight RMS phase/ballast");
             canvas.keyPressed(48);canvas.keyPressed(-6);check(Display.getDisplay(app).getCurrent()==canvas,"flight disabled menu keys");canvas.keyPressed(-7);check(Display.getDisplay(app).getCurrent() instanceof MenuCanvas,"flight right menu key");
             flight.flight.world.completed=true;canvas.tick(100);check(((GameState)get(canvas,"state")).scene==17,"flight-to-final transition");

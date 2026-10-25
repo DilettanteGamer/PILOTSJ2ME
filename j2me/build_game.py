@@ -30,7 +30,7 @@ from extract_sewer import extract as extract_sewer
 from extract_basement_platform import extract as extract_basement_platform
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.24.1'
+VERSION = '0.24.2'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -109,7 +109,7 @@ def package(profile, classes, sprites, output):
         if name.startswith('scenes/') and name[7:9].isdigit() and int(name[7:9]) not in (2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17):
             removed_future_resources.append(name)
             del entries[name]
-    width,height=map(int,profile.split('x'));bar=(width*63+320)//640;play_height=height-bar
+    width,height=map(int,profile.split('x'));play_height=height
     sky=entries['scenes/16.p8'];x0=(640-width)//2;y0=(417-play_height)//2
     import struct
     crop=b''.join(sky[780+(y0+y)*640+x0:780+(y0+y)*640+x0+width] for y in range(play_height))

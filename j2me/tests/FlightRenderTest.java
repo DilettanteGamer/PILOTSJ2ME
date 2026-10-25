@@ -5,7 +5,7 @@ import javax.microedition.lcdui.Graphics;
 /** Native crop, fixed camera, smaller original actors and a visible incoming crow. */
 public final class FlightRenderTest {
  static void check(boolean b,String m){if(!b)throw new RuntimeException(m);}
- static Graphics paint(FlightScene h,int width,int height){int bar=(width*63+320)/640;Viewport v=new Viewport(width,height-bar,640,417);Graphics g=new Graphics(width,height);h.paint(g,v);h.presentation.panel(g,width,height,bar,h.flight);return g;}
+ static Graphics paint(FlightScene h,int width,int height){Viewport v=new Viewport(width,height,640,417);Graphics g=new Graphics(width,height);h.paint(g,v);return g;}
  static void capture(FlightScene h,int width,int height,String file)throws Exception{ImageIO.write(paint(h,width,height).image,"png",new File(file));}
  static void fallingBranch(int width,int height,int band,int initial,int key,int movie)throws Exception{
   GameState s=new GameState();s.scene=16;Scene scene=new Scene(16);
@@ -18,7 +18,7 @@ public final class FlightRenderTest {
     h.update(100);
    }
    check(n>0&&h.input(key),"fall branch input "+band);
-   int play=height-(width*63+320)/640,last=-1,ticks=0;boolean crossed=false;
+   int play=height,last=-1,ticks=0;boolean crossed=false;
    Viewport v=h.presentation.stage(width,play);
    n=150;while(!w.completed&&n-->0){
     h.update(100);
@@ -50,7 +50,7 @@ public final class FlightRenderTest {
    // Ordinary ascent throws the refrigerator; the last bag throws the cat.
    w.g(0x94,2);check(h.input(2),"middle ascent");
    boolean entryHidden=false,entryEdge=false,entryWhole=false,entryReload=false;
-   boolean[] bottom=new boolean[3];int[] last={-1,-1,-1};int play=height-(width*63+320)/640;
+   boolean[] bottom=new boolean[3];int[] last={-1,-1,-1};int play=height;
    Viewport v=h.presentation.stage(width,play);boolean returned=false,repeated=false;
    for(int tick=0;tick<650;tick++){
     w.g(0x1e1b58,-1000);h.update(100);
@@ -88,7 +88,7 @@ public final class FlightRenderTest {
   }finally{scene.close();}
  }
  public static void main(String[] args)throws Exception{
-  int width=Integer.parseInt(args[0]),height=Integer.parseInt(args[1]),bar=(width*63+320)/640;String out=args[2];GameState s=new GameState();s.scene=16;Scene scene=new Scene(16);
+  int width=Integer.parseInt(args[0]),height=Integer.parseInt(args[1]),bar=0;String out=args[2];GameState s=new GameState();s.scene=16;Scene scene=new Scene(16);
   try{FlightScene h=new FlightScene(scene,s);HotelWorld w=h.flight.world;capture(h,width,height,out+"-entry.png");
    Viewport first=new Viewport(width,height-bar,640,417);first.cursorX=0;first.cursorY=0;first.zoom=true;first.update();Graphics a=new Graphics(width,height);h.paint(a,first);
    first.cursorX=639;first.cursorY=416;first.zoom=false;first.update();Graphics b=new Graphics(width,height);h.paint(b,first);

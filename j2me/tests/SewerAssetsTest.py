@@ -14,11 +14,11 @@ for profile in ['128x128','128x160','240x320']:
   for name in names:
    packed=int(name.split('-')[-1][:-4]);ident=packed-20000 if packed>=20000 else packed;h=table[64,ident,0,0]['data'];piv=table[66,ident,0,0]['data'];data=decode_animation(jar.read(name));assert data[9:777]==palette and struct.unpack_from('>H',data,4)[0]==h[3];p=777
    for f in range(h[3]):
-    image=table[67,ident,0,f]['data'];w,hh=struct.unpack_from('<HH',image);_,px,py=struct.unpack_from('<Ihh',piv,f*8);assert struct.unpack_from('>hhHH',data,p)==(-px,-py,w,hh);p+=8;assert data[p:p+w*hh]==image[4:];p+=w*hh;frames+=1
+    image=table[67,ident,0,f]['data'];w,hh=struct.unpack_from('<HH',image);_,px,py=struct.unpack_from('<Ihh',piv,f*8);assert struct.unpack_from('>hhHH',data,p)==(-px,-py,w,hh);p+=8;assert data[p:p+w*hh]==image[4:4+w*hh];p+=w*hh;frames+=1
    assert p==len(data)
-  assert len(names)==35
-  crop=jar.read('scenes/07.p8');assert struct.unpack_from('>HHHH',crop,4)==(432,208,432,208);assert crop[12:780]==palette
-  assert crop[780:]==b''.join(bg[24+y*640+104:24+y*640+536] for y in range(144,352))
+  assert len(names)==37
+  crop=jar.read('scenes/07.p8');assert struct.unpack_from('>HHHH',crop,4)==(432,256,432,256);assert crop[12:780]==palette
+  assert crop[780:]==b''.join(bg[24+y*640+104:24+y*640+536] for y in range(144,400))
   assert 'scenes/07.bar' not in jar.namelist() and 'scenes/07.hot' not in jar.namelist()
   cat=jar.read('scenes/07.animations');assert struct.unpack_from('>H',cat,4)[0]==16
   assert [n for n in jar.namelist() if n.endswith('.animations')]==['scenes/07.animations']
@@ -46,6 +46,6 @@ for profile in ['128x128','128x160','240x320']:
     size=1 if status&240 in [192,208] else 2
     events.extend(struct.pack('>IB',ticks,status)+music[p:p+size]);p+=size;count+=1
   assert count==8523 and ticks==8528 and hashlib.sha256(events).hexdigest()=='11ff87a1659f0c384beaa3c8d0ba9978dc7b25206bd37151309b2e0547e3fc9d'
-  report.append(dict(profile=profile,clips=len(names),frames=frames,crop=[104,144,432,208],source_sha256=EXPECTED))
-print('SewerAssets: original palettes/pixels/pivots for 35 clips, bridge crop, no inventory resources and sewer-only preview catalog passed')
+  report.append(dict(profile=profile,clips=len(names),frames=frames,crop=[104,144,432,256],source_sha256=EXPECTED))
+print('SewerAssets: original palettes/pixels/pivots for 37 clips, bridge crop, no inventory resources and sewer-only preview catalog passed')
 (ROOT/'analysis/sewer-assets-audit.json').write_text(json.dumps(report,indent=2)+'\n')

@@ -19,8 +19,8 @@
     16,
     17
   ],
-  "animations": 1665,
-  "frames": 20792,
+  "animations": 1667,
+  "frames": 20916,
   "backgrounds": {
     "scenes/02.bar": [
       640,
@@ -180,7 +180,7 @@
     ],
     "scenes/16.p8": [
       128,
-      147,
+      160,
       640,
       417
     ],
@@ -210,9 +210,9 @@
     ],
     "scenes/07.p8": [
       432,
-      208,
+      256,
       432,
-      208
+      256
     ],
     "ui/folder.p8": [
       128,
@@ -344,9 +344,9 @@
     ]
   },
   "hotel_key_gate": "removed towel, crocodile withdrawn, original 100-tick window",
-  "version": "0.24.1",
-  "jar_size": 20134915,
-  "jar_sha256": "3b744611aba43956a28eb3479b3304e18174d972146ded26f0fd03b080cd0a75",
+  "version": "0.24.2",
+  "jar_size": 20182487,
+  "jar_sha256": "eebbed9e828953d8c5b76dc87f1e6afc097f116bfe75e75dfc78999c129cf016",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",
@@ -508,7 +508,7 @@
   "pending_character_relative_menu_numbers": [],
   "rgb_compatibility": {
     "model": "full-stride drawRGB bounds check; desktop spy, not a device test",
-    "animation_clips": 1665,
+    "animation_clips": 1667,
     "scales": [
       "normal",
       "zoomed"
@@ -698,9 +698,10 @@
       "scenes/17-83.anm",
       "scenes/17-114.anm",
       "scenes/17-116.anm",
-      "scenes/17-117.anm"
+      "scenes/17-117.anm",
+      "scenes/07-65.anm"
     ],
-    "inflated_bytes_saved": 104363214,
+    "inflated_bytes_saved": 104689397,
     "decoded_visual_payloads_preserved": true
   },
   "render_cache": {

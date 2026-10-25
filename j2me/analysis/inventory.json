@@ -2617,8 +2617,8 @@
         16,
         17
       ],
-      "animations": 1665,
-      "frames": 20792,
+      "animations": 1667,
+      "frames": 20916,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -2688,9 +2688,9 @@
         ],
         "scenes/07.p8": [
           432,
-          208,
+          256,
           432,
-          208
+          256
         ],
         "scenes/08.bar": [
           640,
@@ -2796,7 +2796,7 @@
         ],
         "scenes/16.p8": [
           128,
-          115,
+          128,
           640,
           417
         ],
@@ -2871,7 +2871,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.24.1",
+        "MIDlet-Version": "0.24.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2880,15 +2880,15 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "a551a000ef391c59f4b92168292d021b8d4de2b0df5959050a9af720187e161a",
-      "jar_bytes": 20132588,
-      "entry_count": 2424,
-      "uncompressed_bytes": 135645192,
+      "sha256": "3f8fc4dfbcec201572e71825771808d86a2fc6a35a731076f2e6fd6235a2ad0a",
+      "jar_bytes": 20180138,
+      "entry_count": 2426,
+      "uncompressed_bytes": 135932268,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1665,
+        ".anm": 1667,
         ".bar": 15,
         ".bin": 1,
         ".board": 1,
@@ -2926,7 +2926,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "1c5a5f3387ea5108809793f79788dd6406b6bc8ac8e9aed5f0141269c5c02ce9"
+          "sha256": "2e9e8a445f92e9319b66f3111b641dcb5b3bd18920d297acacef9ad155d2bac6"
         },
         "pilots/AnimalLogic.class": {
           "minor": 3,
@@ -3182,13 +3182,10 @@
           "api_references": [
             "java/lang/Math",
             "java/lang/Object",
-            "java/lang/String",
-            "java/lang/StringBuffer",
-            "javax/microedition/lcdui/Font",
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "a2a54b83dbbf49b8dff832e4dbf43d277249fdc60954bfbe90ad8b9ef889ba7f"
+          "sha256": "3f86494ea20fc1c517ca74e521dc1e1e5bcce8b96b63a6f2cea66d84359ee2d4"
         },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
@@ -3326,10 +3323,8 @@
           "major": 45,
           "api_references": [
             "java/io/IOException",
-            "java/lang/IllegalArgumentException",
             "java/lang/Math",
             "java/lang/String",
-            "java/lang/StringBuffer",
             "javax/microedition/lcdui/Canvas",
             "javax/microedition/lcdui/Command",
             "javax/microedition/lcdui/CommandListener",
@@ -3337,7 +3332,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "be888d386fdc6744a3f9112d503afd715dfdc077bde24cfce90f82b5cb6abe61"
+          "sha256": "95e2a3495f75de522b7da8381e94e042a8a26574438bbc510bebc20e60235a81"
         },
         "pilots/HotelLogic.class": {
           "minor": 3,
@@ -3461,7 +3456,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "868a8d2e3a04341c5a5f86150c3ca91824cf077516718ec21c77285240f8404e"
+          "sha256": "09aa5eb67b841ff26b2f8604dcd7098a3dbd5d8b42e965c1c5361fcdf4110952"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -3486,7 +3481,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ca634bbd0393ff1700b0d2220470bfa666fbace67e2f45dc5cdd23c72672c2e8"
+          "sha256": "6b4fc939221c8b743638ac666cfedffe9c49639d8cc10da6030fb54d1e246e7f"
         },
         "pilots/MusicSink.class": {
           "minor": 3,
@@ -3685,7 +3680,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "27f2acc75267c148cfa07e70791bcb625dc132b4c1c275e1c23309e7ee38e795"
+          "sha256": "2f7ca680f449d36c2690af3ee9a44d88ecd3513bf9f5a5c05941e8ca892f65b2"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3818,7 +3813,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "b01f2e21fc3e54b6955261132ea3948a02b558b79d8020a8aa731eadb8a64e6c"
+          "sha256": "08cbf1d9029c4a02dde9ee054a512b93b36eb43478780d2c6e0bc9ffbf52843e"
         },
         "pilots/SewerScene.class": {
           "minor": 3,
@@ -3832,7 +3827,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "aa82508b8525f9ca9699fb98e72b4330ef4899b2549976c4954928961ea23e15"
+          "sha256": "f3ef53bfa8f846802bce98a1e8a3015fbf27ae99c2f941700b490540a79d660a"
         },
         "pilots/SoundSink.class": {
           "minor": 3,
@@ -6526,6 +6521,11 @@
           "duration_ms": 100,
           "max_indexed_frame_bytes": 6162
         },
+        "scenes/07-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
         "scenes/07-46.anm": {
           "count": 20,
           "duration_ms": 100,
@@ -6585,6 +6585,11 @@
           "count": 20,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 22125
+        },
+        "scenes/07-65.anm": {
+          "count": 101,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 15620
         },
         "scenes/07-70.anm": {
           "count": 1,
@@ -12671,8 +12676,8 @@
         16,
         17
       ],
-      "animations": 1665,
-      "frames": 20792,
+      "animations": 1667,
+      "frames": 20916,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -12742,9 +12747,9 @@
         ],
         "scenes/07.p8": [
           432,
-          208,
+          256,
           432,
-          208
+          256
         ],
         "scenes/08.bar": [
           640,
@@ -12850,7 +12855,7 @@
         ],
         "scenes/16.p8": [
           128,
-          147,
+          160,
           640,
           417
         ],
@@ -12925,7 +12930,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.24.1",
+        "MIDlet-Version": "0.24.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -12934,15 +12939,15 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "3b744611aba43956a28eb3479b3304e18174d972146ded26f0fd03b080cd0a75",
-      "jar_bytes": 20134915,
-      "entry_count": 2424,
-      "uncompressed_bytes": 135653384,
+      "sha256": "eebbed9e828953d8c5b76dc87f1e6afc097f116bfe75e75dfc78999c129cf016",
+      "jar_bytes": 20182487,
+      "entry_count": 2426,
+      "uncompressed_bytes": 135940460,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1665,
+        ".anm": 1667,
         ".bar": 15,
         ".bin": 1,
         ".board": 1,
@@ -12980,7 +12985,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "1c5a5f3387ea5108809793f79788dd6406b6bc8ac8e9aed5f0141269c5c02ce9"
+          "sha256": "2e9e8a445f92e9319b66f3111b641dcb5b3bd18920d297acacef9ad155d2bac6"
         },
         "pilots/AnimalLogic.class": {
           "minor": 3,
@@ -13236,13 +13241,10 @@
           "api_references": [
             "java/lang/Math",
             "java/lang/Object",
-            "java/lang/String",
-            "java/lang/StringBuffer",
-            "javax/microedition/lcdui/Font",
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "a2a54b83dbbf49b8dff832e4dbf43d277249fdc60954bfbe90ad8b9ef889ba7f"
+          "sha256": "3f86494ea20fc1c517ca74e521dc1e1e5bcce8b96b63a6f2cea66d84359ee2d4"
         },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
@@ -13380,10 +13382,8 @@
           "major": 45,
           "api_references": [
             "java/io/IOException",
-            "java/lang/IllegalArgumentException",
             "java/lang/Math",
             "java/lang/String",
-            "java/lang/StringBuffer",
             "javax/microedition/lcdui/Canvas",
             "javax/microedition/lcdui/Command",
             "javax/microedition/lcdui/CommandListener",
@@ -13391,7 +13391,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "be888d386fdc6744a3f9112d503afd715dfdc077bde24cfce90f82b5cb6abe61"
+          "sha256": "95e2a3495f75de522b7da8381e94e042a8a26574438bbc510bebc20e60235a81"
         },
         "pilots/HotelLogic.class": {
           "minor": 3,
@@ -13515,7 +13515,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "868a8d2e3a04341c5a5f86150c3ca91824cf077516718ec21c77285240f8404e"
+          "sha256": "09aa5eb67b841ff26b2f8604dcd7098a3dbd5d8b42e965c1c5361fcdf4110952"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -13540,7 +13540,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ca634bbd0393ff1700b0d2220470bfa666fbace67e2f45dc5cdd23c72672c2e8"
+          "sha256": "6b4fc939221c8b743638ac666cfedffe9c49639d8cc10da6030fb54d1e246e7f"
         },
         "pilots/MusicSink.class": {
           "minor": 3,
@@ -13739,7 +13739,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "27f2acc75267c148cfa07e70791bcb625dc132b4c1c275e1c23309e7ee38e795"
+          "sha256": "2f7ca680f449d36c2690af3ee9a44d88ecd3513bf9f5a5c05941e8ca892f65b2"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -13872,7 +13872,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "b01f2e21fc3e54b6955261132ea3948a02b558b79d8020a8aa731eadb8a64e6c"
+          "sha256": "08cbf1d9029c4a02dde9ee054a512b93b36eb43478780d2c6e0bc9ffbf52843e"
         },
         "pilots/SewerScene.class": {
           "minor": 3,
@@ -13886,7 +13886,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "aa82508b8525f9ca9699fb98e72b4330ef4899b2549976c4954928961ea23e15"
+          "sha256": "f3ef53bfa8f846802bce98a1e8a3015fbf27ae99c2f941700b490540a79d660a"
         },
         "pilots/SoundSink.class": {
           "minor": 3,
@@ -16580,6 +16580,11 @@
           "duration_ms": 100,
           "max_indexed_frame_bytes": 6162
         },
+        "scenes/07-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
         "scenes/07-46.anm": {
           "count": 20,
           "duration_ms": 100,
@@ -16639,6 +16644,11 @@
           "count": 20,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 22125
+        },
+        "scenes/07-65.anm": {
+          "count": 101,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 15620
         },
         "scenes/07-70.anm": {
           "count": 1,
@@ -22725,8 +22735,8 @@
         16,
         17
       ],
-      "animations": 1665,
-      "frames": 20792,
+      "animations": 1667,
+      "frames": 20916,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -22796,9 +22806,9 @@
         ],
         "scenes/07.p8": [
           432,
-          208,
+          256,
           432,
-          208
+          256
         ],
         "scenes/08.bar": [
           640,
@@ -22904,7 +22914,7 @@
         ],
         "scenes/16.p8": [
           240,
-          296,
+          320,
           640,
           417
         ],
@@ -22979,7 +22989,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.24.1",
+        "MIDlet-Version": "0.24.2",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -22988,15 +22998,15 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "ab953163e8be3efba4d2c57af0f647815de0a1d63755054b63b925119e321669",
-      "jar_bytes": 21833447,
-      "entry_count": 2424,
-      "uncompressed_bytes": 139555593,
+      "sha256": "9bfab10ed554299590a8e2c837f6f87ee3dc19183b3323e62654e4f77b56dd56",
+      "jar_bytes": 21881308,
+      "entry_count": 2426,
+      "uncompressed_bytes": 139846765,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1665,
+        ".anm": 1667,
         ".bar": 15,
         ".bin": 1,
         ".board": 1,
@@ -23034,7 +23044,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "1c5a5f3387ea5108809793f79788dd6406b6bc8ac8e9aed5f0141269c5c02ce9"
+          "sha256": "2e9e8a445f92e9319b66f3111b641dcb5b3bd18920d297acacef9ad155d2bac6"
         },
         "pilots/AnimalLogic.class": {
           "minor": 3,
@@ -23290,13 +23300,10 @@
           "api_references": [
             "java/lang/Math",
             "java/lang/Object",
-            "java/lang/String",
-            "java/lang/StringBuffer",
-            "javax/microedition/lcdui/Font",
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "a2a54b83dbbf49b8dff832e4dbf43d277249fdc60954bfbe90ad8b9ef889ba7f"
+          "sha256": "3f86494ea20fc1c517ca74e521dc1e1e5bcce8b96b63a6f2cea66d84359ee2d4"
         },
         "pilots/FridgeCanvas$Host.class": {
           "minor": 3,
@@ -23434,10 +23441,8 @@
           "major": 45,
           "api_references": [
             "java/io/IOException",
-            "java/lang/IllegalArgumentException",
             "java/lang/Math",
             "java/lang/String",
-            "java/lang/StringBuffer",
             "javax/microedition/lcdui/Canvas",
             "javax/microedition/lcdui/Command",
             "javax/microedition/lcdui/CommandListener",
@@ -23445,7 +23450,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "be888d386fdc6744a3f9112d503afd715dfdc077bde24cfce90f82b5cb6abe61"
+          "sha256": "95e2a3495f75de522b7da8381e94e042a8a26574438bbc510bebc20e60235a81"
         },
         "pilots/HotelLogic.class": {
           "minor": 3,
@@ -23569,7 +23574,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "868a8d2e3a04341c5a5f86150c3ca91824cf077516718ec21c77285240f8404e"
+          "sha256": "09aa5eb67b841ff26b2f8604dcd7098a3dbd5d8b42e965c1c5361fcdf4110952"
         },
         "pilots/MenuLayout.class": {
           "minor": 3,
@@ -23594,7 +23599,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "ca634bbd0393ff1700b0d2220470bfa666fbace67e2f45dc5cdd23c72672c2e8"
+          "sha256": "6b4fc939221c8b743638ac666cfedffe9c49639d8cc10da6030fb54d1e246e7f"
         },
         "pilots/MusicSink.class": {
           "minor": 3,
@@ -23793,7 +23798,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "27f2acc75267c148cfa07e70791bcb625dc132b4c1c275e1c23309e7ee38e795"
+          "sha256": "2f7ca680f449d36c2690af3ee9a44d88ecd3513bf9f5a5c05941e8ca892f65b2"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -23926,7 +23931,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "b01f2e21fc3e54b6955261132ea3948a02b558b79d8020a8aa731eadb8a64e6c"
+          "sha256": "08cbf1d9029c4a02dde9ee054a512b93b36eb43478780d2c6e0bc9ffbf52843e"
         },
         "pilots/SewerScene.class": {
           "minor": 3,
@@ -23940,7 +23945,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "aa82508b8525f9ca9699fb98e72b4330ef4899b2549976c4954928961ea23e15"
+          "sha256": "f3ef53bfa8f846802bce98a1e8a3015fbf27ae99c2f941700b490540a79d660a"
         },
         "pilots/SoundSink.class": {
           "minor": 3,
@@ -26634,6 +26639,11 @@
           "duration_ms": 100,
           "max_indexed_frame_bytes": 6162
         },
+        "scenes/07-20037.anm": {
+          "count": 23,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5576
+        },
         "scenes/07-46.anm": {
           "count": 20,
           "duration_ms": 100,
@@ -26693,6 +26703,11 @@
           "count": 20,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 22125
+        },
+        "scenes/07-65.anm": {
+          "count": 101,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 15620
         },
         "scenes/07-70.anm": {
           "count": 1,

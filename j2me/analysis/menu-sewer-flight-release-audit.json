@@ -1,0 +1,51 @@
+{
+  "version": "0.24.2",
+  "baseline": "fb17125",
+  "profiles": {
+    "128x128": {
+      "size": 20180138,
+      "sha256": "3f8fc4dfbcec201572e71825771808d86a2fc6a35a731076f2e6fd6235a2ad0a",
+      "unchanged_resources": 2340,
+      "added": [
+        "scenes/07-20037.anm",
+        "scenes/07-65.anm"
+      ],
+      "changed": [
+        "scenes/07.p8",
+        "scenes/16.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "128x160": {
+      "size": 20182487,
+      "sha256": "eebbed9e828953d8c5b76dc87f1e6afc097f116bfe75e75dfc78999c129cf016",
+      "unchanged_resources": 2340,
+      "added": [
+        "scenes/07-20037.anm",
+        "scenes/07-65.anm"
+      ],
+      "changed": [
+        "scenes/07.p8",
+        "scenes/16.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "240x320": {
+      "size": 21881308,
+      "sha256": "9bfab10ed554299590a8e2c837f6f87ee3dc19183b3323e62654e4f77b56dd56",
+      "unchanged_resources": 2340,
+      "added": [
+        "scenes/07-20037.anm",
+        "scenes/07-65.anm"
+      ],
+      "changed": [
+        "scenes/07.p8",
+        "scenes/16.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    }
+  }
+}

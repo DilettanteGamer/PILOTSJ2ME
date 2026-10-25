@@ -52,7 +52,7 @@ for profile in ['128x128','128x160','240x320']:
       p+=8;assert converted[p:p+w*hh]==pixels,(profile,ident,d,f);p+=w*hh;frames+=1
     assert p==len(converted);count+=1
   assert (count,frames)==(71,1636)
-  sky=jar.read('scenes/16.p8');width,height=map(int,profile.split('x'));bar=(width*63+320)//640;play=height-bar
+  sky=jar.read('scenes/16.p8');width,height=map(int,profile.split('x'));play=height
   assert struct.unpack_from('>HHHH',sky,4)==(width,play,640,417)
   bg=table[24,0,0]['data'];x0=(640-width)//2;y0=(417-play)//2
   crop=b''.join(bg[24+(y0+y)*640+x0:24+(y0+y)*640+x0+width] for y in range(play))

@@ -566,7 +566,7 @@ MenuCanvas.Host {
 
         private final FlightView flightPreview=new FlightView();
         private int panelHeight(int n, int n2) {
-            if (this.scene == null || this.scene.panel == null) {
+            if (this.scene == null || this.scene.panel == null || this.state.scene==16) {
                 return 0;
             }
             return Math.min(Math.max(0, n2 - 1), Math.max(1, (n * this.scene.panel.worldHeight + this.scene.panel.worldWidth / 2) / this.scene.panel.worldWidth));
@@ -606,12 +606,11 @@ MenuCanvas.Host {
             graphics.drawLine(n, n2 - 4, n, n2 + 4);
             }
             graphics.setClip(clipX,clipY,clipWidth,clipHeight);
-            if (this.scene.panel != null && clipY+clipHeight>this.view.height) {
+            if (this.state.scene!=16 && this.scene.panel != null && clipY+clipHeight>this.view.height) {
                 this.scene.panel.paintPanel(graphics, this.getWidth(), this.getHeight(), this.panelHeight(this.getWidth(), this.getHeight()));
             }
             if(this.zooPanel!=null && this.zoo!=null && clipY+clipHeight>this.view.height)
                 this.zooPanel.paint(graphics,this.zoo.logic,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()));
-            if(this.state.scene==16) this.flightPreview.panel(graphics,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()),this.zoo instanceof FlightScene?((FlightScene)this.zoo).flight:null);
             String caption=this.zoo==null?null:this.zoo.logic.message();
             if(caption==null && this.zoo!=null) caption=this.zoo.hoverText(this.view.cursorX,this.view.cursorY);
             if(caption!=null) {
@@ -731,8 +730,7 @@ MenuCanvas.Host {
 
         protected synchronized void pointerPressed(int n, int n2) {
             if(this.zoo instanceof FlightScene){
-                try{if(n2>=this.view.height){int button=n*4/this.getWidth();if(button<2)((FlightScene)this.zoo).input(button==0?2:8);else if(button==3)PilotsMidlet.this.showMenu();}
-                else ((FlightScene)this.zoo).input(n2<this.view.height/2?2:8);}catch(IOException e){PilotsMidlet.this.notice("Полёт",e.toString());}this.repaint();return;
+                try{((FlightScene)this.zoo).input(n2<this.view.height/2?2:8);}catch(IOException e){PilotsMidlet.this.notice("Полёт",e.toString());}this.repaint();return;
             }
             if(this.zoo!=null && n2>=this.view.height && n2<this.getHeight()) {
                 int slot=ZooPanel.slotAt(n,n2,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()));
