@@ -79,7 +79,9 @@ def inspect(path):
             count, = r.unpack('>B')
             result['actor_records'][n] = [dict(zip(['id', 'x', 'y'], r.unpack('>Hhh'))) for _ in range(count)]
             r.end()
-    preview_name='scenes/04.animations' if 'scenes/04.animations' in entries else 'scenes/03.animations' if 'scenes/03.animations' in entries else 'scenes/02.animations'
+    preview_names=sorted(n for n in entries if n.startswith('scenes/') and n.endswith('.animations'))
+    require(bool(preview_names),'Missing preview catalog')
+    preview_name=preview_names[-1]
     result['preview_scene']=int(preview_name[7:9])
     r = Reader(entries[preview_name])
     require(r.take(4) == b'ANC2', 'Invalid previews')

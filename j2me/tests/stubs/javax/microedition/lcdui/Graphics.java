@@ -54,6 +54,13 @@ public final class Graphics {
             if((rgb>>>24)!=0) pixel(x+xx,y+yy,rgb);
         }
     }
+    private Font font=Font.getDefaultFont();
+    public void setFont(Font value) { font=value; }
+    public void drawString(String text,int x,int y,int anchor) {
+        java.awt.Graphics2D g=image.createGraphics();g.setClip(clipX,clipY,clipWidth,clipHeight);g.setFont(font.awt);g.setColor(new java.awt.Color(color));
+        java.awt.FontMetrics m=g.getFontMetrics();if((anchor&1)!=0)x-=m.stringWidth(text)/2;else if((anchor&8)!=0)x-=m.stringWidth(text);
+        if((anchor&16)!=0)y+=m.getAscent();else if((anchor&32)!=0)y-=m.getDescent();g.drawString(text,x,y);g.dispose();
+    }
     public void setColor(int rgb) { color=rgb; }
     public void drawLine(int x,int y,int x2,int y2) {
         int dx=Math.abs(x2-x),dy=-Math.abs(y2-y),sx=x<x2?1:-1,sy=y<y2?1:-1,error=dx+dy;

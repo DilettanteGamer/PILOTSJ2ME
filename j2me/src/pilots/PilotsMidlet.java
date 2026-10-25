@@ -44,6 +44,9 @@ MenuCanvas.Host {
     private final Command menuCommand = new Command("\u041c\u0435\u043d\u044e", 1, 1);
     private Display display;
     private GameCanvas canvas;
+    private FridgeCanvas fridge;
+    private SwitchboardCanvas switchboard;
+    private BasementCanvas basement;
     private MenuCanvas menu;
     private MenuCanvas animationMenu;
     private AnimationCatalog animationCatalog;
@@ -67,6 +70,7 @@ MenuCanvas.Host {
             this.showMenu();
         }
         this.canvas.pauseAnimation(false);
+        if(this.fridge!=null || this.switchboard!=null || this.basement!=null)this.canvas.audio.active(true);
     }
 
     protected void pauseApp() {
@@ -76,6 +80,7 @@ MenuCanvas.Host {
     }
 
     protected void destroyApp(boolean bl) {
+        if(this.basement!=null){this.basement.shutdown();this.basement=null;}
         if (this.canvas != null) {
             this.canvas.shutdown();
         }
@@ -109,6 +114,45 @@ MenuCanvas.Host {
                 this.showMenu();
             }
         }
+    }
+
+    private void showFridge(final HotelWorld world) throws IOException {
+        this.fridge=new FridgeCanvas(world,new FridgeCanvas.Host() {
+            public void back() { PilotsMidlet.this.fridge=null;PilotsMidlet.this.display.setCurrent(PilotsMidlet.this.canvas); }
+            public void active(boolean active) { PilotsMidlet.this.canvas.audio.active(active && !PilotsMidlet.this.canvas.appPaused); }
+        });
+        this.display.setCurrent(this.fridge);
+    }
+
+    private void showSwitchboard(final HotelWorld world) throws IOException {
+        this.switchboard=new SwitchboardCanvas(world,new SwitchboardCanvas.Host() {
+            public void back() {
+                PilotsMidlet.this.switchboard=null;
+                try { ((HotelScene)PilotsMidlet.this.canvas.zoo).refreshState(); }
+                catch(IOException error){error(error);return;}
+                PilotsMidlet.this.display.setCurrent(PilotsMidlet.this.canvas);
+            }
+            public void active(boolean active){PilotsMidlet.this.canvas.audio.active(active && !PilotsMidlet.this.canvas.appPaused);}
+            public void error(IOException error){PilotsMidlet.this.notice("Электрощит",error.toString());}
+        });
+        this.display.setCurrent(this.switchboard);
+    }
+
+    private void showBasement(final HotelWorld world)throws IOException {
+        this.basement=new BasementCanvas(world,new BasementCanvas.Host(){
+            public void back(){
+                PilotsMidlet.this.basement=null;
+                try{((HotelScene)PilotsMidlet.this.canvas.zoo).refreshState();}
+                catch(IOException error){error(error);return;}
+                PilotsMidlet.this.display.setCurrent(PilotsMidlet.this.canvas);
+            }
+            public void active(boolean active){
+                PilotsMidlet.this.canvas.audio.active(active&&!PilotsMidlet.this.canvas.appPaused);
+                synchronized(PilotsMidlet.this.canvas){PilotsMidlet.this.canvas.lastTick=0;PilotsMidlet.this.canvas.notifyAll();}
+            }
+            public void error(IOException error){PilotsMidlet.this.notice("Ящики",error.toString());}
+        });
+        this.display.setCurrent(this.basement);
     }
 
     private void showMenu() {
@@ -153,11 +197,11 @@ MenuCanvas.Host {
 
     private void showInventory() {
         if(this.canvas.zoo==null) return;
-        final int[] values=new int[5];
+        final int[] values=new int[7];
         int count=2;values[0]=-1;values[1]=0;
-        for(int item=1;item<=3;item++) if(this.canvas.zoo.logic.hasItem(item)) values[count++]=item;
+        for(int item=1;item<=(this.canvas.state.scene==17?5:this.canvas.state.scene==14?4:3);item++) if(this.canvas.zoo.logic.hasItem(item)) values[count++]=item;
         String[] labels=new String[count];labels[0]="Назад";labels[1]="Без предмета";
-        for(int i=2;i<count;i++) labels[i]=this.canvas.state.scene==4?(values[i]==1?"Лейка":values[i]==2?"Грабли":"Секатор"):(values[i]==1?"Чайник":values[i]==2?"Кирка":"Монета");
+        for(int i=2;i<count;i++) labels[i]=this.canvas.state.scene==17?(values[i]==1?"Табуретка":values[i]==5?"Последняя флейта":"Флейта "+(values[i]-1)):this.canvas.state.scene==14?(values[i]==1?"Зелёная краска":values[i]==2?"Красная краска":values[i]==3?"Ножницы":"Лестница"):this.canvas.state.scene==15?"Автомат":this.canvas.state.scene==13?"Огнетушитель":this.canvas.state.scene==12?(values[i]==1?"Вантуз":"Мыло"):this.canvas.state.scene==11?"Осколок":this.canvas.state.scene==10?"Мухобойка":this.canvas.state.scene==9?(values[i]==1?"Баллончик":values[i]==2?"Ключ":"Отвёртка"):this.canvas.state.scene==6?"Штопор":this.canvas.state.scene==5?"Ключ":this.canvas.state.scene==4?(values[i]==1?"Лейка":values[i]==2?"Грабли":"Секатор"):(values[i]==1?"Чайник":values[i]==2?"Кирка":"Монета");
         MenuCanvas inventory=new MenuCanvas(new MenuCanvas.Host() {
             public void choose(int choice) {
                 if(choice>0) PilotsMidlet.this.canvas.selectItem(values[choice]);
@@ -167,8 +211,22 @@ MenuCanvas.Host {
         this.display.setCurrent((Displayable)inventory);
     }
 
+    private void showLocations() {
+        final int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13,15,14,16,17};
+        String[] labels={"Назад","У ворот","Двор зоопарка","Звериный двор","Сад","Улица","Гостиница: вступление","Гостиница: интерьер","Комната с балконом","Карниз гостиницы","Ванная комната","Электрощитовая","Подвал","Крыша","Полёт","Финал: лесная поляна"};
+        MenuCanvas locations=new MenuCanvas(new MenuCanvas.Host() {
+            public void choose(int choice) {
+                if(choice==0) { showMenu();return; }
+                try { canvas.startLocation(ids[choice]);display.setCurrent(canvas); }
+                catch(Exception error) { notice("Локация",error.toString()); }
+            }
+        },"Локации",labels);
+        this.display.setCurrent(locations);
+    }
+
     public void choose(int n) {
         if (n == 2) { this.showInventory(); return; }
+        if (n == 7) { this.showLocations(); return; }
         if (n == 6) {
             this.showAnimationMenu();
             return;
@@ -186,13 +244,9 @@ MenuCanvas.Host {
                 this.notice("\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430", "\u041f\u043e\u0437\u0438\u0446\u0438\u044f \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0430");
             } else if (n == 5) {
                 this.help();
-            } else if (n == 7) {
-                this.canvas.startCourtyard();
             } else if (n == 8) {
                 this.notice("Звук и музыка",this.canvas.audio.toggle()?"Включены":"Выключены");
             } else if (n == 9) {
-                this.canvas.startLocation(4);
-            } else if (n == 10) {
                 this.destroyApp(true);
                 this.notifyDestroyed();
             }
@@ -203,11 +257,19 @@ MenuCanvas.Host {
     }
 
     private void help() {
-        String location=this.canvas!=null && this.canvas.state.scene==4?
+        String location=this.canvas!=null && this.canvas.state.scene==17?"Финал: используйте табуретку, ветки и флейты. Оба героя участвуют в головоломке. Для движения укажите точку и нажмите 5: герой дойдёт до неё. Предметы — в нижней строке или через #. ":this.canvas!=null && this.canvas.state.scene==16?"Полёт: 2 или вверх — подняться, 8 или вниз — опуститься. Удерживайте направление для следующего шага. Подъём наверх расходует балласт; его остаток показан внизу. Ворона приближается справа. 0 — меню. ":this.canvas!=null && this.canvas.state.scene==14?"Крыша: используйте краску, ножницы и лестницу, подготовьте воздушный шар и вытяжку. Предметы доступны в нижней строке и через #. ":this.canvas!=null && this.canvas.state.scene==15?
+            "Подвал: укажите Шефом область ящиков справа, чтобы открыть отдельный экран. 2 — к ящикам, 8 — безопасная дорожка, 4/6 — движение и автоматический прыжок, 5 — автомат только с дорожки, 0 — назад. Автомат из ящика может взять любой брат. ":this.canvas!=null && this.canvas.state.scene==13?
+            "Электрощитовая: открывайте щит Коллегой, соединяйте провода Шефом. В подробном виде 2/4/6/8 выбирают участок, 5 поворачивает, 0 возвращает в комнату. ":this.canvas!=null && this.canvas.state.scene==12?
+            "Ванная комната: выбирайте вантуз и мыло в нижней строке. Для действий с бачком понадобятся оба брата; состояние вантуза ограничено по времени. ":this.canvas!=null && this.canvas.state.scene==11?
+            "Карниз гостиницы: проверяйте действия обоих братьев у окон и троса; предметы выбираются в нижней строке. ":this.canvas!=null && this.canvas.state.scene==10?
+            "Комната с балконом: исследуйте ящики, бумагу, телевизор и шнур. Действия братьев различаются; персонаж снаружи временно недоступен. ":this.canvas!=null && this.canvas.state.scene==9?
+            "Гостиница: выбирайте героев и предметы в нижней строке. Холодильник открывает отдельный экран с ручками 3×3; поворачиваются строка и столбец. ":this.canvas!=null && this.canvas.state.scene==6?
+            "Улица: управляйте Коллегой. Шеф действует самостоятельно у светофора. Исследуйте урну и люк; следите за машинами и прохожим на другой стороне. ":this.canvas!=null && this.canvas.state.scene==5?
+            "Сад: выбирайте братьев в нижней строке и перекрывайте мартышке пути отхода. После сцены с ключом нажмите 5. ":this.canvas!=null && this.canvas.state.scene==4?
             "Звериный двор: выбирайте предметы в нижней строке и проверяйте действия обоих героев. ":this.canvas!=null && this.canvas.state.scene==3?
             "Двор зоопарка: Шеф играет на рояле, Коллега меняет ноты. Проверяйте реакции героев на мелодии и расположение указателей. ":
             "У ворот: выбирайте героев и предметы в нижней строке. После открытия ворот укажите проход. ";
-        this.notice("Управление",location+"2/4/6/8: курсор; 5: действие; 1/3: герои; 7: предмет; 9: герой; #: инвентарь; *: масштаб; 0: меню. Пункт «Вторая локация» открывает двор отдельно; сохранение на диске меняется только по команде «Сохранить».");
+        this.notice("Управление",location+"2/4/6/8: курсор; 5: действие; 1/3: герои; 7: предмет; 9: герой; #: инвентарь; *: масштаб; 0: меню. Подменю «Локации» открывает перенесённые сцены отдельно; сохранение на диске меняется только по команде «Сохранить».");
     }
 
     final class GameCanvas
@@ -226,6 +288,7 @@ MenuCanvas.Host {
         private boolean shown;
         private boolean appPaused;
         private boolean stopped;
+        private boolean endingFocused;
         private long lastTick;
         private GameState previewReturnState;
         private int previewIndex = -1;
@@ -272,7 +335,7 @@ MenuCanvas.Host {
         }
 
         public synchronized void goToScene(int n) throws IOException {
-            if (n!=2 && n!=3 && n!=4) throw new IOException("This build includes locations 1, 2 and 3");
+            if (this.sceneIndex(n) < 0) throw new IOException("Invalid scene ID");
             this.audio.active(false);
             int cachePixels=this.getWidth()<200?65536:131072;
             try {
@@ -285,9 +348,6 @@ MenuCanvas.Host {
             RasterCache.budget(cachePixels);
             WalkStreams.clear();
             if (this.zooPanel!=null) { this.zooPanel.close();this.zooPanel=null; }
-            if (this.sceneIndex(n) < 0) {
-                throw new IOException("Invalid scene ID");
-            }
             if (this.scene != null) {
                 this.scene.close();
             }
@@ -298,9 +358,9 @@ MenuCanvas.Host {
             catch (OutOfMemoryError outOfMemoryError) {
                 throw new IOException("Scene exceeds available heap");
             }
-            this.state.scene = n;
-            this.zoo = n==4?new AnimalScene(this.scene,this.state):n==3?new CourtyardScene(this.scene,this.state):new ZooScene(this.scene,this.state);
-            this.zooPanel = new ZooPanel(n==4);
+            this.state.scene = n;this.endingFocused=false;
+            this.zoo = n==16?new FlightScene(this.scene,this.state):n>=8?new HotelScene(this.scene,this.state):n==6?new StreetScene(this.scene,this.state):n==5?new GardenScene(this.scene,this.state):n==4?new AnimalScene(this.scene,this.state):n==3?new CourtyardScene(this.scene,this.state):new ZooScene(this.scene,this.state);
+            this.zooPanel = n==8||n==16?null:new ZooPanel(n);
             this.audio.scene(n);this.zoo.logic.setSound(this.audio);
             this.audio.active(this.shown && !this.appPaused && !this.isPreview());
             this.view = new Viewport(Math.max(1, this.getWidth()), this.sceneHeight(this.getWidth(), this.getHeight()), this.scene.background.worldWidth, this.scene.background.worldHeight);
@@ -326,10 +386,10 @@ MenuCanvas.Host {
             if (this.previewReturnState == null) {
                 this.syncState();
                 GameState gameState = GameState.decode(this.state.encode(), this.sceneIds[this.sceneCount - 1] + 1);
-                this.state=GameState.decode(gameState.encode(),this.sceneIds[this.sceneCount-1]+1);
-                this.state.scene=4;
+                this.state=new GameState();
+                this.state.scene=PilotsMidlet.this.animationCatalog.scene;
                 this.previewReturnState = gameState;
-                this.goToScene(4);
+                this.goToScene(PilotsMidlet.this.animationCatalog.scene);
             }
             this.audio.active(false);
             this.zoo = null;
@@ -337,7 +397,7 @@ MenuCanvas.Host {
             this.scene.close();
             this.scene.actors = new AnimatedActor[0];
             int n2 = ((PilotsMidlet)PilotsMidlet.this).animationCatalog.ids[n];
-            this.scene.actors = new AnimatedActor[]{new AnimatedActor(n2, "/scenes/04-" + n2 + ".anm", ((PilotsMidlet)PilotsMidlet.this).animationCatalog.x[n], ((PilotsMidlet)PilotsMidlet.this).animationCatalog.y[n])};
+            this.scene.actors = new AnimatedActor[]{new AnimatedActor(n2, "/scenes/" + (PilotsMidlet.this.animationCatalog.scene<10?"0":"") + PilotsMidlet.this.animationCatalog.scene + "-" + n2 + ".anm", ((PilotsMidlet)PilotsMidlet.this).animationCatalog.x[n], ((PilotsMidlet)PilotsMidlet.this).animationCatalog.y[n])};
             this.previewIndex = n;
             this.view.cursorX = ((PilotsMidlet)PilotsMidlet.this).animationCatalog.focusX[n];
             this.view.cursorY = ((PilotsMidlet)PilotsMidlet.this).animationCatalog.focusY[n];
@@ -401,7 +461,7 @@ MenuCanvas.Host {
                     while (true) {
                         gameCanvas = this;
                         synchronized (gameCanvas) {
-                            while (!(this.stopped || this.shown && !this.appPaused)) {
+                            while (!(this.stopped || (this.shown || PilotsMidlet.this.basement!=null && PilotsMidlet.this.basement.visible()) && !this.appPaused)) {
                                 this.wait();
                             }
                             if (this.stopped) {
@@ -441,11 +501,24 @@ MenuCanvas.Host {
             if (this.scene == null) {
                 return;
             }
+            if(PilotsMidlet.this.basement!=null){PilotsMidlet.this.basement.update(l);return;}
             boolean bl = false;
             if (this.zoo != null) {
                 bl = this.zoo.update(l);
+                if(this.state.scene==17&&!this.endingFocused&&((HotelScene)this.zoo).animals.world.flag(0x1e1b5c)>=11){
+                    this.endingFocused=true;this.view.cursorX=380;this.view.cursorY=340;this.view.update();this.state.x=380;this.state.y=340;bl=true;
+                }
                 int next=SceneFlow.next(this.state.scene,this.zoo.logic.completed());
                 if(next!=this.state.scene) { this.startLocation(next);return; }
+                if(PilotsMidlet.this.basement==null && this.zoo instanceof HotelScene && ((HotelScene)this.zoo).animals.world.basementRequested()) {
+                    PilotsMidlet.this.showBasement(((HotelScene)this.zoo).animals.world);return;
+                }
+                if(PilotsMidlet.this.switchboard==null && this.zoo instanceof HotelScene && ((HotelScene)this.zoo).animals.world.boardRequested()) {
+                    PilotsMidlet.this.showSwitchboard(((HotelScene)this.zoo).animals.world);return;
+                }
+                if(PilotsMidlet.this.fridge==null && this.zoo instanceof HotelScene && ((HotelScene)this.zoo).animals.world.fridgeRequested()) {
+                    PilotsMidlet.this.showFridge(((HotelScene)this.zoo).animals.world);return;
+                }
             } else {
                 for (int n = 0; n < this.scene.actors.length; n++)
                     bl = this.scene.actors[n].update(l) || bl;
@@ -496,6 +569,7 @@ MenuCanvas.Host {
             }
         }
 
+        private final FlightView flightPreview=new FlightView();
         private int panelHeight(int n, int n2) {
             if (this.scene == null || this.scene.panel == null) {
                 return 0;
@@ -518,27 +592,31 @@ MenuCanvas.Host {
             }
             graphics.clipRect(0, 0, this.getWidth(), this.view.height);
             this.view.paintClip(clipX,clipY,clipWidth,clipHeight);
-            this.scene.background.paint(graphics, this.view);
+            if(this.state.scene!=16)this.scene.background.paint(graphics, this.view);
             int n = 0;
-            if(this.zoo!=null) this.zoo.paint(graphics,this.view);
+            if(this.state.scene==16 && this.zoo==null)this.flightPreview.paint(graphics,this.scene,this.view,null);
+            else if(this.zoo!=null) this.zoo.paint(graphics,this.view);
             else while (n < this.scene.actors.length) {
                 this.scene.actors[n].paint(graphics, this.view);
                 ++n;
             }
+            if(this.state.scene!=16){
             n = this.view.screenX(this.view.cursorX);
             int n2 = this.view.screenY(this.view.cursorY);
             graphics.setColor(0);
             graphics.drawLine(n - 4, n2 + 1, n + 4, n2 + 1);
             graphics.drawLine(n + 1, n2 - 4, n + 1, n2 + 4);
-            graphics.setColor((this.zoo != null ? this.zoo.logic.targetAt(this.view.cursorX, this.view.cursorY) != 0 : this.scene.at(this.view.cursorX, this.view.cursorY) != null) ? 0xFFFF00 : 0xFFFFFF);
+            graphics.setColor((this.zoo != null ? this.zoo.targetAt(this.view.cursorX, this.view.cursorY) != 0 : this.scene.at(this.view.cursorX, this.view.cursorY) != null) ? 0xFFFF00 : 0xFFFFFF);
             graphics.drawLine(n - 4, n2, n + 4, n2);
             graphics.drawLine(n, n2 - 4, n, n2 + 4);
+            }
             graphics.setClip(clipX,clipY,clipWidth,clipHeight);
             if (this.scene.panel != null && clipY+clipHeight>this.view.height) {
                 this.scene.panel.paintPanel(graphics, this.getWidth(), this.getHeight(), this.panelHeight(this.getWidth(), this.getHeight()));
             }
             if(this.zooPanel!=null && this.zoo!=null && clipY+clipHeight>this.view.height)
                 this.zooPanel.paint(graphics,this.zoo.logic,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()));
+            if(this.state.scene==16) this.flightPreview.panel(graphics,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()),this.zoo instanceof FlightScene?((FlightScene)this.zoo).flight:null);
             String caption=this.zoo==null?null:this.zoo.logic.message();
             if(caption==null && this.zoo!=null) caption=this.zoo.hoverText(this.view.cursorX,this.view.cursorY);
             if(caption!=null) {
@@ -593,6 +671,11 @@ MenuCanvas.Host {
                     n2 = this.getGameAction(n);
                 }
                 catch (IllegalArgumentException illegalArgumentException) {}
+                if(this.zoo instanceof FlightScene){
+                    if(n==48){if(!bl)PilotsMidlet.this.showMenu();return;}
+                    int control=n==50||n2==1?2:n==56||n2==6?8:0;
+                    if(control!=0){((FlightScene)this.zoo).input(control);this.repaint();}return;
+                }
                 int n3 = Math.max(1, (this.view.worldWidth * (bl ? 4 : 2) + this.view.drawWidth - 1) / this.view.drawWidth);
                 if (n == 50 || n2 == 1) {
                     this.moveCursor(0, -n3);return;
@@ -635,7 +718,7 @@ MenuCanvas.Host {
                     }
                     if (!bl && n == 55 && this.zoo!=null) {
                         int item=this.zoo.logic.selectedItem();
-                        for(int i=0;i<4;i++) { item=(item+1)%4;if(this.zoo.logic.hasItem(item)) break; }
+                        int count=this.state.scene==17?6:this.state.scene==14?5:4;for(int i=0;i<count;i++) { item=(item+1)%count;if(this.zoo.logic.hasItem(item)) break; }
                         this.zoo.logic.selectItem(item);this.repaint();return;
                     }
                     if (!bl && n == 57 && this.zoo!=null) {
@@ -655,11 +738,15 @@ MenuCanvas.Host {
         }
 
         protected synchronized void pointerPressed(int n, int n2) {
+            if(this.zoo instanceof FlightScene){
+                try{if(n2>=this.view.height){int button=n*4/this.getWidth();if(button<2)((FlightScene)this.zoo).input(button==0?2:8);else if(button==3)PilotsMidlet.this.showMenu();}
+                else ((FlightScene)this.zoo).input(n2<this.view.height/2?2:8);}catch(IOException e){PilotsMidlet.this.notice("Полёт",e.toString());}this.repaint();return;
+            }
             if(this.zoo!=null && n2>=this.view.height && n2<this.getHeight()) {
                 int slot=ZooPanel.slotAt(n,n2,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()));
                 if(slot==0 || slot==1) this.zoo.logic.select(slot==0?1:0);
                 else if(slot==3) this.zoo.logic.selectItem(0);
-                else if(slot>=4 && slot<=6) this.zoo.logic.selectItem(slot-3);
+                else if(slot>=4 && slot<=(this.state.scene==17?8:this.state.scene==14?7:6)) this.zoo.logic.selectItem(slot-3);
                 else if(slot==9) PilotsMidlet.this.showMenu();
                 this.repaint();return;
             }
@@ -685,7 +772,7 @@ MenuCanvas.Host {
         synchronized void startCourtyard() throws IOException { startLocation(3); }
         synchronized void startLocation(int id) throws IOException {
             this.previewReturnState=null;this.previewIndex=-1;
-            this.state=new GameState();this.state.scene=id;this.state.x=id==4?192:128;this.state.y=id==4?304:272;
+            this.state=new GameState();this.state.scene=id;this.state.x=id==16?320:id==14?192:id==15?384:id==13?192:id==12?448:id==11?448:id==10?192:id==8?192:id==9?320:id==6?576:id==4?192:128;this.state.y=id==16?208:id==14?320:id==15?384:id==13?176:id==12?336:id==11?320:id==10?224:id==8?208:id==9?320:id==6?400:id==5?368:id==4?304:272;
             this.goToScene(id);
         }
         synchronized void newGame() throws IOException {
@@ -753,7 +840,7 @@ MenuCanvas.Host {
             finally {
                 recordStore.closeRecordStore();
             }
-            if(gameState.scene!=2 && gameState.scene!=3 && gameState.scene!=4) gameState.scene=2;
+            if(this.sceneIndex(gameState.scene)<0) throw new IOException("Invalid saved scene ID");
             GameState gameState2 = this.state;
             this.state = gameState;
             try {
