@@ -7,6 +7,7 @@ import javax.microedition.media.control.VolumeControl;
 
 /** One MIDI and at most three PCM players; only the worker touches MMAPI. */
 public final class GameAudio implements Runnable,MusicSink {
+    private boolean menuMode;
     private int scene=2,generation,track=1;
     private boolean active,enabled=true,closed,activated;
     private final int[] queue=new int[16];
@@ -23,6 +24,8 @@ public final class GameAudio implements Runnable,MusicSink {
     private long serial;
 
     public GameAudio() { worker=new Thread(this);worker.start(); }
+    public synchronized boolean inMenu() { return menuMode; }
+    public synchronized void menu(boolean value) { if(menuMode!=value){menuMode=value;generation++;count=0;notifyAll();} }
     public synchronized void scene(int value) { scene=value;track=1;generation++;count=0;activated=false;notifyAll(); }
     public synchronized void music(int value) { if(value>=1 && value<=2) { track=value;notifyAll(); } }
     public synchronized void active(boolean value) { active=value;if(value) activated=true;if(!value && activated) count=0;notifyAll(); }
@@ -37,10 +40,10 @@ public final class GameAudio implements Runnable,MusicSink {
         int applied=-1,appliedTrack=-1;boolean wasActive=false;
         try {
             while(true) {
-                int current,revision,currentTrack,cue=-1;boolean running;
+                int current,revision,currentTrack,cue=-1;boolean running,loop;
                 synchronized(this) {
                     if(closed) break;
-                    current=scene;currentTrack=track;revision=generation;running=active&&enabled;
+                    loop=menuMode;current=loop?2:scene;currentTrack=loop?1:track;revision=generation;running=active&&enabled;
                     if(running && count>0) {
                         cue=queue[0];for(int i=1;i<count;i++) queue[i-1]=queue[i];count--;
                     }
@@ -52,7 +55,7 @@ public final class GameAudio implements Runnable,MusicSink {
                     resumeMusic=pause(music,running,resumeMusic);wasActive=running;
                 }
                 reap();
-                if(running && !musicAttempted) { musicAttempted=true;startMusic(current,currentTrack); }
+                if(running && !musicAttempted) { musicAttempted=true;startMusic(current,currentTrack,loop); }
                 if(running && cue>=0) startEffect(current,cue);
                 synchronized(this) {
                     if(!closed && (!running || count==0) && applied==generation && wasActive==(active&&enabled))
@@ -73,12 +76,12 @@ public final class GameAudio implements Runnable,MusicSink {
         VolumeControl control=(VolumeControl)player.getControl("VolumeControl");
         if(control!=null) control.setLevel(level);
     }
-    private void startMusic(int location,int selected) {
+    private void startMusic(int location,int selected,boolean loop) {
         try {
             musicStream=getClass().getResourceAsStream("/audio/"+(location<10?"0":"")+location+(selected==1?"":"-02")+".mid");
             if(musicStream==null) return;
             music=Manager.createPlayer(musicStream,"audio/midi");music.realize();music.prefetch();
-            volume(music,45);music.start();
+            volume(music,45);if(loop)music.setLoopCount(-1);music.start();
         } catch(Exception ignored) { closeMusic(); }
         catch(OutOfMemoryError ignored) { closeMusic(); }
     }

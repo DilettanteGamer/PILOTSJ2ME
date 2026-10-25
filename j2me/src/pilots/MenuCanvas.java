@@ -2,7 +2,7 @@ package pilots;
 import javax.microedition.lcdui.*;
 /** Folder menus, original bitmap text, keypad and touch hit boxes. */
 public final class MenuCanvas extends Canvas implements CommandListener {
- private static final String[] DEFAULT_ITEMS={"Новая игра","Продолжить","Локации","Звук вкл.","Об игре","Выход"};
+ private static final String[] DEFAULT_ITEMS={"Новая игра","Продолжить","Локации","Звук вкл.","Об игре","Помощь","Выход"};
  private final Host host;
  private final MenuLayout layout;
  private final String[] items;
@@ -16,7 +16,7 @@ public final class MenuCanvas extends Canvas implements CommandListener {
  public void sound(boolean enabled){if(mainMenu){items[3]=enabled?"Звук вкл.":"Звук выкл.";repaint();}}
  private void resizeMenu(int w,int h){
   layout.width=Math.max(1,w);layout.height=Math.max(1,h);
-  if(mainMenu){layout.header=h*28/100;layout.rowHeight=Math.max(13,h*11/100);layout.footer=Math.max(7,h/25);layout.visible=6;layout.first=0;}
+  if(mainMenu){layout.header=h*22/100;layout.rowHeight=Math.max(13,h*10/100);layout.footer=Math.max(7,h/25);layout.visible=7;layout.first=0;}
   else {layout.header=w<200?18:30;layout.footer=w<200?12:18;layout.rowHeight=w<200?18:32;layout.visible=Math.min(items.length,Math.max(1,(h-layout.header-layout.footer)/layout.rowHeight));}
   layout.select(layout.selected);
  }
