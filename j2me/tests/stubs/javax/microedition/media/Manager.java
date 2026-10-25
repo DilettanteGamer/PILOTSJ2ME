@@ -26,7 +26,7 @@ public final class Manager {
     }
     public static final class FakePlayer implements Player,VolumeControl {
         public final String type;public final byte[] data;
-        public volatile int state=UNREALIZED,starts,stops,level;
+        public volatile int state=UNREALIZED,starts,stops,level,loops=1;
         public FakePlayer(String type,byte[] data) { this.type=type;this.data=data; }
         public void realize() { state=REALIZED; }
         public void prefetch() { state=PREFETCHED; }
@@ -39,7 +39,7 @@ public final class Manager {
         public long getDuration() { return 1000000; }
         public int getState() { return state; }
         public String getContentType() { return type; }
-        public void setLoopCount(int count) { }
+        public void setLoopCount(int count) { loops=count; }
         public void addPlayerListener(PlayerListener listener) { }
         public void removePlayerListener(PlayerListener listener) { }
         public Control getControl(String name) { return this; }

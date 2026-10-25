@@ -34,7 +34,7 @@ public final class SewerScene extends ZooScene {
   scene.background.paint(g,stage);
   for(int i=0;i<scene.actors.length;i++)scene.actors[i].paint(g,stage);
   g.setClip(cx,cy,cw,ch);
-  g.setFont(Font.getFont(0,0,8));g.setColor(0xe2dab0);g.drawString("4/6  0 меню",w/2,h-2,Graphics.BOTTOM|Graphics.HCENTER);
+  g.setFont(Font.getFont(0,0,8));g.setColor(0xe2dab0);g.drawString("4/6  Меню: правая",w/2,h-2,Graphics.BOTTOM|Graphics.HCENTER);
  }
  public boolean request(int x,int y)throws IOException{return input(x<200?4:6);}
  public boolean activate(int x,int y)throws IOException{return request(x,y);}

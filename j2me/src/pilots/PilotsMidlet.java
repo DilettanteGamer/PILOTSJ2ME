@@ -42,7 +42,7 @@ extends MIDlet
 implements CommandListener,
 MenuCanvas.Host {
     private final PlayerProgress progress=new PlayerProgress();
-    private final Command menuCommand = new Command("\u041c\u0435\u043d\u044e", 1, 1);
+    private final Command menuCommand = new Command("\u041c\u0435\u043d\u044e", Command.BACK, 1);
     private Display display;
     private GameCanvas canvas;
     private FridgeCanvas fridge;
@@ -71,6 +71,7 @@ MenuCanvas.Host {
             this.showMenu();
         }
         this.canvas.pauseAnimation(false);
+        if(this.display.getCurrent()!=this.canvas && this.fridge==null && this.switchboard==null && this.basement==null)this.canvas.audio.active(true);
         if(this.fridge!=null || this.switchboard!=null || this.basement!=null)this.canvas.audio.active(true);
     }
 
@@ -165,7 +166,9 @@ MenuCanvas.Host {
         autoSave();
         if(this.menu==null)this.menu=new MenuCanvas(this);
         this.menu.sound(progress.sound);
+        this.canvas.audio.menu(true);
         this.display.setCurrent(this.menu);
+        this.canvas.audio.active(true);
     }
     private void startNewGame()throws IOException{
         this.canvas.newGame();this.display.setCurrent(this.canvas);
@@ -252,25 +255,13 @@ MenuCanvas.Host {
             else if(n==2)showLocations();
             else if(n==3){progress.sound=this.canvas.audio.toggle();progress.persist();showMenu();}
             else if(n==4)this.display.setCurrent(new AboutCanvas(new MenuCanvas.Host(){public void choose(int ignored){showMenu();}}));
-            else if(n==5){destroyApp(true);notifyDestroyed();}
+            else if(n==5)help();
+            else if(n==6){destroyApp(true);notifyDestroyed();}
         }catch(Exception error){notice("Меню",error.toString());}
     }
 
     private void help() {
-        if(this.canvas!=null&&this.canvas.state.scene==7){this.notice("Управление","Канализация: 4 — влево, 6 — вправо. Пережидайте опасные движения мышей. После падения Коллега вернётся на старт. 0 — меню.");return;}
-        String location=this.canvas!=null && this.canvas.state.scene==17?"Финал: используйте табуретку, ветки и флейты. Оба героя участвуют в головоломке. Для движения укажите точку и нажмите 5: герой дойдёт до неё. Предметы — в нижней строке или через #. ":this.canvas!=null && this.canvas.state.scene==16?"Полёт: 2 или вверх — подняться, 8 или вниз — опуститься. Удерживайте направление для следующего шага. Подъём наверх расходует балласт; его остаток показан внизу. Ворона приближается справа. 0 — меню. ":this.canvas!=null && this.canvas.state.scene==14?"Крыша: используйте краску, ножницы и лестницу, подготовьте воздушный шар и вытяжку. Предметы доступны в нижней строке и через #. ":this.canvas!=null && this.canvas.state.scene==15?
-            "Подвал: укажите Шефом область ящиков справа, чтобы открыть отдельный экран. 2 — к ящикам, 8 — безопасная дорожка, 4/6 — движение и автоматический прыжок, 5 — автомат только с дорожки, 0 — назад. Автомат из ящика может взять любой брат. ":this.canvas!=null && this.canvas.state.scene==13?
-            "Электрощитовая: открывайте щит Коллегой, соединяйте провода Шефом. В подробном виде 2/4/6/8 выбирают участок, 5 поворачивает, 0 возвращает в комнату. ":this.canvas!=null && this.canvas.state.scene==12?
-            "Ванная комната: выбирайте вантуз и мыло в нижней строке. Для действий с бачком понадобятся оба брата; состояние вантуза ограничено по времени. ":this.canvas!=null && this.canvas.state.scene==11?
-            "Карниз гостиницы: проверяйте действия обоих братьев у окон и троса; предметы выбираются в нижней строке. ":this.canvas!=null && this.canvas.state.scene==10?
-            "Комната с балконом: исследуйте ящики, бумагу, телевизор и шнур. Действия братьев различаются; персонаж снаружи временно недоступен. ":this.canvas!=null && this.canvas.state.scene==9?
-            "Гостиница: выбирайте героев и предметы в нижней строке. Холодильник открывает отдельный экран с ручками 3×3; поворачиваются строка и столбец. ":this.canvas!=null && this.canvas.state.scene==6?
-            "Улица: управляйте Коллегой. Шеф действует самостоятельно у светофора. Исследуйте урну и люк; следите за машинами и прохожим на другой стороне. ":this.canvas!=null && this.canvas.state.scene==5?
-            "Сад: выбирайте братьев в нижней строке и перекрывайте мартышке пути отхода. После сцены с ключом нажмите 5. ":this.canvas!=null && this.canvas.state.scene==4?
-            "Звериный двор: выбирайте предметы в нижней строке и проверяйте действия обоих героев. ":this.canvas!=null && this.canvas.state.scene==3?
-            "Двор зоопарка: Шеф играет на рояле, Коллега меняет ноты. Проверяйте реакции героев на мелодии и расположение указателей. ":
-            "У ворот: выбирайте героев и предметы в нижней строке. После открытия ворот укажите проход. ";
-        this.notice("Управление",location+"2/4/6/8: курсор; 5: действие; 1/3: герои; 7: предмет; 9: герой; #: инвентарь; *: масштаб; 0: меню. Подменю «Локации» открывает перенесённые сцены отдельно; сохранение на диске меняется только по команде «Сохранить».");
+        this.display.setCurrent(new HelpCanvas(new MenuCanvas.Host(){public void choose(int ignored){showMenu();}}));
     }
 
     final class GameCanvas
@@ -421,6 +412,7 @@ MenuCanvas.Host {
 
         protected synchronized void showNotify() {
             this.shown = true;
+            this.audio.menu(false);
             this.audio.active(!this.appPaused && !this.isPreview());
             this.lastTick = 0L;
             if (this.animationThread == null && !this.stopped) {
@@ -432,13 +424,13 @@ MenuCanvas.Host {
 
         protected synchronized void hideNotify() {
             this.shown = false;
-            this.audio.active(false);
+            this.audio.active(this.audio.inMenu() && !this.appPaused);
             this.lastTick = 0L;
         }
 
         synchronized void pauseAnimation(boolean bl) {
             this.appPaused = bl;
-            this.audio.active(this.shown && !bl && !this.isPreview());
+            this.audio.active((this.shown || this.audio.inMenu()) && !bl && !this.isPreview());
             this.lastTick = 0L;
             this.notifyAll();
         }
@@ -668,6 +660,8 @@ MenuCanvas.Host {
             if (this.view == null || this.scene == null) {
                 return;
             }
+            if(n==-6||n==48)return;
+            if(n==-7){if(!bl)PilotsMidlet.this.commandAction(PilotsMidlet.this.menuCommand,this);return;}
             try {
                 int n2 = 0;
                 try {
@@ -675,12 +669,10 @@ MenuCanvas.Host {
                 }
                 catch (IllegalArgumentException illegalArgumentException) {}
                 if(this.zoo instanceof SewerScene){
-                    if(n==48){if(!bl)PilotsMidlet.this.showMenu();return;}
                     int control=n==52||n2==2?4:n==54||n2==5?6:0;
                     if(control!=0){((SewerScene)this.zoo).input(control);this.repaint();}return;
                 }
                 if(this.zoo instanceof FlightScene){
-                    if(n==48){if(!bl)PilotsMidlet.this.showMenu();return;}
                     int control=n==50||n2==1?2:n==56||n2==6?8:0;
                     if(control!=0){((FlightScene)this.zoo).input(control);this.repaint();}return;
                 }
@@ -714,14 +706,6 @@ MenuCanvas.Host {
                     if (!bl && n == 35) {
                         if (this.zoo != null) PilotsMidlet.this.showInventory();
                         else PilotsMidlet.this.help();
-                        return;
-                    }
-                    if (!bl && n == 48) {
-                        if (this.isPreview()) {
-                            PilotsMidlet.this.showAnimationMenu();
-                        } else {
-                            PilotsMidlet.this.showMenu();
-                        }
                         return;
                     }
                     if (!bl && n == 55 && this.zoo!=null) {

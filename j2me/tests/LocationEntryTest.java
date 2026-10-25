@@ -58,7 +58,7 @@ public final class LocationEntryTest {
             canvas.tick(100);check(((GameState)get(canvas,"state")).scene==7&&get(canvas,"zoo") instanceof SewerScene,"street-to-sewer transition");
             location(app,7);SewerScene pipe=(SewerScene)get(canvas,"zoo");check(get(canvas,"zooPanel")==null&&((Scene)get(canvas,"scene")).panel==null,"sewer has inventory");
             canvas.keyPressed(52);canvas.tick(100);canvas.save();canvas.startLocation(2);canvas.load();pipe=(SewerScene)get(canvas,"zoo");check(pipe.sewer.motion>0,"sewer RMS motion");
-            canvas.keyPressed(48);check(Display.getDisplay(app).getCurrent() instanceof MenuCanvas,"sewer menu key");
+            canvas.keyPressed(48);canvas.keyPressed(-6);check(Display.getDisplay(app).getCurrent()==canvas,"sewer disabled menu keys");canvas.keyPressed(-7);check(Display.getDisplay(app).getCurrent() instanceof MenuCanvas,"sewer right menu key");
             canvas.startLocation(7);
             for(int key:SewerWorldTest.solution()){if(key!=0)canvas.keyPressed(48+key);canvas.tick(100);}
             check(((GameState)get(canvas,"state")).scene==8,"single crossing must enter hotel");
@@ -99,7 +99,7 @@ public final class LocationEntryTest {
             byte[] menuBefore=((GameState)get(canvas,"state")).encode();
             app.choose(2);MenuCanvas locations=(MenuCanvas)Display.getDisplay(app).getCurrent();locations.keyPressed(48);
             MenuCanvas main=(MenuCanvas)Display.getDisplay(app).getCurrent();
-            check(((String[])get(main,"items")).length==6,"main menu must have six game entries");
+            check(((String[])get(main,"items")).length==7,"main menu must have seven game entries");
             check(java.util.Arrays.equals(menuBefore,((GameState)get(canvas,"state")).encode()),"submenu Back changed game");
             ((HotelScene)get(canvas,"zoo")).animals.world.completed=true;canvas.tick(100);
             check(((GameState)get(canvas,"state")).scene==11,"balcony-to-ledge transition");
@@ -164,7 +164,7 @@ public final class LocationEntryTest {
             ((HotelScene)get(canvas,"zoo")).animals.world.completed=true;canvas.tick(100);check(((GameState)get(canvas,"state")).scene==16&&get(canvas,"zoo") instanceof FlightScene,"roof-to-flight transition");
             location(app,16);FlightScene flight=(FlightScene)get(canvas,"zoo");canvas.keyPressed(50);canvas.tick(100);check(flight.flight.ballast()==2&&flight.flight.world.action()==23,"flight keyboard upper band");
             int phase=flight.flight.world.step();canvas.save();canvas.startLocation(2);canvas.load();flight=(FlightScene)get(canvas,"zoo");check(flight.flight.world.step()==phase&&flight.flight.ballast()==2,"flight RMS phase/ballast");
-            canvas.keyPressed(48);check(Display.getDisplay(app).getCurrent() instanceof MenuCanvas,"flight menu key");
+            canvas.keyPressed(48);canvas.keyPressed(-6);check(Display.getDisplay(app).getCurrent()==canvas,"flight disabled menu keys");canvas.keyPressed(-7);check(Display.getDisplay(app).getCurrent() instanceof MenuCanvas,"flight right menu key");
             flight.flight.world.completed=true;canvas.tick(100);check(((GameState)get(canvas,"state")).scene==17,"flight-to-final transition");
             location(app,17);for(int i=0;i<100;i++)canvas.tick(100);HotelWorld forest=((HotelScene)get(canvas,"zoo")).animals.world;
             check(!forest.busy()&&forest.move(384,368),"final click route");canvas.tick(100);canvas.save();canvas.startLocation(2);canvas.load();

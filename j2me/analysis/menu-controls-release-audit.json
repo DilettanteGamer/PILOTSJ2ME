@@ -1,0 +1,75 @@
+{
+  "version": "0.24.1",
+  "baseline": "bcc6647",
+  "profiles": {
+    "128x128": {
+      "size": 20132588,
+      "sha256": "a551a000ef391c59f4b92168292d021b8d4de2b0df5959050a9af720187e161a",
+      "unchanged_game_resources": 2342,
+      "new_classes": [
+        "pilots/HelpCanvas.class",
+        "pilots/PilotsMidlet$10.class"
+      ],
+      "crc": "passed",
+      "jad": "passed",
+      "ui_resources": [
+        "ui/credits-0.p8",
+        "ui/credits-1.p8",
+        "ui/credits-2.p8",
+        "ui/credits-3.p8",
+        "ui/credits-4.p8",
+        "ui/credits-5.p8",
+        "ui/credits-6.p8",
+        "ui/folder.p8",
+        "ui/leather.p8",
+        "ui/original.font"
+      ]
+    },
+    "128x160": {
+      "size": 20134915,
+      "sha256": "3b744611aba43956a28eb3479b3304e18174d972146ded26f0fd03b080cd0a75",
+      "unchanged_game_resources": 2342,
+      "new_classes": [
+        "pilots/HelpCanvas.class",
+        "pilots/PilotsMidlet$10.class"
+      ],
+      "crc": "passed",
+      "jad": "passed",
+      "ui_resources": [
+        "ui/credits-0.p8",
+        "ui/credits-1.p8",
+        "ui/credits-2.p8",
+        "ui/credits-3.p8",
+        "ui/credits-4.p8",
+        "ui/credits-5.p8",
+        "ui/credits-6.p8",
+        "ui/folder.p8",
+        "ui/leather.p8",
+        "ui/original.font"
+      ]
+    },
+    "240x320": {
+      "size": 21833447,
+      "sha256": "ab953163e8be3efba4d2c57af0f647815de0a1d63755054b63b925119e321669",
+      "unchanged_game_resources": 2342,
+      "new_classes": [
+        "pilots/HelpCanvas.class",
+        "pilots/PilotsMidlet$10.class"
+      ],
+      "crc": "passed",
+      "jad": "passed",
+      "ui_resources": [
+        "ui/credits-0.p8",
+        "ui/credits-1.p8",
+        "ui/credits-2.p8",
+        "ui/credits-3.p8",
+        "ui/credits-4.p8",
+        "ui/credits-5.p8",
+        "ui/credits-6.p8",
+        "ui/folder.p8",
+        "ui/leather.p8",
+        "ui/original.font"
+      ]
+    }
+  }
+}

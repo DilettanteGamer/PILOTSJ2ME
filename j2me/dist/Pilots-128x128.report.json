@@ -1,6 +1,6 @@
 {
   "profile": "128x128",
-  "classes": 79,
+  "classes": 81,
   "scenes": [
     2,
     3,
@@ -344,9 +344,9 @@
     ]
   },
   "hotel_key_gate": "removed towel, crocodile withdrawn, original 100-tick window",
-  "version": "0.24.0",
-  "jar_size": 20131099,
-  "jar_sha256": "d35c90ab76e9e0d4104d6bf8df9db46ee901d47e892295b0049968701dc3da3c",
+  "version": "0.24.1",
+  "jar_size": 20132588,
+  "jar_sha256": "a551a000ef391c59f4b92168292d021b8d4de2b0df5959050a9af720187e161a",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",

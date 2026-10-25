@@ -95,6 +95,8 @@ public final class AudioTest {
         } finally { audio.close();Manager.rejectMidi=false;Manager.rejectAll=false;Manager.maxPCM=3; }
         waitFor(()->latest().state==Player.CLOSED);
         check(Manager.players.stream().allMatch(p->p.state==Player.CLOSED),"Leaked player");
+        GameAudio menu=new GameAudio();menu.scene(9);menu.music(2);menu.menu(true);int prior=Manager.players.size();
+        try{menu.active(true);waitFor(()->Manager.players.size()==prior+1&&latest().state==Player.STARTED);FakePlayer folder=latest();check(folder.loops==-1,"menu music not looped");check(Arrays.equals(folder.data,AudioTest.class.getResourceAsStream("/audio/02.mid").readAllBytes()),"menu does not use entrance music");menu.active(false);waitFor(()->folder.stops==1);menu.active(true);waitFor(()->folder.starts==2);menu.menu(false);waitFor(()->folder.state==Player.CLOSED&&Manager.players.size()==prior+2);FakePlayer room=latest();check(room.loops==1&&Arrays.equals(room.data,AudioTest.class.getResourceAsStream("/audio/09-02.mid").readAllBytes()),"menu lost gameplay track");menu.toggle();waitFor(()->room.state==Player.CLOSED);}finally{menu.close();}
     }
     static void resources(String[] hashes) throws Exception {
         int[] scenes={2,3,4,5,6,8,9,10,11,12,13,15,14,16,17};
