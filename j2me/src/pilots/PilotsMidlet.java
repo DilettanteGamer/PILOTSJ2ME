@@ -257,7 +257,7 @@ MenuCanvas.Host {
     }
 
     private void help() {
-        String location=this.canvas!=null && this.canvas.state.scene==16?"Полёт: 2 — верхняя высота, 5 — средняя, 8 — нижняя. Подъём наверх расходует балласт; его остаток показан внизу. Ворона приближается справа. 0 — меню. ":this.canvas!=null && this.canvas.state.scene==14?"Крыша: используйте краску, ножницы и лестницу, подготовьте воздушный шар и вытяжку. Предметы доступны в нижней строке и через #. ":this.canvas!=null && this.canvas.state.scene==15?
+        String location=this.canvas!=null && this.canvas.state.scene==16?"Полёт: 2 или вверх — подняться, 8 или вниз — опуститься. Удерживайте направление для следующего шага. Подъём наверх расходует балласт; его остаток показан внизу. Ворона приближается справа. 0 — меню. ":this.canvas!=null && this.canvas.state.scene==14?"Крыша: используйте краску, ножницы и лестницу, подготовьте воздушный шар и вытяжку. Предметы доступны в нижней строке и через #. ":this.canvas!=null && this.canvas.state.scene==15?
             "Подвал: укажите Шефом область ящиков справа, чтобы открыть отдельный экран. 2 — к ящикам, 8 — безопасная дорожка, 4/6 — движение и автоматический прыжок, 5 — автомат только с дорожки, 0 — назад. Автомат из ящика может взять любой брат. ":this.canvas!=null && this.canvas.state.scene==13?
             "Электрощитовая: открывайте щит Коллегой, соединяйте провода Шефом. В подробном виде 2/4/6/8 выбирают участок, 5 поворачивает, 0 возвращает в комнату. ":this.canvas!=null && this.canvas.state.scene==12?
             "Ванная комната: выбирайте вантуз и мыло в нижней строке. Для действий с бачком понадобятся оба брата; состояние вантуза ограничено по времени. ":this.canvas!=null && this.canvas.state.scene==11?
@@ -669,8 +669,8 @@ MenuCanvas.Host {
                 catch (IllegalArgumentException illegalArgumentException) {}
                 if(this.zoo instanceof FlightScene){
                     if(n==48){if(!bl)PilotsMidlet.this.showMenu();return;}
-                    int control=n==50||n2==1?2:n==53||n2==8?5:n==56||n2==6?8:0;
-                    if(control!=0 && !bl){((FlightScene)this.zoo).input(control);this.repaint();}return;
+                    int control=n==50||n2==1?2:n==56||n2==6?8:0;
+                    if(control!=0){((FlightScene)this.zoo).input(control);this.repaint();}return;
                 }
                 int n3 = Math.max(1, (this.view.worldWidth * (bl ? 4 : 2) + this.view.drawWidth - 1) / this.view.drawWidth);
                 if (n == 50 || n2 == 1) {
@@ -735,8 +735,8 @@ MenuCanvas.Host {
 
         protected synchronized void pointerPressed(int n, int n2) {
             if(this.zoo instanceof FlightScene){
-                try{if(n2>=this.view.height){int button=n*4/this.getWidth();if(button<3)((FlightScene)this.zoo).input(button==0?2:button==1?5:8);else PilotsMidlet.this.showMenu();}
-                else ((FlightScene)this.zoo).input(n2<this.view.height/3?2:n2<this.view.height*2/3?5:8);}catch(IOException e){PilotsMidlet.this.notice("Полёт",e.toString());}this.repaint();return;
+                try{if(n2>=this.view.height){int button=n*4/this.getWidth();if(button<2)((FlightScene)this.zoo).input(button==0?2:8);else if(button==3)PilotsMidlet.this.showMenu();}
+                else ((FlightScene)this.zoo).input(n2<this.view.height/2?2:8);}catch(IOException e){PilotsMidlet.this.notice("Полёт",e.toString());}this.repaint();return;
             }
             if(this.zoo!=null && n2>=this.view.height && n2<this.getHeight()) {
                 int slot=ZooPanel.slotAt(n,n2,this.getWidth(),this.getHeight(),this.panelHeight(this.getWidth(),this.getHeight()));

@@ -24,17 +24,31 @@ for profile in ['128x128','128x160','240x320']:
     converted=decode_animation(jar.read('scenes/16-%d.anm'%packed))
     dirs=[0] if h[2]==1 else [1,3,5,7]
     assert converted[:4]==b'ANM1' and converted[9:777]==palette
-    assert struct.unpack_from('>H',converted,4)[0]==h[3]*len(dirs)
+    extra={57:20,70:66,72:40} if group is local else {}
+    total=extra.get(ident,h[3])*len(dirs)
+    assert struct.unpack_from('>H',converted,4)[0]==total
     p=777
     for d in dirs:
      pivot=next(r['data'] for r in group if r['code']==66 and r['id']==ident and r['args'][0]==d)
-     for f in range(h[3]):
-      source=next(r['data'] for r in group if r['code']==67 and r['id']==ident and r['args'][:2]==[d,f])
-      _,px,py=struct.unpack_from('<Ihh',pivot,f*8);w,hh=struct.unpack_from('<HH',source)
-      assert struct.unpack_from('>hhHH',converted,p)==(-px,-py,w,hh),(profile,ident,d,f)
-      p+=8;assert converted[p:p+w*hh]==source[4:4+w*hh],(profile,ident,d,f);p+=w*hh;frames+=1
+     for f in range(extra.get(ident,h[3])):
+      extension={57:(3,85,6,3),70:(38,24,4,-2),72:(10,14,4,-2)}.get(ident) if group is local else None
+      source_frame=min(f,extension[0]) if extension else f
+      source=next(r['data'] for r in group if r['code']==67 and r['id']==ident and r['args'][:2]==[d,source_frame])
+      _,px,py=struct.unpack_from('<Ihh',pivot,source_frame*8);w,hh=struct.unpack_from('<HH',source)
+      x,y=-px,-py;pixels=source[4:4+w*hh]
+      if extension and f>source_frame:
+       base,speed,accel,drift=extension;elapsed=f-base
+       x+=drift*elapsed;y+=speed*elapsed+accel*elapsed*(elapsed-1)//2
+      if group is local and ident==64 and 3<=f<=16:
+       middle_pivot=next(r['data'] for r in local if r['code']==66 and r['id']==63 and r['args'][0]==0)
+       middle=next(r['data'] for r in local if r['code']==67 and r['id']==63 and r['args'][:2]==[0,f])
+       _,mx,my=struct.unpack_from('<Ihh',middle_pivot,f*8);mw,mh=struct.unpack_from('<HH',middle)
+       top=-my-96;missing=y-top;assert w==mw and x==-mx and missing>0
+       pixels=middle[4:4+missing*w]+pixels;y=top;hh+=missing
+      assert struct.unpack_from('>hhHH',converted,p)==(x,y,w,hh),(profile,ident,d,f)
+      p+=8;assert converted[p:p+w*hh]==pixels,(profile,ident,d,f);p+=w*hh;frames+=1
     assert p==len(converted);count+=1
-  assert (count,frames)==(71,1591)
+  assert (count,frames)==(71,1636)
   sky=jar.read('scenes/16.p8');width,height=map(int,profile.split('x'));bar=(width*63+320)//640;play=height-bar
   assert struct.unpack_from('>HHHH',sky,4)==(width,play,640,417)
   bg=table[24,0,0]['data'];x0=(640-width)//2;y0=(417-play)//2
@@ -64,12 +78,12 @@ for profile in ['128x128','128x160','240x320']:
   assert blob()==table[25,0,0]['data']
   n=u16()
   for i in range(n):
-   ident=u16();f,flag=take(2);h=table[64,ident,0]['data'];assert (f,flag)==(h[3],h[1])
+   ident=u16();f,flag=take(2);h=table[64,ident,0]['data'];assert (f,flag)==({57:20,70:66,72:40}.get(ident,h[3]),h[1])
   for op in [56,57]:
    rr=[r for r in local if r['code']==op];assert u16()==len(rr)
    for r in rr:assert u16()==r['id'] and blob()==r['data']
   assert u16()==0 and p==len(data),'Unexpected text relocation'
   assert [n for n in jar.namelist() if n.endswith('.animations')]==['scenes/16.animations']
   profiles.append(dict(profile=profile,clips=count,frames=frames,source_rules=rule_count,source_maps=len(maps),source_sha256=EXPECTED,vm_sha256=hashlib.sha256(data).hexdigest()))
-print('FlightAssets: all three profiles, 71 original clips / 1591 frames, all VM definitions/rules/maps and new-only preview catalog passed')
+print('FlightAssets: all three profiles, 71 clips / 1636 frames, original pixels plus repaired top and extended drops, all VM definitions/rules/maps and new-only preview catalog passed')
 (ROOT/'analysis/flight-assets-audit.json').write_text(json.dumps(profiles,indent=2)+'\n')

@@ -24,7 +24,7 @@ public final class FlightScene extends ZooScene {
  public boolean input(int key)throws IOException{boolean result=flight.command(key);refresh();return result;}
  public boolean update(long delta)throws IOException{if(delta<=0)return false;elapsed+=Math.min(delta,400L);boolean changed=false;while(elapsed>=100){elapsed-=100;flight.world.tick();changed=true;}if(changed)refresh();return changed;}
  public void paint(Graphics g,Viewport v){presentation.paint(g,scene,v,flight.world);}
- public boolean request(int x,int y)throws IOException{return input(y<144?2:y<272?5:8);}
+ public boolean request(int x,int y)throws IOException{return input(y<208?2:8);}
  public boolean activate(int x,int y)throws IOException{return request(x,y);}
  public int targetAt(int x,int y){return 0;}
  public String hoverText(int x,int y){return null;}
