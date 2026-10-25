@@ -8,11 +8,13 @@ public final class MenuCanvas extends Canvas implements CommandListener {
  private final String[] items;
  private final String title;
  private final boolean mainMenu;
- private final Command select=new Command("Выбрать",Command.OK,1),back=new Command("Назад",Command.BACK,2);
+ private final Command back;
+ private boolean resumable;
  private static String[] defaults(){String[] result=new String[DEFAULT_ITEMS.length];System.arraycopy(DEFAULT_ITEMS,0,result,0,result.length);return result;}
  public MenuCanvas(Host host){this(host,"",defaults(),true);}
  public MenuCanvas(Host host,String title,String[] items){this(host,title,items,false);}
- private MenuCanvas(Host host,String title,String[] items,boolean main){this.host=host;this.title=title;this.items=items;mainMenu=main;layout=new MenuLayout(items.length);setFullScreenMode(true);addCommand(select);addCommand(back);setCommandListener(this);resizeMenu(getWidth(),getHeight());}
+ private MenuCanvas(Host host,String title,String[] items,boolean main){this.host=host;this.title=title;this.items=items;mainMenu=main;layout=new MenuLayout(items.length);setFullScreenMode(true);back=new Command(main?"В игру":"Назад",Command.BACK,1);if(!main)addCommand(back);setCommandListener(this);resizeMenu(getWidth(),getHeight());}
+ public void resume(boolean value){if(mainMenu&&resumable!=value){resumable=value;if(value)addCommand(back);else removeCommand(back);}}
  public void sound(boolean enabled){if(mainMenu){items[3]=enabled?"Звук вкл.":"Звук выкл.";repaint();}}
  private void resizeMenu(int w,int h){
   layout.width=Math.max(1,w);layout.height=Math.max(1,h);
@@ -44,12 +46,12 @@ public final class MenuCanvas extends Canvas implements CommandListener {
  protected void keyRepeated(int key){input(key,true);}
  private void input(int key,boolean repeated){int action=0;try{action=getGameAction(key);}catch(IllegalArgumentException ignored){}
   if(key==KEY_NUM0||key==-6)return;
-  if(!repeated&&key==-7){host.choose(mainMenu?1:0);return;}
+  if(!repeated&&key==-7){host.choose(mainMenu?-1:0);return;}
   if(key==KEY_NUM2||action==UP)move(-1);else if(key==KEY_NUM8||action==DOWN)move(1);else if(!repeated&&(key==KEY_NUM5||action==FIRE))host.choose(layout.selected);
  }
  public synchronized void select(int n){layout.select(n);repaint();}
  private synchronized void move(int n){layout.move(n);repaint();}
  protected void pointerPressed(int x,int y){int index; synchronized(this){if(x>=getWidth()-10&&layout.visible<layout.count){move(y<layout.header+layout.visible*layout.rowHeight/2?-layout.visible:layout.visible);return;}if(x<left()||x>=left()+buttonWidth())return;index=layout.itemAt(y);if(index<0||(y-layout.header)%layout.rowHeight>=buttonHeight())return;layout.select(index);}host.choose(index);}
- public void commandAction(Command c,Displayable d){host.choose(c==back?(mainMenu?1:0):layout.selected);}
+ public void commandAction(Command c,Displayable d){host.choose(c==back?(mainMenu?-1:0):layout.selected);}
  public static interface Host{void choose(int item);}
 }

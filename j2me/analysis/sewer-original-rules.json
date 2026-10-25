@@ -3,9 +3,9 @@
   "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f",
   "crop": [
     104,
-    144,
+    0,
     480,
-    256
+    480
   ],
   "bridge": {
     "clip": 70,

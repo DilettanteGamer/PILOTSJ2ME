@@ -1,0 +1,645 @@
+{
+  "language": "ru",
+  "original_wav_count": 570,
+  "unique_pcm_count": 327,
+  "speech_samples": 44,
+  "bindings": [
+    {
+      "scene": 2,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 2,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 2,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 2,
+      "cue": 34,
+      "text": "Шеф: Откройте!",
+      "duration_ms": 914,
+      "wav_sha256": "e694d0e8c4de91e0aeb343dbef27564e454b2739d30e728afb2480aaac1c939c"
+    },
+    {
+      "scene": 2,
+      "cue": 35,
+      "text": "Сторож: Доступ ограничен.",
+      "duration_ms": 1264,
+      "wav_sha256": "358d5e9f814dbdfdcb6b13e0d2f6327f4ed61bd9f0568600b99f9175752422e7"
+    },
+    {
+      "scene": 2,
+      "cue": 36,
+      "text": "Сторож: В виде исключения.",
+      "duration_ms": 1597,
+      "wav_sha256": "7a20bd59d8e087b8935b097be444c3954f9f09ffb2a08e1206ded843f2275b64"
+    },
+    {
+      "scene": 3,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 3,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 3,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 3,
+      "cue": 12,
+      "text": "Коллега: Маэстро!",
+      "duration_ms": 1403,
+      "wav_sha256": "3b93af6ad09ac5c09125b488456602cdeff16dccd94c02c01ac3ae686a6ec0aa"
+    },
+    {
+      "scene": 3,
+      "cue": 18,
+      "text": "Извольте!",
+      "duration_ms": 784,
+      "wav_sha256": "6ddc9d4dc27cb399315b202507d4390dbe38b3e491f8aadbed7a7086aef5f8c9"
+    },
+    {
+      "scene": 4,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 4,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 4,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 4,
+      "cue": 58,
+      "text": "Спелый!",
+      "duration_ms": 883,
+      "wav_sha256": "68031f5e1d39d8c0fad1cbae8f85268ef0bb2521c7d826907012a81bd92cd34e"
+    },
+    {
+      "scene": 5,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 5,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 5,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 5,
+      "cue": 17,
+      "text": "Заходим справа!",
+      "duration_ms": 1194,
+      "wav_sha256": "8bd6d7124a8258437066b94526eb6d655882dbecebae860ad7a419094726e3a0"
+    },
+    {
+      "scene": 5,
+      "cue": 18,
+      "text": "Загоняем!",
+      "duration_ms": 1173,
+      "wav_sha256": "f07f280e1f6f523da4140da77f1bdf904d6adaed5dfd616addb673bf63b96ca2"
+    },
+    {
+      "scene": 5,
+      "cue": 19,
+      "text": "Заходим слева!",
+      "duration_ms": 1073,
+      "wav_sha256": "93db8e548e1c8ccc41cbc778d2c5ac92ad852677fd9183b276ea4457f57c82a6"
+    },
+    {
+      "scene": 5,
+      "cue": 20,
+      "text": "Загоняем!",
+      "duration_ms": 1030,
+      "wav_sha256": "6ca84c3957ae417d94536b64978a538d719f9fc09abc8cd4ce6b00b6bc9196b4"
+    },
+    {
+      "scene": 5,
+      "cue": 21,
+      "text": "Или это ключ от номера Карбофоса... или одно из двух.",
+      "duration_ms": 3892,
+      "wav_sha256": "666275f87e692ecfb82e12c796b6b6731b80f1186d35243528e77fbeed820dda"
+    },
+    {
+      "scene": 6,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 6,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 6,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 6,
+      "cue": 19,
+      "text": "Поищем улики?",
+      "duration_ms": 1201,
+      "wav_sha256": "de9b66e183aa4a76312f56984a10665a3be8c6bb0b5fc74f966ee5b7128817f7"
+    },
+    {
+      "scene": 6,
+      "cue": 23,
+      "text": "Виноват!",
+      "duration_ms": 647,
+      "wav_sha256": "d74c6206ccffbc9d1eb5dfeb0b88e76128df04461455e38aba5cde7b229d9816"
+    },
+    {
+      "scene": 7,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 7,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 7,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 7,
+      "cue": 17,
+      "text": "Коллега: Твари!",
+      "duration_ms": 1051,
+      "wav_sha256": "4b435c44a99bdec3bd7a6d83f62b8d3b6ee79ce44386ba9aa3eb5fcb6a51a35a"
+    },
+    {
+      "scene": 8,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 8,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 8,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 8,
+      "cue": 12,
+      "text": "Похоже, мы у цели.",
+      "duration_ms": 1200,
+      "wav_sha256": "bd942581e14a49ee67c4c2b4c602e85b9cfa0ea20dc780bc62096c076386bd86"
+    },
+    {
+      "scene": 8,
+      "cue": 13,
+      "text": "Попробуйте ключом.",
+      "duration_ms": 1201,
+      "wav_sha256": "4eb9a51c96e5f6f2c73f19716fa4d6f531374e17c712b88f4e7dd1757697d121"
+    },
+    {
+      "scene": 9,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 9,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 9,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 9,
+      "cue": 52,
+      "text": "Коллега: Да вы медвежатник, Шеф!",
+      "duration_ms": 1856,
+      "wav_sha256": "36af57ed345a91a2d5bc0c4fef749d4b5c5cf28c9cfc288db204a0112e6ae031"
+    },
+    {
+      "scene": 10,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 10,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 10,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 10,
+      "cue": 16,
+      "text": "Поберегись!",
+      "duration_ms": 1161,
+      "wav_sha256": "e755d1478899fdd8ec6273fe9ebe98f1b793be260618016125c80f73c8610e4d"
+    },
+    {
+      "scene": 10,
+      "cue": 26,
+      "text": "Протокол!",
+      "duration_ms": 1106,
+      "wav_sha256": "fac90cc5d9839a8a6bd88dcd3f854c07eba28447600b4b99064c650c5e358be0"
+    },
+    {
+      "scene": 10,
+      "cue": 29,
+      "text": "От винта!",
+      "duration_ms": 1119,
+      "wav_sha256": "dbccb3f43168cd81333967b0e5d351175c37487959886aaa578b0d51b636d128"
+    },
+    {
+      "scene": 10,
+      "cue": 33,
+      "text": "Интересное кино!",
+      "duration_ms": 1571,
+      "wav_sha256": "4a9af3988236b3d10467356373cc672125a68e79ef39576bccf08dc44af0fe68"
+    },
+    {
+      "scene": 10,
+      "cue": 39,
+      "text": "Готов!",
+      "duration_ms": 723,
+      "wav_sha256": "1323a46da92ea80c93c51565c52cd9cf0ad30618fad70f039d1580f04fc8719c"
+    },
+    {
+      "scene": 11,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 11,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 11,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 11,
+      "cue": 12,
+      "text": "Капрон!",
+      "duration_ms": 3216,
+      "wav_sha256": "d1ed23643bd36257cb3fa8888374deb8316c493f99ff87b1782c4c47e5ba7aa3"
+    },
+    {
+      "scene": 11,
+      "cue": 19,
+      "text": "Ущерб возместим.",
+      "duration_ms": 1512,
+      "wav_sha256": "2e200ce4d684e00d1e62a5ef78cf920edafa75ebfb776d86bb058ebb8015aedc"
+    },
+    {
+      "scene": 11,
+      "cue": 20,
+      "text": "Рыжая морда!",
+      "duration_ms": 1216,
+      "wav_sha256": "32b6f35fd73d7d045fd259f473b229211d7200bc27104968750c8a029a1d71c7"
+    },
+    {
+      "scene": 12,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 12,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 12,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 12,
+      "cue": 44,
+      "text": "Поехали!",
+      "duration_ms": 3426,
+      "wav_sha256": "f05c15c0051b544db6220765db3cd8db9c3b953aa964f32243aae3be13b4a6b3"
+    },
+    {
+      "scene": 13,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 13,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 13,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 13,
+      "cue": 12,
+      "text": "Карбофос: Я сказал вредить! Шнель!",
+      "duration_ms": 1910,
+      "wav_sha256": "4bf1a64437661a63cc9dd32ff47c9b50a832fef5b6e4147764382f939049b91c"
+    },
+    {
+      "scene": 13,
+      "cue": 15,
+      "text": "Слуга: Плиз!",
+      "duration_ms": 1366,
+      "wav_sha256": "05978fc8e200c52986be9ccbbbaa41a8ab5accf3c10e46a63678458e7fd5a243"
+    },
+    {
+      "scene": 13,
+      "cue": 21,
+      "text": "Коллега: Электричество кончилось.",
+      "duration_ms": 1482,
+      "wav_sha256": "c29115a9f577ef1b480610023a07b447b014d3e7a26b106dc1ad65da3bebc5f6"
+    },
+    {
+      "scene": 14,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 14,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 14,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 15,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 15,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 15,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 15,
+      "cue": 15,
+      "text": "Коллега: Пригодится!",
+      "duration_ms": 1148,
+      "wav_sha256": "17b8b75d96e0d7cc95b363a46fbbac9bcb4b3407245857b00fa2065e0d750bca"
+    },
+    {
+      "scene": 15,
+      "cue": 16,
+      "text": "Плиз!",
+      "duration_ms": 1617,
+      "wav_sha256": "3354bcefd225dabe4f73e42679ee5456f4017528f6ec4bbab75983706e569591"
+    },
+    {
+      "scene": 15,
+      "cue": 17,
+      "text": "Опасная зона!",
+      "duration_ms": 2222,
+      "wav_sha256": "0acc7dd12d87becc326ba8e825772b27c5fe1bc93d34999b982515651906988c"
+    },
+    {
+      "scene": 15,
+      "cue": 18,
+      "text": "Ни за что!",
+      "duration_ms": 2295,
+      "wav_sha256": "aa85969cf905eae1e51cd9f44d3f1d921263c5cbbf6934001ffbc3dbb09893ec"
+    },
+    {
+      "scene": 15,
+      "cue": 19,
+      "text": "Не та система!",
+      "duration_ms": 4028,
+      "wav_sha256": "8b5434984f4609da20ebe2b2fff12108098b3190a3af2a77fd522df592bae4a3"
+    },
+    {
+      "scene": 16,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 16,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 16,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 16,
+      "cue": 12,
+      "text": "Низко пошёл. К дождю!",
+      "duration_ms": 2317,
+      "wav_sha256": "88e42de0f1d82b8125cf2914df7c0cc9738fcd75685ecdbc563565bf0e14d147"
+    },
+    {
+      "scene": 16,
+      "cue": 22,
+      "text": "Шеф, вы прокололись!",
+      "duration_ms": 2726,
+      "wav_sha256": "b0bd88aeb436b7a5f3fad87a0ef9e279be19b0d43aad34454503ce457ca78f27"
+    },
+    {
+      "scene": 16,
+      "cue": 23,
+      "text": "Шеф, вы прокололись!",
+      "duration_ms": 2726,
+      "wav_sha256": "b0bd88aeb436b7a5f3fad87a0ef9e279be19b0d43aad34454503ce457ca78f27"
+    },
+    {
+      "scene": 16,
+      "cue": 24,
+      "text": "Шеф, вы прокололись!",
+      "duration_ms": 2726,
+      "wav_sha256": "b0bd88aeb436b7a5f3fad87a0ef9e279be19b0d43aad34454503ce457ca78f27"
+    },
+    {
+      "scene": 17,
+      "cue": 6,
+      "text": "Шеф: Ничего не понимаю!",
+      "duration_ms": 1074,
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "scene": 17,
+      "cue": 7,
+      "text": "Коллега: Ничего не понимаю!",
+      "duration_ms": 1025,
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "scene": 17,
+      "cue": 8,
+      "text": "Сверим часы!",
+      "duration_ms": 827,
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "scene": 17,
+      "cue": 17,
+      "text": "Слон!",
+      "duration_ms": 462,
+      "wav_sha256": "c4aed1155cfc8655914d6938089c9d9767d4231e53dbe21e47f812fb47b0d026"
+    },
+    {
+      "scene": 17,
+      "cue": 22,
+      "text": "Слуга: Плиз!",
+      "duration_ms": 757,
+      "wav_sha256": "4069146e5975ebf7557edd282101631d71eaecf87dffc266bb75617ed85a5546"
+    },
+    {
+      "scene": 17,
+      "cue": 36,
+      "text": "Плиз-плиз!",
+      "duration_ms": 1321,
+      "wav_sha256": "c09cc0a8e060285cd5acc8c96946345446ab5856e5794fb3be03c06002872594"
+    },
+    {
+      "scene": 17,
+      "cue": 38,
+      "text": "Фальшивая.",
+      "duration_ms": 696,
+      "wav_sha256": "f2926876d7828cc2604d6d815e458a34822f0e1e52bfb526704e0ec2039bbf21"
+    },
+    {
+      "scene": 17,
+      "cue": 39,
+      "text": "Настоящая!",
+      "duration_ms": 1051,
+      "wav_sha256": "0933f752369fc04154cedd46087a1c8f7d133ee7d8703e82593a63b498806fca"
+    }
+  ]
+}

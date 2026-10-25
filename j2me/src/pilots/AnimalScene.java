@@ -44,6 +44,7 @@ public final class AnimalScene extends ZooScene {
         }
         return hit;
     }
+    public int targetAt(int x,int y){int id=target(x,y);return id<0?0:id;}
     public String hoverText(int x,int y) {
         int id=target(x,y);
         return id==13?"Коллега":id==17?"Злой носорог":id==18||id==29?"Бананы":id==19||id==20?"Кенгуру":id==21?"Звериная тропа":id==22||id==28?"Пальма":id==23?"Фонтан":id==24?"Кран":id==25?"Секатор":id==26?"Грабли":id==27?"Лейка":null;

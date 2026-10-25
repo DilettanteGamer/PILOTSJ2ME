@@ -22,8 +22,8 @@ public final class LocationEntryTest {
         app.choose(2);
         MenuCanvas menu=(MenuCanvas)Display.getDisplay(app).getCurrent();
         PlayerProgress progress=(PlayerProgress)get(app,"progress");
-        int count=1;for(int id:PlayerProgress.ORDER)if(progress.available(id))count++;check(((String[])get(menu,"items")).length==count,"locked locations exposed");
-        int choice=1;for(int id:PlayerProgress.ORDER)if(progress.available(id)){if(id==scene){((MenuCanvas.Host)get(menu,"host")).choose(choice);return;}choice++;}
+        int count=1;for(int id:PlayerProgress.ORDER)if(progress.listed(id))count++;check(((String[])get(menu,"items")).length==count,"locked locations exposed");
+        int choice=1;for(int id:PlayerProgress.ORDER)if(progress.listed(id)){if(id==(scene==9?8:scene)){((MenuCanvas.Host)get(menu,"host")).choose(choice);if(scene==9){PilotsMidlet.GameCanvas c=(PilotsMidlet.GameCanvas)get(app,"canvas");int limit=1000;while(((GameState)get(c,"state")).scene==8&&limit-->0)c.tick(100);check(((GameState)get(c,"state")).scene==9,"hotel menu did not play entrance before interior");}return;}choice++;}
         throw new RuntimeException("missing menu scene "+scene);
     }
     static void boardSelect(SwitchboardCanvas canvas,int target)throws Exception {

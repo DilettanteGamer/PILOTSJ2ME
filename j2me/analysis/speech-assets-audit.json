@@ -1,0 +1,23 @@
+[
+  {
+    "profile": "128x128",
+    "original_wavs": 570,
+    "unique_samples": 327,
+    "speech_samples": 44,
+    "speech_bindings": 91
+  },
+  {
+    "profile": "128x160",
+    "original_wavs": 570,
+    "unique_samples": 327,
+    "speech_samples": 44,
+    "speech_bindings": 91
+  },
+  {
+    "profile": "240x320",
+    "original_wavs": 570,
+    "unique_samples": 327,
+    "speech_samples": 44,
+    "speech_bindings": 91
+  }
+]

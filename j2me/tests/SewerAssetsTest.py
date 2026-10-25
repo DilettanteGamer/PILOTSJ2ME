@@ -31,8 +31,16 @@ for profile in ['128x128','128x160','240x320']:
      bit=left<=x<left+span and bool(mask[(x-left)//8]&(1<<((x-left)%8)))
      assert bool(bit)==visible,(profile,ident,f,x)
   assert cp==len(contact)
-  crop=jar.read('scenes/07.p8');assert struct.unpack_from('>HHHH',crop,4)==(480,256,480,256);assert crop[12:780]==palette
-  assert crop[780:]==b''.join(bg[24+y*640+104:24+y*640+584] for y in range(144,400))
+  crop=jar.read('scenes/07.p8');width,height=map(int,profile.split('x'));assert struct.unpack_from('>HHHH',crop,4)==(width,height,480,256);assert crop[12:780]==palette
+  draw=width*256//480;top=(height-draw)//2;expected=bytearray()
+  for y in range(height):
+   sy=144+(y-top)*256//draw
+   if sy<0:
+    q=(-sy-1)%64;sy=q if q<32 else 63-q
+   elif sy>415:
+    q=(sy-416)%96;sy=415-q if q<48 else 368+q-48
+   for x in range(width):expected.append(bg[24+sy*640+104+x*480//width])
+  assert crop[780:]==expected,'Full-height sewer changed bridge scale or included original inventory'
   assert 'scenes/07.bar' not in jar.namelist() and 'scenes/07.hot' not in jar.namelist()
   cat=jar.read('scenes/07.animations');assert struct.unpack_from('>H',cat,4)[0]==16
   assert [n for n in jar.namelist() if n.endswith('.animations')]==['scenes/07.animations']

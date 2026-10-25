@@ -4,7 +4,7 @@ import javax.microedition.rms.RecordStore;
 /** Permanent unlocks are separate from the current game's checkpoint and save. */
 public final class PlayerProgress {
  public static final int[] ORDER={2,3,4,5,6,7,8,9,10,11,12,13,15,14,16,17};
- public static final String[] NAMES={"У входа в зоопарк","Двор зоопарка","Звериный двор","Сад","Улица","Канализация","Гостиница: вступление","Гостиница: интерьер","Комната с балконом","Карниз гостиницы","Ванная комната","Электрощитовая","Подвал","Крыша","Полёт","Финал: лесная поляна"};
+ public static final String[] NAMES={"У входа в зоопарк","Двор зоопарка","Звериный двор","Сад","Улица","Канализация","Гостиница","Гостиница: интерьер","Комната с балконом","Карниз гостиницы","Ванная комната","Электрощитовая","Подвал","Крыша","Полёт","Финал: лесная поляна"};
  public int unlocked=1<<2,lastScene=2;
  public boolean started,finished,sound=true;
  private static final String STORE="pilots-progress-v1";
@@ -16,6 +16,7 @@ public final class PlayerProgress {
  }
  public static boolean valid(int scene){return scene>=2&&scene<=17;}
  public boolean available(int scene){return valid(scene)&&(unlocked&(1<<scene))!=0;}
+ public boolean listed(int scene){return scene!=9 && (available(scene)||scene==8&&available(9));}
  public void open(int scene)throws IOException{if(!valid(scene))throw new IOException("Invalid progress scene");unlocked|=1<<scene;lastScene=scene;started=true;finished=false;persist();}
  public void newGame()throws IOException{lastScene=2;started=true;finished=false;unlocked|=1<<2;persist();}
  public void complete()throws IOException{if(!finished){finished=true;started=true;persist();}}

@@ -1,0 +1,90 @@
+{
+  "version": "0.25.0",
+  "baseline": "61ee6b3",
+  "profiles": {
+    "128x128": {
+      "size": 20151003,
+      "sha256": "00887d16f73e5f52566eab9023182cfafab66e4b4c5d6fdc24fece3a22b1b2ad",
+      "unchanged_resources": 2344,
+      "added": [
+        "scenes/02.speech",
+        "scenes/03.speech",
+        "scenes/04.speech",
+        "scenes/05.speech",
+        "scenes/06.speech",
+        "scenes/07.speech",
+        "scenes/08.speech",
+        "scenes/09.speech",
+        "scenes/10.speech",
+        "scenes/11.speech",
+        "scenes/12.speech",
+        "scenes/13.speech",
+        "scenes/14.speech",
+        "scenes/15.speech",
+        "scenes/16.speech",
+        "scenes/17.speech"
+      ],
+      "changed": [
+        "scenes/07.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "128x160": {
+      "size": 20154341,
+      "sha256": "190748f49e570f2d6284da86328e73438ab432a4f2aae3f7ff2b0a91fe76357a",
+      "unchanged_resources": 2344,
+      "added": [
+        "scenes/02.speech",
+        "scenes/03.speech",
+        "scenes/04.speech",
+        "scenes/05.speech",
+        "scenes/06.speech",
+        "scenes/07.speech",
+        "scenes/08.speech",
+        "scenes/09.speech",
+        "scenes/10.speech",
+        "scenes/11.speech",
+        "scenes/12.speech",
+        "scenes/13.speech",
+        "scenes/14.speech",
+        "scenes/15.speech",
+        "scenes/16.speech",
+        "scenes/17.speech"
+      ],
+      "changed": [
+        "scenes/07.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "240x320": {
+      "size": 21872976,
+      "sha256": "b0eb37e1c664d4d11cb58e0171c1dd70a946608f41e00ccfd33980db233fe073",
+      "unchanged_resources": 2344,
+      "added": [
+        "scenes/02.speech",
+        "scenes/03.speech",
+        "scenes/04.speech",
+        "scenes/05.speech",
+        "scenes/06.speech",
+        "scenes/07.speech",
+        "scenes/08.speech",
+        "scenes/09.speech",
+        "scenes/10.speech",
+        "scenes/11.speech",
+        "scenes/12.speech",
+        "scenes/13.speech",
+        "scenes/14.speech",
+        "scenes/15.speech",
+        "scenes/16.speech",
+        "scenes/17.speech"
+      ],
+      "changed": [
+        "scenes/07.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    }
+  }
+}

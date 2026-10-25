@@ -1,0 +1,2923 @@
+{
+  "language": "ru",
+  "origin": "Text adaptation of original PCM speech; sound effects, music and wordless vocalizations are excluded. Original WAV hashes identify shared clips across locations.",
+  "samples": [
+    {
+      "duration": 0.10158730158730159,
+      "aliases": [
+        "audio/02-00.wav",
+        "audio/02-31.wav",
+        "audio/03-00.wav",
+        "audio/04-00.wav",
+        "audio/05-00.wav",
+        "audio/05-16.wav",
+        "audio/06-00.wav",
+        "audio/07-00.wav",
+        "audio/08-00.wav",
+        "audio/09-00.wav",
+        "audio/10-00.wav",
+        "audio/11-00.wav",
+        "audio/12-00.wav",
+        "audio/13-00.wav",
+        "audio/14-00.wav",
+        "audio/15-00.wav",
+        "audio/16-00.wav",
+        "audio/17-00.wav",
+        "audio/17-33.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ee8455b336f70ae814e56248aea7a61e71362d153bd247ea1a876b014e1ef41d"
+    },
+    {
+      "duration": 0.31210884353741497,
+      "aliases": [
+        "audio/02-01.wav",
+        "audio/03-01.wav",
+        "audio/04-01.wav",
+        "audio/05-01.wav",
+        "audio/06-01.wav",
+        "audio/07-01.wav",
+        "audio/08-01.wav",
+        "audio/09-01.wav",
+        "audio/09-19.wav",
+        "audio/10-01.wav",
+        "audio/11-01.wav",
+        "audio/12-01.wav",
+        "audio/13-01.wav",
+        "audio/14-01.wav",
+        "audio/15-01.wav",
+        "audio/16-01.wav",
+        "audio/17-01.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "95f3c0e53599f02c9944a869d0312b96044a5f23cea2c5edd2dd915997b21da2"
+    },
+    {
+      "duration": 0.23210884353741496,
+      "aliases": [
+        "audio/02-02.wav",
+        "audio/03-02.wav",
+        "audio/04-02.wav",
+        "audio/04-19.wav",
+        "audio/05-02.wav",
+        "audio/06-02.wav",
+        "audio/07-02.wav",
+        "audio/08-02.wav",
+        "audio/09-02.wav",
+        "audio/09-20.wav",
+        "audio/10-02.wav",
+        "audio/11-02.wav",
+        "audio/12-02.wav",
+        "audio/12-13.wav",
+        "audio/12-14.wav",
+        "audio/13-02.wav",
+        "audio/14-02.wav",
+        "audio/14-17.wav",
+        "audio/14-22.wav",
+        "audio/15-02.wav",
+        "audio/16-02.wav",
+        "audio/17-02.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "e5e37f7de9e16872e46ecdba4c9274e80c8acff9aebe0816cfc8b299d5677d87"
+    },
+    {
+      "duration": 0.22675736961451248,
+      "aliases": [
+        "audio/02-03.wav",
+        "audio/03-03.wav",
+        "audio/04-03.wav",
+        "audio/05-03.wav",
+        "audio/06-03.wav",
+        "audio/07-03.wav",
+        "audio/08-03.wav",
+        "audio/09-03.wav",
+        "audio/10-03.wav",
+        "audio/11-03.wav",
+        "audio/12-03.wav",
+        "audio/12-41.wav",
+        "audio/13-03.wav",
+        "audio/14-03.wav",
+        "audio/14-33.wav",
+        "audio/15-03.wav",
+        "audio/16-03.wav",
+        "audio/17-03.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "e772be124d42bde6becf1594a298f55277cab14c610f4aa7e38fa4ec72802f58"
+    },
+    {
+      "duration": 0.22675736961451248,
+      "aliases": [
+        "audio/02-04.wav",
+        "audio/03-04.wav",
+        "audio/04-04.wav",
+        "audio/05-04.wav",
+        "audio/06-04.wav",
+        "audio/07-04.wav",
+        "audio/08-04.wav",
+        "audio/09-04.wav",
+        "audio/10-04.wav",
+        "audio/11-04.wav",
+        "audio/12-04.wav",
+        "audio/12-43.wav",
+        "audio/13-04.wav",
+        "audio/14-04.wav",
+        "audio/14-35.wav",
+        "audio/15-04.wav",
+        "audio/16-04.wav",
+        "audio/17-04.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d22b8d119b93fc4b918999063c65da0cf7a380ada1a63e92b03bcae1599a8b1b"
+    },
+    {
+      "duration": 0.16480725623582768,
+      "aliases": [
+        "audio/02-05.wav",
+        "audio/03-05.wav",
+        "audio/04-05.wav",
+        "audio/05-05.wav",
+        "audio/06-05.wav",
+        "audio/07-05.wav",
+        "audio/08-05.wav",
+        "audio/09-05.wav",
+        "audio/10-05.wav",
+        "audio/11-05.wav",
+        "audio/12-05.wav",
+        "audio/13-05.wav",
+        "audio/14-05.wav",
+        "audio/15-05.wav",
+        "audio/16-05.wav",
+        "audio/17-05.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7a2a7cdd67d7dcddcfb77d3446caf5d3a2b4ebdb13a5ce75cdc60eff037ffcbd"
+    },
+    {
+      "duration": 1.0738321995464852,
+      "aliases": [
+        "audio/02-06.wav",
+        "audio/03-06.wav",
+        "audio/04-06.wav",
+        "audio/05-06.wav",
+        "audio/06-06.wav",
+        "audio/07-06.wav",
+        "audio/08-06.wav",
+        "audio/09-06.wav",
+        "audio/10-06.wav",
+        "audio/11-06.wav",
+        "audio/12-06.wav",
+        "audio/13-06.wav",
+        "audio/14-06.wav",
+        "audio/15-06.wav",
+        "audio/16-06.wav",
+        "audio/17-06.wav"
+      ],
+      "text": "Шеф: Ничего не понимаю!",
+      "kind": "speech",
+      "wav_sha256": "97089370a8a3017a5ab1a7f839d619aaf00e4a145df1c2bebc6c1e41b5a5cd19"
+    },
+    {
+      "duration": 1.024671201814059,
+      "aliases": [
+        "audio/02-07.wav",
+        "audio/03-07.wav",
+        "audio/04-07.wav",
+        "audio/05-07.wav",
+        "audio/06-07.wav",
+        "audio/07-07.wav",
+        "audio/08-07.wav",
+        "audio/09-07.wav",
+        "audio/10-07.wav",
+        "audio/11-07.wav",
+        "audio/12-07.wav",
+        "audio/13-07.wav",
+        "audio/14-07.wav",
+        "audio/15-07.wav",
+        "audio/16-07.wav",
+        "audio/17-07.wav"
+      ],
+      "text": "Коллега: Ничего не понимаю!",
+      "kind": "speech",
+      "wav_sha256": "f3323da5432d1ecb731d21e7c85c32f7249c6cf1ded216b9be83c07f95290e7a"
+    },
+    {
+      "duration": 0.8271201814058957,
+      "aliases": [
+        "audio/02-08.wav",
+        "audio/03-08.wav",
+        "audio/04-08.wav",
+        "audio/05-08.wav",
+        "audio/06-08.wav",
+        "audio/07-08.wav",
+        "audio/08-08.wav",
+        "audio/09-08.wav",
+        "audio/10-08.wav",
+        "audio/11-08.wav",
+        "audio/12-08.wav",
+        "audio/13-08.wav",
+        "audio/14-08.wav",
+        "audio/15-08.wav",
+        "audio/16-08.wav",
+        "audio/17-08.wav"
+      ],
+      "text": "Сверим часы!",
+      "kind": "speech",
+      "wav_sha256": "1ee6aa9cbee83c6edefa6c91b3c2ed09766ed49ca1401219175613d6cdb21fc2"
+    },
+    {
+      "duration": 0.41306122448979593,
+      "aliases": [
+        "audio/02-09.wav",
+        "audio/02-29.wav",
+        "audio/03-09.wav",
+        "audio/04-09.wav",
+        "audio/04-61.wav",
+        "audio/05-09.wav",
+        "audio/05-14.wav",
+        "audio/06-09.wav",
+        "audio/07-09.wav",
+        "audio/08-09.wav",
+        "audio/09-09.wav",
+        "audio/10-09.wav",
+        "audio/11-09.wav",
+        "audio/12-09.wav",
+        "audio/13-09.wav",
+        "audio/14-09.wav",
+        "audio/15-09.wav",
+        "audio/16-09.wav",
+        "audio/17-09.wav",
+        "audio/17-32.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "66f110788f949789860df792ca3e37284fcd86c2aa588cec5b922228a253307a"
+    },
+    {
+      "duration": 0.0836281179138322,
+      "aliases": [
+        "audio/02-10.wav",
+        "audio/02-28.wav",
+        "audio/03-10.wav",
+        "audio/04-10.wav",
+        "audio/04-59.wav",
+        "audio/05-10.wav",
+        "audio/05-13.wav",
+        "audio/06-10.wav",
+        "audio/07-10.wav",
+        "audio/08-10.wav",
+        "audio/09-10.wav",
+        "audio/10-10.wav",
+        "audio/11-10.wav",
+        "audio/12-10.wav",
+        "audio/13-10.wav",
+        "audio/14-10.wav",
+        "audio/15-10.wav",
+        "audio/16-10.wav",
+        "audio/17-10.wav",
+        "audio/17-31.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "969f5674887e2362d19c7efabf85c11ea3cb7a480bd59ad50fca1fdccb3b34fc"
+    },
+    {
+      "duration": 0.0836281179138322,
+      "aliases": [
+        "audio/02-11.wav",
+        "audio/02-27.wav",
+        "audio/03-11.wav",
+        "audio/04-11.wav",
+        "audio/04-60.wav",
+        "audio/05-11.wav",
+        "audio/05-12.wav",
+        "audio/06-11.wav",
+        "audio/07-11.wav",
+        "audio/08-11.wav",
+        "audio/09-11.wav",
+        "audio/10-11.wav",
+        "audio/11-11.wav",
+        "audio/12-11.wav",
+        "audio/13-11.wav",
+        "audio/14-11.wav",
+        "audio/15-11.wav",
+        "audio/16-11.wav",
+        "audio/17-11.wav",
+        "audio/17-30.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "8dd8ecbda965765d0ff39ec91f19e0670442017b4a6362f7d3bcde092bd985aa"
+    },
+    {
+      "duration": 1.5961904761904762,
+      "aliases": [
+        "audio/02-12.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ad9cae858acb110bf976bfbc54dba19c3da6d912550c781ba25567a06689446b"
+    },
+    {
+      "duration": 0.7148299319727891,
+      "aliases": [
+        "audio/02-13.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "bfef58f7fdfe0b540c54d272c816ee6aba94c34b80930e204b85d2c97cf49847"
+    },
+    {
+      "duration": 1.155374149659864,
+      "aliases": [
+        "audio/02-14.wav",
+        "audio/10-27.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "88c172ecfedba72c44a94ac3bf4778ef88659a895a33a9acb1431a290a9cbf05"
+    },
+    {
+      "duration": 0.5542857142857143,
+      "aliases": [
+        "audio/02-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "c4528761cd59571cc5a24ed34a0590b236ee1eea43a473f503398ac3e9992a9f"
+    },
+    {
+      "duration": 0.8829024943310657,
+      "aliases": [
+        "audio/02-16.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "5fb4d719c62bcfd3366654646a36227cb6df2905f254ab78ad0fb67d23dedadb"
+    },
+    {
+      "duration": 0.9518367346938775,
+      "aliases": [
+        "audio/02-17.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "8f7b9373a48fb0c8c573b485e11fde492fa8f0d413ce365b10eb03c81b2d491f"
+    },
+    {
+      "duration": 0.32126984126984126,
+      "aliases": [
+        "audio/02-18.wav",
+        "audio/09-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "5f91d105f57a64d2db67046edadf49fbdc671452b90482707cd8901787dabba3"
+    },
+    {
+      "duration": 0.8814512471655329,
+      "aliases": [
+        "audio/02-19.wav",
+        "audio/17-37.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7cab98ee31a05874efe6a13dc2c1e6525b385f8dd6b99f90cad4d5af4cee04d8"
+    },
+    {
+      "duration": 0.45895691609977324,
+      "aliases": [
+        "audio/02-20.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "c7b408fb1885d4bf8acab9e0e039d6ea2ba6005607d63eb1bfe6a58b389f313d"
+    },
+    {
+      "duration": 2.001451247165533,
+      "aliases": [
+        "audio/02-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "5595b046198eb3b905d4e25e5aa175a98cbdc394c67235414194850e82140836"
+    },
+    {
+      "duration": 0.09414965986394558,
+      "aliases": [
+        "audio/02-22.wav",
+        "audio/08-14.wav",
+        "audio/09-17.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "0155c5ea54afbc495fd640bff323dc7084022c3cac092e7f9e22eb95693c974e"
+    },
+    {
+      "duration": 1.6407256235827665,
+      "aliases": [
+        "audio/02-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "8430f898c243bd780a6a317153f0caf5a5e99e757e16ddcc40f5381ba21c2a76"
+    },
+    {
+      "duration": 0.9093877551020408,
+      "aliases": [
+        "audio/02-24.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "dba7a3c70d7222bcd8bf8e5b0071440c7396cf8551ef6633c19306678e8b0563"
+    },
+    {
+      "duration": 1.4195011337868482,
+      "aliases": [
+        "audio/02-25.wav",
+        "audio/09-18.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "b165b64640934afc8bac589275a40f7ac757859a6876e3867d61454f33d570f4"
+    },
+    {
+      "duration": 0.3878458049886621,
+      "aliases": [
+        "audio/02-26.wav",
+        "audio/09-27.wav",
+        "audio/10-30.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "41c64dee30af32798bfe31ceb7a75d1887e0c2079f9e62b61181f014e3c0e6e8"
+    },
+    {
+      "duration": 0.3352380952380952,
+      "aliases": [
+        "audio/02-30.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "20ec90f77caea214cd548a38c17c7eb6354eacff1739fff9bd2c76956db386ea"
+    },
+    {
+      "duration": 0.7888435374149659,
+      "aliases": [
+        "audio/02-32.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "e395705a120406e91b36919ca375f7bebf06d657b9151a9f10bb2713b105951a"
+    },
+    {
+      "duration": 1.5298866213151927,
+      "aliases": [
+        "audio/02-33.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "23713b5f47c95d386c5ab6f15587fbfb2443edf603e83807db86c1a72a741f6a"
+    },
+    {
+      "duration": 0.9142857142857143,
+      "aliases": [
+        "audio/02-34.wav"
+      ],
+      "text": "Шеф: Откройте!",
+      "kind": "speech",
+      "wav_sha256": "e694d0e8c4de91e0aeb343dbef27564e454b2739d30e728afb2480aaac1c939c"
+    },
+    {
+      "duration": 1.2639455782312925,
+      "aliases": [
+        "audio/02-35.wav"
+      ],
+      "text": "Сторож: Доступ ограничен.",
+      "kind": "speech",
+      "wav_sha256": "358d5e9f814dbdfdcb6b13e0d2f6327f4ed61bd9f0568600b99f9175752422e7"
+    },
+    {
+      "duration": 1.5965532879818594,
+      "aliases": [
+        "audio/02-36.wav"
+      ],
+      "text": "Сторож: В виде исключения.",
+      "kind": "speech",
+      "wav_sha256": "7a20bd59d8e087b8935b097be444c3954f9f09ffb2a08e1206ded843f2275b64"
+    },
+    {
+      "duration": 1.4101587301587302,
+      "aliases": [
+        "audio/02-37.wav",
+        "audio/04-56.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "256f9fc08e1515eb984de007b4479f835d73c68ed7b9ddee7e49670a5f5343ea"
+    },
+    {
+      "duration": 0.5634467120181406,
+      "aliases": [
+        "audio/02-38.wav",
+        "audio/10-31.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "481d1b4bc3b49590911d25b863c1a6cee682c1d056141718c5f911fcc10bc032"
+    },
+    {
+      "duration": 1.4033560090702948,
+      "aliases": [
+        "audio/03-12.wav"
+      ],
+      "text": "Коллега: Маэстро!",
+      "kind": "speech",
+      "wav_sha256": "3b93af6ad09ac5c09125b488456602cdeff16dccd94c02c01ac3ae686a6ec0aa"
+    },
+    {
+      "duration": 0.9074829931972789,
+      "aliases": [
+        "audio/03-13.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "4c71b8f45fe79354c760122589fad2cddd8786cc99c0b30c95870db0d423cb79"
+    },
+    {
+      "duration": 3.8570521541950114,
+      "aliases": [
+        "audio/03-14.wav",
+        "audio/17-40.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3d7046fd4fa7942007fe62f74be4bc6328866ae808ef3504004997f48d743e74"
+    },
+    {
+      "duration": 4.9117460317460315,
+      "aliases": [
+        "audio/03-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "1c73610b01923da34856d08f01edd93c33262bab671a036f07950ad75b14d5d8"
+    },
+    {
+      "duration": 3.47891156462585,
+      "aliases": [
+        "audio/03-16.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "cfc66ccd6e55759d62ff6c122940a3bf24c915d888bbf88c2d8f5311a82c4d19"
+    },
+    {
+      "duration": 1.1226303854875284,
+      "aliases": [
+        "audio/03-17.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "0d60e89c62793143347dd80f72d1a44f26074603f915894e9cd93503223f385f"
+    },
+    {
+      "duration": 0.7843083900226757,
+      "aliases": [
+        "audio/03-18.wav"
+      ],
+      "text": "Извольте!",
+      "kind": "speech",
+      "wav_sha256": "6ddc9d4dc27cb399315b202507d4390dbe38b3e491f8aadbed7a7086aef5f8c9"
+    },
+    {
+      "duration": 0.7735147392290249,
+      "aliases": [
+        "audio/03-19.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "14d9df6280527915e1d70ba50fbe2a1a4f432073de9c894111ee54ec2ce07ef5"
+    },
+    {
+      "duration": 3.607437641723356,
+      "aliases": [
+        "audio/03-20.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3e9f6cf9fbcae834af891678245ae7de538cd2dd08590a5b12bc65d4fdebec3f"
+    },
+    {
+      "duration": 3.9546485260770976,
+      "aliases": [
+        "audio/03-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "efffe36a3d7c1f60b0b9ae64db004aaf20c3aca1771783be40376f3ece8d59c8"
+    },
+    {
+      "duration": 3.535510204081633,
+      "aliases": [
+        "audio/03-22.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "0648585aa7d6532c581e7b9ea557bd50632089180897bb91c50ba5c194e66f63"
+    },
+    {
+      "duration": 51.39038548752834,
+      "aliases": [
+        "audio/03-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "cac17ea8c3d0dbfd1d4aa74befb39598a4dada8a5bb14eba52eb3fc8c2140b85"
+    },
+    {
+      "duration": 2.639546485260771,
+      "aliases": [
+        "audio/04-12.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "e81157ce312206cad825c7daf0f33f820e5473bd185f4cefe42df8020add254c"
+    },
+    {
+      "duration": 2.639546485260771,
+      "aliases": [
+        "audio/04-13.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "2c6ec7ad86b03f837bf43c011f47c519e7710af6a85ff5ce3f2f3dc58a8158aa"
+    },
+    {
+      "duration": 2.639546485260771,
+      "aliases": [
+        "audio/04-14.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "99b83df1101f0e8b86a1fc939fbedfa411047a6990458fe7a138f21f33ec69b2"
+    },
+    {
+      "duration": 0.7198185941043084,
+      "aliases": [
+        "audio/04-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "9e1c54c5e76410141946efcbba99a3461d7f9ffd90f576813e25e29c2d54515c"
+    },
+    {
+      "duration": 1.736780045351474,
+      "aliases": [
+        "audio/04-16.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "2fe2cdbb770191904b56cc90efe1170e5c4183ab59e115acc21fa5dc13781214"
+    },
+    {
+      "duration": 0.880907029478458,
+      "aliases": [
+        "audio/04-17.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "caaf33b1b7e52af3479a5432695b8fde4624844d2314222b72aa1a2ac9fe1d91"
+    },
+    {
+      "duration": 0.2593197278911565,
+      "aliases": [
+        "audio/04-18.wav",
+        "audio/12-18.wav",
+        "audio/12-19.wav",
+        "audio/14-26.wav",
+        "audio/14-29.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "700145368f0d220df9cb7789bb7b3f0cf1edf1e085ba131bcf8ff6bd1f7f52ff"
+    },
+    {
+      "duration": 1.420498866213152,
+      "aliases": [
+        "audio/04-20.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "6b7073a631d6e4c341bca37415fd68b8d420ff64d21bd915e3e5573cac669e86"
+    },
+    {
+      "duration": 0.546031746031746,
+      "aliases": [
+        "audio/04-21.wav",
+        "audio/09-49.wav",
+        "audio/14-24.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3dc59231c8da5acf89656fe747f35cc5eb3054800ec27f21fcbdd04c6d414f78"
+    },
+    {
+      "duration": 2.1731519274376416,
+      "aliases": [
+        "audio/04-22.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "c6e1681f6dbc8e6187a40f2b4df6455d5e49484fcbb4d19e9e506981f136a5a6"
+    },
+    {
+      "duration": 0.6238548752834467,
+      "aliases": [
+        "audio/04-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "2c9192790439a5cee9071d139d7ae64b8bbff37f3275422a1fce5c526ee518c6"
+    },
+    {
+      "duration": 0.29006802721088437,
+      "aliases": [
+        "audio/04-24.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "edcc2d56f0af18475af9fac1bb58ce41b1ab1f36e6c4c5651c0140f11b4317f0"
+    },
+    {
+      "duration": 0.7424036281179138,
+      "aliases": [
+        "audio/04-25.wav",
+        "audio/06-31.wav",
+        "audio/10-34.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "9e43e26278edc6bcd1bf6d219f9ce8b260290be2236cdac6bfbf2247e03cc01d"
+    },
+    {
+      "duration": 4.496326530612245,
+      "aliases": [
+        "audio/04-26.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7f5b61858df64ea17dd7ab100e745b4b0bce9d4ed11c801c472fca980011a79a"
+    },
+    {
+      "duration": 3.763809523809524,
+      "aliases": [
+        "audio/04-27.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "9cded5e93f5baa7afbdc51dd7088a4d8468d9bac27e7974f8c7ac4511eebbb2a"
+    },
+    {
+      "duration": 3.7988208616780046,
+      "aliases": [
+        "audio/04-28.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "c37f00c6a9aa3dff536a77a2ec14f1bb27b30997fe43952aa44d97898fdc1929"
+    },
+    {
+      "duration": 0.8575963718820862,
+      "aliases": [
+        "audio/04-29.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "aac9722aa38082f3afd96931b851f6c8674a00e1d336033c15a06947937be57f"
+    },
+    {
+      "duration": 2.1587301587301586,
+      "aliases": [
+        "audio/04-30.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "391fb33c6e4f975cb64c717579ef474db389054b26c9d041f62f556d82452dcd"
+    },
+    {
+      "duration": 0.10158730158730159,
+      "aliases": [
+        "audio/04-31.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "8f81db033537e9ab25eb6f8d677f101684ae2e24088e88c8a1788622909ab1f5"
+    },
+    {
+      "duration": 1.3571882086167801,
+      "aliases": [
+        "audio/04-32.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d0cdd3806930c1635c4f02d387a0792c0da019895cc9025a68cb7c689291c25d"
+    },
+    {
+      "duration": 0.9684353741496599,
+      "aliases": [
+        "audio/04-33.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "4732df0b10238a6f8dc90d6e697bd2c2380b4abe52595d9673e1ce2191999a57"
+    },
+    {
+      "duration": 2.5248072562358277,
+      "aliases": [
+        "audio/04-34.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ed5143279e10ae06efe81252f9daa04b80055650bbbcd0faf0184d9a1f120919"
+    },
+    {
+      "duration": 0.6574149659863946,
+      "aliases": [
+        "audio/04-35.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "55b8c9cdc13ad07b00b191891835e9eb055186731bcc835a0e1262edd826d42c"
+    },
+    {
+      "duration": 1.9236281179138321,
+      "aliases": [
+        "audio/04-36.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "f78451ede0b76b852f0f5b49f61f7279515bedba529601774ab86ff12c8ec9d6"
+    },
+    {
+      "duration": 2.2731972789115646,
+      "aliases": [
+        "audio/04-37.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "fc820ed91fcbcfd73147ca783c8003807ff71bcc28e18b0aa52ce8dcc792d63e"
+    },
+    {
+      "duration": 2.0694784580498866,
+      "aliases": [
+        "audio/04-38.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "0153f8358bfa9178763ec646502dbbfdbeea3e29eb5ae5e530f88bebd91e8de2"
+    },
+    {
+      "duration": 3.3346031746031746,
+      "aliases": [
+        "audio/04-39.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "872d40c5cba27884c49a61dd8d593eeebdc822af7d4398cac4b544d61aa04743"
+    },
+    {
+      "duration": 2.2643083900226757,
+      "aliases": [
+        "audio/04-40.wav",
+        "audio/04-43.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "abbe76f3faeacaf08a1eda1ab41bb657b79f20b842e6b54b577130df88a2a04b"
+    },
+    {
+      "duration": 0.35873015873015873,
+      "aliases": [
+        "audio/04-41.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "87858d2819a694942bf8531f6af2806f31efe9b8a38858f02d92ba776ccef4ca"
+    },
+    {
+      "duration": 0.8856235827664399,
+      "aliases": [
+        "audio/04-42.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "33448bfdb9ba0203498fc2dc5d6bbc93e15783391d225f2ebe85ea42ebdc25a9"
+    },
+    {
+      "duration": 1.296235827664399,
+      "aliases": [
+        "audio/04-44.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "33269ac0de6d02e66702f25f871d0f76d4df4d617fb2686d1e42b896daa6dfd7"
+    },
+    {
+      "duration": 0.4792743764172336,
+      "aliases": [
+        "audio/04-45.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "2e2f86ee49f610a9b5dd21172a1795af2feb516179158b3bfacb12529aa2503a"
+    },
+    {
+      "duration": 0.49505668934240366,
+      "aliases": [
+        "audio/04-46.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "851d2bc7789f63e85ff178ace353fb5161a745f2ee1057dda993e80e613f9e04"
+    },
+    {
+      "duration": 0.7053061224489796,
+      "aliases": [
+        "audio/04-47.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "21f11ab03e5a1b0b4908c4b623bbc886a5e174996d60b0653daa9b5039c16573"
+    },
+    {
+      "duration": 0.5169160997732426,
+      "aliases": [
+        "audio/04-48.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "9c3836af0246c0d4142b6dfa143cfe34125328c4f24a4ab5c8479d37453c0d7c"
+    },
+    {
+      "duration": 1.3365079365079364,
+      "aliases": [
+        "audio/04-49.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "edcc1c1cd37b89f294118da983c5128e77c8e437501b626f1be6886dbf8fa059"
+    },
+    {
+      "duration": 2.566077097505669,
+      "aliases": [
+        "audio/04-50.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3f7e753766e91002835510d570626432447a7f5dcd651d5331cd31eac6dacc0d"
+    },
+    {
+      "duration": 1.992562358276644,
+      "aliases": [
+        "audio/04-51.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "30de5a1c1d5b853eef3ac740c0b27ee9bcc9a6dedbc1a30d727557658eef19f6"
+    },
+    {
+      "duration": 0.7903854875283447,
+      "aliases": [
+        "audio/04-52.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "698064db64061d91c6455e57585adf4ad2370645c4777b40a1057ebf1f3749ed"
+    },
+    {
+      "duration": 0.6730158730158731,
+      "aliases": [
+        "audio/04-53.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7b36335843dd5783cd509dedb9244bef173809dcb5ab0f35d414cc9a8c169fd1"
+    },
+    {
+      "duration": 0.28662131519274375,
+      "aliases": [
+        "audio/04-54.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "b451b857c53ec02a1ee9ac2de939ea1607fea80265e3abbb51ec1d75ffd1d24a"
+    },
+    {
+      "duration": 0.6165986394557823,
+      "aliases": [
+        "audio/04-55.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "b6699faba15b4f9da2794cad1cce86f64088b2d64d78beee50af84df8993b1be"
+    },
+    {
+      "duration": 0.5573696145124717,
+      "aliases": [
+        "audio/04-57.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "cdb02a571ffa9786469406916f14d4f91db40d08ae826b42f210cc5e641b0492"
+    },
+    {
+      "duration": 0.8825396825396825,
+      "aliases": [
+        "audio/04-58.wav"
+      ],
+      "text": "Спелый!",
+      "kind": "speech",
+      "wav_sha256": "68031f5e1d39d8c0fad1cbae8f85268ef0bb2521c7d826907012a81bd92cd34e"
+    },
+    {
+      "duration": 0.09215419501133787,
+      "aliases": [
+        "audio/05-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "91032d78c2bc5b7c1c4d00ff62f451c87794f471b14c5691e672d80af80584ee"
+    },
+    {
+      "duration": 1.1940136054421768,
+      "aliases": [
+        "audio/05-17.wav"
+      ],
+      "text": "Заходим справа!",
+      "kind": "speech",
+      "wav_sha256": "8bd6d7124a8258437066b94526eb6d655882dbecebae860ad7a419094726e3a0"
+    },
+    {
+      "duration": 1.172607709750567,
+      "aliases": [
+        "audio/05-18.wav"
+      ],
+      "text": "Загоняем!",
+      "kind": "speech",
+      "wav_sha256": "f07f280e1f6f523da4140da77f1bdf904d6adaed5dfd616addb673bf63b96ca2"
+    },
+    {
+      "duration": 1.0731065759637188,
+      "aliases": [
+        "audio/05-19.wav"
+      ],
+      "text": "Заходим слева!",
+      "kind": "speech",
+      "wav_sha256": "93db8e548e1c8ccc41cbc778d2c5ac92ad852677fd9183b276ea4457f57c82a6"
+    },
+    {
+      "duration": 1.0304761904761905,
+      "aliases": [
+        "audio/05-20.wav"
+      ],
+      "text": "Загоняем!",
+      "kind": "speech",
+      "wav_sha256": "6ca84c3957ae417d94536b64978a538d719f9fc09abc8cd4ce6b00b6bc9196b4"
+    },
+    {
+      "duration": 3.8922448979591837,
+      "aliases": [
+        "audio/05-21.wav"
+      ],
+      "text": "Или это ключ от номера Карбофоса... или одно из двух.",
+      "kind": "speech",
+      "wav_sha256": "666275f87e692ecfb82e12c796b6b6731b80f1186d35243528e77fbeed820dda"
+    },
+    {
+      "duration": 0.50421768707483,
+      "aliases": [
+        "audio/05-22.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "b72967e6b11615270b4bb14ebd92d147445cdad72a670fbbb3af305b8db90f28"
+    },
+    {
+      "duration": 0.8577777777777778,
+      "aliases": [
+        "audio/05-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "14ab6a2bdae322a5c3fc8e0332e9e2b31990eb79337769ea5e2f7efed175e3a7"
+    },
+    {
+      "duration": 2.318548752834467,
+      "aliases": [
+        "audio/05-24.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "c0b8a329ae25068f00638e2eb4c0d70ac2b02af436af1ddbc6d34abc303ac0b6"
+    },
+    {
+      "duration": 5.993560090702948,
+      "aliases": [
+        "audio/06-12.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "20ae2fa0535dac4bbd1bc83f4ebb4c5a74d18cfcee0e36ea936779ad6eeb7437"
+    },
+    {
+      "duration": 3.3959183673469386,
+      "aliases": [
+        "audio/06-13.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "358bd8100c8172e73a9311756fcfa8205893d9a59909564d5ccb3cc323cc28f2"
+    },
+    {
+      "duration": 3.2114285714285713,
+      "aliases": [
+        "audio/06-14.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "5d61d1ae19212df2daba0d2aa7baf075921bd48857b6aa68fba94c5b1cd53e6d"
+    },
+    {
+      "duration": 0.44308390022675737,
+      "aliases": [
+        "audio/06-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "9578244b4bc51f8fc3bd7a3502583f3fdae965231c0bbf59c072b0b5d4ff1b9c"
+    },
+    {
+      "duration": 2.463673469387755,
+      "aliases": [
+        "audio/06-16.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "c2c12e4bab0f35524c672c6bd4e9b0c7d573499866a42ef99b6e4a5bd1c511b2"
+    },
+    {
+      "duration": 1.3354195011337868,
+      "aliases": [
+        "audio/06-17.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "aeca415f9346f0c9c46df1c1d9b1c1ef07121a5d93e9675acc0849932444c881"
+    },
+    {
+      "duration": 0.7035827664399092,
+      "aliases": [
+        "audio/06-18.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "59b834765cc3682013122f468f5cbf064711585d31cf132648feebd6938508b5"
+    },
+    {
+      "duration": 1.200997732426304,
+      "aliases": [
+        "audio/06-19.wav"
+      ],
+      "text": "Поищем улики?",
+      "kind": "speech",
+      "wav_sha256": "de9b66e183aa4a76312f56984a10665a3be8c6bb0b5fc74f966ee5b7128817f7"
+    },
+    {
+      "duration": 1.4070748299319729,
+      "aliases": [
+        "audio/06-20.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "95f839bcb6813ad69464f2d868bbc53950ad343923fe45da26091d1a1fde2b11"
+    },
+    {
+      "duration": 0.1742403628117914,
+      "aliases": [
+        "audio/06-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "877434fa1f9bf94a309ea079a0827f43f7b81685f0214eaaa7ce32cd5a94814e"
+    },
+    {
+      "duration": 0.26902494331065757,
+      "aliases": [
+        "audio/06-22.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "b5f5b0e3c169bc51fedb58863de0d12e55ca52d96fe5ad45f2b2e741b47ef4e7"
+    },
+    {
+      "duration": 0.6467120181405895,
+      "aliases": [
+        "audio/06-23.wav"
+      ],
+      "text": "Виноват!",
+      "kind": "speech",
+      "wav_sha256": "d74c6206ccffbc9d1eb5dfeb0b88e76128df04461455e38aba5cde7b229d9816"
+    },
+    {
+      "duration": 5.393922902494331,
+      "aliases": [
+        "audio/06-24.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "70f190380397ce2dc51eedc60eaa66e11bae9b4d15eb350eb2afcbbd9c106e1e"
+    },
+    {
+      "duration": 6.26421768707483,
+      "aliases": [
+        "audio/06-25.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "f1c707106c048adf4d7b0c8f89030794de0d95d941cf20ba138ea2e9d3b54396"
+    },
+    {
+      "duration": 1.7629931972789115,
+      "aliases": [
+        "audio/06-26.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "52babd1f52196501209198164f46d8b11050829c8945609035c1d9378268bae8"
+    },
+    {
+      "duration": 1.468390022675737,
+      "aliases": [
+        "audio/06-27.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "f8d79a3f0287877877126e45dcf7035536664649e869556fc52427a4a49d2c36"
+    },
+    {
+      "duration": 0.7000453514739229,
+      "aliases": [
+        "audio/06-28.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d5b086f3d40ce5f7a75e35776c36f457da03aeb43967af95355e25ea3960749d"
+    },
+    {
+      "duration": 0.127437641723356,
+      "aliases": [
+        "audio/06-29.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d8b7cdff093b9b872b538ea638b4d45ad66e785e67336ce79d5baff7fc1f007f"
+    },
+    {
+      "duration": 0.4420861678004535,
+      "aliases": [
+        "audio/06-30.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "4e8ed08528b96ef4bee6d9706480c7784c095deb850961f390b2fe94a1cf3022"
+    },
+    {
+      "duration": 31.83891156462585,
+      "aliases": [
+        "audio/07-12.wav"
+      ],
+      "kind": "unused_variant",
+      "wav_sha256": "6e67149f359623646f852f54f1f18e7d323da5231933fec7cf6340c73f954cc4",
+      "reason": "Not emitted by the Colleague-only adapted sewer minigame."
+    },
+    {
+      "duration": 5.673106575963719,
+      "aliases": [
+        "audio/07-13.wav"
+      ],
+      "kind": "unused_variant",
+      "wav_sha256": "4894d33f81eed865670fb037c77be932a62b6e059c47d892bb627fa0f263acc8",
+      "reason": "Not emitted by the Colleague-only adapted sewer minigame."
+    },
+    {
+      "duration": 0.9007709750566893,
+      "aliases": [
+        "audio/07-14.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "14e92a2cce37f79f190db93c5553f58748a599f21abe371272b3fb73d04d836f"
+    },
+    {
+      "duration": 1.792562358276644,
+      "aliases": [
+        "audio/07-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "c99477ce2956e65d3d960990612fa312ee114af37b90ebcbd605b5bc8e87c6a1"
+    },
+    {
+      "duration": 2.253877551020408,
+      "aliases": [
+        "audio/07-16.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "8af65cc54e56a67db4279e5b50c0953469f0836570b140aee6bbc852ff319dba"
+    },
+    {
+      "duration": 1.0509750566893423,
+      "aliases": [
+        "audio/07-17.wav"
+      ],
+      "text": "Коллега: Твари!",
+      "kind": "speech",
+      "wav_sha256": "4b435c44a99bdec3bd7a6d83f62b8d3b6ee79ce44386ba9aa3eb5fcb6a51a35a"
+    },
+    {
+      "duration": 0.9111111111111111,
+      "aliases": [
+        "audio/07-18.wav"
+      ],
+      "kind": "unused_variant",
+      "wav_sha256": "6465af2c8017e09d2bf05facbfdb2c0ce24c3598f0d370b4ff109d726bae4f63",
+      "reason": "Not emitted by the Colleague-only adapted sewer minigame."
+    },
+    {
+      "duration": 0.39183673469387753,
+      "aliases": [
+        "audio/07-19.wav"
+      ],
+      "kind": "unused_variant",
+      "wav_sha256": "55fb6982cfe964a7812cf735ba24ed58f6a21ffa345fea9168388e57cd865502",
+      "reason": "Not emitted by the Colleague-only adapted sewer minigame."
+    },
+    {
+      "duration": 1.4927891156462585,
+      "aliases": [
+        "audio/07-20.wav"
+      ],
+      "kind": "unused_variant",
+      "wav_sha256": "705c2178a00a2eab9b2859c2b5c4470faba98efc0370d4f74c696eec0588f488",
+      "reason": "Not emitted by the Colleague-only adapted sewer minigame."
+    },
+    {
+      "duration": 1.7156462585034014,
+      "aliases": [
+        "audio/07-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d5cf85939aecac24963fe289d1fb03db9b1f26d1b622e84222913b5cd86d83ca"
+    },
+    {
+      "duration": 3.1695238095238096,
+      "aliases": [
+        "audio/07-22.wav"
+      ],
+      "kind": "unused_variant",
+      "wav_sha256": "bc9c0b30e8c418039f69efb5b69efb7559d9dea187912bf69c541b5d56b60400",
+      "reason": "Not emitted by the Colleague-only adapted sewer minigame."
+    },
+    {
+      "duration": 0.7233560090702947,
+      "aliases": [
+        "audio/07-23.wav"
+      ],
+      "kind": "unused_variant",
+      "wav_sha256": "389e587d6a1707c9e6d34a654d6eb0fafe65ccd9b3c36a276459d0184853e580",
+      "reason": "Not emitted by the Colleague-only adapted sewer minigame."
+    },
+    {
+      "duration": 4.184126984126984,
+      "aliases": [
+        "audio/07-24.wav"
+      ],
+      "kind": "unused_variant",
+      "wav_sha256": "4314400ef96e18ef81c13f80990b4a65add52d6ef7a298398a834f6c7309f70c",
+      "reason": "Not emitted by the Colleague-only adapted sewer minigame."
+    },
+    {
+      "duration": 0.5601814058956917,
+      "aliases": [
+        "audio/07-25.wav"
+      ],
+      "kind": "unused_variant",
+      "wav_sha256": "19785ca3b36489ce23ddb7a1a9b9079b213c1f3abaaa74a989ea7a6711c2b586",
+      "reason": "Not emitted by the Colleague-only adapted sewer minigame."
+    },
+    {
+      "duration": 1.1998185941043085,
+      "aliases": [
+        "audio/08-12.wav"
+      ],
+      "text": "Похоже, мы у цели.",
+      "kind": "speech",
+      "wav_sha256": "bd942581e14a49ee67c4c2b4c602e85b9cfa0ea20dc780bc62096c076386bd86"
+    },
+    {
+      "duration": 1.200997732426304,
+      "aliases": [
+        "audio/08-13.wav"
+      ],
+      "text": "Попробуйте ключом.",
+      "kind": "speech",
+      "wav_sha256": "4eb9a51c96e5f6f2c73f19716fa4d6f531374e17c712b88f4e7dd1757697d121"
+    },
+    {
+      "duration": 0.7914739229024943,
+      "aliases": [
+        "audio/08-15.wav",
+        "audio/09-38.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "dfe8cab23fb661899ef0d89a504c02fcb8107a0860036d0fe9e0f6b8660b0a86"
+    },
+    {
+      "duration": 0.32299319727891157,
+      "aliases": [
+        "audio/09-12.wav",
+        "audio/13-28.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "35d0e4071f762ec28f9ba8e786d37ef6b1da9d14df4f9ee16e62d090c14c761f"
+    },
+    {
+      "duration": 0.15292517006802722,
+      "aliases": [
+        "audio/09-13.wav",
+        "audio/13-30.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "1ef22484f357e5a9cb27a9bdc5da120a8c70f0e008913de7bff71e6632f746a4"
+    },
+    {
+      "duration": 5.640544217687075,
+      "aliases": [
+        "audio/09-14.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "8047508e16b499fe74812e46a81a1bfd6e1c5d1993dad5da265cfef43aa3e213"
+    },
+    {
+      "duration": 0.203718820861678,
+      "aliases": [
+        "audio/09-16.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d1ef6fb763d3c4096650f41d8135cd51fc357b1f37a2d673c871cce61cfec1d3"
+    },
+    {
+      "duration": 0.8956916099773242,
+      "aliases": [
+        "audio/09-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d3715f6b8969f5bc9460052ae2e8f38727840cb69003e69b060a6aa89148470b"
+    },
+    {
+      "duration": 1.3990022675736962,
+      "aliases": [
+        "audio/09-22.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "359fc26213d8dbd3d23687933a6c836fd594424c790d9ec1d25fac26dd10c9ff"
+    },
+    {
+      "duration": 0.6057142857142858,
+      "aliases": [
+        "audio/09-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ecd62f94a1a77564321367870ae416d8fbb14cdd4e6ab931c7dbc52aac2dcb3c"
+    },
+    {
+      "duration": 0.977233560090703,
+      "aliases": [
+        "audio/09-24.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ff4579122213aada8908ef09e45e83a6bb42190e4b9331d008ee40dc18b64acb"
+    },
+    {
+      "duration": 1.1822222222222223,
+      "aliases": [
+        "audio/09-25.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "c512e92e6f4cd29bbbc1805c50de520d3024f6106c12e1d1f84f9d0e998eaba9"
+    },
+    {
+      "duration": 0.41306122448979593,
+      "aliases": [
+        "audio/09-26.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "afd7bc096118f931dff2134dc4efd69ac0cfc32aa662917dcf098b52f2198368"
+    },
+    {
+      "duration": 0.47346938775510206,
+      "aliases": [
+        "audio/09-28.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "8fa2677b4bdc01056efcdf93cdc9d53e57072b9b9cc01b6d74afe79875e6221c"
+    },
+    {
+      "duration": 0.19446712018140588,
+      "aliases": [
+        "audio/09-29.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "33b8a4e5a7a750a542ee8d281316a9a3cbb141a738e7774cc3b63e029cf4e128"
+    },
+    {
+      "duration": 0.8328344671201814,
+      "aliases": [
+        "audio/09-30.wav",
+        "audio/12-12.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "488bd8d5516b4ded9270cbb8f6d4d804e59187d19a4a64f85647913ab4dedb59"
+    },
+    {
+      "duration": 0.5766893424036281,
+      "aliases": [
+        "audio/09-31.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "1af6e47f63ca22fcedc3e3db45b9f1e8a127e9bebe6e46741963c145a11b96e8"
+    },
+    {
+      "duration": 0.5491156462585034,
+      "aliases": [
+        "audio/09-32.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ea016a874a65af4ffafaa11af287bd98c68f82476b6208e44f47ad6cf464128a"
+    },
+    {
+      "duration": 1.085170068027211,
+      "aliases": [
+        "audio/09-33.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "f02db2f1825a7cb9804df33db8541134b88813385aac7155b4ec5a59985694ff"
+    },
+    {
+      "duration": 0.33378684807256237,
+      "aliases": [
+        "audio/09-34.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "f5b5f85fabbe04406009e312bb54f6dfd37868cb30ddc990272258aa130911bb"
+    },
+    {
+      "duration": 0.3029478458049887,
+      "aliases": [
+        "audio/09-35.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7ef357285608ee5ed2b31e44c6e959e684412d88dfda579a543c3310b3054c51"
+    },
+    {
+      "duration": 0.3114739229024943,
+      "aliases": [
+        "audio/09-36.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7f5aa82e0c2b51b8f8e5926f6097573a862a2c9fe5766d382bf5aac5b969e308"
+    },
+    {
+      "duration": 0.08961451247165533,
+      "aliases": [
+        "audio/09-37.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "530a2a80b0dfd067b409da6ce2e40bc32eac25e222b2b658013ac577d89cb305"
+    },
+    {
+      "duration": 0.9280725623582766,
+      "aliases": [
+        "audio/09-39.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ab02c9ac5dff82ea21b884f4210894d9cdc07dbc6009758af41d9fedefe6ec24"
+    },
+    {
+      "duration": 0.35410430839002266,
+      "aliases": [
+        "audio/09-40.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "b9c05552472b6360c25057a4c97c3d5312e833ebbb1badb31edd01e47c3ddff3"
+    },
+    {
+      "duration": 1.1145578231292517,
+      "aliases": [
+        "audio/09-41.wav",
+        "audio/13-29.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "b6d820c77b65f2625915dbfddd1c21ec8e4f870e63113f96d528306819c35573"
+    },
+    {
+      "duration": 0.37151927437641724,
+      "aliases": [
+        "audio/09-42.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "1b737686a1f8762c6faac41c23eee0f58b53e6ee173194cf2da810a44bdd674f"
+    },
+    {
+      "duration": 0.6124263038548753,
+      "aliases": [
+        "audio/09-43.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "90cfc8ebc2c4ad0de12190ae08119530ca38faaed7a6bad8536ea19bf99b5f14"
+    },
+    {
+      "duration": 0.8275736961451248,
+      "aliases": [
+        "audio/09-44.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "599789514d09292b2db519bda4c0d9d1f1f301a128ec69113d5c8aa443249d0d"
+    },
+    {
+      "duration": 0.4422675736961451,
+      "aliases": [
+        "audio/09-45.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "77d443936b3d1db686821b605000571202284e228a0656c8c3394a251712a55b"
+    },
+    {
+      "duration": 0.30158730158730157,
+      "aliases": [
+        "audio/09-46.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3244deea0561e42e1b522f008203b31ff829b20cf58519fdfc64134904015384"
+    },
+    {
+      "duration": 0.19047619047619047,
+      "aliases": [
+        "audio/09-47.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d787d4ca91261bf217ec5aedb57263e75e94ead55780a3ce2f6615d3a6af37b4"
+    },
+    {
+      "duration": 3.098231292517007,
+      "aliases": [
+        "audio/09-48.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "538fe56abb9b6f3751dcfb9d66a1b0afdd8740a2988cdc8c0deb561d13a9729e"
+    },
+    {
+      "duration": 10.0,
+      "aliases": [
+        "audio/09-50.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d0d3cefec0388d93168cd2abfd3c23678736307a409fd1eca6c0438dafc8f7cc"
+    },
+    {
+      "duration": 0.22430839002267575,
+      "aliases": [
+        "audio/09-51.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3beb96bdb414a51e2c17c8ded9efa6ce49eca88807f6670cf71fbf2601b003af"
+    },
+    {
+      "duration": 1.856235827664399,
+      "aliases": [
+        "audio/09-52.wav"
+      ],
+      "text": "Коллега: Да вы медвежатник, Шеф!",
+      "kind": "speech",
+      "wav_sha256": "36af57ed345a91a2d5bc0c4fef749d4b5c5cf28c9cfc288db204a0112e6ae031"
+    },
+    {
+      "duration": 0.3073015873015873,
+      "aliases": [
+        "audio/10-12.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "311c7bd8db2754ba8a7e9ae62d3c7d246673d8b09668921d0e3e6920b4fc3cfc"
+    },
+    {
+      "duration": 0.6061678004535147,
+      "aliases": [
+        "audio/10-13.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7bc2d62bb27979f54da35cd051ae1df407da3bea74e5038a6f7e2b92a5744079"
+    },
+    {
+      "duration": 0.32789115646258504,
+      "aliases": [
+        "audio/10-14.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "5ba9736b15919f6b24c49b9a64122b04faf4bd8584249500f2f78e8b366eb9fd"
+    },
+    {
+      "duration": 0.1036734693877551,
+      "aliases": [
+        "audio/10-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ef65d18022a97657bc75c822c75223d0c3c4cd14199c5dc998b691b3072c546a"
+    },
+    {
+      "duration": 1.1605442176870748,
+      "aliases": [
+        "audio/10-16.wav"
+      ],
+      "text": "Поберегись!",
+      "kind": "speech",
+      "wav_sha256": "e755d1478899fdd8ec6273fe9ebe98f1b793be260618016125c80f73c8610e4d"
+    },
+    {
+      "duration": 0.5476643990929705,
+      "aliases": [
+        "audio/10-17.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "b3ccf24f81b7daa5c4391f77ec275f2dabcc5dca30a8f335d90c082ec9132827"
+    },
+    {
+      "duration": 0.5756009070294784,
+      "aliases": [
+        "audio/10-18.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "846dc73381a2f3427fa1ba20df8189f08164aefc076e833a0e9ef02d13896a12"
+    },
+    {
+      "duration": 0.5351473922902494,
+      "aliases": [
+        "audio/10-19.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "eb554d00b32917780d86fd6690a8981b12679056bc5573bc258958ca64ca31b6"
+    },
+    {
+      "duration": 2.481904761904762,
+      "aliases": [
+        "audio/10-20.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "33bcf4054e9865ebc766b943a76f4a2dfd5e38c9d98f1cc94cd8887816bde253"
+    },
+    {
+      "duration": 1.9082993197278912,
+      "aliases": [
+        "audio/10-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3b1b7333d3c3507533e67323ecca34710c39f4aff25af5c86765e5da30ca9a0b"
+    },
+    {
+      "duration": 3.425396825396825,
+      "aliases": [
+        "audio/10-22.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "cd0b782ea4f17326ced345751746b0faa6d861dad957376450a9f050a8414a0d"
+    },
+    {
+      "duration": 1.1365986394557823,
+      "aliases": [
+        "audio/10-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "8f15f53b2cc32ab6e7235e257e250a688be87410380b425139193262ba7e91fd"
+    },
+    {
+      "duration": 0.4887981859410431,
+      "aliases": [
+        "audio/10-24.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "57f0edefc4aa4c127732fa4e1a3f1390b4381e741a83e7ce45c236cea44eda67"
+    },
+    {
+      "duration": 0.16625850340136056,
+      "aliases": [
+        "audio/10-25.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "2415130d838cbc0130eda536707d93d06fe6377fab690b9c92c851304ed20658"
+    },
+    {
+      "duration": 1.106485260770975,
+      "aliases": [
+        "audio/10-26.wav"
+      ],
+      "text": "Протокол!",
+      "kind": "speech",
+      "wav_sha256": "fac90cc5d9839a8a6bd88dcd3f854c07eba28447600b4b99064c650c5e358be0"
+    },
+    {
+      "duration": 1.94140589569161,
+      "aliases": [
+        "audio/10-28.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "90ced33ba4a6d5348ef34b2e012b4eb2575ffb1d3a4b0138c9e060533647ecb5"
+    },
+    {
+      "duration": 1.1190022675736961,
+      "aliases": [
+        "audio/10-29.wav"
+      ],
+      "text": "От винта!",
+      "kind": "speech",
+      "wav_sha256": "dbccb3f43168cd81333967b0e5d351175c37487959886aaa578b0d51b636d128"
+    },
+    {
+      "duration": 0.756734693877551,
+      "aliases": [
+        "audio/10-32.wav",
+        "audio/13-17.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d9ee12341f38cd59d0e0d4f7ff569003f428a2b6be998317c8d5a09037b05e3a"
+    },
+    {
+      "duration": 1.5713378684807255,
+      "aliases": [
+        "audio/10-33.wav"
+      ],
+      "text": "Интересное кино!",
+      "kind": "speech",
+      "wav_sha256": "4a9af3988236b3d10467356373cc672125a68e79ef39576bccf08dc44af0fe68"
+    },
+    {
+      "duration": 0.7789569160997732,
+      "aliases": [
+        "audio/10-35.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d1fec3efac80cb8251084548a1ed75cd8ff9f1f1a0ce6f5c2233e9aa54d4246f"
+    },
+    {
+      "duration": 0.7681632653061224,
+      "aliases": [
+        "audio/10-36.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "8b91135593725f2c024a209dc5fa46c19650a586a5ac6bd88c97fea7bd23c1cd"
+    },
+    {
+      "duration": 0.9263492063492064,
+      "aliases": [
+        "audio/10-37.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3c6d07d3f5d7bf17572c4a6eccb491db3f2e0a92a5c33250b2163714586323bb"
+    },
+    {
+      "duration": 0.7145578231292516,
+      "aliases": [
+        "audio/10-38.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "097c09a533df874e80509ac46e899c7d30c9da47e0d991ace14d22d859fa8320"
+    },
+    {
+      "duration": 0.7226303854875283,
+      "aliases": [
+        "audio/10-39.wav"
+      ],
+      "text": "Готов!",
+      "kind": "speech",
+      "wav_sha256": "1323a46da92ea80c93c51565c52cd9cf0ad30618fad70f039d1580f04fc8719c"
+    },
+    {
+      "duration": 0.11229024943310657,
+      "aliases": [
+        "audio/10-40.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ce6abd3ada23cde8e9034f2c473055c84a996563ffae90174bad73ffe5eaf1ae"
+    },
+    {
+      "duration": 0.20816326530612245,
+      "aliases": [
+        "audio/10-41.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "0308584c7ba7610a5f6472409eb41cc3b4ac629d34f352645fe84e4b65b4098e"
+    },
+    {
+      "duration": 3.2156009070294784,
+      "aliases": [
+        "audio/11-12.wav"
+      ],
+      "text": "Капрон!",
+      "kind": "speech",
+      "wav_sha256": "d1ed23643bd36257cb3fa8888374deb8316c493f99ff87b1782c4c47e5ba7aa3"
+    },
+    {
+      "duration": 1.9317913832199547,
+      "aliases": [
+        "audio/11-13.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "e86b9ab546e98df1b299f9bcae8be9c59388a069d7ba438f9e96b8778353e33d"
+    },
+    {
+      "duration": 1.512108843537415,
+      "aliases": [
+        "audio/11-14.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "b6d1df22209dc951595d3b656adfcae6a51bc7dc5d5c9dfc51c1800c819258d9"
+    },
+    {
+      "duration": 2.42140589569161,
+      "aliases": [
+        "audio/11-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "9236da8cf7adae303c4cc8e62aaa0f11ad60621bcacc4c66e7e5aefe96e2df23"
+    },
+    {
+      "duration": 1.2975056689342404,
+      "aliases": [
+        "audio/11-16.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "e7e19dd3495f85c86389f6e03fe3121bd78fe318b608de38b6af995062200d8d"
+    },
+    {
+      "duration": 0.17024943310657598,
+      "aliases": [
+        "audio/11-17.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "204b26cf0cb4e32a06724c35b619456bdf5561c63fb72f41bce0d08d8d00f347"
+    },
+    {
+      "duration": 1.407437641723356,
+      "aliases": [
+        "audio/11-18.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "581e3ed11d3d19be754885655618efc8cdcec9cff07b67bdd027d54ce5520986"
+    },
+    {
+      "duration": 1.512108843537415,
+      "aliases": [
+        "audio/11-19.wav"
+      ],
+      "text": "Ущерб возместим.",
+      "kind": "speech",
+      "wav_sha256": "2e200ce4d684e00d1e62a5ef78cf920edafa75ebfb776d86bb058ebb8015aedc"
+    },
+    {
+      "duration": 1.2158730158730158,
+      "aliases": [
+        "audio/11-20.wav"
+      ],
+      "text": "Рыжая морда!",
+      "kind": "speech",
+      "wav_sha256": "32b6f35fd73d7d045fd259f473b229211d7200bc27104968750c8a029a1d71c7"
+    },
+    {
+      "duration": 0.21043083900226758,
+      "aliases": [
+        "audio/11-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "043ed498176e8fc830398d03a1e1cb4ad0569cb23fd8b8bb5f8fa35e05c70585"
+    },
+    {
+      "duration": 1.5013151927437642,
+      "aliases": [
+        "audio/11-22.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "67881d13936d0b26acd97983dc6c6102cbb1209a307cd4ac2fb19f3cf11adde2"
+    },
+    {
+      "duration": 4.5921995464852605,
+      "aliases": [
+        "audio/11-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "9513ee2fe600c44155a785becb524b5c2d9e9e5dfbd4c888ef67f23bad067416"
+    },
+    {
+      "duration": 1.9169160997732426,
+      "aliases": [
+        "audio/12-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "befcd250e0e4e1abdf8297f327690131260620338f68098f5a88aff9003cda83"
+    },
+    {
+      "duration": 1.134875283446712,
+      "aliases": [
+        "audio/12-16.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "15e362db5a40a22d8f6cc4b4474d158b4332a849d03a1a0d8b6e63bcfd3521f8"
+    },
+    {
+      "duration": 2.6920634920634923,
+      "aliases": [
+        "audio/12-17.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "76e0844d7611e689b371a2a520aa5d8838020433ee4e4ba439c9d36b0de1b1d9"
+    },
+    {
+      "duration": 0.6372789115646259,
+      "aliases": [
+        "audio/12-20.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "a20e56b865ac05297887317a549f5d14a5b6e143d84a0e5b7e44ee9fb85619a1"
+    },
+    {
+      "duration": 2.6244897959183673,
+      "aliases": [
+        "audio/12-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "bc4d61e68a5d0c94cf772cf791780a83ea7556503ade9612e89fdefcd717686f"
+    },
+    {
+      "duration": 3.234013605442177,
+      "aliases": [
+        "audio/12-22.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "9c7f38170f12578fd83809e2a52e8ceaa35a1de953e19acf8488a2363b120c35"
+    },
+    {
+      "duration": 3.1954648526077096,
+      "aliases": [
+        "audio/12-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "e1cf433f02a01ce961e5d12057ed3852df8e4f51f3705069c02c83e7d0c222a4"
+    },
+    {
+      "duration": 2.8499773242630386,
+      "aliases": [
+        "audio/12-24.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3469a4c121e969ae12acbddbfdbbd3c63f9b25f774d527320a112a9ba6cf1f85"
+    },
+    {
+      "duration": 1.0649433106575963,
+      "aliases": [
+        "audio/12-25.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "36f3b92014f6aac139508c353705f1123ff99e241cb5895859e7016bbcfc6c58"
+    },
+    {
+      "duration": 1.9048526077097505,
+      "aliases": [
+        "audio/12-26.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ea157164af055a49fed016b0afb6cf7d4f8b53b842e82256cecfa7b822e7af5d"
+    },
+    {
+      "duration": 4.0233106575963715,
+      "aliases": [
+        "audio/12-27.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "91b854939e4abdad649b6f9c722c80c2020ad76262f6594e9475cc08f9a08ec0"
+    },
+    {
+      "duration": 6.3913832199546485,
+      "aliases": [
+        "audio/12-28.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "1b14434ceb8f0b31d1a2a6e6c96980d0d22d6fb967b2e52ad3575b70c51ccc3f"
+    },
+    {
+      "duration": 3.620952380952381,
+      "aliases": [
+        "audio/12-29.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "71f0e21b36f8a692f6563fd04f3f42a6ce0c21ced4e652aeb294e5f406abc5fc"
+    },
+    {
+      "duration": 0.977687074829932,
+      "aliases": [
+        "audio/12-30.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "563e0e13064676af040aa80f19d89cdde3ecabf4f15314c9d9945698eda251d4"
+    },
+    {
+      "duration": 0.34993197278911564,
+      "aliases": [
+        "audio/12-31.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "dc6a715cf004f151079899be3b9874753ef22b8af0c901cccc452683064e4d96"
+    },
+    {
+      "duration": 1.667482993197279,
+      "aliases": [
+        "audio/12-32.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7f973f97f775c2444b5af6229ed2980123d1238922d384920c92b8ded339ba63"
+    },
+    {
+      "duration": 0.8768253968253968,
+      "aliases": [
+        "audio/12-33.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "26e91df1c6693806a89db865c471a4aeff39037a59290e783fe2d208eca2c4dc"
+    },
+    {
+      "duration": 0.34068027210884355,
+      "aliases": [
+        "audio/12-34.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "9fda0d89d209730d9ea90ade6b4fb9cc1a016090b5475b115282603a7c5b000b"
+    },
+    {
+      "duration": 0.37569160997732426,
+      "aliases": [
+        "audio/12-35.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "bf358b4f1ccdd0d2fd0e67f0c711daca97d40720d0293e40c2f2e1d5c9b4b556"
+    },
+    {
+      "duration": 3.363083900226757,
+      "aliases": [
+        "audio/12-36.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "60ca7fd0ea7f604decf0575b1586974a27c4306a3bf8e6612c42d0fd6f2622f0"
+    },
+    {
+      "duration": 4.942766439909297,
+      "aliases": [
+        "audio/12-37.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "dea933c7e2c3bd84c22edf30702d69af427765be4e3ff2c8453966769d996f4b"
+    },
+    {
+      "duration": 1.419954648526077,
+      "aliases": [
+        "audio/12-38.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "dfd0973c2f70a66e05d57aa4ede035f5810d8593df2912f08877598feebfc018"
+    },
+    {
+      "duration": 1.987936507936508,
+      "aliases": [
+        "audio/12-39.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "5e334670a2384d87178746baa84dd2f376ead83bc0da39498d555334b6225e73"
+    },
+    {
+      "duration": 0.22675736961451248,
+      "aliases": [
+        "audio/12-40.wav",
+        "audio/14-32.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "da9d0106b07d7c7375dab604f3c62442420577b0f51816b4053614063885fbc7"
+    },
+    {
+      "duration": 0.22675736961451248,
+      "aliases": [
+        "audio/12-42.wav",
+        "audio/14-34.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "08bfa4214cd04bed745cfbbc0df92ec99c1c3a5c1fb9a4fcaa40ee99a0e08e43"
+    },
+    {
+      "duration": 3.426031746031746,
+      "aliases": [
+        "audio/12-44.wav"
+      ],
+      "text": "Поехали!",
+      "kind": "speech",
+      "wav_sha256": "f05c15c0051b544db6220765db3cd8db9c3b953aa964f32243aae3be13b4a6b3"
+    },
+    {
+      "duration": 3.4759183673469387,
+      "aliases": [
+        "audio/12-45.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "5099372595c5d492be1bd218cff6761d258f847efccabaa4aa9a7d2070d16c9c"
+    },
+    {
+      "duration": 1.9104761904761904,
+      "aliases": [
+        "audio/13-12.wav"
+      ],
+      "text": "Карбофос: Я сказал вредить! Шнель!",
+      "kind": "speech",
+      "wav_sha256": "4bf1a64437661a63cc9dd32ff47c9b50a832fef5b6e4147764382f939049b91c",
+      "wording": "user clarified dialogue and servant vocabulary"
+    },
+    {
+      "duration": 0.586031746031746,
+      "aliases": [
+        "audio/13-13.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ed16349a92be3330ba24f8277c6a04c94b2ca337eac5393bb8e183ee5f0a3bbb"
+    },
+    {
+      "duration": 0.276281179138322,
+      "aliases": [
+        "audio/13-14.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "fe37e346989fda1e34c1b389263ea9525b6c187f3bbadc1cdb50f3127be48558"
+    },
+    {
+      "duration": 1.3656235827664398,
+      "aliases": [
+        "audio/13-15.wav"
+      ],
+      "kind": "speech",
+      "wav_sha256": "05978fc8e200c52986be9ccbbbaa41a8ab5accf3c10e46a63678458e7fd5a243",
+      "text": "Слуга: Плиз!",
+      "wording": "user clarified dialogue and servant vocabulary"
+    },
+    {
+      "duration": 0.5723356009070295,
+      "aliases": [
+        "audio/13-16.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7176576154f6c5141d22e1c4d33e07fb3ed0abeb53e780be99c8828bea9accf8"
+    },
+    {
+      "duration": 2.5529251700680273,
+      "aliases": [
+        "audio/13-18.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "c71ee23d419bf933cf03bc91d78a402ca7322d2e8172a4cf146810506a984424"
+    },
+    {
+      "duration": 0.19936507936507936,
+      "aliases": [
+        "audio/13-19.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d29abaf049dccbe3c4f6ccb9754f0e29ab9cd120f8beb22e5a5712f76a0d7e0b"
+    },
+    {
+      "duration": 0.30403628117913833,
+      "aliases": [
+        "audio/13-20.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "c28d42a701d3d456a1d8e13a39aca1af99aeca22483c254ea3c5e79668075372"
+    },
+    {
+      "duration": 1.4819954648526077,
+      "aliases": [
+        "audio/13-21.wav"
+      ],
+      "text": "Коллега: Электричество кончилось.",
+      "kind": "speech",
+      "wav_sha256": "c29115a9f577ef1b480610023a07b447b014d3e7a26b106dc1ad65da3bebc5f6",
+      "wording": "user clarified dialogue and servant vocabulary"
+    },
+    {
+      "duration": 0.3377777777777778,
+      "aliases": [
+        "audio/13-22.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "55923095c4f64b275b98ffc7d8d1b4a8755ff4b0e8d2749fd28a5ce6226ecf48"
+    },
+    {
+      "duration": 2.2240362811791385,
+      "aliases": [
+        "audio/13-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "cf7720868d4c334fbd4907bf3636aa206b1448696ac33d2a414fb040e1827257"
+    },
+    {
+      "duration": 2.337596371882086,
+      "aliases": [
+        "audio/13-24.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "08bed3316f5f4fd38cc5eb9d271654942673d670bef9f63f64c79971ea6c5406"
+    },
+    {
+      "duration": 0.09895691609977324,
+      "aliases": [
+        "audio/13-25.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "48c329d45ccc2c28eb66927daa990bceb8a92a3bcf13293664b01fb8fd4d5563"
+    },
+    {
+      "duration": 0.5615419501133787,
+      "aliases": [
+        "audio/13-26.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "52974e44d223b29f9d42191cec0ed3459de56198ada4a15aab4be27bad2a83b6"
+    },
+    {
+      "duration": 0.18884353741496598,
+      "aliases": [
+        "audio/13-27.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "2819e510573beaf554ce7f17cd7c67fd8fe697491738d789b5f430408c065ab8"
+    },
+    {
+      "duration": 3.5973696145124716,
+      "aliases": [
+        "audio/14-12.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "02d394340224730f0d9939428d2cc5f66242d65501d4b1d7b9bd47bdc46dac61"
+    },
+    {
+      "duration": 4.410521541950113,
+      "aliases": [
+        "audio/14-13.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "475b1feb4c440a9ee95cc775ca8af328e89be9a8981b9f9dff9753cdb3561492"
+    },
+    {
+      "duration": 4.969977324263039,
+      "aliases": [
+        "audio/14-14.wav",
+        "audio/14-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "545c33831baa75a1d3e23a7b0af0848a12880282ed1a19c431e49d5cd2d3da9a"
+    },
+    {
+      "duration": 0.24571428571428572,
+      "aliases": [
+        "audio/14-16.wav",
+        "audio/14-18.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7a65cb648481f92809adabac2e5881bf5b447cd7b97c36cf963a8d2d4cacfe23"
+    },
+    {
+      "duration": 3.614875283446712,
+      "aliases": [
+        "audio/14-19.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "0d641965ef37e8ea911c22447cb32e4e7fac43da59a6afad81ec54932d44c08b"
+    },
+    {
+      "duration": 1.0375510204081633,
+      "aliases": [
+        "audio/14-20.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "23415cc0028fcb9213c0ae4f72efae7f6952ab44e7d35186d760334ad66dd1fd"
+    },
+    {
+      "duration": 1.6389115646258503,
+      "aliases": [
+        "audio/14-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "e3eba9dbea9f28d6cd80ca740e55592082ad18627dc4c08cbc9466c7c355ee1f"
+    },
+    {
+      "duration": 3.8189569160997734,
+      "aliases": [
+        "audio/14-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "aa34c1e8c686728dd24557c81ee055e588ab5df39b408fdfffa24e742805981a"
+    },
+    {
+      "duration": 4.543945578231292,
+      "aliases": [
+        "audio/14-25.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "1ad432c046a3c292ec23730473f40e1fecde39a96c9ad2a07231d487f44c6057"
+    },
+    {
+      "duration": 0.23736961451247165,
+      "aliases": [
+        "audio/14-27.wav",
+        "audio/14-28.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "52294c33f72495cb5b8a75629bad2657030c1bbbded012a2fff52f71cb00918d"
+    },
+    {
+      "duration": 0.3419501133786848,
+      "aliases": [
+        "audio/14-30.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d7eba610a3c07bef32835bd1a2af07fda399a5792b64a7b4939799da1639b449"
+    },
+    {
+      "duration": 0.6957823129251701,
+      "aliases": [
+        "audio/14-31.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "95162959406565b3da140a49e8965d50091514665adcf3071c91b0fdc6fbba36"
+    },
+    {
+      "duration": 0.7107482993197279,
+      "aliases": [
+        "audio/14-36.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "e92fe97405b830d020cc52ccfa6d6ecfb4ecc848659a27c3185ce2de478dede1"
+    },
+    {
+      "duration": 1.8810884353741497,
+      "aliases": [
+        "audio/14-37.wav",
+        "audio/14-38.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3780f9ac1e0220ced88a9f58b2509ebea3c81b88b4c7304b69176e4bb78fcc7d"
+    },
+    {
+      "duration": 2.9658049886621316,
+      "aliases": [
+        "audio/14-39.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "0fd505bee6d96e1209e24946ffe00ae4221d9ff4dbbdd05e426ea3bc185d11a9"
+    },
+    {
+      "duration": 2.4405442176870746,
+      "aliases": [
+        "audio/14-40.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ead9641ec4f76ecf6461978a23bccd41b57d073778c06036488e3dd22a5398f8"
+    },
+    {
+      "duration": 1.319002267573696,
+      "aliases": [
+        "audio/14-41.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3cb17a7588ed366c0797e4b9c451c5fe36850be6d34bce8517971134a68516fa"
+    },
+    {
+      "duration": 1.932517006802721,
+      "aliases": [
+        "audio/14-42.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "535573fc09223073e03d4d986eb525587343faa0362a9596b9e1785ec618c1c9"
+    },
+    {
+      "duration": 1.660408163265306,
+      "aliases": [
+        "audio/14-43.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "4d13a4513cfe43558c021650f9408a2b94917228824249d5e284544d597ba2fc"
+    },
+    {
+      "duration": 3.025124716553288,
+      "aliases": [
+        "audio/14-44.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "97f1c13f089e728d1ca462f5ba14e8357d47f3e5a475a2a291b2e8b904d63cfa"
+    },
+    {
+      "duration": 0.6219501133786848,
+      "aliases": [
+        "audio/15-12.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "485c68a7f1e5d1f89c552b830cddf10980c2c4b25c81d2e2693990bddda01351"
+    },
+    {
+      "duration": 1.2799092970521542,
+      "aliases": [
+        "audio/15-13.wav",
+        "audio/15-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "15529392a9c1125874ebfbfa3f96656bcdbb4d3113ad10f3deb97bc459bebeaa"
+    },
+    {
+      "duration": 1.2799092970521542,
+      "aliases": [
+        "audio/15-14.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "2b3190dabed77fe1aeaf0cc5b15737fb48c49abedfb79e8ebf571f62a78e5bb6"
+    },
+    {
+      "duration": 1.1480272108843537,
+      "aliases": [
+        "audio/15-15.wav"
+      ],
+      "text": "Коллега: Пригодится!",
+      "kind": "speech",
+      "wav_sha256": "17b8b75d96e0d7cc95b363a46fbbac9bcb4b3407245857b00fa2065e0d750bca",
+      "wording": "user clarified dialogue and servant vocabulary"
+    },
+    {
+      "duration": 1.6174149659863946,
+      "aliases": [
+        "audio/15-16.wav"
+      ],
+      "text": "Плиз!",
+      "kind": "speech",
+      "wav_sha256": "3354bcefd225dabe4f73e42679ee5456f4017528f6ec4bbab75983706e569591",
+      "wording": "user clarified dialogue and servant vocabulary"
+    },
+    {
+      "duration": 2.221859410430839,
+      "aliases": [
+        "audio/15-17.wav"
+      ],
+      "text": "Опасная зона!",
+      "kind": "speech",
+      "wav_sha256": "0acc7dd12d87becc326ba8e825772b27c5fe1bc93d34999b982515651906988c"
+    },
+    {
+      "duration": 2.2947845804988662,
+      "aliases": [
+        "audio/15-18.wav"
+      ],
+      "text": "Ни за что!",
+      "kind": "speech",
+      "wav_sha256": "aa85969cf905eae1e51cd9f44d3f1d921263c5cbbf6934001ffbc3dbb09893ec"
+    },
+    {
+      "duration": 4.027755102040817,
+      "aliases": [
+        "audio/15-19.wav"
+      ],
+      "text": "Не та система!",
+      "kind": "speech",
+      "wav_sha256": "8b5434984f4609da20ebe2b2fff12108098b3190a3af2a77fd522df592bae4a3"
+    },
+    {
+      "duration": 1.3230839002267574,
+      "aliases": [
+        "audio/15-20.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "6473452d4e2f05c78eb761a5a538daf4f11833f78c382506ca8f1e03dedffbb4"
+    },
+    {
+      "duration": 0.9071201814058957,
+      "aliases": [
+        "audio/15-22.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "614c118c8671e68ea174fcf77438a45c7e2cd68a4171ddc4879d590ef86b99ca"
+    },
+    {
+      "duration": 2.143582766439909,
+      "aliases": [
+        "audio/15-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "66294830b08c2a750f82033cc510b483d608a01ae8f661e05993333dd5e8839a"
+    },
+    {
+      "duration": 1.8996825396825396,
+      "aliases": [
+        "audio/15-24.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "75c3acb2d0b4a2f5e3040e6a2925bd13a75df23895a7715ac21b7872ed9e6f9e"
+    },
+    {
+      "duration": 1.4770975056689342,
+      "aliases": [
+        "audio/15-25.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "8f42faede88da40f43f680baf2a178747bc39d66915c14d8a92f197bd9541816"
+    },
+    {
+      "duration": 2.661859410430839,
+      "aliases": [
+        "audio/15-26.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "978a2ee0f2a3ba9ae81f5b4ecd0d1ef72c18bb64556812b25b482d39604c9dc8"
+    },
+    {
+      "duration": 2.640544217687075,
+      "aliases": [
+        "audio/15-27.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "5a1e634368137d3046472289584e74ada0be26dcde452db2ddd41669ceba4469"
+    },
+    {
+      "duration": 0.8444444444444444,
+      "aliases": [
+        "audio/15-28.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "d7060a5f4f13b62299b563b418c63a93424923db7c9a4af712897239bdbaa294"
+    },
+    {
+      "duration": 2.142403628117914,
+      "aliases": [
+        "audio/15-29.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "65a5921e26c71d73449c60da1d6f7d7faefd52acf2fdaae7d19c9b337df4010b"
+    },
+    {
+      "duration": 2.3166439909297054,
+      "aliases": [
+        "audio/16-12.wav"
+      ],
+      "text": "Низко пошёл. К дождю!",
+      "kind": "speech",
+      "wav_sha256": "88e42de0f1d82b8125cf2914df7c0cc9738fcd75685ecdbc563565bf0e14d147"
+    },
+    {
+      "duration": 0.9267120181405896,
+      "aliases": [
+        "audio/16-13.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "0f802bac75ae7e3958932606426cb32fb97b155f8cabc6d01f9312531bfe936c"
+    },
+    {
+      "duration": 1.4595918367346938,
+      "aliases": [
+        "audio/16-14.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "e824363d3786399fcec2123b35946ffb98b981875603998f23bd1d4a8f8f1fae"
+    },
+    {
+      "duration": 1.0815419501133787,
+      "aliases": [
+        "audio/16-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "292bbab98db9871c55deacd2606ae772b9b9453dd84bbeda34b0856cb0e2fc15"
+    },
+    {
+      "duration": 1.7002267573696146,
+      "aliases": [
+        "audio/16-16.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ae83dfa837bbfd5b5cfab5034051d0e3d7a37b0a2d4a97dcac1bac811e6438d2"
+    },
+    {
+      "duration": 0.7279818594104308,
+      "aliases": [
+        "audio/16-17.wav",
+        "audio/16-18.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "82866fd7016120742fa6cd673f548af5b0151c32e8fac0f928f324b613e62e6d"
+    },
+    {
+      "duration": 2.053514739229025,
+      "aliases": [
+        "audio/16-19.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "11b48e92ef305d4166dcde4d3a1dc1aa747c382353368f09d3580ef4c54a521b"
+    },
+    {
+      "duration": 1.8797278911564625,
+      "aliases": [
+        "audio/16-20.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7b2a52b4d07e159f513563219730c89a3205189d8b68fbc7e37cdf10da98066c"
+    },
+    {
+      "duration": 3.493333333333333,
+      "aliases": [
+        "audio/16-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "699af167a1b34b4c206bac850076eb68aa0b6bc8fd4d8969417d4d86ff5aaf29"
+    },
+    {
+      "duration": 2.72562358276644,
+      "aliases": [
+        "audio/16-22.wav",
+        "audio/16-23.wav",
+        "audio/16-24.wav"
+      ],
+      "text": "Шеф, вы прокололись!",
+      "kind": "speech",
+      "wav_sha256": "b0bd88aeb436b7a5f3fad87a0ef9e279be19b0d43aad34454503ce457ca78f27"
+    },
+    {
+      "duration": 4.521904761904762,
+      "aliases": [
+        "audio/16-25.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "6d558ce58c6b463c6b07b15220c27287b0b740f022bb46c8761e1245d02273ab"
+    },
+    {
+      "duration": 1.3147392290249433,
+      "aliases": [
+        "audio/16-26.wav",
+        "audio/16-27.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "4312f7d139351821f72ce2106361e4bc53596912e05d44574458bff7fee1b86a"
+    },
+    {
+      "duration": 1.2302947845804988,
+      "aliases": [
+        "audio/17-12.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "deade3d3830a9678bd06a50db28aa512724f86c356a8aeb5c674d4e6154c20ea"
+    },
+    {
+      "duration": 1.4067120181405897,
+      "aliases": [
+        "audio/17-13.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "666ce5838f61eab500a217569b417c5b4e5d7442665eff229b05b3f692720219"
+    },
+    {
+      "duration": 0.21931972789115647,
+      "aliases": [
+        "audio/17-14.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "1d631ec06a2c38d74d30f824ff3640d0f9f500efd462e6c4f6e03c7b7ee4fb20"
+    },
+    {
+      "duration": 0.1164625850340136,
+      "aliases": [
+        "audio/17-15.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "b42992deab4d8437c1957bf127e202be43939499fb0e3298ec436e4f05d72780"
+    },
+    {
+      "duration": 0.8600453514739229,
+      "aliases": [
+        "audio/17-16.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "954eb07ce144b03c93fbaa31ac5e10e3fc757c15d19b9a8ec1e8f246748bede8"
+    },
+    {
+      "duration": 0.46249433106575966,
+      "aliases": [
+        "audio/17-17.wav"
+      ],
+      "text": "Слон!",
+      "kind": "speech",
+      "wav_sha256": "c4aed1155cfc8655914d6938089c9d9767d4231e53dbe21e47f812fb47b0d026"
+    },
+    {
+      "duration": 1.409795918367347,
+      "aliases": [
+        "audio/17-18.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "3bd13332864a74d7099616949eed1b0ad3de7cdb3bf40b7bf85f5bc374bb6f86"
+    },
+    {
+      "duration": 1.6514285714285715,
+      "aliases": [
+        "audio/17-19.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "dd3377169e55dd945d698cdff7ac7ceebf6475dc6de60c0bf769110ce4177c8a"
+    },
+    {
+      "duration": 1.2672108843537415,
+      "aliases": [
+        "audio/17-20.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "6ff78f157f397b67f918729e314ad9c2ecfaa33fdee1ee7b947f1ec676b67ee4"
+    },
+    {
+      "duration": 0.9619954648526077,
+      "aliases": [
+        "audio/17-21.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "886f985de74f9e6e67b47d6d35c20ade06734115be94fe3249c847c5559408b7"
+    },
+    {
+      "duration": 0.7566439909297052,
+      "aliases": [
+        "audio/17-22.wav"
+      ],
+      "text": "Слуга: Плиз!",
+      "kind": "speech",
+      "wav_sha256": "4069146e5975ebf7557edd282101631d71eaecf87dffc266bb75617ed85a5546"
+    },
+    {
+      "duration": 0.742312925170068,
+      "aliases": [
+        "audio/17-23.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "7eecf3997cbeea52f6ac0fb2a0d634a416497fd03730452d249a02432cf66ae5"
+    },
+    {
+      "duration": 0.476281179138322,
+      "aliases": [
+        "audio/17-24.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "68c7ca4baea684c16c578fae47c8fab1ef484ab844f8d6a6aea7f849fada8dd1"
+    },
+    {
+      "duration": 0.259047619047619,
+      "aliases": [
+        "audio/17-25.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "edbc9063a03b16d431efb44b7419a5dd2067750bc36040282091d3a575bf3c11"
+    },
+    {
+      "duration": 0.21614512471655328,
+      "aliases": [
+        "audio/17-26.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "f9dca70d96193774c325e1e009eb7fb72a46986f5008f5e869747938a0590db4"
+    },
+    {
+      "duration": 0.8201360544217687,
+      "aliases": [
+        "audio/17-27.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "07cb0e76507d4aa68ed10f1e1657c851aa8dcdf632f956043cb5773f31aaf0db"
+    },
+    {
+      "duration": 1.4196825396825397,
+      "aliases": [
+        "audio/17-28.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "85fdd117ee40ca086d373f950c027295691fef0c4d1816118703a6fd5c8f2c5a"
+    },
+    {
+      "duration": 0.8971428571428571,
+      "aliases": [
+        "audio/17-29.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "ec1f4b2072f1e096abfa1c4c4a2c055e2262b4d1d99cfed23f6ca8c0dfa2421a"
+    },
+    {
+      "duration": 0.13115646258503402,
+      "aliases": [
+        "audio/17-34.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "59d1fa28fc37d911cdfce1981fd2ff926aab065bd304da5a9ccabcb14d5cc75e"
+    },
+    {
+      "duration": 3.802721088435374,
+      "aliases": [
+        "audio/17-35.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "e08ce1d27d6d12935b71e9c84adce521036ca8e6bdf5bcd78d4cb04f0bbb9f84"
+    },
+    {
+      "duration": 1.3211791383219955,
+      "aliases": [
+        "audio/17-36.wav"
+      ],
+      "text": "Плиз-плиз!",
+      "kind": "speech",
+      "wav_sha256": "c09cc0a8e060285cd5acc8c96946345446ab5856e5794fb3be03c06002872594"
+    },
+    {
+      "duration": 0.6964172335600907,
+      "aliases": [
+        "audio/17-38.wav"
+      ],
+      "text": "Фальшивая.",
+      "kind": "speech",
+      "wav_sha256": "f2926876d7828cc2604d6d815e458a34822f0e1e52bfb526704e0ec2039bbf21"
+    },
+    {
+      "duration": 1.050702947845805,
+      "aliases": [
+        "audio/17-39.wav"
+      ],
+      "text": "Настоящая!",
+      "kind": "speech",
+      "wav_sha256": "0933f752369fc04154cedd46087a1c8f7d133ee7d8703e82593a63b498806fca"
+    },
+    {
+      "duration": 2.7747845804988662,
+      "aliases": [
+        "audio/17-41.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "285d76709057df49f0da4cad58b7b3ad0dbddb49db5f998ffd7e63b331491ea7"
+    },
+    {
+      "duration": 2.295873015873016,
+      "aliases": [
+        "audio/17-42.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "b874538bc9b8c68cd9e874a59b9f717f2545c0b9d8557579e0261636679a4bd4"
+    },
+    {
+      "duration": 1.4770068027210885,
+      "aliases": [
+        "audio/17-43.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "5aff0df8b4cbbc241ad2cd23703c2098e95710b60fe154af6c8897c573e0ec87"
+    },
+    {
+      "duration": 3.5430385487528344,
+      "aliases": [
+        "audio/17-44.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "a1262df0c701a1d9203dbd32cd7a39b74ba4bea6ae747e9fd7b7b91b9d1d4da4"
+    },
+    {
+      "duration": 4.33015873015873,
+      "aliases": [
+        "audio/17-45.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "f9a06b8f06307ef95edb885f3e0707619e781374e142e8f8c74e448fb5dc56b7"
+    },
+    {
+      "duration": 2.9193650793650794,
+      "aliases": [
+        "audio/17-46.wav"
+      ],
+      "kind": "nonverbal_or_effect",
+      "wav_sha256": "2dc55ba54db2b2a8464465517eb29360c67e985583f16e6130a9684c1e38e4a5"
+    }
+  ]
+}
