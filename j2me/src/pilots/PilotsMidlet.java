@@ -197,6 +197,7 @@ MenuCanvas.Host {
 
     private void showInventory() {
         if(this.canvas.zoo==null) return;
+        if(this.canvas.state.scene==7){this.display.setCurrent(this.canvas);return;}
         final int[] values=new int[7];
         int count=2;values[0]=-1;values[1]=0;
         for(int item=1;item<=(this.canvas.state.scene==17?5:this.canvas.state.scene==14?4:3);item++) if(this.canvas.zoo.logic.hasItem(item)) values[count++]=item;
@@ -212,8 +213,8 @@ MenuCanvas.Host {
     }
 
     private void showLocations() {
-        final int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13,15,14,16,17};
-        String[] labels={"Назад","У ворот","Двор зоопарка","Звериный двор","Сад","Улица","Гостиница: вступление","Гостиница: интерьер","Комната с балконом","Карниз гостиницы","Ванная комната","Электрощитовая","Подвал","Крыша","Полёт","Финал: лесная поляна"};
+        final int[] ids={-1,2,3,4,5,6,7,8,9,10,11,12,13,15,14,16,17};
+        String[] labels={"Назад","У ворот","Двор зоопарка","Звериный двор","Сад","Улица","Канализация","Гостиница: вступление","Гостиница: интерьер","Комната с балконом","Карниз гостиницы","Ванная комната","Электрощитовая","Подвал","Крыша","Полёт","Финал: лесная поляна"};
         MenuCanvas locations=new MenuCanvas(new MenuCanvas.Host() {
             public void choose(int choice) {
                 if(choice==0) { showMenu();return; }
@@ -257,6 +258,7 @@ MenuCanvas.Host {
     }
 
     private void help() {
+        if(this.canvas!=null&&this.canvas.state.scene==7){this.notice("Управление","Канализация: 4 — влево, 6 — вправо. Пережидайте опасные движения мышей. После падения Коллега вернётся на старт. 0 — меню.");return;}
         String location=this.canvas!=null && this.canvas.state.scene==17?"Финал: используйте табуретку, ветки и флейты. Оба героя участвуют в головоломке. Для движения укажите точку и нажмите 5: герой дойдёт до неё. Предметы — в нижней строке или через #. ":this.canvas!=null && this.canvas.state.scene==16?"Полёт: 2 или вверх — подняться, 8 или вниз — опуститься. Удерживайте направление для следующего шага. Подъём наверх расходует балласт; его остаток показан внизу. Ворона приближается справа. 0 — меню. ":this.canvas!=null && this.canvas.state.scene==14?"Крыша: используйте краску, ножницы и лестницу, подготовьте воздушный шар и вытяжку. Предметы доступны в нижней строке и через #. ":this.canvas!=null && this.canvas.state.scene==15?
             "Подвал: укажите Шефом область ящиков справа, чтобы открыть отдельный экран. 2 — к ящикам, 8 — безопасная дорожка, 4/6 — движение и автоматический прыжок, 5 — автомат только с дорожки, 0 — назад. Автомат из ящика может взять любой брат. ":this.canvas!=null && this.canvas.state.scene==13?
             "Электрощитовая: открывайте щит Коллегой, соединяйте провода Шефом. В подробном виде 2/4/6/8 выбирают участок, 5 поворачивает, 0 возвращает в комнату. ":this.canvas!=null && this.canvas.state.scene==12?
@@ -359,8 +361,8 @@ MenuCanvas.Host {
                 throw new IOException("Scene exceeds available heap");
             }
             this.state.scene = n;this.endingFocused=false;
-            this.zoo = n==16?new FlightScene(this.scene,this.state):n>=8?new HotelScene(this.scene,this.state):n==6?new StreetScene(this.scene,this.state):n==5?new GardenScene(this.scene,this.state):n==4?new AnimalScene(this.scene,this.state):n==3?new CourtyardScene(this.scene,this.state):new ZooScene(this.scene,this.state);
-            this.zooPanel = n==8||n==16?null:new ZooPanel(n);
+            this.zoo = n==7?new SewerScene(this.scene,this.state):n==16?new FlightScene(this.scene,this.state):n>=8?new HotelScene(this.scene,this.state):n==6?new StreetScene(this.scene,this.state):n==5?new GardenScene(this.scene,this.state):n==4?new AnimalScene(this.scene,this.state):n==3?new CourtyardScene(this.scene,this.state):new ZooScene(this.scene,this.state);
+            this.zooPanel = n==7||n==8||n==16?null:new ZooPanel(n);
             this.audio.scene(n);this.zoo.logic.setSound(this.audio);
             this.audio.active(this.shown && !this.appPaused && !this.isPreview());
             this.view = new Viewport(Math.max(1, this.getWidth()), this.sceneHeight(this.getWidth(), this.getHeight()), this.scene.background.worldWidth, this.scene.background.worldHeight);
@@ -592,7 +594,7 @@ MenuCanvas.Host {
             }
             graphics.clipRect(0, 0, this.getWidth(), this.view.height);
             this.view.paintClip(clipX,clipY,clipWidth,clipHeight);
-            if(this.state.scene!=16)this.scene.background.paint(graphics, this.view);
+            if(this.state.scene!=16&&(this.state.scene!=7||this.zoo==null))this.scene.background.paint(graphics, this.view);
             int n = 0;
             if(this.state.scene==16 && this.zoo==null)this.flightPreview.paint(graphics,this.scene,this.view,null);
             else if(this.zoo!=null) this.zoo.paint(graphics,this.view);
@@ -600,7 +602,7 @@ MenuCanvas.Host {
                 this.scene.actors[n].paint(graphics, this.view);
                 ++n;
             }
-            if(this.state.scene!=16){
+            if(this.state.scene!=16&&this.state.scene!=7){
             n = this.view.screenX(this.view.cursorX);
             int n2 = this.view.screenY(this.view.cursorY);
             graphics.setColor(0);
@@ -671,6 +673,11 @@ MenuCanvas.Host {
                     n2 = this.getGameAction(n);
                 }
                 catch (IllegalArgumentException illegalArgumentException) {}
+                if(this.zoo instanceof SewerScene){
+                    if(n==48){if(!bl)PilotsMidlet.this.showMenu();return;}
+                    int control=n==52||n2==2?4:n==54||n2==5?6:0;
+                    if(control!=0){((SewerScene)this.zoo).input(control);this.repaint();}return;
+                }
                 if(this.zoo instanceof FlightScene){
                     if(n==48){if(!bl)PilotsMidlet.this.showMenu();return;}
                     int control=n==50||n2==1?2:n==56||n2==6?8:0;

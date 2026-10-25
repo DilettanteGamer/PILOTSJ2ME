@@ -1,0 +1,38 @@
+[
+  {
+    "profile": "128x128",
+    "clips": 31,
+    "frames": 360,
+    "crop": [
+      104,
+      144,
+      432,
+      208
+    ],
+    "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f"
+  },
+  {
+    "profile": "128x160",
+    "clips": 31,
+    "frames": 360,
+    "crop": [
+      104,
+      144,
+      432,
+      208
+    ],
+    "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f"
+  },
+  {
+    "profile": "240x320",
+    "clips": 31,
+    "frames": 360,
+    "crop": [
+      104,
+      144,
+      432,
+      208
+    ],
+    "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f"
+  }
+]

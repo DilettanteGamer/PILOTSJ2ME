@@ -2598,13 +2598,14 @@
     },
     {
       "profile": "128x128",
-      "classes": 71,
+      "classes": 73,
       "scenes": [
         2,
         3,
         4,
         5,
         6,
+        7,
         8,
         9,
         10,
@@ -2616,8 +2617,8 @@
         16,
         17
       ],
-      "animations": 1630,
-      "frames": 20412,
+      "animations": 1661,
+      "frames": 20772,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -2684,6 +2685,12 @@
           208,
           640,
           417
+        ],
+        "scenes/07.p8": [
+          432,
+          208,
+          432,
+          208
         ],
         "scenes/08.bar": [
           640,
@@ -2810,7 +2817,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x128",
-        "MIDlet-Version": "0.22.0",
+        "MIDlet-Version": "0.23.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x128,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -2819,30 +2826,30 @@
         "Pilots-Profile": "128x128",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "2ba3e0e5fa1974dedf951c1629f53b8bddcec953bc7973cdb5b2d5bf9d827a78",
-      "jar_bytes": 19096738,
-      "entry_count": 2340,
-      "uncompressed_bytes": 132750951,
+      "sha256": "b221b4bd65f24aa46c0399f5a889eb80c626ab9e1e5999cbdad1d37655d48361",
+      "jar_bytes": 19770786,
+      "entry_count": 2402,
+      "uncompressed_bytes": 135101777,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1630,
+        ".anm": 1661,
         ".bar": 15,
         ".bin": 1,
         ".board": 1,
-        ".class": 71,
-        ".events": 15,
+        ".class": 73,
+        ".events": 16,
         ".hot": 3,
-        ".mid": 17,
-        ".p8": 16,
+        ".mid": 18,
+        ".p8": 17,
         ".rules": 1,
         ".sprite": 7,
         ".sprites": 1,
         ".subtitles": 1,
         ".vm": 13,
         ".walk": 1,
-        ".wav": 544
+        ".wav": 570
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -2934,7 +2941,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7ec8896f48e77f43ed9754b5498855ca2808a112eeba496ec86b6193b9dca742"
+          "sha256": "5aa09f0e3aaa136f82fcf0a9eaf9290f871c5305372aea6bb560b16e2032b498"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -3173,7 +3180,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "70a9768be6e5b8bb07ebf000856c3a92f42a662347847c1ac61e8b8b8cd26a6e"
+          "sha256": "f8ff1b345cac92c2d1005b6310527652760c08b6f8e8bf23d60d36409d12d788"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -3259,7 +3266,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "3fb5fd38ea3436178f016c77908913ef722fe7d0cbe30880818bd3db827e5a2e"
+          "sha256": "15bd3bbe5958af4a6f3b2c5a015000bf394cb893a0bdb52550bbf7e52231e473"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -3300,7 +3307,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e19c78f0453278a08ad14cf1c0d77edede5d8617cdb6472ac64af10ef1e38616"
+          "sha256": "91a4f4dc250f5b9a6a38d986a9ff689d957212066a58a962558eab3bbe563688"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -3474,7 +3481,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "1c6d22c407c0d06886a21f8f6981aa93299356367a4f22631947d5e8be0c60e8"
+          "sha256": "da12e42fb40b588390ac7ef25f025330a3d7f00573c0debec2c43575ff45d03c"
         },
         "pilots/PilotsMidlet$7.class": {
           "minor": 3,
@@ -3488,7 +3495,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "51b8270be154ed91882565c3d4286c3db6d1ccfa0a5aa1911fb726250aabb065"
+          "sha256": "e8512b73f24531ae66002024972180c281511ca7114873c60ab9843e547c40ea"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -3522,7 +3529,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "6f7d67efe012d04e980b08e076baa9732a1ef2221f0f8dcfd05e092556ddbac9"
+          "sha256": "fe3ca5a350d14962bc9530aef16fa33191ac3c4109d425bb4b79f5c59bb67dd1"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -3545,7 +3552,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8e93b6ac03dab8f2b78aadaa079f55711e2247428ccf8bc589d1573161ff2dee"
+          "sha256": "9fffa28705eb61bacadf69814a2d8e77c14a197d78e0dbf749cc7123a88c83df"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -3595,7 +3602,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e95a591b90ba27c8427b6083bbbeba933e1b04acf01aa61e4d0ad670cf811ec6"
+          "sha256": "11c3d79c7334995a37e88e658791405cbb7c61428ffcdcf46d866d499bc921cd"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -3617,6 +3624,39 @@
           ],
           "stackmap_utf8_present": true,
           "sha256": "2a1fb5f264dcea6d5c5a5b243bfd6fa367baff58b32024a5ba5a4229f5327ecd"
+        },
+        "pilots/SewerLogic.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/ByteArrayInputStream",
+            "java/io/ByteArrayOutputStream",
+            "java/io/DataInputStream",
+            "java/io/DataOutputStream",
+            "java/io/IOException",
+            "java/io/InputStream",
+            "java/io/OutputStream",
+            "java/lang/Math",
+            "java/lang/RuntimeException",
+            "java/lang/String",
+            "java/lang/Throwable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "c928ae68101c69578e3f3cfc586fe65423ac14f7798608a8f6d2642821154970"
+        },
+        "pilots/SewerScene.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/Math",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Font",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "f48c83566d16b82d84d8336c0169273a46699ac9e73c9d2858e5f790fff9c78f"
         },
         "pilots/SoundSink.class": {
           "minor": 3,
@@ -6269,6 +6309,161 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 23328
+        },
+        "scenes/07-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/07-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/07-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-46.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5096
+        },
+        "scenes/07-47.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6336
+        },
+        "scenes/07-48.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5096
+        },
+        "scenes/07-56.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-57.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4095
+        },
+        "scenes/07-59.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/07-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-61.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-62.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4095
+        },
+        "scenes/07-63.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/07-64.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22125
+        },
+        "scenes/07-70.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9280
+        },
+        "scenes/07-71.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5760
+        },
+        "scenes/07-72.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9900
+        },
+        "scenes/07-73.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4560
+        },
+        "scenes/07-74.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6351
+        },
+        "scenes/07-75.anm": {
+          "count": 24,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3416
+        },
+        "scenes/07-76.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2880
+        },
+        "scenes/07-77.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5742
+        },
+        "scenes/07-78.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2880
+        },
+        "scenes/07-79.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7360
+        },
+        "scenes/07-80.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3976
+        },
+        "scenes/07-81.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4386
+        },
+        "scenes/07-82.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3976
+        },
+        "scenes/07-83.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3784
+        },
+        "scenes/07-84.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3510
         },
         "scenes/08-20000.anm": {
           "count": 1,
@@ -12011,535 +12206,199 @@
           "max_indexed_frame_bytes": 3245
         }
       },
-      "preview_scene": 17,
+      "preview_scene": 7,
       "preview_catalog": [
         {
-          "resource_id": 49,
+          "resource_id": 46,
           "anchor": [
-            192,
-            0
+            88,
+            16
           ],
           "focus": [
-            245,
-            73
+            120,
+            16
           ],
-          "label": "01 Финал — 49"
+          "label": "01 Канализация — 46"
         },
         {
-          "resource_id": 50,
+          "resource_id": 47,
           "anchor": [
-            192,
-            0
+            152,
+            16
           ],
           "focus": [
-            245,
-            73
+            184,
+            16
           ],
-          "label": "02 Финал — 50"
+          "label": "02 Канализация — 47"
         },
         {
-          "resource_id": 52,
+          "resource_id": 48,
           "anchor": [
-            128,
-            96
+            280,
+            16
           ],
           "focus": [
-            353,
-            175
+            312,
+            16
           ],
-          "label": "03 Финал — 52"
-        },
-        {
-          "resource_id": 55,
-          "anchor": [
-            384,
-            384
-          ],
-          "focus": [
-            387,
-            365
-          ],
-          "label": "04 Финал — 55"
-        },
-        {
-          "resource_id": 56,
-          "anchor": [
-            384,
-            384
-          ],
-          "focus": [
-            389,
-            369
-          ],
-          "label": "05 Финал — 56"
+          "label": "03 Канализация — 48"
         },
         {
           "resource_id": 57,
           "anchor": [
-            512,
-            368
+            200,
+            128
           ],
           "focus": [
-            544,
-            347
+            232,
+            128
           ],
-          "label": "06 Финал — 57"
-        },
-        {
-          "resource_id": 58,
-          "anchor": [
-            320,
-            352
-          ],
-          "focus": [
-            339,
-            334
-          ],
-          "label": "07 Финал — 58"
+          "label": "04 Канализация — 57"
         },
         {
           "resource_id": 59,
           "anchor": [
-            320,
-            352
+            200,
+            128
           ],
           "focus": [
-            337,
-            330
+            232,
+            128
           ],
-          "label": "08 Финал — 59"
-        },
-        {
-          "resource_id": 60,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            608,
-            206
-          ],
-          "label": "09 Финал — 60"
+          "label": "05 Канализация — 59"
         },
         {
           "resource_id": 61,
           "anchor": [
-            576,
-            224
+            200,
+            128
           ],
           "focus": [
-            610,
-            202
+            232,
+            128
           ],
-          "label": "10 Финал — 61"
-        },
-        {
-          "resource_id": 62,
-          "anchor": [
-            256,
-            288
-          ],
-          "focus": [
-            284,
-            271
-          ],
-          "label": "11 Финал — 62"
+          "label": "06 Канализация — 61"
         },
         {
           "resource_id": 63,
           "anchor": [
-            448,
-            336
+            200,
+            128
           ],
           "focus": [
-            546,
-            335
+            232,
+            128
           ],
-          "label": "12 Финал — 63"
+          "label": "07 Канализация — 63"
         },
         {
           "resource_id": 64,
           "anchor": [
-            448,
-            336
-          ],
-          "focus": [
-            482,
-            303
-          ],
-          "label": "13 Финал — 64"
-        },
-        {
-          "resource_id": 65,
-          "anchor": [
-            448,
-            336
-          ],
-          "focus": [
-            517,
-            347
-          ],
-          "label": "14 Финал — 65"
-        },
-        {
-          "resource_id": 66,
-          "anchor": [
-            448,
-            336
-          ],
-          "focus": [
-            480,
-            299
-          ],
-          "label": "15 Финал — 66"
-        },
-        {
-          "resource_id": 67,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            225,
-            255
-          ],
-          "label": "16 Финал — 67"
-        },
-        {
-          "resource_id": 68,
-          "anchor": [
-            64,
-            272
-          ],
-          "focus": [
-            92,
-            239
-          ],
-          "label": "17 Финал — 68"
-        },
-        {
-          "resource_id": 69,
-          "anchor": [
-            576,
-            240
-          ],
-          "focus": [
-            609,
+            83,
             207
           ],
-          "label": "18 Финал — 69"
-        },
-        {
-          "resource_id": 70,
-          "anchor": [
-            192,
-            288
-          ],
           "focus": [
-            224,
-            251
+            115,
+            207
           ],
-          "label": "19 Финал — 70"
+          "label": "08 Канализация — 64"
         },
         {
           "resource_id": 71,
           "anchor": [
-            64,
-            272
+            24,
+            96
           ],
           "focus": [
-            95,
-            235
+            56,
+            96
           ],
-          "label": "20 Финал — 71"
+          "label": "09 Канализация — 71"
         },
         {
           "resource_id": 72,
           "anchor": [
-            576,
-            240
+            152,
+            207
           ],
           "focus": [
-            608,
-            203
+            184,
+            207
           ],
-          "label": "21 Финал — 72"
-        },
-        {
-          "resource_id": 73,
-          "anchor": [
-            320,
-            80
-          ],
-          "focus": [
-            352,
-            43
-          ],
-          "label": "22 Финал — 73"
+          "label": "10 Канализация — 72"
         },
         {
           "resource_id": 74,
           "anchor": [
-            256,
-            288
+            0,
+            207
           ],
           "focus": [
-            284,
-            271
+            32,
+            207
           ],
-          "label": "23 Финал — 74"
+          "label": "11 Канализация — 74"
         },
         {
           "resource_id": 75,
           "anchor": [
-            128,
-            256
+            0,
+            207
           ],
           "focus": [
-            194,
-            295
+            32,
+            207
           ],
-          "label": "24 Финал — 75"
+          "label": "12 Канализация — 75"
         },
         {
-          "resource_id": 76,
+          "resource_id": 77,
           "anchor": [
-            128,
-            256
+            399,
+            207
           ],
           "focus": [
-            193,
-            291
+            399,
+            207
           ],
-          "label": "25 Финал — 76"
+          "label": "13 Канализация — 77"
+        },
+        {
+          "resource_id": 79,
+          "anchor": [
+            0,
+            160
+          ],
+          "focus": [
+            32,
+            160
+          ],
+          "label": "14 Канализация — 79"
         },
         {
           "resource_id": 81,
           "anchor": [
-            0,
+            24,
             0
           ],
           "focus": [
-            77,
-            104
-          ],
-          "label": "26 Финал — 81"
-        },
-        {
-          "resource_id": 82,
-          "anchor": [
-            0,
+            56,
             0
           ],
-          "focus": [
-            70,
-            133
-          ],
-          "label": "27 Финал — 82"
+          "label": "15 Канализация — 81"
         },
         {
           "resource_id": 83,
           "anchor": [
-            0,
-            0
+            399,
+            160
           ],
           "focus": [
-            41,
-            133
+            399,
+            160
           ],
-          "label": "28 Финал — 83"
-        },
-        {
-          "resource_id": 84,
-          "anchor": [
-            512,
-            368
-          ],
-          "focus": [
-            544,
-            347
-          ],
-          "label": "29 Финал — 84"
-        },
-        {
-          "resource_id": 85,
-          "anchor": [
-            256,
-            288
-          ],
-          "focus": [
-            284,
-            271
-          ],
-          "label": "30 Финал — 85"
-        },
-        {
-          "resource_id": 87,
-          "anchor": [
-            0,
-            32
-          ],
-          "focus": [
-            94,
-            112
-          ],
-          "label": "31 Финал — 87"
-        },
-        {
-          "resource_id": 88,
-          "anchor": [
-            0,
-            32
-          ],
-          "focus": [
-            61,
-            157
-          ],
-          "label": "32 Финал — 88"
-        },
-        {
-          "resource_id": 89,
-          "anchor": [
-            0,
-            32
-          ],
-          "focus": [
-            63,
-            157
-          ],
-          "label": "33 Финал — 89"
-        },
-        {
-          "resource_id": 91,
-          "anchor": [
-            256,
-            336
-          ],
-          "focus": [
-            319,
-            344
-          ],
-          "label": "34 Финал — 91"
-        },
-        {
-          "resource_id": 105,
-          "anchor": [
-            320,
-            208
-          ],
-          "focus": [
-            332,
-            218
-          ],
-          "label": "35 Финал — 105"
-        },
-        {
-          "resource_id": 106,
-          "anchor": [
-            64,
-            80
-          ],
-          "focus": [
-            350,
-            257
-          ],
-          "label": "36 Финал — 106"
-        },
-        {
-          "resource_id": 107,
-          "anchor": [
-            0,
-            0
-          ],
-          "focus": [
-            77,
-            108
-          ],
-          "label": "37 Финал — 107"
-        },
-        {
-          "resource_id": 111,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            607,
-            202
-          ],
-          "label": "38 Финал — 111"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            607,
-            202
-          ],
-          "label": "39 Финал — 112"
-        },
-        {
-          "resource_id": 113,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            607,
-            202
-          ],
-          "label": "40 Финал — 113"
-        },
-        {
-          "resource_id": 114,
-          "anchor": [
-            448,
-            0
-          ],
-          "focus": [
-            543,
-            186
-          ],
-          "label": "41 Финал — 114"
-        },
-        {
-          "resource_id": 115,
-          "anchor": [
-            320,
-            64
-          ],
-          "focus": [
-            345,
-            40
-          ],
-          "label": "42 Финал — 115"
-        },
-        {
-          "resource_id": 116,
-          "anchor": [
-            256,
-            176
-          ],
-          "focus": [
-            287,
-            155
-          ],
-          "label": "43 Финал — 116"
-        },
-        {
-          "resource_id": 117,
-          "anchor": [
-            256,
-            176
-          ],
-          "focus": [
-            381,
-            355
-          ],
-          "label": "44 Финал — 117"
+          "label": "16 Канализация — 83"
         }
       ],
       "largest_resources": [
@@ -12597,13 +12456,14 @@
     },
     {
       "profile": "128x160",
-      "classes": 71,
+      "classes": 73,
       "scenes": [
         2,
         3,
         4,
         5,
         6,
+        7,
         8,
         9,
         10,
@@ -12615,8 +12475,8 @@
         16,
         17
       ],
-      "animations": 1630,
-      "frames": 20412,
+      "animations": 1661,
+      "frames": 20772,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -12683,6 +12543,12 @@
           208,
           640,
           417
+        ],
+        "scenes/07.p8": [
+          432,
+          208,
+          432,
+          208
         ],
         "scenes/08.bar": [
           640,
@@ -12809,7 +12675,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 128x160",
-        "MIDlet-Version": "0.22.0",
+        "MIDlet-Version": "0.23.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 128x160,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -12818,30 +12684,30 @@
         "Pilots-Profile": "128x160",
         "Pilots-Raster-Cache-Pixels": "65536"
       },
-      "sha256": "6466c76cf0681eb262eb3d201ae76dc5c7bc94072df89323ff6005da76ae81b3",
-      "jar_bytes": 19097000,
-      "entry_count": 2340,
-      "uncompressed_bytes": 132755047,
+      "sha256": "9262b67a85c11faf5019a305229070bf0705249f8a8093c74a0d2225b72e774d",
+      "jar_bytes": 19771048,
+      "entry_count": 2402,
+      "uncompressed_bytes": 135105873,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1630,
+        ".anm": 1661,
         ".bar": 15,
         ".bin": 1,
         ".board": 1,
-        ".class": 71,
-        ".events": 15,
+        ".class": 73,
+        ".events": 16,
         ".hot": 3,
-        ".mid": 17,
-        ".p8": 16,
+        ".mid": 18,
+        ".p8": 17,
         ".rules": 1,
         ".sprite": 7,
         ".sprites": 1,
         ".subtitles": 1,
         ".vm": 13,
         ".walk": 1,
-        ".wav": 544
+        ".wav": 570
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -12933,7 +12799,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7ec8896f48e77f43ed9754b5498855ca2808a112eeba496ec86b6193b9dca742"
+          "sha256": "5aa09f0e3aaa136f82fcf0a9eaf9290f871c5305372aea6bb560b16e2032b498"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -13172,7 +13038,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "70a9768be6e5b8bb07ebf000856c3a92f42a662347847c1ac61e8b8b8cd26a6e"
+          "sha256": "f8ff1b345cac92c2d1005b6310527652760c08b6f8e8bf23d60d36409d12d788"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -13258,7 +13124,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "3fb5fd38ea3436178f016c77908913ef722fe7d0cbe30880818bd3db827e5a2e"
+          "sha256": "15bd3bbe5958af4a6f3b2c5a015000bf394cb893a0bdb52550bbf7e52231e473"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -13299,7 +13165,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e19c78f0453278a08ad14cf1c0d77edede5d8617cdb6472ac64af10ef1e38616"
+          "sha256": "91a4f4dc250f5b9a6a38d986a9ff689d957212066a58a962558eab3bbe563688"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -13473,7 +13339,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "1c6d22c407c0d06886a21f8f6981aa93299356367a4f22631947d5e8be0c60e8"
+          "sha256": "da12e42fb40b588390ac7ef25f025330a3d7f00573c0debec2c43575ff45d03c"
         },
         "pilots/PilotsMidlet$7.class": {
           "minor": 3,
@@ -13487,7 +13353,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "51b8270be154ed91882565c3d4286c3db6d1ccfa0a5aa1911fb726250aabb065"
+          "sha256": "e8512b73f24531ae66002024972180c281511ca7114873c60ab9843e547c40ea"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -13521,7 +13387,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "6f7d67efe012d04e980b08e076baa9732a1ef2221f0f8dcfd05e092556ddbac9"
+          "sha256": "fe3ca5a350d14962bc9530aef16fa33191ac3c4109d425bb4b79f5c59bb67dd1"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -13544,7 +13410,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8e93b6ac03dab8f2b78aadaa079f55711e2247428ccf8bc589d1573161ff2dee"
+          "sha256": "9fffa28705eb61bacadf69814a2d8e77c14a197d78e0dbf749cc7123a88c83df"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -13594,7 +13460,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e95a591b90ba27c8427b6083bbbeba933e1b04acf01aa61e4d0ad670cf811ec6"
+          "sha256": "11c3d79c7334995a37e88e658791405cbb7c61428ffcdcf46d866d499bc921cd"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -13616,6 +13482,39 @@
           ],
           "stackmap_utf8_present": true,
           "sha256": "2a1fb5f264dcea6d5c5a5b243bfd6fa367baff58b32024a5ba5a4229f5327ecd"
+        },
+        "pilots/SewerLogic.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/ByteArrayInputStream",
+            "java/io/ByteArrayOutputStream",
+            "java/io/DataInputStream",
+            "java/io/DataOutputStream",
+            "java/io/IOException",
+            "java/io/InputStream",
+            "java/io/OutputStream",
+            "java/lang/Math",
+            "java/lang/RuntimeException",
+            "java/lang/String",
+            "java/lang/Throwable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "c928ae68101c69578e3f3cfc586fe65423ac14f7798608a8f6d2642821154970"
+        },
+        "pilots/SewerScene.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/Math",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Font",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "f48c83566d16b82d84d8336c0169273a46699ac9e73c9d2858e5f790fff9c78f"
         },
         "pilots/SoundSink.class": {
           "minor": 3,
@@ -16268,6 +16167,161 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 23328
+        },
+        "scenes/07-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/07-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/07-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-46.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5096
+        },
+        "scenes/07-47.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6336
+        },
+        "scenes/07-48.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5096
+        },
+        "scenes/07-56.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-57.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4095
+        },
+        "scenes/07-59.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/07-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-61.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-62.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4095
+        },
+        "scenes/07-63.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/07-64.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22125
+        },
+        "scenes/07-70.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9280
+        },
+        "scenes/07-71.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5760
+        },
+        "scenes/07-72.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9900
+        },
+        "scenes/07-73.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4560
+        },
+        "scenes/07-74.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6351
+        },
+        "scenes/07-75.anm": {
+          "count": 24,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3416
+        },
+        "scenes/07-76.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2880
+        },
+        "scenes/07-77.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5742
+        },
+        "scenes/07-78.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2880
+        },
+        "scenes/07-79.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7360
+        },
+        "scenes/07-80.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3976
+        },
+        "scenes/07-81.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4386
+        },
+        "scenes/07-82.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3976
+        },
+        "scenes/07-83.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3784
+        },
+        "scenes/07-84.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3510
         },
         "scenes/08-20000.anm": {
           "count": 1,
@@ -22010,535 +22064,199 @@
           "max_indexed_frame_bytes": 3245
         }
       },
-      "preview_scene": 17,
+      "preview_scene": 7,
       "preview_catalog": [
         {
-          "resource_id": 49,
+          "resource_id": 46,
           "anchor": [
-            192,
-            0
+            88,
+            16
           ],
           "focus": [
-            245,
-            73
+            120,
+            16
           ],
-          "label": "01 Финал — 49"
+          "label": "01 Канализация — 46"
         },
         {
-          "resource_id": 50,
+          "resource_id": 47,
           "anchor": [
-            192,
-            0
+            152,
+            16
           ],
           "focus": [
-            245,
-            73
+            184,
+            16
           ],
-          "label": "02 Финал — 50"
+          "label": "02 Канализация — 47"
         },
         {
-          "resource_id": 52,
+          "resource_id": 48,
           "anchor": [
-            128,
-            96
+            280,
+            16
           ],
           "focus": [
-            353,
-            175
+            312,
+            16
           ],
-          "label": "03 Финал — 52"
-        },
-        {
-          "resource_id": 55,
-          "anchor": [
-            384,
-            384
-          ],
-          "focus": [
-            387,
-            365
-          ],
-          "label": "04 Финал — 55"
-        },
-        {
-          "resource_id": 56,
-          "anchor": [
-            384,
-            384
-          ],
-          "focus": [
-            389,
-            369
-          ],
-          "label": "05 Финал — 56"
+          "label": "03 Канализация — 48"
         },
         {
           "resource_id": 57,
           "anchor": [
-            512,
-            368
+            200,
+            128
           ],
           "focus": [
-            544,
-            347
+            232,
+            128
           ],
-          "label": "06 Финал — 57"
-        },
-        {
-          "resource_id": 58,
-          "anchor": [
-            320,
-            352
-          ],
-          "focus": [
-            339,
-            334
-          ],
-          "label": "07 Финал — 58"
+          "label": "04 Канализация — 57"
         },
         {
           "resource_id": 59,
           "anchor": [
-            320,
-            352
+            200,
+            128
           ],
           "focus": [
-            337,
-            330
+            232,
+            128
           ],
-          "label": "08 Финал — 59"
-        },
-        {
-          "resource_id": 60,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            608,
-            206
-          ],
-          "label": "09 Финал — 60"
+          "label": "05 Канализация — 59"
         },
         {
           "resource_id": 61,
           "anchor": [
-            576,
-            224
+            200,
+            128
           ],
           "focus": [
-            610,
-            202
+            232,
+            128
           ],
-          "label": "10 Финал — 61"
-        },
-        {
-          "resource_id": 62,
-          "anchor": [
-            256,
-            288
-          ],
-          "focus": [
-            284,
-            271
-          ],
-          "label": "11 Финал — 62"
+          "label": "06 Канализация — 61"
         },
         {
           "resource_id": 63,
           "anchor": [
-            448,
-            336
+            200,
+            128
           ],
           "focus": [
-            546,
-            335
+            232,
+            128
           ],
-          "label": "12 Финал — 63"
+          "label": "07 Канализация — 63"
         },
         {
           "resource_id": 64,
           "anchor": [
-            448,
-            336
-          ],
-          "focus": [
-            482,
-            303
-          ],
-          "label": "13 Финал — 64"
-        },
-        {
-          "resource_id": 65,
-          "anchor": [
-            448,
-            336
-          ],
-          "focus": [
-            517,
-            347
-          ],
-          "label": "14 Финал — 65"
-        },
-        {
-          "resource_id": 66,
-          "anchor": [
-            448,
-            336
-          ],
-          "focus": [
-            480,
-            299
-          ],
-          "label": "15 Финал — 66"
-        },
-        {
-          "resource_id": 67,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            225,
-            255
-          ],
-          "label": "16 Финал — 67"
-        },
-        {
-          "resource_id": 68,
-          "anchor": [
-            64,
-            272
-          ],
-          "focus": [
-            92,
-            239
-          ],
-          "label": "17 Финал — 68"
-        },
-        {
-          "resource_id": 69,
-          "anchor": [
-            576,
-            240
-          ],
-          "focus": [
-            609,
+            83,
             207
           ],
-          "label": "18 Финал — 69"
-        },
-        {
-          "resource_id": 70,
-          "anchor": [
-            192,
-            288
-          ],
           "focus": [
-            224,
-            251
+            115,
+            207
           ],
-          "label": "19 Финал — 70"
+          "label": "08 Канализация — 64"
         },
         {
           "resource_id": 71,
           "anchor": [
-            64,
-            272
+            24,
+            96
           ],
           "focus": [
-            95,
-            235
+            56,
+            96
           ],
-          "label": "20 Финал — 71"
+          "label": "09 Канализация — 71"
         },
         {
           "resource_id": 72,
           "anchor": [
-            576,
-            240
+            152,
+            207
           ],
           "focus": [
-            608,
-            203
+            184,
+            207
           ],
-          "label": "21 Финал — 72"
-        },
-        {
-          "resource_id": 73,
-          "anchor": [
-            320,
-            80
-          ],
-          "focus": [
-            352,
-            43
-          ],
-          "label": "22 Финал — 73"
+          "label": "10 Канализация — 72"
         },
         {
           "resource_id": 74,
           "anchor": [
-            256,
-            288
+            0,
+            207
           ],
           "focus": [
-            284,
-            271
+            32,
+            207
           ],
-          "label": "23 Финал — 74"
+          "label": "11 Канализация — 74"
         },
         {
           "resource_id": 75,
           "anchor": [
-            128,
-            256
+            0,
+            207
           ],
           "focus": [
-            194,
-            295
+            32,
+            207
           ],
-          "label": "24 Финал — 75"
+          "label": "12 Канализация — 75"
         },
         {
-          "resource_id": 76,
+          "resource_id": 77,
           "anchor": [
-            128,
-            256
+            399,
+            207
           ],
           "focus": [
-            193,
-            291
+            399,
+            207
           ],
-          "label": "25 Финал — 76"
+          "label": "13 Канализация — 77"
+        },
+        {
+          "resource_id": 79,
+          "anchor": [
+            0,
+            160
+          ],
+          "focus": [
+            32,
+            160
+          ],
+          "label": "14 Канализация — 79"
         },
         {
           "resource_id": 81,
           "anchor": [
-            0,
+            24,
             0
           ],
           "focus": [
-            77,
-            104
-          ],
-          "label": "26 Финал — 81"
-        },
-        {
-          "resource_id": 82,
-          "anchor": [
-            0,
+            56,
             0
           ],
-          "focus": [
-            70,
-            133
-          ],
-          "label": "27 Финал — 82"
+          "label": "15 Канализация — 81"
         },
         {
           "resource_id": 83,
           "anchor": [
-            0,
-            0
+            399,
+            160
           ],
           "focus": [
-            41,
-            133
+            399,
+            160
           ],
-          "label": "28 Финал — 83"
-        },
-        {
-          "resource_id": 84,
-          "anchor": [
-            512,
-            368
-          ],
-          "focus": [
-            544,
-            347
-          ],
-          "label": "29 Финал — 84"
-        },
-        {
-          "resource_id": 85,
-          "anchor": [
-            256,
-            288
-          ],
-          "focus": [
-            284,
-            271
-          ],
-          "label": "30 Финал — 85"
-        },
-        {
-          "resource_id": 87,
-          "anchor": [
-            0,
-            32
-          ],
-          "focus": [
-            94,
-            112
-          ],
-          "label": "31 Финал — 87"
-        },
-        {
-          "resource_id": 88,
-          "anchor": [
-            0,
-            32
-          ],
-          "focus": [
-            61,
-            157
-          ],
-          "label": "32 Финал — 88"
-        },
-        {
-          "resource_id": 89,
-          "anchor": [
-            0,
-            32
-          ],
-          "focus": [
-            63,
-            157
-          ],
-          "label": "33 Финал — 89"
-        },
-        {
-          "resource_id": 91,
-          "anchor": [
-            256,
-            336
-          ],
-          "focus": [
-            319,
-            344
-          ],
-          "label": "34 Финал — 91"
-        },
-        {
-          "resource_id": 105,
-          "anchor": [
-            320,
-            208
-          ],
-          "focus": [
-            332,
-            218
-          ],
-          "label": "35 Финал — 105"
-        },
-        {
-          "resource_id": 106,
-          "anchor": [
-            64,
-            80
-          ],
-          "focus": [
-            350,
-            257
-          ],
-          "label": "36 Финал — 106"
-        },
-        {
-          "resource_id": 107,
-          "anchor": [
-            0,
-            0
-          ],
-          "focus": [
-            77,
-            108
-          ],
-          "label": "37 Финал — 107"
-        },
-        {
-          "resource_id": 111,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            607,
-            202
-          ],
-          "label": "38 Финал — 111"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            607,
-            202
-          ],
-          "label": "39 Финал — 112"
-        },
-        {
-          "resource_id": 113,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            607,
-            202
-          ],
-          "label": "40 Финал — 113"
-        },
-        {
-          "resource_id": 114,
-          "anchor": [
-            448,
-            0
-          ],
-          "focus": [
-            543,
-            186
-          ],
-          "label": "41 Финал — 114"
-        },
-        {
-          "resource_id": 115,
-          "anchor": [
-            320,
-            64
-          ],
-          "focus": [
-            345,
-            40
-          ],
-          "label": "42 Финал — 115"
-        },
-        {
-          "resource_id": 116,
-          "anchor": [
-            256,
-            176
-          ],
-          "focus": [
-            287,
-            155
-          ],
-          "label": "43 Финал — 116"
-        },
-        {
-          "resource_id": 117,
-          "anchor": [
-            256,
-            176
-          ],
-          "focus": [
-            381,
-            355
-          ],
-          "label": "44 Финал — 117"
+          "label": "16 Канализация — 83"
         }
       ],
       "largest_resources": [
@@ -22596,13 +22314,14 @@
     },
     {
       "profile": "240x320",
-      "classes": 71,
+      "classes": 73,
       "scenes": [
         2,
         3,
         4,
         5,
         6,
+        7,
         8,
         9,
         10,
@@ -22614,8 +22333,8 @@
         16,
         17
       ],
-      "animations": 1630,
-      "frames": 20412,
+      "animations": 1661,
+      "frames": 20772,
       "backgrounds": {
         "puzzles/basement.p8": [
           128,
@@ -22682,6 +22401,12 @@
           417,
           640,
           417
+        ],
+        "scenes/07.p8": [
+          432,
+          208,
+          432,
+          208
         ],
         "scenes/08.bar": [
           640,
@@ -22808,7 +22533,7 @@
       "manifest": {
         "Manifest-Version": "1.0",
         "MIDlet-Name": "Pilots Engine 240x320",
-        "MIDlet-Version": "0.22.0",
+        "MIDlet-Version": "0.23.0",
         "MIDlet-Vendor": "PILOTSJ2ME",
         "MIDlet-1": "Pilots Engine 240x320,,pilots.PilotsMidlet",
         "MicroEdition-Profile": "MIDP-2.0",
@@ -22817,30 +22542,30 @@
         "Pilots-Profile": "240x320",
         "Pilots-Raster-Cache-Pixels": "131072"
       },
-      "sha256": "d45af0d88159fee64847dddf95bd3c9383f85853b25c9babe89e1d74f2f7de30",
-      "jar_bytes": 20011207,
-      "entry_count": 2340,
-      "uncompressed_bytes": 135611752,
+      "sha256": "3eeeee0d34535e816196b5ddc4eaee87b830b92022b29951881ec6a095e1b07e",
+      "jar_bytes": 20685255,
+      "entry_count": 2402,
+      "uncompressed_bytes": 137962578,
       "extension_counts": {
         ".MF": 1,
         ".act": 1,
         ".animations": 1,
-        ".anm": 1630,
+        ".anm": 1661,
         ".bar": 15,
         ".bin": 1,
         ".board": 1,
-        ".class": 71,
-        ".events": 15,
+        ".class": 73,
+        ".events": 16,
         ".hot": 3,
-        ".mid": 17,
-        ".p8": 16,
+        ".mid": 18,
+        ".p8": 17,
         ".rules": 1,
         ".sprite": 7,
         ".sprites": 1,
         ".subtitles": 1,
         ".vm": 13,
         ".walk": 1,
-        ".wav": 544
+        ".wav": 570
       },
       "classes_detail": {
         "pilots/AnimalLogic.class": {
@@ -22932,7 +22657,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "7ec8896f48e77f43ed9754b5498855ca2808a112eeba496ec86b6193b9dca742"
+          "sha256": "5aa09f0e3aaa136f82fcf0a9eaf9290f871c5305372aea6bb560b16e2032b498"
         },
         "pilots/AnimationClip.class": {
           "minor": 3,
@@ -23171,7 +22896,7 @@
             "java/lang/String"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "70a9768be6e5b8bb07ebf000856c3a92f42a662347847c1ac61e8b8b8cd26a6e"
+          "sha256": "f8ff1b345cac92c2d1005b6310527652760c08b6f8e8bf23d60d36409d12d788"
         },
         "pilots/GardenLogic.class": {
           "minor": 3,
@@ -23257,7 +22982,7 @@
             "javax/microedition/lcdui/Graphics"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "3fb5fd38ea3436178f016c77908913ef722fe7d0cbe30880818bd3db827e5a2e"
+          "sha256": "15bd3bbe5958af4a6f3b2c5a015000bf394cb893a0bdb52550bbf7e52231e473"
         },
         "pilots/HotelWorld$Definition.class": {
           "minor": 3,
@@ -23298,7 +23023,7 @@
             "java/lang/Throwable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e19c78f0453278a08ad14cf1c0d77edede5d8617cdb6472ac64af10ef1e38616"
+          "sha256": "91a4f4dc250f5b9a6a38d986a9ff689d957212066a58a962558eab3bbe563688"
         },
         "pilots/Hotspot.class": {
           "minor": 3,
@@ -23472,7 +23197,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "1c6d22c407c0d06886a21f8f6981aa93299356367a4f22631947d5e8be0c60e8"
+          "sha256": "da12e42fb40b588390ac7ef25f025330a3d7f00573c0debec2c43575ff45d03c"
         },
         "pilots/PilotsMidlet$7.class": {
           "minor": 3,
@@ -23486,7 +23211,7 @@
             "javax/microedition/lcdui/Displayable"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "51b8270be154ed91882565c3d4286c3db6d1ccfa0a5aa1911fb726250aabb065"
+          "sha256": "e8512b73f24531ae66002024972180c281511ca7114873c60ab9843e547c40ea"
         },
         "pilots/PilotsMidlet$GameCanvas.class": {
           "minor": 3,
@@ -23520,7 +23245,7 @@
             "javax/microedition/rms/RecordStore"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "6f7d67efe012d04e980b08e076baa9732a1ef2221f0f8dcfd05e092556ddbac9"
+          "sha256": "fe3ca5a350d14962bc9530aef16fa33191ac3c4109d425bb4b79f5c59bb67dd1"
         },
         "pilots/PilotsMidlet.class": {
           "minor": 3,
@@ -23543,7 +23268,7 @@
             "javax/microedition/midlet/MIDlet"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "8e93b6ac03dab8f2b78aadaa079f55711e2247428ccf8bc589d1573161ff2dee"
+          "sha256": "9fffa28705eb61bacadf69814a2d8e77c14a197d78e0dbf749cc7123a88c83df"
         },
         "pilots/RasterCache.class": {
           "minor": 3,
@@ -23593,7 +23318,7 @@
             "java/lang/Object"
           ],
           "stackmap_utf8_present": true,
-          "sha256": "e95a591b90ba27c8427b6083bbbeba933e1b04acf01aa61e4d0ad670cf811ec6"
+          "sha256": "11c3d79c7334995a37e88e658791405cbb7c61428ffcdcf46d866d499bc921cd"
         },
         "pilots/ScriptVM$Host.class": {
           "minor": 3,
@@ -23615,6 +23340,39 @@
           ],
           "stackmap_utf8_present": true,
           "sha256": "2a1fb5f264dcea6d5c5a5b243bfd6fa367baff58b32024a5ba5a4229f5327ecd"
+        },
+        "pilots/SewerLogic.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/ByteArrayInputStream",
+            "java/io/ByteArrayOutputStream",
+            "java/io/DataInputStream",
+            "java/io/DataOutputStream",
+            "java/io/IOException",
+            "java/io/InputStream",
+            "java/io/OutputStream",
+            "java/lang/Math",
+            "java/lang/RuntimeException",
+            "java/lang/String",
+            "java/lang/Throwable"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "c928ae68101c69578e3f3cfc586fe65423ac14f7798608a8f6d2642821154970"
+        },
+        "pilots/SewerScene.class": {
+          "minor": 3,
+          "major": 45,
+          "api_references": [
+            "java/io/IOException",
+            "java/lang/Math",
+            "java/lang/String",
+            "java/lang/StringBuffer",
+            "javax/microedition/lcdui/Font",
+            "javax/microedition/lcdui/Graphics"
+          ],
+          "stackmap_utf8_present": true,
+          "sha256": "f48c83566d16b82d84d8336c0169273a46699ac9e73c9d2858e5f790fff9c78f"
         },
         "pilots/SoundSink.class": {
           "minor": 3,
@@ -26267,6 +26025,161 @@
           "count": 1,
           "duration_ms": 100,
           "max_indexed_frame_bytes": 23328
+        },
+        "scenes/07-20016.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/07-20017.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4225
+        },
+        "scenes/07-20018.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-20019.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-46.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5096
+        },
+        "scenes/07-47.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6336
+        },
+        "scenes/07-48.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5096
+        },
+        "scenes/07-56.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-57.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-58.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4095
+        },
+        "scenes/07-59.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/07-60.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4221
+        },
+        "scenes/07-61.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5475
+        },
+        "scenes/07-62.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4095
+        },
+        "scenes/07-63.anm": {
+          "count": 4,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6162
+        },
+        "scenes/07-64.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 22125
+        },
+        "scenes/07-70.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9280
+        },
+        "scenes/07-71.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5760
+        },
+        "scenes/07-72.anm": {
+          "count": 36,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 9900
+        },
+        "scenes/07-73.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4560
+        },
+        "scenes/07-74.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 6351
+        },
+        "scenes/07-75.anm": {
+          "count": 24,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3416
+        },
+        "scenes/07-76.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2880
+        },
+        "scenes/07-77.anm": {
+          "count": 20,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 5742
+        },
+        "scenes/07-78.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 2880
+        },
+        "scenes/07-79.anm": {
+          "count": 47,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 7360
+        },
+        "scenes/07-80.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3976
+        },
+        "scenes/07-81.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 4386
+        },
+        "scenes/07-82.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3976
+        },
+        "scenes/07-83.anm": {
+          "count": 41,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3784
+        },
+        "scenes/07-84.anm": {
+          "count": 1,
+          "duration_ms": 100,
+          "max_indexed_frame_bytes": 3510
         },
         "scenes/08-20000.anm": {
           "count": 1,
@@ -32009,535 +31922,199 @@
           "max_indexed_frame_bytes": 3245
         }
       },
-      "preview_scene": 17,
+      "preview_scene": 7,
       "preview_catalog": [
         {
-          "resource_id": 49,
+          "resource_id": 46,
           "anchor": [
-            192,
-            0
+            88,
+            16
           ],
           "focus": [
-            245,
-            73
+            120,
+            16
           ],
-          "label": "01 Финал — 49"
+          "label": "01 Канализация — 46"
         },
         {
-          "resource_id": 50,
+          "resource_id": 47,
           "anchor": [
-            192,
-            0
+            152,
+            16
           ],
           "focus": [
-            245,
-            73
+            184,
+            16
           ],
-          "label": "02 Финал — 50"
+          "label": "02 Канализация — 47"
         },
         {
-          "resource_id": 52,
+          "resource_id": 48,
           "anchor": [
-            128,
-            96
+            280,
+            16
           ],
           "focus": [
-            353,
-            175
+            312,
+            16
           ],
-          "label": "03 Финал — 52"
-        },
-        {
-          "resource_id": 55,
-          "anchor": [
-            384,
-            384
-          ],
-          "focus": [
-            387,
-            365
-          ],
-          "label": "04 Финал — 55"
-        },
-        {
-          "resource_id": 56,
-          "anchor": [
-            384,
-            384
-          ],
-          "focus": [
-            389,
-            369
-          ],
-          "label": "05 Финал — 56"
+          "label": "03 Канализация — 48"
         },
         {
           "resource_id": 57,
           "anchor": [
-            512,
-            368
+            200,
+            128
           ],
           "focus": [
-            544,
-            347
+            232,
+            128
           ],
-          "label": "06 Финал — 57"
-        },
-        {
-          "resource_id": 58,
-          "anchor": [
-            320,
-            352
-          ],
-          "focus": [
-            339,
-            334
-          ],
-          "label": "07 Финал — 58"
+          "label": "04 Канализация — 57"
         },
         {
           "resource_id": 59,
           "anchor": [
-            320,
-            352
+            200,
+            128
           ],
           "focus": [
-            337,
-            330
+            232,
+            128
           ],
-          "label": "08 Финал — 59"
-        },
-        {
-          "resource_id": 60,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            608,
-            206
-          ],
-          "label": "09 Финал — 60"
+          "label": "05 Канализация — 59"
         },
         {
           "resource_id": 61,
           "anchor": [
-            576,
-            224
+            200,
+            128
           ],
           "focus": [
-            610,
-            202
+            232,
+            128
           ],
-          "label": "10 Финал — 61"
-        },
-        {
-          "resource_id": 62,
-          "anchor": [
-            256,
-            288
-          ],
-          "focus": [
-            284,
-            271
-          ],
-          "label": "11 Финал — 62"
+          "label": "06 Канализация — 61"
         },
         {
           "resource_id": 63,
           "anchor": [
-            448,
-            336
+            200,
+            128
           ],
           "focus": [
-            546,
-            335
+            232,
+            128
           ],
-          "label": "12 Финал — 63"
+          "label": "07 Канализация — 63"
         },
         {
           "resource_id": 64,
           "anchor": [
-            448,
-            336
-          ],
-          "focus": [
-            482,
-            303
-          ],
-          "label": "13 Финал — 64"
-        },
-        {
-          "resource_id": 65,
-          "anchor": [
-            448,
-            336
-          ],
-          "focus": [
-            517,
-            347
-          ],
-          "label": "14 Финал — 65"
-        },
-        {
-          "resource_id": 66,
-          "anchor": [
-            448,
-            336
-          ],
-          "focus": [
-            480,
-            299
-          ],
-          "label": "15 Финал — 66"
-        },
-        {
-          "resource_id": 67,
-          "anchor": [
-            192,
-            288
-          ],
-          "focus": [
-            225,
-            255
-          ],
-          "label": "16 Финал — 67"
-        },
-        {
-          "resource_id": 68,
-          "anchor": [
-            64,
-            272
-          ],
-          "focus": [
-            92,
-            239
-          ],
-          "label": "17 Финал — 68"
-        },
-        {
-          "resource_id": 69,
-          "anchor": [
-            576,
-            240
-          ],
-          "focus": [
-            609,
+            83,
             207
           ],
-          "label": "18 Финал — 69"
-        },
-        {
-          "resource_id": 70,
-          "anchor": [
-            192,
-            288
-          ],
           "focus": [
-            224,
-            251
+            115,
+            207
           ],
-          "label": "19 Финал — 70"
+          "label": "08 Канализация — 64"
         },
         {
           "resource_id": 71,
           "anchor": [
-            64,
-            272
+            24,
+            96
           ],
           "focus": [
-            95,
-            235
+            56,
+            96
           ],
-          "label": "20 Финал — 71"
+          "label": "09 Канализация — 71"
         },
         {
           "resource_id": 72,
           "anchor": [
-            576,
-            240
+            152,
+            207
           ],
           "focus": [
-            608,
-            203
+            184,
+            207
           ],
-          "label": "21 Финал — 72"
-        },
-        {
-          "resource_id": 73,
-          "anchor": [
-            320,
-            80
-          ],
-          "focus": [
-            352,
-            43
-          ],
-          "label": "22 Финал — 73"
+          "label": "10 Канализация — 72"
         },
         {
           "resource_id": 74,
           "anchor": [
-            256,
-            288
+            0,
+            207
           ],
           "focus": [
-            284,
-            271
+            32,
+            207
           ],
-          "label": "23 Финал — 74"
+          "label": "11 Канализация — 74"
         },
         {
           "resource_id": 75,
           "anchor": [
-            128,
-            256
+            0,
+            207
           ],
           "focus": [
-            194,
-            295
+            32,
+            207
           ],
-          "label": "24 Финал — 75"
+          "label": "12 Канализация — 75"
         },
         {
-          "resource_id": 76,
+          "resource_id": 77,
           "anchor": [
-            128,
-            256
+            399,
+            207
           ],
           "focus": [
-            193,
-            291
+            399,
+            207
           ],
-          "label": "25 Финал — 76"
+          "label": "13 Канализация — 77"
+        },
+        {
+          "resource_id": 79,
+          "anchor": [
+            0,
+            160
+          ],
+          "focus": [
+            32,
+            160
+          ],
+          "label": "14 Канализация — 79"
         },
         {
           "resource_id": 81,
           "anchor": [
-            0,
+            24,
             0
           ],
           "focus": [
-            77,
-            104
-          ],
-          "label": "26 Финал — 81"
-        },
-        {
-          "resource_id": 82,
-          "anchor": [
-            0,
+            56,
             0
           ],
-          "focus": [
-            70,
-            133
-          ],
-          "label": "27 Финал — 82"
+          "label": "15 Канализация — 81"
         },
         {
           "resource_id": 83,
           "anchor": [
-            0,
-            0
+            399,
+            160
           ],
           "focus": [
-            41,
-            133
+            399,
+            160
           ],
-          "label": "28 Финал — 83"
-        },
-        {
-          "resource_id": 84,
-          "anchor": [
-            512,
-            368
-          ],
-          "focus": [
-            544,
-            347
-          ],
-          "label": "29 Финал — 84"
-        },
-        {
-          "resource_id": 85,
-          "anchor": [
-            256,
-            288
-          ],
-          "focus": [
-            284,
-            271
-          ],
-          "label": "30 Финал — 85"
-        },
-        {
-          "resource_id": 87,
-          "anchor": [
-            0,
-            32
-          ],
-          "focus": [
-            94,
-            112
-          ],
-          "label": "31 Финал — 87"
-        },
-        {
-          "resource_id": 88,
-          "anchor": [
-            0,
-            32
-          ],
-          "focus": [
-            61,
-            157
-          ],
-          "label": "32 Финал — 88"
-        },
-        {
-          "resource_id": 89,
-          "anchor": [
-            0,
-            32
-          ],
-          "focus": [
-            63,
-            157
-          ],
-          "label": "33 Финал — 89"
-        },
-        {
-          "resource_id": 91,
-          "anchor": [
-            256,
-            336
-          ],
-          "focus": [
-            319,
-            344
-          ],
-          "label": "34 Финал — 91"
-        },
-        {
-          "resource_id": 105,
-          "anchor": [
-            320,
-            208
-          ],
-          "focus": [
-            332,
-            218
-          ],
-          "label": "35 Финал — 105"
-        },
-        {
-          "resource_id": 106,
-          "anchor": [
-            64,
-            80
-          ],
-          "focus": [
-            350,
-            257
-          ],
-          "label": "36 Финал — 106"
-        },
-        {
-          "resource_id": 107,
-          "anchor": [
-            0,
-            0
-          ],
-          "focus": [
-            77,
-            108
-          ],
-          "label": "37 Финал — 107"
-        },
-        {
-          "resource_id": 111,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            607,
-            202
-          ],
-          "label": "38 Финал — 111"
-        },
-        {
-          "resource_id": 112,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            607,
-            202
-          ],
-          "label": "39 Финал — 112"
-        },
-        {
-          "resource_id": 113,
-          "anchor": [
-            576,
-            224
-          ],
-          "focus": [
-            607,
-            202
-          ],
-          "label": "40 Финал — 113"
-        },
-        {
-          "resource_id": 114,
-          "anchor": [
-            448,
-            0
-          ],
-          "focus": [
-            543,
-            186
-          ],
-          "label": "41 Финал — 114"
-        },
-        {
-          "resource_id": 115,
-          "anchor": [
-            320,
-            64
-          ],
-          "focus": [
-            345,
-            40
-          ],
-          "label": "42 Финал — 115"
-        },
-        {
-          "resource_id": 116,
-          "anchor": [
-            256,
-            176
-          ],
-          "focus": [
-            287,
-            155
-          ],
-          "label": "43 Финал — 116"
-        },
-        {
-          "resource_id": 117,
-          "anchor": [
-            256,
-            176
-          ],
-          "focus": [
-            381,
-            355
-          ],
-          "label": "44 Финал — 117"
+          "label": "16 Канализация — 83"
         }
       ],
       "largest_resources": [

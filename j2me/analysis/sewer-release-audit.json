@@ -1,0 +1,39 @@
+{
+  "version": "0.23.0",
+  "baseline": "cf11c24",
+  "profiles": {
+    "128x128": {
+      "size": 19770786,
+      "sha256": "b221b4bd65f24aa46c0399f5a889eb80c626ab9e1e5999cbdad1d37655d48361",
+      "unchanged_previous_resources": 2266,
+      "removed": [
+        "scenes/17.animations"
+      ],
+      "added_resources": 63,
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "128x160": {
+      "size": 19771048,
+      "sha256": "9262b67a85c11faf5019a305229070bf0705249f8a8093c74a0d2225b72e774d",
+      "unchanged_previous_resources": 2266,
+      "removed": [
+        "scenes/17.animations"
+      ],
+      "added_resources": 63,
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "240x320": {
+      "size": 20685255,
+      "sha256": "3eeeee0d34535e816196b5ddc4eaee87b830b92022b29951881ec6a095e1b07e",
+      "unchanged_previous_resources": 2266,
+      "removed": [
+        "scenes/17.animations"
+      ],
+      "added_resources": 63,
+      "crc": "passed",
+      "jad": "passed"
+    }
+  }
+}
