@@ -27,7 +27,7 @@ public final class AnimationDecodeTest {
             if(!actual.equals(expected.getProperty(name))) throw new RuntimeException("Decoded pixels changed: "+name);
             clips++;
         }
-        if(clips!=1661 || frames!=20772) throw new RuntimeException("Incomplete frame fingerprints");
+        if(clips!=1665 || frames!=20792) throw new RuntimeException("Incomplete frame fingerprints");
         for(String name:new String[]{"overflow","literal","incomplete","size"}) {
             try { new AnimationClip("/bad-rle-"+name+".anm");throw new RuntimeException("Accepted malformed frame: "+name); }
             catch(IOException correct) {}
