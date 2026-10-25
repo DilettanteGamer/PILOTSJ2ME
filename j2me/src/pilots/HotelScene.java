@@ -21,13 +21,6 @@ public final class HotelScene extends ZooScene {
         for(int i=0;i<BRANCH_X.length;i++)if(branchAvailable(i) && Math.abs(x-BRANCH_X[i]-32)<=24 && Math.abs(y-BRANCH_Y[i]-16)<=18)return i;
         return -1;
     }
-    private void paintBranches(Graphics g,Viewport v){
-        for(int i=0;i<BRANCH_X.length;i++)if(branchAvailable(i)){
-            int x=v.screenX(BRANCH_X[i]+32),y=v.screenY(BRANCH_Y[i]+16),r=Math.max(3,v.screenX(10)-v.screenX(0));
-            g.setColor(0x302510);g.drawRect(x-r-1,y-r-1,r*2+2,r*2+2);
-            g.setColor(0xffe47a);g.drawRect(x-r,y-r,r*2,r*2);g.drawLine(x-2,y,x+2,y);g.drawLine(x,y-2,x,y+2);
-        }
-    }
     public HotelScene(Scene scene,GameState state) throws IOException {
         super(scene,state,new HotelLogic(state),false);animals=(HotelLogic)logic;
         handles=state.scene==9?new RefrigeratorPuzzle():null;
@@ -111,7 +104,6 @@ public final class HotelScene extends ZooScene {
             if(!grid && thing(order[i]).id==61) { paintGrid(graphics,view);grid=true; }
         }
         if(!grid)paintGrid(graphics,view);
-        paintBranches(graphics,view);
     }
     private void paintGrid(Graphics graphics,Viewport view) {
         if(!animals.world.fridgePanelVisible())return;
