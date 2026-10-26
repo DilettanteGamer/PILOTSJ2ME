@@ -1,11 +1,11 @@
 MIDlet-Name: Pilots Engine 128x160
-MIDlet-Version: 0.26.0
+MIDlet-Version: 0.26.1
 MIDlet-Vendor: PILOTSJ2ME
-MIDlet-1: Pilots Engine 128x160,,pilots.PilotsMidlet
+MIDlet-1: Pilots Engine 128x160,/icon.png,pilots.PilotsMidlet
 MicroEdition-Profile: MIDP-2.0
 MicroEdition-Configuration: CLDC-1.1
 Pilots-Screen: 128x160
 Pilots-Profile: 128x160
 Pilots-Raster-Cache-Pixels: 65536
 MIDlet-Jar-URL: Pilots-128x160.jar
-MIDlet-Jar-Size: 19851775
+MIDlet-Jar-Size: 19852356

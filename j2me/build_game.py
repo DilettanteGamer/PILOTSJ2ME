@@ -31,7 +31,7 @@ from extract_sewer import extract as extract_sewer,profile as sewer_profile
 from extract_basement_platform import extract as extract_basement_platform
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '0.26.0'
+VERSION = '0.26.1'
 PROFILES = json.loads((ROOT / 'profiles.json').read_text())
 
 
@@ -146,7 +146,9 @@ def package(profile, classes, sprites, output):
     manifest = resources.manifest(entries['META-INF/MANIFEST.MF'])
     manifest['MIDlet-Version'] = VERSION
     manifest['MIDlet-Name'] = config['midlet_name']
-    manifest['MIDlet-1'] = config['midlet_name'] + ',,pilots.PilotsMidlet'
+    from release_icon import icon
+    entries['icon.png']=icon()
+    manifest['MIDlet-1'] = config['midlet_name'] + ',/icon.png,pilots.PilotsMidlet'
     manifest['Pilots-Screen'] = profile
     manifest['Pilots-Profile'] = profile
     manifest['Pilots-Raster-Cache-Pixels'] = str(config['raster_cache_pixels'])

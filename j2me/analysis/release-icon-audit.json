@@ -1,0 +1,17 @@
+{
+  "128x128": {
+    "size": 19846145,
+    "sha256": "87396b4853211b215e27d328894dc80aa3373da1e75bec8c45ae66fbbf990f21",
+    "gameplay_resources_and_classes_unchanged": true
+  },
+  "128x160": {
+    "size": 19852356,
+    "sha256": "696602f817e423272c3131c6277845f957c7953114735bb812e879ccfc46c0f1",
+    "gameplay_resources_and_classes_unchanged": true
+  },
+  "240x320": {
+    "size": 20855177,
+    "sha256": "7917f59841db4af67b9f9772f3aeadf9a18df23672d4860a357346adfd589b9f",
+    "gameplay_resources_and_classes_unchanged": true
+  }
+}
