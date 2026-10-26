@@ -1,0 +1,29 @@
+{
+  "version": "0.27.0",
+  "profile": "128x160",
+  "jar_bytes": 7883869,
+  "jar_sha256": "f33cbfd9c2042422c84230dc2e9257ffadf98ada5b11b0af9760f77367702071",
+  "baseline_bytes": 19852356,
+  "tile_size": 16,
+  "lzma_dictionary_bytes": 262144,
+  "tile_cache_bytes": 262144,
+  "independent_block_bytes": 262144,
+  "cldc_api_port": true,
+  "cldc_preverified": true,
+  "native_device_tested": false,
+  "all_locations_available_for_testing": true,
+  "separate_experimental_rms": true,
+  "lzma_context_reused": false,
+  "checks": {
+    "codec_port": "CLDC codec exact: clips=327 packets=29087 ms=715",
+    "all_animation_pixels": "AnimationDecode: all 1667 clips / 20916 frames byte-identical to source; malformed RLE rejected",
+    "resources": "P8/bar/MIDI exact restored resources=52",
+    "mmapi_streams": "MMAPI spy valid PCM11025/16: clips=327 ms=838",
+    "audio_lifecycle": "Audio: 471 WAVs, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed",
+    "location_entries_and_saves": "LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge, switchboard and crate Canvas controls/timer/pause/RMS restore/automatic return and invalid catalog ID passed",
+    "walking_performance": "Walking: cold40frames_ms=190 warm4000frames_ms=25",
+    "baseline_walking_performance": "Walking: cold40frames_ms=15 warm4000frames_ms=9"
+  },
+  "class_count": 136,
+  "size_reduction_percent": 60.29
+}
