@@ -1,8 +1,8 @@
 {
-  "version": "0.27.2",
+  "version": "0.27.3",
   "profile": "128x160",
-  "jar_bytes": 12830987,
-  "jar_sha256": "a989e2f880ffa46ad476d6531ba6c326bb118cc0aed6e2b4e0a8bf65c64ca4da",
+  "jar_bytes": 12832419,
+  "jar_sha256": "a69fd98d6b44a49a4c6f0ccd7493e91882c218bc8bca65b6d1968f5aea3851ae",
   "baseline_bytes": 19852356,
   "tile_size": 16,
   "tile_cache_bytes": 131072,
@@ -17,13 +17,16 @@
     "all_animation_pixels": "AnimationDecode: all 1667 clips / 20916 frames byte-identical to source; malformed RLE rejected",
     "resources": "P8/bar/MIDI exact restored resources=52",
     "cache_budgets": "Native caches: two warmed walking cycles cause zero bank reloads; all byte budgets enforced",
+    "multi_actor_render": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=394",
+    "render_fallback": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=385",
+    "frame_pacing": "Frame pacing: long stall capped to one step; normal 100ms steps preserved; display service outside Canvas lock",
     "mmapi_streams": "Native MMAPI spy: MP3 resources=570 cached_replays=546 bytes exact",
     "audio_lifecycle": "Audio: 471 action sound cues via native MP3, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed",
     "location_entries_and_saves": "LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge, switchboard and crate Canvas controls/timer/pause/RMS restore/automatic return and invalid catalog ID passed",
-    "walking_performance": "Walking: cold40frames_ms=18 warm4000frames_ms=12",
-    "baseline_walking_performance": "Walking: cold40frames_ms=15 warm4000frames_ms=10"
+    "walking_performance": "Walking: cold40frames_ms=17 warm4000frames_ms=11",
+    "baseline_walking_performance": "Walking: cold40frames_ms=13 warm4000frames_ms=10"
   },
-  "class_count": 86,
+  "class_count": 87,
   "hot_graphics_codec": "native JAR DEFLATE",
   "cold_resources_codec": "native JAR DEFLATE",
   "audio_codec": "native MMAPI MP3 16 kbps mono 11025 Hz",
@@ -34,6 +37,11 @@
   "animation_descriptor_cache_bytes": 32768,
   "target_device": "Nokia C1-02",
   "available_storage_bytes": 13000000,
+  "shared_frame_raster_slots": 32,
+  "shared_frame_raster_pixel_limit": 32768,
+  "total_raster_pixel_limit": 65536,
+  "catch_up_max_delta_ms": 100,
+  "display_service_outside_game_lock": true,
   "native_audio_verification": {
     "codec": "MP3 mono 16 kbps 11025 Hz, original WAV input",
     "clips": 327,
@@ -52,7 +60,16 @@
       "interleaved_frame_p95_ms": 70.659,
       "lzma_blocks": 573
     },
-    "current_0_27_2": {
+    "current_0_27_3": {
+      "actions": 40,
+      "total_ms": 56.068,
+      "first_frame_p50_ms": 0.601,
+      "first_frame_p95_ms": 4.776,
+      "first_frame_max_ms": 5.859,
+      "interleaved_frame_p95_ms": 0.388,
+      "lzma_blocks": 0
+    },
+    "previous_0_27_2": {
       "actions": 40,
       "total_ms": 64.908,
       "first_frame_p50_ms": 0.66,
@@ -89,5 +106,15 @@
       "lzma_blocks": 0
     }
   },
-  "size_reduction_percent": 35.37
+  "render_comparison": {
+    "baseline_version": "0.27.2",
+    "frames": 300,
+    "baseline_image_allocations": 780,
+    "current_image_allocations": 11,
+    "warm_50_frames_baseline_allocations": 150,
+    "warm_50_frames_current_allocations": 0,
+    "render_sha256": "d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7",
+    "desktop_not_device_fps": true
+  },
+  "size_reduction_percent": 35.36
 }
