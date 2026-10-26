@@ -1,0 +1,12 @@
+{
+  "direct_images": 316,
+  "direct_banks": 95,
+  "direct_bank_target_bytes": 32768,
+  "direct_bank_frame_limit": 4,
+  "direct_raw_bytes": 1918225,
+  "largest_direct_frame_bytes": 23986,
+  "largest_direct_bank_bytes": 32760,
+  "tile_banks": 1321,
+  "tile_bank_raw_bytes": 63488256,
+  "cache_budgets_unchanged": true
+}

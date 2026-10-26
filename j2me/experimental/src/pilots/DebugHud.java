@@ -7,7 +7,7 @@ public final class DebugHud {
  private static int frames,ticks,changes,fps10,tickRate,changeRate;
  private static int update,updateMax,paint,paintMax,gap,load,loadMax,audio,audioMax,queue,effects,hud,hudMax;
  private static long minFree=Long.MAX_VALUE;
- private static int oldBanks,oldCalls,oldHits,oldRequests,oldRasterHits,oldOpens;
+ private static int oldBanks,oldDirect,oldCalls,oldHits,oldRequests,oldRasterHits,oldOpens;
  private static String[] labels;private static int[] pixels;private static int pixelWidth,pixelHeight;
  private static int time(long value){return (int)Math.max(0L,Math.min(9999L,value));}
  private static int rate(int count,long duration){return (int)Math.min(999L,(long)count*1000L/Math.max(1L,duration));}
@@ -15,7 +15,7 @@ public final class DebugHud {
  public static synchronized int mode(){return mode;}
  public static synchronized void toggle(){mode=(mode+2)%3;pixels=null;labels=null;resume();}
  public static synchronized void resume(){window=System.currentTimeMillis();snapshot=pulse=lastPaint=0;frames=ticks=changes=0;fps10=tickRate=changeRate=0;labels=null;}
- public static synchronized void scene(int value){scene=value;sceneLoad=0;update=updateMax=paint=paintMax=gap=load=loadMax=audio=audioMax=hud=hudMax=0;minFree=Long.MAX_VALUE;oldBanks=TileStore.loads;oldCalls=TileStore.frameCalls;oldHits=TileStore.frameCacheHits;oldRequests=FrameRasters.requests;oldRasterHits=FrameRasters.hits;oldOpens=PackedResources.opens;resume();}
+ public static synchronized void scene(int value){scene=value;sceneLoad=0;update=updateMax=paint=paintMax=gap=load=loadMax=audio=audioMax=hud=hudMax=0;minFree=Long.MAX_VALUE;oldBanks=TileStore.loads;oldDirect=TileStore.directLoads;oldCalls=TileStore.frameCalls;oldHits=TileStore.frameCacheHits;oldRequests=FrameRasters.requests;oldRasterHits=FrameRasters.hits;oldOpens=PackedResources.opens;resume();}
  public static synchronized void sceneCost(long duration){sceneLoad=time(duration);}
  public static synchronized void tick(long duration){ticks++;update=time(duration);updateMax=Math.max(updateMax,update);}
  public static synchronized void changed(){changes++;}
@@ -27,16 +27,16 @@ public final class DebugHud {
  public static void pulse(Canvas target,int height){if(due(System.currentTimeMillis())){int rows=mode()==2?7:2;target.repaint(0,Math.max(0,height-rows*8),target.getWidth(),Math.min(height,rows*8));}}
  private static void sample(long now){
   long elapsed=now-window;if(elapsed>=1000){fps10=(int)Math.min(9999L,((long)frames*10000L+elapsed/2)/elapsed);tickRate=rate(ticks,elapsed);changeRate=rate(changes,elapsed);frames=ticks=changes=0;window=now;}
-  int banks=TileStore.loads,calls=TileStore.frameCalls,hits=TileStore.frameCacheHits,requests=FrameRasters.requests,rasterHits=FrameRasters.hits,opens=PackedResources.opens;
+  int banks=TileStore.loads,direct=TileStore.directLoads,calls=TileStore.frameCalls,hits=TileStore.frameCacheHits,requests=FrameRasters.requests,rasterHits=FrameRasters.hits,opens=PackedResources.opens;
   Runtime runtime=Runtime.getRuntime();long free=runtime.freeMemory(),size=runtime.totalMemory();minFree=Math.min(minFree,free);
   labels=new String[]{"F"+(fps10/10)+"."+(fps10%10)+" T"+tickRate+" A"+changeRate+" S"+scene+"/"+sceneLoad,
    "U"+update+"/"+updateMax+" P"+paint+"/"+paintMax,
    "G"+gap+" L"+load+"/"+loadMax,
-   "B+"+Math.min(999,banks-oldBanks)+" C"+percent(hits-oldHits,calls-oldCalls)+"% R"+percent(rasterHits-oldRasterHits,requests-oldRequests)+"%",
+   "B+"+Math.min(999,banks-oldBanks)+" I+"+Math.min(999,direct-oldDirect)+" C"+percent(hits-oldHits,calls-oldCalls)+"% R"+percent(rasterHits-oldRasterHits,requests-oldRequests)+"%",
    "M"+((size-free)/1024)+"/"+(size/1024)+"K N"+(minFree/1024)+"K",
    "V"+visible+"/"+totalActors+" D"+hud+"/"+hudMax+" O+"+Math.min(999,opens-oldOpens),
    "AU"+audio+"/"+audioMax+" Q"+queue+" E"+effects};
-  oldBanks=banks;oldCalls=calls;oldHits=hits;oldRequests=requests;oldRasterHits=rasterHits;oldOpens=opens;snapshot=now;
+  oldBanks=banks;oldDirect=direct;oldCalls=calls;oldHits=hits;oldRequests=requests;oldRasterHits=rasterHits;oldOpens=opens;snapshot=now;
  }
  private static synchronized int[] prepare(int width,int height,int actors,int shown,long now){
   if(mode==0||width<1||height<1)return null;totalActors=actors;visible=shown;

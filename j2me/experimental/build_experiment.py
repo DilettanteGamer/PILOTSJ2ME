@@ -91,11 +91,19 @@ if native_tiles:
  for name in list(entries):
   if name.startswith('tiles/b'):
    raw=lzma.decompress(entries[name][9:],format=lzma.FORMAT_RAW,filters=filters);assert len(raw)==struct.unpack_from('>I',entries[name])[0];entries[name]=struct.pack('>i',-len(raw))+raw
+if fast_native and native_tiles:
+ from hybrid_frames import graphics as hybrid_graphics
+ hybrid_cache=WORK/('hybrid316-group32k4-native-v2-'+hashlib.sha256(source.read_bytes()).hexdigest()+'.pkl')
+ if hybrid_cache.exists():graphic_entries,graphic_stats=pickle.loads(hybrid_cache.read_bytes())
+ else:
+  graphic_entries,graphic_stats=hybrid_graphics(*collect_frames(source));hybrid_cache.write_bytes(pickle.dumps((graphic_entries,graphic_stats)))
+ entries={n:b for n,b in entries.items() if not n.startswith(('tiles/b','tiles/m','tiles/d'))};entries.update(graphic_entries)
+ (EXP/'dist/hybrid-graphics.json').write_text(json.dumps(graphic_stats,indent=2)+'\n');print('Hybrid graphics',graphic_stats,flush=True)
 entries={n:b for n,b in entries.items() if not n.endswith('.class')}
 for path in ([WORK/'verified.jar'] if fast_native else [EXP/'lib/concentus-silk-nb-cldc.jar',WORK/'verified.jar']):
  with zipfile.ZipFile(path) as jar:entries.update({n:jar.read(n) for n in jar.namelist() if n.endswith('.class')})
 entries['META-INF/LICENSE-CONCENTUS.txt']=(EXP/'CONCENTUS-LICENSE').read_bytes();entries['META-INF/LICENSE-LZMA.txt']=(EXP/'LZMA-LICENSE').read_bytes()
-text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.5').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
+text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.6').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
 out=EXP/'dist';out.mkdir(exist_ok=True);target=out/'Pilots-Experimental-128x160.jar'
 with zipfile.ZipFile(target,'w') as jar:
  for name,data in entries.items():jar.writestr(name,data,compress_type=zipfile.ZIP_STORED if (name.startswith('tiles/b') and not native_tiles) or (not fast_native and name.endswith(('.p8','.bar','.mid'))) else zipfile.ZIP_DEFLATED,compresslevel=9)
