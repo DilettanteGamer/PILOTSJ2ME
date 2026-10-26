@@ -17,13 +17,13 @@ public final class TileStore {
  public static void palette(int id,byte[] out)throws IOException{if(palettes==null){DataInputStream in=new DataInputStream(PackedResources.open("/tiles/palettes"));palettes=new byte[11520];try{in.readFully(palettes);}finally{in.close();}}if(id<0||id>=15)throw new IOException("Palette ID");System.arraycopy(palettes,id*768,out,0,768);}
  private static byte[] load(int id)throws IOException{
   int slot=0;for(int i=0;i<2;i++){if(bankIds[i]==id){ages[i]=++clock;return banks[i];}if(ages[i]<ages[slot])slot=i;}
-  DataInputStream in=new DataInputStream(TileStore.class.getResourceAsStream("/tiles/b"+id));
+  long began=System.currentTimeMillis();DataInputStream in=new DataInputStream(TileStore.class.getResourceAsStream("/tiles/b"+id));
   try{int declared=in.readInt();boolean nativeZip=declared<0;int size=nativeZip?-declared:declared;if(size<1||size>524288)throw new IOException("Tile bank length");
    banks[slot]=null;bankIds[slot]=-1;
    int retained=0;for(int i=0;i<2;i++)if(banks[i]!=null)retained+=banks[i].length;
    while(retained+size>131072){int old=-1;for(int i=0;i<2;i++)if(banks[i]!=null&&(old<0||ages[i]<ages[old]))old=i;if(old<0)break;retained-=banks[old].length;banks[old]=null;bankIds[old]=-1;}
    byte[] data=new byte[size];if(nativeZip)in.readFully(data);else PackedResources.unpack(in,data,size);banks[slot]=data;bankIds[slot]=id;ages[slot]=++clock;loads++;rawDecoded+=size;return data;
-  }finally{in.close();}
+  }finally{try{in.close();}finally{DebugHud.io(System.currentTimeMillis()-began);}}
  }
  public static synchronized void fill(int image,byte[] pixels,int w,int h)throws IOException{
   frameCalls++;for(int i=0;i<32;i++)if(frameIds[i]==image){if(frames[i].length!=w*h)throw new IOException("Cached dimensions");System.arraycopy(frames[i],0,pixels,0,w*h);frameAges[i]=++clock;frameCacheHits++;return;}int group=image/32;
