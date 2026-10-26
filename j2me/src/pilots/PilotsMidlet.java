@@ -165,7 +165,7 @@ MenuCanvas.Host {
     private void showMenu() {
         autoSave();
         if(this.menu==null)this.menu=new MenuCanvas(this);
-        this.menu.sound(progress.sound);this.menu.resume(this.canvas.sessionLoaded);
+        this.menu.sound(progress.sound);
         this.canvas.audio.menu(true);
         this.display.setCurrent(this.menu);
         this.canvas.audio.active(true);
@@ -290,8 +290,6 @@ MenuCanvas.Host {
 
         GameCanvas() throws IOException {
             this.setFullScreenMode(true);
-            this.addCommand(PilotsMidlet.this.menuCommand);
-            this.setCommandListener(PilotsMidlet.this);
             InputStream inputStream = this.getClass().getResourceAsStream("/catalog.bin");
             if (inputStream == null) {
                 throw new IOException("Missing scene catalog");

@@ -72,9 +72,9 @@ public final class LocationEntryTest {
             for(int i=0;i<180;i++)canvas.tick(100);check(hotel.interact(101),"fridge approach");
             for(int i=0;i<180 && !(Display.getDisplay(app).getCurrent() instanceof FridgeCanvas);i++)canvas.tick(100);
             check(Display.getDisplay(app).getCurrent() instanceof FridgeCanvas,"detail canvas was not displayed");
-            FridgeCanvas detail=(FridgeCanvas)Display.getDisplay(app).getCurrent();int before=hotel.fridgeMask();
+            FridgeCanvas detail=(FridgeCanvas)Display.getDisplay(app).getCurrent();check(detail.commands.size()==0,"fridge native context commands");int before=hotel.fridgeMask();
             detail.input(54);detail.input(56);detail.input(53);check(hotel.fridgeMask()==RefrigeratorPuzzle.turn(before,4),"detail keyboard selection");
-            int progress=hotel.fridgeMask();canvas.save();detail.input(48);check(Display.getDisplay(app).getCurrent()==canvas,"detail Back");
+            int progress=hotel.fridgeMask();canvas.save();detail.input(-7);check(Display.getDisplay(app).getCurrent()==canvas,"detail Back");
             canvas.startLocation(2);canvas.load();canvas.tick(100);check(Display.getDisplay(app).getCurrent() instanceof FridgeCanvas,"detail save did not reopen");
             check(((HotelScene)get(canvas,"zoo")).animals.world.fridgeMask()==progress,"detail save lost handles");
             detail=(FridgeCanvas)Display.getDisplay(app).getCurrent();
@@ -121,9 +121,9 @@ public final class LocationEntryTest {
             check(board.select(0)&&board.interact(16),"approach enlarged electrical panel");
             for(int i=0;i<500&&!(Display.getDisplay(app).getCurrent() instanceof SwitchboardCanvas);i++)canvas.tick(100);
             check(Display.getDisplay(app).getCurrent() instanceof SwitchboardCanvas,"electrical detail canvas missing");
-            SwitchboardCanvas electrical=(SwitchboardCanvas)Display.getDisplay(app).getCurrent();int orientation=board.boardOrientation(0);
+            SwitchboardCanvas electrical=(SwitchboardCanvas)Display.getDisplay(app).getCurrent();check(electrical.commands.size()==0,"electrical native context commands");int orientation=board.boardOrientation(0);
             electrical.input(53);check(board.boardOrientation(0)==orientation%4+1,"electrical FIRE did not rotate source wire");
-            orientation=board.boardOrientation(0);canvas.save();electrical.input(48);check(Display.getDisplay(app).getCurrent()==canvas,"electrical Back");
+            orientation=board.boardOrientation(0);canvas.save();electrical.input(-7);check(Display.getDisplay(app).getCurrent()==canvas,"electrical Back");
             canvas.startLocation(2);canvas.load();canvas.tick(100);check(Display.getDisplay(app).getCurrent() instanceof SwitchboardCanvas,"electrical detail RMS reopen");
             board=((HotelScene)get(canvas,"zoo")).animals.world;check(board.boardOrientation(0)==orientation,"electrical RMS lost orientation");
             electrical=(SwitchboardCanvas)Display.getDisplay(app).getCurrent();
@@ -142,11 +142,11 @@ public final class LocationEntryTest {
             basement=((HotelScene)get(canvas,"zoo")).animals.world;
             check(basement.select(0)&&((HotelScene)get(canvas,"zoo")).request(400,350),"crate zone approach");canvas.tick(100);
             check(Display.getDisplay(app).getCurrent() instanceof BasementCanvas,"crate Canvas missing");
-            BasementCanvas crates=(BasementCanvas)Display.getDisplay(app).getCurrent();crates.showNotify();crateKey(crates,canvas,6,4);
+            BasementCanvas crates=(BasementCanvas)Display.getDisplay(app).getCurrent();check(crates.commands.size()==0,"crate native context commands");crates.showNotify();crateKey(crates,canvas,6,4);
             check(basement.basement.fallingColumn()<0,"safe Canvas movement armed throw");crateKey(crates,canvas,2,5);
             int fall=basement.basement.fallingTick();check(fall>1,"detail timer is not driven by Canvas");canvas.save();
             crates.hideNotify();canvas.tick(100);check(basement.basement.fallingTick()==fall,"hidden detail continued");
-            crates.showNotify();crates.input(48);check(Display.getDisplay(app).getCurrent()==canvas,"crate Back");
+            crates.showNotify();crates.input(-7);check(Display.getDisplay(app).getCurrent()==canvas,"crate Back");
             canvas.startLocation(2);canvas.load();canvas.tick(100);check(Display.getDisplay(app).getCurrent() instanceof BasementCanvas,"crate RMS did not reopen detail");
             crates=(BasementCanvas)Display.getDisplay(app).getCurrent();crates.showNotify();basement=((HotelScene)get(canvas,"zoo")).animals.world;
             check(basement.basement.fallingTick()==fall,"RMS lost falling crate");for(int i=0;i<22;i++)canvas.tick(100);crateKey(crates,canvas,4,22);

@@ -1,20 +1,17 @@
 package pilots;
 import javax.microedition.lcdui.*;
 /** Folder menus, original bitmap text, keypad and touch hit boxes. */
-public final class MenuCanvas extends Canvas implements CommandListener {
+public final class MenuCanvas extends Canvas {
  private static final String[] DEFAULT_ITEMS={"Новая игра","Продолжить","Локации","Звук вкл.","Об игре","Помощь","Выход"};
  private final Host host;
  private final MenuLayout layout;
  private final String[] items;
  private final String title;
  private final boolean mainMenu;
- private final Command back;
- private boolean resumable;
  private static String[] defaults(){String[] result=new String[DEFAULT_ITEMS.length];System.arraycopy(DEFAULT_ITEMS,0,result,0,result.length);return result;}
  public MenuCanvas(Host host){this(host,"",defaults(),true);}
  public MenuCanvas(Host host,String title,String[] items){this(host,title,items,false);}
- private MenuCanvas(Host host,String title,String[] items,boolean main){this.host=host;this.title=title;this.items=items;mainMenu=main;layout=new MenuLayout(items.length);setFullScreenMode(true);back=new Command(main?"В игру":"Назад",Command.BACK,1);if(!main)addCommand(back);setCommandListener(this);resizeMenu(getWidth(),getHeight());}
- public void resume(boolean value){if(mainMenu&&resumable!=value){resumable=value;if(value)addCommand(back);else removeCommand(back);}}
+ private MenuCanvas(Host host,String title,String[] items,boolean main){this.host=host;this.title=title;this.items=items;mainMenu=main;layout=new MenuLayout(items.length);setFullScreenMode(true);resizeMenu(getWidth(),getHeight());}
  public void sound(boolean enabled){if(mainMenu){items[3]=enabled?"Звук вкл.":"Звук выкл.";repaint();}}
  private void resizeMenu(int w,int h){
   layout.width=Math.max(1,w);layout.height=Math.max(1,h);
@@ -52,6 +49,5 @@ public final class MenuCanvas extends Canvas implements CommandListener {
  public synchronized void select(int n){layout.select(n);repaint();}
  private synchronized void move(int n){layout.move(n);repaint();}
  protected void pointerPressed(int x,int y){int index; synchronized(this){if(x>=getWidth()-10&&layout.visible<layout.count){move(y<layout.header+layout.visible*layout.rowHeight/2?-layout.visible:layout.visible);return;}if(x<left()||x>=left()+buttonWidth())return;index=layout.itemAt(y);if(index<0||(y-layout.header)%layout.rowHeight>=buttonHeight())return;layout.select(index);}host.choose(index);}
- public void commandAction(Command c,Displayable d){host.choose(c==back?(mainMenu?-1:0):layout.selected);}
  public static interface Host{void choose(int item);}
 }

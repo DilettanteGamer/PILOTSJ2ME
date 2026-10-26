@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Original folder, menu swatches, both 97-glyph fonts and seven credit pages."""
+"""Original folder, menu swatches, both 97-glyph fonts and the credits backdrop."""
 import hashlib,struct
 from extract_scene02 import records,EXPECTED
 from build import require
@@ -25,10 +25,8 @@ def extract(raw):
    fonts.extend(struct.pack('>hhhhH',w,h,-px,-py,len(mask))+mask)
  out['ui/original.font']=bytes(fonts)
  bg=next(r['data'] for r in credits if r['code']==24);palette=bg[24+640*480:]
- for r in credits:
-  if r['code']==67:out['ui/credits-%d.p8'%(r['id']-46)]=p8(r['data'][4:],palette,640,480)
  out['ui/leather.p8']=p8(bg[24:24+640*480],palette,640,480)
- return out,dict(source_sha256=EXPECTED,folder_section=2,folder_crop=[192,0,448,480],font_ids=[38,39],glyphs_per_font=97,credits_section=20,credit_pages=7,button_rgb=0xcbc397,selected_rgb=0xdfdfcf)
+ return out,dict(source_sha256=EXPECTED,folder_section=2,folder_crop=[192,0,448,480],font_ids=[38,39],glyphs_per_font=97,credits_section=20,credit_pages=0,button_rgb=0xcbc397,selected_rgb=0xdfdfcf)
 
 def scale(data,w,h):
  sw,sh=struct.unpack_from('>HH',data,4);src=data[780:]
@@ -37,5 +35,5 @@ def scale(data,w,h):
 
 def profile(entries,w,h):
  entries['ui/folder.p8']=scale(entries['ui/folder.p8'],w,h)
- # One credit page at a time; 2x phone width permits readable zoom at low heap cost.
- for name in ['ui/leather.p8']+['ui/credits-%d.p8'%i for i in range(7)]:entries[name]=scale(entries[name],w*2,w*3//2)
+ # Credits are text; retain only the original leather at the screen's resolution.
+ entries['ui/leather.p8']=scale(entries['ui/leather.p8'],w,h)
