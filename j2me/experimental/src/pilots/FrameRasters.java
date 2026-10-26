@@ -6,8 +6,8 @@ public final class FrameRasters {
  private static final RasterCache[] rasters=new RasterCache[COUNT];
  private static final int[] images=new int[COUNT],palettes=new int[COUNT],widths=new int[COUNT],heights=new int[COUNT];
  private static final long[] ages=new long[COUNT];private static long clock;
- public static int hits,stores;
- public static synchronized Image get(int image,int palette,int width,int height){for(int i=0;i<COUNT;i++)if(rasters[i]!=null&&images[i]==image&&palettes[i]==palette&&widths[i]==width&&heights[i]==height){Image found=rasters[i].get();if(found!=null){ages[i]=++clock;hits++;return found;}}return null;}
+ public static int hits,stores,requests;
+ public static synchronized Image get(int image,int palette,int width,int height){requests++;for(int i=0;i<COUNT;i++)if(rasters[i]!=null&&images[i]==image&&palettes[i]==palette&&widths[i]==width&&heights[i]==height){Image found=rasters[i].get();if(found!=null){ages[i]=++clock;hits++;return found;}}return null;}
  public static synchronized void put(int image,int palette,Image bitmap){
   int area=bitmap.getWidth()*bitmap.getHeight();if(area>LIMIT)return;int slot=-1,total=0;
   for(int i=0;i<COUNT;i++){if(rasters[i]==null||rasters[i].get()==null){if(slot<0)slot=i;}else total+=widths[i]*heights[i];}

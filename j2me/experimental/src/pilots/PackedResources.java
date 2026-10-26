@@ -25,7 +25,7 @@ public final class PackedResources {
  }
  private static final String[] waveNames=new String[8],aliasNames=new String[32],aliasTargets=new String[32];
  private static final byte[][] waves=new byte[8][];private static final long[] waveAges=new long[8];private static long waveClock;private static int aliasNext;
- public static int waveCacheHits;
+ public static int waveCacheHits,opens,cacheHits;
  private static synchronized byte[] cachedWave(String name){for(int i=0;i<8;i++)if(name.equals(waveNames[i])){waveAges[i]=++waveClock;waveCacheHits++;return waves[i];}return null;}
  private static synchronized void keepWave(String name,byte[] data){int slot=0,total=0;for(int i=0;i<8;i++){if(waveAges[i]<waveAges[slot])slot=i;if(waves[i]!=null)total+=waves[i].length;}if(waves[slot]!=null)total-=waves[slot].length;waves[slot]=null;waveNames[slot]=null;while(total+data.length>65536){int old=-1;for(int i=0;i<8;i++)if(waves[i]!=null&&(old<0||waveAges[i]<waveAges[old]))old=i;if(old<0)break;total-=waves[old].length;waves[old]=null;waveNames[old]=null;}waves[slot]=data;waveNames[slot]=name;waveAges[slot]=++waveClock;}
  private static synchronized String cachedAlias(String name){for(int i=0;i<32;i++)if(name.equals(aliasNames[i]))return aliasTargets[i];return null;}

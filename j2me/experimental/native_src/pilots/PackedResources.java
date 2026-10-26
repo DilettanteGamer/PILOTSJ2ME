@@ -18,7 +18,8 @@ public final class PackedResources {
  private static final String[] metaNames=new String[16];private static final byte[][] metas=new byte[16][];private static final long[] metaAges=new long[16];
  private static synchronized byte[] cachedMeta(String name){for(int i=0;i<16;i++)if(name.equals(metaNames[i])){metaAges[i]=++clock;cacheHits++;return metas[i];}return null;}
  private static synchronized void keepMeta(String name,byte[] bytes){int slot=0,total=0;for(int i=0;i<16;i++){if(metaAges[i]<metaAges[slot])slot=i;if(metas[i]!=null)total+=metas[i].length;}if(metas[slot]!=null)total-=metas[slot].length;metas[slot]=null;metaNames[slot]=null;while(total+bytes.length>32768){int old=-1;for(int i=0;i<16;i++)if(metas[i]!=null&&(old<0||metaAges[i]<metaAges[old]))old=i;if(old<0)break;total-=metas[old].length;metas[old]=null;metaNames[old]=null;}metas[slot]=bytes;metaNames[slot]=name;metaAges[slot]=++clock;}
- public static InputStream open(String name)throws IOException{
+ public static InputStream open(String name)throws IOException{long began=System.currentTimeMillis();try{return openMeasured(name);}finally{DebugHud.io(System.currentTimeMillis()-began);}}
+ private static InputStream openMeasured(String name)throws IOException{
   if(name.startsWith("/audio/")&&name.endsWith(".wav")&&name.length()==16){int id=sound(name);if(id<0)return null;byte[] bytes=cached(id);if(bytes!=null)return new ByteArrayInputStream(bytes);InputStream in=PackedResources.class.getResourceAsStream("/sounds/"+id+".mp3");if(in==null)return null;opens++;
    if(soundSizes[id]>8192)return in;
    try{bytes=new byte[soundSizes[id]];new DataInputStream(in).readFully(bytes);keep(id,bytes);return new ByteArrayInputStream(bytes);}catch(OutOfMemoryError low){return PackedResources.class.getResourceAsStream("/sounds/"+id+".mp3");}finally{in.close();}
