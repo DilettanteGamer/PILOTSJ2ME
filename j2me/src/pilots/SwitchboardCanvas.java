@@ -3,17 +3,16 @@ import java.io.IOException;
 import javax.microedition.lcdui.*;
 
 /** Source electrical puzzle in a readable detail view; a solution returns to the room. */
-public final class SwitchboardCanvas extends Canvas implements CommandListener {
+public final class SwitchboardCanvas extends Canvas {
     public interface Host { void back();void active(boolean active);void error(IOException error); }
     private final HotelWorld world;
     private final Host host;
     private final SwitchboardPuzzle puzzle;
-    private final Command back=new Command("Назад",Command.BACK,1);
     private int selected;
     private boolean closed;
     public SwitchboardCanvas(HotelWorld world,Host host) throws IOException {
         this.world=world;this.host=host;puzzle=new SwitchboardPuzzle(world);world.beginBoard();
-        setFullScreenMode(true);addCommand(back);setCommandListener(this);
+        setFullScreenMode(true);
     }
     protected void showNotify() {host.active(true);repaint();}
     protected void hideNotify() {host.active(false);}
@@ -30,7 +29,7 @@ public final class SwitchboardCanvas extends Canvas implements CommandListener {
     private int action(int key){try{return getGameAction(key);}catch(IllegalArgumentException ignored){return 0;}}
     public void input(int key) {
         if(closed)return;int a=action(key);
-        if(key==KEY_NUM0){leave();return;}
+        if(key==KEY_NUM0 || key==-7){leave();return;}
         if(key==KEY_NUM2 || a==UP)selected=puzzle.select(selected,0,-1);
         else if(key==KEY_NUM8 || a==DOWN)selected=puzzle.select(selected,0,1);
         else if(key==KEY_NUM4 || a==LEFT)selected=puzzle.select(selected,-1,0);
@@ -41,5 +40,4 @@ public final class SwitchboardCanvas extends Canvas implements CommandListener {
     protected void pointerPressed(int x,int y){if(closed)return;int hit=puzzle.hit(x,y);if(hit>=0){selected=hit;turn();}}
     private void turn(){if(world.turnBoard(selected)&&!world.boardRequested()){leave();return;}repaint();}
     private void leave(){if(closed)return;closed=true;puzzle.close();world.endBoard();host.back();}
-    public void commandAction(Command command,Displayable display){if(command==back)leave();}
 }

@@ -1,37 +1,79 @@
 package pilots;
 import java.io.IOException;
+import java.util.Vector;
 import javax.microedition.lcdui.*;
-/** Seven original credit pages and the port author's own eighth page. */
-public final class AboutCanvas extends Canvas implements CommandListener {
+/** Readable, screen-sized credit pages on the original leather background. */
+public final class AboutCanvas extends Canvas {
+ private static final String[] TEXT={
+  "© \"1C\", {GAMOS}, 1997",
+  "В игре использованы персонажи из серии мультфильмов {\"Из личной жизни братьев Пилотов\"}",
+  "© {Московская анимационная студия} \"Пилот\"",
+  "© \"Second Frog\"",
+  "Сценарий игры:",
+  "{Евгений Сотников}","{Олег Корастелев}","{Константин Миронович}","{Павел Мусатов}",
+  "Режиссер:","{Олег Корастелев}",
+  "Художник-постановщик:","{Анатолий Тур}",
+  "Аниматоры:","{Сергей Гордеев}","{Игорь Богачев}","{Олег Корастелев}","{Анатолий Тур}","{Андрей Соколов}","{Андрей Албаев}",
+  "Художники:","{Анатолий Тур}","{Павел Мусатов}","{Елена Баданова}","{Яна Сметанина}","{Ольга Сиротинская}","{Наталья Чубарова}",
+  "Композиторы:","{Николай Стукалин}","{Юрий Чернавский}","{Людвиг Ван Бетховен}",
+  "Актер:","{Александр Пожаров}",
+  "Звук:","{Владислав Тарасов}",
+  "Программирование:","{Игорь Ивкич}","{Наталья Чубарова}","{Вадим Сытников}","{Павел Кабанов}",
+  "Системное программирование:","{Вадим Сытников}",
+  "Консультант:","{Анатолий Прохоров}",
+  "Авторы персонажей и характеров:","{Александр Татарский}","{Игорь Ковалев}",
+  "Продюсер:","{Евгений Сотников}",
+  "Перенос на J2ME:","{Данила \"DilettanteGamer\" Григорьев}"
+ };
  private final MenuCanvas.Host host;
- private IndexedBackground page;
- private int selected,panX,panY;
- private boolean zoom;
+ private IndexedBackground background;
+ private String[] lines,marks;
+ private int[] sizes;
+ private int selected,layoutWidth,layoutHeight,fontSize,step,rows,top,pages;
  private final Viewport view=new Viewport(128,160,640,480);
- private final Command back=new Command("Назад",Command.BACK,1);
- public AboutCanvas(MenuCanvas.Host host){this.host=host;setFullScreenMode(true);addCommand(back);setCommandListener(this);}
- private void load()throws IOException{if(page==null)page=new IndexedBackground(getClass().getResourceAsStream(selected<7?"/ui/credits-"+selected+".p8":"/ui/leather.p8"));}
+ public AboutCanvas(MenuCanvas.Host host){this.host=host;setFullScreenMode(true);}
+ private void layout()throws IOException{
+  int w=getWidth(),h=getHeight();if(lines!=null&&layoutWidth==w&&layoutHeight==h)return;
+  OriginalFont font=OriginalFont.get();layoutWidth=w;layoutHeight=h;fontSize=w<200?16:24;step=w<200?17:29;top=w<200?22:34;
+  rows=Math.max(1,(h-top-(w<200?18:26))/step);
+  Vector textRows=new Vector(),colorRows=new Vector(),sizeRows=new Vector();
+  for(int p=0;p<TEXT.length;p++){
+   // Keep the port credit on a dedicated page, including the complete name.
+   if(p==TEXT.length-2)while(textRows.size()%rows!=0){textRows.addElement("");colorRows.addElement("");sizeRows.addElement(new Integer(fontSize));}
+   StringBuffer plain=new StringBuffer(),color=new StringBuffer();boolean yellow=false;
+   for(int i=0;i<TEXT[p].length();i++){char c=TEXT[p].charAt(i);if(c=='{'){yellow=true;continue;}if(c=='}'){yellow=false;continue;}plain.append(c);color.append(yellow?'y':'w');}
+   String text=plain.toString(),mask=color.toString();int start=0,size=fontSize;
+   // A long unbroken name uses a slightly smaller original font, never a tiny page image.
+   for(int word=0;word<text.length();){int end=text.indexOf(' ',word);if(end<0)end=text.length();while(size>12&&font.width(text.substring(word,end),size)>w-12)size--;word=end+1;}
+   while(start<text.length()){
+    int end=start+1;while(end<=text.length()&&font.width(text.substring(start,end),size)<=w-12)end++;
+    end=Math.max(start+1,end-1);
+    if(end<text.length()&&text.charAt(end)!=' '){int space=text.lastIndexOf(' ',end);if(space>start)end=space;}
+    textRows.addElement(text.substring(start,end));colorRows.addElement(mask.substring(start,end));sizeRows.addElement(new Integer(size));start=end;while(start<text.length()&&text.charAt(start)==' ')start++;
+   }
+  }
+  lines=new String[textRows.size()];marks=new String[lines.length];textRows.copyInto(lines);colorRows.copyInto(marks);sizes=new int[lines.length];for(int i=0;i<sizes.length;i++)sizes[i]=((Integer)sizeRows.elementAt(i)).intValue();pages=(lines.length+rows-1)/rows;selected=Math.min(selected,pages-1);
+ }
  protected void paint(Graphics g){
   int w=getWidth(),h=getHeight();g.setColor(0x302013);g.fillRect(0,0,w,h);
-  try{load();OriginalFont font=OriginalFont.get();
-   view.width=w;view.height=h;view.drawWidth=zoom?w*2:w;view.drawHeight=view.drawWidth*3/4;view.left=-panX;view.top=zoom?-panY:Math.max(0,(h-16-view.drawHeight)/2);view.paintClip(0,0,w,h-14);page.paint(g,view);
-   if(selected==7){String[] lines={"Перенос на J2ME","Данила","\"DilettanteGamer\"","Григорьев"};for(int i=0;i<lines.length;i++)font.draw(g,lines[i],w/2,h/2+(i-2)*(w<200?19:27),font.fit(lines[i],w<200?16:24,w-8),0xfffbf0);}
-   g.setColor(0x302013);g.fillRect(0,h-14,w,14);font.draw(g,(selected+1)+"/8  4/6  5 +/-  Назад",w/2,h-7,font.fit("8/8  4/6  5 +/-  Назад",w<200?12:16,w-4),0xfffbf0);
+  try{
+   layout();if(background==null)background=new IndexedBackground(getClass().getResourceAsStream("/ui/leather.p8"));
+   view.width=w;view.height=h;view.drawWidth=w;view.drawHeight=h;view.left=view.top=0;view.paintClip(0,0,w,h);background.paint(g,view);
+   OriginalFont font=OriginalFont.get();font.draw(g,"Об игре",w/2,w<200?10:16,w<200?14:22,0xfffbf0);
+   for(int row=0;row<rows;row++){int n=selected*rows+row;if(n>=lines.length)break;font.draw(g,lines[n],w/2,top+row*step+step/2,sizes[n],0xfffbf0,0xffe35a,marks[n]);}
+   String footer="4/6  "+(selected+1)+"/"+pages+"  Назад: правая";font.draw(g,footer,w/2,h-(w<200?8:12),font.fit(footer,w<200?11:16,w-6),0xfffbf0);
   }catch(IOException error){host.choose(0);}
  }
- private void change(int delta){selected=(selected+delta+8)%8;zoom=false;panX=panY=0;if(page!=null)page.clearCache();page=null;repaint();}
+ protected void sizeChanged(int w,int h){layoutWidth=0;repaint();}
  protected void keyPressed(int key){input(key);}
- protected void keyRepeated(int key){int a=0;try{a=getGameAction(key);}catch(IllegalArgumentException ignored){}if(key!=KEY_NUM5&&a!=FIRE)input(key);}
+ protected void keyRepeated(int key){if(key!=-7)input(key);}
  public void input(int key){
-  int action=0;try{action=getGameAction(key);}catch(IllegalArgumentException ignored){}
-  if(key==KEY_NUM0||key==-6)return;
-  if(key==-7){close();host.choose(0);return;}
-  if(action==UP)key=KEY_NUM2;else if(action==DOWN)key=KEY_NUM8;else if(action==LEFT)key=KEY_NUM4;else if(action==RIGHT)key=KEY_NUM6;else if(action==FIRE)key=KEY_NUM5;
-  if(key==KEY_NUM5){zoom=!zoom;panX=panY=0;repaint();return;}
-  if(zoom){if(key==KEY_NUM4)panX=Math.max(0,panX-getWidth()/4);if(key==KEY_NUM6)panX=Math.min(getWidth(),panX+getWidth()/4);if(key==KEY_NUM2)panY=Math.max(0,panY-getHeight()/4);if(key==KEY_NUM8)panY=Math.min(Math.max(0,getWidth()*3/2-getHeight()+14),panY+getHeight()/4);}
-  else if(key==KEY_NUM4||key==KEY_NUM2)change(-1);else if(key==KEY_NUM6||key==KEY_NUM8)change(1);repaint();
+  if(key==-7){close();host.choose(0);return;}if(key==KEY_NUM0||key==-6)return;
+  try{layout();}catch(IOException error){host.choose(0);return;}
+  int a=0;try{a=getGameAction(key);}catch(IllegalArgumentException ignored){}
+  if(key==KEY_NUM4||key==KEY_NUM2||a==LEFT||a==UP)selected=Math.max(0,selected-1);
+  else if(key==KEY_NUM6||key==KEY_NUM8||a==RIGHT||a==DOWN)selected=Math.min(pages-1,selected+1);repaint();
  }
- protected void pointerPressed(int x,int y){if(y>getHeight()-16){close();host.choose(0);}else change(x<getWidth()/2?-1:1);}
- public void close(){if(page!=null)page.clearCache();page=null;}
- public void commandAction(Command c,Displayable d){close();host.choose(0);}
+ protected void pointerPressed(int x,int y){if(y>getHeight()-18){close();host.choose(0);}else input(x<getWidth()/2?KEY_NUM4:KEY_NUM6);}
+ public void close(){if(background!=null)background.clearCache();background=null;}
 }

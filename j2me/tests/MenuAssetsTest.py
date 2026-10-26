@@ -24,10 +24,10 @@ for profile in ['128x128','128x160','240x320']:
     for j,value in enumerate(source[4:4+gw*gh]):assert bool(mask[j//8]&(128>>(j&7)))==(f>0 and value in [246,250])
   assert p==len(font)
   cp=next(r['data'] for r in credits if r['code']==24)[24+640*480:]
-  for i in range(7):
-   data=jar.read('ui/credits-%d.p8'%i);tw,th=w*2,w*3//2;assert struct.unpack_from('>HHHH',data,4)==(tw,th,tw,th) and data[12:780]==cp
-   pixels=next(r['data'] for r in credits if r['code']==67 and r['id']==46+i)[4:]
-   assert data[780:]==bytes(pixels[(y*480//th)*640+x*640//tw] for y in range(th) for x in range(tw))
-  report.append(dict(profile=profile,folder_crop=[192,0,448,480],glyphs=194,credits_pages=7,zoom_width=w*2,source_sha256=EXPECTED))
+  assert not any(n.startswith('ui/credits-') for n in jar.namelist()),'Bitmap credits still packaged'
+  data=jar.read('ui/leather.p8');assert struct.unpack_from('>HHHH',data,4)==(w,h,w,h) and data[12:780]==cp
+  pixels=next(r['data'] for r in credits if r['code']==24)[24:24+640*480]
+  assert data[780:]==bytes(pixels[(y*480//h)*640+x*640//w] for y in range(h) for x in range(w))
+  report.append(dict(profile=profile,folder_crop=[192,0,448,480],glyphs=194,credits_format='text',backdrop=[w,h],source_sha256=EXPECTED))
 (ROOT/'analysis/menu-assets-audit.json').write_text(json.dumps(report,indent=2)+'\n')
-print('MenuAssets: original folder without baked copyright, 194 original glyphs, exact button colors and all seven original credit pages passed')
+print('MenuAssets: original folder without baked copyright, 194 original glyphs, exact button colors and original leather backdrop and no bitmap credits passed')

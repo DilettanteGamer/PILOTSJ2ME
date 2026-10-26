@@ -8,8 +8,11 @@
       480
     ],
     "glyphs": 194,
-    "credits_pages": 7,
-    "zoom_width": 256,
+    "credits_format": "text",
+    "backdrop": [
+      128,
+      128
+    ],
     "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f"
   },
   {
@@ -21,8 +24,11 @@
       480
     ],
     "glyphs": 194,
-    "credits_pages": 7,
-    "zoom_width": 256,
+    "credits_format": "text",
+    "backdrop": [
+      128,
+      160
+    ],
     "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f"
   },
   {
@@ -34,8 +40,11 @@
       480
     ],
     "glyphs": 194,
-    "credits_pages": 7,
-    "zoom_width": 480,
+    "credits_format": "text",
+    "backdrop": [
+      240,
+      320
+    ],
     "source_sha256": "c980fb1ad09c3543d89dd0be26c062b8847fab73e86b92012c4fe0507ba34e1f"
   }
 ]

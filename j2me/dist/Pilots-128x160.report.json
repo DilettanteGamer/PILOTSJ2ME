@@ -220,53 +220,11 @@
       128,
       160
     ],
-    "ui/credits-0.p8": [
-      256,
-      192,
-      256,
-      192
-    ],
-    "ui/credits-1.p8": [
-      256,
-      192,
-      256,
-      192
-    ],
-    "ui/credits-2.p8": [
-      256,
-      192,
-      256,
-      192
-    ],
-    "ui/credits-3.p8": [
-      256,
-      192,
-      256,
-      192
-    ],
-    "ui/credits-4.p8": [
-      256,
-      192,
-      256,
-      192
-    ],
-    "ui/credits-5.p8": [
-      256,
-      192,
-      256,
-      192
-    ],
-    "ui/credits-6.p8": [
-      256,
-      192,
-      256,
-      192
-    ],
     "ui/leather.p8": [
-      256,
-      192,
-      256,
-      192
+      128,
+      160,
+      128,
+      160
     ]
   },
   "audio_wav_count": 570,
@@ -344,9 +302,9 @@
     ]
   },
   "hotel_key_gate": "removed towel, crocodile withdrawn, original 100-tick window",
-  "version": "0.25.1",
-  "jar_size": 20153115,
-  "jar_sha256": "7766a1c39bb3ff8d6af8ae9202f658caa493355f34120bc702fba456181ff9fb",
+  "version": "0.26.0",
+  "jar_size": 19851775,
+  "jar_sha256": "ee0d01be242de18bbe7b5b220d49890a27162c9171ef28bf2a8e5f4df843ec56",
   "bytecode_preserved": false,
   "compilation": "ECJ 4.6.1: source 1.3 / target 1.1; CLDC 1.1 + MIDP 2.0 APIs",
   "preverification": "ProGuard 6.2.2 -microedition; no shrinking, optimization or obfuscation",

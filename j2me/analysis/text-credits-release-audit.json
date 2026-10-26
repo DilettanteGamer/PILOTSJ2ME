@@ -1,0 +1,66 @@
+{
+  "version": "0.26.0",
+  "baseline": "d9b359a",
+  "profiles": {
+    "128x128": {
+      "size": 19845567,
+      "bytes_saved": 304726,
+      "sha256": "f004bf4d771457ba7eed2b2f856477e665376a869300cf0271b5bccd2b1f8b20",
+      "unchanged_gameplay_resources": 2353,
+      "removed": [
+        "ui/credits-0.p8",
+        "ui/credits-1.p8",
+        "ui/credits-2.p8",
+        "ui/credits-3.p8",
+        "ui/credits-4.p8",
+        "ui/credits-5.p8",
+        "ui/credits-6.p8"
+      ],
+      "changed": [
+        "ui/leather.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "128x160": {
+      "size": 19851775,
+      "bytes_saved": 301340,
+      "sha256": "ee0d01be242de18bbe7b5b220d49890a27162c9171ef28bf2a8e5f4df843ec56",
+      "unchanged_gameplay_resources": 2353,
+      "removed": [
+        "ui/credits-0.p8",
+        "ui/credits-1.p8",
+        "ui/credits-2.p8",
+        "ui/credits-3.p8",
+        "ui/credits-4.p8",
+        "ui/credits-5.p8",
+        "ui/credits-6.p8"
+      ],
+      "changed": [
+        "ui/leather.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    },
+    "240x320": {
+      "size": 20854599,
+      "bytes_saved": 1014827,
+      "sha256": "794fe383d6eed1f466f3a7cbb19cd1840219a5666dadd16ed71f646b281a7724",
+      "unchanged_gameplay_resources": 2353,
+      "removed": [
+        "ui/credits-0.p8",
+        "ui/credits-1.p8",
+        "ui/credits-2.p8",
+        "ui/credits-3.p8",
+        "ui/credits-4.p8",
+        "ui/credits-5.p8",
+        "ui/credits-6.p8"
+      ],
+      "changed": [
+        "ui/leather.p8"
+      ],
+      "crc": "passed",
+      "jad": "passed"
+    }
+  }
+}
