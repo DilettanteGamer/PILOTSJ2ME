@@ -17,3 +17,16 @@ with zipfile.ZipFile(jar_path) as jar:
  assert all(jar.read(n)[6:8]==b'\x00\x2d' for n in classes),'Class target must be 45/1.1'
  jad=jar_path.with_suffix('.jad').read_text();assert 'MIDlet-Jar-Size: '+str(jar_path.stat().st_size) in jad
  print('CRC, JAD, CLDC classfile targets passed; fixtures:',work)
+
+with zipfile.ZipFile(jar_path) as jar,zipfile.ZipFile(ROOT/'dist/Pilots-128x160.jar') as source,zipfile.ZipFile(ROOT/'experimental/input/native-mp3.zip') as corpus:
+ import io
+ mapping=struct.unpack('>'+'h'*(18*64),jar.read('audio/native-map')[:18*64*2])
+ native=[]
+ for name in source.namelist():
+  if name.endswith('.wav'):
+   scene,cue=map(int,Path(name).stem.split('-'));ident=mapping[scene*64+cue]-1;assert ident>=0
+   expected=corpus.read(hashlib.sha256(source.read(name)).hexdigest()+'.mp3');assert jar.read('sounds/'+str(ident)+'.mp3')==expected
+   native.append(name+','+hashlib.sha256(expected).hexdigest())
+ (work/'native-audio.csv').write_text('\n'.join(native)+'\n')
+ assert not any(n.startswith(('org/concentus/','lzma/')) for n in jar.namelist())
+ assert all(not jar.read(n).startswith(b'LZM1') for n in jar.namelist() if n.endswith(('.p8','.bar','.mid')))
