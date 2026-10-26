@@ -64,6 +64,16 @@ for path in (ROOT/'src').rglob('*.java'):
  if fast_native and path.name=='GameAudio.java':text=text.replace('\"audio/x-wav\"','\"audio/mpeg\"')
  if path.name=='AnimationClip.java':
   text=text.replace('private boolean packed;','private boolean packed,tiled;').replace('packed=magic==0x414e4d33;','packed=magic==0x414e4d33;tiled=magic==0x414e4d36;').replace('magic != 1095650609 && !packed','magic != 1095650609 && !packed && !tiled').replace('byte[] colors=new byte[768];input.readFully(colors);','byte[] colors=new byte[768];if(tiled)TileStore.palette(input.readUnsignedByte(),colors);else input.readFully(colors);').replace('if(stored==0) this.input.readFully(this.pixels, 0, size);','if(tiled)TileStore.fill(input.readInt(),pixels,n,n2);\n            else if(stored==0) this.input.readFully(this.pixels, 0, size);')
+ if path.name=='PilotsMidlet.java':
+  text=text.replace('synchronized void tick(long l) throws IOException {','synchronized void tick(long l) throws IOException {\n            l=Math.min(l,100L);')
+  text=text.replace('this.lastTick = l;\n                        }\n                        Thread.sleep(40L);','this.lastTick = l;\n                        }\n                        this.serviceRepaints();\n                        Thread.sleep(40L);')
+  text=text.replace('WalkStreams.clear();','WalkStreams.clear();FrameRasters.clear();')
+ if path.name=='AnimationClip.java':
+  text=text.replace('private boolean packed,tiled;','private boolean packed,tiled;private int tileImage,tilePalette;')
+  text=text.replace('if(tiled)TileStore.palette(input.readUnsignedByte(),colors);','if(tiled){tilePalette=input.readUnsignedByte();TileStore.palette(tilePalette,colors);}')
+  text=text.replace('if(tiled)TileStore.fill(input.readInt(),pixels,n,n2);','if(tiled){tileImage=input.readInt();TileStore.fill(tileImage,pixels,n,n2);}')
+  text=text.replace('Image cached=raster.get();','Image shared=tiled?FrameRasters.get(tileImage,tilePalette*256+transparent,drawWidth,drawHeight):null;\n        if(shared!=null){paintRaster(graphics,shared,x1,y1,x1-left,y1-top,cropWidth,cropHeight);return;}\n        Image cached=raster.get();')
+  text=text.replace('raster.store(bitmap);','if(tiled && rasterX==0 && rasterY==0 && rasterWidth==drawWidth && rasterHeight==drawHeight)FrameRasters.put(tileImage,tilePalette*256+transparent,bitmap);else raster.store(bitmap);')
  p=WORK/'source/pilots'/path.name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
 if (WORK/'classes').exists():shutil.rmtree(WORK/'classes')
 sources=list((WORK/'source').rglob('*.java'))+list((EXP/'src').rglob('*.java'))
@@ -81,7 +91,7 @@ entries={n:b for n,b in entries.items() if not n.endswith('.class')}
 for path in ([WORK/'verified.jar'] if fast_native else [EXP/'lib/concentus-silk-nb-cldc.jar',WORK/'verified.jar']):
  with zipfile.ZipFile(path) as jar:entries.update({n:jar.read(n) for n in jar.namelist() if n.endswith('.class')})
 entries['META-INF/LICENSE-CONCENTUS.txt']=(EXP/'CONCENTUS-LICENSE').read_bytes();entries['META-INF/LICENSE-LZMA.txt']=(EXP/'LZMA-LICENSE').read_bytes()
-text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.2').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
+text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.3').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
 out=EXP/'dist';out.mkdir(exist_ok=True);target=out/'Pilots-Experimental-128x160.jar'
 with zipfile.ZipFile(target,'w') as jar:
  for name,data in entries.items():jar.writestr(name,data,compress_type=zipfile.ZIP_STORED if (name.startswith('tiles/b') and not native_tiles) or (not fast_native and name.endswith(('.p8','.bar','.mid'))) else zipfile.ZIP_DEFLATED,compresslevel=9)
