@@ -251,6 +251,12 @@ public class Decoder
         m_RangeDecoder.init();
     }
 
+    /** Start an independent block before binding a new output stream. */
+    public void resetBlock()
+    {
+        m_OutWindow.create(Math.max(m_DictionarySizeCheck, (1 << 12)));
+    }
+
     public boolean code(java.io.InputStream inStream, java.io.OutputStream outStream,
                         long outSize) throws IOException
     {

@@ -1,29 +1,76 @@
 {
-  "version": "0.27.0",
+  "version": "0.27.1",
   "profile": "128x160",
-  "jar_bytes": 7883869,
-  "jar_sha256": "f33cbfd9c2042422c84230dc2e9257ffadf98ada5b11b0af9760f77367702071",
+  "jar_bytes": 12266825,
+  "jar_sha256": "29eeaa0ac3db86db931ec7bcac7048f953377e7b50ae7498c16a2e67c191e988",
   "baseline_bytes": 19852356,
   "tile_size": 16,
   "lzma_dictionary_bytes": 262144,
   "tile_cache_bytes": 262144,
-  "independent_block_bytes": 262144,
+  "local_bank_target_bytes": 65536,
+  "bank_frame_limit": 8,
+  "bank_cache_slots": 4,
+  "input_buffer_bytes": 8192,
   "cldc_api_port": true,
   "cldc_preverified": true,
   "native_device_tested": false,
   "all_locations_available_for_testing": true,
   "separate_experimental_rms": true,
-  "lzma_context_reused": false,
+  "lzma_context_reused": true,
   "checks": {
-    "codec_port": "CLDC codec exact: clips=327 packets=29087 ms=715",
+    "codec_port": "CLDC codec exact: clips=327 packets=29087 ms=838",
     "all_animation_pixels": "AnimationDecode: all 1667 clips / 20916 frames byte-identical to source; malformed RLE rejected",
     "resources": "P8/bar/MIDI exact restored resources=52",
-    "mmapi_streams": "MMAPI spy valid PCM11025/16: clips=327 ms=838",
+    "mmapi_streams": "MMAPI spy valid PCM11025/16: clips=327 cache_hits=209 ms=766",
     "audio_lifecycle": "Audio: 471 WAVs, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed",
     "location_entries_and_saves": "LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge, switchboard and crate Canvas controls/timer/pause/RMS restore/automatic return and invalid catalog ID passed",
-    "walking_performance": "Walking: cold40frames_ms=190 warm4000frames_ms=25",
-    "baseline_walking_performance": "Walking: cold40frames_ms=15 warm4000frames_ms=9"
+    "walking_performance": "Walking: cold40frames_ms=22 warm4000frames_ms=15",
+    "baseline_walking_performance": "Walking: cold40frames_ms=16 warm4000frames_ms=12"
   },
-  "class_count": 136,
-  "size_reduction_percent": 60.29
+  "class_count": 138,
+  "hot_graphics_codec": "native JAR DEFLATE",
+  "cold_resources_codec": "LZMA1",
+  "frame_cache_bytes": 98304,
+  "short_wave_cache_bytes": 65536,
+  "target_device": "Nokia C1-02",
+  "available_storage_bytes": 13000000,
+  "action_latency_comparison": {
+    "previous_0_27_0": {
+      "actions": 40,
+      "total_ms": 9260.807,
+      "first_frame_p50_ms": 34.147,
+      "first_frame_p95_ms": 75.118,
+      "first_frame_max_ms": 96.763,
+      "interleaved_frame_p95_ms": 70.659,
+      "lzma_blocks": 573
+    },
+    "current_0_27_1": {
+      "actions": 40,
+      "total_ms": 134.805,
+      "first_frame_p50_ms": 0.505,
+      "first_frame_p95_ms": 2.213,
+      "first_frame_max_ms": 5.651,
+      "interleaved_frame_p95_ms": 0.886,
+      "lzma_blocks": 0
+    },
+    "local_lzma_candidate": {
+      "actions": 40,
+      "total_ms": 316.608,
+      "first_frame_p50_ms": 1.268,
+      "first_frame_p95_ms": 4.022,
+      "first_frame_max_ms": 10.867,
+      "interleaved_frame_p95_ms": 2.268,
+      "lzma_blocks": 156
+    },
+    "stable_0_26_1": {
+      "actions": 40,
+      "total_ms": 36.408,
+      "first_frame_p50_ms": 0.443,
+      "first_frame_p95_ms": 0.88,
+      "first_frame_max_ms": 6.81,
+      "interleaved_frame_p95_ms": 0.12,
+      "lzma_blocks": 0
+    }
+  },
+  "size_reduction_percent": 38.21
 }
