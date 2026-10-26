@@ -1,39 +1,47 @@
 {
-  "version": "0.27.1",
+  "version": "0.27.2",
   "profile": "128x160",
-  "jar_bytes": 12266825,
-  "jar_sha256": "29eeaa0ac3db86db931ec7bcac7048f953377e7b50ae7498c16a2e67c191e988",
+  "jar_bytes": 12830987,
+  "jar_sha256": "a989e2f880ffa46ad476d6531ba6c326bb118cc0aed6e2b4e0a8bf65c64ca4da",
   "baseline_bytes": 19852356,
   "tile_size": 16,
-  "lzma_dictionary_bytes": 262144,
-  "tile_cache_bytes": 262144,
+  "tile_cache_bytes": 131072,
   "local_bank_target_bytes": 65536,
   "bank_frame_limit": 8,
-  "bank_cache_slots": 4,
-  "input_buffer_bytes": 8192,
-  "cldc_api_port": true,
+  "bank_cache_slots": 2,
   "cldc_preverified": true,
   "native_device_tested": false,
   "all_locations_available_for_testing": true,
   "separate_experimental_rms": true,
-  "lzma_context_reused": true,
   "checks": {
-    "codec_port": "CLDC codec exact: clips=327 packets=29087 ms=838",
     "all_animation_pixels": "AnimationDecode: all 1667 clips / 20916 frames byte-identical to source; malformed RLE rejected",
     "resources": "P8/bar/MIDI exact restored resources=52",
-    "mmapi_streams": "MMAPI spy valid PCM11025/16: clips=327 cache_hits=209 ms=766",
-    "audio_lifecycle": "Audio: 471 WAVs, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed",
+    "cache_budgets": "Native caches: two warmed walking cycles cause zero bank reloads; all byte budgets enforced",
+    "mmapi_streams": "Native MMAPI spy: MP3 resources=570 cached_replays=546 bytes exact",
+    "audio_lifecycle": "Audio: 471 action sound cues via native MP3, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed",
     "location_entries_and_saves": "LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge, switchboard and crate Canvas controls/timer/pause/RMS restore/automatic return and invalid catalog ID passed",
-    "walking_performance": "Walking: cold40frames_ms=22 warm4000frames_ms=15",
-    "baseline_walking_performance": "Walking: cold40frames_ms=16 warm4000frames_ms=12"
+    "walking_performance": "Walking: cold40frames_ms=18 warm4000frames_ms=12",
+    "baseline_walking_performance": "Walking: cold40frames_ms=15 warm4000frames_ms=10"
   },
-  "class_count": 138,
+  "class_count": 86,
   "hot_graphics_codec": "native JAR DEFLATE",
-  "cold_resources_codec": "LZMA1",
-  "frame_cache_bytes": 98304,
-  "short_wave_cache_bytes": 65536,
+  "cold_resources_codec": "native JAR DEFLATE",
+  "audio_codec": "native MMAPI MP3 16 kbps mono 11025 Hz",
+  "java_audio_decoder": false,
+  "java_lzma_decoder": false,
+  "frame_cache_bytes": 196608,
+  "compressed_audio_cache_bytes": 32768,
+  "animation_descriptor_cache_bytes": 32768,
   "target_device": "Nokia C1-02",
   "available_storage_bytes": 13000000,
+  "native_audio_verification": {
+    "codec": "MP3 mono 16 kbps 11025 Hz, original WAV input",
+    "clips": 327,
+    "device_mmapi_tested": false,
+    "all_decoded": true,
+    "max_tail_padding_frames": 620,
+    "median_snr_db": 11.075
+  },
   "action_latency_comparison": {
     "previous_0_27_0": {
       "actions": 40,
@@ -44,7 +52,16 @@
       "interleaved_frame_p95_ms": 70.659,
       "lzma_blocks": 573
     },
-    "current_0_27_1": {
+    "current_0_27_2": {
+      "actions": 40,
+      "total_ms": 64.908,
+      "first_frame_p50_ms": 0.66,
+      "first_frame_p95_ms": 1.829,
+      "first_frame_max_ms": 7.719,
+      "interleaved_frame_p95_ms": 0.433,
+      "lzma_blocks": 0
+    },
+    "previous_0_27_1": {
       "actions": 40,
       "total_ms": 134.805,
       "first_frame_p50_ms": 0.505,
@@ -72,5 +89,5 @@
       "lzma_blocks": 0
     }
   },
-  "size_reduction_percent": 38.21
+  "size_reduction_percent": 35.37
 }

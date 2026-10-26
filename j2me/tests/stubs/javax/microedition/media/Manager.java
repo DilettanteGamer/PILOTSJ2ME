@@ -10,7 +10,7 @@ public final class Manager {
     public static volatile int maxPCM=3;
     public static Player createPlayer(InputStream input,String type) throws IOException,MediaException {
         if(rejectAll || rejectMidi && type.equals("audio/midi")) throw new MediaException("Unsupported");
-        if(type.equals("audio/x-wav")) {
+        if(type.equals("audio/x-wav")||type.equals("audio/mpeg")) {
             int opened=0;
             synchronized(players) { for(FakePlayer player:players) if(player.type.equals(type) && player.state!=Player.CLOSED) opened++; }
             if(opened>=maxPCM) throw new MediaException("Device PCM player limit");
@@ -20,6 +20,7 @@ public final class Manager {
         byte[] data=bytes.toByteArray();
         try {
             if(type.equals("audio/midi")) javax.sound.midi.MidiSystem.getSequence(new ByteArrayInputStream(data));
+            else if(type.equals("audio/mpeg")) { if(data.length<4||(data[0]&255)!=255||(data[1]&224)!=224)throw new IOException("Invalid MP3 frame"); }
             else javax.sound.sampled.AudioSystem.getAudioInputStream(new ByteArrayInputStream(data)).close();
         } catch(Exception bad) { throw new IOException(bad); }
         FakePlayer player=new FakePlayer(type,data);players.add(player);return player;

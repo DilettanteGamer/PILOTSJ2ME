@@ -67,7 +67,7 @@ public final class AudioTest {
             audio.toggle();waitFor(()->nextMusic.state==Player.CLOSED && piano.state==Player.CLOSED);
             audio.play(12);Thread.sleep(150);check(Manager.players.size()==5,"Muted sound played");
             Manager.rejectMidi=true;audio.toggle();audio.play(12);waitFor(()->Manager.players.size()==6);
-            check(latest().type.equals("audio/x-wav"),"WAV fallback failed");
+            check(latest().type.equals("audio/mpeg"),"WAV fallback failed");
             FakePlayer lastVoice=latest();Manager.maxPCM=1;audio.play(22);
             waitFor(()->Manager.players.size()==7 && lastVoice.state==Player.CLOSED);
             FakePlayer limitedPiano=latest();audio.play(0);Thread.sleep(150);
@@ -75,7 +75,7 @@ public final class AudioTest {
             Manager.rejectAll=true;audio.play(0);Thread.sleep(150); // Unsupported MMAPI does not escape to gameplay.
             Manager.rejectAll=false;Manager.rejectMidi=false;Manager.maxPCM=3;
             audio.scene(4);waitFor(()->Manager.players.size()==8);audio.play(58);waitFor(()->Manager.players.size()==9);
-            check(latest().type.equals("audio/x-wav"),"Third-location speech missing");
+            check(latest().type.equals("audio/mpeg"),"Third-location speech missing");
             audio.active(false);audio.scene(4);audio.play(41);Thread.sleep(150);
             check(Manager.players.size()==9,"Initial scene sound escaped the hidden canvas");
             audio.active(true);waitFor(()->Manager.players.size()==11);
@@ -85,13 +85,13 @@ public final class AudioTest {
             Manager.maxPCM=3;audio.scene(9);waitFor(()->Manager.players.size()==14);FakePlayer roomMusic=latest();audio.music(2);waitFor(()->Manager.players.size()==15);
             check(roomMusic.state==Player.CLOSED && latest().type.equals("audio/midi"),"hotel ending music change failed");
             audio.scene(10);waitFor(()->Manager.players.size()==16);audio.play(41);waitFor(()->Manager.players.size()==17);
-            check(latest().type.equals("audio/x-wav"),"balcony two-digit scene sound missing");
+            check(latest().type.equals("audio/mpeg"),"balcony two-digit scene sound missing");
             audio.scene(11);waitFor(()->Manager.players.size()==18);audio.play(23);waitFor(()->Manager.players.size()==19);
-            check(latest().type.equals("audio/x-wav"),"ledge speech missing");
+            check(latest().type.equals("audio/mpeg"),"ledge speech missing");
             audio.scene(12);waitFor(()->Manager.players.size()==20);audio.play(45);waitFor(()->Manager.players.size()==21);
-            check(latest().type.equals("audio/x-wav"),"bathroom cue missing");
+            check(latest().type.equals("audio/mpeg"),"bathroom cue missing");
             audio.scene(15);waitFor(()->Manager.players.size()==22);audio.play(29);waitFor(()->Manager.players.size()==23);
-            check(latest().type.equals("audio/x-wav"),"basement cue missing");
+            check(latest().type.equals("audio/mpeg"),"basement cue missing");
         } finally { audio.close();Manager.rejectMidi=false;Manager.rejectAll=false;Manager.maxPCM=3; }
         waitFor(()->latest().state==Player.CLOSED);
         check(Manager.players.stream().allMatch(p->p.state==Player.CLOSED),"Leaked player");
@@ -115,12 +115,11 @@ public final class AudioTest {
             check(music.getMicrosecondLength()==(scene==2?54850000L:scene==3?314020000L:scene==4?109580000L:scene==5?109670000L:scene==6?109710000L:scene==8?90300000L:scene==9?123390000L:scene==10?90350000L:scene==11?80160000L:scene==17?107290000L:scene==16?109700000L:scene==14?82280000L:scene==12||scene==15?109710000L:90300000L),"MIDI timing changed");
             for(int cue=0;cue<(scene==2?39:scene==3?24:scene==4?62:scene==5?25:scene==6?32:scene==8?16:scene==9?53:scene==10?42:scene==11?24:scene==12?46:scene==17?47:scene==16?28:scene==14?45:scene==15?30:31);cue++) {
                 String path="/audio/"+(scene<10?"0":"")+scene+"-"+(cue<10?"0":"")+cue+".wav";
-                javax.sound.sampled.AudioInputStream wav=javax.sound.sampled.AudioSystem.getAudioInputStream(new BufferedInputStream(PackedResources.open(path)));
-                check(wav.getFormat().getChannels()==1 && wav.getFormat().getSampleSizeInBits()==16 && wav.getFormat().getSampleRate()==11025,"PCM format changed");wav.close();
+                InputStream sound=PackedResources.open(path);byte[] encoded=sound.readAllBytes();sound.close();check(encoded.length>=4&&(encoded[0]&255)==255&&(encoded[1]&224)==224,"MP3 frame missing");
             }
         }
     }
     public static void main(String[] args) throws Exception {
-        resources(args);logic();worker();System.out.println("Audio: 471 WAVs, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
+        resources(args);logic();worker();System.out.println("Audio: 471 action sound cues via native MP3, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
     }
 }

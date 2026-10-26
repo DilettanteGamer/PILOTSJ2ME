@@ -10,6 +10,8 @@ props=b'\x5d'+struct.pack('<I',262144)
 def packed(raw):return props+lzma.compress(raw,format=lzma.FORMAT_RAW,filters=filters)
 def resource(raw):return b'LZM1'+struct.pack('>I',len(raw))+packed(raw)
 source=ROOT/'dist/Pilots-128x160.jar'
+fast_native=os.environ.get('PILOTS_FAST_NATIVE','1')=='1'
+if fast_native and os.environ.get('PILOTS_NATIVE_TILES','1')!='1':raise SystemExit('Native profile requires native ZIP tiles; use PILOTS_FAST_NATIVE=0 for legacy LZMA/Opus')
 cache=WORK/('local64k8-payload-'+hashlib.sha256(source.read_bytes()).hexdigest()+'.pkl')
 audio_dir=WORK/'audio'
 with zipfile.ZipFile(EXP/'input/opus-corpus.zip') as z:z.extractall(audio_dir)
@@ -40,16 +42,33 @@ else:
    encoded=dest.encode();entries[name]=b'REF1'+struct.pack('>H',len(encoded))+encoded
   if name.endswith(('.p8','.bar','.mid')):entries[name]=resource(entries[name])
  cache.write_bytes(pickle.dumps(entries))
+if fast_native:
+ subprocess.run([sys.executable,str(EXP/'prepare_native_audio.py')],check=True)
+ mapping=[0]*(18*64);sound_ids={}
+ with zipfile.ZipFile(source) as original:
+  for name in list(entries):
+   if name.endswith('.wav'):
+    sha=hashlib.sha256(original.read(name)).hexdigest()
+    if sha not in sound_ids:sound_ids[sha]=len(sound_ids)
+    ident=sound_ids[sha];scene,cue=map(int,Path(name).stem.split('-'));mapping[scene*64+cue]=ident+1
+    del entries[name];entries['sounds/'+str(ident)+'.mp3']=(Path('/tmp/pilots-native-mp3')/(sha+'.mp3')).read_bytes()
+   elif name.endswith(('.p8','.bar','.mid')):entries[name]=original.read(name)
+ for name in list(entries):
+  if name.endswith('.opx'):del entries[name]
+ entries['audio/native-map']=struct.pack('>'+'h'*len(mapping),*mapping)+struct.pack('>H',len(sound_ids))+b''.join(struct.pack('>I',(Path('/tmp/pilots-native-mp3')/(sha+'.mp3')).stat().st_size) for sha in sound_ids)
 for path in (ROOT/'src').rglob('*.java'):
  text=path.read_text();text=re.sub(r'(?:this\.)?getClass\(\)\.getResourceAsStream\(', 'PackedResources.open(',text);text=re.sub(r'\w+\.class\.getResourceAsStream\(', 'PackedResources.open(',text)
  if path.name in ['OriginalZooRules.java','ZooSubtitles.java']:text=path.read_text()
  text=text.replace('"pilots-','"pilots-exp-')
  if path.name=='PlayerProgress.java':text=text.replace('return scene!=9 && (available(scene)||scene==8&&available(9));','return scene!=9 && valid(scene);')
+ if fast_native and path.name=='GameAudio.java':text=text.replace('\"audio/x-wav\"','\"audio/mpeg\"')
  if path.name=='AnimationClip.java':
   text=text.replace('private boolean packed;','private boolean packed,tiled;').replace('packed=magic==0x414e4d33;','packed=magic==0x414e4d33;tiled=magic==0x414e4d36;').replace('magic != 1095650609 && !packed','magic != 1095650609 && !packed && !tiled').replace('byte[] colors=new byte[768];input.readFully(colors);','byte[] colors=new byte[768];if(tiled)TileStore.palette(input.readUnsignedByte(),colors);else input.readFully(colors);').replace('if(stored==0) this.input.readFully(this.pixels, 0, size);','if(tiled)TileStore.fill(input.readInt(),pixels,n,n2);\n            else if(stored==0) this.input.readFully(this.pixels, 0, size);')
  p=WORK/'source/pilots'/path.name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
 if (WORK/'classes').exists():shutil.rmtree(WORK/'classes')
 sources=list((WORK/'source').rglob('*.java'))+list((EXP/'src').rglob('*.java'))
+if fast_native:
+ sources=[p for p in sources if p.name not in ('PackedResources.java','OpusWave.java') and 'lzma' not in p.parts and 'concentus' not in p.parts]+[EXP/'native_src/pilots/PackedResources.java']
 api=str(CACHE/'cldcapi11-2.0.4.jar')+':'+str(CACHE/'midpapi20-2.0.4.jar')
 subprocess.run([str(JAVA),'-jar',str(CACHE/'ecj-4.6.1.jar'),'-proc:none','-encoding','UTF-8','-1.3','-target','1.1','-bootclasspath',api,'-classpath',str(EXP/'lib/concentus-silk-nb-cldc.jar'),'-d',str(WORK/'classes')]+list(map(str,sources)),check=True)
 subprocess.run([str(JAVA),'-jar',str(CACHE/'proguard-base-6.2.2.jar'),'-injars',str(WORK/'classes'),'-outjars',str(WORK/'verified.jar'),'-libraryjars',str(CACHE/'cldcapi11-2.0.4.jar'),'-libraryjars',str(CACHE/'midpapi20-2.0.4.jar'),'-libraryjars',str(EXP/'lib/concentus-silk-nb-cldc.jar'),'-microedition','-target','1.1','-dontshrink','-dontoptimize','-dontobfuscate','-keep','class ** { *; }'],check=True)
@@ -59,12 +78,12 @@ if native_tiles:
   if name.startswith('tiles/b'):
    raw=lzma.decompress(entries[name][9:],format=lzma.FORMAT_RAW,filters=filters);assert len(raw)==struct.unpack_from('>I',entries[name])[0];entries[name]=struct.pack('>i',-len(raw))+raw
 entries={n:b for n,b in entries.items() if not n.endswith('.class')}
-for path in [EXP/'lib/concentus-silk-nb-cldc.jar',WORK/'verified.jar']:
+for path in ([WORK/'verified.jar'] if fast_native else [EXP/'lib/concentus-silk-nb-cldc.jar',WORK/'verified.jar']):
  with zipfile.ZipFile(path) as jar:entries.update({n:jar.read(n) for n in jar.namelist() if n.endswith('.class')})
 entries['META-INF/LICENSE-CONCENTUS.txt']=(EXP/'CONCENTUS-LICENSE').read_bytes();entries['META-INF/LICENSE-LZMA.txt']=(EXP/'LZMA-LICENSE').read_bytes()
-text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.1').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
+text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.2').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
 out=EXP/'dist';out.mkdir(exist_ok=True);target=out/'Pilots-Experimental-128x160.jar'
 with zipfile.ZipFile(target,'w') as jar:
- for name,data in entries.items():jar.writestr(name,data,compress_type=zipfile.ZIP_STORED if (name.startswith('tiles/b') and not native_tiles) or name.endswith(('.p8','.bar','.mid')) else zipfile.ZIP_DEFLATED,compresslevel=9)
+ for name,data in entries.items():jar.writestr(name,data,compress_type=zipfile.ZIP_STORED if (name.startswith('tiles/b') and not native_tiles) or (not fast_native and name.endswith(('.p8','.bar','.mid'))) else zipfile.ZIP_DEFLATED,compresslevel=9)
 attrs=dict(line.split(': ',1) for line in text.splitlines() if ': ' in line);attrs['MIDlet-Jar-URL']=target.name;attrs['MIDlet-Jar-Size']=str(target.stat().st_size);target.with_suffix('.jad').write_text('\n'.join(k+': '+v for k,v in attrs.items() if k!='Manifest-Version')+'\n')
 print('Built',target,target.stat().st_size,flush=True)
