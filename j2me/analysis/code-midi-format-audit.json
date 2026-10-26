@@ -1,0 +1,21 @@
+{
+  "source_jar_sha256": "794fe383d6eed1f466f3a7cbb19cd1840219a5666dadd16ed71f646b281a7724",
+  "code": {
+    "original_classes": 84,
+    "original_zip_payload_bytes": 190272,
+    "shrink_obfuscate_classes": 84,
+    "shrink_obfuscate_zip_payload_bytes": 151399,
+    "cldc_preverify": "passed",
+    "runtime_tested": false,
+    "note": "Offline ProGuard experiment; entry/callback rules and gameplay must be validated before release. No optimization pass enabled."
+  },
+  "midi": {
+    "original_files": 18,
+    "unique_tracks": 18,
+    "original_zip_bytes": 196686,
+    "unique_bank_zip_bytes": 197309,
+    "unique_bank_lzma_256k_bytes": 145080,
+    "exact_bytes": true,
+    "note": "These are actual original standard MIDI bytes; no instrument/event/tempo reduction. Bank sizes exclude ID lookup/container overhead."
+  }
+}

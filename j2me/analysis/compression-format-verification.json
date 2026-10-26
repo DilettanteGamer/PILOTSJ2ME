@@ -1,0 +1,27 @@
+{
+  "game_runtime_changed": false,
+  "baseline_version": "0.26.0",
+  "accepted_jar_sha256": {
+    "128x128": "f004bf4d771457ba7eed2b2f856477e665376a869300cf0271b5bccd2b1f8b20",
+    "128x160": "ee0d01be242de18bbe7b5b220d49890a27162c9171ef28bf2a8e5f4df843ec56",
+    "240x320": "794fe383d6eed1f466f3a7cbb19cd1840219a5666dadd16ed71f646b281a7724"
+  },
+  "graphics_containers": 28,
+  "complete_animation_roundtrip": true,
+  "tile_containers": 6,
+  "tile_pixels_exact": true,
+  "audio_full_configurations": 14,
+  "audio_unique_clips": 327,
+  "audio_sample_configurations": 29,
+  "audio_sample_clips": 12,
+  "background_profiles": 3,
+  "lossless_background_pixels_exact": true,
+  "lzma_real_cldc_preverified": true,
+  "lzma_fixtures": 10,
+  "restricted_opus_cldc_ported": false,
+  "restricted_opus_pcm_matches_full": true,
+  "restricted_opus_corpus_clips": 327,
+  "restricted_opus_packets": 29087,
+  "documentation_links": "passed",
+  "python_script_syntax": "passed"
+}

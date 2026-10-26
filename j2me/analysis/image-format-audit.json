@@ -1,0 +1,5276 @@
+{
+  "baseline": "0.26.0",
+  "spatial": [
+    {
+      "mode": "subtract_left",
+      "payload_bytes": 6943194,
+      "transform_seconds": 0.31109029601793736,
+      "encode_seconds": 41.78012070001569,
+      "native_desktop_lzma_decode_seconds": 0.47561820299597457,
+      "exact_every_frame": true,
+      "caveat": "Sequential payload only; same original metadata/index required, not a random-access runtime."
+    },
+    {
+      "mode": "subtract_above",
+      "payload_bytes": 7936191,
+      "transform_seconds": 0.6489637520280667,
+      "encode_seconds": 47.49975157598965,
+      "native_desktop_lzma_decode_seconds": 0.585515660000965,
+      "exact_every_frame": true,
+      "caveat": "Sequential payload only; same original metadata/index required, not a random-access runtime."
+    }
+  ],
+  "backgrounds": {
+    "128x128": {
+      "files": [
+        {
+          "name": "puzzles/basement.p8",
+          "width": 128,
+          "height": 160,
+          "world_width": 128,
+          "world_height": 160,
+          "original_zip_bytes": 19979,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 20705,
+              "encode_seconds": 0.010902247973717749,
+              "native_desktop_decode_seconds": 0.0004407289670780301,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 18994,
+              "encode_seconds": 0.033278049959335476,
+              "native_desktop_decode_seconds": 0.001059334957972169,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 11532,
+              "encode_seconds": 0.0008281689952127635,
+              "native_desktop_decode_seconds": 0.0008379039936698973,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 64.04918619791667,
+              "psnr_db": 30.065667448512094
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 22617,
+              "encode_seconds": 0.0007508930284529924,
+              "native_desktop_decode_seconds": 0.000523452996276319,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.66123046875,
+              "psnr_db": 36.182544802344296
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 7530,
+              "encode_seconds": 0.011459772998932749,
+              "native_desktop_decode_seconds": 0.0010580119560472667,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 63.347021484375,
+              "psnr_db": 30.113541612745042
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 13802,
+              "encode_seconds": 0.03081901097903028,
+              "native_desktop_decode_seconds": 0.0013486979878507555,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 42.81736653645833,
+              "psnr_db": 31.814604081816782
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 10392,
+              "encode_seconds": 0.06156028504483402,
+              "native_desktop_decode_seconds": 0.027266888006124645,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 19.75595703125,
+              "psnr_db": 35.173822879578346
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 17588,
+              "encode_seconds": 0.0026093240012414753,
+              "native_desktop_decode_seconds": 0.0005526470486074686,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/02.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 21965,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 22152,
+              "encode_seconds": 0.00851061096182093,
+              "native_desktop_decode_seconds": 0.0007460159831680357,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 19152,
+              "encode_seconds": 0.02162686100928113,
+              "native_desktop_decode_seconds": 0.0011885480489581823,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 36573,
+              "encode_seconds": 0.0013842509943060577,
+              "native_desktop_decode_seconds": 0.0008214990375563502,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 72.51498397435897,
+              "psnr_db": 29.5265260553819
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 65925,
+              "encode_seconds": 0.0020327710080891848,
+              "native_desktop_decode_seconds": 0.0011146269971504807,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 11.291090745192308,
+              "psnr_db": 37.60344463076072
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 18598,
+              "encode_seconds": 0.02534696599468589,
+              "native_desktop_decode_seconds": 0.001887143007479608,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 148.30347556089743,
+              "psnr_db": 26.419290318271734
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 33378,
+              "encode_seconds": 0.04456325003411621,
+              "native_desktop_decode_seconds": 0.0026178249972872436,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 126.59053986378206,
+              "psnr_db": 27.106791088869503
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 28357,
+              "encode_seconds": 0.3292547889868729,
+              "native_desktop_decode_seconds": 0.01539397198939696,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 4.574959935897436,
+              "psnr_db": 41.526930656774326
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 19115,
+              "encode_seconds": 0.015500559995416552,
+              "native_desktop_decode_seconds": 0.0007858860190026462,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/03.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 40401,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 40751,
+              "encode_seconds": 0.0062515619792975485,
+              "native_desktop_decode_seconds": 0.0007230710471048951,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 39104,
+              "encode_seconds": 0.03817882901057601,
+              "native_desktop_decode_seconds": 0.0014068749733269215,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 59807,
+              "encode_seconds": 0.0017329920083284378,
+              "native_desktop_decode_seconds": 0.001319893985055387,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 111.62104867788462,
+              "psnr_db": 27.653342624787115
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 101219,
+              "encode_seconds": 0.0023417729535140097,
+              "native_desktop_decode_seconds": 0.0011830790317617357,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.619516225961538,
+              "psnr_db": 36.19412782264466
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 35226,
+              "encode_seconds": 0.03547966305632144,
+              "native_desktop_decode_seconds": 0.0030872380011714995,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 254.69014423076922,
+              "psnr_db": 24.07068221514851
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 53978,
+              "encode_seconds": 0.05580701900180429,
+              "native_desktop_decode_seconds": 0.0033890000195242465,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 230.19063501602565,
+              "psnr_db": 24.509927098782008
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 53558,
+              "encode_seconds": 0.6530269249924459,
+              "native_desktop_decode_seconds": 0.03100216598249972,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 17.99560296474359,
+              "psnr_db": 35.57913958066042
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 37037,
+              "encode_seconds": 0.011396839981898665,
+              "native_desktop_decode_seconds": 0.0012884680181741714,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/04.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 32549,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 32860,
+              "encode_seconds": 0.0125825009890832,
+              "native_desktop_decode_seconds": 0.0008761099888943136,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 31866,
+              "encode_seconds": 0.025243441050406545,
+              "native_desktop_decode_seconds": 0.0015836579841561615,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 54945,
+              "encode_seconds": 0.001893381995614618,
+              "native_desktop_decode_seconds": 0.0009063560282811522,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 104.20269931891026,
+              "psnr_db": 27.95201391576923
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 94511,
+              "encode_seconds": 0.002780889975838363,
+              "native_desktop_decode_seconds": 0.0013351680245250463,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.837054286858974,
+              "psnr_db": 36.13405955453542
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 32798,
+              "encode_seconds": 0.05059176799841225,
+              "native_desktop_decode_seconds": 0.0028244350105524063,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 226.3697265625,
+              "psnr_db": 24.582620146147427
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 51624,
+              "encode_seconds": 0.04052050301106647,
+              "native_desktop_decode_seconds": 0.0037583420053124428,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 200.7359425080128,
+              "psnr_db": 25.104552193952166
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 45329,
+              "encode_seconds": 0.5193736919900402,
+              "native_desktop_decode_seconds": 0.005564583989325911,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 10.547906650641025,
+              "psnr_db": 37.89914083251527
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 29396,
+              "encode_seconds": 0.01206163503229618,
+              "native_desktop_decode_seconds": 0.0010309320059604943,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/05.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 34471,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 34832,
+              "encode_seconds": 0.027734997973311692,
+              "native_desktop_decode_seconds": 0.00098944001365453,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 32858,
+              "encode_seconds": 0.02246842999011278,
+              "native_desktop_decode_seconds": 0.0014915409847162664,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 62318,
+              "encode_seconds": 0.002096576034091413,
+              "native_desktop_decode_seconds": 0.0010484779486432672,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 96.06659154647436,
+              "psnr_db": 28.305079787102034
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 101213,
+              "encode_seconds": 0.0025637049693614244,
+              "native_desktop_decode_seconds": 0.0012462739832699299,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 14.263882211538462,
+              "psnr_db": 36.58842617008106
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 36294,
+              "encode_seconds": 0.0369003780069761,
+              "native_desktop_decode_seconds": 0.025296628999058157,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 289.9012570112179,
+              "psnr_db": 23.50830262408904
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 54838,
+              "encode_seconds": 0.043377086985856295,
+              "native_desktop_decode_seconds": 0.003806994005572051,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 265.2828425480769,
+              "psnr_db": 23.893711984379813
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 47399,
+              "encode_seconds": 0.5110336680081673,
+              "native_desktop_decode_seconds": 0.00529854599153623,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 12.892017227564102,
+              "psnr_db": 37.02759483680807
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 30668,
+              "encode_seconds": 0.012550115992780775,
+              "native_desktop_decode_seconds": 0.0012362590059638023,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/06.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 37323,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 37748,
+              "encode_seconds": 0.00674768298631534,
+              "native_desktop_decode_seconds": 0.000794457970187068,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 36744,
+              "encode_seconds": 0.0400469449814409,
+              "native_desktop_decode_seconds": 0.0014277159934863448,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 52045,
+              "encode_seconds": 0.00239277898799628,
+              "native_desktop_decode_seconds": 0.0008363909437321126,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 96.13625801282052,
+              "psnr_db": 28.301931471319808
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 92799,
+              "encode_seconds": 0.0051116960239596665,
+              "native_desktop_decode_seconds": 0.0010042719659395516,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 16.089448116987178,
+              "psnr_db": 36.06539213217464
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 30828,
+              "encode_seconds": 0.03189501102315262,
+              "native_desktop_decode_seconds": 0.0024665200035087764,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 219.64625400641026,
+              "psnr_db": 24.713565599509234
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 50232,
+              "encode_seconds": 0.053412356006447226,
+              "native_desktop_decode_seconds": 0.0037114109727554023,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 193.4460236378205,
+              "psnr_db": 25.26520553819699
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 46725,
+              "encode_seconds": 0.21816559496801347,
+              "native_desktop_decode_seconds": 0.011647131992504,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 52.13821113782051,
+              "psnr_db": 30.95924234424954
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 33668,
+              "encode_seconds": 0.010714950039982796,
+              "native_desktop_decode_seconds": 0.0012267749989405274,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/07.p8",
+          "width": 128,
+          "height": 128,
+          "world_width": 480,
+          "world_height": 256,
+          "original_zip_bytes": 8413,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 8490,
+              "encode_seconds": 0.0008576230029575527,
+              "native_desktop_decode_seconds": 0.0003080309834331274,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 7410,
+              "encode_seconds": 0.008605552953667939,
+              "native_desktop_decode_seconds": 0.004634852986782789,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 8079,
+              "encode_seconds": 0.000431235006544739,
+              "native_desktop_decode_seconds": 0.00034749903716146946,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 57.2564697265625,
+              "psnr_db": 30.552557937373127
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 15406,
+              "encode_seconds": 0.0005365320248529315,
+              "native_desktop_decode_seconds": 0.00040733901550993323,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 11.976806640625,
+              "psnr_db": 37.34739322716698
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 4962,
+              "encode_seconds": 0.039544372993987054,
+              "native_desktop_decode_seconds": 0.0008105919696390629,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 65.60579427083333,
+              "psnr_db": 29.96138163127588
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 9266,
+              "encode_seconds": 0.01241839601425454,
+              "native_desktop_decode_seconds": 0.005033167952205986,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 45.3582763671875,
+              "psnr_db": 31.564238180351325
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 9660,
+              "encode_seconds": 0.10406573297223076,
+              "native_desktop_decode_seconds": 0.0030944690224714577,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 7.660868326822917,
+              "psnr_db": 39.28802363014028
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 8190,
+              "encode_seconds": 0.002026262052822858,
+              "native_desktop_decode_seconds": 0.0002933289506472647,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/08.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 31764,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 31987,
+              "encode_seconds": 0.009160352987237275,
+              "native_desktop_decode_seconds": 0.0006549300160259008,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 30278,
+              "encode_seconds": 0.026448693999554962,
+              "native_desktop_decode_seconds": 0.0016792709939181805,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 43674,
+              "encode_seconds": 0.0016300179995596409,
+              "native_desktop_decode_seconds": 0.0010324249742552638,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 77.6912359775641,
+              "psnr_db": 29.227083302427225
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 82021,
+              "encode_seconds": 0.002378398028668016,
+              "native_desktop_decode_seconds": 0.019685938023030758,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.854326923076924,
+              "psnr_db": 36.129325515781815
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 27198,
+              "encode_seconds": 0.036598035017959774,
+              "native_desktop_decode_seconds": 0.0022688439930789173,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 112.99467147435898,
+              "psnr_db": 27.60022397064546
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 46022,
+              "encode_seconds": 0.059493693988770247,
+              "native_desktop_decode_seconds": 0.002889082010369748,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 91.42885616987179,
+              "psnr_db": 28.51997074351904
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 39106,
+              "encode_seconds": 0.32480902795214206,
+              "native_desktop_decode_seconds": 0.009235175035428256,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 40.188156049679485,
+              "psnr_db": 32.08982280921727
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 28394,
+              "encode_seconds": 0.01188730401918292,
+              "native_desktop_decode_seconds": 0.0010398260201327503,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/09.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 29377,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 29926,
+              "encode_seconds": 0.008330821001436561,
+              "native_desktop_decode_seconds": 0.0008331159478984773,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 25498,
+              "encode_seconds": 0.027243011980317533,
+              "native_desktop_decode_seconds": 0.0013007360394112766,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 48920,
+              "encode_seconds": 0.001612321997527033,
+              "native_desktop_decode_seconds": 0.00092889997176826,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 96.64271334134615,
+              "psnr_db": 28.27911246165442
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 86603,
+              "encode_seconds": 0.020443340006750077,
+              "native_desktop_decode_seconds": 0.0011690890532918274,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.522415865384616,
+              "psnr_db": 36.22121046306934
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 27444,
+              "encode_seconds": 0.031627909978851676,
+              "native_desktop_decode_seconds": 0.0022155740298330784,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 193.94017427884614,
+              "psnr_db": 25.254125793271612
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 44856,
+              "encode_seconds": 0.08362699399003759,
+              "native_desktop_decode_seconds": 0.004391589027363807,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 169.40047576121796,
+              "psnr_db": 25.841657351555035
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 37286,
+              "encode_seconds": 0.4909136720234528,
+              "native_desktop_decode_seconds": 0.012624919996596873,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 6.095532852564102,
+              "psnr_db": 40.28068684578288
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 25910,
+              "encode_seconds": 0.012345339986495674,
+              "native_desktop_decode_seconds": 0.0009690090082585812,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/10.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 34747,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 34987,
+              "encode_seconds": 0.010174760012887418,
+              "native_desktop_decode_seconds": 0.0008735570008866489,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 32800,
+              "encode_seconds": 0.07050091901328415,
+              "native_desktop_decode_seconds": 0.0016239690012298524,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 50875,
+              "encode_seconds": 0.005817161989398301,
+              "native_desktop_decode_seconds": 0.0010005360236391425,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 84.93612279647436,
+              "psnr_db": 28.839879286367058
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 90013,
+              "encode_seconds": 0.0064862919971346855,
+              "native_desktop_decode_seconds": 0.0013432590058073401,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 14.95702624198718,
+              "psnr_db": 36.38235105245468
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 29856,
+              "encode_seconds": 0.08112963900202885,
+              "native_desktop_decode_seconds": 0.005426863033790141,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 190.20846354166667,
+              "psnr_db": 25.3385052341023
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 48592,
+              "encode_seconds": 0.08751924702664837,
+              "native_desktop_decode_seconds": 0.0035272560198791325,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 166.24530248397437,
+              "psnr_db": 25.923309783761454
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 42578,
+              "encode_seconds": 0.5906737030018121,
+              "native_desktop_decode_seconds": 0.007169164018705487,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 9.280208333333333,
+              "psnr_db": 38.455226349721656
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 30695,
+              "encode_seconds": 0.01282826199894771,
+              "native_desktop_decode_seconds": 0.0011679169838316739,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/11.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 33880,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 34094,
+              "encode_seconds": 0.0206194439670071,
+              "native_desktop_decode_seconds": 0.0009878179989755154,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 31812,
+              "encode_seconds": 0.03556735400343314,
+              "native_desktop_decode_seconds": 0.0014424679684452713,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 46124,
+              "encode_seconds": 0.0015904890024103224,
+              "native_desktop_decode_seconds": 0.0009682980016805232,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 80.70193309294872,
+              "psnr_db": 29.061964231527085
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 82900,
+              "encode_seconds": 0.0024807110312394798,
+              "native_desktop_decode_seconds": 0.01952383597381413,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.178766025641025,
+              "psnr_db": 36.31843894317536
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 28818,
+              "encode_seconds": 0.03405263798777014,
+              "native_desktop_decode_seconds": 0.002480080001987517,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 165.8548828125,
+              "psnr_db": 25.933520990774714
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 46054,
+              "encode_seconds": 0.03655877598794177,
+              "native_desktop_decode_seconds": 0.003170221985783428,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 142.69877303685897,
+              "psnr_db": 26.58660121920134
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 42185,
+              "encode_seconds": 0.5339246349758469,
+              "native_desktop_decode_seconds": 0.009421743976417929,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 8.169901842948718,
+              "psnr_db": 39.00863522122742
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 31287,
+              "encode_seconds": 0.012210328015498817,
+              "native_desktop_decode_seconds": 0.0011305909720249474,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/12.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 39078,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 39320,
+              "encode_seconds": 0.004725579055957496,
+              "native_desktop_decode_seconds": 0.0008605880429968238,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 39390,
+              "encode_seconds": 0.018887834041379392,
+              "native_desktop_decode_seconds": 0.0025090129929594696,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 47985,
+              "encode_seconds": 0.0013645309954881668,
+              "native_desktop_decode_seconds": 0.000690473010763526,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 93.1143329326923,
+              "psnr_db": 28.440638245216554
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 87602,
+              "encode_seconds": 0.002322943997569382,
+              "native_desktop_decode_seconds": 0.0011846820125356317,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 16.285546875,
+              "psnr_db": 36.01278013944483
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 28778,
+              "encode_seconds": 0.04700211901217699,
+              "native_desktop_decode_seconds": 0.002414450980722904,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 145.39444110576923,
+              "psnr_db": 26.50532558493726
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 48666,
+              "encode_seconds": 0.04802690097130835,
+              "native_desktop_decode_seconds": 0.0037426080089062452,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 121.7353515625,
+              "psnr_db": 27.276636465731382
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 43843,
+              "encode_seconds": 0.21236259903525934,
+              "native_desktop_decode_seconds": 0.012786460982169956,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 51.70176282051282,
+              "psnr_db": 30.995750098403217
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 36585,
+              "encode_seconds": 0.01053110498469323,
+              "native_desktop_decode_seconds": 0.0012640209752134979,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/13.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 9945,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 9974,
+              "encode_seconds": 0.021081765997223556,
+              "native_desktop_decode_seconds": 0.0006571830017492175,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 8134,
+              "encode_seconds": 0.018551391025539488,
+              "native_desktop_decode_seconds": 0.0009421189897693694,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 15733,
+              "encode_seconds": 0.005515440017916262,
+              "native_desktop_decode_seconds": 0.0006201980286277831,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 22.6716796875,
+              "psnr_db": 34.57596663767892
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 28788,
+              "encode_seconds": 0.0012014770181849599,
+              "native_desktop_decode_seconds": 0.0005724859656766057,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 4.708568709935897,
+              "psnr_db": 41.40191448610161
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 7138,
+              "encode_seconds": 0.0234145550057292,
+              "native_desktop_decode_seconds": 0.0008889299933798611,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 46.662555088141026,
+              "psnr_db": 31.441118452207384
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 14548,
+              "encode_seconds": 0.03010668500792235,
+              "native_desktop_decode_seconds": 0.0014537840033881366,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 37.79530248397436,
+              "psnr_db": 32.35642535423913
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 11391,
+              "encode_seconds": 0.14372022403404117,
+              "native_desktop_decode_seconds": 0.003689889970701188,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 2.3412159455128205,
+              "psnr_db": 44.43638887530395
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 8724,
+              "encode_seconds": 0.012518107949290425,
+              "native_desktop_decode_seconds": 0.00033429102040827274,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/14.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 23779,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 23918,
+              "encode_seconds": 0.009920829033944756,
+              "native_desktop_decode_seconds": 0.0007141579990275204,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 21180,
+              "encode_seconds": 0.0171158229932189,
+              "native_desktop_decode_seconds": 0.0011503910063765943,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 41670,
+              "encode_seconds": 0.019765756966080517,
+              "native_desktop_decode_seconds": 0.0009630309650674462,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 74.59389022435897,
+              "psnr_db": 29.403771037774344
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 74190,
+              "encode_seconds": 0.0020526000298559666,
+              "native_desktop_decode_seconds": 0.001097792002838105,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 12.438191105769231,
+              "psnr_db": 37.18323135650139
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 20420,
+              "encode_seconds": 0.024250615970231593,
+              "native_desktop_decode_seconds": 0.001551942026708275,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 154.79402043269232,
+              "psnr_db": 26.233261806401785
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 35788,
+              "encode_seconds": 0.026168664975557476,
+              "native_desktop_decode_seconds": 0.002406860003247857,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 131.62689803685896,
+              "psnr_db": 26.93735714178709
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 34108,
+              "encode_seconds": 0.5834722670260817,
+              "native_desktop_decode_seconds": 0.005368490004912019,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 9.502809495192308,
+              "psnr_db": 38.352283379081754
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 21398,
+              "encode_seconds": 0.013552696036640555,
+              "native_desktop_decode_seconds": 0.0008170719956979156,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/15.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 32850,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 33129,
+              "encode_seconds": 0.009746088995598257,
+              "native_desktop_decode_seconds": 0.00085044204024598,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 31978,
+              "encode_seconds": 0.043247060966677964,
+              "native_desktop_decode_seconds": 0.0014277449809014797,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 43219,
+              "encode_seconds": 0.001617289031855762,
+              "native_desktop_decode_seconds": 0.0007943789823912084,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 76.54490184294872,
+              "psnr_db": 29.291640903954466
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 80816,
+              "encode_seconds": 0.0022890440304763615,
+              "native_desktop_decode_seconds": 0.0011208559735678136,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 14.682897636217948,
+              "psnr_db": 36.46268589808433
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 26540,
+              "encode_seconds": 0.033694772981107235,
+              "native_desktop_decode_seconds": 0.0021384090068750083,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 107.52738381410256,
+              "psnr_db": 27.815612815010248
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 46296,
+              "encode_seconds": 0.06028687104117125,
+              "native_desktop_decode_seconds": 0.003452235017903149,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 85.05793269230769,
+              "psnr_db": 28.83365537759524
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 39829,
+              "encode_seconds": 0.5038143559941091,
+              "native_desktop_decode_seconds": 0.006399102974683046,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 7.254021434294872,
+              "psnr_db": 39.52501526361538
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 29626,
+              "encode_seconds": 0.011773322999943048,
+              "native_desktop_decode_seconds": 0.001094588020350784,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/16.p8",
+          "width": 128,
+          "height": 128,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 1850,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 2000,
+              "encode_seconds": 0.0011706509976647794,
+              "native_desktop_decode_seconds": 0.0002016720245592296,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 1002,
+              "encode_seconds": 0.006965298962313682,
+              "native_desktop_decode_seconds": 0.00034592696465551853,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 1010,
+              "encode_seconds": 0.00022290402557700872,
+              "native_desktop_decode_seconds": 0.00026095000794157386,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 3.1609090169270835,
+              "psnr_db": 43.132683655076676
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 2928,
+              "encode_seconds": 0.00022522697690874338,
+              "native_desktop_decode_seconds": 0.00021432002540677786,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 2.42413330078125,
+              "psnr_db": 44.285238632771296
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 224,
+              "encode_seconds": 0.0035172419738955796,
+              "native_desktop_decode_seconds": 0.0003027929924428463,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 3.38092041015625,
+              "psnr_db": 42.84045413656357
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 1290,
+              "encode_seconds": 0.004293342004530132,
+              "native_desktop_decode_seconds": 0.0003093630075454712,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 2.87249755859375,
+              "psnr_db": 43.54820692624982
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 1292,
+              "encode_seconds": 0.01959458098281175,
+              "native_desktop_decode_seconds": 0.0010746180196292698,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 2.1742350260416665,
+              "psnr_db": 44.75773873097352
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 1630,
+              "encode_seconds": 0.005976710992399603,
+              "native_desktop_decode_seconds": 7.25479912944138e-05,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/17.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 26585,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 26772,
+              "encode_seconds": 0.005493698001373559,
+              "native_desktop_decode_seconds": 0.0006777039961889386,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 23632,
+              "encode_seconds": 0.04189658199902624,
+              "native_desktop_decode_seconds": 0.0012614370207302272,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 41882,
+              "encode_seconds": 0.0015479660360142589,
+              "native_desktop_decode_seconds": 0.0007495509926229715,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 73.57991786858975,
+              "psnr_db": 29.463210621409207
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 74204,
+              "encode_seconds": 0.0021237169858068228,
+              "native_desktop_decode_seconds": 0.0010030409903265536,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 12.45741686698718,
+              "psnr_db": 37.17652363225032
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 21952,
+              "encode_seconds": 0.02817366400267929,
+              "native_desktop_decode_seconds": 0.0019364560139365494,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 145.37393329326923,
+              "psnr_db": 26.5059381983164
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 37586,
+              "encode_seconds": 0.05097272800048813,
+              "native_desktop_decode_seconds": 0.0026933790068142116,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 122.49564803685898,
+              "psnr_db": 27.24959701286961
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 34348,
+              "encode_seconds": 0.4678267039707862,
+              "native_desktop_decode_seconds": 0.02537171298172325,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 8.042663261217948,
+              "psnr_db": 39.07680475288132
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 23929,
+              "encode_seconds": 0.013622290047351271,
+              "native_desktop_decode_seconds": 0.0008911129552870989,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "ui/folder.p8",
+          "width": 128,
+          "height": 128,
+          "world_width": 128,
+          "world_height": 128,
+          "original_zip_bytes": 9194,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 9593,
+              "encode_seconds": 0.0013416970032267272,
+              "native_desktop_decode_seconds": 0.00024826196022331715,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 8262,
+              "encode_seconds": 0.008280137029942125,
+              "native_desktop_decode_seconds": 0.0007515840115956962,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 13585,
+              "encode_seconds": 0.00041180604603141546,
+              "native_desktop_decode_seconds": 0.0003133889986202121,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 89.58054606119792,
+              "psnr_db": 28.608666553977518
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 22856,
+              "encode_seconds": 0.0005118250264786184,
+              "native_desktop_decode_seconds": 0.00041046401020139456,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 13.525838216145834,
+              "psnr_db": 36.81916172385664
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 6910,
+              "encode_seconds": 0.007680789043661207,
+              "native_desktop_decode_seconds": 0.0007787039503455162,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 314.91469319661456,
+              "psnr_db": 23.148874365751475
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 11636,
+              "encode_seconds": 0.007754308986477554,
+              "native_desktop_decode_seconds": 0.0007944580283947289,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 288.62416585286456,
+              "psnr_db": 23.527476700869702
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 12125,
+              "encode_seconds": 0.0992807499715127,
+              "native_desktop_decode_seconds": 0.005902018980123103,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 16.289957682291668,
+              "psnr_db": 36.01160404758977
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 8409,
+              "encode_seconds": 0.0026873809983953834,
+              "native_desktop_decode_seconds": 0.0002991580404341221,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "ui/leather.p8",
+          "width": 128,
+          "height": 128,
+          "world_width": 128,
+          "world_height": 128,
+          "original_zip_bytes": 14145,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 14304,
+              "encode_seconds": 0.0004370940150693059,
+              "native_desktop_decode_seconds": 0.0002210509846918285,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 13438,
+              "encode_seconds": 0.018742592015769333,
+              "native_desktop_decode_seconds": 0.0005878590163774788,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 9220,
+              "encode_seconds": 0.00046347302850335836,
+              "native_desktop_decode_seconds": 0.0004223819705657661,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 70.230712890625,
+              "psnr_db": 29.66553284037936
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 18753,
+              "encode_seconds": 0.0006014900282025337,
+              "native_desktop_decode_seconds": 0.000436543021351099,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 17.031209309895832,
+              "psnr_db": 35.81834874504352
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 6718,
+              "encode_seconds": 0.015187769022304565,
+              "native_desktop_decode_seconds": 0.0008645129855722189,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 59.3519287109375,
+              "psnr_db": 30.39645524436486
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 11990,
+              "encode_seconds": 0.009710705024190247,
+              "native_desktop_decode_seconds": 0.0009979730239138007,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 39.659688313802086,
+              "psnr_db": 32.14731064113295
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 8556,
+              "encode_seconds": 0.046479938027914613,
+              "native_desktop_decode_seconds": 0.0307790549704805,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 27.760843912760418,
+              "psnr_db": 33.696476965964685
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 14992,
+              "encode_seconds": 0.0017154260422103107,
+              "native_desktop_decode_seconds": 0.00039925798773765564,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        }
+      ],
+      "original_zip_bytes": 482295,
+      "totals": {
+        "png_palette": 487542,
+        "webp_lossless": 453532,
+        "jpeg_q85": 689196,
+        "jpeg_q95": 1225364,
+        "webp_q80": 398232,
+        "webp_q95": 660442,
+        "avif_q85": 588067,
+        "lzma_p8_256k": 437241
+      }
+    },
+    "128x160": {
+      "files": [
+        {
+          "name": "puzzles/basement.p8",
+          "width": 128,
+          "height": 160,
+          "world_width": 128,
+          "world_height": 160,
+          "original_zip_bytes": 19979,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 20705,
+              "encode_seconds": 0.00043463101610541344,
+              "native_desktop_decode_seconds": 0.00023941800463944674,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 18994,
+              "encode_seconds": 0.005299726966768503,
+              "native_desktop_decode_seconds": 0.0006834219675511122,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 11532,
+              "encode_seconds": 0.00044370401883497834,
+              "native_desktop_decode_seconds": 0.0003269799635745585,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 64.04918619791667,
+              "psnr_db": 30.065667448512094
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 22617,
+              "encode_seconds": 0.0005739489570260048,
+              "native_desktop_decode_seconds": 0.0003590669948607683,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.66123046875,
+              "psnr_db": 36.182544802344296
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 7530,
+              "encode_seconds": 0.007940919022075832,
+              "native_desktop_decode_seconds": 0.0007126160198822618,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 63.347021484375,
+              "psnr_db": 30.113541612745042
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 13802,
+              "encode_seconds": 0.010595369967631996,
+              "native_desktop_decode_seconds": 0.0010555790504440665,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 42.81736653645833,
+              "psnr_db": 31.814604081816782
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 10392,
+              "encode_seconds": 0.051625764986965805,
+              "native_desktop_decode_seconds": 0.016601332987193018,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 19.75595703125,
+              "psnr_db": 35.173822879578346
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 17588,
+              "encode_seconds": 0.00206130399601534,
+              "native_desktop_decode_seconds": 0.0005725870141759515,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/02.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 21965,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 22152,
+              "encode_seconds": 0.01514911197591573,
+              "native_desktop_decode_seconds": 0.0007016800227575004,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 19152,
+              "encode_seconds": 0.03314210497774184,
+              "native_desktop_decode_seconds": 0.0009104019845835865,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 36573,
+              "encode_seconds": 0.005171336000785232,
+              "native_desktop_decode_seconds": 0.0006479599978774786,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 72.51498397435897,
+              "psnr_db": 29.5265260553819
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 65925,
+              "encode_seconds": 0.0015376000083051622,
+              "native_desktop_decode_seconds": 0.019093360984697938,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 11.291090745192308,
+              "psnr_db": 37.60344463076072
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 18598,
+              "encode_seconds": 0.03470041701802984,
+              "native_desktop_decode_seconds": 0.0014209049986675382,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 148.30347556089743,
+              "psnr_db": 26.419290318271734
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 33378,
+              "encode_seconds": 0.026366000005509704,
+              "native_desktop_decode_seconds": 0.002250825986266136,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 126.59053986378206,
+              "psnr_db": 27.106791088869503
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 28357,
+              "encode_seconds": 0.27868320199195296,
+              "native_desktop_decode_seconds": 0.005528580048121512,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 4.574959935897436,
+              "psnr_db": 41.526930656774326
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 19115,
+              "encode_seconds": 0.0156512149842456,
+              "native_desktop_decode_seconds": 0.0007420700276270509,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/03.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 40401,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 40751,
+              "encode_seconds": 0.006780222989618778,
+              "native_desktop_decode_seconds": 0.0008648940129205585,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 39104,
+              "encode_seconds": 0.02314675401430577,
+              "native_desktop_decode_seconds": 0.0012043809983879328,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 59807,
+              "encode_seconds": 0.01613556599477306,
+              "native_desktop_decode_seconds": 0.0010901910136453807,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 111.62104867788462,
+              "psnr_db": 27.653342624787115
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 101219,
+              "encode_seconds": 0.0026779149775393307,
+              "native_desktop_decode_seconds": 0.001321786956395954,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.619516225961538,
+              "psnr_db": 36.19412782264466
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 35226,
+              "encode_seconds": 0.03776060597738251,
+              "native_desktop_decode_seconds": 0.002652166993357241,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 254.69014423076922,
+              "psnr_db": 24.07068221514851
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 53978,
+              "encode_seconds": 0.07579060201533139,
+              "native_desktop_decode_seconds": 0.008130331989377737,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 230.19063501602565,
+              "psnr_db": 24.509927098782008
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 53558,
+              "encode_seconds": 0.7963978199986741,
+              "native_desktop_decode_seconds": 0.012214843009132892,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 17.99560296474359,
+              "psnr_db": 35.57913958066042
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 37037,
+              "encode_seconds": 0.011051363951992244,
+              "native_desktop_decode_seconds": 0.0013650020118802786,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/04.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 32549,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 32860,
+              "encode_seconds": 0.017818444001022726,
+              "native_desktop_decode_seconds": 0.00261171703459695,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 31866,
+              "encode_seconds": 0.04939712100895122,
+              "native_desktop_decode_seconds": 0.001428287010639906,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 54945,
+              "encode_seconds": 0.0018732619937509298,
+              "native_desktop_decode_seconds": 0.0012653619633056223,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 104.20269931891026,
+              "psnr_db": 27.95201391576923
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 94511,
+              "encode_seconds": 0.007677874993532896,
+              "native_desktop_decode_seconds": 0.0012482270249165595,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.837054286858974,
+              "psnr_db": 36.13405955453542
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 32798,
+              "encode_seconds": 0.03601874900050461,
+              "native_desktop_decode_seconds": 0.002569422998931259,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 226.3697265625,
+              "psnr_db": 24.582620146147427
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 51624,
+              "encode_seconds": 0.06569350900826976,
+              "native_desktop_decode_seconds": 0.00766199198551476,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 200.7359425080128,
+              "psnr_db": 25.104552193952166
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 45329,
+              "encode_seconds": 0.49905673397006467,
+              "native_desktop_decode_seconds": 0.010922930028755218,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 10.547906650641025,
+              "psnr_db": 37.89914083251527
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 29396,
+              "encode_seconds": 0.012335895968135446,
+              "native_desktop_decode_seconds": 0.0010465349769219756,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/05.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 34471,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 34832,
+              "encode_seconds": 0.018807252985425293,
+              "native_desktop_decode_seconds": 0.0011988030164502561,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 32858,
+              "encode_seconds": 0.03787300200201571,
+              "native_desktop_decode_seconds": 0.0011098500108346343,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 62318,
+              "encode_seconds": 0.0016535940230824053,
+              "native_desktop_decode_seconds": 0.0009976120200008154,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 96.06659154647436,
+              "psnr_db": 28.305079787102034
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 101213,
+              "encode_seconds": 0.0021006130264140666,
+              "native_desktop_decode_seconds": 0.0012104909983463585,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 14.263882211538462,
+              "psnr_db": 36.58842617008106
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 36294,
+              "encode_seconds": 0.03627021500142291,
+              "native_desktop_decode_seconds": 0.0024637249880470335,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 289.9012570112179,
+              "psnr_db": 23.50830262408904
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 54838,
+              "encode_seconds": 0.042015499027911574,
+              "native_desktop_decode_seconds": 0.0038709910004399717,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 265.2828425480769,
+              "psnr_db": 23.893711984379813
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 47399,
+              "encode_seconds": 0.5397781690116972,
+              "native_desktop_decode_seconds": 0.008802086987998337,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 12.892017227564102,
+              "psnr_db": 37.02759483680807
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 30668,
+              "encode_seconds": 0.012019793037325144,
+              "native_desktop_decode_seconds": 0.0012175320298410952,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/06.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 37323,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 37748,
+              "encode_seconds": 0.0058243919629603624,
+              "native_desktop_decode_seconds": 0.000864222995005548,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 36744,
+              "encode_seconds": 0.037078644963912666,
+              "native_desktop_decode_seconds": 0.0016900780028663576,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 52045,
+              "encode_seconds": 0.0018473939853720367,
+              "native_desktop_decode_seconds": 0.0011873859912157059,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 96.13625801282052,
+              "psnr_db": 28.301931471319808
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 92799,
+              "encode_seconds": 0.0026026529958471656,
+              "native_desktop_decode_seconds": 0.001369367993902415,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 16.089448116987178,
+              "psnr_db": 36.06539213217464
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 30828,
+              "encode_seconds": 0.03867154702311382,
+              "native_desktop_decode_seconds": 0.002531657984945923,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 219.64625400641026,
+              "psnr_db": 24.713565599509234
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 50232,
+              "encode_seconds": 0.058395129977725446,
+              "native_desktop_decode_seconds": 0.003545482992194593,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 193.4460236378205,
+              "psnr_db": 25.26520553819699
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 46725,
+              "encode_seconds": 0.1893409779877402,
+              "native_desktop_decode_seconds": 0.00933512399205938,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 52.13821113782051,
+              "psnr_db": 30.95924234424954
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 33668,
+              "encode_seconds": 0.010711685987189412,
+              "native_desktop_decode_seconds": 0.0012135260039940476,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/07.p8",
+          "width": 128,
+          "height": 160,
+          "world_width": 480,
+          "world_height": 256,
+          "original_zip_bytes": 8885,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 8961,
+              "encode_seconds": 0.001023781020194292,
+              "native_desktop_decode_seconds": 0.00030726002296432853,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 7786,
+              "encode_seconds": 0.0035316229914315045,
+              "native_desktop_decode_seconds": 0.0004349609953351319,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 8582,
+              "encode_seconds": 0.0005812700255773962,
+              "native_desktop_decode_seconds": 0.0005166929913684726,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 48.15553385416667,
+              "psnr_db": 31.3043415903908
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 16362,
+              "encode_seconds": 0.00045340799260884523,
+              "native_desktop_decode_seconds": 0.0003962320042774081,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 10.27607421875,
+              "psnr_db": 38.01253128578664
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 5114,
+              "encode_seconds": 0.007088884012773633,
+              "native_desktop_decode_seconds": 0.0005387259880080819,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 56.539632161458336,
+              "psnr_db": 30.60727382161324
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 10112,
+              "encode_seconds": 0.009877554955892265,
+              "native_desktop_decode_seconds": 0.0011039809905923903,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 36.876302083333336,
+              "psnr_db": 32.46332996895305
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 10319,
+              "encode_seconds": 0.08439886796986684,
+              "native_desktop_decode_seconds": 0.007900117023382336,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 6.17421875,
+              "psnr_db": 40.22498348576554
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 8604,
+              "encode_seconds": 0.002331367984879762,
+              "native_desktop_decode_seconds": 0.00031216797651723027,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/08.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 31764,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 31987,
+              "encode_seconds": 0.012366769020445645,
+              "native_desktop_decode_seconds": 0.0016301189898513258,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 30278,
+              "encode_seconds": 0.018927683006040752,
+              "native_desktop_decode_seconds": 0.001856786955613643,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 43674,
+              "encode_seconds": 0.0018325609853491187,
+              "native_desktop_decode_seconds": 0.0012988619855605066,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 77.6912359775641,
+              "psnr_db": 29.227083302427225
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 82021,
+              "encode_seconds": 0.001953402010258287,
+              "native_desktop_decode_seconds": 0.01937831798568368,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.854326923076924,
+              "psnr_db": 36.129325515781815
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 27198,
+              "encode_seconds": 0.033547973027452826,
+              "native_desktop_decode_seconds": 0.0021017740364186466,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 112.99467147435898,
+              "psnr_db": 27.60022397064546
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 46022,
+              "encode_seconds": 0.030667915008962154,
+              "native_desktop_decode_seconds": 0.002905085973907262,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 91.42885616987179,
+              "psnr_db": 28.51997074351904
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 39106,
+              "encode_seconds": 0.18898499599890783,
+              "native_desktop_decode_seconds": 0.008420664991717786,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 40.188156049679485,
+              "psnr_db": 32.08982280921727
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 28394,
+              "encode_seconds": 0.012110178009606898,
+              "native_desktop_decode_seconds": 0.001047798024956137,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/09.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 29377,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 29926,
+              "encode_seconds": 0.009399100032169372,
+              "native_desktop_decode_seconds": 0.000859375053551048,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 25498,
+              "encode_seconds": 0.050667922012507915,
+              "native_desktop_decode_seconds": 0.0014286370133049786,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 48920,
+              "encode_seconds": 0.0018116399878636003,
+              "native_desktop_decode_seconds": 0.0009426099713891745,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 96.64271334134615,
+              "psnr_db": 28.27911246165442
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 86603,
+              "encode_seconds": 0.0025579759967513382,
+              "native_desktop_decode_seconds": 0.001248486980330199,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.522415865384616,
+              "psnr_db": 36.22121046306934
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 27444,
+              "encode_seconds": 0.033703125023748726,
+              "native_desktop_decode_seconds": 0.0020670720259658992,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 193.94017427884614,
+              "psnr_db": 25.254125793271612
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 44856,
+              "encode_seconds": 0.05453897302504629,
+              "native_desktop_decode_seconds": 0.0031558010377921164,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 169.40047576121796,
+              "psnr_db": 25.841657351555035
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 37286,
+              "encode_seconds": 0.6368536339723505,
+              "native_desktop_decode_seconds": 0.026628983032424003,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 6.095532852564102,
+              "psnr_db": 40.28068684578288
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 25910,
+              "encode_seconds": 0.012200301978737116,
+              "native_desktop_decode_seconds": 0.0009446640033274889,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/10.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 34747,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 34987,
+              "encode_seconds": 0.01020043803146109,
+              "native_desktop_decode_seconds": 0.0009203969966620207,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 32800,
+              "encode_seconds": 0.023797867994289845,
+              "native_desktop_decode_seconds": 0.0014585020253434777,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 50875,
+              "encode_seconds": 0.0018540039891377091,
+              "native_desktop_decode_seconds": 0.0010074169840663671,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 84.93612279647436,
+              "psnr_db": 28.839879286367058
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 90013,
+              "encode_seconds": 0.002579107997007668,
+              "native_desktop_decode_seconds": 0.0012823580182157457,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 14.95702624198718,
+              "psnr_db": 36.38235105245468
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 29856,
+              "encode_seconds": 0.035326823010109365,
+              "native_desktop_decode_seconds": 0.0020579289994202554,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 190.20846354166667,
+              "psnr_db": 25.3385052341023
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 48592,
+              "encode_seconds": 0.046443993982393295,
+              "native_desktop_decode_seconds": 0.004631217976566404,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 166.24530248397437,
+              "psnr_db": 25.923309783761454
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 42578,
+              "encode_seconds": 0.6296018459834158,
+              "native_desktop_decode_seconds": 0.03226733801420778,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 9.280208333333333,
+              "psnr_db": 38.455226349721656
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 30695,
+              "encode_seconds": 0.012052190024405718,
+              "native_desktop_decode_seconds": 0.0011305509833618999,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/11.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 33880,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 34094,
+              "encode_seconds": 0.008029200020246208,
+              "native_desktop_decode_seconds": 0.0008359109633602202,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 31812,
+              "encode_seconds": 0.02549881301820278,
+              "native_desktop_decode_seconds": 0.0016545450198464096,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 46124,
+              "encode_seconds": 0.001637099019717425,
+              "native_desktop_decode_seconds": 0.0009705219999887049,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 80.70193309294872,
+              "psnr_db": 29.061964231527085
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 82900,
+              "encode_seconds": 0.0023921779938973486,
+              "native_desktop_decode_seconds": 0.001249839027877897,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.178766025641025,
+              "psnr_db": 36.31843894317536
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 28818,
+              "encode_seconds": 0.0886714099906385,
+              "native_desktop_decode_seconds": 0.0020967070013284683,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 165.8548828125,
+              "psnr_db": 25.933520990774714
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 46054,
+              "encode_seconds": 0.08870468003442511,
+              "native_desktop_decode_seconds": 0.002807658980600536,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 142.69877303685897,
+              "psnr_db": 26.58660121920134
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 42185,
+              "encode_seconds": 0.7036077889497392,
+              "native_desktop_decode_seconds": 0.014165709959343076,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 8.169901842948718,
+              "psnr_db": 39.00863522122742
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 31287,
+              "encode_seconds": 0.012054605002049357,
+              "native_desktop_decode_seconds": 0.0012450219946913421,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/12.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 39078,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 39320,
+              "encode_seconds": 0.008720464014913887,
+              "native_desktop_decode_seconds": 0.005315401998814195,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 39390,
+              "encode_seconds": 0.06814999302150682,
+              "native_desktop_decode_seconds": 0.0016029069665819407,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 47985,
+              "encode_seconds": 0.0016849010135047138,
+              "native_desktop_decode_seconds": 0.0009550789836794138,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 93.1143329326923,
+              "psnr_db": 28.440638245216554
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 87602,
+              "encode_seconds": 0.0065039690234698355,
+              "native_desktop_decode_seconds": 0.0012977109872736037,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 16.285546875,
+              "psnr_db": 36.01278013944483
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 28778,
+              "encode_seconds": 0.0750212210114114,
+              "native_desktop_decode_seconds": 0.0031594960018992424,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 145.39444110576923,
+              "psnr_db": 26.50532558493726
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 48666,
+              "encode_seconds": 0.037680805020499974,
+              "native_desktop_decode_seconds": 0.0035214669769629836,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 121.7353515625,
+              "psnr_db": 27.276636465731382
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 43843,
+              "encode_seconds": 0.2911567800329067,
+              "native_desktop_decode_seconds": 0.00986474601086229,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 51.70176282051282,
+              "psnr_db": 30.995750098403217
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 36585,
+              "encode_seconds": 0.011425514006987214,
+              "native_desktop_decode_seconds": 0.001271091983653605,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/13.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 9945,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 9974,
+              "encode_seconds": 0.02803909295471385,
+              "native_desktop_decode_seconds": 0.00044953200267627835,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 8134,
+              "encode_seconds": 0.01607951201731339,
+              "native_desktop_decode_seconds": 0.004827862023375928,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 15733,
+              "encode_seconds": 0.0007137780194170773,
+              "native_desktop_decode_seconds": 0.0003615409950725734,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 22.6716796875,
+              "psnr_db": 34.57596663767892
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 28788,
+              "encode_seconds": 0.0009470259537920356,
+              "native_desktop_decode_seconds": 0.0004479899653233588,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 4.708568709935897,
+              "psnr_db": 41.40191448610161
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 7138,
+              "encode_seconds": 0.018042568990495056,
+              "native_desktop_decode_seconds": 0.0009548979578539729,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 46.662555088141026,
+              "psnr_db": 31.441118452207384
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 14548,
+              "encode_seconds": 0.05058603995712474,
+              "native_desktop_decode_seconds": 0.0012740360107272863,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 37.79530248397436,
+              "psnr_db": 32.35642535423913
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 11391,
+              "encode_seconds": 0.31341846799477935,
+              "native_desktop_decode_seconds": 0.01894884801004082,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 2.3412159455128205,
+              "psnr_db": 44.43638887530395
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 8724,
+              "encode_seconds": 0.011974152992479503,
+              "native_desktop_decode_seconds": 0.00033637299202382565,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/14.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 23779,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 23918,
+              "encode_seconds": 0.017187974008265883,
+              "native_desktop_decode_seconds": 0.0005567629705183208,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 21180,
+              "encode_seconds": 0.050222744001075625,
+              "native_desktop_decode_seconds": 0.000904352986253798,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 41670,
+              "encode_seconds": 0.0012795639922842383,
+              "native_desktop_decode_seconds": 0.0006042439490556717,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 74.59389022435897,
+              "psnr_db": 29.403771037774344
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 74190,
+              "encode_seconds": 0.0016943549853749573,
+              "native_desktop_decode_seconds": 0.0008259559981524944,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 12.438191105769231,
+              "psnr_db": 37.18323135650139
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 20420,
+              "encode_seconds": 0.04749504302162677,
+              "native_desktop_decode_seconds": 0.0015629479894414544,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 154.79402043269232,
+              "psnr_db": 26.233261806401785
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 35788,
+              "encode_seconds": 0.09235720697324723,
+              "native_desktop_decode_seconds": 0.010786796978209168,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 131.62689803685896,
+              "psnr_db": 26.93735714178709
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 34108,
+              "encode_seconds": 0.9001357380184345,
+              "native_desktop_decode_seconds": 0.00562288099899888,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 9.502809495192308,
+              "psnr_db": 38.352283379081754
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 21398,
+              "encode_seconds": 0.015000523009803146,
+              "native_desktop_decode_seconds": 0.0008716330048628151,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/15.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 32850,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 33129,
+              "encode_seconds": 0.027580231020692736,
+              "native_desktop_decode_seconds": 0.0006612089928239584,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 31978,
+              "encode_seconds": 0.02335014200070873,
+              "native_desktop_decode_seconds": 0.0020184990135021508,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 43219,
+              "encode_seconds": 0.0015423470176756382,
+              "native_desktop_decode_seconds": 0.0006314949714578688,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 76.54490184294872,
+              "psnr_db": 29.291640903954466
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 80816,
+              "encode_seconds": 0.0017929229652509093,
+              "native_desktop_decode_seconds": 0.00135815201792866,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 14.682897636217948,
+              "psnr_db": 36.46268589808433
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 26540,
+              "encode_seconds": 0.07158540200907737,
+              "native_desktop_decode_seconds": 0.0019254100043326616,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 107.52738381410256,
+              "psnr_db": 27.815612815010248
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 46296,
+              "encode_seconds": 0.06763083703117445,
+              "native_desktop_decode_seconds": 0.025165447033941746,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 85.05793269230769,
+              "psnr_db": 28.83365537759524
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 39829,
+              "encode_seconds": 0.6562340349773876,
+              "native_desktop_decode_seconds": 0.008638483006507158,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 7.254021434294872,
+              "psnr_db": 39.52501526361538
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 29626,
+              "encode_seconds": 0.012221975019201636,
+              "native_desktop_decode_seconds": 0.0011332749854773283,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/16.p8",
+          "width": 128,
+          "height": 160,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 2136,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 2280,
+              "encode_seconds": 0.0013641009572893381,
+              "native_desktop_decode_seconds": 0.0001765440101735294,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 1240,
+              "encode_seconds": 0.0022725489689037204,
+              "native_desktop_decode_seconds": 0.00029356899904087186,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 1253,
+              "encode_seconds": 0.00026744999922811985,
+              "native_desktop_decode_seconds": 0.0002577660488896072,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 3.57099609375,
+              "psnr_db": 42.60290985741986
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 3730,
+              "encode_seconds": 0.00019682396668940783,
+              "native_desktop_decode_seconds": 0.0002247460070066154,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 2.6178873697916667,
+              "psnr_db": 43.95129403042095
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 274,
+              "encode_seconds": 0.0015626480453647673,
+              "native_desktop_decode_seconds": 0.00022532697767019272,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 3.7576171875,
+              "psnr_db": 42.3816782720684
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 1684,
+              "encode_seconds": 0.0035759599995799363,
+              "native_desktop_decode_seconds": 0.0002701740013435483,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 3.044905598958333,
+              "psnr_db": 43.2950652809836
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 1642,
+              "encode_seconds": 0.03344223997555673,
+              "native_desktop_decode_seconds": 0.005423193040769547,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 2.1585123697916666,
+              "psnr_db": 44.789258190561334
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 1842,
+              "encode_seconds": 0.0073939309804700315,
+              "native_desktop_decode_seconds": 8.277402957901359e-05,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/17.p8",
+          "width": 320,
+          "height": 208,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 26585,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 26772,
+              "encode_seconds": 0.005215883022174239,
+              "native_desktop_decode_seconds": 0.000531525001861155,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 23632,
+              "encode_seconds": 0.015902150014881045,
+              "native_desktop_decode_seconds": 0.0010141270468011498,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 41882,
+              "encode_seconds": 0.0013697990216314793,
+              "native_desktop_decode_seconds": 0.0006438230047933757,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 73.57991786858975,
+              "psnr_db": 29.463210621409207
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 74204,
+              "encode_seconds": 0.0018710789736360312,
+              "native_desktop_decode_seconds": 0.0010845729848369956,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 12.45741686698718,
+              "psnr_db": 37.17652363225032
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 21952,
+              "encode_seconds": 0.02225000597536564,
+              "native_desktop_decode_seconds": 0.0016339339781552553,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 145.37393329326923,
+              "psnr_db": 26.5059381983164
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 37586,
+              "encode_seconds": 0.058527518005575985,
+              "native_desktop_decode_seconds": 0.002250386984087527,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 122.49564803685898,
+              "psnr_db": 27.24959701286961
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 34348,
+              "encode_seconds": 0.48062826198292896,
+              "native_desktop_decode_seconds": 0.004806511045899242,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 8.042663261217948,
+              "psnr_db": 39.07680475288132
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 23929,
+              "encode_seconds": 0.013768508972134441,
+              "native_desktop_decode_seconds": 0.0009155200095847249,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "ui/folder.p8",
+          "width": 128,
+          "height": 160,
+          "world_width": 128,
+          "world_height": 160,
+          "original_zip_bytes": 11256,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 11671,
+              "encode_seconds": 0.0014964890433475375,
+              "native_desktop_decode_seconds": 0.0003203490050509572,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 10040,
+              "encode_seconds": 0.008229220984503627,
+              "native_desktop_decode_seconds": 0.0005945090088061988,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 16445,
+              "encode_seconds": 0.0005295220180414617,
+              "native_desktop_decode_seconds": 0.00036313303280621767,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 87.644677734375,
+              "psnr_db": 28.70354812380733
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 28001,
+              "encode_seconds": 0.0006872580270282924,
+              "native_desktop_decode_seconds": 0.0009980439790524542,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 13.614111328125,
+              "psnr_db": 36.7909106318221
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 8418,
+              "encode_seconds": 0.012031949998345226,
+              "native_desktop_decode_seconds": 0.0009285589912906289,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 298.6659342447917,
+              "psnr_db": 23.3789467094945
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 14298,
+              "encode_seconds": 0.017593830008991063,
+              "native_desktop_decode_seconds": 0.0017980799893848598,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 275.25970052083335,
+              "psnr_db": 23.73337727834712
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 14575,
+              "encode_seconds": 0.16270715097198263,
+              "native_desktop_decode_seconds": 0.0028951760032214224,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.84423828125,
+              "psnr_db": 36.13208995738668
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 10241,
+              "encode_seconds": 0.003513305971864611,
+              "native_desktop_decode_seconds": 0.0003685920382849872,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "ui/leather.p8",
+          "width": 128,
+          "height": 160,
+          "world_width": 128,
+          "world_height": 160,
+          "original_zip_bytes": 17535,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 17644,
+              "encode_seconds": 0.0008516139932908118,
+              "native_desktop_decode_seconds": 0.00028985401149839163,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 16720,
+              "encode_seconds": 0.003701637964695692,
+              "native_desktop_decode_seconds": 0.00036120996810495853,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 11499,
+              "encode_seconds": 0.0004945899709127843,
+              "native_desktop_decode_seconds": 0.000348211033269763,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 69.78553059895833,
+              "psnr_db": 29.69314975958893
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 23288,
+              "encode_seconds": 0.0006377949612215161,
+              "native_desktop_decode_seconds": 0.00043238699436187744,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 17.187874348958335,
+              "psnr_db": 35.77858190731162
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 8346,
+              "encode_seconds": 0.015688429994042963,
+              "native_desktop_decode_seconds": 0.0017623170278966427,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 59.34274088541667,
+              "psnr_db": 30.39712759501817
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 15008,
+              "encode_seconds": 0.018345054995734245,
+              "native_desktop_decode_seconds": 0.0010500310454517603,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 39.309130859375,
+              "psnr_db": 32.18586919366578
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 10522,
+              "encode_seconds": 0.05602811899734661,
+              "native_desktop_decode_seconds": 0.006470480002462864,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 27.664680989583335,
+              "psnr_db": 33.71154694279511
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 18406,
+              "encode_seconds": 0.0024624040233902633,
+              "native_desktop_decode_seconds": 0.0005232729599811137,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        }
+      ],
+      "original_zip_bytes": 488505,
+      "totals": {
+        "png_palette": 493711,
+        "webp_lossless": 459206,
+        "jpeg_q85": 695081,
+        "jpeg_q95": 1236802,
+        "webp_q80": 401570,
+        "webp_q95": 667362,
+        "avif_q85": 593492,
+        "lzma_p8_256k": 443113
+      }
+    },
+    "240x320": {
+      "files": [
+        {
+          "name": "puzzles/basement.p8",
+          "width": 128,
+          "height": 160,
+          "world_width": 128,
+          "world_height": 160,
+          "original_zip_bytes": 19979,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 20705,
+              "encode_seconds": 0.00041385897202417254,
+              "native_desktop_decode_seconds": 0.00024327397113665938,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 18994,
+              "encode_seconds": 0.005481680971570313,
+              "native_desktop_decode_seconds": 0.0005963020375929773,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 11532,
+              "encode_seconds": 0.0005589359789155424,
+              "native_desktop_decode_seconds": 0.0003341400297358632,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 64.04918619791667,
+              "psnr_db": 30.065667448512094
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 22617,
+              "encode_seconds": 0.0005718959728255868,
+              "native_desktop_decode_seconds": 0.000480478978715837,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.66123046875,
+              "psnr_db": 36.182544802344296
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 7530,
+              "encode_seconds": 0.008422699989750981,
+              "native_desktop_decode_seconds": 0.0006768720340915024,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 63.347021484375,
+              "psnr_db": 30.113541612745042
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 13802,
+              "encode_seconds": 0.009099202987272292,
+              "native_desktop_decode_seconds": 0.0009190250420942903,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 42.81736653645833,
+              "psnr_db": 31.814604081816782
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 10392,
+              "encode_seconds": 0.0526686729863286,
+              "native_desktop_decode_seconds": 0.007358858012594283,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 19.75595703125,
+              "psnr_db": 35.173822879578346
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 17588,
+              "encode_seconds": 0.0020569770131260157,
+              "native_desktop_decode_seconds": 0.0005183849716559052,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/02.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 69691,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 70886,
+              "encode_seconds": 0.08325903600780293,
+              "native_desktop_decode_seconds": 0.0015865140012465417,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 61310,
+              "encode_seconds": 0.07863213401287794,
+              "native_desktop_decode_seconds": 0.00251166702946648,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 123360,
+              "encode_seconds": 0.004221215029247105,
+              "native_desktop_decode_seconds": 0.00252025097142905,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 62.0416004696243,
+              "psnr_db": 30.20397368209888
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 236129,
+              "encode_seconds": 0.007014442991930991,
+              "native_desktop_decode_seconds": 0.0034318140242248774,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 10.749373001598721,
+              "psnr_db": 37.81697227768585
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 60258,
+              "encode_seconds": 0.09330622805282474,
+              "native_desktop_decode_seconds": 0.005317444971296936,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 121.43990932254196,
+              "psnr_db": 27.287189265979144
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 120388,
+              "encode_seconds": 0.11621437699068338,
+              "native_desktop_decode_seconds": 0.007830835995264351,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 101.80576788569145,
+              "psnr_db": 28.053079768753584
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 92667,
+              "encode_seconds": 1.0136412180145271,
+              "native_desktop_decode_seconds": 0.03800558595685288,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 3.6450364708233414,
+              "psnr_db": 42.513784828097776
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 60040,
+              "encode_seconds": 0.07923795597162098,
+              "native_desktop_decode_seconds": 0.003074579988606274,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/03.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 136029,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 137057,
+              "encode_seconds": 0.0343938329606317,
+              "native_desktop_decode_seconds": 0.002085659943986684,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 123726,
+              "encode_seconds": 0.10485123796388507,
+              "native_desktop_decode_seconds": 0.0033473779913038015,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 215217,
+              "encode_seconds": 0.007308262982405722,
+              "native_desktop_decode_seconds": 0.003275571041740477,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 103.83448865907275,
+              "psnr_db": 27.967387323406797
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 379980,
+              "encode_seconds": 0.030737282999325544,
+              "native_desktop_decode_seconds": 0.014582185016479343,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.439107464028776,
+              "psnr_db": 36.244581707393884
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 123392,
+              "encode_seconds": 0.14617456396808848,
+              "native_desktop_decode_seconds": 0.006894092017319053,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 217.1283335831335,
+              "psnr_db": 24.763638616147308
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 199136,
+              "encode_seconds": 0.23865009198198095,
+              "native_desktop_decode_seconds": 0.012317916029132903,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 191.87064723221422,
+              "psnr_db": 25.300718203175165
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 186350,
+              "encode_seconds": 2.408531623019371,
+              "native_desktop_decode_seconds": 0.01936669001588598,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 10.667136290967226,
+              "psnr_db": 37.85032516884607
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 122813,
+              "encode_seconds": 0.05520045501179993,
+              "native_desktop_decode_seconds": 0.004484017961658537,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/04.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 106145,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 106891,
+              "encode_seconds": 0.09100705501623452,
+              "native_desktop_decode_seconds": 0.0017938140081241727,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 94920,
+              "encode_seconds": 0.15011744399089366,
+              "native_desktop_decode_seconds": 0.01141049899160862,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 198556,
+              "encode_seconds": 0.01568895997479558,
+              "native_desktop_decode_seconds": 0.008589842997025698,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 95.15711181055156,
+              "psnr_db": 28.346391089210876
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 352250,
+              "encode_seconds": 0.01826795400120318,
+              "native_desktop_decode_seconds": 0.007821142033208162,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.28416142086331,
+              "psnr_db": 36.28838745105923
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 116278,
+              "encode_seconds": 0.18878187402151525,
+              "native_desktop_decode_seconds": 0.009706343000289053,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 186.92825489608313,
+              "psnr_db": 25.414054093124623
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 185336,
+              "encode_seconds": 0.3077844870276749,
+              "native_desktop_decode_seconds": 0.01312305498868227,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 163.96059402478016,
+              "psnr_db": 25.983408777834804
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 150997,
+              "encode_seconds": 2.2828404160100035,
+              "native_desktop_decode_seconds": 0.01634358399314806,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 6.522765537569944,
+              "psnr_db": 39.986485928880626
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 93747,
+              "encode_seconds": 0.06443220598157495,
+              "native_desktop_decode_seconds": 0.0034726960002444685,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/05.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 111966,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 112894,
+              "encode_seconds": 0.07677976600825787,
+              "native_desktop_decode_seconds": 0.0019204040290787816,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 98600,
+              "encode_seconds": 0.11185906402533874,
+              "native_desktop_decode_seconds": 0.00298630801262334,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 222348,
+              "encode_seconds": 0.009009280009195209,
+              "native_desktop_decode_seconds": 0.007871677982620895,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 86.13063049560351,
+              "psnr_db": 28.77922734506737
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 375617,
+              "encode_seconds": 0.015260613989084959,
+              "native_desktop_decode_seconds": 0.004249549005180597,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 13.951260241806555,
+              "psnr_db": 36.68466920904051
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 127698,
+              "encode_seconds": 0.24856001802254468,
+              "native_desktop_decode_seconds": 0.00789979996625334,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 241.77626648681056,
+              "psnr_db": 24.296666939531562
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 203766,
+              "encode_seconds": 0.3117703159805387,
+              "native_desktop_decode_seconds": 0.013352699053939432,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 219.31473820943245,
+              "psnr_db": 24.720125431075935
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 153183,
+              "encode_seconds": 2.398040422005579,
+              "native_desktop_decode_seconds": 0.058024065976496786,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 8.290520083932854,
+              "psnr_db": 38.94498585143047
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 97127,
+              "encode_seconds": 0.06374099099775776,
+              "native_desktop_decode_seconds": 0.004040926054585725,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/06.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 116684,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 117440,
+              "encode_seconds": 0.10055383900180459,
+              "native_desktop_decode_seconds": 0.006379743979778141,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 104650,
+              "encode_seconds": 0.24710499902721494,
+              "native_desktop_decode_seconds": 0.0046984279761090875,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 177858,
+              "encode_seconds": 0.039377444016281515,
+              "native_desktop_decode_seconds": 0.007962260046042502,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 81.35714178657075,
+              "psnr_db": 29.02684678181894
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 332358,
+              "encode_seconds": 0.008401787956245244,
+              "native_desktop_decode_seconds": 0.004338100028689951,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.536840527577938,
+              "psnr_db": 36.21717652770075
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 101950,
+              "encode_seconds": 0.13753241900121793,
+              "native_desktop_decode_seconds": 0.02484057896072045,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 159.69927807753797,
+              "psnr_db": 26.09777407958296
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 173446,
+              "encode_seconds": 0.1723046679981053,
+              "native_desktop_decode_seconds": 0.027338835003320128,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 135.07682479016788,
+              "psnr_db": 26.82499517612831
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 152521,
+              "encode_seconds": 2.252958894998301,
+              "native_desktop_decode_seconds": 0.017870042007416487,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 7.564341027178258,
+              "psnr_db": 39.343092607262314
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 102647,
+              "encode_seconds": 0.05788798502180725,
+              "native_desktop_decode_seconds": 0.003955729014705867,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/07.p8",
+          "width": 240,
+          "height": 320,
+          "world_width": 480,
+          "world_height": 256,
+          "original_zip_bytes": 26373,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 26663,
+              "encode_seconds": 0.027785261045210063,
+              "native_desktop_decode_seconds": 0.0006013400270603597,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 24374,
+              "encode_seconds": 0.014200069999787956,
+              "native_desktop_decode_seconds": 0.001002990989945829,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 26661,
+              "encode_seconds": 0.001016851980239153,
+              "native_desktop_decode_seconds": 0.0005246350192464888,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 42.559131944444445,
+              "psnr_db": 31.840875995598278
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 53183,
+              "encode_seconds": 0.001357291010208428,
+              "native_desktop_decode_seconds": 0.0006234829779714346,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 9.293563368055555,
+              "psnr_db": 38.44898096350902
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 15504,
+              "encode_seconds": 0.021490479994099587,
+              "native_desktop_decode_seconds": 0.001437961996998638,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 48.01002604166667,
+              "psnr_db": 31.317484193280496
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 30896,
+              "encode_seconds": 0.024109259014949203,
+              "native_desktop_decode_seconds": 0.0019992520101368427,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 31.365221354166668,
+              "psnr_db": 33.16632004031894
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 30529,
+              "encode_seconds": 0.4412974249571562,
+              "native_desktop_decode_seconds": 0.009063933975994587,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 5.013064236111111,
+              "psnr_db": 41.129770912818145
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 24815,
+              "encode_seconds": 0.009840212005656213,
+              "native_desktop_decode_seconds": 0.000890041992533952,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/08.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 68694,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 68808,
+              "encode_seconds": 0.051422303018625826,
+              "native_desktop_decode_seconds": 0.019932748982682824,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 62824,
+              "encode_seconds": 0.040947476984001696,
+              "native_desktop_decode_seconds": 0.0023722409969195724,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 146058,
+              "encode_seconds": 0.004558952990919352,
+              "native_desktop_decode_seconds": 0.0020787910325452685,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 53.72349120703437,
+              "psnr_db": 30.829161334407814
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 276718,
+              "encode_seconds": 0.010990616981871426,
+              "native_desktop_decode_seconds": 0.005260591977275908,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 12.971733862909673,
+              "psnr_db": 37.00082331062429
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 83524,
+              "encode_seconds": 0.13132883195066825,
+              "native_desktop_decode_seconds": 0.005158760002814233,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 77.55773631095124,
+              "psnr_db": 29.234552360931346
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 155430,
+              "encode_seconds": 0.1307957650278695,
+              "native_desktop_decode_seconds": 0.01223121298244223,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 56.63174960031974,
+              "psnr_db": 30.600203817943235
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 96837,
+              "encode_seconds": 1.5153936950373463,
+              "native_desktop_decode_seconds": 0.0499278960051015,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 4.2859449940047964,
+              "psnr_db": 41.81033767879665
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 58066,
+              "encode_seconds": 0.06014249403961003,
+              "native_desktop_decode_seconds": 0.002214131993241608,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/09.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 92435,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 93239,
+              "encode_seconds": 0.14281328400829807,
+              "native_desktop_decode_seconds": 0.0016834780108183622,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 79822,
+              "encode_seconds": 0.17196508700726554,
+              "native_desktop_decode_seconds": 0.0025290930061601102,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 168407,
+              "encode_seconds": 0.0045575969852507114,
+              "native_desktop_decode_seconds": 0.0022815129486843944,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 83.6275404676259,
+              "psnr_db": 28.907310367370194
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 309654,
+              "encode_seconds": 0.00770864199148491,
+              "native_desktop_decode_seconds": 0.0033033720101229846,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 14.451587480015988,
+              "psnr_db": 36.53164804713532
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 90654,
+              "encode_seconds": 0.24672317301156,
+              "native_desktop_decode_seconds": 0.011171612015459687,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 157.94309052757794,
+              "psnr_db": 26.14579729116018
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 160190,
+              "encode_seconds": 0.31433002901030704,
+              "native_desktop_decode_seconds": 0.012382223038002849,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 134.77260441646683,
+              "psnr_db": 26.834787398846235
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 118819,
+              "encode_seconds": 1.6565128299989738,
+              "native_desktop_decode_seconds": 0.027260817994829267,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 3.9772894184652277,
+              "psnr_db": 42.134931660928665
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 79960,
+              "encode_seconds": 0.07114852796075866,
+              "native_desktop_decode_seconds": 0.0065801930031739175,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/10.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 104771,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 105327,
+              "encode_seconds": 0.08554032602114603,
+              "native_desktop_decode_seconds": 0.0023368760012090206,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 86750,
+              "encode_seconds": 0.10867178899934515,
+              "native_desktop_decode_seconds": 0.0036154179833829403,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 169870,
+              "encode_seconds": 0.005741397966630757,
+              "native_desktop_decode_seconds": 0.0030836230143904686,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 67.12662869704236,
+              "psnr_db": 29.861855247218315
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 311395,
+              "encode_seconds": 0.010970411007292569,
+              "native_desktop_decode_seconds": 0.003870118991471827,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 13.466625449640288,
+              "psnr_db": 36.838215797112134
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 94764,
+              "encode_seconds": 0.2759575429954566,
+              "native_desktop_decode_seconds": 0.04505634302040562,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 141.66632444044765,
+              "psnr_db": 26.6181373467
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 162018,
+              "encode_seconds": 0.19615198101382703,
+              "native_desktop_decode_seconds": 0.010032277030404657,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 120.43820818345324,
+              "psnr_db": 27.32316075184839
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 124664,
+              "encode_seconds": 1.718186438025441,
+              "native_desktop_decode_seconds": 0.060476496000774205,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 5.353755745403677,
+              "psnr_db": 40.844218073982326
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 87855,
+              "encode_seconds": 0.06608670600689948,
+              "native_desktop_decode_seconds": 0.0034716230002231896,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/11.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 113973,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 114446,
+              "encode_seconds": 0.12133753701345995,
+              "native_desktop_decode_seconds": 0.006458757969085127,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 110902,
+              "encode_seconds": 0.18602577300043777,
+              "native_desktop_decode_seconds": 0.0031761540449224412,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 159117,
+              "encode_seconds": 0.008656838966999203,
+              "native_desktop_decode_seconds": 0.002455566020216793,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 70.49261465827338,
+              "psnr_db": 29.649367414817522
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 299690,
+              "encode_seconds": 0.010839115013368428,
+              "native_desktop_decode_seconds": 0.006903033994603902,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 14.533483213429257,
+              "psnr_db": 36.50710647527957
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 96848,
+              "encode_seconds": 0.24185627402039245,
+              "native_desktop_decode_seconds": 0.010186478029936552,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 121.36514538369305,
+              "psnr_db": 27.28986380396625
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 172012,
+              "encode_seconds": 0.18907553801545873,
+              "native_desktop_decode_seconds": 0.01379164500394836,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 99.08239533373302,
+              "psnr_db": 28.17083863684349
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 139117,
+              "encode_seconds": 1.6902777329669334,
+              "native_desktop_decode_seconds": 0.020961545989848673,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 5.697373351318944,
+              "psnr_db": 40.57405680975069
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 102390,
+              "encode_seconds": 0.08565659599844366,
+              "native_desktop_decode_seconds": 0.004267433017957956,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/12.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 132472,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 133343,
+              "encode_seconds": 0.05047134798951447,
+              "native_desktop_decode_seconds": 0.0061907300259917974,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 132354,
+              "encode_seconds": 0.09490675799315795,
+              "native_desktop_decode_seconds": 0.003602568991482258,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 165512,
+              "encode_seconds": 0.004860070010181516,
+              "native_desktop_decode_seconds": 0.0027703039813786745,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 81.19341027178257,
+              "psnr_db": 29.035595779165796
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 316802,
+              "encode_seconds": 0.007318288029637188,
+              "native_desktop_decode_seconds": 0.0036981719895265996,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 15.68650579536371,
+              "psnr_db": 36.1755414658591
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 95644,
+              "encode_seconds": 0.29957558203022927,
+              "native_desktop_decode_seconds": 0.014142755011562258,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 119.86475944244604,
+              "psnr_db": 27.343888427339273
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 174738,
+              "encode_seconds": 0.24587339896243066,
+              "native_desktop_decode_seconds": 0.010493808018509299,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 96.2544851618705,
+              "psnr_db": 28.29659385433684
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 165992,
+              "encode_seconds": 2.0972517500049435,
+              "native_desktop_decode_seconds": 0.01949558302294463,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 8.031645933253397,
+              "psnr_db": 39.08275806064925
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 121050,
+              "encode_seconds": 0.06594068801496178,
+              "native_desktop_decode_seconds": 0.005137223983183503,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/13.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 28902,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 29238,
+              "encode_seconds": 0.07070495601510629,
+              "native_desktop_decode_seconds": 0.0010437510209158063,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 23604,
+              "encode_seconds": 0.04984123696340248,
+              "native_desktop_decode_seconds": 0.02385589899495244,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 49993,
+              "encode_seconds": 0.0024381770053878427,
+              "native_desktop_decode_seconds": 0.001086635049432516,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 17.63861410871303,
+              "psnr_db": 35.666159018738846
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 95399,
+              "encode_seconds": 0.0033097710111178458,
+              "native_desktop_decode_seconds": 0.0043716689688153565,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 4.074931304956035,
+              "psnr_db": 42.0296006905081
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 21498,
+              "encode_seconds": 0.11007639998570085,
+              "native_desktop_decode_seconds": 0.0071017330046743155,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 32.06023681055156,
+              "psnr_db": 33.0711363495409
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 46990,
+              "encode_seconds": 0.09804554301081225,
+              "native_desktop_decode_seconds": 0.0036193649866618216,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 24.84164168665068,
+              "psnr_db": 34.17900067596298
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 33035,
+              "encode_seconds": 0.6835849060444161,
+              "native_desktop_decode_seconds": 0.01393588597420603,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 1.4666379396482814,
+              "psnr_db": 46.46757445538487
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 24570,
+              "encode_seconds": 0.05065246799495071,
+              "native_desktop_decode_seconds": 0.0012552079861052334,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/14.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 68205,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 68786,
+              "encode_seconds": 0.09227324899984524,
+              "native_desktop_decode_seconds": 0.0019060919876210392,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 59392,
+              "encode_seconds": 0.11392571701435372,
+              "native_desktop_decode_seconds": 0.006397891964297742,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 130385,
+              "encode_seconds": 0.03702048794366419,
+              "native_desktop_decode_seconds": 0.0024595289723947644,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 54.21398006594724,
+              "psnr_db": 30.789690691152973
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 245536,
+              "encode_seconds": 0.015128941042348742,
+              "native_desktop_decode_seconds": 0.007495441997889429,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 10.84034897082334,
+              "psnr_db": 37.78037097700278
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 61504,
+              "encode_seconds": 0.22066283400636166,
+              "native_desktop_decode_seconds": 0.013413395034149289,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 116.82494879096723,
+              "psnr_db": 27.45544761540104
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 119812,
+              "encode_seconds": 0.17683462897548452,
+              "native_desktop_decode_seconds": 0.00765235599828884,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 96.27164393485212,
+              "psnr_db": 28.29581972975678
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 101556,
+              "encode_seconds": 1.8627046900219284,
+              "native_desktop_decode_seconds": 0.012948365008924156,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 5.727529226618705,
+              "psnr_db": 40.55113046869096
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 59202,
+              "encode_seconds": 0.08034933102317154,
+              "native_desktop_decode_seconds": 0.0029314450221136212,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/15.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 106294,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 107033,
+              "encode_seconds": 0.08265834301710129,
+              "native_desktop_decode_seconds": 0.002623507985845208,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 102202,
+              "encode_seconds": 0.11994661402422935,
+              "native_desktop_decode_seconds": 0.0046978680184111,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 148242,
+              "encode_seconds": 0.008602029003668576,
+              "native_desktop_decode_seconds": 0.0029589260229840875,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 64.30862435051958,
+              "psnr_db": 30.04811141339074
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 287629,
+              "encode_seconds": 0.0090339639573358,
+              "native_desktop_decode_seconds": 0.005993355996906757,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 13.521851268984813,
+              "psnr_db": 36.82044206180577
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 89370,
+              "encode_seconds": 0.1668305939529091,
+              "native_desktop_decode_seconds": 0.007368762977421284,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 87.57517985611511,
+              "psnr_db": 28.70699322951967
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 165292,
+              "encode_seconds": 0.18963234598049894,
+              "native_desktop_decode_seconds": 0.010568820987828076,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 67.7355603017586,
+              "psnr_db": 29.822636332719593
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 123707,
+              "encode_seconds": 1.7120116570149548,
+              "native_desktop_decode_seconds": 0.03515355900162831,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 4.232647631894484,
+              "psnr_db": 41.8646824592416
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 93569,
+              "encode_seconds": 0.08312560402555391,
+              "native_desktop_decode_seconds": 0.0043354350491426885,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/16.p8",
+          "width": 240,
+          "height": 320,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 5662,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 5738,
+              "encode_seconds": 0.007000882993452251,
+              "native_desktop_decode_seconds": 0.0005323460209183395,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 4440,
+              "encode_seconds": 0.010386558016762137,
+              "native_desktop_decode_seconds": 0.0008248030208051205,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 4296,
+              "encode_seconds": 0.0008069669711403549,
+              "native_desktop_decode_seconds": 0.0004701729631051421,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 4.534244791666667,
+              "psnr_db": 41.565753980548585
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 14863,
+              "encode_seconds": 0.0010557990171946585,
+              "native_desktop_decode_seconds": 0.0005752210272476077,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 3.006388888888889,
+              "psnr_db": 43.35035203188349
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 864,
+              "encode_seconds": 0.010079708998091519,
+              "native_desktop_decode_seconds": 0.0008931259508244693,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 4.924210069444444,
+              "psnr_db": 41.20743788977741
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 7878,
+              "encode_seconds": 0.021038463048171252,
+              "native_desktop_decode_seconds": 0.0012781319674104452,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 3.2624131944444446,
+              "psnr_db": 42.99541395977609
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 6219,
+              "encode_seconds": 0.20568213099613786,
+              "native_desktop_decode_seconds": 0.0025736300158314407,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 1.7553168402777777,
+              "psnr_db": 45.68724841453681
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 4675,
+              "encode_seconds": 0.039829208981245756,
+              "native_desktop_decode_seconds": 0.00028315401868894696,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "scenes/17.p8",
+          "width": 640,
+          "height": 417,
+          "world_width": 640,
+          "world_height": 417,
+          "original_zip_bytes": 83421,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 84403,
+              "encode_seconds": 0.057860839006025344,
+              "native_desktop_decode_seconds": 0.002049897040706128,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 72616,
+              "encode_seconds": 0.0892415739945136,
+              "native_desktop_decode_seconds": 0.0031015200074762106,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 137494,
+              "encode_seconds": 0.005124385003000498,
+              "native_desktop_decode_seconds": 0.002439169038552791,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 60.26730740407674,
+              "psnr_db": 30.329985721820393
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 257976,
+              "encode_seconds": 0.007349024002905935,
+              "native_desktop_decode_seconds": 0.0034151190193369985,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 11.456885741406875,
+              "psnr_db": 37.54013778937009
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 71230,
+              "encode_seconds": 0.12910825299331918,
+              "native_desktop_decode_seconds": 0.02388267801143229,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 111.67067720823341,
+              "psnr_db": 27.651412110152517
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 132580,
+              "encode_seconds": 0.12181712000165135,
+              "native_desktop_decode_seconds": 0.00888372998451814,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 90.10734287569944,
+              "psnr_db": 28.58320177652899
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 108079,
+              "encode_seconds": 1.6211708100163378,
+              "native_desktop_decode_seconds": 0.04023471096297726,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 5.029809902078338,
+              "psnr_db": 41.11528789338523
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 73152,
+              "encode_seconds": 0.08761783299269155,
+              "native_desktop_decode_seconds": 0.006489217048510909,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "ui/folder.p8",
+          "width": 240,
+          "height": 320,
+          "world_width": 240,
+          "world_height": 320,
+          "original_zip_bytes": 36337,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 37083,
+              "encode_seconds": 0.013444412965327501,
+              "native_desktop_decode_seconds": 0.0009845220483839512,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 32384,
+              "encode_seconds": 0.034287012997083366,
+              "native_desktop_decode_seconds": 0.001660784997511655,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 53682,
+              "encode_seconds": 0.0025059489998966455,
+              "native_desktop_decode_seconds": 0.0009665259858593345,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 80.53305989583333,
+              "psnr_db": 29.071061602154526
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 96001,
+              "encode_seconds": 0.0068148450227454305,
+              "native_desktop_decode_seconds": 0.0054968129843473434,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 13.238893229166667,
+              "psnr_db": 36.91228681244354
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 26832,
+              "encode_seconds": 0.08405783900525421,
+              "native_desktop_decode_seconds": 0.0020553740323521197,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 220.40469618055556,
+              "psnr_db": 24.698595170421875
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 48650,
+              "encode_seconds": 0.08186095301061869,
+              "native_desktop_decode_seconds": 0.003648698970209807,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 195.13486111111112,
+              "psnr_db": 25.227454972359848
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 46139,
+              "encode_seconds": 0.697401779005304,
+              "native_desktop_decode_seconds": 0.008746384992264211,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 10.384544270833333,
+              "psnr_db": 37.96692918735856
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 32133,
+              "encode_seconds": 0.021457536960951984,
+              "native_desktop_decode_seconds": 0.0015471340157091618,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        },
+        {
+          "name": "ui/leather.p8",
+          "width": 240,
+          "height": 320,
+          "world_width": 240,
+          "world_height": 320,
+          "original_zip_bytes": 63293,
+          "formats": [
+            {
+              "format": "png_palette",
+              "payload_bytes": 63604,
+              "encode_seconds": 0.0023864100221544504,
+              "native_desktop_decode_seconds": 0.0006678689969703555,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "webp_lossless",
+              "payload_bytes": 61986,
+              "encode_seconds": 0.016560874006245285,
+              "native_desktop_decode_seconds": 0.0009032710222527385,
+              "lossless": true,
+              "rgb_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            },
+            {
+              "format": "jpeg_q85",
+              "payload_bytes": 40629,
+              "encode_seconds": 0.0015415559755638242,
+              "native_desktop_decode_seconds": 0.0008099709521047771,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 60.90353298611111,
+              "psnr_db": 30.28437874279892
+            },
+            {
+              "format": "jpeg_q95",
+              "payload_bytes": 82874,
+              "encode_seconds": 0.002073241979815066,
+              "native_desktop_decode_seconds": 0.01948447903851047,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 16.405598958333332,
+              "psnr_db": 35.98088270031823
+            },
+            {
+              "format": "webp_q80",
+              "payload_bytes": 28930,
+              "encode_seconds": 0.03056104900315404,
+              "native_desktop_decode_seconds": 0.0019551150035113096,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 52.462604166666665,
+              "psnr_db": 30.932305163378828
+            },
+            {
+              "format": "webp_q95",
+              "payload_bytes": 53056,
+              "encode_seconds": 0.04489568300778046,
+              "native_desktop_decode_seconds": 0.021641154016833752,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 31.48230034722222,
+              "psnr_db": 33.150139030129765
+            },
+            {
+              "format": "avif_q85",
+              "payload_bytes": 37249,
+              "encode_seconds": 0.25914038595510647,
+              "native_desktop_decode_seconds": 0.008846697979606688,
+              "lossless": false,
+              "rgb_exact": false,
+              "mse": 24.9807421875,
+              "psnr_db": 34.15475023581295
+            },
+            {
+              "format": "lzma_p8_256k",
+              "payload_bytes": 64278,
+              "encode_seconds": 0.012101172003895044,
+              "native_desktop_decode_seconds": 0.0023079320089891553,
+              "lossless": true,
+              "rgb_exact": true,
+              "p8_bytes_exact": true,
+              "mse": 0.0,
+              "psnr_db": null
+            }
+          ]
+        }
+      ],
+      "original_zip_bytes": 1491326,
+      "totals": {
+        "png_palette": 1503584,
+        "webp_lossless": 1355850,
+        "jpeg_q85": 2349217,
+        "jpeg_q95": 4346671,
+        "webp_q80": 1314272,
+        "webp_q95": 2325416,
+        "avif_q85": 1878052,
+        "lzma_p8_256k": 1319677
+      }
+    }
+  },
+  "notes": [
+    "Lossless comparisons preserve every RGB pixel. Palette PNG may choose a different index layout internally; matching RGB is the displayed invariant for opaque backgrounds.",
+    "Lossy PSNR is not approval of visual quality; user has accepted lossy Opus, not lossy graphics.",
+    "Per-image payload sums exclude scene metadata/resource index/ZIP headers; original_zip_bytes is actual ZIP payload.",
+    "PNG is a candidate for native Image decoding; native JPEG/WebP/AVIF availability must be checked separately.",
+    "All timings are desktop native libraries, not Java CLDC timings."
+  ],
+  "spatial_source": {
+    "images": 8630,
+    "raw_bytes": 120919484,
+    "sha256": "398d3ae2a475a0b9f45bb162e3c4cfb03ea7b019492b62421806fd1eb61adc63",
+    "clips": 1667,
+    "frames": 20916
+  },
+  "source_jar_sha256": {
+    "128x128": "f004bf4d771457ba7eed2b2f856477e665376a869300cf0271b5bccd2b1f8b20",
+    "128x160": "ee0d01be242de18bbe7b5b220d49890a27162c9171ef28bf2a8e5f4df843ec56",
+    "240x320": "794fe383d6eed1f466f3a7cbb19cd1840219a5666dadd16ed71f646b281a7724"
+  }
+}

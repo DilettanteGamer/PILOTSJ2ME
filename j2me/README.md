@@ -1,6 +1,7 @@
 # J2ME-версии и сборка
 
 [План переноса](../docs/J2ME_PORTING_PLAN.md) ·
+[Сравнение форматов сжатия](../docs/COMPRESSION_FORMATS_COMPARISON.md) ·
 [Анализ сжатия полной игры](../docs/COMPRESSION_ANALYSIS.md) ·
 [Текстовые титры и правая клавиша — 0.26.0](../docs/TEXT_CREDITS_0.26.0.md) ·
 [Поля канализации и реплика — 0.25.1](../docs/SEWER_MARGINS_0.25.1.md) ·
