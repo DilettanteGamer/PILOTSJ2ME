@@ -1,0 +1,3 @@
+package pilots;
+import java.io.*;import java.security.*;
+public class ResourceBytesTest{public static void main(String[] args)throws Exception{BufferedReader r=new BufferedReader(new FileReader(args[0]));int count=0;String line;while((line=r.readLine())!=null){String[] s=line.split(",");InputStream in=PackedResources.open("/"+s[0]);MessageDigest d=MessageDigest.getInstance("SHA-256");byte[] b=new byte[4096];int n;while((n=in.read(b))!=-1)d.update(b,0,n);in.close();String h="";for(byte v:d.digest())h+=Integer.toHexString((v&255)|256).substring(1);if(!h.equals(s[1]))throw new Exception(s[0]);count++;}System.out.println("P8/bar/MIDI exact restored resources="+count);}}
