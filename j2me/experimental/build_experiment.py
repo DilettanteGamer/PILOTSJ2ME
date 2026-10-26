@@ -5,6 +5,7 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from graphics_format_audit import collect_frames
 from local_tiles import group_images
 from instrument_debug import patch as debug_patch
+from optimize_updates import patch as optimize_patch
 EXP=ROOT/'experimental';WORK=Path('/tmp/pilots-exp-build');WORK.mkdir(exist_ok=True);CACHE=Path('/workspace/pilots-tools/j2me-placement');JAVA=Path('/workspace/pilots-tools/jdk-21.0.8+9/bin/java')
 filters=[dict(id=lzma.FILTER_LZMA1,dict_size=262144,lc=3,lp=0,pb=2,mode=lzma.MODE_NORMAL,nice_len=128,mf=lzma.MF_BT4)]
 props=b'\x5d'+struct.pack('<I',262144)
@@ -75,6 +76,7 @@ for path in (ROOT/'src').rglob('*.java'):
   text=text.replace('if(tiled)TileStore.fill(input.readInt(),pixels,n,n2);','if(tiled){tileImage=input.readInt();TileStore.fill(tileImage,pixels,n,n2);}')
   text=text.replace('Image cached=raster.get();','Image shared=tiled?FrameRasters.get(tileImage,tilePalette*256+transparent,drawWidth,drawHeight):null;\n        if(shared!=null){paintRaster(graphics,shared,x1,y1,x1-left,y1-top,cropWidth,cropHeight);return;}\n        Image cached=raster.get();')
   text=text.replace('raster.store(bitmap);','if(tiled && rasterX==0 && rasterY==0 && rasterWidth==drawWidth && rasterHeight==drawHeight)FrameRasters.put(tileImage,tilePalette*256+transparent,bitmap);else raster.store(bitmap);')
+ text=optimize_patch(path.name,text)
  text=debug_patch(path.name,text)
  p=WORK/'source/pilots'/path.name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
 if (WORK/'classes').exists():shutil.rmtree(WORK/'classes')
@@ -93,7 +95,7 @@ entries={n:b for n,b in entries.items() if not n.endswith('.class')}
 for path in ([WORK/'verified.jar'] if fast_native else [EXP/'lib/concentus-silk-nb-cldc.jar',WORK/'verified.jar']):
  with zipfile.ZipFile(path) as jar:entries.update({n:jar.read(n) for n in jar.namelist() if n.endswith('.class')})
 entries['META-INF/LICENSE-CONCENTUS.txt']=(EXP/'CONCENTUS-LICENSE').read_bytes();entries['META-INF/LICENSE-LZMA.txt']=(EXP/'LZMA-LICENSE').read_bytes()
-text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.4').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
+text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.5').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
 out=EXP/'dist';out.mkdir(exist_ok=True);target=out/'Pilots-Experimental-128x160.jar'
 with zipfile.ZipFile(target,'w') as jar:
  for name,data in entries.items():jar.writestr(name,data,compress_type=zipfile.ZIP_STORED if (name.startswith('tiles/b') and not native_tiles) or (not fast_native and name.endswith(('.p8','.bar','.mid'))) else zipfile.ZIP_DEFLATED,compresslevel=9)

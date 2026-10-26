@@ -5,6 +5,14 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT));from anima
 work=Path('/tmp/pilots-exp-tests');work.mkdir(exist_ok=True)
 with zipfile.ZipFile(ROOT/'dist/Pilots-128x160.jar') as jar:
  (work/'frames.properties').write_text('\n'.join(n+'='+hashlib.sha256(decode_animation(jar.read(n))[777:]).hexdigest() for n in jar.namelist() if n.endswith('.anm'))+'\n')
+ seek_rows=[]
+ for name in jar.namelist():
+  if not name.endswith('.anm'):continue
+  raw=decode_animation(jar.read(name));count=struct.unpack_from('>H',raw,4)[0];p=777;frames=[]
+  for i in range(count):
+   w,h=struct.unpack_from('>HH',raw,p+4);length=8+w*h;frames.append(hashlib.sha256(raw[p:p+length]).hexdigest());p+=length
+  for i in [count-1,0,count//2,count-1]:seek_rows.append(name+','+str(i)+','+frames[i])
+ (work/'seek.csv').write_text('\n'.join(seek_rows)+'\n')
  (work/'resources.csv').write_text('\n'.join(n+','+hashlib.sha256(jar.read(n)).hexdigest() for n in jar.namelist() if n.endswith(('.p8','.bar','.mid')))+'\n')
 with zipfile.ZipFile(ROOT/'experimental/input/opus-corpus.zip') as jar:manifest=json.loads(jar.read('manifest.json'))
 (work/'audio.csv').write_text('\n'.join(r['name']+','+str(r['source_frames']) for r in manifest['clips'])+'\n')
