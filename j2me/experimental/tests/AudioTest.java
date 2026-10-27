@@ -115,11 +115,11 @@ public final class AudioTest {
             check(music.getMicrosecondLength()==(scene==2?54850000L:scene==3?314020000L:scene==4?109580000L:scene==5?109670000L:scene==6?109710000L:scene==8?90300000L:scene==9?123390000L:scene==10?90350000L:scene==11?80160000L:scene==17?107290000L:scene==16?109700000L:scene==14?82280000L:scene==12||scene==15?109710000L:90300000L),"MIDI timing changed");
             for(int cue=0;cue<(scene==2?39:scene==3?24:scene==4?62:scene==5?25:scene==6?32:scene==8?16:scene==9?53:scene==10?42:scene==11?24:scene==12?46:scene==17?47:scene==16?28:scene==14?45:scene==15?30:31);cue++) {
                 String path="/audio/"+(scene<10?"0":"")+scene+"-"+(cue<10?"0":"")+cue+".wav";
-                InputStream sound=PackedResources.open(path);byte[] encoded=sound.readAllBytes();sound.close();check(encoded.length>=4&&(encoded[0]&255)==255&&(encoded[1]&224)==224,"MP3 frame missing");
+                InputStream sound=PackedResources.open(path);byte[] encoded=sound.readAllBytes();sound.close();if(PackedResources.audioType(path).equals("audio/x-wav")){javax.sound.sampled.AudioInputStream wav=javax.sound.sampled.AudioSystem.getAudioInputStream(new ByteArrayInputStream(encoded));check(wav.getFormat().getSampleRate()==11025 && wav.getFormat().getSampleSizeInBits()==8,"Original step PCM changed");wav.close();}else check(encoded.length>=4&&(encoded[0]&255)==255&&(encoded[1]&224)==224,"MP3 frame missing");
             }
         }
     }
     public static void main(String[] args) throws Exception {
-        resources(args);logic();worker();System.out.println("Audio: 471 action sound cues via native MP3, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
+        resources(args);logic();worker();System.out.println("Audio: 471 action sound cues via native MP3/PCM, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed");
     }
 }
