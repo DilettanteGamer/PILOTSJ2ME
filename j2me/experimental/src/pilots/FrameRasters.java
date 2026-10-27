@@ -2,7 +2,7 @@ package pilots;
 import javax.microedition.lcdui.Image;
 /** Reuses scaled cels inside the existing RasterCache budget; never owns raw Image references. */
 public final class FrameRasters {
- private static final int COUNT=32,LIMIT=32768;
+ private static final int COUNT=64,LIMIT=32768;
  private static final RasterCache[] rasters=new RasterCache[COUNT];
  private static final int[] images=new int[COUNT],palettes=new int[COUNT],widths=new int[COUNT],heights=new int[COUNT];
  private static final long[] ages=new long[COUNT];private static long clock;
