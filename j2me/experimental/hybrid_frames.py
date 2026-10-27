@@ -2,11 +2,13 @@
 from pathlib import Path
 import struct
 from local_tiles import group_images
+ANIMAL_ARRIVAL_CLIPS={49,51,52,53,54,57,58,59,71,72,73,74,75,76,77,78,103,104,105,106,107,108,109,111,114,115,118,126,127,128,129,130,131,132,133,134,137}
 
 def hot_images(metadata):
  return {frame[2] for clip in metadata['clips']
          if 20000<=int(Path(clip['name']).stem.split('-')[1])<=20037
          or clip['name'] in ('scenes/02-64.anm','scenes/02-66.anm','scenes/02-69.anm')
+         or clip['name'].startswith('scenes/04-') and int(Path(clip['name']).stem.split('-')[1]) in ANIMAL_ARRIVAL_CLIPS
          for frame in clip['frames']}
 
 def graphics(blob,metadata,rows):
@@ -25,5 +27,5 @@ def graphics(blob,metadata,rows):
  for i,bank in enumerate(banks+linear):entries['tiles/b'+str(i)]=struct.pack('>i',-len(bank))+bank
  for group in range((len(rows)+31)//32):
   data=full[group*32:group*32+32];entries['tiles/m'+str(group)]=bytes([len(data)])+b''.join(struct.pack('>H',len(x)) for x in data)+b''.join(data)
- stats=dict(direct_images=len(hot),direct_banks=len(linear),direct_bank_target_bytes=32768,direct_bank_frame_limit=4,direct_raw_bytes=sum(map(len,linear)),largest_direct_frame_bytes=max(rows[i][0]*rows[i][1] for i in hot),largest_direct_bank_bytes=max(map(len,linear)),tile_banks=len(banks),tile_bank_raw_bytes=sum(map(len,banks)),cache_budgets_unchanged=True)
+ stats=dict(direct_images=len(hot),direct_banks=len(linear),direct_bank_target_bytes=32768,direct_bank_frame_limit=4,direct_raw_bytes=sum(map(len,linear)),largest_direct_frame_bytes=max(rows[i][0]*rows[i][1] for i in hot),largest_direct_bank_bytes=max(map(len,linear)),tile_banks=len(banks),tile_bank_raw_bytes=sum(map(len,banks)),cache_budgets_unchanged=True,animal_arrival_clips=sorted(ANIMAL_ARRIVAL_CLIPS))
  return entries,stats
