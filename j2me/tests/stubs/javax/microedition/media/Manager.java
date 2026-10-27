@@ -32,18 +32,18 @@ public final class Manager {
         public final String type;public final byte[] data;
         public volatile int state=UNREALIZED,starts,stops,level,loops=1,seeks;
         public volatile long lastSeek=-1;
-        public volatile boolean failPrefetch;
+        public volatile boolean failPrefetch,failState,failClose,breakEffectsOnClose;
         public FakePlayer(String type,byte[] data) { this.type=type;this.data=data; }
         public void realize() { state=REALIZED; }
         public void prefetch() throws MediaException { if(rejectEffectPrefetch && !type.equals("audio/midi"))throw new MediaException("TEST EFFECT PREFETCH REJECTED");if(failPrefetch){failPrefetch=false;throw new IllegalStateException("Simulated prefetch failure");}state=PREFETCHED; }
         public void start() { if(state==CLOSED || rejectReplay && starts>0) throw new IllegalStateException();state=STARTED;starts++; }
         public void stop() { state=PREFETCHED;stops++; }
         public void deallocate() { state=REALIZED; }
-        public void close() { state=CLOSED; }
+        public void close() { state=CLOSED;if(breakEffectsOnClose)rejectEffectPrefetch=true;if(failClose)throw new IllegalStateException("TEST CLOSE FAILED"); }
         public long setMediaTime(long value) { if(rejectSeek)throw new IllegalStateException();lastSeek=value;seeks++;return value; }
         public long getMediaTime() { return 123456; }
         public long getDuration() { return 1000000; }
-        public int getState() { return state; }
+        public int getState() { if(failState){failState=false;throw new IllegalStateException("TEST STATE FAILED");}return state; }
         public String getContentType() { return type; }
         public void setLoopCount(int count) { loops=count; }
         public void addPlayerListener(PlayerListener listener) { }
