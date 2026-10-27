@@ -2,7 +2,7 @@ package pilots;
 import javax.microedition.lcdui.*;
 /** Diagnostic data only. No forced GC, image creation or polling thread. */
 public final class DebugHud {
- private static int mode=2,scene,sceneLoad,visible,totalActors;
+ private static int mode=3,scene,sceneLoad,visible,totalActors;
  private static long window=System.currentTimeMillis(),snapshot,pulse,lastPaint;
  private static int frames,ticks,changes,fps10,tickRate,changeRate;
  private static int update,updateMax,paint,paintMax,gap,load,loadMax,audio,audioMax,queue,effects,hud,hudMax;
@@ -37,7 +37,7 @@ public final class DebugHud {
    "M"+((size-free)/1024)+"/"+(size/1024)+"K N"+(minFree/1024)+"K",
    "V"+visible+"/"+totalActors+" D"+hud+"/"+hudMax+" O+"+Math.min(999,opens-oldOpens),
    "AU"+audio+"/"+audioMax+" Q"+queue+" E"+effects+" H+"+Math.min(99,GameAudio.effectReuses-oldAudioReuses)};
-  if(mode==3){labels[2]="L"+load+"/"+loadMax+" A"+AudioDiagnostics.failedStage+" E"+AudioDiagnostics.errorType+" F"+Math.min(999,AudioDiagnostics.startFailures);if(AudioDiagnostics.errorText!=null)labels[3]=AudioDiagnostics.errorText;labels[5]="K"+AudioDiagnostics.cue+" C"+Math.min(999,AudioDiagnostics.creates)+" P"+Math.min(999,AudioDiagnostics.starts)+" H"+Math.min(999,AudioDiagnostics.reuses)+" X"+Math.min(99,AudioDiagnostics.failures);labels[6]="AU"+audio+"/"+audioMax+" B"+Math.min(99,AudioDiagnostics.refetches)+" S"+AudioDiagnostics.endState+" Z"+AudioDiagnostics.reason;}
+  if(mode==3){labels[0]="F"+(fps10/10)+"."+(fps10%10)+" W"+(AudioDiagnostics.workerAlive?1:0)+" M"+AudioDiagnostics.musicState+" N"+Math.min(999,AudioDiagnostics.musicEnds);labels[3]="FX"+Math.min(999,AudioDiagnostics.effectStarts)+" F"+Math.min(999,AudioDiagnostics.effectFailures)+" Q"+queue+" E"+effects;labels[2]="L"+load+"/"+loadMax+" A"+AudioDiagnostics.failedStage+" E"+AudioDiagnostics.errorType+" F"+Math.min(999,AudioDiagnostics.startFailures);if(AudioDiagnostics.errorText!=null)labels[3]=AudioDiagnostics.errorText;labels[5]="K"+AudioDiagnostics.cue+" C"+Math.min(999,AudioDiagnostics.creates)+" P"+Math.min(999,AudioDiagnostics.starts)+" H"+Math.min(999,AudioDiagnostics.reuses)+" X"+Math.min(99,AudioDiagnostics.failures);labels[6]="AU"+audio+"/"+audioMax+" B"+Math.min(99,AudioDiagnostics.refetches)+" S"+AudioDiagnostics.endState+" Z"+AudioDiagnostics.reason;}
   oldAudioReuses=GameAudio.effectReuses;oldBanks=banks;oldDirect=direct;oldCalls=calls;oldHits=hits;oldRequests=requests;oldRasterHits=rasterHits;oldOpens=opens;snapshot=now;
  }
  private static synchronized int[] prepare(int width,int height,int actors,int shown,long now){
