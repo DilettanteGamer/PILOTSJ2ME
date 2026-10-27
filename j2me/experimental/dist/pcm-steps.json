@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "bytes": 1164,
+    "sample_rate": 11025,
+    "bits": 8,
+    "channels": 1,
+    "duration_ms": 102,
+    "source_sha256": "ee8455b336f70ae814e56248aea7a61e71362d153bd247ea1a876b014e1ef41d",
+    "aliases": [
+      "audio/02-00.wav",
+      "audio/02-31.wav",
+      "audio/03-00.wav",
+      "audio/04-00.wav",
+      "audio/05-00.wav",
+      "audio/05-16.wav",
+      "audio/06-00.wav",
+      "audio/07-00.wav",
+      "audio/08-00.wav",
+      "audio/09-00.wav",
+      "audio/10-00.wav",
+      "audio/11-00.wav",
+      "audio/12-00.wav",
+      "audio/13-00.wav",
+      "audio/14-00.wav",
+      "audio/15-00.wav",
+      "audio/16-00.wav",
+      "audio/17-00.wav",
+      "audio/17-33.wav"
+    ]
+  }
+]

@@ -27,14 +27,23 @@ with zipfile.ZipFile(jar_path) as jar:
  print('CRC, JAD, CLDC classfile targets passed; fixtures:',work)
 
 with zipfile.ZipFile(jar_path) as jar,zipfile.ZipFile(ROOT/'dist/Pilots-128x160.jar') as source,zipfile.ZipFile(ROOT/'experimental/input/native-mp3.zip') as corpus:
- import io
+ import io,wave
  mapping=struct.unpack('>'+'h'*(18*64),jar.read('audio/native-map')[:18*64*2])
- native=[]
+ count=struct.unpack_from('>H',jar.read('audio/native-map'),18*64*2)[0];sizes=struct.unpack_from('>'+'i'*count,jar.read('audio/native-map'),18*64*2+2)
+ native=[];pcm_assets={}
  for name in source.namelist():
   if name.endswith('.wav'):
    scene,cue=map(int,Path(name).stem.split('-'));ident=mapping[scene*64+cue]-1;assert ident>=0
-   expected=corpus.read(hashlib.sha256(source.read(name)).hexdigest()+'.mp3');assert jar.read('sounds/'+str(ident)+'.mp3')==expected
-   native.append(name+','+hashlib.sha256(expected).hexdigest())
+   pcm=sizes[ident]<0;expected=source.read(name) if pcm else corpus.read(hashlib.sha256(source.read(name)).hexdigest()+'.mp3');assert jar.read('sounds/'+str(ident)+('.wav' if pcm else '.mp3'))==expected
+   step=0 if scene in (3,6) else 3 if scene==9 else 31
+   if (scene,cue) in ((2,31),(3,0)):assert pcm,'Step did not use original PCM'
+   assert abs(sizes[ident])==len(expected)
+   native.append(name+','+hashlib.sha256(expected).hexdigest()+','+('audio/x-wav' if pcm else 'audio/mpeg'))
+   if pcm:
+    if ident not in pcm_assets:
+     with wave.open(io.BytesIO(expected)) as w:pcm_assets[ident]=dict(id=ident,bytes=len(expected),sample_rate=w.getframerate(),bits=w.getsampwidth()*8,channels=w.getnchannels(),duration_ms=round(w.getnframes()*1000/w.getframerate()),source_sha256=hashlib.sha256(expected).hexdigest(),aliases=[])
+    pcm_assets[ident]['aliases'].append(name)
+ (ROOT/'experimental/dist/pcm-steps.json').write_text(json.dumps(list(pcm_assets.values()),indent=2)+'\n')
  (work/'native-audio.csv').write_text('\n'.join(native)+'\n')
  assert not any(n.startswith(('org/concentus/','lzma/')) for n in jar.namelist())
  assert all(not jar.read(n).startswith(b'LZM1') for n in jar.namelist() if n.endswith(('.p8','.bar','.mid')))

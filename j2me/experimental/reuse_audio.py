@@ -25,7 +25,7 @@ def patch(name, text):
     replace('effects[slot]=Manager.createPlayer(streams[slot],"audio/mpeg");', '''effects[slot]=Manager.createPlayer(streams[slot],"audio/mpeg");
                 effectCreates++;if(rank==1)AudioDiagnostics.creates++;effectCues[slot]=cue;idleSince[slot]=0;''')
     replace('streams[slot]=PackedResources.open(path);','nativeStage=1;streams[slot]=PackedResources.open(path);')
-    replace('effects[slot]=Manager.createPlayer(streams[slot],"audio/mpeg");','nativeStage=2;effects[slot]=Manager.createPlayer(streams[slot],"audio/mpeg");')
+    replace('effects[slot]=Manager.createPlayer(streams[slot],"audio/mpeg");','nativeStage=2;effects[slot]=Manager.createPlayer(streams[slot],PackedResources.audioType(path));')
     replace('effects[slot].realize();effects[slot].prefetch();volume(effects[slot],location==3&&cue==23?35:85);effects[slot].start();return;', '''nativeStage=3;effects[slot].realize();nativeStage=4;effects[slot].prefetch();nativeStage=5;volume(effects[slot],location==3&&cue==23?35:85);nativeStage=6;effects[slot].start();if(rank==1)AudioDiagnostics.starts++;return;''')
     replace('catch(Exception ignored) { release(slot); }','catch(Exception ignored) { AudioDiagnostics.failed(ignored,nativeStage);if(rank==1)AudioDiagnostics.startFailures++;release(slot); }')
     replace('catch(OutOfMemoryError ignored) { release(slot);return; }', '''catch(OutOfMemoryError ignored) {

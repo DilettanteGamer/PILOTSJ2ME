@@ -32,7 +32,7 @@ public final class AudioReuseTest {
    voice.state=Player.PREFETCHED;waitFor(()->voice.state==Player.CLOSED);
    Manager.maxPCM=3;audio.play(31);waitFor(()->latest()!=voice && latest().starts==1);FakePlayer sceneStep=latest();
    sceneStep.state=Player.PREFETCHED;audio.scene(3);waitFor(()->sceneStep.state==Player.CLOSED);
-   audio.play(0);waitFor(()->latest()!=sceneStep && latest().type.equals("audio/mpeg") && latest().state==Player.STARTED);FakePlayer muted=latest();
+   audio.play(0);waitFor(()->latest()!=sceneStep && latest().type.equals("audio/x-wav") && latest().state==Player.STARTED);FakePlayer muted=latest();
    muted.state=Player.PREFETCHED;audio.toggle();waitFor(()->muted.state==Player.CLOSED);
   } finally {audio.close();Manager.maxPCM=3;Manager.rejectSeek=Manager.rejectReplay=Manager.oomNextEffect=false;}
   waitFor(()->Manager.players.stream().allMatch(p->p.state==Player.CLOSED));

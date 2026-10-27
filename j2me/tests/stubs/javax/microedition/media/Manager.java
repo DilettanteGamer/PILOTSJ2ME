@@ -15,7 +15,7 @@ public final class Manager {
         if(type.equals("audio/x-wav")||type.equals("audio/mpeg")) {
             if(oomNextEffect){oomNextEffect=false;throw new OutOfMemoryError("Simulated native player allocation failure");}
             int opened=0;
-            synchronized(players) { for(FakePlayer player:players) if(player.type.equals(type) && player.state!=Player.CLOSED) opened++; }
+            synchronized(players) { for(FakePlayer player:players) if(!player.type.equals("audio/midi") && player.state!=Player.CLOSED) opened++; }
             if(opened>=maxPCM) throw new MediaException("Device PCM player limit");
         }
         ByteArrayOutputStream bytes=new ByteArrayOutputStream();byte[] block=new byte[4096];int n;
@@ -35,7 +35,7 @@ public final class Manager {
         public volatile boolean failPrefetch;
         public FakePlayer(String type,byte[] data) { this.type=type;this.data=data; }
         public void realize() { state=REALIZED; }
-        public void prefetch() throws MediaException { if(rejectEffectPrefetch && !type.equals("audio/midi"))throw new MediaException("TEST MP3 PREFETCH REJECTED");if(failPrefetch){failPrefetch=false;throw new IllegalStateException("Simulated prefetch failure");}state=PREFETCHED; }
+        public void prefetch() throws MediaException { if(rejectEffectPrefetch && !type.equals("audio/midi"))throw new MediaException("TEST EFFECT PREFETCH REJECTED");if(failPrefetch){failPrefetch=false;throw new IllegalStateException("Simulated prefetch failure");}state=PREFETCHED; }
         public void start() { if(state==CLOSED || rejectReplay && starts>0) throw new IllegalStateException();state=STARTED;starts++; }
         public void stop() { state=PREFETCHED;stops++; }
         public void deallocate() { state=REALIZED; }

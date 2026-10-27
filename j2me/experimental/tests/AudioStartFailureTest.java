@@ -15,10 +15,10 @@ public final class AudioStartFailureTest {
    Manager.rejectEffectPrefetch=true;audio.play(31);waitFor(()->AudioDiagnostics.startFailures==2 && Manager.players.stream().allMatch(p->p.state==Player.CLOSED));
    check(AudioDiagnostics.creates==2 && AudioDiagnostics.starts==0 && AudioDiagnostics.reuses==0 && AudioDiagnostics.failures==0,"Creation misreported as playback");
    check(AudioDiagnostics.endState==200 && AudioDiagnostics.reason==4,"Expected old ambiguous S200/Z4");
-   check(AudioDiagnostics.failedStage==4 && AudioDiagnostics.errorType==1 && AudioDiagnostics.errorText.equals("TEST MP3 PREFETCH REJECTED"),"Native error details missing");
+   check(AudioDiagnostics.failedStage==4 && AudioDiagnostics.errorType==1 && AudioDiagnostics.errorText.equals("TEST EFFECT PREFETCH REJECTED"),"Native error details missing");
    DebugHud.scene(2);DebugHud.paint(new javax.microedition.lcdui.Graphics(128,160),128,148,0,0);
    java.lang.reflect.Field field=DebugHud.class.getDeclaredField("labels");field.setAccessible(true);String[] labels=(String[])field.get(null);
-   check(labels[2].contains("A4 E1 F2") && labels[3].equals("TEST MP3 PREFETCH REJECTED") && labels[5].contains("C2 P0 H0 X0"),"Native failure not visible on default HUD");
+   check(labels[2].contains("A4 E1 F2") && labels[3].equals("TEST EFFECT PREFETCH REJECTED") && labels[5].contains("C2 P0 H0 X0"),"Native failure not visible on default HUD");
    Manager.rejectEffectPrefetch=false;audio.play(31);waitFor(()->AudioDiagnostics.starts==1);FakePlayer step=Manager.players.get(Manager.players.size()-1);
    step.state=Player.PREFETCHED;audio.play(31);waitFor(()->AudioDiagnostics.reuses==1);
    check(AudioDiagnostics.starts==1 && AudioDiagnostics.creates==3 && step.lastSeek==0,"Fresh and replay starts conflated");
