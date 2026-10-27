@@ -6,8 +6,8 @@
   "direct_raw_bytes": 4483071,
   "largest_direct_frame_bytes": 38544,
   "largest_direct_bank_bytes": 38544,
-  "tile_banks": 1288,
-  "tile_bank_raw_bytes": 61740032,
+  "tile_banks": 1287,
+  "tile_bank_raw_bytes": 61695232,
   "cache_budgets_unchanged": true,
   "animal_arrival_clips": [
     49,
