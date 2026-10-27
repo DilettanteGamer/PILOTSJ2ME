@@ -34,14 +34,23 @@ with zipfile.ZipFile(jar_path) as jar,zipfile.ZipFile(ROOT/'dist/Pilots-128x160.
  for name in source.namelist():
   if name.endswith('.wav'):
    scene,cue=map(int,Path(name).stem.split('-'));ident=mapping[scene*64+cue]-1;assert ident>=0
-   pcm=sizes[ident]<0;expected=source.read(name) if pcm else corpus.read(hashlib.sha256(source.read(name)).hexdigest()+'.mp3');assert jar.read('sounds/'+str(ident)+('.wav' if pcm else '.mp3'))==expected
+   pcm=sizes[ident]<0;boosted=(scene,cue) in ((2,31),(3,0))
+   if pcm and boosted:
+    expected=jar.read('sounds/'+str(ident)+'.wav');original=source.read(name)
+    assert expected[:44]==original[:44] and len(expected)==len(original)
+    with wave.open(io.BytesIO(original)) as w:before=list(w.readframes(w.getnframes()))
+    with wave.open(io.BytesIO(expected)) as w:after=list(w.readframes(w.getnframes()))
+    assert len(before)==len(after) and all(a-128==(b-128)*16 for a,b in zip(after,before))
+    assert min(after)==80 and max(after)==176,'Step clipped or unexpected gain'
+   else:
+    expected=source.read(name) if pcm else corpus.read(hashlib.sha256(source.read(name)).hexdigest()+'.mp3');assert jar.read('sounds/'+str(ident)+('.wav' if pcm else '.mp3'))==expected
    step=0 if scene in (3,6) else 3 if scene==9 else 31
    if (scene,cue) in ((2,31),(3,0)):assert pcm,'Step did not use original PCM'
    assert abs(sizes[ident])==len(expected)
    native.append(name+','+hashlib.sha256(expected).hexdigest()+','+('audio/x-wav' if pcm else 'audio/mpeg'))
    if pcm:
     if ident not in pcm_assets:
-     with wave.open(io.BytesIO(expected)) as w:pcm_assets[ident]=dict(id=ident,bytes=len(expected),sample_rate=w.getframerate(),bits=w.getsampwidth()*8,channels=w.getnchannels(),duration_ms=round(w.getnframes()*1000/w.getframerate()),source_sha256=hashlib.sha256(expected).hexdigest(),aliases=[])
+     with wave.open(io.BytesIO(expected)) as w:pcm_assets[ident]=dict(id=ident,bytes=len(expected),sample_rate=w.getframerate(),bits=w.getsampwidth()*8,channels=w.getnchannels(),duration_ms=round(w.getnframes()*1000/w.getframerate()),source_sha256=hashlib.sha256(source.read(name)).hexdigest(),packaged_sha256=hashlib.sha256(expected).hexdigest(),gain=16 if boosted else 1,aliases=[])
     pcm_assets[ident]['aliases'].append(name)
  (ROOT/'experimental/dist/pcm-steps.json').write_text(json.dumps(list(pcm_assets.values()),indent=2)+'\n')
  (work/'native-audio.csv').write_text('\n'.join(native)+'\n')
