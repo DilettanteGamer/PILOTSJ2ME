@@ -8,7 +8,7 @@ public final class DebugHudTest {
  public static void main(String[] args)throws Exception{
   DebugHud.scene(2);check(DebugHud.mode()==3,"audio diagnostic default");long now=System.currentTimeMillis();field("window").setLong(null,now-2000);field("frames").setInt(null,1);field("snapshot").setLong(null,0);DebugHud.tick(1500);DebugHud.io(700);DebugHud.audio(600);DebugHud.audioState(2,1);
   Graphics g=new Graphics(128,160);g.setColor(0x123456);g.fillRect(0,0,128,160);DebugHud.paint(g,128,148,16,4);String[] labels=(String[])field("labels").get(null);
-  check(labels[0].startsWith("F0.5"),"low fps arithmetic: "+labels[0]);check(labels[1].contains("U1500/1500"),"update peak missing");check(labels[2].contains("L700/700"),"I/O peak missing");check(labels[6].contains("AU600/600 S-1 Z0")&&labels[5].contains("K-1 W-1 C0 H0 X0"),"audio lifecycle metrics missing");
+  check(labels[0].startsWith("F0.5"),"low fps arithmetic: "+labels[0]);check(labels[1].contains("U1500/1500"),"update peak missing");check(labels[2].contains("L700/700"),"I/O peak missing");check(labels[6].contains("AU600/600 B0 S-1 Z0")&&labels[5].contains("K-1 W-1 C0 H0 X0"),"audio lifecycle metrics missing");
   check(g.image.getRGB(0,147)==0xff000000&&g.image.getRGB(0,148)==0xff123456,"overlay overwrites inventory");Object buffer=field("pixels").get(null);int allocations=Image.allocations;for(int i=0;i<20;i++)DebugHud.paint(g,128,148,16,4);check(field("pixels").get(null)==buffer&&Image.allocations==allocations,"HUD allocates images or buffers per paint");
   javax.imageio.ImageIO.write(g.image,"png",new java.io.File("/tmp/pilots-debug-hud.png"));
   Spy spy=new Spy();field("pulse").setLong(null,0);DebugHud.pulse(spy,148);DebugHud.pulse(spy,148);check(spy.paints==1,"idle refresh exceeds 1Hz");

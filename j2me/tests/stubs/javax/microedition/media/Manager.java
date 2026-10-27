@@ -31,9 +31,10 @@ public final class Manager {
         public final String type;public final byte[] data;
         public volatile int state=UNREALIZED,starts,stops,level,loops=1,seeks;
         public volatile long lastSeek=-1;
+        public volatile boolean failPrefetch;
         public FakePlayer(String type,byte[] data) { this.type=type;this.data=data; }
         public void realize() { state=REALIZED; }
-        public void prefetch() { state=PREFETCHED; }
+        public void prefetch() { if(failPrefetch){failPrefetch=false;throw new IllegalStateException("Simulated prefetch failure");}state=PREFETCHED; }
         public void start() { if(state==CLOSED || rejectReplay && starts>0) throw new IllegalStateException();state=STARTED;starts++; }
         public void stop() { state=PREFETCHED;stops++; }
         public void deallocate() { state=REALIZED; }
