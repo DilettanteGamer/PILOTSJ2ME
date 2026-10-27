@@ -1,0 +1,50 @@
+{
+  "name": "Nokia C1-02 comparative workload",
+  "screen_width": 128,
+  "screen_height": 160,
+  "device_java_heap_kib_observed": 2048,
+  "host_heap_mib": 32,
+  "host_heap_is_device_heap": false,
+  "host_jvm_flags": [
+    "-Xint",
+    "-XX:ActiveProcessorCount=1",
+    "-XX:+UseSerialGC"
+  ],
+  "tick_ms": 100,
+  "ticks": 400,
+  "repeats": 2,
+  "modes": [
+    "stationary",
+    "camera"
+  ],
+  "scene_ids": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    15,
+    14,
+    16,
+    17
+  ],
+  "limitations": [
+    "Desktop API test doubles, not Nokia firmware or a KVM emulator",
+    "Host AWT images and JVM overhead prevent equating a host 2 MiB heap with the device heap",
+    "Host time is comparative only; no predicted phone FPS",
+    "Native MMAPI latency and native image memory are not modeled",
+    "Entry/intro and camera sweep only; quest actions and enlarged puzzles need additional scenarios",
+    "Each scene/mode/repeat starts in a separate JVM; automatic scene transitions end the sample",
+    "JIT census and -Xint control runs are separate; resource counters are primary and host timing is secondary",
+    "Common MIDlet bootstrap is outside the entry measurement; graphics and metadata caches are cleared before each requested entry, OS/JVM ZIP caches are not controlled",
+    "Audio output is inactive; MMAPI playback and device audio preparation are excluded"
+  ],
+  "default_engine": "jit"
+}
