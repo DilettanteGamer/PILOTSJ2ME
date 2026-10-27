@@ -15,6 +15,7 @@ public final class FinalWorldTest implements FinalTestRoute.Driver {
   // Byte writes and unaligned 32-bit values must preserve neighbouring flags.
   test.w.g(0x1e1b79,0x12345678);FinalTestRoute.check(test.w.flag(0x1e1b78)==0&&test.w.g(0x1e1b79)==0x12345678,"unaligned final bank");test.w.g(0x1e1b79,0);test.replay=test.copy(test.w);
   FinalTestRoute.play(test);
+  FinalTestRoute.check(test.actions.contains(23)&&test.cues.contains(25),"original Chief head jump missing");
   FinalTestRoute.check(test.ladderArt&&test.endingArt,"original unbound movies missing");
   boolean finalPose=false;for(HotelWorld.Thing t:test.w.effects)if(t!=null&&t.clip==118)finalPose=true;FinalTestRoute.check(finalPose,"original final hold missing");
   FinalTestRoute.check(SceneFlow.next(16,true)==17&&SceneFlow.next(17,true)==17,"final boundary");

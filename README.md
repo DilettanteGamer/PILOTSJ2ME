@@ -10,7 +10,23 @@ Pilots on J2ME
 
 [Подробный план переноса](docs/J2ME_PORTING_PLAN.md) сопоставляет оригинальную
 игру с текущим прототипом и задаёт этапы восстановления полной игровой логики.
-[JAR-файлы и сборка](j2me/README.md): исходные профили 0.3.2 и сборки 0.22.0.
+[Экспериментальная 128×160 — 0.27.19](j2me/experimental/README.md) ·
+[Сравнение форматов сжатия](docs/COMPRESSION_FORMATS_COMPARISON.md) ·
+[Анализ сжатия полной игры](docs/COMPRESSION_ANALYSIS.md) ·
+[JAR-файлы и сборка](j2me/README.md): исходные профили 0.3.2 и сборки 0.26.1.
+[Текстовые титры и правая клавиша — 0.26.0](docs/TEXT_CREDITS_0.26.0.md) ·
+[Поля канализации и реплика — 0.25.1](docs/SEWER_MARGINS_0.25.1.md) ·
+[Полный экран и текст — 0.25.0](docs/ACCESSIBILITY_0.25.0.md) ·
+[Подъём по лестнице — 0.24.4](docs/SEWER_LADDER_ALIGNMENT_0.24.4.md) ·
+[Удары и возврат в канализации — 0.24.3](docs/SEWER_CONTACT_RECOVERY_0.24.3.md) ·
+[Меню, канализация и полёт — 0.24.2](docs/MENU_SEWER_FLIGHT_0.24.2.md) ·
+[Музыка и управление — 0.24.1](docs/MENU_CONTROLS_0.24.1.md) ·
+[Игровое меню — 0.24.0](docs/GRAPHICAL_MENU_0.24.0.md) ·
+[Безопасные точки — 0.23.1](docs/SEWER_SAFE_STOPS_0.23.1.md) ·
+[Канализация — 0.23.0](docs/SEWER_0.23.0.md) ·
+[Курсор у веток — 0.22.3](docs/FINAL_CURSOR_0.22.3.md) ·
+[Концы веток — 0.22.2](docs/FINAL_BRANCHES_0.22.2.md) ·
+[Маршруты финала — 0.22.1](docs/FINAL_ROUTING_0.22.1.md) ·
 [Финальная поляна — 0.22.0](docs/FINAL_FOREST_0.22.0.md) ·
 [Появление кота — 0.21.3](docs/FLIGHT_CAT_ENTRY_0.21.3.md) ·
 [Управление полётом — 0.21.2](docs/FLIGHT_CONTROLS_0.21.2.md) ·

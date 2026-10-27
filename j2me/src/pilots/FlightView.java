@@ -1,6 +1,5 @@
 package pilots;
 import javax.microedition.lcdui.Graphics;
-import javax.microedition.lcdui.Font;
 /** Fixed sky crop and the entire original horizontal flight path on every screen. */
 public final class FlightView {
  private Viewport sky,stage;
@@ -27,9 +26,4 @@ public final class FlightView {
   }
  }
  private int layer(HotelWorld world,int i){return world==null?0:i<300?(world.cells[i]==null?0:world.cells[i].layer):i<302?0:world.effects[i-302].layer;}
- public void panel(Graphics g,int width,int height,int bar,FlightLogic logic){
-  Font font=Font.getFont(0,0,8);g.setFont(font);int top=height-bar;
-  String[] labels={"2", "8",logic==null?"Б:0":"Б:"+logic.ballast(),"0"};
-  for(int i=0;i<4;i++){int x=i*width/4,w=(i+1)*width/4-x;g.setColor(logic!=null&&(i==0&&logic.altitude()==3||i==1&&logic.altitude()==1)?0xeee4a5:0xaaa57f);g.fillRect(x+1,top+1,w-2,Math.max(1,bar-2));g.setColor(0x24251c);g.drawString(labels[i],x+(w-font.stringWidth(labels[i]))/2,top+Math.max(0,(bar-font.getHeight())/2),20);}
- }
 }

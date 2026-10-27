@@ -3,17 +3,16 @@ import javax.microedition.lcdui.*;
 import java.io.IOException;
 
 /** A full screen detail view; the room and its timers pause until Back. */
-public final class FridgeCanvas extends Canvas implements CommandListener {
+public final class FridgeCanvas extends Canvas {
     public interface Host { void back(); void active(boolean active); }
     private final HotelWorld world;
     private final Host host;
-    private final Command back=new Command("Назад",Command.BACK,1);
     private int selected;
     private boolean closed;
     private final RefrigeratorPuzzle handles;
     public FridgeCanvas(HotelWorld world,Host host) throws IOException {
         this.world=world;this.host=host;handles=new RefrigeratorPuzzle();
-        world.beginFridge();setFullScreenMode(true);addCommand(back);setCommandListener(this);
+        world.beginFridge();setFullScreenMode(true);
     }
     protected void showNotify() { host.active(true);repaint(); }
     protected void hideNotify() { host.active(false); }
@@ -36,7 +35,7 @@ public final class FridgeCanvas extends Canvas implements CommandListener {
     public void input(int key) {
         if(closed)return;
         int action=0;try { action=getGameAction(key); }catch(IllegalArgumentException ignored) {}
-        if(key==KEY_NUM0) { leave();return; }
+        if(key==KEY_NUM0 || key==-7) { leave();return; }
         if(key==KEY_NUM2 || action==UP) selected=selected>=3?selected-3:selected;
         else if(key==KEY_NUM8 || action==DOWN) selected=selected<6?selected+3:selected;
         else if(key==KEY_NUM4 || action==LEFT) selected=selected%3>0?selected-1:selected;
@@ -55,5 +54,4 @@ public final class FridgeCanvas extends Canvas implements CommandListener {
         repaint();
     }
     private void leave() { if(closed)return;closed=true;world.endFridge();host.back(); }
-    public void commandAction(Command command,Displayable display) { if(command==back)leave(); }
 }

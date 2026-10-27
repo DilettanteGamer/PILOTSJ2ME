@@ -19,11 +19,11 @@ public final class LocationEntryTest {
         check(((GameState)get(canvas,"state")).scene==6 && get(canvas,"zoo") instanceof StreetScene,route);
     }
     static void location(PilotsMidlet app,int scene)throws Exception {
-        app.choose(7);
+        app.choose(2);
         MenuCanvas menu=(MenuCanvas)Display.getDisplay(app).getCurrent();
-        check(((String[])get(menu,"items")).length==16,"location submenu entries");
-        int[] ids={-1,2,3,4,5,6,8,9,10,11,12,13,15,14,16,17};
-        for(int i=1;i<ids.length;i++)if(ids[i]==scene){((MenuCanvas.Host)get(menu,"host")).choose(i);return;}
+        PlayerProgress progress=(PlayerProgress)get(app,"progress");
+        int count=1;for(int id:PlayerProgress.ORDER)if(progress.listed(id))count++;check(((String[])get(menu,"items")).length==count,"locked locations exposed");
+        int choice=1;for(int id:PlayerProgress.ORDER)if(progress.listed(id)){if(id==(scene==9?8:scene)){((MenuCanvas.Host)get(menu,"host")).choose(choice);if(scene==9){PilotsMidlet.GameCanvas c=(PilotsMidlet.GameCanvas)get(app,"canvas");int limit=1000;while(((GameState)get(c,"state")).scene==8&&limit-->0)c.tick(100);check(((GameState)get(c,"state")).scene==9,"hotel menu did not play entrance before interior");}return;}choice++;}
         throw new RuntimeException("missing menu scene "+scene);
     }
     static void boardSelect(SwitchboardCanvas canvas,int target)throws Exception {
@@ -55,7 +55,13 @@ public final class LocationEntryTest {
             canvas.tick(100);street(canvas,"fourth-to-fifth transition");
             canvas.save();canvas.startLocation(2);canvas.load();street(canvas,"RMS street restore");
             ((StreetScene)get(canvas,"zoo")).animals.world.completed=true;
-            canvas.tick(100);check(((GameState)get(canvas,"state")).scene==8,"street must skip sewer");
+            canvas.tick(100);check(((GameState)get(canvas,"state")).scene==7&&get(canvas,"zoo") instanceof SewerScene,"street-to-sewer transition");
+            location(app,7);SewerScene pipe=(SewerScene)get(canvas,"zoo");check(get(canvas,"zooPanel")==null&&((Scene)get(canvas,"scene")).panel==null,"sewer has inventory");
+            canvas.keyPressed(52);canvas.tick(100);canvas.save();canvas.startLocation(2);canvas.load();pipe=(SewerScene)get(canvas,"zoo");check(pipe.sewer.motion>0,"sewer RMS motion");
+            canvas.keyPressed(48);canvas.keyPressed(-6);check(Display.getDisplay(app).getCurrent()==canvas,"sewer disabled menu keys");canvas.keyPressed(-7);check(Display.getDisplay(app).getCurrent() instanceof MenuCanvas,"sewer right menu key");
+            canvas.startLocation(7);
+            for(int key:SewerWorldTest.solution()){if(key!=0)canvas.keyPressed(48+key);canvas.tick(100);}
+            check(((GameState)get(canvas,"state")).scene==8,"single crossing must enter hotel");
             canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==8,"cinematic save");
             for(int i=0;i<230;i++)canvas.tick(100);
             check(((GameState)get(canvas,"state")).scene==9,"entrance-to-interior transition");
@@ -66,9 +72,9 @@ public final class LocationEntryTest {
             for(int i=0;i<180;i++)canvas.tick(100);check(hotel.interact(101),"fridge approach");
             for(int i=0;i<180 && !(Display.getDisplay(app).getCurrent() instanceof FridgeCanvas);i++)canvas.tick(100);
             check(Display.getDisplay(app).getCurrent() instanceof FridgeCanvas,"detail canvas was not displayed");
-            FridgeCanvas detail=(FridgeCanvas)Display.getDisplay(app).getCurrent();int before=hotel.fridgeMask();
+            FridgeCanvas detail=(FridgeCanvas)Display.getDisplay(app).getCurrent();check(detail.commands.size()==0,"fridge native context commands");int before=hotel.fridgeMask();
             detail.input(54);detail.input(56);detail.input(53);check(hotel.fridgeMask()==RefrigeratorPuzzle.turn(before,4),"detail keyboard selection");
-            int progress=hotel.fridgeMask();canvas.save();detail.input(48);check(Display.getDisplay(app).getCurrent()==canvas,"detail Back");
+            int progress=hotel.fridgeMask();canvas.save();detail.input(-7);check(Display.getDisplay(app).getCurrent()==canvas,"detail Back");
             canvas.startLocation(2);canvas.load();canvas.tick(100);check(Display.getDisplay(app).getCurrent() instanceof FridgeCanvas,"detail save did not reopen");
             check(((HotelScene)get(canvas,"zoo")).animals.world.fridgeMask()==progress,"detail save lost handles");
             detail=(FridgeCanvas)Display.getDisplay(app).getCurrent();
@@ -91,9 +97,9 @@ public final class LocationEntryTest {
             for(int i=0;i<180;i++)canvas.tick(100);
             check(!((HotelScene)get(canvas,"zoo")).logic.busy(),"balcony entry did not finish");
             byte[] menuBefore=((GameState)get(canvas,"state")).encode();
-            app.choose(7);MenuCanvas locations=(MenuCanvas)Display.getDisplay(app).getCurrent();locations.keyPressed(48);
+            app.choose(2);MenuCanvas locations=(MenuCanvas)Display.getDisplay(app).getCurrent();locations.keyPressed(-7);
             MenuCanvas main=(MenuCanvas)Display.getDisplay(app).getCurrent();
-            check(((String[])get(main,"items")).length==10,"main menu still contains individual locations");
+            check(((String[])get(main,"items")).length==7,"main menu must have seven game entries");
             check(java.util.Arrays.equals(menuBefore,((GameState)get(canvas,"state")).encode()),"submenu Back changed game");
             ((HotelScene)get(canvas,"zoo")).animals.world.completed=true;canvas.tick(100);
             check(((GameState)get(canvas,"state")).scene==11,"balcony-to-ledge transition");
@@ -115,9 +121,9 @@ public final class LocationEntryTest {
             check(board.select(0)&&board.interact(16),"approach enlarged electrical panel");
             for(int i=0;i<500&&!(Display.getDisplay(app).getCurrent() instanceof SwitchboardCanvas);i++)canvas.tick(100);
             check(Display.getDisplay(app).getCurrent() instanceof SwitchboardCanvas,"electrical detail canvas missing");
-            SwitchboardCanvas electrical=(SwitchboardCanvas)Display.getDisplay(app).getCurrent();int orientation=board.boardOrientation(0);
+            SwitchboardCanvas electrical=(SwitchboardCanvas)Display.getDisplay(app).getCurrent();check(electrical.commands.size()==0,"electrical native context commands");int orientation=board.boardOrientation(0);
             electrical.input(53);check(board.boardOrientation(0)==orientation%4+1,"electrical FIRE did not rotate source wire");
-            orientation=board.boardOrientation(0);canvas.save();electrical.input(48);check(Display.getDisplay(app).getCurrent()==canvas,"electrical Back");
+            orientation=board.boardOrientation(0);canvas.save();electrical.input(-7);check(Display.getDisplay(app).getCurrent()==canvas,"electrical Back");
             canvas.startLocation(2);canvas.load();canvas.tick(100);check(Display.getDisplay(app).getCurrent() instanceof SwitchboardCanvas,"electrical detail RMS reopen");
             board=((HotelScene)get(canvas,"zoo")).animals.world;check(board.boardOrientation(0)==orientation,"electrical RMS lost orientation");
             electrical=(SwitchboardCanvas)Display.getDisplay(app).getCurrent();
@@ -136,11 +142,11 @@ public final class LocationEntryTest {
             basement=((HotelScene)get(canvas,"zoo")).animals.world;
             check(basement.select(0)&&((HotelScene)get(canvas,"zoo")).request(400,350),"crate zone approach");canvas.tick(100);
             check(Display.getDisplay(app).getCurrent() instanceof BasementCanvas,"crate Canvas missing");
-            BasementCanvas crates=(BasementCanvas)Display.getDisplay(app).getCurrent();crates.showNotify();crateKey(crates,canvas,6,4);
+            BasementCanvas crates=(BasementCanvas)Display.getDisplay(app).getCurrent();check(crates.commands.size()==0,"crate native context commands");crates.showNotify();crateKey(crates,canvas,6,4);
             check(basement.basement.fallingColumn()<0,"safe Canvas movement armed throw");crateKey(crates,canvas,2,5);
             int fall=basement.basement.fallingTick();check(fall>1,"detail timer is not driven by Canvas");canvas.save();
             crates.hideNotify();canvas.tick(100);check(basement.basement.fallingTick()==fall,"hidden detail continued");
-            crates.showNotify();crates.input(48);check(Display.getDisplay(app).getCurrent()==canvas,"crate Back");
+            crates.showNotify();crates.input(-7);check(Display.getDisplay(app).getCurrent()==canvas,"crate Back");
             canvas.startLocation(2);canvas.load();canvas.tick(100);check(Display.getDisplay(app).getCurrent() instanceof BasementCanvas,"crate RMS did not reopen detail");
             crates=(BasementCanvas)Display.getDisplay(app).getCurrent();crates.showNotify();basement=((HotelScene)get(canvas,"zoo")).animals.world;
             check(basement.basement.fallingTick()==fall,"RMS lost falling crate");for(int i=0;i<22;i++)canvas.tick(100);crateKey(crates,canvas,4,22);
@@ -156,9 +162,9 @@ public final class LocationEntryTest {
             HotelWorld roof=((HotelScene)get(canvas,"zoo")).animals.world;check(!roof.busy(),"roof menu entry");
             canvas.save();canvas.startLocation(2);canvas.load();check(((GameState)get(canvas,"state")).scene==14,"roof RMS restore");
             ((HotelScene)get(canvas,"zoo")).animals.world.completed=true;canvas.tick(100);check(((GameState)get(canvas,"state")).scene==16&&get(canvas,"zoo") instanceof FlightScene,"roof-to-flight transition");
-            location(app,16);FlightScene flight=(FlightScene)get(canvas,"zoo");canvas.keyPressed(50);canvas.tick(100);check(flight.flight.ballast()==2&&flight.flight.world.action()==23,"flight keyboard upper band");
+            location(app,16);check(((Viewport)get(canvas,"view")).height==canvas.getHeight(),"flight retains bottom panel");FlightScene flight=(FlightScene)get(canvas,"zoo");canvas.keyPressed(50);canvas.tick(100);check(flight.flight.ballast()==2&&flight.flight.world.action()==23,"flight keyboard upper band");
             int phase=flight.flight.world.step();canvas.save();canvas.startLocation(2);canvas.load();flight=(FlightScene)get(canvas,"zoo");check(flight.flight.world.step()==phase&&flight.flight.ballast()==2,"flight RMS phase/ballast");
-            canvas.keyPressed(48);check(Display.getDisplay(app).getCurrent() instanceof MenuCanvas,"flight menu key");
+            canvas.keyPressed(48);canvas.keyPressed(-6);check(Display.getDisplay(app).getCurrent()==canvas,"flight disabled menu keys");canvas.keyPressed(-7);check(Display.getDisplay(app).getCurrent() instanceof MenuCanvas,"flight right menu key");
             flight.flight.world.completed=true;canvas.tick(100);check(((GameState)get(canvas,"state")).scene==17,"flight-to-final transition");
             location(app,17);for(int i=0;i<100;i++)canvas.tick(100);HotelWorld forest=((HotelScene)get(canvas,"zoo")).animals.world;
             check(!forest.busy()&&forest.move(384,368),"final click route");canvas.tick(100);canvas.save();canvas.startLocation(2);canvas.load();
@@ -171,10 +177,10 @@ public final class LocationEntryTest {
             street(canvas,"restored fifth location entry");
             // Garden previews must load from another scene and return to it.
             canvas.startLocation(2);set(app,"animationCatalog",new AnimationCatalog());
-            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==17,"preview scene");
+            canvas.preview(0);check(((GameState)get(canvas,"state")).scene==7,"preview scene");
             canvas.finishPreview();check(((GameState)get(canvas,"state")).scene==2,"preview return");
             Object original=get(canvas,"zoo");
-            try { canvas.goToScene(7);throw new RuntimeException("unsupported scene accepted"); }
+            try { canvas.goToScene(18);throw new RuntimeException("unsupported scene accepted"); }
             catch(IOException expected) {}
             check(get(canvas,"zoo")==original,"invalid scene damaged active scene");
         } finally { canvas.shutdown(); }

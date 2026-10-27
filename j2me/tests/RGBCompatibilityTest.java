@@ -40,7 +40,7 @@ public final class RGBCompatibilityTest {
                 clips++;
             }
         } finally { archive.close(); }
-        if(clips!=1630 || frames<=clips) throw new RuntimeException("Incomplete RGB coverage: "+clips+" / "+frames);
+        if(clips!=1667 || frames<=clips) throw new RuntimeException("Incomplete RGB coverage: "+clips+" / "+frames);
         System.out.println("RGBCompatibility: "+clips+" clips / "+frames+" frames, normal/zoomed/clipped, full-stride bounds at "+width+"x"+height);
     }
 }

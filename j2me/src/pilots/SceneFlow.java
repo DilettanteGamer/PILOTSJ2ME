@@ -2,7 +2,8 @@ package pilots;
 /** Gameplay exits are committed once by the canvas, after the source action completes. */
 public final class SceneFlow {
     public static int next(int scene,boolean completed) {
-        if(completed && scene==6) return 8;
+        if(completed && scene==6) return 7;
+        if(completed && scene==7) return 8;
         if(completed && scene==16) return 17;
         if(completed && scene==14) return 16;
         if(completed && scene==15) return 14;

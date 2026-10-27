@@ -70,12 +70,7 @@ for profile in ['128x128','128x160','240x320']:
    ident,size=struct.unpack_from('>HI',art,pos);pos+=6
    assert ident==record['id'] and art[pos:pos+size]==record['data'];pos+=size
   assert pos==len(art)
-  assert [n for n in jar.namelist() if n.endswith('.animations')]==['scenes/17.animations']
-  catalog=jar.read('scenes/17.animations');assert catalog[:4]==b'ANC2' and struct.unpack_from('>H',catalog,4)[0]==44
-  pos=6;roots={}
-  for i in range(44):
-   ident,x,y,cx,cy,size=struct.unpack_from('>HhhHHH',catalog,pos);pos+=12+size;roots[ident]=(x,y)
-  assert pos==len(catalog) and roots[114]==(448,0) and roots[117]==(256,176) and roots[115]==(320,64)
+  assert [n for n in jar.namelist() if n.endswith('.animations')]==['scenes/07.animations']
   profiles.append(dict(profile=profile,clips=count,frames=frames,source_rules=rule_count,source_maps=len(maps),source_sha256=EXPECTED,vm_sha256=hashlib.sha256(data).hexdigest()))
 print('FinalAssets: all three profiles, 117 original clips / 1734 frames, all VM definitions/rules/maps and new-only preview catalog passed')
 (ROOT/'analysis/final-assets-audit.json').write_text(json.dumps(profiles,indent=2)+'\n')

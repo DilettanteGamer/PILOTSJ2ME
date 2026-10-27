@@ -173,7 +173,7 @@ public class ZooScene {
     }
 
     public int targetAt(int x,int y) { return logic.targetAt(x,y); }
-    public String hoverText(int x,int y) { return null; }
+    public String hoverText(int x,int y) {int id=targetAt(x,y);return id==ZooLogic.WINDOW?"Окошко":id==ZooLogic.KETTLE?"Пожарный чайник":id==ZooLogic.BARREL?"Бочка":id==ZooLogic.PICKAXE?"Кирка":id==ZooLogic.COIN?"Звонкая монета":id==ZooLogic.BELL?"Колокольчик":id==ZooLogic.GATE?"Ворота":id==ZooLogic.WALL?"Забор":null;}
 
     public static int approachX(int target) {
         return target==ZooLogic.KETTLE || target==ZooLogic.PICKAXE?64:target==ZooLogic.COIN?320:target>=ZooLogic.BELL?384:192;

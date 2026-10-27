@@ -1,0 +1,76 @@
+package pilots;
+import java.util.Arrays;import java.io.File;import javax.imageio.ImageIO;import javax.microedition.lcdui.*;
+/** Real menu controls, bitmap text centering, permanent unlocks and cross-launch Continue. */
+public final class GraphicalMenuTest {
+ static void check(boolean b,String s){if(!b)throw new RuntimeException(s);}
+ static Object get(Object o,String f)throws Exception{return LocationEntryTest.get(o,f);}
+ static void set(Object o,String f,Object v)throws Exception{LocationEntryTest.set(o,f,v);}
+ static void choose(MenuCanvas m,int n)throws Exception{((MenuCanvas.Host)get(m,"host")).choose(n);}
+ static PilotsMidlet app()throws Exception{PilotsMidlet a=new PilotsMidlet();set(a,"display",Display.getDisplay(a));set(a,"canvas",a.new GameCanvas());return a;}
+ static MenuCanvas current(){return (MenuCanvas)Display.getDisplay(null).getCurrent();}
+ static void paint(MenuCanvas m,int w,int h,String path)throws Exception{
+  Graphics g=new Graphics(w,h);m.paint(g);ImageIO.write(g.image,"png",new File(path));
+  MenuLayout layout=(MenuLayout)get(m,"layout");
+  int left=w*17/100,bh=Math.max(11,layout.rowHeight*2/3);
+  for(int row=0;row<7;row++){
+   int top=layout.header+row*layout.rowHeight,minX=w,maxX=-1,minY=h,maxY=-1;
+   check((g.image.getRGB(left+2,top+2)&0xffffff)==(row==layout.selected?0xdfdfcf:0xcbc397),"original button color");
+   for(int y=top+1;y<top+bh-1;y++)for(int x=left+1;x<w-left-1;x++)if((g.image.getRGB(x,y)&0xffffff)==0x101009){minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y);}
+   check(maxX>=minX&&maxY>=minY,"missing original text row "+row);
+   check(Math.abs(minX+maxX-w)<=3&&Math.abs(minY+maxY-(2*top+bh))<=3,"uncentered original text row "+row+" "+minX+","+maxX+","+minY+","+maxY);
+  }
+ }
+ static void credits(AboutCanvas about,int w,int h,String out)throws Exception{
+  Graphics image=new Graphics(w,h);about.paint(image);
+  String[] source=(String[])get(about,"TEXT"),lines=(String[])get(about,"lines"),marks=(String[])get(about,"marks");
+  StringBuffer wanted=new StringBuffer(),actual=new StringBuffer(),wantedColors=new StringBuffer(),actualColors=new StringBuffer();
+  for(String paragraph:source){boolean yellow=false;for(char ch:paragraph.toCharArray()){if(ch=='{'){yellow=true;continue;}if(ch=='}'){yellow=false;continue;}if(ch!=' '){wanted.append(ch);wantedColors.append(yellow?'y':'w');}}}
+  int size=((Integer)get(about,"fontSize")).intValue();check(size>=(w<200?16:24),"credits shrunk on small display");
+  int[] sizes=(int[])get(about,"sizes");for(int i=0;i<lines.length;i++){check(sizes[i]>=12,"credit line shrunk below readable size");check(OriginalFont.get().width(lines[i],sizes[i])<=w-12,"credit row clipped: "+lines[i]);for(int j=0;j<lines[i].length();j++)if(lines[i].charAt(j)!=' '){actual.append(lines[i].charAt(j));actualColors.append(marks[i].charAt(j));}}
+  check(wanted.toString().equals(actual.toString()),"credit words lost or reordered during wrap");check(wantedColors.toString().equals(actualColors.toString()),"credit highlight lost during wrap");
+  int pages=((Integer)get(about,"pages")).intValue(),yellow=0,white=0;
+  for(int page=0;page<pages;page++){
+   image=new Graphics(w,h);about.paint(image);for(int y=22;y<h-18;y++)for(int x=0;x<w;x++){int rgb=image.image.getRGB(x,y)&0xffffff;if(rgb==0xffe35a)yellow++;if(rgb==0xfffbf0)white++;}
+   if(page==pages-1)ImageIO.write(image.image,"png",new File(out+"-port-author.png"));about.input(54);
+  }
+  check(yellow>20&&white>20,"credits not painted in requested two colors");
+  int rows=((Integer)get(about,"rows")).intValue();StringBuffer last=new StringBuffer();for(int i=(pages-1)*rows;i<lines.length;i++)last.append(lines[i]);
+  check(last.toString().replace(" ","").indexOf("ПереноснаJ2ME:")>=0&&last.toString().indexOf("Данила")>=0&&last.toString().indexOf("DilettanteGamer")>=0&&last.toString().indexOf("Григорьев")>=0,"port author split across pages");
+ }
+ public static void main(String[] args)throws Exception{
+  int w=Integer.parseInt(args[0]),h=Integer.parseInt(args[1]);System.setProperty("pilots.test.width",args[0]);System.setProperty("pilots.test.height",args[1]);String out=args[2];
+  PilotsMidlet first=app(),second=null,third=null;PilotsMidlet.GameCanvas c=(PilotsMidlet.GameCanvas)get(first,"canvas");
+  try{
+   PlayerProgress p=(PlayerProgress)get(first,"progress");check(!p.started&&p.available(2)&&!p.available(3),"fresh progress");
+   first.choose(2);check(((String[])get(current(),"items")).length==2,"fresh locations expose future levels");
+   MenuCanvas locationsBack=current();check(locationsBack.commands.size()==0,"location context commands");locationsBack.keyPressed(48);check(current()==locationsBack,"locations 0 disabled");locationsBack.keyPressed(-7);
+   MenuCanvas main=current();check(((String[])get(main,"items")).length==7,"main item count");paint(main,w,h,out+"-main.png");
+   check(main.commands.size()==0,"startup native context commands");main.keyPressed(-2);check(((MenuLayout)get(main,"layout")).selected==1,"D-pad menu navigation");
+   first.choose(0);check(Display.getDisplay(null).getCurrent()==c&&p.started,"first New Game asks unnecessarily");
+   check(c.commands.size()==0,"game context commands");c.keyPressed(48);c.keyPressed(-6);check(Display.getDisplay(null).getCurrent()==c,"disabled main-game menu keys");c.keyPressed(-7);check(Display.getDisplay(null).getCurrent() instanceof MenuCanvas,"right game menu key");
+   MenuCanvas resume=current();check(resume.commands.size()==0,"main menu still exposes native context commands");resume.keyPressed(-7);check(Display.getDisplay(null).getCurrent()==c,"native right softkey did not resume game");c.keyPressed(-7);
+   GameAudio menuAudio=(GameAudio)get(c,"audio");check(((Integer)get(menuAudio,"scene")).intValue()==2&&((Boolean)get(menuAudio,"menuMode")).booleanValue()&&((Boolean)get(menuAudio,"active")).booleanValue(),"first location loop in menu");
+   c.hideNotify();check(((Boolean)get(menuAudio,"active")).booleanValue(),"delayed game hide stopped menu music");first.pauseApp();check(!((Boolean)get(menuAudio,"active")).booleanValue(),"pause left menu playing");first.startApp();check(((Boolean)get(menuAudio,"active")).booleanValue(),"resume lost menu music");
+   set(c,"stopped",Boolean.TRUE);c.showNotify();check(!menuAudio.inMenu(),"game retained menu track");set(c,"stopped",Boolean.FALSE);c.hideNotify();c.keyPressed(-7);
+   first.choose(5);HelpCanvas help=(HelpCanvas)Display.getDisplay(null).getCurrent();check(help.commands.size()==0,"help context commands");Graphics hg=new Graphics(w,h);help.paint(hg);help.keyPressed(48);help.keyPressed(54);check(Display.getDisplay(null).getCurrent()==help,"help must stay on its only page");ImageIO.write(hg.image,"png",new File(out+"-help.png"));help.keyPressed(-7);check(Display.getDisplay(null).getCurrent() instanceof MenuCanvas,"help back");
+   byte[] before=((GameState)get(c,"state")).encode();first.choose(0);MenuCanvas confirm=current();check(((String[])get(confirm,"items")).length==2,"missing New Game confirmation");choose(confirm,0);check(Arrays.equals(before,((GameState)get(c,"state")).encode()),"Cancel reset game");
+   c.startLocation(3);first.choose(2);check(((String[])get(current(),"items")).length==3,"visited location not unlocked");choose(current(),0);
+   first.choose(0);choose(current(),1);check(((GameState)get(c,"state")).scene==2&&p.available(3),"New Game erases permanent unlocks");
+   for(int scene:PlayerProgress.ORDER)p.open(scene);first.choose(2);MenuCanvas locations=current();check(((String[])get(locations,"items")).length==16,"all unlocked locations missing");
+   locations.select(15);Graphics list=new Graphics(w,h);locations.paint(list);ImageIO.write(list.image,"png",new File(out+"-locations.png"));choose(locations,0);
+   c.startLocation(7);c.tick(100);c.save();first.choose(3);check(!p.sound&&((String[])get(current(),"items"))[3].equals("Звук выкл."),"sound toggle label");
+   second=app();PilotsMidlet.GameCanvas c2=(PilotsMidlet.GameCanvas)get(second,"canvas");PlayerProgress p2=(PlayerProgress)get(second,"progress");check(p2.available(3)&&!p2.sound,"cross-launch prefs/unlocks");
+   second.choose(1);check(((GameState)get(c2,"state")).scene==7,"Continue overwrote save with startup scene");
+   // Without a readable save, Continue uses the recorded last-opened checkpoint.
+   javax.microedition.rms.RecordStore rms=javax.microedition.rms.RecordStore.openRecordStore("pilots-port-v1",true);rms.setRecord(1,new byte[]{0},0,1);rms.closeRecordStore();
+   third=app();PilotsMidlet.GameCanvas c3=(PilotsMidlet.GameCanvas)get(third,"canvas");third.choose(1);check(((GameState)get(c3,"state")).scene==7,"Continue checkpoint fallback");
+   c3.startLocation(17);((HotelScene)get(c3,"zoo")).animals.world.completed=true;c3.tick(100);check(((PlayerProgress)get(third,"progress")).finished,"completion not persisted");
+   c3.keyPressed(-7);current().keyPressed(-7);check(Display.getDisplay(null).getCurrent()==c3&&((GameState)get(c3,"state")).scene==17,"right softkey restarted completed game");third.choose(1);check(Display.getDisplay(null).getCurrent()==c3&&((GameState)get(c3,"state")).scene==2,"completed Continue did not start New Game");
+   third.choose(4);AboutCanvas about=(AboutCanvas)Display.getDisplay(null).getCurrent();Graphics g=new Graphics(w,h);about.paint(g);ImageIO.write(g.image,"png",new File(out+"-credits.png"));
+   check(about.commands.size()==0,"credits context commands");credits(about,w,h,out);int pages=((Integer)get(about,"pages")).intValue();for(int i=0;i<pages-1;i++)about.input(54);about.paint(g);check(((Integer)get(about,"selected")).intValue()==pages-1,"port credit page missing");ImageIO.write(g.image,"png",new File(out+"-port-author.png"));
+   about.input(53);about.paint(g);about.input(48);check(Display.getDisplay(null).getCurrent()==about,"About 0 disabled");about.input(-7);check(Display.getDisplay(null).getCurrent() instanceof MenuCanvas,"About back");
+   third.choose(6);check(third.destroyed,"Exit did not close MIDlet");
+   System.out.println("GraphicalMenu: seven entries, original centered fonts, confirmation/cancel, saved and checkpoint Continue, permanent unlocks, sound persistence, complete/restart, original credits and port author, Exit at "+w+"x"+h+" passed");
+  }finally{first.destroyApp(true);if(second!=null)second.destroyApp(true);if(third!=null)third.destroyApp(true);}
+ }
+}

@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public final class AnimationCatalog {
-    public final int scene = 17;
+    public final int scene = 7;
     public final int[] ids;
     public final int[] x;
     public final int[] y;
@@ -17,7 +17,7 @@ public final class AnimationCatalog {
     public final String[] labels;
 
     public AnimationCatalog() throws IOException {
-        InputStream inputStream = this.getClass().getResourceAsStream("/scenes/17.animations");
+        InputStream inputStream = this.getClass().getResourceAsStream("/scenes/07.animations");
         if (inputStream == null) {
             throw new IOException("Missing animation catalog");
         }

@@ -1,0 +1,6 @@
+package pilots;
+import java.io.*;import java.lang.reflect.*;import java.security.*;
+/** Restore late frames like scene rebuild/save-load. Runs against both old and new JARs. */
+public final class SeekWorkloadTest {
+ public static void main(String[] args)throws Exception{Method seek=null;try{seek=AnimationClip.class.getMethod("seek",Integer.TYPE);}catch(NoSuchMethodException old){}Field pixels=AnimationClip.class.getDeclaredField("pixels");pixels.setAccessible(true);MessageDigest digest=MessageDigest.getInstance("SHA-256");BufferedReader rows=new BufferedReader(new FileReader(args[0]));String name;int clips=0,initial=TileStore.frameCalls,banks=TileStore.loads;long start=System.nanoTime();while((name=rows.readLine())!=null){AnimationClip a=new AnimationClip("/"+name);int target=a.count-1;if(seek==null)while(a.index<target)a.advance();else seek.invoke(a,target);digest.update((byte[])pixels.get(a),0,a.width*a.height);a.close();clips++;}String sha="";for(byte b:digest.digest())sha+=Integer.toHexString((b&255)|256).substring(1);System.out.println("restore_clips="+clips+" decoded_frames="+(TileStore.frameCalls-initial)+" bank_loads="+(TileStore.loads-banks)+" ms="+(System.nanoTime()-start)/1000000+" pixels_sha256="+sha);}
+}

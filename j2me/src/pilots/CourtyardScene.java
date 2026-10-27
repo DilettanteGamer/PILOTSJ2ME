@@ -63,7 +63,7 @@ public final class CourtyardScene extends ZooScene {
         for(int i=0;i<15;i++) scene.actors[order[i]].paint(graphics,view);
     }
     public String hoverText(int x,int y) {
-        if(logic.targetAt(x,y)==CourtyardLogic.PIANO) return "Рояль в кустах";
+        int target=logic.targetAt(x,y);if(target==CourtyardLogic.PIANO)return "Рояль в кустах";if(target==CourtyardLogic.FENCE)return "Забор";if(target==CourtyardLogic.EXIT)return "Выход";
         AnimatedActor animal=scene.actors[12];
         return animal.visible && animal.clip.contains(x-animal.x,y-animal.y)?"Кот":null;
     }

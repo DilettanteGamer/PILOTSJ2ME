@@ -52,7 +52,7 @@ for profile in ['128x128','128x160','240x320']:
       p+=8;assert converted[p:p+w*hh]==pixels,(profile,ident,d,f);p+=w*hh;frames+=1
     assert p==len(converted);count+=1
   assert (count,frames)==(71,1636)
-  sky=jar.read('scenes/16.p8');width,height=map(int,profile.split('x'));bar=(width*63+320)//640;play=height-bar
+  sky=jar.read('scenes/16.p8');width,height=map(int,profile.split('x'));play=height
   assert struct.unpack_from('>HHHH',sky,4)==(width,play,640,417)
   bg=table[24,0,0]['data'];x0=(640-width)//2;y0=(417-play)//2
   crop=b''.join(bg[24+(y0+y)*640+x0:24+(y0+y)*640+x0+width] for y in range(play))
@@ -86,7 +86,7 @@ for profile in ['128x128','128x160','240x320']:
    rr=[r for r in local if r['code']==op];assert u16()==len(rr)
    for r in rr:assert u16()==r['id'] and blob()==r['data']
   assert u16()==0 and p==len(data),'Unexpected text relocation'
-  assert [n for n in jar.namelist() if n.endswith('.animations')]==['scenes/17.animations']
+  assert [n for n in jar.namelist() if n.endswith('.animations')]==['scenes/07.animations']
   profiles.append(dict(profile=profile,clips=count,frames=frames,source_rules=rule_count,source_maps=len(maps),source_sha256=EXPECTED,vm_sha256=hashlib.sha256(data).hexdigest()))
 print('FlightAssets: all three profiles, 71 clips / 1636 frames, original pixels plus repaired top, bottom entry and extended drops, all VM definitions/rules/maps and new-only preview catalog passed')
 (ROOT/'analysis/flight-assets-audit.json').write_text(json.dumps(profiles,indent=2)+'\n')
