@@ -7,6 +7,7 @@ public final class DebugHud {
  private static int frames,ticks,changes,fps10,tickRate,changeRate;
  private static int update,updateMax,paint,paintMax,gap,load,loadMax,audio,audioMax,queue,effects,hud,hudMax;
  private static long minFree=Long.MAX_VALUE;
+ private static int oldAudioReuses;
  private static int oldBanks,oldDirect,oldCalls,oldHits,oldRequests,oldRasterHits,oldOpens;
  private static String[] labels;private static int[] pixels;private static int pixelWidth,pixelHeight;
  private static int time(long value){return (int)Math.max(0L,Math.min(9999L,value));}
@@ -15,7 +16,7 @@ public final class DebugHud {
  public static synchronized int mode(){return mode;}
  public static synchronized void toggle(){mode=(mode+2)%3;pixels=null;labels=null;resume();}
  public static synchronized void resume(){window=System.currentTimeMillis();snapshot=pulse=lastPaint=0;frames=ticks=changes=0;fps10=tickRate=changeRate=0;labels=null;}
- public static synchronized void scene(int value){scene=value;sceneLoad=0;update=updateMax=paint=paintMax=gap=load=loadMax=audio=audioMax=hud=hudMax=0;minFree=Long.MAX_VALUE;oldBanks=TileStore.loads;oldDirect=TileStore.directLoads;oldCalls=TileStore.frameCalls;oldHits=TileStore.frameCacheHits;oldRequests=FrameRasters.requests;oldRasterHits=FrameRasters.hits;oldOpens=PackedResources.opens;resume();}
+ public static synchronized void scene(int value){scene=value;sceneLoad=0;update=updateMax=paint=paintMax=gap=load=loadMax=audio=audioMax=hud=hudMax=0;minFree=Long.MAX_VALUE;oldAudioReuses=GameAudio.effectReuses;oldBanks=TileStore.loads;oldDirect=TileStore.directLoads;oldCalls=TileStore.frameCalls;oldHits=TileStore.frameCacheHits;oldRequests=FrameRasters.requests;oldRasterHits=FrameRasters.hits;oldOpens=PackedResources.opens;resume();}
  public static synchronized void sceneCost(long duration){sceneLoad=time(duration);}
  public static synchronized void tick(long duration){ticks++;update=time(duration);updateMax=Math.max(updateMax,update);}
  public static synchronized void changed(){changes++;}
@@ -35,8 +36,8 @@ public final class DebugHud {
    "B+"+Math.min(999,banks-oldBanks)+" I+"+Math.min(999,direct-oldDirect)+" C"+percent(hits-oldHits,calls-oldCalls)+"% R"+percent(rasterHits-oldRasterHits,requests-oldRequests)+"%",
    "M"+((size-free)/1024)+"/"+(size/1024)+"K N"+(minFree/1024)+"K",
    "V"+visible+"/"+totalActors+" D"+hud+"/"+hudMax+" O+"+Math.min(999,opens-oldOpens),
-   "AU"+audio+"/"+audioMax+" Q"+queue+" E"+effects};
-  oldBanks=banks;oldDirect=direct;oldCalls=calls;oldHits=hits;oldRequests=requests;oldRasterHits=rasterHits;oldOpens=opens;snapshot=now;
+   "AU"+audio+"/"+audioMax+" Q"+queue+" E"+effects+" H+"+Math.min(99,GameAudio.effectReuses-oldAudioReuses)};
+  oldAudioReuses=GameAudio.effectReuses;oldBanks=banks;oldDirect=direct;oldCalls=calls;oldHits=hits;oldRequests=requests;oldRasterHits=rasterHits;oldOpens=opens;snapshot=now;
  }
  private static synchronized int[] prepare(int width,int height,int actors,int shown,long now){
   if(mode==0||width<1||height<1)return null;totalActors=actors;visible=shown;

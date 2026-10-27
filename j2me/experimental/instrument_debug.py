@@ -16,6 +16,7 @@ def patch(name,text):
  if name=='HelpCanvas.java':
   text=text.replace('\"* — масштаб\"','\"* — масштаб\",\"Левая — счётчики\"')
  if name=='GameAudio.java':
+  if 'effectCreates,effectReuses,effectReuseFailures;' not in text:text=text.replace('private boolean menuMode;','private boolean menuMode;\n    public static int effectCreates,effectReuses,effectReuseFailures;')
   text=text.replace('reap();','reap();DebugHud.audioState(count,(effects[0]==null?0:1)+(effects[1]==null?0:1)+(effects[2]==null?0:1));')
   text=text.replace('if(count<queue.length) queue[count++]=cue;','if(count<queue.length) queue[count++]=cue;DebugHud.audioState(count,(effects[0]==null?0:1)+(effects[1]==null?0:1)+(effects[2]==null?0:1));')
   text=text.replace('private void startEffect(int location,int cue) {','private void startEffect(int location,int cue) {long debugStarted=System.currentTimeMillis();try{startEffectMeasured(location,cue);}finally{DebugHud.audio(System.currentTimeMillis()-debugStarted);}}\n    private void startEffectMeasured(int location,int cue) {')
