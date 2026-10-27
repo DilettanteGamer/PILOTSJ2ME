@@ -59,12 +59,18 @@ if fast_native:
    elif name.endswith(('.p8','.bar','.mid')):entries[name]=original.read(name)
   for name in ('audio/02-31.wav','audio/03-00.wav'):
    raw=original.read(name);ident=sound_ids[hashlib.sha256(raw).hexdigest()];wave_ids[ident]=raw
+  # Keep the original shared asset for other aliases; boost only the two walking cues.
+  raw=original.read('audio/02-31.wav');assert raw[:4]==b'RIFF' and raw[36:40]==b'data'
+  assert struct.unpack_from('<HHI',raw,20)==(1,1,11025) and struct.unpack_from('<H',raw,34)[0]==8
+  loud_step=len(sound_ids);wave_ids[loud_step]=raw[:44]+bytes(128+(sample-128)*16 for sample in raw[44:])
+  assert len(wave_ids[loud_step])==len(raw)
+  mapping[2*64+31]=mapping[3*64]=loud_step+1
   for ident,raw in wave_ids.items():
-   del entries['sounds/'+str(ident)+'.mp3'];entries['sounds/'+str(ident)+'.wav']=raw
+   entries.pop('sounds/'+str(ident)+'.mp3',None);entries['sounds/'+str(ident)+'.wav']=raw
  for name in list(entries):
   if name.endswith('.opx'):del entries[name]
- entries['audio/native-map']=struct.pack('>'+'h'*len(mapping),*mapping)+struct.pack('>H',len(sound_ids))+b''.join(struct.pack('>i',-len(wave_ids[ident]) if ident in wave_ids else (Path('/tmp/pilots-native-mp3')/(sha+'.mp3')).stat().st_size) for sha,ident in sound_ids.items())
- print('Original PCM step assets',len(wave_ids),'bytes',sum(map(len,wave_ids.values())),flush=True)
+ entries['audio/native-map']=struct.pack('>'+'h'*len(mapping),*mapping)+struct.pack('>H',len(sound_ids)+1)+b''.join(struct.pack('>i',-len(wave_ids[ident]) if ident in wave_ids else (Path('/tmp/pilots-native-mp3')/(sha+'.mp3')).stat().st_size) for sha,ident in sound_ids.items())+struct.pack('>i',-len(wave_ids[loud_step]))
+ print('PCM step assets',len(wave_ids),'bytes',sum(map(len,wave_ids.values())),flush=True)
 for path in (ROOT/'src').rglob('*.java'):
  text=path.read_text();text=re.sub(r'(?:this\.)?getClass\(\)\.getResourceAsStream\(', 'PackedResources.open(',text);text=re.sub(r'\w+\.class\.getResourceAsStream\(', 'PackedResources.open(',text)
  if path.name in ['OriginalZooRules.java','ZooSubtitles.java']:text=path.read_text()
@@ -112,7 +118,7 @@ entries={n:b for n,b in entries.items() if not n.endswith('.class')}
 for path in ([WORK/'verified.jar'] if fast_native else [EXP/'lib/concentus-silk-nb-cldc.jar',WORK/'verified.jar']):
  with zipfile.ZipFile(path) as jar:entries.update({n:jar.read(n) for n in jar.namelist() if n.endswith('.class')})
 entries['META-INF/LICENSE-CONCENTUS.txt']=(EXP/'CONCENTUS-LICENSE').read_bytes();entries['META-INF/LICENSE-LZMA.txt']=(EXP/'LZMA-LICENSE').read_bytes()
-text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.12').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
+text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.13').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
 out=EXP/'dist';out.mkdir(exist_ok=True);target=out/'Pilots-Experimental-128x160.jar'
 with zipfile.ZipFile(target,'w') as jar:
  for name,data in entries.items():jar.writestr(name,data,compress_type=zipfile.ZIP_STORED if (name.startswith('tiles/b') and not native_tiles) or (not fast_native and name.endswith(('.p8','.bar','.mid'))) else zipfile.ZIP_DEFLATED,compresslevel=9)

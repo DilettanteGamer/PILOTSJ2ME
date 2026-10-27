@@ -1,8 +1,8 @@
 {
-  "version": "0.27.12",
+  "version": "0.27.13",
   "profile": "128x160",
-  "jar_bytes": 12844186,
-  "jar_sha256": "1134c16b2f78ffb47788f73e636fdf7ec30e08db39dd3afa98c8075295fee07f",
+  "jar_bytes": 12844587,
+  "jar_sha256": "c0442c3fcf26088b037b78040d81a7f4831faa8a0e698be9ad54964ab6bf2426",
   "baseline_bytes": 19852356,
   "tile_size": 16,
   "tile_cache_bytes": 131072,
@@ -21,26 +21,26 @@
     "resources": "P8/bar/MIDI exact restored resources=52",
     "cache_budgets": "Native caches: two warmed walking cycles cause zero bank reloads; all byte budgets enforced",
     "direct_frames": "Direct frames: hot cel uses a small linear bank and one bulk copy; zero tile-bank load; equal-sized cache buffer reused",
-    "multi_actor_render": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=340",
-    "render_fallback": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=338",
+    "multi_actor_render": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=354",
+    "render_fallback": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=351",
     "frame_pacing": "Frame pacing: long stall capped to one step; normal 100ms steps preserved; display service outside Canvas lock",
     "debug_hud": "Debug HUD: correct low FPS/peaks; fixed buffers; no Image allocations; clipped/inventory-safe drawing; 1Hz idle; disabled no repaint; left toggle/right menu preserved",
     "seek_exact": "Non-sequential seek: source-exact frames=6668 clips=1667",
-    "seek_workload": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=85 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
+    "seek_workload": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=84 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
     "rebuild_reuse": "Rebuild reuse: all 16 unchanged actors retained; zero frame reads; background retained; failed rebuild rolled back",
-    "first_location_route": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=101",
+    "first_location_route": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=113",
     "zoo_scene": "ZooScene: shutters lifetime, source events, resumption, crow and Chief response passed",
     "courtyard_route": "Courtyard: source objects, 3 scores, companion positions, arrow, cat, bubbles, fence, exit and saves passed",
     "mmapi_streams": "Native MMAPI spy: MP3/PCM resources=570 cached_replays=546 bytes exact",
     "audio_lifecycle": "Audio: 471 action sound cues via native MP3/PCM, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed",
     "location_entries_and_saves": "LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge, switchboard and crate Canvas controls/timer/pause/RMS restore/automatic return and invalid catalog ID passed",
-    "walking_performance": "Walking: cold40frames_ms=24 warm4000frames_ms=13",
-    "baseline_walking_performance": "Walking: cold40frames_ms=14 warm4000frames_ms=10"
+    "walking_performance": "Walking: cold40frames_ms=22 warm4000frames_ms=15",
+    "baseline_walking_performance": "Walking: cold40frames_ms=13 warm4000frames_ms=9"
   },
   "class_count": 90,
   "hot_graphics_codec": "native JAR DEFLATE",
   "cold_resources_codec": "native JAR DEFLATE",
-  "audio_codec": "original PCM8 WAV for common footsteps; native MMAPI MP3 16 kbps mono 11025 Hz for other assets",
+  "audio_codec": "PCM8 WAV with 16x gain for two walking cues, original PCM for other identical aliases; native MMAPI MP3 16 kbps mono 11025 Hz for other assets",
   "java_audio_decoder": false,
   "java_lzma_decoder": false,
   "frame_cache_bytes": 196608,
@@ -67,7 +67,7 @@
     "all_decoded": true,
     "max_tail_padding_frames": 620,
     "median_snr_db": 11.075,
-    "scope": "pinned MP3 corpus; common step asset replaced by original PCM WAV in packaged JAR"
+    "scope": "pinned MP3 corpus; runtime uses common PCM step assets including a gain-adjusted variant"
   },
   "action_latency_comparison": {
     "previous_0_27_0": {
@@ -79,13 +79,13 @@
       "interleaved_frame_p95_ms": 70.659,
       "lzma_blocks": 573
     },
-    "current_0_27_12": {
+    "current_0_27_13": {
       "actions": 40,
-      "total_ms": 58.642,
-      "first_frame_p50_ms": 0.658,
-      "first_frame_p95_ms": 4.734,
-      "first_frame_max_ms": 6.11,
-      "interleaved_frame_p95_ms": 0.373,
+      "total_ms": 78.306,
+      "first_frame_p50_ms": 0.774,
+      "first_frame_p95_ms": 3.19,
+      "first_frame_max_ms": 5.809,
+      "interleaved_frame_p95_ms": 0.461,
       "lzma_blocks": 0
     },
     "previous_0_27_5": {
@@ -155,12 +155,12 @@
   "restore_comparison": {
     "baseline_version": "0.27.4",
     "baseline": "restore_clips=40 decoded_frames=1022 bank_loads=168 ms=134 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
-    "current": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=85 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7"
+    "current": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=84 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7"
   },
   "scene_route_comparison": {
     "baseline_version": "0.27.4",
     "baseline": "decoded_frames=1791 bank_loads=359 resource_opens=505",
-    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=101"
+    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=113"
   },
   "device_evidence": {
     "version": "0.27.4",
@@ -232,7 +232,7 @@
   "hybrid_route_comparison": {
     "baseline_version": "0.27.5",
     "baseline": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=159 direct_loads=0 graphics_bytes=6677504 resource_opens=158 ms=105",
-    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=101",
+    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=113",
     "individual_frame_trial": "98 tile reads + 219 direct reads; 5707748 decoded bytes",
     "desktop_fps_not_device_fps": true
   },
@@ -388,12 +388,14 @@
     "native_exception_stage_unknown": true
   },
   "pcm_step_probe": {
-    "original_wav_byte_exact": true,
+    "original_wav_byte_exact_for_boosted_cues": false,
+    "gain_for_boosted_cues": 16,
+    "original_alias_asset_unchanged": true,
     "replacement_targets": [
       "audio/02-31.wav",
       "audio/03-00.wav"
     ],
-    "identical_asset_aliases_share_pcm": true,
+    "two_boosted_cues_share_one_pcm": true,
     "native_mime": "audio/x-wav",
     "mp3_decoder_used_for_step": false,
     "cache_budgets_unchanged": true,
@@ -407,10 +409,10 @@
         "channels": 1,
         "duration_ms": 102,
         "source_sha256": "ee8455b336f70ae814e56248aea7a61e71362d153bd247ea1a876b014e1ef41d",
+        "packaged_sha256": "ee8455b336f70ae814e56248aea7a61e71362d153bd247ea1a876b014e1ef41d",
+        "gain": 1,
         "aliases": [
           "audio/02-00.wav",
-          "audio/02-31.wav",
-          "audio/03-00.wav",
           "audio/04-00.wav",
           "audio/05-00.wav",
           "audio/05-16.wav",
@@ -428,7 +430,50 @@
           "audio/17-00.wav",
           "audio/17-33.wav"
         ]
+      },
+      {
+        "id": 327,
+        "bytes": 1164,
+        "sample_rate": 11025,
+        "bits": 8,
+        "channels": 1,
+        "duration_ms": 102,
+        "source_sha256": "ee8455b336f70ae814e56248aea7a61e71362d153bd247ea1a876b014e1ef41d",
+        "packaged_sha256": "055b06f9966957af0f00c65b1ec17b5a6d5b14f8ca881c35a809635e81fe5abe",
+        "gain": 16,
+        "aliases": [
+          "audio/02-31.wav",
+          "audio/03-00.wav"
+        ]
       }
     ]
+  },
+  "device_evidence_0_27_12": {
+    "video": "VID_20261027_164403_239.mp4",
+    "initial_step_starts_at_least": 2,
+    "successful_step_repeats_at_least": 10,
+    "observed_initial_failures": 0,
+    "observed_replay_failures": 0,
+    "audible_footsteps_reported": false,
+    "native_api_start_success_confirmed": true,
+    "acoustic_output_proven": false
+  },
+  "step_gain": {
+    "linear_gain": 16,
+    "gain_db": 24.0824,
+    "source_peak_signed_pcm8": 3,
+    "output_peak_signed_pcm8": 48,
+    "source_rms_signed_pcm8": 0.755,
+    "clipping": false,
+    "sample_count_unchanged": true,
+    "header_unchanged": true,
+    "targets": [
+      "audio/02-31.wav",
+      "audio/03-00.wav"
+    ],
+    "other_asset_payloads_unchanged": true,
+    "mmapi_code_unchanged": true,
+    "extra_pcm_asset_bytes": 1164,
+    "native_device_result_unknown": true
   }
 }
