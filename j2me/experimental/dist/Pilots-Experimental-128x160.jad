@@ -1,5 +1,5 @@
 MIDlet-Name: Pilots Experimental 128x160
-MIDlet-Version: 0.27.13
+MIDlet-Version: 0.27.14
 MIDlet-Vendor: PILOTSJ2ME
 MIDlet-1: Pilots Experimental 128x160,/icon.png,pilots.PilotsMidlet
 MicroEdition-Profile: MIDP-2.0
@@ -8,4 +8,4 @@ Pilots-Screen: 128x160
 Pilots-Profile: 128x160
 Pilots-Raster-Cache-Pixels: 65536
 MIDlet-Jar-URL: Pilots-Experimental-128x160.jar
-MIDlet-Jar-Size: 12844587
+MIDlet-Jar-Size: 12845096
