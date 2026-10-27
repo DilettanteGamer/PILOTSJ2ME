@@ -1,8 +1,8 @@
 {
-  "version": "0.27.10",
+  "version": "0.27.11",
   "profile": "128x160",
-  "jar_bytes": 12843433,
-  "jar_sha256": "6f49c40b52cf905827abedc37129d6667d6623a9a335233dcb427cc0465a419a",
+  "jar_bytes": 12844227,
+  "jar_sha256": "a8c49d561e31735e3faecb69ab7679d9863af2d62547bd5f65dcce13fdf37fc2",
   "baseline_bytes": 19852356,
   "tile_size": 16,
   "tile_cache_bytes": 131072,
@@ -14,27 +14,28 @@
   "all_locations_available_for_testing": true,
   "separate_experimental_rms": true,
   "checks": {
+    "initial_audio_start_errors": "Failed initial prefetch reproduces C>0/P0/H0/X0/S200/Z4; phase/type/message captured; successful start and replay distinguished; cleanup passed",
     "footstep_player_reuse": "12 PREFETCHED + 12 REALIZED repeats: no new MMAPI players, exact rewind; one idle slot; active overlap, pause, idle expiry, seek/start failure fallback, native allocation failure recovery, voice priority, scene/mute/close cleanup passed",
     "column_sampling": "exact_columns=1421636 same_size_buffer_reused=true representative_64_row_pixel_divisions=90984704->1421636",
     "all_animation_pixels": "AnimationDecode: all 1667 clips / 20916 frames byte-identical to source; malformed RLE rejected",
     "resources": "P8/bar/MIDI exact restored resources=52",
     "cache_budgets": "Native caches: two warmed walking cycles cause zero bank reloads; all byte budgets enforced",
     "direct_frames": "Direct frames: hot cel uses a small linear bank and one bulk copy; zero tile-bank load; equal-sized cache buffer reused",
-    "multi_actor_render": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=334",
-    "render_fallback": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=376",
+    "multi_actor_render": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=328",
+    "render_fallback": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=341",
     "frame_pacing": "Frame pacing: long stall capped to one step; normal 100ms steps preserved; display service outside Canvas lock",
     "debug_hud": "Debug HUD: correct low FPS/peaks; fixed buffers; no Image allocations; clipped/inventory-safe drawing; 1Hz idle; disabled no repaint; left toggle/right menu preserved",
     "seek_exact": "Non-sequential seek: source-exact frames=6668 clips=1667",
-    "seek_workload": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=90 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
+    "seek_workload": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=94 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
     "rebuild_reuse": "Rebuild reuse: all 16 unchanged actors retained; zero frame reads; background retained; failed rebuild rolled back",
-    "first_location_route": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=124",
+    "first_location_route": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=91",
     "zoo_scene": "ZooScene: shutters lifetime, source events, resumption, crow and Chief response passed",
     "courtyard_route": "Courtyard: source objects, 3 scores, companion positions, arrow, cat, bubbles, fence, exit and saves passed",
     "mmapi_streams": "Native MMAPI spy: MP3 resources=570 cached_replays=546 bytes exact",
     "audio_lifecycle": "Audio: 471 action sound cues via native MP3, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed",
     "location_entries_and_saves": "LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge, switchboard and crate Canvas controls/timer/pause/RMS restore/automatic return and invalid catalog ID passed",
-    "walking_performance": "Walking: cold40frames_ms=23 warm4000frames_ms=14",
-    "baseline_walking_performance": "Walking: cold40frames_ms=16 warm4000frames_ms=11"
+    "walking_performance": "Walking: cold40frames_ms=19 warm4000frames_ms=11",
+    "baseline_walking_performance": "Walking: cold40frames_ms=16 warm4000frames_ms=12"
   },
   "class_count": 90,
   "hot_graphics_codec": "native JAR DEFLATE",
@@ -77,13 +78,13 @@
       "interleaved_frame_p95_ms": 70.659,
       "lzma_blocks": 573
     },
-    "current_0_27_10": {
+    "current_0_27_11": {
       "actions": 40,
-      "total_ms": 72.881,
-      "first_frame_p50_ms": 0.876,
-      "first_frame_p95_ms": 1.407,
-      "first_frame_max_ms": 7.553,
-      "interleaved_frame_p95_ms": 0.577,
+      "total_ms": 87.557,
+      "first_frame_p50_ms": 0.889,
+      "first_frame_p95_ms": 1.605,
+      "first_frame_max_ms": 8.797,
+      "interleaved_frame_p95_ms": 0.636,
       "lzma_blocks": 0
     },
     "previous_0_27_5": {
@@ -153,12 +154,12 @@
   "restore_comparison": {
     "baseline_version": "0.27.4",
     "baseline": "restore_clips=40 decoded_frames=1022 bank_loads=168 ms=134 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
-    "current": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=90 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7"
+    "current": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=94 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7"
   },
   "scene_route_comparison": {
     "baseline_version": "0.27.4",
     "baseline": "decoded_frames=1791 bank_loads=359 resource_opens=505",
-    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=124"
+    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=91"
   },
   "device_evidence": {
     "version": "0.27.4",
@@ -230,7 +231,7 @@
   "hybrid_route_comparison": {
     "baseline_version": "0.27.5",
     "baseline": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=159 direct_loads=0 graphics_bytes=6677504 resource_opens=158 ms=105",
-    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=124",
+    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=91",
     "individual_frame_trial": "98 tile reads + 219 direct reads; 5707748 decoded bytes",
     "desktop_fps_not_device_fps": true
   },
@@ -244,7 +245,7 @@
     "render_sha256": "d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7",
     "desktop_not_device_fps": true
   },
-  "size_reduction_percent": 35.31,
+  "size_reduction_percent": 35.3,
   "device_evidence_0_27_6": {
     "videos": [
       "VID_20261027_074914_106.mp4",
@@ -337,7 +338,8 @@
     "step_reuse_failures_on_sampled_frames": 0,
     "last_disposed_step_state": 200,
     "last_disposal_reason": 4,
-    "realized_replay_needed": true,
+    "realized_replay_hypothesis": true,
+    "successful_initial_start_proven": false,
     "gc_cause_proven": false
   },
   "realized_step_replay": {
@@ -350,5 +352,33 @@
     "retention_limits_unchanged": true,
     "hud_counter": "B",
     "native_device_tested": false
+  },
+  "device_evidence_0_27_10": {
+    "videos": [
+      "VID_20261027_090226_185.mp4",
+      "VID_20261027_090319_489.mp4"
+    ],
+    "step_player_creates_at_least": 32,
+    "sampled_reuses": 0,
+    "sampled_refetches": 0,
+    "sampled_reuse_failures": 0,
+    "last_disposal_state": 200,
+    "last_disposal_reason": 4,
+    "update_peak_ms": 845,
+    "paint_peak_ms": 707,
+    "load_peak_ms": 515,
+    "audio_peak_ms": 549,
+    "minimum_observed_free_kib": 34,
+    "initial_playback_success_unknown": true,
+    "successful_device_reuse_proven": false
+  },
+  "initial_audio_error_diagnostics": {
+    "successful_initial_step_start_counter": "P",
+    "failed_initial_step_start_counter": "F",
+    "exception_stage_counter": "A",
+    "exception_type_counter": "E",
+    "exception_message_limit": 40,
+    "rows_and_pixel_buffer_unchanged": true,
+    "playback_policy_unchanged": true
   }
 }

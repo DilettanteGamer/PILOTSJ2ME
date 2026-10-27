@@ -8,6 +8,7 @@ public final class Manager {
     public static final List<FakePlayer> players=Collections.synchronizedList(new ArrayList<FakePlayer>());
     public static volatile boolean rejectMidi,rejectAll,rejectSeek,rejectReplay;
     public static volatile boolean oomNextEffect;
+    public static volatile boolean rejectEffectPrefetch;
     public static volatile int maxPCM=3;
     public static Player createPlayer(InputStream input,String type) throws IOException,MediaException {
         if(rejectAll || rejectMidi && type.equals("audio/midi")) throw new MediaException("Unsupported");
@@ -34,7 +35,7 @@ public final class Manager {
         public volatile boolean failPrefetch;
         public FakePlayer(String type,byte[] data) { this.type=type;this.data=data; }
         public void realize() { state=REALIZED; }
-        public void prefetch() { if(failPrefetch){failPrefetch=false;throw new IllegalStateException("Simulated prefetch failure");}state=PREFETCHED; }
+        public void prefetch() throws MediaException { if(rejectEffectPrefetch && !type.equals("audio/midi"))throw new MediaException("TEST MP3 PREFETCH REJECTED");if(failPrefetch){failPrefetch=false;throw new IllegalStateException("Simulated prefetch failure");}state=PREFETCHED; }
         public void start() { if(state==CLOSED || rejectReplay && starts>0) throw new IllegalStateException();state=STARTED;starts++; }
         public void stop() { state=PREFETCHED;stops++; }
         public void deallocate() { state=REALIZED; }
