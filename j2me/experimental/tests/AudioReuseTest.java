@@ -44,9 +44,18 @@ public final class AudioReuseTest {
    overlapping.play(31);waitFor(()->Manager.players.size()==prior+3 && latest().starts==1);FakePlayer second=latest();
    check(first.state==Player.STARTED,"Overlapping cue interrupted an active footstep");
    first.state=second.state=Player.PREFETCHED;
-   waitFor(()->first.state==Player.CLOSED);check(second.state==Player.PREFETCHED,"More than one idle player kept or newest player discarded");check(AudioDiagnostics.reason==8,"Duplicate idle disposal diagnostic incorrect");second.state=Player.REALIZED;waitFor(()->second.state==Player.CLOSED);check(AudioDiagnostics.endState==Player.REALIZED && AudioDiagnostics.reason==3,"Driver deallocation diagnostic incorrect");
+   waitFor(()->first.state==Player.CLOSED);check(second.state==Player.PREFETCHED,"More than one idle player kept or newest player discarded");check(AudioDiagnostics.reason==8,"Duplicate idle disposal diagnostic incorrect");
+   for(int i=0;i<12;i++) {
+    second.state=Player.REALIZED;int started=second.starts;Thread.sleep(120);overlapping.play(31);waitFor(()->second.starts==started+1);
+    check(Manager.players.size()==prior+3 && second.lastSeek==0,"REALIZED footstep recreated or resumed midway");
+   }
+   check(AudioDiagnostics.refetches==12,"REALIZED prefetch count incorrect");
+   second.state=Player.REALIZED;second.failPrefetch=true;overlapping.play(31);
+   waitFor(()->second.state==Player.CLOSED && latest()!=second && latest().state==Player.STARTED);
+   check(AudioDiagnostics.failures==3 && AudioDiagnostics.reuses==24,"Prefetch failure fallback counters incorrect");
+   FakePlayer unsupported=latest();unsupported.state=Player.UNREALIZED;waitFor(()->unsupported.state==Player.CLOSED);check(AudioDiagnostics.endState==Player.UNREALIZED && AudioDiagnostics.reason==3,"Unsupported driver state diagnostic incorrect");
   } finally {overlapping.close();}
   waitFor(()->Manager.players.stream().allMatch(p->p.state==Player.CLOSED));
-  System.out.println("12 repeated footsteps: one MMAPI player, exact rewind; one idle slot; active overlap, pause, idle expiry, seek/start failure fallback, native allocation failure recovery, voice priority, scene/mute/close cleanup passed");
+  System.out.println("12 PREFETCHED + 12 REALIZED repeats: no new MMAPI players, exact rewind; one idle slot; active overlap, pause, idle expiry, seek/start failure fallback, native allocation failure recovery, voice priority, scene/mute/close cleanup passed");
  }
 }

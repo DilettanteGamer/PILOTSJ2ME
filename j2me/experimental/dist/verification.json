@@ -1,8 +1,8 @@
 {
-  "version": "0.27.9",
+  "version": "0.27.10",
   "profile": "128x160",
-  "jar_bytes": 12843341,
-  "jar_sha256": "9964a0d6e025fa3fa1a4260d6441f3804220422573925c1bce9203d403ac768f",
+  "jar_bytes": 12843433,
+  "jar_sha256": "6f49c40b52cf905827abedc37129d6667d6623a9a335233dcb427cc0465a419a",
   "baseline_bytes": 19852356,
   "tile_size": 16,
   "tile_cache_bytes": 131072,
@@ -14,27 +14,27 @@
   "all_locations_available_for_testing": true,
   "separate_experimental_rms": true,
   "checks": {
-    "footstep_player_reuse": "12 repeated footsteps: one MMAPI player, exact rewind; one idle slot; active overlap, pause, idle expiry, seek/start failure fallback, native allocation failure recovery, voice priority, scene/mute/close cleanup passed",
+    "footstep_player_reuse": "12 PREFETCHED + 12 REALIZED repeats: no new MMAPI players, exact rewind; one idle slot; active overlap, pause, idle expiry, seek/start failure fallback, native allocation failure recovery, voice priority, scene/mute/close cleanup passed",
     "column_sampling": "exact_columns=1421636 same_size_buffer_reused=true representative_64_row_pixel_divisions=90984704->1421636",
     "all_animation_pixels": "AnimationDecode: all 1667 clips / 20916 frames byte-identical to source; malformed RLE rejected",
     "resources": "P8/bar/MIDI exact restored resources=52",
     "cache_budgets": "Native caches: two warmed walking cycles cause zero bank reloads; all byte budgets enforced",
     "direct_frames": "Direct frames: hot cel uses a small linear bank and one bulk copy; zero tile-bank load; equal-sized cache buffer reused",
-    "multi_actor_render": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=335",
-    "render_fallback": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=312",
+    "multi_actor_render": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=334",
+    "render_fallback": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=376",
     "frame_pacing": "Frame pacing: long stall capped to one step; normal 100ms steps preserved; display service outside Canvas lock",
     "debug_hud": "Debug HUD: correct low FPS/peaks; fixed buffers; no Image allocations; clipped/inventory-safe drawing; 1Hz idle; disabled no repaint; left toggle/right menu preserved",
     "seek_exact": "Non-sequential seek: source-exact frames=6668 clips=1667",
-    "seek_workload": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=81 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
+    "seek_workload": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=90 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
     "rebuild_reuse": "Rebuild reuse: all 16 unchanged actors retained; zero frame reads; background retained; failed rebuild rolled back",
-    "first_location_route": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=104",
+    "first_location_route": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=124",
     "zoo_scene": "ZooScene: shutters lifetime, source events, resumption, crow and Chief response passed",
     "courtyard_route": "Courtyard: source objects, 3 scores, companion positions, arrow, cat, bubbles, fence, exit and saves passed",
     "mmapi_streams": "Native MMAPI spy: MP3 resources=570 cached_replays=546 bytes exact",
     "audio_lifecycle": "Audio: 471 action sound cues via native MP3, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed",
     "location_entries_and_saves": "LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge, switchboard and crate Canvas controls/timer/pause/RMS restore/automatic return and invalid catalog ID passed",
-    "walking_performance": "Walking: cold40frames_ms=24 warm4000frames_ms=14",
-    "baseline_walking_performance": "Walking: cold40frames_ms=15 warm4000frames_ms=9"
+    "walking_performance": "Walking: cold40frames_ms=23 warm4000frames_ms=14",
+    "baseline_walking_performance": "Walking: cold40frames_ms=16 warm4000frames_ms=11"
   },
   "class_count": 90,
   "hot_graphics_codec": "native JAR DEFLATE",
@@ -77,13 +77,13 @@
       "interleaved_frame_p95_ms": 70.659,
       "lzma_blocks": 573
     },
-    "current_0_27_6": {
+    "current_0_27_10": {
       "actions": 40,
-      "total_ms": 57.767,
-      "first_frame_p50_ms": 0.658,
-      "first_frame_p95_ms": 1.027,
-      "first_frame_max_ms": 5.823,
-      "interleaved_frame_p95_ms": 0.385,
+      "total_ms": 72.881,
+      "first_frame_p50_ms": 0.876,
+      "first_frame_p95_ms": 1.407,
+      "first_frame_max_ms": 7.553,
+      "interleaved_frame_p95_ms": 0.577,
       "lzma_blocks": 0
     },
     "previous_0_27_5": {
@@ -153,12 +153,12 @@
   "restore_comparison": {
     "baseline_version": "0.27.4",
     "baseline": "restore_clips=40 decoded_frames=1022 bank_loads=168 ms=134 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
-    "current": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=81 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7"
+    "current": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=90 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7"
   },
   "scene_route_comparison": {
     "baseline_version": "0.27.4",
     "baseline": "decoded_frames=1791 bank_loads=359 resource_opens=505",
-    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=104"
+    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=124"
   },
   "device_evidence": {
     "version": "0.27.4",
@@ -230,7 +230,7 @@
   "hybrid_route_comparison": {
     "baseline_version": "0.27.5",
     "baseline": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=159 direct_loads=0 graphics_bytes=6677504 resource_opens=158 ms=105",
-    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=104",
+    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=124",
     "individual_frame_trial": "98 tile reads + 219 direct reads; 5707748 decoded bytes",
     "desktop_fps_not_device_fps": true
   },
@@ -326,7 +326,29 @@
       "last release reason"
     ],
     "counter_lifetime": "since application startup",
-    "player_retention_policy_unchanged": true,
+    "retention_limits_unchanged": true,
     "previous_metrics_available": "left softkey once"
+  },
+  "device_evidence_0_27_9": {
+    "video": "VID_20261027_084708_906.mp4",
+    "walk_cue": 31,
+    "step_player_creates_at_least": 13,
+    "step_reuses_on_sampled_frames": 0,
+    "step_reuse_failures_on_sampled_frames": 0,
+    "last_disposed_step_state": 200,
+    "last_disposal_reason": 4,
+    "realized_replay_needed": true,
+    "gc_cause_proven": false
+  },
+  "realized_step_replay": {
+    "enabled": true,
+    "states": [
+      200,
+      300
+    ],
+    "prefetch_only_for_realized": true,
+    "retention_limits_unchanged": true,
+    "hud_counter": "B",
+    "native_device_tested": false
   }
 }
