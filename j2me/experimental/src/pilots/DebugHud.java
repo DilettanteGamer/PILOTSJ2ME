@@ -2,7 +2,7 @@ package pilots;
 import javax.microedition.lcdui.*;
 /** Diagnostic data only. No forced GC, image creation or polling thread. */
 public final class DebugHud {
- private static int mode=3,scene,sceneLoad,visible,totalActors;
+ private static int mode=2,scene,sceneLoad,visible,totalActors;
  private static long window=System.currentTimeMillis(),snapshot,pulse,lastPaint;
  private static int frames,ticks,changes,fps10,tickRate,changeRate;
  private static int update,updateMax,paint,paintMax,gap,load,loadMax,audio,audioMax,queue,effects,hud,hudMax;
