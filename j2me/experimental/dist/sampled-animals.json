@@ -1,0 +1,21 @@
+{
+  "clips": [
+    "scenes/04-111.anm",
+    "scenes/04-53.anm",
+    "scenes/04-54.anm"
+  ],
+  "images": 38,
+  "variants": 152,
+  "banks": 38,
+  "raw_bytes": 220648,
+  "viewport": [
+    128,
+    148
+  ],
+  "world": [
+    640,
+    417
+  ],
+  "exact_nearest_neighbour": true,
+  "original_frames_retained": true
+}

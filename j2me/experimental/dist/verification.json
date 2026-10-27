@@ -1,8 +1,8 @@
 {
-  "version": "0.27.16",
+  "version": "0.27.17",
   "profile": "128x160",
-  "jar_bytes": 12863495,
-  "jar_sha256": "aaf8a1efd4bf0bec6806e9daba4004e54f5c45d3b8c4e2a214f35fe7df58adf9",
+  "jar_bytes": 12912695,
+  "jar_sha256": "31892e897398fa7025053754e38558bedf8b91995fe2e880998d4378d412ae20",
   "baseline_bytes": 19852356,
   "tile_size": 16,
   "tile_cache_bytes": 131072,
@@ -14,8 +14,9 @@
   "all_locations_available_for_testing": true,
   "separate_experimental_rms": true,
   "checks": {
+    "sampled_pixels": "Sampled indices exact: 152 variants; 720 renders with crop/camera/rounding/zoom/other viewport and uncached fallback; source frames retained",
     "deferred_pixels": "Deferred pixels: zero loads for metadata/offscreen/shared-raster use; exact visible pixels and all walking hit masks; failed pixel IO reported to next update",
-    "animal_arrival": "animal_initialization pixel_frames=0 bank_reads=0 raw_bytes=0\nanimal_arrival ticks=400 paints=1600 update_ms=100 paint_ms=1540 banks=0 linear=460 opens=498 raw_bytes=11177214 images=1560\nstate_sha256=95634f5c24b1da3977c93539cd6ebcd8d1bb649dc90f951413c9bad527a265a1 pixel_sha256=fb84fa51b3254afe6c144a40a80bd8b63888c4f954f22ce2cd248c86703504e3",
+    "animal_arrival": "animal_initialization pixel_frames=0 bank_reads=0 raw_bytes=0\nanimal_arrival ticks=400 paints=1600 update_ms=70 paint_ms=1190 banks=0 linear=669 opens=137 raw_bytes=9222956 images=1560 sampled_reads=376 sampled_hits=347\nstate_sha256=95634f5c24b1da3977c93539cd6ebcd8d1bb649dc90f951413c9bad527a265a1 pixel_sha256=fb84fa51b3254afe6c144a40a80bd8b63888c4f954f22ce2cd248c86703504e3",
     "animal_quest": "AnimalWorld: full quest, four fountain states, blocked landings, source action coverage [0, 51, 52, 55, 56, 57, 58, 59, 62, 65, 66, 68, 71, 72, 73, 74, 75, 76, 78, 79], save/resume and third-only previews passed",
     "animal_sequences": "AnimalSequences: banana hover, recovered rhino, all cutting/tail/kangaroo/fall/monkey frames painted, cinematic saves, giraffe fallback, basin/cage bypasses and both character exits passed",
     "animal_controller_trace": "Full animal quest controller trace matches 0.27.13: trace_ticks=7535 state_sha256=1d84b271a2c4b3cc00c524557ac2242d212d0fbbb8160b7956b836e4429123a9",
@@ -27,21 +28,21 @@
     "resources": "P8/bar/MIDI exact restored resources=52",
     "cache_budgets": "Native caches: two warmed walking cycles cause zero bank reloads; all byte budgets enforced",
     "direct_frames": "Direct frames: hot cel uses a small linear bank and one bulk copy; zero tile-bank load; equal-sized cache buffer reused",
-    "multi_actor_render": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=394",
-    "render_fallback": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=377",
+    "multi_actor_render": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=346",
+    "render_fallback": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=347",
     "frame_pacing": "Frame pacing: long stall capped to one step; normal 100ms steps preserved; display service outside Canvas lock",
     "debug_hud": "Debug HUD: correct low FPS/peaks; fixed buffers; no Image allocations; clipped/inventory-safe drawing; 1Hz idle; disabled no repaint; left toggle/right menu preserved",
     "seek_exact": "Non-sequential seek: source-exact frames=6668 clips=1667",
-    "seek_workload": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=82 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
+    "seek_workload": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=68 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
     "rebuild_reuse": "Rebuild reuse: all 16 unchanged actors retained; zero frame reads; background retained; failed rebuild rolled back",
-    "first_location_route": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6057316 resource_opens=158 ms=123",
+    "first_location_route": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=87 direct_loads=94 graphics_bytes=5978212 resource_opens=155 ms=119",
     "zoo_scene": "ZooScene: shutters lifetime, source events, resumption, crow and Chief response passed",
     "courtyard_route": "Courtyard: source objects, 3 scores, companion positions, arrow, cat, bubbles, fence, exit and saves passed",
     "mmapi_streams": "Native MMAPI spy: MP3/PCM resources=570 cached_replays=546 bytes exact",
     "audio_lifecycle": "Audio: 471 action sound cues via native MP3/PCM, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed",
     "location_entries_and_saves": "LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge, switchboard and crate Canvas controls/timer/pause/RMS restore/automatic return and invalid catalog ID passed",
-    "walking_performance": "Walking: cold40frames_ms=22 warm4000frames_ms=13",
-    "baseline_walking_performance": "Walking: cold40frames_ms=16 warm4000frames_ms=12"
+    "walking_performance": "Walking: cold40frames_ms=19 warm4000frames_ms=13",
+    "baseline_walking_performance": "Walking: cold40frames_ms=14 warm4000frames_ms=10"
   },
   "class_count": 90,
   "hot_graphics_codec": "native JAR DEFLATE",
@@ -85,13 +86,13 @@
       "interleaved_frame_p95_ms": 70.659,
       "lzma_blocks": 573
     },
-    "current_0_27_16": {
+    "current_0_27_17": {
       "actions": 40,
-      "total_ms": 74.358,
-      "first_frame_p50_ms": 0.75,
-      "first_frame_p95_ms": 1.398,
-      "first_frame_max_ms": 7.844,
-      "interleaved_frame_p95_ms": 0.528,
+      "total_ms": 60.32,
+      "first_frame_p50_ms": 0.67,
+      "first_frame_p95_ms": 2.267,
+      "first_frame_max_ms": 6.137,
+      "interleaved_frame_p95_ms": 0.483,
       "lzma_blocks": 0
     },
     "previous_0_27_5": {
@@ -161,12 +162,12 @@
   "restore_comparison": {
     "baseline_version": "0.27.4",
     "baseline": "restore_clips=40 decoded_frames=1022 bank_loads=168 ms=134 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
-    "current": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=82 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7"
+    "current": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=68 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7"
   },
   "scene_route_comparison": {
     "baseline_version": "0.27.4",
     "baseline": "decoded_frames=1791 bank_loads=359 resource_opens=505",
-    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6057316 resource_opens=158 ms=123"
+    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=87 direct_loads=94 graphics_bytes=5978212 resource_opens=155 ms=119"
   },
   "device_evidence": {
     "version": "0.27.4",
@@ -277,7 +278,7 @@
   "hybrid_route_comparison": {
     "baseline_version": "0.27.5",
     "baseline": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=159 direct_loads=0 graphics_bytes=6677504 resource_opens=158 ms=105",
-    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6057316 resource_opens=158 ms=123",
+    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=87 direct_loads=94 graphics_bytes=5978212 resource_opens=155 ms=119",
     "individual_frame_trial": "98 tile reads + 219 direct reads; 5707748 decoded bytes",
     "desktop_fps_not_device_fps": true
   },
@@ -291,7 +292,7 @@
     "render_sha256": "d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7",
     "desktop_not_device_fps": true
   },
-  "size_reduction_percent": 35.2,
+  "size_reduction_percent": 34.96,
   "device_evidence_0_27_6": {
     "videos": [
       "VID_20261027_074914_106.mp4",
@@ -526,7 +527,7 @@
     "arrival_ticks": 400,
     "paints_with_cursor_camera_and_zoom": 1600,
     "baseline": "animal_arrival ticks=400 paints=1600 update_ms=492 paint_ms=1549 banks=1019 linear=51 opens=706 images=1619\nstate_sha256=95634f5c24b1da3977c93539cd6ebcd8d1bb649dc90f951413c9bad527a265a1 pixel_sha256=fb84fa51b3254afe6c144a40a80bd8b63888c4f954f22ce2cd248c86703504e3",
-    "current": "animal_initialization pixel_frames=0 bank_reads=0 raw_bytes=0\nanimal_arrival ticks=400 paints=1600 update_ms=100 paint_ms=1540 banks=0 linear=460 opens=498 raw_bytes=11177214 images=1560\nstate_sha256=95634f5c24b1da3977c93539cd6ebcd8d1bb649dc90f951413c9bad527a265a1 pixel_sha256=fb84fa51b3254afe6c144a40a80bd8b63888c4f954f22ce2cd248c86703504e3",
+    "current": "animal_initialization pixel_frames=0 bank_reads=0 raw_bytes=0\nanimal_arrival ticks=400 paints=1600 update_ms=70 paint_ms=1190 banks=0 linear=669 opens=137 raw_bytes=9222956 images=1560 sampled_reads=376 sampled_hits=347\nstate_sha256=95634f5c24b1da3977c93539cd6ebcd8d1bb649dc90f951413c9bad527a265a1 pixel_sha256=fb84fa51b3254afe6c144a40a80bd8b63888c4f954f22ce2cd248c86703504e3",
     "controller_scratch_slots": 302,
     "target_scratch_slots": 300,
     "fixed_scratch_memory_approx_bytes": 3624,
@@ -590,5 +591,64 @@
     "io_moves_from_update_to_paint": true,
     "desktop_total_speedup_proven": false,
     "native_speedup_proven": false
+  },
+  "device_evidence_0_27_16": {
+    "videos": [
+      "VID_20261027_184922_883.mp4",
+      "VID_20261027_184943_384.mp4"
+    ],
+    "second_video_sample_seconds": 2,
+    "update_last_peak_ms": [
+      44,
+      486
+    ],
+    "paint_last_peak_ms": [
+      1048,
+      9780
+    ],
+    "paint_peak_includes_initial_frame": true,
+    "load_last_peak_ms": [
+      295,
+      924
+    ],
+    "audio_last_peak_ms": [
+      1537,
+      2696
+    ],
+    "minimum_observed_free_kib": 25,
+    "gc_cause_proven": false,
+    "lower_update_alone_does_not_prove_speedup": true
+  },
+  "sampled_animal_frames": {
+    "clips": [
+      "scenes/04-111.anm",
+      "scenes/04-53.anm",
+      "scenes/04-54.anm"
+    ],
+    "images": 38,
+    "variants": 152,
+    "banks": 38,
+    "raw_bytes": 220648,
+    "viewport": [
+      128,
+      148
+    ],
+    "world": [
+      640,
+      417
+    ],
+    "exact_nearest_neighbour": true,
+    "original_frames_retained": true,
+    "raw_frame_cache_slots": 64,
+    "raw_frame_cache_bytes": 196608,
+    "bank_cache_bytes": 131072,
+    "index_bytes": 1520,
+    "extra_slot_storage_approx_bytes": 512,
+    "source_and_sample_share_raw_cache": true,
+    "audio_unchanged": true,
+    "native_speedup_proven": false,
+    "baseline_0_27_16_banks": 460,
+    "baseline_0_27_16_resource_opens": 498,
+    "baseline_0_27_16_decoded_bytes": 11177214
   }
 }

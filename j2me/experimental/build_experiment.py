@@ -10,6 +10,7 @@ from optimize_rasters import patch as raster_patch
 from reuse_audio import patch as audio_patch
 from optimize_animals import patch as animal_patch
 from lazy_animal_pixels import patch as lazy_patch
+from sampled_animals import patch as sampled_patch, resources as sampled_resources
 EXP=ROOT/'experimental';WORK=Path('/tmp/pilots-exp-build');WORK.mkdir(exist_ok=True);CACHE=Path('/workspace/pilots-tools/j2me-placement');JAVA=Path('/workspace/pilots-tools/jdk-21.0.8+9/bin/java')
 filters=[dict(id=lzma.FILTER_LZMA1,dict_size=262144,lc=3,lp=0,pb=2,mode=lzma.MODE_NORMAL,nice_len=128,mf=lzma.MF_BT4)]
 props=b'\x5d'+struct.pack('<I',262144)
@@ -95,6 +96,7 @@ for path in (ROOT/'src').rglob('*.java'):
  text=animal_patch(path.name,text)
  text=raster_patch(path.name,text)
  text=lazy_patch(path.name,text)
+ if fast_native:text=sampled_patch(path.name,text)
  if fast_native:text=audio_patch(path.name,text)
  text=debug_patch(path.name,text)
  p=WORK/'source/pilots'/path.name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
@@ -118,11 +120,14 @@ if fast_native and native_tiles:
   graphic_entries,graphic_stats=hybrid_graphics(*collect_frames(source));hybrid_cache.write_bytes(pickle.dumps((graphic_entries,graphic_stats)))
  entries={n:b for n,b in entries.items() if not n.startswith(('tiles/b','tiles/m','tiles/d'))};entries.update(graphic_entries)
  (EXP/'dist/hybrid-graphics.json').write_text(json.dumps(graphic_stats,indent=2)+'\n');print('Hybrid graphics',graphic_stats,flush=True)
+if fast_native:
+ sample_entries,sample_stats=sampled_resources(*collect_frames(source),max(int(n[7:]) for n in entries if n.startswith('tiles/b'))+1)
+ entries.update(sample_entries);(EXP/'dist/sampled-animals.json').write_text(json.dumps(sample_stats,indent=2)+'\n');print('Sampled graphics',sample_stats,flush=True)
 entries={n:b for n,b in entries.items() if not n.endswith('.class')}
 for path in ([WORK/'verified.jar'] if fast_native else [EXP/'lib/concentus-silk-nb-cldc.jar',WORK/'verified.jar']):
  with zipfile.ZipFile(path) as jar:entries.update({n:jar.read(n) for n in jar.namelist() if n.endswith('.class')})
 entries['META-INF/LICENSE-CONCENTUS.txt']=(EXP/'CONCENTUS-LICENSE').read_bytes();entries['META-INF/LICENSE-LZMA.txt']=(EXP/'LZMA-LICENSE').read_bytes()
-text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.16').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
+text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.17').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
 out=EXP/'dist';out.mkdir(exist_ok=True);target=out/'Pilots-Experimental-128x160.jar'
 with zipfile.ZipFile(target,'w') as jar:
  for name,data in entries.items():jar.writestr(name,data,compress_type=zipfile.ZIP_STORED if (name.startswith('tiles/b') and not native_tiles) or (not fast_native and name.endswith(('.p8','.bar','.mid'))) else zipfile.ZIP_DEFLATED,compresslevel=9)

@@ -10,7 +10,7 @@ public final class AnimalPerformanceTest {
   System.out.println("animal_initialization pixel_frames="+(TileStore.frameCalls-initialFrames)+" bank_reads="+(TileStore.loads+TileStore.directLoads-initialBanks)+" raw_bytes="+(TileStore.rawDecoded-initialBytes));
   Viewport v=new Viewport(128,148,640,417);Graphics g=new Graphics(128,160);
   MessageDigest pixels=MessageDigest.getInstance("SHA-256"),logic=MessageDigest.getInstance("SHA-256");long update=0,paint=0;
-  long decoded=TileStore.rawDecoded;int banks=TileStore.loads,direct=TileStore.directLoads,opens=PackedResources.opens,alloc=Image.allocations;
+  long decoded=TileStore.rawDecoded;int sampleReads=TileStore.sampleReads,sampleHits=TileStore.sampleHits;int banks=TileStore.loads,direct=TileStore.directLoads,opens=PackedResources.opens,alloc=Image.allocations;
   try {
    for(int tick=0;tick<400;tick++) {
     long began=System.nanoTime();animals.update(100);update+=System.nanoTime()-began;logic.update(state.encode());
@@ -25,7 +25,7 @@ public final class AnimalPerformanceTest {
      for(int yy=0;yy<148;yy++)for(int xx=0;xx<128;xx++){int rgb=g.image.getRGB(xx,yy);pixels.update((byte)(rgb>>16));pixels.update((byte)(rgb>>8));pixels.update((byte)rgb);}
     }
    }
-   System.out.println("animal_arrival ticks=400 paints=1600 update_ms="+update/1000000+" paint_ms="+paint/1000000+" banks="+(TileStore.loads-banks)+" linear="+(TileStore.directLoads-direct)+" opens="+(PackedResources.opens-opens)+" raw_bytes="+(TileStore.rawDecoded-decoded)+" images="+(Image.allocations-alloc));
+   System.out.println("animal_arrival ticks=400 paints=1600 update_ms="+update/1000000+" paint_ms="+paint/1000000+" banks="+(TileStore.loads-banks)+" linear="+(TileStore.directLoads-direct)+" opens="+(PackedResources.opens-opens)+" raw_bytes="+(TileStore.rawDecoded-decoded)+" images="+(Image.allocations-alloc)+" sampled_reads="+(TileStore.sampleReads-sampleReads)+" sampled_hits="+(TileStore.sampleHits-sampleHits));
    String a=hex(logic.digest()),b=hex(pixels.digest());System.out.println("state_sha256="+a+" pixel_sha256="+b);
    if(!a.equals("95634f5c24b1da3977c93539cd6ebcd8d1bb649dc90f951413c9bad527a265a1") || !b.equals("fb84fa51b3254afe6c144a40a80bd8b63888c4f954f22ce2cd248c86703504e3"))throw new Exception("Animal arrival pixels or quest ticks differ from 0.27.13");
   } finally {scene.close();}
