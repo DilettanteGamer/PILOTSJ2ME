@@ -3,6 +3,7 @@ from pathlib import Path
 import hashlib,json,struct,sys,zipfile
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT));from animation_codec import decode_animation
 work=Path('/tmp/pilots-exp-tests');work.mkdir(exist_ok=True)
+(work/'lazy-invalid.anm').write_bytes(b'ANM6'+struct.pack('>HHBBhhHHI',1,100,0,0,0,0,640,480,0))
 with zipfile.ZipFile(ROOT/'dist/Pilots-128x160.jar') as jar:
  (work/'frames.properties').write_text('\n'.join(n+'='+hashlib.sha256(decode_animation(jar.read(n))[777:]).hexdigest() for n in jar.namelist() if n.endswith('.anm'))+'\n')
  seek_rows=[]

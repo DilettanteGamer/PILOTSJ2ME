@@ -5,7 +5,9 @@ import javax.microedition.lcdui.*;
 public final class AnimalPerformanceTest {
  private static String hex(byte[] b){String s="";for(byte n:b)s+=Integer.toHexString((n&255)|256).substring(1);return s;}
  public static void main(String[] args)throws Exception {
+  int initialFrames=TileStore.frameCalls,initialBanks=TileStore.loads+TileStore.directLoads;long initialBytes=TileStore.rawDecoded;
   GameState state=new GameState();state.scene=4;Scene scene=new Scene(4);AnimalScene animals=new AnimalScene(scene,state);
+  System.out.println("animal_initialization pixel_frames="+(TileStore.frameCalls-initialFrames)+" bank_reads="+(TileStore.loads+TileStore.directLoads-initialBanks)+" raw_bytes="+(TileStore.rawDecoded-initialBytes));
   Viewport v=new Viewport(128,148,640,417);Graphics g=new Graphics(128,160);
   MessageDigest pixels=MessageDigest.getInstance("SHA-256"),logic=MessageDigest.getInstance("SHA-256");long update=0,paint=0;
   long decoded=TileStore.rawDecoded;int banks=TileStore.loads,direct=TileStore.directLoads,opens=PackedResources.opens,alloc=Image.allocations;
