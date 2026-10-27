@@ -37,7 +37,7 @@ public final class DebugHud {
    "M"+((size-free)/1024)+"/"+(size/1024)+"K N"+(minFree/1024)+"K",
    "V"+visible+"/"+totalActors+" D"+hud+"/"+hudMax+" O+"+Math.min(999,opens-oldOpens),
    "AU"+audio+"/"+audioMax+" Q"+queue+" E"+effects+" H+"+Math.min(99,GameAudio.effectReuses-oldAudioReuses)};
-  if(mode==3){labels[5]="K"+AudioDiagnostics.cue+" W"+AudioDiagnostics.stepCue+" C"+Math.min(999,AudioDiagnostics.creates)+" H"+Math.min(999,AudioDiagnostics.reuses)+" X"+Math.min(99,AudioDiagnostics.failures);labels[6]="AU"+audio+"/"+audioMax+" B"+Math.min(99,AudioDiagnostics.refetches)+" S"+AudioDiagnostics.endState+" Z"+AudioDiagnostics.reason;}
+  if(mode==3){labels[2]="L"+load+"/"+loadMax+" A"+AudioDiagnostics.failedStage+" E"+AudioDiagnostics.errorType+" F"+Math.min(999,AudioDiagnostics.startFailures);if(AudioDiagnostics.errorText!=null)labels[3]=AudioDiagnostics.errorText;labels[5]="K"+AudioDiagnostics.cue+" C"+Math.min(999,AudioDiagnostics.creates)+" P"+Math.min(999,AudioDiagnostics.starts)+" H"+Math.min(999,AudioDiagnostics.reuses)+" X"+Math.min(99,AudioDiagnostics.failures);labels[6]="AU"+audio+"/"+audioMax+" B"+Math.min(99,AudioDiagnostics.refetches)+" S"+AudioDiagnostics.endState+" Z"+AudioDiagnostics.reason;}
   oldAudioReuses=GameAudio.effectReuses;oldBanks=banks;oldDirect=direct;oldCalls=calls;oldHits=hits;oldRequests=requests;oldRasterHits=rasterHits;oldOpens=opens;snapshot=now;
  }
  private static synchronized int[] prepare(int width,int height,int actors,int shown,long now){
