@@ -10,7 +10,7 @@
   "bank_frame_limit": 8,
   "bank_cache_slots": 4,
   "cldc_preverified": true,
-  "native_device_tested": false,
+  "native_device_tested": true,
   "all_locations_available_for_testing": true,
   "separate_experimental_rms": true,
   "checks": {
@@ -650,5 +650,34 @@
     "baseline_0_27_16_banks": 460,
     "baseline_0_27_16_resource_opens": 498,
     "baseline_0_27_16_decoded_bytes": 11177214
+  },
+  "device_evidence_0_27_17": {
+    "video": "VID_20261027_192322_725.mp4",
+    "user_reports_visibly_faster_and_smoother": true,
+    "device": "Nokia C1-02",
+    "scene": 4,
+    "sample_seconds": 24,
+    "update_last_peak_ms": [
+      72,
+      481
+    ],
+    "paint_last_peak_ms": [
+      59,
+      9067
+    ],
+    "paint_peak_includes_initial_frame": true,
+    "load_last_peak_ms": [
+      348,
+      1153
+    ],
+    "audio_last_peak_ms": [
+      482,
+      2705
+    ],
+    "minimum_observed_free_kib": 184,
+    "raw_frame_cache_hit_percent": 66,
+    "scaled_raster_cache_hit_percent": 20,
+    "exact_speedup_factor_measured": false,
+    "gc_cause_proven": false
   }
 }
