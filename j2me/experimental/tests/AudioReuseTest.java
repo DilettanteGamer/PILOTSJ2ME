@@ -21,7 +21,7 @@ public final class AudioReuseTest {
    }
    audio.active(false);waitFor(()->step.stops==1);audio.active(true);waitFor(()->step.starts==14);
    check(step.seeks==12,"Pause restarted the sound instead of resuming it");
-   step.state=Player.PREFETCHED;waitFor(()->step.state==Player.CLOSED);
+   step.state=Player.PREFETCHED;waitFor(()->step.state==Player.CLOSED);check(AudioDiagnostics.endState==Player.PREFETCHED && AudioDiagnostics.reason==1,"Idle expiry diagnostics incorrect");
    audio.play(31);waitFor(()->Manager.players.size()==3 && latest().starts==1);FakePlayer retry=latest();
    retry.state=Player.PREFETCHED;Manager.rejectSeek=true;audio.play(31);
    waitFor(()->retry.state==Player.CLOSED && Manager.players.size()==4 && latest().starts==1);Manager.rejectSeek=false;
@@ -36,7 +36,7 @@ public final class AudioReuseTest {
    muted.state=Player.PREFETCHED;audio.toggle();waitFor(()->muted.state==Player.CLOSED);
   } finally {audio.close();Manager.maxPCM=3;Manager.rejectSeek=Manager.rejectReplay=Manager.oomNextEffect=false;}
   waitFor(()->Manager.players.stream().allMatch(p->p.state==Player.CLOSED));
-  check(GameAudio.effectReuses==12 && GameAudio.effectReuseFailures==2,"Replay diagnostics mismatch");
+  check(GameAudio.effectReuses==12 && GameAudio.effectReuseFailures==2 && AudioDiagnostics.reuses==12 && AudioDiagnostics.failures==2,"Replay diagnostics mismatch");
   int prior=Manager.players.size();GameAudio overlapping=new GameAudio();
   try {
    overlapping.active(true);waitFor(()->Manager.players.size()==prior+1);
@@ -44,7 +44,7 @@ public final class AudioReuseTest {
    overlapping.play(31);waitFor(()->Manager.players.size()==prior+3 && latest().starts==1);FakePlayer second=latest();
    check(first.state==Player.STARTED,"Overlapping cue interrupted an active footstep");
    first.state=second.state=Player.PREFETCHED;
-   waitFor(()->first.state==Player.CLOSED);check(second.state==Player.PREFETCHED,"More than one idle player kept or newest player discarded");
+   waitFor(()->first.state==Player.CLOSED);check(second.state==Player.PREFETCHED,"More than one idle player kept or newest player discarded");check(AudioDiagnostics.reason==8,"Duplicate idle disposal diagnostic incorrect");second.state=Player.REALIZED;waitFor(()->second.state==Player.CLOSED);check(AudioDiagnostics.endState==Player.REALIZED && AudioDiagnostics.reason==3,"Driver deallocation diagnostic incorrect");
   } finally {overlapping.close();}
   waitFor(()->Manager.players.stream().allMatch(p->p.state==Player.CLOSED));
   System.out.println("12 repeated footsteps: one MMAPI player, exact rewind; one idle slot; active overlap, pause, idle expiry, seek/start failure fallback, native allocation failure recovery, voice priority, scene/mute/close cleanup passed");
