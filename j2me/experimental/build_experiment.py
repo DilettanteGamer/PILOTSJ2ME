@@ -107,7 +107,7 @@ entries={n:b for n,b in entries.items() if not n.endswith('.class')}
 for path in ([WORK/'verified.jar'] if fast_native else [EXP/'lib/concentus-silk-nb-cldc.jar',WORK/'verified.jar']):
  with zipfile.ZipFile(path) as jar:entries.update({n:jar.read(n) for n in jar.namelist() if n.endswith('.class')})
 entries['META-INF/LICENSE-CONCENTUS.txt']=(EXP/'CONCENTUS-LICENSE').read_bytes();entries['META-INF/LICENSE-LZMA.txt']=(EXP/'LZMA-LICENSE').read_bytes()
-text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.8').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
+text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.9').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
 out=EXP/'dist';out.mkdir(exist_ok=True);target=out/'Pilots-Experimental-128x160.jar'
 with zipfile.ZipFile(target,'w') as jar:
  for name,data in entries.items():jar.writestr(name,data,compress_type=zipfile.ZIP_STORED if (name.startswith('tiles/b') and not native_tiles) or (not fast_native and name.endswith(('.p8','.bar','.mid'))) else zipfile.ZIP_DEFLATED,compresslevel=9)
