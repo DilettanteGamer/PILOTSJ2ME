@@ -1,8 +1,8 @@
 {
-  "version": "0.27.7",
+  "version": "0.27.8",
   "profile": "128x160",
-  "jar_bytes": 12841837,
-  "jar_sha256": "70d61e0468be4ceed258f17b04a978166febe59708c3486832ff541b6155cf6b",
+  "jar_bytes": 12842483,
+  "jar_sha256": "e6ce8cca7d3c152b904c6dcb58d5b67004191899d42e4daa0e1c33eb02466b04",
   "baseline_bytes": 19852356,
   "tile_size": 16,
   "tile_cache_bytes": 131072,
@@ -14,26 +14,27 @@
   "all_locations_available_for_testing": true,
   "separate_experimental_rms": true,
   "checks": {
+    "footstep_player_reuse": "12 repeated footsteps: one MMAPI player, exact rewind; one idle slot; active overlap, pause, idle expiry, seek/start failure fallback, native allocation failure recovery, voice priority, scene/mute/close cleanup passed",
     "column_sampling": "exact_columns=1421636 same_size_buffer_reused=true representative_64_row_pixel_divisions=90984704->1421636",
     "all_animation_pixels": "AnimationDecode: all 1667 clips / 20916 frames byte-identical to source; malformed RLE rejected",
     "resources": "P8/bar/MIDI exact restored resources=52",
     "cache_budgets": "Native caches: two warmed walking cycles cause zero bank reloads; all byte budgets enforced",
     "direct_frames": "Direct frames: hot cel uses a small linear bank and one bulk copy; zero tile-bank load; equal-sized cache buffer reused",
-    "multi_actor_render": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=314",
-    "render_fallback": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=327",
+    "multi_actor_render": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=391",
+    "render_fallback": "warm_50_frames_allocations=0\nrender_sha256=d36b28b215de60908f819632a488a446cedc8285080cc064756f7fd667eb98f7 allocations=11 total_ms=336",
     "frame_pacing": "Frame pacing: long stall capped to one step; normal 100ms steps preserved; display service outside Canvas lock",
     "debug_hud": "Debug HUD: correct low FPS/peaks; fixed buffers; no Image allocations; clipped/inventory-safe drawing; 1Hz idle; disabled no repaint; left toggle/right menu preserved",
     "seek_exact": "Non-sequential seek: source-exact frames=6668 clips=1667",
     "seek_workload": "restore_clips=40 decoded_frames=80 bank_loads=61 ms=84 pixels_sha256=50b8dcd3b58a05f473fae879bff8aa578e18c246203bee1568c9ada4a18167a7",
     "rebuild_reuse": "Rebuild reuse: all 16 unchanged actors retained; zero frame reads; background retained; failed rebuild rolled back",
-    "first_location_route": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=115",
+    "first_location_route": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=112",
     "zoo_scene": "ZooScene: shutters lifetime, source events, resumption, crow and Chief response passed",
     "courtyard_route": "Courtyard: source objects, 3 scores, companion positions, arrow, cat, bubbles, fence, exit and saves passed",
     "mmapi_streams": "Native MMAPI spy: MP3 resources=570 cached_replays=546 bytes exact",
     "audio_lifecycle": "Audio: 471 action sound cues via native MP3, 15 MIDI tracks, source action cues, dialogue, ambient, mixing, pause/resume, mute, fallback and cleanup passed",
     "location_entries_and_saves": "LocationEntry: MIDlet menus, third/fourth/fifth transitions, real Canvas RMS save/load, preview/return, fridge, switchboard and crate Canvas controls/timer/pause/RMS restore/automatic return and invalid catalog ID passed",
-    "walking_performance": "Walking: cold40frames_ms=20 warm4000frames_ms=11",
-    "baseline_walking_performance": "Walking: cold40frames_ms=15 warm4000frames_ms=12"
+    "walking_performance": "Walking: cold40frames_ms=19 warm4000frames_ms=12",
+    "baseline_walking_performance": "Walking: cold40frames_ms=16 warm4000frames_ms=9"
   },
   "class_count": 89,
   "hot_graphics_codec": "native JAR DEFLATE",
@@ -78,11 +79,11 @@
     },
     "current_0_27_6": {
       "actions": 40,
-      "total_ms": 79.151,
-      "first_frame_p50_ms": 0.938,
-      "first_frame_p95_ms": 3.949,
-      "first_frame_max_ms": 8.146,
-      "interleaved_frame_p95_ms": 0.592,
+      "total_ms": 65.158,
+      "first_frame_p50_ms": 0.703,
+      "first_frame_p95_ms": 1.843,
+      "first_frame_max_ms": 6.633,
+      "interleaved_frame_p95_ms": 0.437,
       "lzma_blocks": 0
     },
     "previous_0_27_5": {
@@ -157,7 +158,7 @@
   "scene_route_comparison": {
     "baseline_version": "0.27.4",
     "baseline": "decoded_frames=1791 bank_loads=359 resource_opens=505",
-    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=115"
+    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=112"
   },
   "device_evidence": {
     "version": "0.27.4",
@@ -229,7 +230,7 @@
   "hybrid_route_comparison": {
     "baseline_version": "0.27.5",
     "baseline": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=159 direct_loads=0 graphics_bytes=6677504 resource_opens=158 ms=105",
-    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=115",
+    "current": "FirstLocation: queued approaches, all items, wall, guard, payment, completion and saves passed\nfirst_location_route decoded_frames=868 bank_loads=89 direct_loads=94 graphics_bytes=6053218 resource_opens=158 ms=112",
     "individual_frame_trial": "98 tile reads + 219 direct reads; 5707748 decoded bytes",
     "desktop_fps_not_device_fps": true
   },
@@ -269,5 +270,31 @@
     "previous": "cold_rasters=1500 paint_ms=1555 checksum=1073741824",
     "current": "cold_rasters=1500 paint_ms=1562 checksum=1073741824",
     "device_speedup_proven": false
+  },
+  "device_evidence_0_27_7": {
+    "videos": [
+      "VID_20261027_080735_614.mp4",
+      "VID_20261027_080842_302.mp4"
+    ],
+    "update_peak_ms": 936,
+    "paint_peak_ms": 652,
+    "paint_peak_includes_initial_frame": true,
+    "load_peak_ms": 488,
+    "audio_peak_ms": 525,
+    "minimum_observed_free_kib": 46,
+    "java_heap_kib": 2048,
+    "comparison_actions_not_identical": true,
+    "idle_one_fps_expected": true,
+    "gc_cause_proven": false
+  },
+  "footstep_replay": {
+    "maximum_idle_players": 1,
+    "maximum_idle_ms": 1500,
+    "minimum_free_java_heap_bytes": 131072,
+    "effect_slot_limit_unchanged": 3,
+    "unsupported_rewind_or_replay_falls_back": true,
+    "graphics_audio_assets_unchanged": true,
+    "native_player_memory_measured": false,
+    "hud_counter": "H+"
   }
 }

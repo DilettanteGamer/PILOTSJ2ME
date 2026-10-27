@@ -6,11 +6,13 @@ import javax.microedition.media.control.VolumeControl;
 /** Desktop media spy: parses real packaged streams, records device lifecycle. */
 public final class Manager {
     public static final List<FakePlayer> players=Collections.synchronizedList(new ArrayList<FakePlayer>());
-    public static volatile boolean rejectMidi,rejectAll;
+    public static volatile boolean rejectMidi,rejectAll,rejectSeek,rejectReplay;
+    public static volatile boolean oomNextEffect;
     public static volatile int maxPCM=3;
     public static Player createPlayer(InputStream input,String type) throws IOException,MediaException {
         if(rejectAll || rejectMidi && type.equals("audio/midi")) throw new MediaException("Unsupported");
         if(type.equals("audio/x-wav")||type.equals("audio/mpeg")) {
+            if(oomNextEffect){oomNextEffect=false;throw new OutOfMemoryError("Simulated native player allocation failure");}
             int opened=0;
             synchronized(players) { for(FakePlayer player:players) if(player.type.equals(type) && player.state!=Player.CLOSED) opened++; }
             if(opened>=maxPCM) throw new MediaException("Device PCM player limit");
@@ -27,15 +29,16 @@ public final class Manager {
     }
     public static final class FakePlayer implements Player,VolumeControl {
         public final String type;public final byte[] data;
-        public volatile int state=UNREALIZED,starts,stops,level,loops=1;
+        public volatile int state=UNREALIZED,starts,stops,level,loops=1,seeks;
+        public volatile long lastSeek=-1;
         public FakePlayer(String type,byte[] data) { this.type=type;this.data=data; }
         public void realize() { state=REALIZED; }
         public void prefetch() { state=PREFETCHED; }
-        public void start() { if(state==CLOSED) throw new IllegalStateException();state=STARTED;starts++; }
+        public void start() { if(state==CLOSED || rejectReplay && starts>0) throw new IllegalStateException();state=STARTED;starts++; }
         public void stop() { state=PREFETCHED;stops++; }
         public void deallocate() { state=REALIZED; }
         public void close() { state=CLOSED; }
-        public long setMediaTime(long value) { return value; }
+        public long setMediaTime(long value) { if(rejectSeek)throw new IllegalStateException();lastSeek=value;seeks++;return value; }
         public long getMediaTime() { return 123456; }
         public long getDuration() { return 1000000; }
         public int getState() { return state; }
