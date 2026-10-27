@@ -1,7 +1,7 @@
 # J2ME-версии и сборка
 
 [План переноса](../docs/J2ME_PORTING_PLAN.md) ·
-[Экспериментальная 128×160 — 0.27.15](experimental/README.md) ·
+[Экспериментальная 128×160 — 0.27.16](experimental/README.md) ·
 [Сравнение форматов сжатия](../docs/COMPRESSION_FORMATS_COMPARISON.md) ·
 [Анализ сжатия полной игры](../docs/COMPRESSION_ANALYSIS.md) ·
 [Текстовые титры и правая клавиша — 0.26.0](../docs/TEXT_CREDITS_0.26.0.md) ·
