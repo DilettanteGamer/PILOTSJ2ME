@@ -118,10 +118,20 @@ def replace_text(record, value):
     if text(record) is None:
         raise FormatError("У записи нет распознанного текстового префикса")
     encoded = value.translate(str.maketrans(_RU, _US)).encode("ascii") + b"\0"
-    size = record.args[2]
+    size = text_capacity(record)
     if len(encoded) > size:
-        raise FormatError(f"Текст превышает выделенные {size - 1} байт. Код и его смещения не сдвигаются")
+        raise FormatError(f"Текст превышает выделенные {size - 1} байт. Код и соседние строки не сдвигаются")
     return encoded.ljust(size, b"\0") + record.data[size:]
+
+
+def text_capacity(record):
+    """Protect nonzero metadata/other strings in the same prefix window."""
+    window = record.data[:record.args[2]]
+    end = window.find(b"\0")
+    if end < 0:return len(window)
+    end += 1
+    while end < len(window) and window[end] == 0:end += 1
+    return end
 
 
 def placements(record, cell=(64, 16)):

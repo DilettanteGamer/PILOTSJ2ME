@@ -78,6 +78,10 @@ class CoreTests(unittest.TestCase):
         r = self.find(0x2C, 2);self.assertEqual(R.text(r), "Тест")
         data = R.replace_text(r, "Проверка");self.assertEqual(data[12:], r.data[12:]);self.assertEqual(len(data), len(r.data))
         with self.assertRaises(FormatError):R.replace_text(r, "Слишком длинная строка")
+        from pilots_editor.archive import Record
+        adjacent = Record("a", 4, 0x2C, 1, (0, 0, 12), b"Ntcn\0" + b"second\0" + b"\x00")
+        self.assertEqual(R.replace_text(adjacent, "Да")[5:], adjacent.data[5:])
+        with self.assertRaises(FormatError):R.replace_text(adjacent, "Длиннее")
 
     def test_move_scene_cell_and_static_animation_reference(self):
         r = self.find(0x19);entry = R.placements(r, (8, 8))[0]

@@ -243,7 +243,7 @@ class Editor(QMainWindow):
         self.raw.setReadOnly(len(r.data) > 262144)
         self.raw.setPlainText("\n".join(r.data[i:i + 16].hex(" ") for i in range(0, len(r.data), 16)) if len(r.data) <= 262144 else "Большой блок: используйте экспорт / замену файла, PNG или WAV.")
         value = R.text(r);self.text.setPlainText(value or "");self.text.setReadOnly(value is None);self.apply_text_button.setEnabled(value is not None)
-        self.text_help.setText(f"Выделено {r.args[2] - 1} байт; позиции кода сохраняются." if value is not None else "Текстовый префикс не распознан. Произвольные данные доступны на вкладке HEX.")
+        self.text_help.setText(f"Выделено {R.text_capacity(r) - 1} байт; позиции кода сохраняются." if value is not None else "Текстовый префикс не распознан. Произвольные данные доступны на вкладке HEX.")
         self.rules.clear()
         for candidate in self.project.records(r.section):
             if candidate.ident == r.ident:

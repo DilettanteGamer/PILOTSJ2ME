@@ -12,6 +12,7 @@ if os.name != "nt":
 subprocess.run([sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--windowed", "--onedir",
                 "--name", "PilotsEditor", "--paths", str(ROOT / "src"), str(ROOT / "scripts/launcher.py")], cwd=ROOT, check=True)
 out = ROOT / "dist/PilotsEditor"
+shutil.copytree(ROOT / "licenses/qt", out / "licenses/Qt", dirs_exist_ok=True)
 for name in ("README.md", "LICENSE", "THIRD_PARTY.md"):
     shutil.copyfile(ROOT / name, out / name)
 for name in ("PySide6-Essentials", "shiboken6", "Pillow", "PyInstaller"):
@@ -25,6 +26,6 @@ for name in ("PySide6-Essentials", "shiboken6", "Pillow", "PyInstaller"):
         safe = [p for p in Path(entry).parts if p not in ("..", ".") and ":" not in p]
         target = out / "licenses" / name / Path(*safe)
         target.parent.mkdir(parents=True, exist_ok=True);shutil.copyfile(source, target);copied += 1
-    if not copied:
+    if not copied and name not in ("PySide6-Essentials", "shiboken6"):
         raise SystemExit(f"Missing dependency license files: {name}")
 print("Built editor without game content:", out)
