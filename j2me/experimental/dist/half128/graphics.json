@@ -134,11 +134,16 @@
       137
     ]
   },
-  "version": "0.27.23",
-  "jar_bytes": 9091453,
+  "version": "0.27.24",
+  "jar_bytes": 9091631,
   "baseline_jar_bytes": 12905722,
   "baseline_sha256": "26a4f53d2596b24e67ae2c0f0a274e0734948e225ab88b4de5414e28c9c568e5",
-  "jar_sha256": "fc3e06598072c7cb4caecebcea68ff4b2da45a5effed0fb218a5da391fd48af3",
+  "jar_sha256": "4f6e5241eabbdfe3c68e64f88fb28ff0708a421c97d7c582bffe8aaba21e71b2",
   "audio_waits_for_full_paint": true,
-  "background_scratch_pixel_limit": 1024
+  "background_scratch_pixel_limit": 1024,
+  "sewer_deferred_pixels": true,
+  "sewer_raster_key_slots": 192,
+  "sewer_raster_pixel_partition": 45056,
+  "normal_raster_pixel_partition": 32768,
+  "shared_raster_pixel_ceiling": 65536
 }

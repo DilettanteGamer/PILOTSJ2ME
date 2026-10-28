@@ -4,6 +4,7 @@
 [Экспериментальная 128×160 — 0.27.21](experimental/README.md) ·
 [Уменьшенные ресурсы 128×160 — эксперимент 0.27.22](experimental/HALFSIZE_128.md) ·
 [Звук после отрисовки и пакетный фон — 0.27.23](experimental/AUDIO_PRESENTATION_0.27.23.md) ·
+[Кэш канализации и доступные PNG — 0.27.24](experimental/SEWER_CACHE_0.27.24.md) ·
 [Сравнение форматов сжатия](../docs/COMPRESSION_FORMATS_COMPARISON.md) ·
 [Анализ сжатия полной игры](../docs/COMPRESSION_ANALYSIS.md) ·
 [Текстовые титры и правая клавиша — 0.26.0](../docs/TEXT_CREDITS_0.26.0.md) ·

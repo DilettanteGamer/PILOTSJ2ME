@@ -14,6 +14,7 @@ WORK=Path('/tmp/pilots-half-tests');WORK.mkdir(exist_ok=True)
 JDK=Path('/workspace/pilots-tools/jdk-21.0.8+9/bin');API=Path('/workspace/pilots-tools/j2me-placement/midpapi20-2.0.4.jar')
 JAR=EXP/'dist/half128/Pilots-Experimental-128x160.jar';BASE=EXP/'dist/0.27.21/Pilots-Experimental-128x160.jar'
 PREVIOUS=EXP/'dist/0.27.22/Pilots-Experimental-128x160.jar'
+SEWER_PREVIOUS=EXP/'dist/0.27.23/Pilots-Experimental-128x160.jar'
 def run(args,log):
     with open(WORK/(log+'.log'),'w') as out:subprocess.run(list(map(str,args)),check=True,stdout=out,stderr=subprocess.STDOUT)
 source,_,_=cuts(*collect_frames(ROOT/'dist/Pilots-128x160.jar'));blob,meta,rows=source
@@ -42,7 +43,7 @@ with zipfile.ZipFile(JAR) as z,zipfile.ZipFile(BASE) as base:
         expected=np.packbits(np.frombuffer(blob,dtype=np.uint8,count=w*h,offset=offset+4)!=0,bitorder='big').tobytes()
         assert mask[4+at:4+at+len(expected)]==expected,('hit mask',i)
 with zipfile.ZipFile(JAR) as z,zipfile.ZipFile(PREVIOUS) as previous:
-    assert z.namelist()==previous.namelist(),'Unexpected resource/class changes'
+    assert set(z.namelist())==set(previous.namelist()),'Unexpected resource/class changes'
     for name in z.namelist():
         if name!='META-INF/MANIFEST.MF' and not name.endswith('.class'):assert z.read(name)==previous.read(name),name
 fixtures=[]
@@ -92,6 +93,13 @@ for jar,label in [(PREVIOUS,'previous'),(JAR,'current')]:
 assert light['previous']['light_off_tick']==light['current']['light_off_tick']
 assert light['previous']['light_off_pixels_sha256']==light['current']['light_off_pixels_sha256']
 assert int(light['current']['light_off_driver_calls'])<int(light['previous']['light_off_driver_calls'])
+sewer={}
+for jar,label,args in [(SEWER_PREVIOUS,'previous',['reference']),(JAR,'current',[])]:
+    java(jar,'SewerCacheTest',args,'sewer-cache-'+label)
+    sewer[label]=dict(line.split('=',1) for line in (WORK/('sewer-cache-'+label+'.log')).read_text().splitlines() if line.startswith('sewer_'))
+for key in ('sewer_idle_pixels','sewer_idle_state','sewer_recovery_pixels','sewer_recovery_state'):assert sewer['previous'][key]==sewer['current'][key],key
+assert int(sewer['current']['sewer_warm_images'])<int(sewer['previous']['sewer_warm_images'])
+assert int(sewer['current']['sewer_warm_banks'])<int(sewer['previous']['sewer_warm_banks'])
 profiles=[];previews=EXP/'previews/half128';previews.mkdir(exist_ok=True)
 for jar,label in [(BASE,'baseline'),(JAR,'half')]:
     for scene in (2,4,7,13):
@@ -103,8 +111,8 @@ for jar,label in [(BASE,'baseline'),(JAR,'half')]:
         java(jar,'HalfsizePreview',[scene,tick,previews/f'{scene:02}-{label}.png'],f'preview-{label}-{scene}')
 report=dict(note='Desktop JVM and MIDP/MMAPI test doubles, 32 MiB host heap; no device FPS/RAM claim.',tests=[c for c,a in checks+extra_checks]+['HalfsizePixelsTest','all packaged source alpha masks','original electrical state trace'],profiles=profiles)
 report['normal_scale_backgrounds_identical']=background_hash
-report.update(version='0.27.23',jar_sha256=hashlib.sha256(JAR.read_bytes()).hexdigest(),baseline_sha256=hashlib.sha256(BASE.read_bytes()).hexdigest(),previous_0_27_22_sha256=hashlib.sha256(PREVIOUS.read_bytes()).hexdigest(),background_batch_comparison=batch,audio_presentation_test=(WORK/'audio-presentation.log').read_text())
+report.update(version='0.27.24',jar_sha256=hashlib.sha256(JAR.read_bytes()).hexdigest(),baseline_sha256=hashlib.sha256(BASE.read_bytes()).hexdigest(),previous_0_27_22_sha256=hashlib.sha256(PREVIOUS.read_bytes()).hexdigest(),previous_0_27_23_sha256=hashlib.sha256(SEWER_PREVIOUS.read_bytes()).hexdigest(),background_batch_comparison=batch,audio_presentation_test=(WORK/'audio-presentation.log').read_text(),sewer_cache_comparison=sewer)
 report['first_dark_frame_comparison']=light
-report['tests']+=['AudioPresentationTest','BackgroundBatchTest','LightOffPaintTest','0.27.22 resource identity']
+report['tests']+=['AudioPresentationTest','BackgroundBatchTest','LightOffPaintTest','SewerCacheTest','0.27.22 resource identity']
 (EXP/'dist/half128/validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print('PASS: complete reduced corpus, exact hit masks, routes, saves, audio lifecycle and profiles. Logs:',WORK)

@@ -1,0 +1,20 @@
+[
+  {
+    "file": "Pilots-Sewer-Sprites-128x160.zip",
+    "bytes": 947406,
+    "sha256": "20ff854aa09f3a7d4f5d5bd586f216ae2652100ff28c8c3e1e8cdedfb379286d",
+    "images": 341,
+    "clips": 37,
+    "crc_checked": true,
+    "png_pixels_checked_on_export": true
+  },
+  {
+    "file": "Pilots-Sprites-128x160.zip",
+    "bytes": 34299991,
+    "sha256": "707fb38d0832b38084c04082baad2d47c41a0e2d8eb00ae9a2888ecc041ee963",
+    "images": 8625,
+    "clips": 1667,
+    "crc_checked": true,
+    "png_pixels_checked_on_export": true
+  }
+]

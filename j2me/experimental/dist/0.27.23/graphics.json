@@ -1,0 +1,144 @@
+{
+  "images": 8630,
+  "reduced_images": 7670,
+  "original_pixel_bytes": 120884964,
+  "reduced_pixel_bytes": 31604613,
+  "exact_hit_mask_bytes": 15113620,
+  "hit_banks": 491,
+  "small_cels_preserved_max": [
+    64,
+    64
+  ],
+  "logical_geometry_unchanged": true,
+  "retained_exact_screen_sample_variants": 152,
+  "backgrounds": [
+    {
+      "name": "scenes/02.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/03.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/04.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/05.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/06.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/08.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/09.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/10.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/11.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/12.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/13.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/14.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/15.p8",
+      "before": 66560,
+      "after": 33744
+    },
+    {
+      "name": "scenes/17.p8",
+      "before": 66560,
+      "after": 33744
+    }
+  ],
+  "hybrid": {
+    "direct_images": 534,
+    "direct_banks": 134,
+    "direct_bank_target_bytes": 32768,
+    "direct_bank_frame_limit": 4,
+    "direct_raw_bytes": 1222435,
+    "largest_direct_frame_bytes": 9680,
+    "largest_direct_bank_bytes": 22099,
+    "tile_banks": 1024,
+    "tile_bank_raw_bytes": 22211584,
+    "cache_budgets_unchanged": true,
+    "animal_arrival_clips": [
+      49,
+      51,
+      52,
+      53,
+      54,
+      57,
+      58,
+      59,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      111,
+      114,
+      115,
+      118,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      137
+    ]
+  },
+  "version": "0.27.23",
+  "jar_bytes": 9091453,
+  "baseline_jar_bytes": 12905722,
+  "baseline_sha256": "26a4f53d2596b24e67ae2c0f0a274e0734948e225ab88b4de5414e28c9c568e5",
+  "jar_sha256": "fc3e06598072c7cb4caecebcea68ff4b2da45a5effed0fb218a5da391fd48af3",
+  "audio_waits_for_full_paint": true,
+  "background_scratch_pixel_limit": 1024
+}
