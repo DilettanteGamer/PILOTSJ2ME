@@ -5,11 +5,12 @@ public final class PresentationCutsTest {
  static void check(boolean b,String why)throws Exception{if(!b)throw new Exception(why);}
  static Object get(Object o,String name)throws Exception{Field f=o.getClass().getDeclaredField(name);f.setAccessible(true);return f.get(o);}
  static void set(Object o,String name,Object v)throws Exception{Field f=o.getClass().getDeclaredField(name);f.setAccessible(true);f.set(o,v);}
+ static int storedSize(AnimationClip a)throws Exception{try{return ((Integer)get(a,"pixelWidth")).intValue()*((Integer)get(a,"pixelHeight")).intValue();}catch(NoSuchFieldException original){return a.width*a.height;}}
  public static void main(String[] args)throws Exception{
   AnimationClip wall=new AnimationClip("/scenes/02-73.anm"),rest=new AnimationClip("/scenes/02-74.anm");
   Field data=AnimationClip.class.getDeclaredField("pixels");data.setAccessible(true);
   check(wall.count==60,"Wall controller duration changed");
-  for(int frame=51;frame<60;frame++){wall.seek(frame);check(wall.index==frame&&wall.offsetX==rest.offsetX&&wall.offsetY==rest.offsetY&&wall.width==rest.width&&wall.height==rest.height,"Frozen tail changed geometry/frame clock");check(Arrays.equals(Arrays.copyOf((byte[])data.get(wall),wall.width*wall.height),Arrays.copyOf((byte[])data.get(rest),rest.width*rest.height)),"Tail pose differs from original settled hippo");}
+  for(int frame=51;frame<60;frame++){wall.seek(frame);check(wall.index==frame&&wall.offsetX==rest.offsetX&&wall.offsetY==rest.offsetY&&wall.width==rest.width&&wall.height==rest.height,"Frozen tail changed geometry/frame clock");check(Arrays.equals(Arrays.copyOf((byte[])data.get(wall),storedSize(wall)),Arrays.copyOf((byte[])data.get(rest),storedSize(rest))),"Tail pose differs from original settled hippo");}
   wall.close();rest.close();
   for(int[] size:new int[][]{{128,160},{128,128},{240,320}}){
    System.setProperty("pilots.test.width",String.valueOf(size[0]));System.setProperty("pilots.test.height",String.valueOf(size[1]));
