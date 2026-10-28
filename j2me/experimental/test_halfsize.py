@@ -13,6 +13,7 @@ from halfsize import dimensions,background
 WORK=Path('/tmp/pilots-half-tests');WORK.mkdir(exist_ok=True)
 JDK=Path('/workspace/pilots-tools/jdk-21.0.8+9/bin');API=Path('/workspace/pilots-tools/j2me-placement/midpapi20-2.0.4.jar')
 JAR=EXP/'dist/half128/Pilots-Experimental-128x160.jar';BASE=EXP/'dist/0.27.21/Pilots-Experimental-128x160.jar'
+PREVIOUS=EXP/'dist/0.27.22/Pilots-Experimental-128x160.jar'
 def run(args,log):
     with open(WORK/(log+'.log'),'w') as out:subprocess.run(list(map(str,args)),check=True,stdout=out,stderr=subprocess.STDOUT)
 source,_,_=cuts(*collect_frames(ROOT/'dist/Pilots-128x160.jar'));blob,meta,rows=source
@@ -40,6 +41,10 @@ with zipfile.ZipFile(JAR) as z,zipfile.ZipFile(BASE) as base:
         mask=z.read('half/b'+str(bank));assert len(mask)-4==struct.unpack_from('>I',mask)[0]
         expected=np.packbits(np.frombuffer(blob,dtype=np.uint8,count=w*h,offset=offset+4)!=0,bitorder='big').tobytes()
         assert mask[4+at:4+at+len(expected)]==expected,('hit mask',i)
+with zipfile.ZipFile(JAR) as z,zipfile.ZipFile(PREVIOUS) as previous:
+    assert z.namelist()==previous.namelist(),'Unexpected resource/class changes'
+    for name in z.namelist():
+        if name!='META-INF/MANIFEST.MF' and not name.endswith('.class'):assert z.read(name)==previous.read(name),name
 fixtures=[]
 for c in meta['clips']:
     data=hashlib.sha256();hits=hashlib.sha256()
@@ -61,6 +66,7 @@ menu=menu.replace('length==2,"fresh locations expose future levels"','length==16
 run([JDK/'javac','-encoding','UTF-8','-cp',str(JAR)+':'+str(API),'-d',WORK]+sources,'compile')
 def java(jar,cls,args,log):
     run([JDK/'java','-Xmx32m','-Djava.awt.headless=true','-Dpilots.test.width=128','-Dpilots.test.height=160','-cp',str(WORK)+':'+str(jar)+':'+str(API),'pilots.'+cls]+args,log)
+java(JAR,'AudioPresentationTest',[],'audio-presentation')
 java(JAR,'HalfsizePixelsTest',[WORK/'frames.csv',WORK/'samples.csv'],'pixels')
 checks=[('PresentationCutsTest',[]),('InstantLightTest',[]),('AudioMusicEndTest',[]),('AudioStartFailureTest',[]),('AudioReuseTest',[]),('SceneRouteWorkloadTest',[]),('ZooSceneTest',[]),('CourtyardSceneTest',[]),('AnimalWorldTest',[]),('AnimalSequenceRenderTest',[128,160,WORK/'animal']),('SwitchboardRenderTest',[128,160,WORK/'electrical']),('SwitchboardWorldTest',[]),('SewerRenderTest',[128,160,WORK/'sewer']),('FlightRenderTest',[128,160,WORK/'flight']),('FlightWorldTest',[]),('LocationEntryTest',[]),('PixelSamplingTest',[]),('FramePacingTest',[]),('DebugHudTest',[])]
 for cls,args in checks:java(JAR,cls,args,cls)
@@ -73,6 +79,19 @@ assert baseline_state==(WORK/'electrical-state-half.log').read_text().split('sta
 for jar,label in [(BASE,'baseline'),(JAR,'half')]:java(jar,'HalfsizeBackgroundTest',[],'backgrounds-'+label)
 background_hash=next(s for s in (WORK/'backgrounds-baseline.log').read_text().splitlines() if s.startswith('background_normal_scale_sha256='))
 assert background_hash in (WORK/'backgrounds-half.log').read_text()
+for jar,label,args in [(PREVIOUS,'previous',['reference']),(JAR,'current',[])]:java(jar,'BackgroundBatchTest',args,'background-batch-'+label)
+batch={}
+for label in ('previous','current'):
+    batch[label]=dict(line.split('=',1) for line in (WORK/('background-batch-'+label+'.log')).read_text().splitlines() if line.startswith('background_'))
+assert batch['previous']['background_cases_sha256']==batch['current']['background_cases_sha256']
+assert int(batch['current']['background_driver_calls'])<int(batch['previous']['background_driver_calls'])
+light={}
+for jar,label in [(PREVIOUS,'previous'),(JAR,'current')]:
+    java(jar,'LightOffPaintTest',[],'light-off-'+label)
+    light[label]=dict(line.split('=',1) for line in (WORK/('light-off-'+label+'.log')).read_text().splitlines() if line.startswith('light_off_'))
+assert light['previous']['light_off_tick']==light['current']['light_off_tick']
+assert light['previous']['light_off_pixels_sha256']==light['current']['light_off_pixels_sha256']
+assert int(light['current']['light_off_driver_calls'])<int(light['previous']['light_off_driver_calls'])
 profiles=[];previews=EXP/'previews/half128';previews.mkdir(exist_ok=True)
 for jar,label in [(BASE,'baseline'),(JAR,'half')]:
     for scene in (2,4,7,13):
@@ -84,6 +103,8 @@ for jar,label in [(BASE,'baseline'),(JAR,'half')]:
         java(jar,'HalfsizePreview',[scene,tick,previews/f'{scene:02}-{label}.png'],f'preview-{label}-{scene}')
 report=dict(note='Desktop JVM and MIDP/MMAPI test doubles, 32 MiB host heap; no device FPS/RAM claim.',tests=[c for c,a in checks+extra_checks]+['HalfsizePixelsTest','all packaged source alpha masks','original electrical state trace'],profiles=profiles)
 report['normal_scale_backgrounds_identical']=background_hash
-report.update(version='0.27.22',jar_sha256=hashlib.sha256(JAR.read_bytes()).hexdigest(),baseline_sha256=hashlib.sha256(BASE.read_bytes()).hexdigest())
+report.update(version='0.27.23',jar_sha256=hashlib.sha256(JAR.read_bytes()).hexdigest(),baseline_sha256=hashlib.sha256(BASE.read_bytes()).hexdigest(),previous_0_27_22_sha256=hashlib.sha256(PREVIOUS.read_bytes()).hexdigest(),background_batch_comparison=batch,audio_presentation_test=(WORK/'audio-presentation.log').read_text())
+report['first_dark_frame_comparison']=light
+report['tests']+=['AudioPresentationTest','BackgroundBatchTest','LightOffPaintTest','0.27.22 resource identity']
 (EXP/'dist/half128/validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print('PASS: complete reduced corpus, exact hit masks, routes, saves, audio lifecycle and profiles. Logs:',WORK)
