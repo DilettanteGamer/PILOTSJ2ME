@@ -1,4 +1,4 @@
-"""Build the separate 0.27.23 reduced-art experiment; keep 0.27.21/22 intact."""
+"""Build the separate 0.27.24 reduced-art experiment; keep prior builds intact."""
 from pathlib import Path
 import hashlib,json,os,pickle,shutil,struct,subprocess,sys,zipfile
 sys.dont_write_bytecode=True
@@ -9,6 +9,7 @@ from presentation_cuts import graphics_source as cuts
 from halfsize import graphics_source,background,patch
 from presented_audio import patch as audio_presentation_patch
 from batch_background import patch as background_patch
+from sewer_cache import patch as sewer_patch
 from hybrid_frames import graphics
 WORK=Path('/tmp/pilots-half-build');WORK.mkdir(exist_ok=True)
 JDK=Path('/workspace/pilots-tools/jdk-21.0.8+9/bin');TOOLS=Path('/workspace/pilots-tools/j2me-placement')
@@ -20,6 +21,12 @@ if current.exists():
         for filename in (current.name,current.with_suffix('.jad').name,'graphics.json','validation.json'):
             src=current.parent/filename;dest=old_archive/filename
             if dest.exists():assert dest.read_bytes()==src.read_bytes(),'Refuse to replace archived 0.27.22'
+            else:shutil.copyfile(src,dest)
+    if 'MIDlet-Version: 0.27.23' in old_manifest:
+        old_archive=EXP/'dist/0.27.23';old_archive.mkdir(exist_ok=True)
+        for filename in (current.name,current.with_suffix('.jad').name,'graphics.json','validation.json'):
+            src=current.parent/filename;dest=old_archive/filename
+            if dest.exists():assert dest.read_bytes()==src.read_bytes(),'Refuse to replace archived 0.27.23'
             else:shutil.copyfile(src,dest)
 baseline=EXP/'dist/Pilots-Experimental-128x160.jar'
 archive=EXP/'dist/0.27.21';archive.mkdir(exist_ok=True)
@@ -64,14 +71,17 @@ stats['backgrounds']=backgrounds;stats['hybrid']=graphic_stats
 if (WORK/'source').exists():shutil.rmtree(WORK/'source')
 for src in Path('/tmp/pilots-exp-build/source').rglob('*.java'):
     dest=WORK/'source'/src.relative_to('/tmp/pilots-exp-build/source');dest.parent.mkdir(parents=True,exist_ok=True)
-    dest.write_text(background_patch(src.name,audio_presentation_patch(src.name,patch(src.name,src.read_text()))))
-sources=list((WORK/'source').rglob('*.java'))+[p for p in (EXP/'src').rglob('*.java') if p.name not in ('PackedResources.java','OpusWave.java') and 'lzma' not in p.parts and 'concentus' not in p.parts]+list((EXP/'half_src').rglob('*.java'))+[EXP/'native_src/pilots/PackedResources.java']
+    dest.write_text(sewer_patch(src.name,background_patch(src.name,audio_presentation_patch(src.name,patch(src.name,src.read_text())))))
+extra_sources=[p for p in (EXP/'src').rglob('*.java') if p.name not in ('PackedResources.java','OpusWave.java') and 'lzma' not in p.parts and 'concentus' not in p.parts]
+for src in extra_sources:
+    dest=WORK/'source'/src.relative_to(EXP/'src');dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(sewer_patch(src.name,src.read_text()))
+sources=list((WORK/'source').rglob('*.java'))+list((EXP/'half_src').rglob('*.java'))+[EXP/'native_src/pilots/PackedResources.java']
 if (WORK/'classes').exists():shutil.rmtree(WORK/'classes')
 api=str(TOOLS/'cldcapi11-2.0.4.jar')+':'+str(TOOLS/'midpapi20-2.0.4.jar')
 subprocess.run([str(JDK/'java'),'-jar',str(TOOLS/'ecj-4.6.1.jar'),'-proc:none','-encoding','UTF-8','-1.3','-target','1.1','-bootclasspath',api,'-d',str(WORK/'classes')]+list(map(str,sources)),check=True)
 subprocess.run([str(JDK/'java'),'-jar',str(TOOLS/'proguard-base-6.2.2.jar'),'-injars',str(WORK/'classes'),'-outjars',str(WORK/'verified.jar'),'-libraryjars',str(TOOLS/'cldcapi11-2.0.4.jar'),'-libraryjars',str(TOOLS/'midpapi20-2.0.4.jar'),'-microedition','-target','1.1','-dontshrink','-dontoptimize','-dontobfuscate','-keep','class ** { *; }'],check=True)
 with zipfile.ZipFile(WORK/'verified.jar') as z:entries.update({n:z.read(n) for n in z.namelist() if n.endswith('.class')})
-text=entries['META-INF/MANIFEST.MF'].decode().replace('0.27.21','0.27.23')
+text=entries['META-INF/MANIFEST.MF'].decode().replace('0.27.21','0.27.24')
 entries['META-INF/MANIFEST.MF']=text.encode()
 out=EXP/'dist/half128';out.mkdir(exist_ok=True);target=out/baseline.name
 with zipfile.ZipFile(target,'w') as z:
@@ -79,6 +89,7 @@ with zipfile.ZipFile(target,'w') as z:
 attrs=dict(line.split(': ',1) for line in text.splitlines() if ': ' in line)
 attrs.update({'MIDlet-Jar-URL':target.name,'MIDlet-Jar-Size':str(target.stat().st_size)})
 target.with_suffix('.jad').write_text('\n'.join(k+': '+v for k,v in attrs.items() if k!='Manifest-Version')+'\n')
-stats.update(version='0.27.23',jar_bytes=target.stat().st_size,baseline_jar_bytes=baseline.stat().st_size,baseline_sha256=hashlib.sha256(baseline.read_bytes()).hexdigest(),jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(),audio_waits_for_full_paint=True,background_scratch_pixel_limit=1024)
+stats.update(version='0.27.24',jar_bytes=target.stat().st_size,baseline_jar_bytes=baseline.stat().st_size,baseline_sha256=hashlib.sha256(baseline.read_bytes()).hexdigest(),jar_sha256=hashlib.sha256(target.read_bytes()).hexdigest(),audio_waits_for_full_paint=True,background_scratch_pixel_limit=1024,sewer_deferred_pixels=True,sewer_raster_key_slots=192)
+stats.update(sewer_raster_pixel_partition=45056,normal_raster_pixel_partition=32768,shared_raster_pixel_ceiling=65536)
 (out/'graphics.json').write_text(json.dumps(stats,indent=2)+'\n')
 print('Built reduced-art experiment',target,target.stat().st_size,flush=True)

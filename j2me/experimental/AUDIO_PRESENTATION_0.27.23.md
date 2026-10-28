@@ -1,7 +1,10 @@
 # Звук после отрисовки и пакетный вывод фона — 0.27.23
 
-[JAR 128×160](dist/half128/Pilots-Experimental-128x160.jar) ·
-[JAD](dist/half128/Pilots-Experimental-128x160.jad) ·
+Пользователь подтвердил исправление звука и уменьшение паузы на Nokia.
+Продолжение: [0.27.24 — кэш канализации и доступные PNG](SEWER_CACHE_0.27.24.md).
+
+[JAR 128×160](dist/0.27.23/Pilots-Experimental-128x160.jar) ·
+[JAD](dist/0.27.23/Pilots-Experimental-128x160.jad) ·
 [Предыдущая 0.27.22](dist/0.27.22/).
 
 Размер JAR — 9091453 байта, около 9,09 МБ (+1300 байт к 0.27.22).
@@ -73,8 +76,8 @@ python3 j2me/experimental/test_halfsize.py
 отрисовка, устаревший кадр, отсутствие активного ожидания, пауза,
 возврат из меню и все три дополнительных экрана.
 
-Подробности: [validation.json](dist/half128/validation.json), размер и
-хеши: [graphics.json](dist/half128/graphics.json).
+Подробности: [validation.json](dist/0.27.23/validation.json), размер и
+хеши: [graphics.json](dist/0.27.23/graphics.json).
 0.27.22 сохранена побайтно вместе с прежними отчётами. Стабильные версии
 и базовая 0.27.21 остаются прежними.
 
