@@ -11,6 +11,7 @@ Pilots on J2ME
 [Подробный план переноса](docs/J2ME_PORTING_PLAN.md) сопоставляет оригинальную
 игру с текущим прототипом и задаёт этапы восстановления полной игровой логики.
 [Экспериментальная 128×160 — 0.27.21](j2me/experimental/README.md) ·
+[Уменьшенные ресурсы 128×160 — эксперимент 0.27.22](j2me/experimental/HALFSIZE_128.md) ·
 [Сравнение форматов сжатия](docs/COMPRESSION_FORMATS_COMPARISON.md) ·
 [Анализ сжатия полной игры](docs/COMPRESSION_ANALYSIS.md) ·
 [JAR-файлы и сборка](j2me/README.md): исходные профили 0.3.2 и сборки 0.26.1.
