@@ -9,6 +9,8 @@ from optimize_updates import patch as optimize_patch
 from optimize_rasters import patch as raster_patch
 from reuse_audio import patch as audio_patch
 from midi_lifecycle import patch as midi_patch
+from instant_lights import patch as light_patch
+from presentation_cuts import patch as cuts_patch, graphics_source as cut_graphics_source
 from optimize_animals import patch as animal_patch
 from lazy_animal_pixels import patch as lazy_patch
 from sampled_animals import patch as sampled_patch, resources as sampled_resources
@@ -101,6 +103,8 @@ for path in (ROOT/'src').rglob('*.java'):
  if fast_native:
   text=audio_patch(path.name,text)
   text=midi_patch(path.name,text)
+  text=light_patch(path.name,text)
+  text=cuts_patch(path.name,text)
  text=debug_patch(path.name,text)
  p=WORK/'source/pilots'/path.name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
 if (WORK/'classes').exists():shutil.rmtree(WORK/'classes')
@@ -117,11 +121,13 @@ if native_tiles:
    raw=lzma.decompress(entries[name][9:],format=lzma.FORMAT_RAW,filters=filters);assert len(raw)==struct.unpack_from('>I',entries[name])[0];entries[name]=struct.pack('>i',-len(raw))+raw
 if fast_native and native_tiles:
  from hybrid_frames import graphics as hybrid_graphics
- hybrid_cache=WORK/('hybrid534-animal-arrival-v3-'+hashlib.sha256(source.read_bytes()).hexdigest()+'.pkl')
+ hybrid_cache=WORK/('hybrid534-cuts-v1-'+hashlib.sha256(source.read_bytes()).hexdigest()+'.pkl')
  if hybrid_cache.exists():graphic_entries,graphic_stats=pickle.loads(hybrid_cache.read_bytes())
  else:
-  graphic_entries,graphic_stats=hybrid_graphics(*collect_frames(source));hybrid_cache.write_bytes(pickle.dumps((graphic_entries,graphic_stats)))
+  cut_source,cut_entries,cut_stats=cut_graphics_source(*collect_frames(source));graphic_entries,graphic_stats=hybrid_graphics(*cut_source);hybrid_cache.write_bytes(pickle.dumps((graphic_entries,graphic_stats)))
  entries={n:b for n,b in entries.items() if not n.startswith(('tiles/b','tiles/m','tiles/d'))};entries.update(graphic_entries)
+ cut_source,cut_entries,cut_stats=cut_graphics_source(*collect_frames(source));entries.update(cut_entries)
+ (EXP/'dist/presentation-cuts.json').write_text(json.dumps(cut_stats,indent=2)+'\n')
  (EXP/'dist/hybrid-graphics.json').write_text(json.dumps(graphic_stats,indent=2)+'\n');print('Hybrid graphics',graphic_stats,flush=True)
 if fast_native:
  sample_entries,sample_stats=sampled_resources(*collect_frames(source),max(int(n[7:]) for n in entries if n.startswith('tiles/b'))+1)
@@ -130,7 +136,7 @@ entries={n:b for n,b in entries.items() if not n.endswith('.class')}
 for path in ([WORK/'verified.jar'] if fast_native else [EXP/'lib/concentus-silk-nb-cldc.jar',WORK/'verified.jar']):
  with zipfile.ZipFile(path) as jar:entries.update({n:jar.read(n) for n in jar.namelist() if n.endswith('.class')})
 entries['META-INF/LICENSE-CONCENTUS.txt']=(EXP/'CONCENTUS-LICENSE').read_bytes();entries['META-INF/LICENSE-LZMA.txt']=(EXP/'LZMA-LICENSE').read_bytes()
-text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.19').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
+text=entries['META-INF/MANIFEST.MF'].decode();text=text.replace('0.26.1','0.27.21').replace('Pilots Engine 128x160','Pilots Experimental 128x160');entries['META-INF/MANIFEST.MF']=text.encode()
 out=EXP/'dist';out.mkdir(exist_ok=True);target=out/'Pilots-Experimental-128x160.jar'
 with zipfile.ZipFile(target,'w') as jar:
  for name,data in entries.items():jar.writestr(name,data,compress_type=zipfile.ZIP_STORED if (name.startswith('tiles/b') and not native_tiles) or (not fast_native and name.endswith(('.p8','.bar','.mid'))) else zipfile.ZIP_DEFLATED,compresslevel=9)

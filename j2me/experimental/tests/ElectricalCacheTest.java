@@ -12,13 +12,20 @@ public final class ElectricalCacheTest {
   try {
    canvas.startLocation(13);Graphics g=new Graphics(128,160);Field sf=canvas.getClass().getDeclaredField("state");sf.setAccessible(true);
    for(int tick=0;tick<600;tick++){
-    canvas.tick(100);canvas.paint(g);state.update(((GameState)sf.get(canvas)).encode());
+    canvas.tick(100);
+    AnimatedActor[] hidden=null;Scene room=null;
+    if(reference && args[0].equals("instant-reference")) {
+     Field roomField=canvas.getClass().getDeclaredField("scene");roomField.setAccessible(true);room=(Scene)roomField.get(canvas);hidden=new AnimatedActor[room.actors.length];
+     for(int i=0;i<room.actors.length;i++){AnimatedActor actor=room.actors[i];if(actor!=null&&actor.id>=205&&actor.id<=210){hidden[i]=actor;room.actors[i]=null;}}
+    }
+    canvas.paint(g);if(hidden!=null)for(int i=0;i<hidden.length;i++)if(hidden[i]!=null)room.actors[i]=hidden[i];
+    state.update(((GameState)sf.get(canvas)).encode());
     for(int y=0;y<160;y++)for(int x=0;x<128;x++){int rgb=g.image.getRGB(x,y);pixels.update((byte)(rgb>>16));pixels.update((byte)(rgb>>8));pixels.update((byte)rgb);}
     if(RasterCache.pixels()>65536)throw new Exception("Raster pixel budget exceeded");
    }
    int made=Image.allocations-before;String logic=hex(state.digest()),painted=hex(pixels.digest());
    System.out.println("electrical_intro ticks=600 images="+made+" state_sha256="+logic+" pixel_sha256="+painted);
-   if(!logic.equals("9425ad4062e4f6ca404dc5a697bd3c271f389e95ad24fb4e96ef57ce09cf7fa2") || !painted.equals("215cb3726521cfc53b5b2805e8f3539030a6bfb31c8076aa0734b1f8ecf8f987"))throw new Exception("Electrical pixels or game state differ from 0.27.17");
+   if(!reference && (!logic.equals("9425ad4062e4f6ca404dc5a697bd3c271f389e95ad24fb4e96ef57ce09cf7fa2") || !painted.equals("429e4f1af3c87cbc1b7765e7184f1e65ad9a27ecb19d11a10514cc3882e92606")))throw new Exception("Electrical pixels or game state differ from instant-light reference on 0.27.19");
    if(!reference && made>1000)throw new Exception("Electrical raster churn returned: "+made);
   }finally{canvas.shutdown();}
   if(!reference){
